@@ -1,9 +1,8 @@
-import Vue from 'vue';
 
 let scrollBarWidth;
 
 export default function(isChange) {
-  if (Vue.prototype.$isServer) return 0;
+  if (typeof window === 'undefined') return 0;
   if (!isChange) {
     // 防止鼠标缩放浏览器时scrollBarWidth不变化
     if (scrollBarWidth !== undefined && scrollBarWidth !== 0) {

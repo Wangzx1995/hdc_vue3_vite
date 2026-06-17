@@ -1,4 +1,5 @@
-import Vue from "vue";
+import { ElMessage } from "element-plus";
+import api from "@/api/api";
 import BaseWebControl from "../base/BaseWebControl";
 /**
  *
@@ -18,7 +19,7 @@ class WebPreview extends BaseWebControl {
                 code: 0,
                 streamChangeIndex: -1,
                 requestIp: JSON.parse(
-                    window.sessionStorage.getItem("requestIp")
+                    window.sessionStorage.getItem("requestIp"),
                 ),
             };
             this.initNoneWebCon("loading");
@@ -39,7 +40,7 @@ class WebPreview extends BaseWebControl {
                 cb("success");
             } catch (msg) {
                 if (msg === "控件未启动") {
-                    Vue.prototype.$message.error(msg);
+                    ElMessage.error(msg);
                 }
                 cb("error");
             }
@@ -70,14 +71,14 @@ class WebPreview extends BaseWebControl {
                                 .JS_CreateWnd(
                                     this.domId,
                                     this.offsetWidth,
-                                    this.offsetHeight
+                                    this.offsetHeight,
                                 )
                                 .then(() => {
                                     this.removeNodes();
                                     this.initIng = false;
                                     /* 判断当前dom是否为初始化的dom,若不是，则不初始化 */
                                     let newDom = document.getElementById(
-                                        this.domId
+                                        this.domId,
                                     );
                                     if (!newDom) {
                                         playControl.JS_Disconnect();
@@ -135,70 +136,66 @@ class WebPreview extends BaseWebControl {
         if (deviceId) {
             Object.assign(obj, { deviceId: deviceId });
         }
-        Vue.prototype.$api
-            .getDeviceInfoByCarId({
-                deviceCode: deviceCode,
-            })
-            .then((res) => {
-                if (res.success) {
-                    let deviceInfo = res.data;
-                    // let channelListTotal = res.data.channelList;
-                    let channelListTotal = res.data.channelList.filter(
-                        (item) => {
-                            return item.channelNum == channelCheckObj;
-                        }
+        api.getDeviceInfoByCarId({
+            deviceCode: deviceCode,
+        }).then((res) => {
+            if (res.success) {
+                let deviceInfo = res.data;
+                // let channelListTotal = res.data.channelList;
+                let channelListTotal = res.data.channelList.filter((item) => {
+                    return item.channelNum == channelCheckObj;
+                });
+                let channelList = [];
+                channelListTotal.forEach((item) => {
+                    channelList.push({
+                        channel: item.channelNum,
+                        channelName: item.channelName,
+                    });
+                });
+                let channelCount = channelList.length;
+                if (channelCount === 0) {
+                    ElMessage.error("通道数为0，预览失败");
+                    return;
+                }
+                if (channelCount >= 9) {
+                    ElMessage.info(
+                        '当前预览最多支持8路通道，可前往 "多屏预览"查看更多',
                     );
-                    let channelList = [];
-                    channelListTotal.forEach((item) => {
-                        channelList.push({
-                            channel: item.channelNum,
-                            channelName: item.channelName,
+                    channelList = channelList.slice(0, 8);
+                    channelCount = 8;
+                }
+                let type = 1;
+                let params = {
+                    layout: type,
+                    deviceId: deviceInfo.id,
+                    devSerialNum: String(deviceInfo.id),
+                    productKey: deviceInfo.productKey,
+                    channels: channelList,
+                    plate,
+                    display: {
+                        mainControl: { show: true },
+                        subControl: { show: true, screenshotShow: false },
+                    },
+                };
+                this.playControl
+                    .JS_RequestInterface({
+                        funcName: "setPreviewLayout",
+                        arguments: params,
+                    })
+                    .then(() => {
+                        this.startPreview({
+                            deviceId: deviceInfo.id,
+                            devSerialNum: String(deviceInfo.id),
+                            productKey: deviceInfo.productKey,
+                            channelNum: channelCheckObj,
+                            protocolType: this.CONFIG.protocolType,
+                            streamType: this.CONFIG.streamType,
                         });
                     });
-                    let channelCount = channelList.length;
-                    if (channelCount === 0) {
-                        Vue.prototype.$message.error("通道数为0，预览失败");
-                        return;
-                    }
-                    if (channelCount >= 9) {
-                        Vue.prototype.$message.info(
-                            '当前预览最多支持8路通道，可前往 "多屏预览"查看更多'
-                        );
-                        channelList = channelList.slice(0, 8);
-                        channelCount = 8;
-                    }
-                    let type = 1;
-                    let params = {
-                        layout: type,
-                        deviceId: deviceInfo.id,
-                        devSerialNum: String(deviceInfo.id),
-                        productKey: deviceInfo.productKey,
-                        channels: channelList,
-                        plate,
-                        display: {
-                            mainControl: { show: true },
-                            subControl: { show: true, screenshotShow: false },
-                        },
-                    };
-                    this.playControl
-                        .JS_RequestInterface({
-                            funcName: "setPreviewLayout",
-                            arguments: params,
-                        })
-                        .then(() => {
-                            this.startPreview({
-                                deviceId: deviceInfo.id,
-                                devSerialNum: String(deviceInfo.id),
-                                productKey: deviceInfo.productKey,
-                                channelNum: channelCheckObj,
-                                protocolType: this.CONFIG.protocolType,
-                                streamType: this.CONFIG.streamType,
-                            });
-                        });
-                } else {
-                    Vue.prototype.$message.error(res.msg);
-                }
-            });
+            } else {
+                ElMessage.error(res.msg);
+            }
+        });
     }
     /**
      * @function 单通道开始预览,一般在类里自调用,很少外部调用
@@ -208,7 +205,7 @@ class WebPreview extends BaseWebControl {
     startPreview(params) {
         let param = JSON.parse(JSON.stringify(params));
         param.protocolType = 0;
-        Vue.prototype.$api.getPreviewUrl(param).then((res) => {
+        api.getPreviewUrl(param).then((res) => {
             let errorCode = "";
             if (
                 res.code == "device_offline" ||
@@ -267,15 +264,15 @@ class WebPreview extends BaseWebControl {
                         },
                     })
                     .then((oData) => {
-                        Vue.prototype.$message.error("获取url失败，" + res.msg);
+                        ElMessage.error("获取url失败，" + res.msg);
                         // if (
                         //     res.code == "device_offline" ||
                         //     res.code == "EC.device.not.online" ||
                         //     res.code == "device_dormancy"
                         // ) {
-                        //     Vue.prototype.$message.error("车辆离线或休眠！");
+                        //     ElMessage.error("车辆离线或休眠！");
                         // } else {
-                        //     Vue.prototype.$message.error(
+                        //     ElMessage.error(
                         //         "获取url失败，没有返回预览url！"
                         //     );
                         // }
@@ -330,8 +327,7 @@ class WebPreview extends BaseWebControl {
                     params.channelNums.push(item.channel);
                 });
             }
-            Vue.prototype.$api
-                .screenShotsList(params)
+            api.screenShotsList(params)
                 .then((res) => {
                     this.playControl.JS_RequestInterface({
                         funcName: "startScreenShot",
@@ -340,12 +336,12 @@ class WebPreview extends BaseWebControl {
                         },
                     });
                     if (res.success) {
-                        Vue.prototype.$message({
+                        ElMessage({
                             message: "请到下载任务-图片下载中查看",
                             type: "success",
                         });
                     } else {
-                        Vue.prototype.$message.error(res.msg);
+                        ElMessage.error(res.msg);
                     }
                 })
                 .catch(() => {

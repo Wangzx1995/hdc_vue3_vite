@@ -784,7 +784,7 @@
 </template>
 
 <script>
-import Vue from "vue/dist/vue.esm.js";
+import Vue from "@/utils/vue-compat";
 import protocolConfiguration from "@/views/protocolConfiguration/index.vue";
 
 /**
@@ -1992,7 +1992,7 @@ export default {
         sessionStorage.removeItem("deviceInfoList");
         window.addEventListener("resize", this.canvasResize);
     },
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener("resize", this.canvasResize);
     },
     created() {

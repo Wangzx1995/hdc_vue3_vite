@@ -1,6 +1,5 @@
-
-import Vue from 'vue'
-import { downloadHanderForControl } from '@/utils/exportUtil'
+const Vue = window.Vue;
+import { downloadHanderForControl } from "@/utils/exportUtil";
 import BaseWebControl from "../base/BaseWebControl";
 
 /**
@@ -21,14 +20,14 @@ class WebCloudPlayBack extends BaseWebControl {
                 this.playControlState = "show";
                 this.reInitSize();
                 this.disconnectOnLoad();
-                cb("success")
+                cb("success");
             } catch (msg) {
-                if (msg === '控件未启动') {
+                if (msg === "控件未启动") {
                     Vue.prototype.$message.error(msg);
                 }
                 cb("error");
             }
-        })()
+        })();
     }
     /**
      * @function(控件初始化)
@@ -42,35 +41,50 @@ class WebCloudPlayBack extends BaseWebControl {
                 iServicePortEnd: 14439,
                 szClassId: "29DDBC9A-8AEA-4827-9C3A-805D697CF38F",
                 cbConnectSuccess: () => {
-                    playControl.JS_StartService("window", {
-                        dllPath: "./WebCloudPlayBack.dll"
-                    }).then(() => {
-                        playControl.JS_SetWindowControlCallback({
-                            cbIntegrationCallBack: this.cbIntegrationCallBack
-                        });
-                        playControl.JS_CreateWnd(this.domId, this.offsetWidth, this.offsetHeight).then(() => {
-                            this.removeNodes();
-                            this.initIng = false;
-                            /* 判断当前dom是否为初始化的dom,若不是，则不初始化 */
-                            let newDom = document.getElementById(this.domId);
-                            if (!newDom) {
-                                playControl.JS_Disconnect();
-                                return;
-                            }
-                            if (newDom.attributes['timeFlag'] !== this.dom.attributes['timeFlag']) {
-                                playControl.JS_Disconnect();
-                                return;
-                            }
-                            resolve(playControl);
-                        }).catch(() => {
+                    playControl
+                        .JS_StartService("window", {
+                            dllPath: "./WebCloudPlayBack.dll",
+                        })
+                        .then(() => {
+                            playControl.JS_SetWindowControlCallback({
+                                cbIntegrationCallBack:
+                                    this.cbIntegrationCallBack,
+                            });
+                            playControl
+                                .JS_CreateWnd(
+                                    this.domId,
+                                    this.offsetWidth,
+                                    this.offsetHeight,
+                                )
+                                .then(() => {
+                                    this.removeNodes();
+                                    this.initIng = false;
+                                    /* 判断当前dom是否为初始化的dom,若不是，则不初始化 */
+                                    let newDom = document.getElementById(
+                                        this.domId,
+                                    );
+                                    if (!newDom) {
+                                        playControl.JS_Disconnect();
+                                        return;
+                                    }
+                                    if (
+                                        newDom.attributes["timeFlag"] !==
+                                        this.dom.attributes["timeFlag"]
+                                    ) {
+                                        playControl.JS_Disconnect();
+                                        return;
+                                    }
+                                    resolve(playControl);
+                                })
+                                .catch(() => {
+                                    this.initIng = false;
+                                    reject("控件连接失败!");
+                                });
+                        })
+                        .catch(() => {
                             this.initIng = false;
                             reject("控件连接失败!");
                         });
-                    }).catch(() => {
-                        this.initIng = false;
-                        reject("控件连接失败!");
-                    })
-
                 },
                 cbConnectError: () => {
                     this.initIng = false;
@@ -81,7 +95,7 @@ class WebCloudPlayBack extends BaseWebControl {
                 },
                 cbConnectClose: () => {
                     this.removeNodes();
-                }
+                },
             });
         });
     }
@@ -96,26 +110,31 @@ class WebCloudPlayBack extends BaseWebControl {
         this.initNoneWebCon("loading");
         this.attachmentInfo = attachmentInfo;
         this.alarmSign = alarmSign;
-        Vue.prototype.$api.getAlarmMedia({ alarmSign: this.alarmSign,deviceCode:this.attachmentInfo.deviceCode }).then((res) => {
-            if (res.success == true) {
-                let result = res.data.filter((item) => {
-                    return item.fileType === 2
-                })
-                console.log('result=====', result);
-                if (result.length > 0) {
-                    this.removeNodes();
-                    this.showWebOcx();
+        Vue.prototype.$api
+            .getAlarmMedia({
+                alarmSign: this.alarmSign,
+                deviceCode: this.attachmentInfo.deviceCode,
+            })
+            .then((res) => {
+                if (res.success == true) {
+                    let result = res.data.filter((item) => {
+                        return item.fileType === 2;
+                    });
+                    console.log("result=====", result);
+                    if (result.length > 0) {
+                        this.removeNodes();
+                        this.showWebOcx();
+                    } else {
+                        this.removeNodes();
+                        this.initNoneWebCon("noneVideo");
+                    }
                 } else {
-                    this.removeNodes();
-                    this.initNoneWebCon("noneVideo");
+                    Vue.prototype.$message({
+                        message: res.msg,
+                        type: "error",
+                    });
                 }
-            } else {
-                Vue.prototype.$message({
-                    message: res.msg,
-                    type: 'error'
-                });
-            }
-        })
+            });
     }
     /**
      * @function(停止云端回放)
@@ -126,8 +145,8 @@ class WebCloudPlayBack extends BaseWebControl {
         if (this.playControl) {
             this.playControl.JS_RequestInterface({
                 funcName: "stopPlayback",
-                arguments: {}
-            })
+                arguments: {},
+            });
         }
     }
     /**
@@ -135,7 +154,7 @@ class WebCloudPlayBack extends BaseWebControl {
      * @param
      *
      */
-    setIndex(index){
+    setIndex(index) {
         this.index = index;
     }
     /**
@@ -143,55 +162,69 @@ class WebCloudPlayBack extends BaseWebControl {
      *
      */
     cbIntegrationCallBack = async (oData) => {
-        if (oData.responseMsg.event == 'startPlaybackNotify') {
-            Vue.prototype.$api.getAlarmMedia({ alarmSign: this.alarmSign,deviceCode:this.attachmentInfo.deviceCode }).then((res) => {
-                if (res.success == true) {
-                    if (res.data.length > 0) {
-                        let files = res.data.filter((item) => {
-                            return item.fileType === 2
-                        });
-                        console.log('files====',files);
-                        if (files.length > 0) {
-                            this.playControl.JS_RequestInterface({
-                                funcName: "startPlayback",
-                                arguments: {
-                                    "url": files[this.index].url,
-                                    "code": 0
-                                },
-                            })
+        if (oData.responseMsg.event == "startPlaybackNotify") {
+            Vue.prototype.$api
+                .getAlarmMedia({
+                    alarmSign: this.alarmSign,
+                    deviceCode: this.attachmentInfo.deviceCode,
+                })
+                .then((res) => {
+                    if (res.success == true) {
+                        if (res.data.length > 0) {
+                            let files = res.data.filter((item) => {
+                                return item.fileType === 2;
+                            });
+                            console.log("files====", files);
+                            if (files.length > 0) {
+                                this.playControl.JS_RequestInterface({
+                                    funcName: "startPlayback",
+                                    arguments: {
+                                        url: files[this.index].url,
+                                        code: 0,
+                                    },
+                                });
+                            }
                         }
+                    } else {
+                        Vue.prototype.$message({
+                            message: res.msg,
+                            type: "error",
+                        });
                     }
-                } else {
-                    Vue.prototype.$message({
-                        message: res.msg,
-                        type: 'error'
-                    });
-                }
-            })
+                });
         }
-        if (oData.responseMsg.event == 'startDownloadNotify') {
-            let res = await Vue.prototype.$api.getAlarmMedia({ alarmSign: this.alarmSign,deviceCode:this.attachmentInfo.deviceCode })
+        if (oData.responseMsg.event == "startDownloadNotify") {
+            let res = await Vue.prototype.$api.getAlarmMedia({
+                alarmSign: this.alarmSign,
+                deviceCode: this.attachmentInfo.deviceCode,
+            });
             if (res.success == true) {
                 if (res.data.length > 0) {
                     let tempList = res.data.filter((item) => {
                         return item.fileType === 2;
                     });
-                    await downloadHanderForControl(this.attachmentInfo, tempList, this.index); //新增当前视频索引
-                    this.playControl.JS_RequestInterface({
-                        funcName: "notifyDownResult",
-                        arguments: {},
-                    }).then((oData) => { });
+                    await downloadHanderForControl(
+                        this.attachmentInfo,
+                        tempList,
+                        this.index,
+                    ); //新增当前视频索引
+                    this.playControl
+                        .JS_RequestInterface({
+                            funcName: "notifyDownResult",
+                            arguments: {},
+                        })
+                        .then((oData) => {});
                 }
             } else {
                 Vue.prototype.$message({
                     message: res.msg,
-                    type: 'error'
+                    type: "error",
                 });
             }
         }
-    }
+    };
 }
 export default {
-    name: 'WebCloudPlayBack',
-    control: WebCloudPlayBack
-}
+    name: "WebCloudPlayBack",
+    control: WebCloudPlayBack,
+};

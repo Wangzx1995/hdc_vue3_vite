@@ -236,21 +236,21 @@
                                                 <!-- 车牌号异常 -->
                                                 {{
                                                     $t(
-                                                        "deviceManage.abnormalLicensePlateNumber"
+                                                        "deviceManage.abnormalLicensePlateNumber",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformPlateNum"
+                                                        "carManage.platformPlateNum",
                                                     )
                                                 }}：{{ scope.row.plateNum }}
                                             </div>
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.devicePlateNum"
+                                                        "carManage.devicePlateNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -258,7 +258,7 @@
                                                 @click="
                                                     toChange(
                                                         1,
-                                                        scope.row.plateNum
+                                                        scope.row.plateNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -321,7 +321,7 @@
                                         <!-- 生成维护任务 -->
                                         {{
                                             $t(
-                                                "handleFault.generateMaintenanceTasks"
+                                                "handleFault.generateMaintenanceTasks",
                                             )
                                         }}
                                     </a>
@@ -551,7 +551,7 @@ import {
     BmPolyline,
     BmPolygon,
 } from "vue-baidu-map";
-require("@/assets/style/base.scss");
+import "@/assets/style/base.scss";
 export default {
     name: "faultManagement",
     components: {
@@ -693,13 +693,13 @@ export default {
             this.searchForm.orderDir = !column.order
                 ? ""
                 : column.order === "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.searchForm.orderColumn = !column.prop
                 ? ""
                 : column.prop == "unresolvedNum"
-                ? "unresolved_fault"
-                : "t_update_time";
+                  ? "unresolved_fault"
+                  : "t_update_time";
             this.search();
         },
         handleExit() {
@@ -728,7 +728,7 @@ export default {
                     // 生成维护任务成功！
                     this.$message.success(
                         this.$t("handleFault.generateMaintenanceTasks") +
-                            this.$t("common.success")
+                            this.$t("common.success"),
                     );
                     this.getData();
                     this.dialogVisible = false;
@@ -753,13 +753,13 @@ export default {
             if (this.selectionIds.length) {
                 this.dialogVisible = true;
                 this.title = `${this.$t(
-                    "handleFault.generateMaintenanceTasks"
+                    "handleFault.generateMaintenanceTasks",
                 )}（${this.selectionIds.length}）`;
                 this.taskForm = Object.assign(
                     {},
                     this.taskForm,
                     { cars: this.selectionIds },
-                    { organizeId: this.params.organizeId }
+                    { organizeId: this.params.organizeId },
                 );
             } else {
                 // 请至少选择一辆车生成维护任务！
@@ -780,7 +780,7 @@ export default {
                 {},
                 this.taskForm,
                 { cars: cars },
-                { organizeId: this.params.organizeId }
+                { organizeId: this.params.organizeId },
             );
         },
         changeRadioType() {
@@ -889,7 +889,7 @@ export default {
                     },
                     (res) => {
                         this.areaSearchCarModelLoading = false;
-                    }
+                    },
                 )
                 .catch(() => {
                     this.areaSearchCarModelLoading = false;
@@ -952,7 +952,7 @@ export default {
                     } else {
                         // this.$message.error("暂无位置信息");
                         this.$message.error(
-                            this.$t("handleFault.noLocationInformation")
+                            this.$t("handleFault.noLocationInformation"),
                         );
                     }
                 } else {
@@ -993,7 +993,7 @@ export default {
                         this.filterTree(
                             item.children,
                             this.organizationName,
-                            1
+                            1,
                         );
                     }
                 }
@@ -1182,7 +1182,7 @@ export default {
                                         ) {
                                             var iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -1193,18 +1193,18 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(
-                            this.$t("common.exportFailed") + ":" + res.msg
+                            this.$t("common.exportFailed") + ":" + res.msg,
                         );
                         this.loadingAll = false;
                     }
@@ -1294,7 +1294,7 @@ export default {
             this.carLocationParams = Object.assign(
                 {},
                 this.searchForm,
-                this.params
+                this.params,
             );
             this.$api
                 .getFaultCarLocationPage(this.carLocationParams)
@@ -1324,13 +1324,13 @@ export default {
                                     let marker = new AMap.Marker({
                                         position: new AMap.LngLat(
                                             lnglat[1],
-                                            lnglat[0]
+                                            lnglat[0],
                                         ),
                                         icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
                                     });
                                     markers.push(marker);
                                     let overlayGroups = new AMap.OverlayGroup(
-                                        markers
+                                        markers,
                                     );
                                     this.map.remove(overlayGroups);
                                     this.map.add(overlayGroups);
@@ -1357,13 +1357,13 @@ export default {
                                     let marker = new AMap.Marker({
                                         position: new AMap.LngLat(
                                             lnglat[1],
-                                            lnglat[0]
+                                            lnglat[0],
                                         ),
                                         icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
                                     });
                                     markers.push(marker);
                                     let overlayGroups = new AMap.OverlayGroup(
-                                        markers
+                                        markers,
                                     );
                                     this.map.remove(overlayGroups);
                                     this.map.add(overlayGroups);
@@ -1461,17 +1461,17 @@ export default {
         handleReset(ref) {
             if (ref !== undefined) {
                 ref.resetFields();
-                (this.searchForm.plateNum = ""),
-                    (this.searchForm.faultTypes = []);
+                ((this.searchForm.plateNum = ""),
+                    (this.searchForm.faultTypes = []));
                 this.searchForm.plateNums = [];
                 this.$store.dispatch("SetCondtion", this.searchForm);
             }
             this.searchForm.faultTypes = [];
-            (this.time = [
+            ((this.time = [
                 new Date(new Date() - 7 * 24 * 60 * 60 * 1000),
                 new Date(),
             ]),
-                this.$store.dispatch("RemoveCurrentType");
+                this.$store.dispatch("RemoveCurrentType"));
         },
         handleNodeClick(data) {
             console.log(data);
@@ -1514,7 +1514,7 @@ export default {
                                 this.expandedList.push(m.id);
                             });
                             this.$refs["tree"].setCurrentKey(
-                                this.params.organizeId
+                                this.params.organizeId,
                             );
                             this.getAllFaultType();
                         });
@@ -1566,7 +1566,7 @@ export default {
                             this.searchForm.faultTypes.forEach(
                                 (item, index) => {
                                     this.faultTypeList.push(item);
-                                }
+                                },
                             );
                             this.searchForm.faultTypes = this.faultTypeList;
                         }, 100);

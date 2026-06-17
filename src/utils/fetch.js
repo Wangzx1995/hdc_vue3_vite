@@ -1,21 +1,18 @@
-//import Vue from "vue";
-import Vue from "vue/dist/vue.esm.js";
-// const Vue = require('vue')
+import { ElMessage } from "element-plus";
 import axios from "axios";
 import Qs from "qs";
-import store from "../store";
 import Auth from "@/utils/auth";
 
 const isProduction = process.env.NODE_ENV === "production";
 if (isProduction) {
     console.log(
         "%c 如果你看到这条 log , 说明当前是生产环境 ",
-        "font-size:14px;color:#f00;background:#000"
+        "font-size:14px;color:#f00;background:#000",
     );
 } else {
     console.log(
         "%c 如果你看到这条 log , 说明当前是开发环境 ",
-        "font-size:14px;color:#f00;background:#000"
+        "font-size:14px;color:#f00;background:#000",
     );
 }
 
@@ -28,8 +25,9 @@ const service = axios.create({
 // request拦截器
 service.interceptors.request.use(
     (config) => {
-        if (store.getters.token) {
-            config.headers["X-Token"] = Auth.getToken(); // 让每个请求携带自定义token 请根据实际情况自行修改
+        const token = Auth.getToken();
+        if (token) {
+            config.headers["X-Token"] = token; // 让每个请求携带自定义token 请根据实际情况自行修改
         }
         if (config.url.indexOf("fileUpload") > 0) {
             config.headers["Content-Type"] = "multipart/form-data";
@@ -57,7 +55,7 @@ service.interceptors.request.use(
         // Do something with request error
         console.log(error); // for debug
         Promise.reject(error);
-    }
+    },
 );
 
 // respone拦截器
@@ -69,9 +67,9 @@ service.interceptors.response.use(
         const res = response.data;
         if (res.success !== true) {
             if (res.code <= 999999 && res.code >= 900000) {
-                Vue.prototype.$message.error({
-                    content: res.msg,
-                    duration: 5,
+                ElMessage.error({
+                    message: res.msg,
+                    duration: 5000,
                 });
             }
 
@@ -85,9 +83,7 @@ service.interceptors.response.use(
             }
             if (res.code == "system.firstLogin.modifyPwd") {
                 store.dispatch("FedModifyPwd", Auth.get()).then(() => {
-                    Vue.prototype.$message.error(
-                        "由于您是第一次登录，请修改密码以保证安全"
-                    );
+                    ElMessage.error("由于您是第一次登录，请修改密码以保证安全");
                     //location.reload();// 为了重新实例化vue-router对象 避免bug
                 });
                 return Promise.reject("error");
@@ -95,9 +91,7 @@ service.interceptors.response.use(
 
             if (res.code == "system.password.overtime") {
                 store.dispatch("FedModifyPwd", Auth.get()).then(() => {
-                    Vue.prototype.$message.error(
-                        "您的密码已经过期，请修改密码以保证安全"
-                    );
+                    ElMessage.error("您的密码已经过期，请修改密码以保证安全");
                     //location.reload();// 为了重新实例化vue-router对象 避免bug
                 });
 
@@ -109,13 +103,13 @@ service.interceptors.response.use(
         }
     },
     (error) => {
-        Vue.prototype.$message.error(
+        ElMessage.error(
             error.message == "timeout of 30000ms exceeded"
                 ? "网络不佳或者系统繁忙，请稍后再试"
-                : error.message
+                : error.message,
         );
         return Promise.reject(error);
-    }
+    },
 );
 
 export default service;

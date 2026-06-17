@@ -82,7 +82,7 @@
                         class="h-tree-select__search"
                         clearable
                         suffix-icon="el-icon-search"
-                        @keydown.enter.native="
+                        @keydown.enter="
                             (e) => onIconClick && onIconClick(e, treeSearch)
                         "
                     />
@@ -122,7 +122,7 @@
                                         data,
                                         node,
                                         vm,
-                                        event
+                                        event,
                                     )
                             "
                             @check-change="
@@ -131,7 +131,7 @@
                                         'check-change',
                                         data,
                                         check,
-                                        childCheck
+                                        childCheck,
                                     )
                             "
                             @current-change="
@@ -362,10 +362,10 @@ export default {
 
         isShowPop(val) {
             if (!val) {
-                this.broadcast("HTreeSelectDropdown", "destroyPopper");
+                this.$refs.popper && this.$refs.popper.destroyPopper();
             } else {
                 this.resizeBox();
-                this.broadcast("HTreeSelectDropdown", "updatePopper");
+                this.$refs.popper && this.$refs.popper.updatePopper();
             }
         },
     },
@@ -385,7 +385,7 @@ export default {
             $dialog.$el.addEventListener("scroll", this.updatePopper);
         }
     },
-    destroyed() {
+    unmounted() {
         window.removeEventListener("resize", this.resizeBox);
 
         const $dialog = this.findDialogParent(this);
@@ -395,7 +395,7 @@ export default {
     },
     methods: {
         updatePopper() {
-            this.broadcast("HTreeSelectDropdown", "updatePopper");
+            this.$refs.popper && this.$refs.popper.updatePopper();
         },
         findDialogParent(target) {
             const parent = target.$parent;
@@ -403,7 +403,11 @@ export default {
                 return false;
             }
 
-            if (parent.$el.className.includes("el-dialog__wrapper")) {
+            const className = parent.$el && parent.$el.className;
+            if (
+                typeof className === "string" &&
+                className.includes("el-dialog__wrapper")
+            ) {
                 return parent;
             } else {
                 return this.findDialogParent(parent);
@@ -492,7 +496,7 @@ export default {
             this.$emit("remove-tag", node.data);
             this.$emit(
                 "nodechange",
-                this.selectNodes.map((item) => item.data[this.nodeKey])
+                this.selectNodes.map((item) => item.data[this.nodeKey]),
             );
         },
         findPath(node) {
@@ -519,7 +523,7 @@ export default {
             if (parentNode && parentNode.checked) {
                 this.findCheckData(
                     parentNode,
-                    parentNode.disabled ? lastNode : parentNode
+                    parentNode.disabled ? lastNode : parentNode,
                 );
             } else {
                 this.megreCheckedData(lastNode || node);
@@ -624,7 +628,7 @@ export default {
         },
         _removeSelectNode(node) {
             const index = this.selectNodes.findIndex(
-                (item) => item.id === node.id
+                (item) => item.id === node.id,
             );
             if (index > -1) {
                 this.selectNodes.splice(index, 1);

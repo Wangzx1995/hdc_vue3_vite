@@ -246,7 +246,7 @@ export default {
         });
         this.getOrgTree(false);
     },
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener("resize", this.setTableHeight);
     },
     computed: {},

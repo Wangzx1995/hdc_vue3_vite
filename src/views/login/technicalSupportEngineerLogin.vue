@@ -98,7 +98,7 @@
                                         type="text"
                                         prefix-icon="el-icon-user-solid"
                                         placeholder="账户名（非手机号）"
-                                        @keyup.enter.native="handleLogin"
+                                        @keyup.enter="handleLogin"
                                         autocomplete="on"
                                     ></el-input>
                                 </el-form-item>
@@ -108,7 +108,7 @@
                                         :type="passwordType"
                                         prefix-icon="el-icon-lock"
                                         placeholder="密码"
-                                        @keyup.enter.native="handleLogin"
+                                        @keyup.enter="handleLogin"
                                         autocomplete="on"
                                         show-password
                                     >
@@ -123,7 +123,7 @@
                                         type="text"
                                         prefix-icon="el-icon-user-solid"
                                         placeholder="技术支持工程师名称"
-                                        @keyup.enter.native="handleLogin"
+                                        @keyup.enter="handleLogin"
                                         autocomplete="on"
                                     ></el-input>
                                 </el-form-item>
@@ -136,7 +136,7 @@
                                         :type="passwordType"
                                         prefix-icon="el-icon-lock"
                                         placeholder="技术支持工程师登录密码"
-                                        @keyup.enter.native="handleLogin"
+                                        @keyup.enter="handleLogin"
                                         autocomplete="on"
                                         show-password
                                     >
@@ -152,7 +152,7 @@
                                         type="text"
                                         prefix-icon="el-icon-picture"
                                         placeholder="验证码"
-                                        @keyup.enter.native="handleLogin"
+                                        @keyup.enter="handleLogin"
                                         autoComplete="on"
                                         class="input-verify w-md"
                                     ></el-input>
@@ -181,7 +181,7 @@
                                 :max-width="500"
                                 type="primary"
                                 :loading="loading"
-                                @click.native.prevent="handleLogin"
+                                @click.prevent="handleLogin"
                                 >登录</el-button
                             >
                         </div>
@@ -202,7 +202,7 @@
                                     type="text"
                                     prefix-icon="el-icon-mobile-phone"
                                     placeholder="手机号"
-                                    @keyup.enter.native="selectProject"
+                                    @keyup.enter="selectProject"
                                     autoComplete="on"
                                 ></el-input>
                             </el-form-item>
@@ -215,7 +215,7 @@
                                             class="w-md"
                                             prefix-icon="el-icon-message"
                                             placeholder="验证码"
-                                            @keyup.enter.native="selectProject"
+                                            @keyup.enter="selectProject"
                                             autoComplete="on"
                                         ></el-input>
                                     </el-col>
@@ -225,7 +225,7 @@
                                             style="width: 116px"
                                             :disabled="blackTime > 0"
                                             v-show="blackTime <= 0"
-                                            @click.native.prevent="getPhoneCode"
+                                            @click.prevent="getPhoneCode"
                                             >获取验证码</el-button
                                         >
                                         <el-button
@@ -254,7 +254,7 @@
                                     :max-width="500"
                                     type="primary"
                                     :loading="loading"
-                                    @click.native.prevent="selectProject"
+                                    @click.prevent="selectProject"
                                     >登录</el-button
                                 >
                             </div>
@@ -280,7 +280,7 @@
                             <el-button
                                 type="text"
                                 class="w-full"
-                                @click.native.prevent="cancelQrLogin"
+                                @click.prevent="cancelQrLogin"
                                 >取消登录></el-button
                             >
                         </div>
@@ -296,7 +296,7 @@
                             <el-button
                                 shape="circle"
                                 type="primary"
-                                @click.native.prevent="refreshQr"
+                                @click.prevent="refreshQr"
                                 ><i class="el-icon-refresh" /> 刷新</el-button
                             >
                         </div>
@@ -313,7 +313,7 @@
                     <!-- <div class="appDownloadImg">
                     <img :src="android_qr_url" alt="Android APP 下载二维码" />
                     <div>Android APP</div>
-                </div> 
+                </div>
                 <div class="appDownloadImg">
                     <img :src="ios_qr_url" alt="iOS APP 下载二维码" />
                     <div>iOS APP</div>
@@ -383,7 +383,7 @@
                                             style="width: 116px"
                                             :disabled="passwordBlackTime > 0"
                                             v-show="passwordBlackTime <= 0"
-                                            @click.native.prevent="
+                                            @click.prevent="
                                                 getPasswordPhoneCode
                                             "
                                             >获取验证码</el-button
@@ -471,7 +471,7 @@
                                     :max-width="500"
                                     type="primary"
                                     class="w-full"
-                                    @click.native.prevent="selectProject2"
+                                    @click.prevent="selectProject2"
                                     >确认</el-button
                                 >
                             </div>
@@ -931,7 +931,7 @@ export default {
                 localStorage.setItem("codeTice", this.codeTice);
                 console.log(
                     "localStorage.getItem('codeTice')===",
-                    localStorage.getItem("codeTice")
+                    localStorage.getItem("codeTice"),
                 );
                 this.noticeBol = false;
                 // Storage.set('codeTice', this.codeTice);
@@ -992,7 +992,7 @@ export default {
                             if (res.success == true) {
                                 if (res.data.status == 2) {
                                     this.qrLandleLogin(
-                                        res.data.qrCodeLoginToken
+                                        res.data.qrCodeLoginToken,
                                     );
                                     clearInterval(this.qrTimeInterval);
                                 } else if (res.data.status == 0) {
@@ -1047,7 +1047,7 @@ export default {
                     this.$store
                         .dispatch(
                             "technicalSupportEngineerLogin",
-                            this.loginForm
+                            this.loginForm,
                         )
                         .then((response) => {
                             this.loading = false;
@@ -1091,7 +1091,7 @@ export default {
                                 Storage.set("remember", true);
                                 Storage.set(
                                     "username",
-                                    this.loginForm.username
+                                    this.loginForm.username,
                                 );
                             } else {
                                 Storage.set("remember", false);
@@ -1099,7 +1099,7 @@ export default {
                             }
                             localStorage.setItem(
                                 "userSubType",
-                                response.data.userInfo.subType || 999
+                                response.data.userInfo.subType || 999,
                             );
                             //this.getUserMenus();  //获取菜单权限,跳转到第一个菜单
                             this.$router.push({ path: "/" });
@@ -1193,7 +1193,7 @@ export default {
                                                 res.data[0].userName;
                                             Storage.set(
                                                 "username",
-                                                res.data[0].userName
+                                                res.data[0].userName,
                                             );
                                             this.getPasswordNext();
                                         } else {
@@ -1201,13 +1201,13 @@ export default {
                                                 res.data[0].userName;
                                             Storage.set(
                                                 "username",
-                                                res.data[0].userName
+                                                res.data[0].userName,
                                             );
                                             this.phoneHandleLogin();
                                         }
                                     } else {
                                         this.$message.error(
-                                            "当前手机号下无项目！"
+                                            "当前手机号下无项目！",
                                         );
                                     }
                                 } else {
@@ -1247,7 +1247,7 @@ export default {
                                                 res.data[0].userName;
                                             Storage.set(
                                                 "username",
-                                                res.data[0].userName
+                                                res.data[0].userName,
                                             );
                                             this.getPasswordNext();
                                         } else {
@@ -1255,13 +1255,13 @@ export default {
                                                 res.data[0].userName;
                                             Storage.set(
                                                 "username",
-                                                res.data[0].userName
+                                                res.data[0].userName,
                                             );
                                             this.phoneHandleLogin();
                                         }
                                     } else {
                                         this.$message.error(
-                                            "当前手机号下无项目！"
+                                            "当前手机号下无项目！",
                                         );
                                         this.formSubmit = false;
                                     }
@@ -1315,7 +1315,7 @@ export default {
                                 Storage.set("remember", true);
                                 Storage.set(
                                     "username",
-                                    this.phoneLoginForm.username
+                                    this.phoneLoginForm.username,
                                 );
                                 // Storage.set('username', this.phoneLoginForm.phone);
                             } else {
@@ -1447,7 +1447,6 @@ export default {
         getPasswordNext() {
             this.$refs.passwordModal.validate((valid) => {
                 if (valid) {
-                    let sha256 = require("js-sha256").sha256;
                     let ll = {
                         phone: this.passwordModal.phone,
                         password: sha256(this.passwordModal.password),

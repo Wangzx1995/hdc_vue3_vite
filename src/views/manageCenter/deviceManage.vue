@@ -1453,7 +1453,7 @@ import deviceSetting from "./deviceSetting";
 import { toThousandslsFilter } from "../../filters/filters";
 import "@/components/hui-pro/tree-select/theme/index.scss";
 //import Vue from "vue";
-import Vue from "vue/dist/vue.esm.js";
+import Vue from "@/utils/vue-compat";
 
 /**
  * select 下拉框 底部触发指令

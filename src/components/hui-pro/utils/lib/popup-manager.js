@@ -21,7 +21,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _vue = _interopRequireDefault(require("vue"));
+var _vue = { default: { prototype: { $isServer: typeof window === 'undefined' } } };
 
 var _addClass = _interopRequireDefault(require("./add-class.js"));
 
@@ -32,7 +32,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var hasModal = false;
 
 var getModal = function getModal(id, multiModal) {
-  if (_vue["default"].prototype.$isServer) return;
+  if (typeof window === 'undefined') return;
   var modalDom;
 
   if (multiModal) {
@@ -111,7 +111,7 @@ var PopupManager = {
       timeout: 200
     }, opts); // id, zIndex, dom, modalClass, modalFade
 
-    if (_vue["default"].prototype.$isServer) return;
+    if (typeof window === 'undefined') return;
     if (!opts.id || opts.zIndex === undefined) return;
     var modalStack;
 
@@ -229,7 +229,7 @@ var PopupManager = {
 };
 
 var getTopPopup = function getTopPopup() {
-  if (_vue["default"].prototype.$isServer) return;
+  if (typeof window === 'undefined') return;
 
   if (PopupManager.modalStack.length > 0) {
     var topPopup = PopupManager.modalStack[PopupManager.modalStack.length - 1];
@@ -239,7 +239,7 @@ var getTopPopup = function getTopPopup() {
   }
 };
 
-if (!_vue["default"].prototype.$isServer) {
+if (!typeof window === 'undefined') {
   // handle `esc` key when the popup is shown
   window.addEventListener('keydown', function (event) {
     if (event.keyCode === 27) {

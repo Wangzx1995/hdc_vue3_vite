@@ -1,14 +1,14 @@
 <template>
-  <div class="login box-shadow-z20">
-    <VmLogin></VmLogin>
-  </div>
+    <div class="login box-shadow-z20">
+        <VmLogin></VmLogin>
+    </div>
 </template>
 <script>
-  import VmLogin from '@/components/login'
-  export default {
-    name: 'Login',
+import VmLogin from "@/components/login.vue";
+export default {
+    name: "Login",
     components: {
-      VmLogin
-    }
-  }
+        VmLogin,
+    },
+};
 </script>

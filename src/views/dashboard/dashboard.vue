@@ -135,10 +135,7 @@
             </div>
             <div class="item" :class="{ itemWeight: showItemBol }" data-id="2">
                 <!-- 界面内上线率图表 -->
-                <DashboardTrend
-                    :showItemBoolean="showItemBol"
-                    :key="this.timerTrend"
-                ></DashboardTrend>
+                <DashboardTrend :showItemBoolean="showItemBol"></DashboardTrend>
             </div>
             <div class="item" :class="{ itemWeight: showItemBol }" data-id="4">
                 <!-- 界面升级统计图表 -->
@@ -299,7 +296,7 @@ export default {
                                     // title: "本月升级统计",
                                     title: this.$t("dashboard.itemsTitle2"),
                                     showBol: false,
-                                }
+                                },
                             );
                         }
                         if (item.children[i].path == "/deviceConfig") {
@@ -463,18 +460,18 @@ export default {
                                 this.$t("dashboard.itemsTitle5")
                             ) {
                                 this.items[i].title = this.$t(
-                                    "dashboard.itemsTitle2"
+                                    "dashboard.itemsTitle2",
                                 );
                             }
                         }
                         this.copyItems = JSON.parse(JSON.stringify(this.items));
                         this.copyItemArr = JSON.parse(
-                            JSON.stringify(this.itemArr)
+                            JSON.stringify(this.itemArr),
                         );
                     } else {
                         this.items = JSON.parse(JSON.stringify(this.copyItems));
                         this.itemArr = JSON.parse(
-                            JSON.stringify(this.copyItemArr)
+                            JSON.stringify(this.copyItemArr),
                         );
                     }
                     this.$nextTick(() => {
@@ -542,7 +539,7 @@ export default {
                     if (res.code == "system.error.noAuthority") {
                         // 暂无访问权限
                         this.$message.error(
-                            this.$t("dashboard.noAccessPermission")
+                            this.$t("dashboard.noAccessPermission"),
                         );
                     } else {
                         this.$router.push({
@@ -563,7 +560,7 @@ export default {
                     if (res.code == "system.error.noAuthority") {
                         // 暂无访问权限
                         this.$message.error(
-                            this.$t("dashboard.noAccessPermission")
+                            this.$t("dashboard.noAccessPermission"),
                         );
                     } else {
                         this.$router.push({
@@ -581,7 +578,7 @@ export default {
                     if (res.code == "system.error.noAuthority") {
                         // 暂无访问权限
                         this.$message.error(
-                            this.$t("dashboard.noAccessPermission")
+                            this.$t("dashboard.noAccessPermission"),
                         );
                     } else {
                         this.$router.push({
@@ -599,7 +596,7 @@ export default {
                     if (res.code == "system.error.noAuthority") {
                         // 暂无访问权限
                         this.$message.error(
-                            this.$t("dashboard.noAccessPermission")
+                            this.$t("dashboard.noAccessPermission"),
                         );
                     } else {
                         this.$router.push({
@@ -620,7 +617,7 @@ export default {
                     this.showItemBol = false;
                     // "设置成功！"
                     this.$message.success(
-                        this.$t("dashboard.settingSuccessful")
+                        this.$t("dashboard.settingSuccessful"),
                     );
                 } else {
                     this.$message.error(res.msg);
@@ -686,7 +683,7 @@ export default {
         //     .querySelector("body")
         //     .setAttribute("style", "background-color:#F2F2F2");
     },
-    beforeDestroy() {
+    beforeUnmount() {
         // 销毁背景色
         // document.querySelector("body").removeAttribute("style");
     },

@@ -5611,7 +5611,7 @@ export default {
                 }
             });
     },
-    beforeDestroy() {
+    beforeUnmount() {
         if (this.videoPlayControl != null) {
             //this.videoPlayControl.JS_Disconnect();
             this.videoPlayControl.JS_DestroyWnd().then(

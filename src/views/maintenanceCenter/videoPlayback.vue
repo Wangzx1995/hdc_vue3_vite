@@ -3442,7 +3442,7 @@ export default {
                 cx: event.clientX,
                 cy: event.clientY,
             };
-            this.$bas.$emit("downloadEvent", obj);
+            this.$bas.emit("downloadEvent", obj);
         },
         getUpLoadUrl(item, $event) {
             let fileInfo = {
@@ -3859,7 +3859,7 @@ export default {
             }
         }, 500);
     },
-    destroyed() {
+    unmounted() {
         // clearInterval(this.statusInterval);
         checkKeys(this.playControl_ocx) &&
             this.playControl_ocx.disconnectWebOcx();

@@ -23,6 +23,7 @@
     </div>
 </template>
 <script>
+import emptyImage from "@/assets/images/icon_empty.png";
 export default {
     props: {
         deviceCode: {
@@ -43,7 +44,7 @@ export default {
     },
     data() {
         return {
-            emptyImage: require("@/assets/images/icon_empty.png"),
+            emptyImage,
             echartsData: [],
             deviceOnlineSectionVoList: [],
         };
@@ -52,7 +53,7 @@ export default {
         onlineTimeList: {
             handler(val) {
                 this.deviceOnlineSectionVoList = JSON.parse(
-                    JSON.stringify(val)
+                    JSON.stringify(val),
                 );
                 this.$nextTick(() => {
                     this.init();
@@ -91,7 +92,7 @@ export default {
         },
         myEchars() {
             this.myChart = this.$echarts.init(
-                document.getElementById("fault-chart")
+                document.getElementById("fault-chart"),
             );
             let that = this;
             function renderItem(params, api) {
@@ -112,7 +113,7 @@ export default {
                         y: params.coordSys.y,
                         width: params.coordSys.width,
                         height: params.coordSys.height,
-                    }
+                    },
                 );
 
                 return (
@@ -163,12 +164,12 @@ export default {
                     min: +new Date(
                         this.$moment(this.timerange[0])
                             .startOf("day")
-                            .format("YYYY-MM-DD HH:mm:ss")
+                            .format("YYYY-MM-DD HH:mm:ss"),
                     ),
                     max: +new Date(
                         this.$moment(this.timerange[1])
                             .endOf("day")
-                            .format("YYYY-MM-DD HH:mm:ss")
+                            .format("YYYY-MM-DD HH:mm:ss"),
                     ),
                     axisPointer: {
                         type: "shadow",
@@ -235,7 +236,7 @@ export default {
                         },
                         data: this.echartsData.filter(
                             (item) =>
-                                item.name === this.$t("common.deviceStatus_1")
+                                item.name === this.$t("common.deviceStatus_1"),
                         ),
                     },
                 ],

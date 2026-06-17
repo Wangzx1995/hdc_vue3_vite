@@ -10,6 +10,7 @@
     </div>
 </template>
 <script>
+import emptyImage from "@/assets/images/icon_empty.png";
 export default {
     props: {
         deviceCode: {
@@ -27,7 +28,7 @@ export default {
     },
     data() {
         return {
-            emptyImage: require("@/assets/images/icon_empty.png"),
+            emptyImage,
             echartsData: [],
             deviceOnlineSectionVoList: [],
         };
@@ -87,13 +88,13 @@ export default {
                             +this.$moment(this.timerange[0])
                                 .startOf("day")
                                 .format("x"),
-                            +new Date(item.startTime)
+                            +new Date(item.startTime),
                         ),
                         Math.min(
                             +this.$moment(this.timerange[1])
                                 .endOf("day")
                                 .format("x"),
-                            +new Date(item.endTime)
+                            +new Date(item.endTime),
                         ),
                     ],
                     startTime:
@@ -123,13 +124,13 @@ export default {
                             +this.$moment(this.timerange[0])
                                 .startOf("day")
                                 .format("x"),
-                            +new Date(item.startTime)
+                            +new Date(item.startTime),
                         ),
                         Math.min(
                             +this.$moment(this.timerange[1])
                                 .endOf("day")
                                 .format("x"),
-                            +new Date(item.endTime)
+                            +new Date(item.endTime),
                         ),
                     ],
                     startTime: item.startTime,
@@ -140,7 +141,7 @@ export default {
         },
         myEchars() {
             this.myChart = this.$echarts.init(
-                document.getElementById("fault-chart")
+                document.getElementById("fault-chart"),
             );
             let that = this;
             function renderItem(params, api) {
@@ -161,7 +162,7 @@ export default {
                         y: params.coordSys.y,
                         width: params.coordSys.width,
                         height: params.coordSys.height,
-                    }
+                    },
                 );
 
                 return (
@@ -231,12 +232,12 @@ export default {
                     min: +new Date(
                         this.$moment(this.timerange[0])
                             .startOf("day")
-                            .format("YYYY-MM-DD HH:mm:ss")
+                            .format("YYYY-MM-DD HH:mm:ss"),
                     ),
                     max: +new Date(
                         this.$moment(this.timerange[1])
                             .endOf("day")
-                            .format("YYYY-MM-DD HH:mm:ss")
+                            .format("YYYY-MM-DD HH:mm:ss"),
                     ),
                     axisPointer: {
                         type: "shadow",
@@ -302,7 +303,7 @@ export default {
                             y: 0,
                         },
                         data: this.echartsData.filter(
-                            (item) => item.name === "录像"
+                            (item) => item.name === "录像",
                         ),
                     },
                     {
@@ -318,7 +319,7 @@ export default {
                             y: 0,
                         },
                         data: this.echartsData.filter(
-                            (item) => item.name === "在线"
+                            (item) => item.name === "在线",
                         ),
                     },
 
@@ -335,7 +336,7 @@ export default {
                             y: 0,
                         },
                         data: this.echartsData.filter(
-                            (item) => item.name === "休眠"
+                            (item) => item.name === "休眠",
                         ),
                     },
                 ],

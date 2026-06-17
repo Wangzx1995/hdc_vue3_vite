@@ -368,7 +368,7 @@ export default {
         this.setTableHeight();
         this.getData(this.params);
     },
-    destroyed() {},
+    unmounted() {},
 };
 </script>
 <style lang="less" scoped>

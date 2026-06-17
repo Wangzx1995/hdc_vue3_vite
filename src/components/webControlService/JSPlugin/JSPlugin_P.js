@@ -5,7 +5,7 @@
  *  */
 import control from "./lib/control.vue";
 import JSPlugin_Base from "./lib/JSPlugin_Base";
-import Vue from "vue";
+import { createApp } from "vue";
 
 const ERROR_STREAM_TRANS = 1001; //码流传输过程异常
 const ERROR_STREAM_PLAYBACK_END = 1002; //回放结束
@@ -46,18 +46,17 @@ class JSPlugin_P extends JSPlugin_Base {
         this.initChannelName();
     }
     initControl() {
-        let Task = Vue.extend(control);
         [...this.parentWnd.children].forEach((dom, index) => {
-            let taskvm = new Task({
-                propsData: {
-                    domId: this.domId,
-                    iWndNum: index,
-                    controlFn: this.controlFn,
-                    getPreviewUrl: this.getPreviewUrl.bind(this),
-                    setting: this.setting,
-                },
+            const container = document.createElement("div");
+            const app = createApp(control, {
+                domId: this.domId,
+                iWndNum: index,
+                controlFn: this.controlFn,
+                getPreviewUrl: this.getPreviewUrl.bind(this),
+                setting: this.setting,
             });
-            this.controlList.push(taskvm);
+            app.mount(container);
+            this.controlList.push(app);
             // if (!this.deviceChannelList.channelList) {
             //     return;
             // }
@@ -68,7 +67,7 @@ class JSPlugin_P extends JSPlugin_Base {
             this.activeControlList.forEach((control) => {
                 control.deviceChannelList = this.deviceChannelList;
             });
-            dom.appendChild(taskvm.$mount().$el);
+            dom.appendChild(container);
             dom.classList.remove("active-livePreview");
         });
         if (
@@ -289,7 +288,7 @@ class JSPlugin_P extends JSPlugin_Base {
                 task.state = 1;
                 task.toggleing = false;
                 task.clearInterval_h();
-                task.setControlBackgroundUrl(true)
+                task.setControlBackgroundUrl(true);
             });
             await this.playControl.HATJS_StopRealPlayAll();
             return Promise.resolve();

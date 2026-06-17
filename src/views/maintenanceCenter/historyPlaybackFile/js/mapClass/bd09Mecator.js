@@ -1,5 +1,5 @@
 import { Projection, addProjection, addCoordinateTransforms } from "ol/proj";
-var projzh = require("projzh");
+import * as projzh from "projzh";
 
 var bd09Mecator = new Projection({
     code: "BD-09",
@@ -11,7 +11,17 @@ var bd09Mecator = new Projection({
 });
 
 addProjection(bd09Mecator);
-addCoordinateTransforms("EPSG:4326", bd09Mecator, projzh.ll2bmerc, projzh.bmerc2ll);
-addCoordinateTransforms("EPSG:3857", bd09Mecator, projzh.smerc2bmerc, projzh.bmerc2smerc);
+addCoordinateTransforms(
+    "EPSG:4326",
+    bd09Mecator,
+    projzh.ll2bmerc,
+    projzh.bmerc2ll,
+);
+addCoordinateTransforms(
+    "EPSG:3857",
+    bd09Mecator,
+    projzh.smerc2bmerc,
+    projzh.bmerc2smerc,
+);
 
 export default bd09Mecator;

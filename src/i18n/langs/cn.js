@@ -1,4 +1,4 @@
-import zhLocale from "element-ui/lib/locale/lang/zh-CN"; //引入element语言包
+import zhLocale from "element-plus/dist/locale/zh-cn.mjs"; //引入element语言包
 import protocolConfig from "./protocolConfig.json";
 const cn = {
     common: {

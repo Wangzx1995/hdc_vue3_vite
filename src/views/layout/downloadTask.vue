@@ -440,7 +440,7 @@ export default {
             this.setTableHeight();
         }, 300);
     },
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener("resize", this.setTableHeight);
     },
     computed: {},

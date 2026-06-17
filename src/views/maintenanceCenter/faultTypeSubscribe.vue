@@ -54,7 +54,7 @@
 </template>
 <script>
 //import Vue from "vue";
-import Vue from "vue/dist/vue.esm.js";
+import Vue from "@/utils/vue-compat";
 import TreeSelect from "@/components/hui-pro/tree-select/src/tree-select.vue";
 import "@/components/hui-pro/tree-select/theme/index.scss";
 import TimeUtil from "@/utils/time";
@@ -162,14 +162,14 @@ export default {
                 else i.subscribe = false;
             });
             item.isAll = !item.isAll;
-            Vue.set(this.standardList, index, obj);
+            this.standardList[index] = obj;
             this.$nextTick(() => {
                 this.save();
             });
         },
         showAll(item, index) {
             const obj = item;
-            Vue.set(this.standardList, index, obj);
+            this.standardList[index] = obj;
         },
         goBack() {
             this.$router.go(-1);

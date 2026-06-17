@@ -880,7 +880,7 @@ export default {
         this.setTableHeight();
         this.search();
     },
-    destroyed() {
+    unmounted() {
         window.removeEventListener("beforeunload", (e) =>
             this.beforeunloadHandler(e)
         );

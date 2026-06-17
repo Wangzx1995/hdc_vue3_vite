@@ -148,7 +148,7 @@
                                     :placeholder="
                                         $t('login.AccountNameNotPhoneNumber')
                                     "
-                                    @keyup.enter.native="handleLogin"
+                                    @keyup.enter="handleLogin"
                                     autocomplete="on"
                                 ></el-input>
                             </el-form-item>
@@ -159,7 +159,7 @@
                                     :type="passwordType"
                                     prefix-icon="el-icon-lock"
                                     :placeholder="$t('login.password')"
-                                    @keyup.enter.native="handleLogin"
+                                    @keyup.enter="handleLogin"
                                     autocomplete="on"
                                     show-password
                                 >
@@ -176,7 +176,7 @@
                                     type="text"
                                     prefix-icon="el-icon-picture"
                                     :placeholder="$t('login.verificationCode')"
-                                    @keyup.enter.native="handleLogin"
+                                    @keyup.enter="handleLogin"
                                     autoComplete="on"
                                     class="input-verify w-md"
                                 ></el-input>
@@ -217,7 +217,7 @@
                             :max-width="500"
                             type="primary"
                             :loading="loading"
-                            @click.native.prevent="handleLogin"
+                            @click.prevent="handleLogin"
                         >
                             <!-- 登录 -->
                             {{ $t("login.logOn") }}
@@ -239,7 +239,7 @@
                                 type="text"
                                 prefix-icon="el-icon-mobile-phone"
                                 :placeholder="$t('login.cellPhoneNumber')"
-                                @keyup.enter.native="selectProject"
+                                @keyup.enter="selectProject"
                                 autoComplete="on"
                             ></el-input>
                         </el-form-item>
@@ -255,7 +255,7 @@
                                         :placeholder="
                                             $t('login.verificationCode')
                                         "
-                                        @keyup.enter.native="selectProject"
+                                        @keyup.enter="selectProject"
                                         autoComplete="on"
                                     ></el-input>
                                 </el-col>
@@ -265,7 +265,7 @@
                                         style="width: 116px"
                                         :disabled="blackTime > 0"
                                         v-show="blackTime <= 0"
-                                        @click.native.prevent="getPhoneCode"
+                                        @click.prevent="getPhoneCode"
                                     >
                                         <!-- 获取验证码 -->
                                         {{ $t("login.obtainVerificationCode") }}
@@ -296,7 +296,7 @@
                                 :max-width="500"
                                 type="primary"
                                 :loading="loading"
-                                @click.native.prevent="selectProject"
+                                @click.prevent="selectProject"
                             >
                                 <!-- 登录 -->
                                 {{ $t("login.logOn") }}
@@ -334,7 +334,7 @@
                         <el-button
                             type="text"
                             class="w-full"
-                            @click.native.prevent="cancelQrLogin"
+                            @click.prevent="cancelQrLogin"
                         >
                             <!-- 取消登录 -->
                             {{ $t("login.cancelLogin") }}
@@ -358,7 +358,7 @@
                         <el-button
                             shape="circle"
                             type="primary"
-                            @click.native.prevent="refreshQr"
+                            @click.prevent="refreshQr"
                             ><i class="el-icon-refresh" />
                             <!--刷新 -->
                             {{ $t("login.refresh") }}
@@ -381,7 +381,7 @@
                 <!-- <div class="appDownloadImg">
                     <img :src="android_qr_url" alt="Android APP 下载二维码" />
                     <div>Android APP</div>
-                </div> 
+                </div>
                 <div class="appDownloadImg">
                     <img :src="ios_qr_url" alt="iOS APP 下载二维码" />
                     <div>iOS APP</div>
@@ -457,7 +457,7 @@
                                         style="width: 116px"
                                         :disabled="passwordBlackTime > 0"
                                         v-show="passwordBlackTime <= 0"
-                                        @click.native.prevent="
+                                        @click.prevent
                                             getPasswordPhoneCode
                                         "
                                     >
@@ -549,7 +549,7 @@
                                 :max-width="500"
                                 type="primary"
                                 class="w-full"
-                                @click.native.prevent="selectProject2"
+                                @click.prevent="selectProject2"
                             >
                                 <!-- 确认 -->
                                 {{ $t("login.confirm") }}
@@ -1579,7 +1579,6 @@ export default {
         getPasswordNext() {
             this.$refs.passwordModal.validate((valid) => {
                 if (valid) {
-                    let sha256 = require("js-sha256").sha256;
                     let ll = {
                         phone: this.passwordModal.phone,
                         password: sha256(this.passwordModal.password),

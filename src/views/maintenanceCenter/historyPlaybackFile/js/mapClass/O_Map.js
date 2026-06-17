@@ -29,7 +29,7 @@ import gcj02Mecator from "./gcj02Mecator";
 import bd09Mecator from "./bd09Mecator";
 import { getAddressSingle } from "@/utils/getMapLocation";
 import { lineString, bboxClip } from "@turf/turf";
-import vue from "vue";
+
 export default class O_Map extends Base_Map {
     constructor(mapId, playInfo, utilMethods, colorList) {
         /* this.playInfo = {
@@ -103,7 +103,7 @@ export default class O_Map extends Base_Map {
                         info.endLatGaode,
                     ]);
                     let parkingDuration = filters.formatSeconds(
-                        info.parkingDuration
+                        info.parkingDuration,
                     );
                     Object.assign(info, {
                         startAddress,
@@ -403,18 +403,18 @@ export default class O_Map extends Base_Map {
         if (typeof type === "string") {
             let baseType = this.nowMapType[0].split("_")[1];
             let res = `${type}_${baseType}`;
-            vue.set(this.nowMapType, 0, res);
+            this.nowMapType[0] = res;
         }
         if (typeof type === "boolean") {
             let arr = this.nowMapType[0].split("_");
             arr[1] = arr[1] === "base" ? "weixin" : "base";
             let string = arr.join("_");
-            vue.set(this.nowMapType, 0, string);
+            this.nowMapType[0] = string;
         }
         if (route !== undefined) {
             let res = this.nowMapType[1].split("_");
             res[0] = res[0] === "n" ? "y" : "n";
-            vue.set(this.nowMapType, 1, res.join("_"));
+            this.nowMapType[1] = res.join("_");
         }
         debugger;
         this.toggleNowMap();
@@ -452,7 +452,7 @@ export default class O_Map extends Base_Map {
     getPointsByLine(coords) {
         let geometry = new LineString(coords).transform(
             "EPSG:4326",
-            "EPSG:3857"
+            "EPSG:3857",
         );
         coords = geometry.getCoordinates();
         let this_ = this;
@@ -466,7 +466,7 @@ export default class O_Map extends Base_Map {
             pix_end = this_.map.getPixelFromCoordinate(coords[i]);
             let dis_start2end = Math.sqrt(
                 Math.pow(pix_start[0] - pix_end[0], 2) +
-                    Math.pow(pix_start[1] - pix_end[1], 2)
+                    Math.pow(pix_start[1] - pix_end[1], 2),
             ); //计算收尾在屏幕上的距离
             if (dis_start2end > distance_) {
                 //距离大于间隔
@@ -494,7 +494,7 @@ export default class O_Map extends Base_Map {
                             Math.PI +
                             Math.atan2(
                                 pix_end[1] - pix_start[1],
-                                pix_end[0] - pix_start[0]
+                                pix_end[0] - pix_start[0],
                             ),
                         scale: 0.5,
                     }),
@@ -517,7 +517,7 @@ export default class O_Map extends Base_Map {
                             Math.PI +
                             Math.atan2(
                                 pix_end[1] - pix_start[1],
-                                pix_end[0] - pix_start[0]
+                                pix_end[0] - pix_start[0],
                             ),
                         scale: 0.5,
                         // imgSize:[this.style.line_width,this.style.line_width]
@@ -540,7 +540,7 @@ export default class O_Map extends Base_Map {
             let extent = transformExtent(
                 that.getPointExtent(),
                 "EPSG:3857",
-                "EPSG:4326"
+                "EPSG:4326",
             );
             let coord = geometry
                 .clone()
@@ -551,7 +551,7 @@ export default class O_Map extends Base_Map {
                 if (line_clip_arr.geometry.type == "LineString") {
                     let style_ = that.getPointsByLine(
                         line_clip_arr.geometry.coordinates,
-                        resolution
+                        resolution,
                     );
                     styles.push(...style_);
                 } else if (line_clip_arr.geometry.type == "MultiLineString") {
@@ -574,7 +574,7 @@ export default class O_Map extends Base_Map {
             polylineShowType,
             locateType,
         },
-        ifLast
+        ifLast,
     ) {
         let that = this;
         this.playInfo.path.push(...path);
@@ -610,7 +610,7 @@ export default class O_Map extends Base_Map {
                         that.routeLine_clone,
                         that,
                         polylineShowType,
-                        resolution
+                        resolution,
                     );
                     styles.push(...style);
                     return styles;
@@ -660,7 +660,7 @@ export default class O_Map extends Base_Map {
                         that.routeLine_clone,
                         that,
                         polylineShowType,
-                        resolution
+                        resolution,
                     );
                     styles.push(...style);
                     return styles;
@@ -716,7 +716,7 @@ export default class O_Map extends Base_Map {
             polylineWidth,
             polylineShowType,
         },
-        color
+        color,
     ) {
         let that = this;
         if (polylineColorType === 1) {
@@ -724,8 +724,8 @@ export default class O_Map extends Base_Map {
                 new LineString(
                     path.map(({ lng, lat }) => {
                         return [lng, lat];
-                    })
-                )
+                    }),
+                ),
             );
             let styleFunction_last = function (feature, resolution) {
                 const styles = [
@@ -743,7 +743,7 @@ export default class O_Map extends Base_Map {
                     that.routeLine_clone,
                     that,
                     polylineShowType,
-                    resolution
+                    resolution,
                 );
                 styles.push(...style);
                 return styles;
@@ -779,7 +779,7 @@ export default class O_Map extends Base_Map {
                     that.routeLine_clone,
                     that,
                     polylineShowType,
-                    resolution
+                    resolution,
                 );
                 styles.push(...style);
                 return styles;
@@ -842,7 +842,7 @@ export default class O_Map extends Base_Map {
                             anchorYUnits: "pixels",
                         }),
                         zIndex: 1,
-                    })
+                    }),
                 );
                 this.startMarkerPoint = startMarkerPoint;
                 this.singMarker.addFeature(this.startMarkerPoint);
@@ -861,7 +861,7 @@ export default class O_Map extends Base_Map {
                             anchorYUnits: "pixels",
                         }),
                         zIndex: 2,
-                    })
+                    }),
                 );
                 this.endMarkerPoint = endMarkerPoint;
                 this.singMarker.addFeature(this.endMarkerPoint);
@@ -886,7 +886,7 @@ export default class O_Map extends Base_Map {
                         src: focusIcon,
                         scale: 1,
                     }),
-                })
+                }),
             );
             this.focusMarkerPoint = focusMarkerPoint;
             this.playMarker.addFeature(this.focusMarkerPoint);
@@ -950,10 +950,10 @@ export default class O_Map extends Base_Map {
     calculatePlayInfo() {
         this.playInfo.timeTotal =
             moment(
-                this.playInfo.path[this.playInfo.path.length - 1].createTime
+                this.playInfo.path[this.playInfo.path.length - 1].createTime,
             ).valueOf() - moment(this.playInfo.path[0].createTime).valueOf();
         this.playInfo.timeGap = Math.floor(
-            this.playInfo.timeTotal / (this.playInfo.path.length - 1)
+            this.playInfo.timeTotal / (this.playInfo.path.length - 1),
         );
         this.playInfo.filterGps = this.filterGps(this.playInfo.path);
         let featureList = this.playInfo.filterGps.map(
@@ -988,7 +988,7 @@ export default class O_Map extends Base_Map {
                     wheatherNormal,
                     locateType,
                 });
-            }
+            },
         );
         this.gpsMarkers.addFeatures(featureList);
         this.gpsMarkers.changed();
@@ -1050,13 +1050,13 @@ export default class O_Map extends Base_Map {
                         color: "#409eff",
                     }),
                     zIndex: 10,
-                })
+                }),
             );
             this.routeLine.addFeature(runLine);
         } else {
             if (this.routeLine.getFeatureById("runLine")) {
                 this.routeLine.removeFeature(
-                    this.routeLine.getFeatureById("runLine")
+                    this.routeLine.getFeatureById("runLine"),
                 );
             }
         }
@@ -1110,7 +1110,7 @@ export default class O_Map extends Base_Map {
             this.playInfo.playRate = 1;
         }
         let currentCoordinate = currentLine.getCoordinateAt(
-            this.playInfo.playRate
+            this.playInfo.playRate,
         );
         this.carMarkerPoint_clone.setCoordinates(currentCoordinate);
         let runLine = this.routeLine.getFeatureById("runLine");
@@ -1130,7 +1130,7 @@ export default class O_Map extends Base_Map {
             image: new Icon({
                 src: carIcon,
                 rotation: this.cashd(
-                    directionF + caRadius * this.playInfo.playRate
+                    directionF + caRadius * this.playInfo.playRate,
                 ),
             }),
             zIndex: 20,
@@ -1153,7 +1153,7 @@ export default class O_Map extends Base_Map {
             if (this.playInfo.frontIndex < this.playInfo.path.length - 1) {
                 this.playInfo.frontIndex = Math.min(
                     this.playInfo.frontIndex + this.playInfo.playGap,
-                    this.playInfo.path.length - 1
+                    this.playInfo.path.length - 1,
                 );
                 let nextGps = this.playInfo.path[this.playInfo.frontIndex];
                 if (this.infoWindowShow) {
@@ -1199,7 +1199,7 @@ export default class O_Map extends Base_Map {
         return new Promise(async (resolve) => {
             if (!Base_Map.trajectoryCorrection) {
                 await this.trajectoryCorrection(
-                    historyTrajectoryTempData
+                    historyTrajectoryTempData,
                 ).catch(() => {});
             }
             if (
@@ -1216,7 +1216,7 @@ export default class O_Map extends Base_Map {
                             width: 3,
                             color: "red",
                         }),
-                    })
+                    }),
                 );
                 this.routeTrakLine.addFeature(feature);
                 this.routeTrakLine.changed();
@@ -1271,7 +1271,7 @@ export default class O_Map extends Base_Map {
             } else {
                 let result = this.getFeature(
                     newCheckedLabel[labelId],
-                    showPointerLabel
+                    showPointerLabel,
                 );
                 pointMarker = result.pointFeature;
                 shapeObj = result.shapeFeature;
@@ -1410,7 +1410,7 @@ export default class O_Map extends Base_Map {
         let style = this.createStyle(
             tagName,
             labelPointCategory,
-            showPointerLabel
+            showPointerLabel,
         );
         pointFeature.setStyle(style);
         return {
@@ -1451,7 +1451,7 @@ export default class O_Map extends Base_Map {
             let style = this.createStyle(
                 tagName,
                 labelPointCategory,
-                showPointerLabel
+                showPointerLabel,
             );
             feature.setStyle(style);
         });

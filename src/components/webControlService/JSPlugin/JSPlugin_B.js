@@ -6,7 +6,7 @@
 import moment from "moment";
 import control from "./lib/control.vue";
 import JSPlugin_Base from "./lib/JSPlugin_Base";
-import Vue from "vue";
+import { createApp } from "vue";
 
 const ERROR_STREAM_TRANS = 1001; //码流传输过程异常
 const ERROR_STREAM_PLAYBACK_END = 1002; //回放结束
@@ -38,7 +38,7 @@ class JSPlugin_B extends JSPlugin_Base {
         this.toggleTextPosition();
         this.timeBar = null;
         this.playState = false;
-        (this.timeBarFileInfo = null),
+        ((this.timeBarFileInfo = null),
             (this.checkCount = [
                 {
                     playTimeStamp: null,
@@ -56,31 +56,30 @@ class JSPlugin_B extends JSPlugin_Base {
                     file: null,
                     ifInOneS: false,
                 },
-            ]);
+            ]));
         // this.initChannelName();
     }
     setTimeBar(timeBar) {
         this.timeBar = timeBar;
     }
     initControl() {
-        let Task = Vue.extend(control);
         [...this.parentWnd.children].forEach((dom, index) => {
-            let taskvm = new Task({
-                propsData: {
-                    jsPlugin: this,
-                    controlType: "back",
-                    domId: this.domId,
-                    iWndNum: index,
-                    controlFn: this.controlFn,
-                    getPlayBackUrl: this.getPlayBackUrl.bind(this),
-                    changePlayState: this.changePlayState.bind(this),
-                    rePlay: JSPlugin_B.rePlay.bind(this),
-                    setting: this.setting,
-                },
+            const container = document.createElement("div");
+            const app = createApp(control, {
+                jsPlugin: this,
+                controlType: "back",
+                domId: this.domId,
+                iWndNum: index,
+                controlFn: this.controlFn,
+                getPlayBackUrl: this.getPlayBackUrl.bind(this),
+                changePlayState: this.changePlayState.bind(this),
+                rePlay: JSPlugin_B.rePlay.bind(this),
+                setting: this.setting,
             });
-            this.controlList.push(taskvm);
+            app.mount(container);
+            this.controlList.push(app);
             this.activeControlList = this.controlList.slice(0, 1);
-            dom.appendChild(taskvm.$mount().$el);
+            dom.appendChild(container);
             dom.innterHtml = "";
         });
     }
@@ -493,7 +492,7 @@ class JSPlugin_B extends JSPlugin_Base {
                 }
                 let playTimeStamp = moment(szTime);
                 let currentPlayTime = playTimeStamp.format(
-                    "YYYY-MM-DD HH:mm:ss"
+                    "YYYY-MM-DD HH:mm:ss",
                 );
                 // console.log(currentPlayTime, "当前播放时间");
                 this.checkPlayfn(szTime, currentPlayTime);
@@ -513,7 +512,7 @@ class JSPlugin_B extends JSPlugin_Base {
                     this.activeControlList[index].setText(
                         "当前时间点没有文件",
                         false,
-                        true
+                        true,
                     );
                 }
             });

@@ -898,7 +898,7 @@
 <script>
 import importDialog from "@/components/importDialog";
 //import Vue from "vue";
-import Vue from "vue/dist/vue.esm.js";
+import Vue from "@/utils/vue-compat";
 
 /**
  * select 下拉框 底部触发指令
@@ -1847,7 +1847,7 @@ export default {
         this.setWrap();
         window.addEventListener("resize", this.canvasResize);
     },
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener("resize", this.canvasResize);
     },
     created() {

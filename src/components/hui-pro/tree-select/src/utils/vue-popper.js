@@ -1,12 +1,11 @@
-import Vue from 'vue';
 import { PopupManager } from './popup';
 // import Popper from './popper';
 // 这里注意要写成这种形式，否则webpack打包不识别externals，会打包进去
 // 不要使用相对路径
 // zhuxiankang add at 2019/01/08
 import Popper from './popper';
-// const PopperJS = Vue.prototype.$isServer ? function () {} : popper;
-const PopperJS = Vue.prototype.$isServer ? function() {} : Popper;
+// const PopperJS = typeof window === 'undefined' ? function () {} : popper;
+const PopperJS = typeof window === 'undefined' ? function() {} : Popper;
 const stop = e => e.stopPropagation();
 
 /**

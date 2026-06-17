@@ -138,7 +138,7 @@
                                 <!-- 展示设备最后一次升级未成功结果 -->
                                 {{
                                     $t(
-                                        "deviceUpgrade.lastUnsuccessfulUpgradeResult"
+                                        "deviceUpgrade.lastUnsuccessfulUpgradeResult",
                                     )
                                 }}
                             </span>
@@ -191,7 +191,7 @@
                                 <el-form-item
                                     :label="
                                         $t(
-                                            'deviceLoadReportVerify.activeCodeErrorMessage'
+                                            'deviceLoadReportVerify.activeCodeErrorMessage',
                                         )
                                     "
                                     v-if="searchForm.upgradeState == '[5]'"
@@ -493,7 +493,7 @@
                                 <template slot-scope="scope">
                                     {{
                                         $moment(
-                                            scope.row.upgradeStateTime
+                                            scope.row.upgradeStateTime,
                                         ).format("YYYY-MM-DD HH:mm:ss")
                                     }}
                                 </template>
@@ -568,7 +568,7 @@
                                     <span v-if="scope.row.createTime">
                                         {{
                                             $moment(
-                                                scope.row.createTime
+                                                scope.row.createTime,
                                             ).format("YYYY-MM-DD HH:mm:ss")
                                         }}
                                     </span>
@@ -648,7 +648,7 @@
                                 prop="errorReason"
                                 :label="
                                     $t(
-                                        'deviceLoadReportVerify.activeCodeErrorMessage'
+                                        'deviceLoadReportVerify.activeCodeErrorMessage',
                                     )
                                 "
                                 width="100px"
@@ -668,7 +668,7 @@
                                                 scope.row.taskId,
                                                 scope.row.taskDevId,
                                                 scope.row.plateNum,
-                                                scope.row.deviceCode
+                                                scope.row.deviceCode,
                                             )
                                         "
                                         v-if="
@@ -689,7 +689,7 @@
                                                 scope.row.taskId,
                                                 scope.row.taskDevId,
                                                 scope.row.plateNum,
-                                                scope.row.deviceCode
+                                                scope.row.deviceCode,
                                             )
                                         "
                                         v-if="scope.row.upgradeState == 5"
@@ -812,7 +812,7 @@
                             <!-- 失败原因 -->
                             {{
                                 $t(
-                                    "deviceLoadReportVerify.activeCodeErrorMessage"
+                                    "deviceLoadReportVerify.activeCodeErrorMessage",
                                 )
                             }}
                         </el-checkbox>
@@ -852,7 +852,7 @@
 </template>
 
 <script>
-require("@/assets/style/base.scss");
+import "@/assets/style/base.scss";
 function throttle(fn, interval = 500) {
     let last = 0;
     return function (...args) {
@@ -1094,14 +1094,14 @@ export default {
                 this.params.organizeId = this.treeData1[0].id;
                 this.$store.dispatch(
                     "SetShowDeviceManageId",
-                    this.params.organizeId
+                    this.params.organizeId,
                 );
                 this.getTableData();
             } else {
                 this.params.organizeId = this.treeData[0].id;
                 this.$store.dispatch(
                     "SetShowDeviceManageId",
-                    this.params.organizeId
+                    this.params.organizeId,
                 );
                 this.getTableData();
             }
@@ -1113,7 +1113,7 @@ export default {
                 if (res.success == true) {
                     // "查询成功"
                     this.$message.success(
-                        this.$t("common.search") + this.$t("common.success")
+                        this.$t("common.search") + this.$t("common.success"),
                     );
                 } else {
                     this.$message.error(res.msg);
@@ -1241,7 +1241,7 @@ export default {
                     if (res.success == true) {
                         this.tableData = res.data.results;
                         this.copyTableData = JSON.parse(
-                            JSON.stringify(this.tableData)
+                            JSON.stringify(this.tableData),
                         );
                         this.total = res.data.totalRecords;
                         this.$nextTick(() => {
@@ -1333,7 +1333,7 @@ export default {
                             });
                             if (!!this.$route.query.selectObj) {
                                 this.$refs.tree.setCurrentKey(
-                                    Number(this.params.organizeId)
+                                    Number(this.params.organizeId),
                                 );
                             }
                         });
@@ -1344,12 +1344,12 @@ export default {
                             this.filterTree1(
                                 this.treeData,
                                 this.organizationName,
-                                0
+                                0,
                             );
                             this.$nextTick(() => {
                                 this.$refs.tree.filter(
                                     "show",
-                                    !this.organizationName
+                                    !this.organizationName,
                                 );
                             });
                         }
@@ -1399,7 +1399,7 @@ export default {
                                 : this.treeData1[0].id;
                             this.searchForm = this.searchForm;
                             this.$refs["tree"].setCurrentKey(
-                                this.params.organizeId
+                                this.params.organizeId,
                             );
                         }
 
@@ -1499,7 +1499,7 @@ export default {
                                             ) {
                                                 var iframe =
                                                     document.createElement(
-                                                        "iframe"
+                                                        "iframe",
                                                     );
                                                 iframe.src =
                                                     (process.env.BASE_API == "/"
@@ -1510,10 +1510,10 @@ export default {
                                                     fileName;
                                                 iframe.style.display = "none";
                                                 document.body.appendChild(
-                                                    iframe
+                                                    iframe,
                                                 );
                                                 window.clearInterval(
-                                                    _this.getExportResultInterval
+                                                    _this.getExportResultInterval,
                                                 );
                                                 _this.getExportResultInterval =
                                                     "";
@@ -1521,11 +1521,11 @@ export default {
                                             }
                                         });
                                 },
-                                2000
+                                2000,
                             );
                         } else {
                             this.$message.error(
-                                this.$t("common.exportFailed") + ":" + res.msg
+                                this.$t("common.exportFailed") + ":" + res.msg,
                             );
                             this.loadingAll = false;
                         }
@@ -1535,7 +1535,7 @@ export default {
         //表头设置
         customShow() {
             this.updateCustomJson = JSON.parse(
-                JSON.stringify(this.copyUpdateCustomJson)
+                JSON.stringify(this.copyUpdateCustomJson),
             );
             this.tableData = [];
             setTimeout(() => {
@@ -1553,15 +1553,15 @@ export default {
                     if (res.data) {
                         this.copyUpdateCustomJson = JSON.parse(res.data);
                         this.updateCustomJson = JSON.parse(
-                            JSON.stringify(res.data)
+                            JSON.stringify(res.data),
                         );
                         // this.getTableData();
                     } else {
                         this.copyUpdateCustomJson = JSON.parse(
-                            JSON.stringify(this.customJson)
+                            JSON.stringify(this.customJson),
                         );
                         this.updateCustomJson = JSON.parse(
-                            JSON.stringify(this.customJson)
+                            JSON.stringify(this.customJson),
                         );
                     }
                     this.customBol = false;
@@ -1581,8 +1581,8 @@ export default {
                     // this.$message.success(`表头设置恢复默认成功`);
                     this.$message.success(
                         this.$t(
-                            "conditionMonitoring.headerSettingsDefaultSuccessfully"
-                        )
+                            "conditionMonitoring.headerSettingsDefaultSuccessfully",
+                        ),
                     );
                     this.getUserVisibleColumn();
                 } else {
@@ -1603,8 +1603,8 @@ export default {
                     // this.$message.success(`保存表头设置成功`);
                     this.$message.success(
                         this.$t(
-                            "conditionMonitoring.headerSettingsSuccessfully"
-                        )
+                            "conditionMonitoring.headerSettingsSuccessfully",
+                        ),
                     );
                     this.getUserVisibleColumn();
                 } else {
@@ -1694,7 +1694,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     this.allUpgradeLoading = true;
@@ -1753,7 +1753,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     this.allUpgradeLoading = true;

@@ -361,7 +361,7 @@ export default {
             this.$refs.table.clearSelection();
         },
     },
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener("resize", this.tableResize);
     },
 };

@@ -10,8 +10,7 @@
                 <div class="trend-link">
                     <el-radio-group
                         v-model="interval"
-                        size="mini"
-                        type="simple"
+                        size="small"
                         @change="changeInterval(1)"
                     >
                         <el-radio-button :disabled="searching" :label="0">
@@ -52,8 +51,7 @@
                 <div class="trend-link">
                     <el-radio-group
                         v-model="interval"
-                        size="mini"
-                        type="simple"
+                        size="small"
                         @change="changeInterval(2)"
                     >
                         <el-radio-button :disabled="searching" :label="0">
@@ -96,7 +94,7 @@
                     {{ $t("dashboard.displayAverageValue") }}
                     <el-switch
                         v-model="show"
-                        size="mini"
+                        size="small"
                         @change="isShowAverage"
                         :disabled="searching"
                     ></el-switch>
@@ -104,8 +102,7 @@
                 <div class="trend-link">
                     <el-radio-group
                         v-model="interval"
-                        size="mini"
-                        type="simple"
+                        size="small"
                         @change="changeInterval(3)"
                     >
                         <el-radio-button :disabled="searching" :label="0">
@@ -153,8 +150,7 @@
                 <div class="trend-link">
                     <el-radio-group
                         v-model="interval"
-                        size="mini"
-                        type="simple"
+                        size="small"
                         @change="changeInterval(4)"
                     >
                         <el-radio-button :disabled="searching" :label="0">
@@ -276,7 +272,7 @@ export default {
             max,
             formatter,
             axisLabelFormatter,
-            markLineOption
+            markLineOption,
         ) {
             var myChart = this.$echarts.init(document.getElementById(idName));
             var option = {
@@ -357,20 +353,20 @@ export default {
                                     this.$t("dashboard.onlineRatePercentage") +
                                     ": {c}%",
                                 "{value}%",
-                                this.markLineOption
+                                this.markLineOption,
                             );
                             this.dateList = dateList;
                             this.dateData = dateData;
                             this.title = this.$t(
-                                "dashboard.onlineRatePercentage"
+                                "dashboard.onlineRatePercentage",
                             );
                             this.idName = "main1";
                             this.max = 100;
-                            (this.formatter =
+                            ((this.formatter =
                                 "{b}<br />" +
                                 this.$t("dashboard.onlineRatePercentage") +
                                 ": {c}%"),
-                                "{value}%";
+                                "{value}%");
                         } else {
                             this.$message.error(res.msg);
                             this.searching = false;
@@ -386,7 +382,7 @@ export default {
                     .then((res) => {
                         if (res.success == true) {
                             this.rankDatas.title = this.$t(
-                                "dashboard.offlineBlacklisting"
+                                "dashboard.offlineBlacklisting",
                             ); //"车辆长时间离线黑榜";
                             this.rankDatas.titleType = 1;
                             this.rankDatas.rankData = res.data;
@@ -419,11 +415,11 @@ export default {
                                 null,
                                 "{b}<br />" +
                                     this.$t(
-                                        "dashboard.equipmentFailuresNumber"
+                                        "dashboard.equipmentFailuresNumber",
                                     ) +
                                     ": {c}",
                                 null,
-                                this.markLineOption
+                                this.markLineOption,
                             );
                         } else {
                             this.$message.error(res.msg);
@@ -440,7 +436,7 @@ export default {
                     .then((res) => {
                         if (res.success == true) {
                             this.rankDatas.title = this.$t(
-                                "dashboard.equipmentFailuresNumberBlacklisting"
+                                "dashboard.equipmentFailuresNumberBlacklisting",
                             ); //"设备故障数黑榜";
                             this.rankDatas.titleType = 2;
                             this.rankDatas.rankData = res.data;
@@ -473,7 +469,7 @@ export default {
                                         formatter: function (params) {
                                             return (
                                                 that.$t(
-                                                    "dashboard.averageValue"
+                                                    "dashboard.averageValue",
                                                 ) +
                                                 "：\n" +
                                                 params.value +
@@ -511,7 +507,7 @@ export default {
                                     this.$t("dashboard.vehicleOperatingTime") +
                                     ": {c}h",
                                 null,
-                                this.markLineOption
+                                this.markLineOption,
                             );
                             this.dateList = dateList;
                             this.dateData = dateData;
@@ -539,7 +535,7 @@ export default {
                     .then((res) => {
                         if (res.success == true) {
                             this.rankDatas.title = this.$t(
-                                "dashboard.vehicleOperatingTimeBlacklisting"
+                                "dashboard.vehicleOperatingTimeBlacklisting",
                             ); //"车辆运行时长黑榜";
                             this.rankDatas.titleType = 3;
                             this.rankDatas.rankData = res.data;
@@ -584,7 +580,7 @@ export default {
                             data.map((i) => {
                                 dateList.push(i.time);
                                 dateData.push(
-                                    (i.trackCompletenessRate * 100).toFixed(2)
+                                    (i.trackCompletenessRate * 100).toFixed(2),
                                 );
                             });
                             this.myEcharts(
@@ -595,26 +591,26 @@ export default {
                                 100,
                                 "{b}<br />" +
                                     this.$t(
-                                        "dashboard.trajectoryCompletenessRate"
+                                        "dashboard.trajectoryCompletenessRate",
                                     ) +
                                     ": {c}%",
                                 "{value}%",
-                                this.markLineOption
+                                this.markLineOption,
                             );
                             this.dateList = dateList;
                             this.dateData = dateData;
                             this.title = this.$t(
-                                "dashboard.trajectoryCompletenessRate"
+                                "dashboard.trajectoryCompletenessRate",
                             ); //"轨迹完整率";
                             this.idName = "main5";
                             this.max = 100;
-                            (this.formatter =
+                            ((this.formatter =
                                 "{b}<br />" +
                                 this.$t(
-                                    "dashboard.trajectoryCompletenessRate"
+                                    "dashboard.trajectoryCompletenessRate",
                                 ) +
                                 ": {c}%"),
-                                "{value}%";
+                                "{value}%");
                         } else {
                             this.$message.error(res.msg);
                             this.searching = false;
@@ -630,7 +626,7 @@ export default {
                     .then((res) => {
                         if (res.success == true) {
                             this.rankDatas.title = this.$t(
-                                "dashboard.trajectoryCompletenessRateBlacklisting"
+                                "dashboard.trajectoryCompletenessRateBlacklisting",
                             ); //"轨迹完整率黑榜";
                             this.rankDatas.titleType = 4;
                             this.rankDatas.rankData = res.data;
@@ -673,7 +669,7 @@ export default {
         let this_ = this;
         window.addEventListener("resize", this.canvasResize);
     },
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener("resize", this.canvasResize);
     },
 };

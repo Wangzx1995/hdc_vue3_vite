@@ -6,7 +6,8 @@ const localized = store.getters.getLocalized;
 const baseUrl = store.getters.getAmapAddressUrl || "https://restapi.amap.com";
 const geocoder = new AMap.Geocoder({ extensions: "all" });
 const geoc = new BMap.Geocoder();
-import vue from "vue";
+import api from "@/api/api";
+import { ElMessage } from "element-plus";
 const fetchAddress = (lnglat, isMultiple) => {
     let url = `${baseUrl}/v3/geocode/regeo?platform=JS&logversion=2.0&key=ace026dad536bf4b10666f75ccb47cc2&extensions=all&output=json&location=`;
     if (isMultiple) {
@@ -27,7 +28,7 @@ const fetchAddress = (lnglat, isMultiple) => {
             },
             (rej) => {
                 reject(rej);
-            }
+            },
         );
     });
     return p;
@@ -57,7 +58,7 @@ const resolveFenceInfo = (eleFenceVo, convertFun) => {
         mapForm = {};
         let { lng, lat } = gpsConverter[convertFun](
             shapeDetail.center.lng,
-            shapeDetail.center.lat
+            shapeDetail.center.lat,
         );
         mapForm = {
             center: { lng, lat },
@@ -80,7 +81,7 @@ const resolveFenceInfo = (eleFenceVo, convertFun) => {
             //转火星坐标系
             let { lng, lat } = gpsConverter[convertFun](
                 item.longitude,
-                item.latitude
+                item.latitude,
             );
             item.lng = lng;
             item.lat = lat;
@@ -140,17 +141,17 @@ const transferAddress = async (
     lngName = "lng",
     latName = "lat",
     addressName = "location",
-    isNeedTransfer
+    isNeedTransfer,
 ) => {
     return new Promise((reslove, reject) => {
         lnglatInfos.forEach((item, index) => {
             let { lng: lngGCJ, lat: latGCJ } = gpsConverter.gps_gaode(
                 item[lngName],
-                item[latName]
+                item[latName],
             );
             let { lng: lngBaidu, lat: latBaidu } = gpsConverter.gaode_baidu(
                 lngGCJ,
-                latGCJ
+                latGCJ,
             );
             geoc.getLocation(
                 new BMap.Point(lngBaidu, latBaidu),
@@ -159,7 +160,7 @@ const transferAddress = async (
                     if (index === lnglatInfos.length - 1) {
                         reslove();
                     }
-                }
+                },
             );
         });
     });
@@ -246,9 +247,9 @@ let getAddress = async (lnglats) => {
                         },
                         (r) => {
                             resolve(result);
-                        }
+                        },
                     );
-                }
+                },
             );
         } else {
             geocoder.getAddress(lnglats, (status, result) => {
@@ -263,7 +264,7 @@ let getAddress = async (lnglats) => {
                         },
                         (r) => {
                             resolve(r);
-                        }
+                        },
                     );
                 }
             });
@@ -283,7 +284,7 @@ let dealMultiFail = (lnglats) => {
                 },
                 (rej) => {
                     reject();
-                }
+                },
             );
         });
         pArr.push(p);
@@ -295,7 +296,7 @@ const getAddressSingle = async (lnglat, isNeedTransfer = false) => {
             new BMap.Point(lnglat[0], lnglat[1]),
             function (result) {
                 reslove(transAddressFnBaidu(result));
-            }
+            },
         );
     });
     // if (isNeedTransfer) {
@@ -398,7 +399,7 @@ const getGpsData = (historyTrajectoryForm, isErrorMess = true) => {
     return new Promise((reslove, reject) => {
         let promisePage = async (params, resolve) => {
             try {
-                let res = await vue.prototype.$api.carTraceListPage(params);
+                let res = await api.carTraceListPage(params);
                 if (res.success) {
                     queryState.queryCount++;
                     gpsList = [...gpsList, ...res.data.results];
@@ -407,13 +408,13 @@ const getGpsData = (historyTrajectoryForm, isErrorMess = true) => {
                         params.queryData = true;
                     }
                     // if (queryState.queryCount === queryState.queryTotal) {
-                        resolve(gpsList);
+                    resolve(gpsList);
                     // } else {
                     //     params.currentPage++;
                     //     promisePage(params, resolve);
                     // }
                 } else {
-                    if (isErrorMess) vue.prototype.$message.error(res.msg);
+                    if (isErrorMess) ElMessage.error(res.msg);
                     resolve(gpsList);
                 }
             } catch (e) {

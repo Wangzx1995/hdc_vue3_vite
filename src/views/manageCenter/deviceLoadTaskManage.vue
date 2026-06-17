@@ -620,7 +620,7 @@ export default {
 
         this.getOrgTree();
     },
-    destroyed() {
+    unmounted() {
         this.$route.meta.title = undefined;
     },
 };

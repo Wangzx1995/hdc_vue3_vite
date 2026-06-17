@@ -6,7 +6,7 @@
                 :current-year.sync="currentYear"
                 :current-month.sync="currentMonth"
                 v-bind="$attrs"
-                v-on="$listeners"
+
             />
             <div
                 v-show="!isCurrentMonth"

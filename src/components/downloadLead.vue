@@ -46,9 +46,8 @@ export default {
         }
     },
     mounted() {
-        this.$bas.$on("downloadEvent", data => {
-            // this.obj = data;
-            this.$set(this, "obj", data);
+        this.$bas.on("downloadEvent", data => {
+            this.obj = data;
             this.$nextTick(() => {
                 this.lead();
             });

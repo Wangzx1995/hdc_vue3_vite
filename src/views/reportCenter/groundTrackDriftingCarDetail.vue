@@ -134,10 +134,10 @@
                                         !scope.row.gpsStatus
                                             ? "ACCOFF & 定位无效"
                                             : scope.row.gpsStatus == 1
-                                            ? "ACCOFF & 定位有效"
-                                            : scope.row.gpsStatus == 2
-                                            ? "ACC ON & 定位无效"
-                                            : "ACC ON & 定位有效"
+                                              ? "ACCOFF & 定位有效"
+                                              : scope.row.gpsStatus == 2
+                                                ? "ACC ON & 定位无效"
+                                                : "ACC ON & 定位有效"
                                     }}</span>
                                 </template>
                             </el-table-column>
@@ -329,7 +329,7 @@ import {
     BmPolyline,
     BmPolygon,
 } from "vue-baidu-map";
-require("@/assets/style/base.scss");
+import "@/assets/style/base.scss";
 export default {
     components: {
         TimeUtil,
@@ -406,7 +406,7 @@ export default {
         this.setTableHeight();
         this.allDateList = this.getAllDateCN(
             this.$route.query.startDate,
-            this.$route.query.endDate
+            this.$route.query.endDate,
         );
         this.getAllTable();
     },
@@ -465,7 +465,7 @@ export default {
                         if (!this.allDateList) {
                             this.allDateList = this.getAllDateCN(
                                 this.$route.query.startDate,
-                                this.$route.query.endDate
+                                this.$route.query.endDate,
                             );
                         }
                         this.allDateList.forEach((item, index) => {
@@ -482,7 +482,7 @@ export default {
                         });
                     } else {
                         this.$message.error(
-                            "获取轨迹完整历史列表失败:" + res.msg
+                            "获取轨迹完整历史列表失败:" + res.msg,
                         );
                     }
                 })
@@ -502,7 +502,7 @@ export default {
                 arr.push({
                     showDate: `${showMonth.padStart(
                         2,
-                        "0"
+                        "0",
                     )}-${showDate.padStart(2, "0")}`,
                     date: date.replace(/\//g, "-"),
                 });
@@ -525,13 +525,13 @@ export default {
                 this.aMap.clearInfoWindow();
                 let info = [];
                 info.push(
-                    `<p style="padding:4px 8px">上报时间: ${this.locationMessage["collectTime"]}</p>`
+                    `<p style="padding:4px 8px">上报时间: ${this.locationMessage["collectTime"]}</p>`,
                 );
                 info.push(
-                    `<p style="padding:4px 8px">车速（km/h）:${this.locationMessage["speed"]}</p>`
+                    `<p style="padding:4px 8px">车速（km/h）:${this.locationMessage["speed"]}</p>`,
                 );
                 info.push(
-                    `<p style="padding:4px 8px">位置: ${this.locationMessage["position"]}</p>`
+                    `<p style="padding:4px 8px">位置: ${this.locationMessage["position"]}</p>`,
                 );
                 let infoWindow = new AMap.InfoWindow({
                     content: info.join(""), //使用默认信息窗体框样式，显示信息内容
@@ -607,7 +607,7 @@ export default {
                                             if (res_1.data == true) {
                                                 let iframe_ =
                                                     document.createElement(
-                                                        "iframe"
+                                                        "iframe",
                                                     );
                                                 iframe_.src =
                                                     (process.env.BASE_API == "/"
@@ -618,10 +618,10 @@ export default {
                                                     fileName_;
                                                 iframe_.style.display = "none";
                                                 document.body.appendChild(
-                                                    iframe_
+                                                    iframe_,
                                                 );
                                                 window.clearInterval(
-                                                    _this.getExportResultInterval_
+                                                    _this.getExportResultInterval_,
                                                 );
                                                 _this.getExportResultInterval_ =
                                                     "";
@@ -631,12 +631,12 @@ export default {
                                             _this.$message.error("导出GPS失败");
                                             _this.loadingAll = false;
                                             window.clearInterval(
-                                                _this.getExportResultInterval_
+                                                _this.getExportResultInterval_,
                                             );
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         _this.$message.error("导出失败:" + _res.msg);
@@ -648,7 +648,7 @@ export default {
                 this.searchForm.startDate =
                     this.searchForm.operateTimeArr[0].substring(0, a1);
                 this.searchForm.endDate = this.dateChange(
-                    this.searchForm.operateTimeArr[0]
+                    this.searchForm.operateTimeArr[0],
                 ).substring(0, a1);
                 let carParam = Object.assign({}, this.searchForm, {
                     plateNum: this.$route.query.plateNum || "",
@@ -660,28 +660,28 @@ export default {
             this.params.pageSize = val;
             this.tableData = this.completeDataCopy.slice(
                 this.params.pageSize * (this.params.currentPage - 1),
-                this.params.pageSize * this.params.currentPage
+                this.params.pageSize * this.params.currentPage,
             );
             transferAddress(
                 this.tableData,
                 "longitude",
                 "latitude",
                 "GDPosition",
-                false
+                false,
             );
         },
         handleCurrentChange(val) {
             this.params.currentPage = val;
             this.tableData = this.completeDataCopy.slice(
                 this.params.pageSize * (this.params.currentPage - 1),
-                this.params.pageSize * this.params.currentPage
+                this.params.pageSize * this.params.currentPage,
             );
             transferAddress(
                 this.tableData,
                 "longitude",
                 "latitude",
                 "GDPosition",
-                false
+                false,
             );
         },
         searchGps(date) {
@@ -750,19 +750,19 @@ export default {
                         this.completeData = res.data.results;
                         this.total = res.data.totalRecords;
                         this.completeDataCopy = JSON.parse(
-                            JSON.stringify(this.completeData)
+                            JSON.stringify(this.completeData),
                         );
                         this.tableData = this.completeDataCopy.slice(
                             this.params.pageSize *
                                 (this.params.currentPage - 1),
-                            this.params.pageSize * this.params.currentPage
+                            this.params.pageSize * this.params.currentPage,
                         );
                         transferAddress(
                             this.tableData,
                             "longitude",
                             "latitude",
                             "GDPosition",
-                            false
+                            false,
                         );
                         if (this.completeData.length) {
                             console.log("completeData===", this.completeData);
@@ -782,9 +782,9 @@ export default {
                                         index === 0
                                             ? 0
                                             : index + 1 ===
-                                              this.completeData.length
-                                            ? 2
-                                            : 1,
+                                                this.completeData.length
+                                              ? 2
+                                              : 1,
                                     //style:index
                                 });
                             });
@@ -829,7 +829,7 @@ export default {
                                             zIndex: 1111,
                                             cursor: "pointer",
                                             style: style,
-                                        }
+                                        },
                                     );
 
                                     //添加点击事件
@@ -843,25 +843,25 @@ export default {
                                                 e.data.longitudeGcj,
                                                 e.data.latitudeGcj,
                                             ],
-                                            false
+                                            false,
                                         ).then((result) => {
                                             this.$set(
                                                 this_.locationMessage,
                                                 "position",
-                                                result
+                                                result,
                                             );
                                         });
                                         if (this_.locationMessage.position) {
                                             this_.aMap.clearInfoWindow();
                                             let info = [];
                                             info.push(
-                                                `<p style="padding:4px 8px">上报时间: ${this_.locationMessage["collectTime"]}</p>`
+                                                `<p style="padding:4px 8px">上报时间: ${this_.locationMessage["collectTime"]}</p>`,
                                             );
                                             info.push(
-                                                `<p style="padding:4px 8px">车速（km/h）:${this_.locationMessage["speed"]}</p>`
+                                                `<p style="padding:4px 8px">车速（km/h）:${this_.locationMessage["speed"]}</p>`,
                                             );
                                             info.push(
-                                                `<p style="padding:4px 8px">位置: ${this_.locationMessage["position"]}</p>`
+                                                `<p style="padding:4px 8px">位置: ${this_.locationMessage["position"]}</p>`,
                                             );
                                             let infoWindow =
                                                 new AMap.InfoWindow({

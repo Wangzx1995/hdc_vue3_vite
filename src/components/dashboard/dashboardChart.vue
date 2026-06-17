@@ -352,7 +352,7 @@ export default {
         this.getData();
         window.addEventListener("resize", this.canvasResize);
     },
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener("resize", this.canvasResize);
     },
 };

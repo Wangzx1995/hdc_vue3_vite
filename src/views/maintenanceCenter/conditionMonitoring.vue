@@ -165,7 +165,7 @@
                                     prop="lostVideoChannelStatusList"
                                     :label="
                                         $t(
-                                            'conditionMonitoring.videoSignalStatus'
+                                            'conditionMonitoring.videoSignalStatus',
                                         )
                                     "
                                 >
@@ -193,7 +193,7 @@
                                     prop="gpsStatusList"
                                     :label="
                                         $t(
-                                            'conditionMonitoring.positioningStatus'
+                                            'conditionMonitoring.positioningStatus',
                                         )
                                     "
                                 >
@@ -219,7 +219,7 @@
                                     prop="adasStatus"
                                     :label="
                                         $t(
-                                            'conditionMonitoring.ADASCalibrationStatus'
+                                            'conditionMonitoring.ADASCalibrationStatus',
                                         )
                                     "
                                 >
@@ -289,7 +289,7 @@
                             <span>
                                 {{
                                     $t(
-                                        "conditionMonitoring.organizationalFailuresNumber"
+                                        "conditionMonitoring.organizationalFailuresNumber",
                                     )
                                 }}
                                 ：
@@ -322,7 +322,7 @@
                                 >
                                     {{
                                         $t(
-                                            "conditionMonitoring.videoSignalFailure"
+                                            "conditionMonitoring.videoSignalFailure",
                                         )
                                     }}
                                     ({{
@@ -332,7 +332,7 @@
                                 <el-checkbox label="recordStatusQuery">
                                     {{
                                         $t(
-                                            "conditionMonitoring.pictureRecordingFailure"
+                                            "conditionMonitoring.pictureRecordingFailure",
                                         )
                                     }}
                                     ({{
@@ -379,7 +379,7 @@
                                             class="flex-box"
                                             @click.stop="
                                                 copyCarNumber(
-                                                    scope.row.plateNum
+                                                    scope.row.plateNum,
                                                 )
                                             "
                                         >
@@ -401,21 +401,21 @@
                                             <p class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "deviceManage.abnormalLicensePlateNumber"
+                                                        "deviceManage.abnormalLicensePlateNumber",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformPlateNum"
+                                                        "carManage.platformPlateNum",
                                                     )
                                                 }}：{{ scope.row.plateNum }}
                                             </div>
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.devicePlateNum"
+                                                        "carManage.devicePlateNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -423,7 +423,7 @@
                                                 @click="
                                                     toChange(
                                                         1,
-                                                        scope.row.plateNum
+                                                        scope.row.plateNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -453,7 +453,7 @@
                                 prop="signalIntensity"
                                 :label="
                                     $t(
-                                        'conditionMonitoring.networkSignalStatus'
+                                        'conditionMonitoring.networkSignalStatus',
                                     )
                                 "
                                 min-width="100px"
@@ -467,7 +467,7 @@
                                         :open-delay="300"
                                         :content="
                                             $t(
-                                                'conditionMonitoring.dataUpdateTime'
+                                                'conditionMonitoring.dataUpdateTime',
                                             ) +
                                             '：' +
                                             (scope.row.signalIntensityTime ||
@@ -500,8 +500,8 @@
                                             h(
                                                 'span',
                                                 $t(
-                                                    'conditionMonitoring.storageStatus'
-                                                )
+                                                    'conditionMonitoring.storageStatus',
+                                                ),
                                             ),
                                             h(
                                                 'Poptip',
@@ -513,7 +513,7 @@
                                                         offset: 2,
                                                         transfer: true,
                                                         title: $t(
-                                                            'conditionMonitoring.storageStatus'
+                                                            'conditionMonitoring.storageStatus',
                                                         ),
                                                     },
                                                     style: {
@@ -537,10 +537,10 @@
                                                         { slot: 'content' },
 
                                                         $t(
-                                                            'conditionMonitoring.storageStatusDesc'
-                                                        )
+                                                            'conditionMonitoring.storageStatusDesc',
+                                                        ),
                                                     ),
-                                                ]
+                                                ],
                                             ),
                                         ]);
                                     }
@@ -554,7 +554,7 @@
                                         trigger="hover"
                                         :content="
                                             $t(
-                                                'conditionMonitoring.dataUpdateTime'
+                                                'conditionMonitoring.dataUpdateTime',
                                             ) +
                                             '：' +
                                             (scope.row.storageStatusTime ||
@@ -575,7 +575,7 @@
                                                 item, index
                                             ) in scope.row.storageDetails.filter(
                                                 (k) =>
-                                                    k.status > 0 && k.type > -1
+                                                    k.status > 0 && k.type > -1,
                                             )"
                                             :key="index"
                                             class="imgHeight"
@@ -590,7 +590,7 @@
                                                         "GB)"
                                                     }}<br />{{
                                                         $t(
-                                                            "conditionMonitoring.dataUpdateTime"
+                                                            "conditionMonitoring.dataUpdateTime",
                                                         ) +
                                                         "：" +
                                                         (scope.row
@@ -609,7 +609,7 @@
                                                         getImage(
                                                             item.type,
                                                             item.status,
-                                                            item.name
+                                                            item.name,
                                                         )
                                                     "
                                                 />
@@ -625,7 +625,7 @@
 
                                         {{
                                             $t(
-                                                "conditionMonitoring.doesNotExist"
+                                                "conditionMonitoring.doesNotExist",
                                             )
                                         }}
                                     </div>
@@ -687,7 +687,7 @@
                                         trigger="hover"
                                         :content="
                                             $t(
-                                                'conditionMonitoring.positioningTime'
+                                                'conditionMonitoring.positioningTime',
                                             ) +
                                             '：' +
                                             ((scope.row.hdcGpsDataVo &&
@@ -695,7 +695,7 @@
                                                     .collectTime) ||
                                                 '--') +
                                             $t(
-                                                'conditionMonitoring.latAndLong'
+                                                'conditionMonitoring.latAndLong',
                                             ) +
                                             '：' +
                                             ((scope.row.hdcGpsDataVo &&
@@ -708,7 +708,7 @@
                                                     .latitude) ||
                                                 '--') +
                                             $t(
-                                                'conditionMonitoring.directionAngle'
+                                                'conditionMonitoring.directionAngle',
                                             ) +
                                             '：' +
                                             ((scope.row.hdcGpsDataVo &&
@@ -764,8 +764,8 @@
                                             h(
                                                 'span',
                                                 $t(
-                                                    'conditionMonitoring.videoSignalStatus'
-                                                )
+                                                    'conditionMonitoring.videoSignalStatus',
+                                                ),
                                             ),
                                             h(
                                                 'Poptip',
@@ -777,7 +777,7 @@
                                                         offset: 2,
                                                         transfer: true,
                                                         title: $t(
-                                                            'conditionMonitoring.videoSignalStatus'
+                                                            'conditionMonitoring.videoSignalStatus',
                                                         ),
                                                     },
                                                     style: {
@@ -801,10 +801,10 @@
                                                         { slot: 'content' },
 
                                                         $t(
-                                                            'conditionMonitoring.storageStatusDesc'
-                                                        )
+                                                            'conditionMonitoring.storageStatusDesc',
+                                                        ),
                                                     ),
-                                                ]
+                                                ],
                                             ),
                                         ]);
                                     }
@@ -818,7 +818,7 @@
                                         trigger="hover"
                                         :content="
                                             $t(
-                                                'conditionMonitoring.dataUpdateTime'
+                                                'conditionMonitoring.dataUpdateTime',
                                             ) +
                                             '：' +
                                             (scope.row
@@ -898,7 +898,7 @@
 
                                             {{
                                                 $t(
-                                                    "conditionMonitoring.abnormal"
+                                                    "conditionMonitoring.abnormal",
                                                 )
                                             }}
                                         </div>
@@ -921,7 +921,7 @@
                                 prop="recordStatus"
                                 :label="
                                     $t(
-                                        'conditionMonitoring.videoRecordingStatus'
+                                        'conditionMonitoring.videoRecordingStatus',
                                     )
                                 "
                                 min-width="120px"
@@ -931,8 +931,8 @@
                                             h(
                                                 'span',
                                                 $t(
-                                                    'conditionMonitoring.videoRecordingStatus'
-                                                )
+                                                    'conditionMonitoring.videoRecordingStatus',
+                                                ),
                                             ),
                                             h(
                                                 'Poptip',
@@ -944,7 +944,7 @@
                                                         offset: 2,
                                                         transfer: true,
                                                         title: $t(
-                                                            'conditionMonitoring.videoRecordingStatus'
+                                                            'conditionMonitoring.videoRecordingStatus',
                                                         ),
                                                     },
                                                     style: {
@@ -968,10 +968,10 @@
                                                         { slot: 'content' },
 
                                                         $t(
-                                                            'conditionMonitoring.storageStatusDesc'
-                                                        )
+                                                            'conditionMonitoring.storageStatusDesc',
+                                                        ),
                                                     ),
-                                                ]
+                                                ],
                                             ),
                                         ]);
                                     }
@@ -985,7 +985,7 @@
                                         trigger="hover"
                                         :content="
                                             $t(
-                                                'conditionMonitoring.recordingTime'
+                                                'conditionMonitoring.recordingTime',
                                             ) +
                                             '：' +
                                             (scope.row.recordStatusTime || '--')
@@ -1055,7 +1055,7 @@
 
                                         {{
                                             $t(
-                                                "conditionMonitoring.wireConnection"
+                                                "conditionMonitoring.wireConnection",
                                             )
                                         }}
                                     </div>
@@ -1114,7 +1114,7 @@
 
                                         {{
                                             $t(
-                                                "conditionMonitoring.wireConnection"
+                                                "conditionMonitoring.wireConnection",
                                             )
                                         }}
                                     </div>
@@ -1172,7 +1172,7 @@
 
                                         {{
                                             $t(
-                                                "conditionMonitoring.wireConnection"
+                                                "conditionMonitoring.wireConnection",
                                             )
                                         }}
                                     </div>
@@ -1204,7 +1204,7 @@
                                 prop="adasStatus"
                                 :label="
                                     $t(
-                                        'conditionMonitoring.ADASCalibrationStatus'
+                                        'conditionMonitoring.ADASCalibrationStatus',
                                     )
                                 "
                                 min-width="160px"
@@ -1215,7 +1215,7 @@
                                             adasStatusList.find(
                                                 (e) =>
                                                     e.value ===
-                                                    scope.row.adasStatus
+                                                    scope.row.adasStatus,
                                             ).text
                                         }}
                                     </span>
@@ -1240,7 +1240,7 @@
                                             class="flex-box"
                                             @click.stop="
                                                 copyCarNumber(
-                                                    scope.row.deviceCode
+                                                    scope.row.deviceCode,
                                                 )
                                             "
                                         >
@@ -1280,14 +1280,14 @@
                                             <p class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.deviceSerialNumAbnormal"
+                                                        "carManage.deviceSerialNumAbnormal",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformDeviceSerialNum"
+                                                        "carManage.platformDeviceSerialNum",
                                                     )
                                                 }}：{{
                                                     scope.row.deviceSerialNum
@@ -1296,7 +1296,7 @@
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.deviceDeviceSerialNum"
+                                                        "carManage.deviceDeviceSerialNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -1305,7 +1305,7 @@
                                                     toChange(
                                                         2,
                                                         scope.row
-                                                            .deviceSerialNum
+                                                            .deviceSerialNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -1372,14 +1372,15 @@
                                         trigger="hover"
                                         :content="
                                             $t(
-                                                'conditionMonitoring.dataUpdateTime'
+                                                'conditionMonitoring.dataUpdateTime',
                                             ) +
                                             '：' +
                                             (scope.row.deviceStatusTime
                                                 ? $moment(
-                                                      scope.row.deviceStatusTime
+                                                      scope.row
+                                                          .deviceStatusTime,
                                                   ).format(
-                                                      'YYYY-MM-DD HH:mm:ss'
+                                                      'YYYY-MM-DD HH:mm:ss',
                                                   )
                                                 : '--')
                                         "
@@ -1612,7 +1613,7 @@ import conditionMonitoringDetail from "./conditionMonitoringDetail";
 import conditionMonitoringPatrol from "./conditionMonitoringPatrol";
 import drawerDetail from "./conditionMonitoringFile/drawer/drawerDetail.vue";
 import detailDialog from "./conditionMonitoringFile/dialog/detailDialog.vue";
-require("@/assets/style/base.scss");
+import "@/assets/style/base.scss";
 function throttle(fn, interval = 500) {
     let last = 0;
     return function (...args) {
@@ -1850,7 +1851,7 @@ export default {
             oInput.remove();
 
             this.$message.success(
-                this.$t("conditionMonitoring.replicatingSuccess")
+                this.$t("conditionMonitoring.replicatingSuccess"),
             );
         },
         cellMouseEnter(row, col) {
@@ -1876,14 +1877,14 @@ export default {
                     if (res.data) {
                         this.copyUpdateCustomJson = JSON.parse(res.data);
                         this.updateCustomJson = JSON.parse(
-                            JSON.stringify(res.data)
+                            JSON.stringify(res.data),
                         );
                     } else {
                         this.copyUpdateCustomJson = JSON.parse(
-                            JSON.stringify(this.customJson)
+                            JSON.stringify(this.customJson),
                         );
                         this.updateCustomJson = JSON.parse(
-                            JSON.stringify(this.customJson)
+                            JSON.stringify(this.customJson),
                         );
                     }
                     this.customBol = false;
@@ -1902,8 +1903,8 @@ export default {
                 if (res.success == true) {
                     this.$message.success(
                         this.$t(
-                            "conditionMonitoring.headerSettingsDefaultSuccessfully"
-                        )
+                            "conditionMonitoring.headerSettingsDefaultSuccessfully",
+                        ),
                     );
                     this.getUserVisibleColumn();
                 } else {
@@ -1922,8 +1923,8 @@ export default {
                 if (res.success) {
                     this.$message.success(
                         this.$t(
-                            "conditionMonitoring.headerSettingsSuccessfully"
-                        )
+                            "conditionMonitoring.headerSettingsSuccessfully",
+                        ),
                     );
                     this.getUserVisibleColumn();
                 } else {
@@ -2154,7 +2155,7 @@ export default {
                                         item.showNothing = true;
 
                                         item.storageDetail = this.$t(
-                                            "conditionMonitoring.storageCardAndHardDriveNotExist"
+                                            "conditionMonitoring.storageCardAndHardDriveNotExist",
                                         );
                                     }
                                 }
@@ -2171,7 +2172,7 @@ export default {
                         }
                         this.tableData = listData;
                         this.copyTableData = JSON.parse(
-                            JSON.stringify(this.tableData)
+                            JSON.stringify(this.tableData),
                         );
                         this.total = res.data.totalRecords;
                         this.selection = [];
@@ -2228,7 +2229,7 @@ export default {
                                 this.expandedList.push(m.id);
                             });
                             this.$refs["tree"].setCurrentKey(
-                                this.params.organizeId
+                                this.params.organizeId,
                             );
                         });
                         this.search();
@@ -2280,7 +2281,7 @@ export default {
         },
         customShow() {
             this.updateCustomJson = JSON.parse(
-                JSON.stringify(this.copyUpdateCustomJson)
+                JSON.stringify(this.copyUpdateCustomJson),
             );
             this.tableData = [];
             setTimeout(() => {
@@ -2299,7 +2300,7 @@ export default {
                 this.loadingAll = true;
                 let params = Object.assign(
                     { organizeId: this.params.organizeId },
-                    this.searchForm
+                    this.searchForm,
                 );
                 params.faultStatus.forEach((k) => {
                     params[k] = 0;
@@ -2322,7 +2323,7 @@ export default {
                                         ) {
                                             var iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -2333,18 +2334,18 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(
-                            this.$t("common.exportFailed") + ":" + res.msg
+                            this.$t("common.exportFailed") + ":" + res.msg,
                         );
                         this.loadingAll = false;
                     }
@@ -2360,7 +2361,7 @@ export default {
             if (startIndex !== -1) {
                 num = name.substring(
                     startIndex + typeName.length,
-                    startIndex + typeName.length + 1
+                    startIndex + typeName.length + 1,
                 );
             } else {
                 num = name;
@@ -2426,7 +2427,7 @@ export default {
                     this.searchForm.faultStatus = ["all"];
                 } else {
                     this.searchForm.faultStatus = val.filter(
-                        (item) => item !== "all"
+                        (item) => item !== "all",
                     );
                 }
             }

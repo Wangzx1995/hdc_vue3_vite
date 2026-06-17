@@ -29,7 +29,7 @@
                     class="picker year-picker important"
                     align="center"
                     type="year"
-                    v-on="$listeners"
+    
                     @change="yearDateChangeHandler('year', $event)"
                 />
                 <!-- 年 -->
@@ -48,7 +48,7 @@
                     class="picker month-picker important"
                     align="center"
                     type="month"
-                    v-on="$listeners"
+    
                     @change="yearDateChangeHandler('month', $event)"
                 />
                 <!-- 月 -->

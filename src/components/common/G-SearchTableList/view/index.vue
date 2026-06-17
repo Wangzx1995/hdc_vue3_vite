@@ -321,7 +321,7 @@ export default {
             this.$refs.GTable.clearSelection();
         },
     },
-    beforeDestroy() {
+    beforeUnmount() {
         if (this.$refs.GTable) {
             window.removeEventListener("resize", this.$refs.GTable.tableResize);
         } else {

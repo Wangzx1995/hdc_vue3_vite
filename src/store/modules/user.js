@@ -2,11 +2,9 @@ import api from "@/api/api";
 import Auth from "@/utils/auth";
 import Storage from "@/utils/storage";
 import SessionStorage from "@/utils/sessionStorage";
-//import Vue from "vue";
-import Vue from "vue/dist/vue.esm.js";
-// const Vue = require('vue')
+
 import router from "@/router";
-let sha256 = require("js-sha256").sha256; //引入sha256库
+import { sha256 } from "js-sha256"; //引入sha256库
 
 const user = {
     state: {
@@ -29,7 +27,7 @@ const user = {
         },
         SET_TECHNICALSUPPORTENGINEERSIGN: (
             state,
-            technicalSupportEngineerSign
+            technicalSupportEngineerSign,
         ) => {
             state.technicalSupportEngineerSign = technicalSupportEngineerSign;
         },
@@ -198,7 +196,7 @@ const user = {
                         commit("SET_AUTHORITYCENTER", data.authorityCenter);
                         commit(
                             "SET_TECHNICALSUPPORTENGINEERSIGN",
-                            data.technicalSupportEngineerSign
+                            data.technicalSupportEngineerSign,
                         );
 
                         resolve(response);

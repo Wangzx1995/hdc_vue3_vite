@@ -2543,7 +2543,7 @@ export default {
             this.setDeault();
         }, 1000);
     },
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener("resize", this.pageResize, true);
     },
 };

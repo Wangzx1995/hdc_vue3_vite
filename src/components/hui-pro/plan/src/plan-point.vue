@@ -194,7 +194,7 @@ export default {
     }
   },
 
-  destroyed() {
+  unmounted() {
     if (typeof window !== 'undefined') {
       document.removeEventListener('click', this.handleCancel);
     }

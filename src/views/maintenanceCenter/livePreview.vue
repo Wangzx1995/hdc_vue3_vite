@@ -668,10 +668,9 @@ export default {
                                 return resovle(null);
                             }
                             this.$nextTick(() => {
-                                this.$refs.radio.$children.forEach((item) => {
-                                    item.$refs.radio.removeAttribute(
-                                        "aria-hidden"
-                                    );
+                                const radios = this.$refs.radio.$el.querySelectorAll('.el-radio');
+                                radios.forEach((item) => {
+                                    item.removeAttribute("aria-hidden");
                                 });
                             });
                             let livePreviewItem = JSON.parse(
@@ -1036,7 +1035,7 @@ export default {
         window.addEventListener("resize", this.resizeFunc);
         this.setDeault();
     },
-    beforeDestroy() {
+    beforeUnmount() {
         checkKeys(this.playControlHave) &&
             this.playControlHave.disconnectWebOcx();
         window.removeEventListener("resize", this.resizeFunc);

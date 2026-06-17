@@ -11,6 +11,7 @@
 </template>
 <script>
 import TimeUtil from "@/utils/time";
+import emptyImage from "@/assets/images/icon_empty.png";
 export default {
     name: "",
     components: {},
@@ -22,7 +23,7 @@ export default {
     },
     data() {
         return {
-            emptyImage: require("@/assets/images/icon_empty.png"),
+            emptyImage,
             myChart: null,
             categoriesArr: [],
             echartsData: [],
@@ -75,8 +76,8 @@ export default {
                                     res.data.inspectionFaultRecords.filter(
                                         (item) =>
                                             this.signalType.indexOf(item.type) <
-                                            0
-                                    )
+                                            0,
+                                    ),
                             );
                         } else {
                             this.$message.error(res.msg);
@@ -103,11 +104,11 @@ export default {
                                     +this.$moment()
                                         .subtract(1, "days")
                                         .format("x"),
-                                    +new Date(item.startTime)
+                                    +new Date(item.startTime),
                                 ),
                                 Math.min(
                                     +this.$moment().format("x"),
-                                    +new Date(item.endTime)
+                                    +new Date(item.endTime),
                                 ),
                                 // +new Date(item.startTime),
                                 // +new Date(item.endTime),
@@ -123,7 +124,7 @@ export default {
                         ...new Set(
                             result[1].reduce((prev, cur) => {
                                 return prev.concat(cur["typeName"]);
-                            }, [])
+                            }, []),
                         ),
                     ];
                     result[1].forEach((item) => {
@@ -131,17 +132,17 @@ export default {
                             name: "故障",
                             value: [
                                 this.categoriesArr.findIndex(
-                                    (k) => k === item.typeName
+                                    (k) => k === item.typeName,
                                 ),
                                 Math.max(
                                     +this.$moment()
                                         .subtract(1, "days")
                                         .format("x"),
-                                    +new Date(item.startTime)
+                                    +new Date(item.startTime),
                                 ),
                                 Math.min(
                                     +this.$moment().format("x"),
-                                    +new Date(item.endTime)
+                                    +new Date(item.endTime),
                                 ),
                                 // +new Date(item.startTime),
                                 // +new Date(item.endTime),
@@ -166,7 +167,7 @@ export default {
                 return;
             }
             var myChart = this.$echarts.init(
-                document.getElementById("fault-chart")
+                document.getElementById("fault-chart"),
             );
             let that = this;
             function renderItem(params, api) {
@@ -188,7 +189,7 @@ export default {
                         y: params.coordSys.y,
                         width: params.coordSys.width,
                         height: params.coordSys.height,
-                    }
+                    },
                 );
 
                 return (
@@ -359,7 +360,7 @@ export default {
                             y: 0,
                         },
                         data: this.echartsData.filter(
-                            (item) => item.name === "在线"
+                            (item) => item.name === "在线",
                         ),
                     },
                     {
@@ -375,7 +376,7 @@ export default {
                             y: 0,
                         },
                         data: this.echartsData.filter(
-                            (item) => item.name === "故障"
+                            (item) => item.name === "故障",
                         ),
                     },
                     {
@@ -391,7 +392,7 @@ export default {
                             y: 0,
                         },
                         data: this.echartsData.filter(
-                            (item) => item.name === "休眠"
+                            (item) => item.name === "休眠",
                         ),
                     },
                 ],

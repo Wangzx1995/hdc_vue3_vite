@@ -104,7 +104,7 @@
                     <!-- 位置数据 -->
                     <el-tab-pane
                         :label="`${$t(
-                            'qualifiedProbability.positionData'
+                            'qualifiedProbability.positionData',
                         )}(${total})`"
                         name="first"
                     >
@@ -144,10 +144,10 @@
                                         //     : "正常上报"
                                         scope.row.supplementSign
                                             ? $t(
-                                                  "qualifiedProbability.supplementSignText1"
+                                                  "qualifiedProbability.supplementSignText1",
                                               )
                                             : $t(
-                                                  "qualifiedProbability.supplementSignText2"
+                                                  "qualifiedProbability.supplementSignText2",
                                               )
                                     }}</span>
                                 </template>
@@ -171,19 +171,19 @@
 
                                         !scope.row.gpsStatus
                                             ? $t(
-                                                  "qualifiedProbability.gpsStatusText1"
+                                                  "qualifiedProbability.gpsStatusText1",
                                               )
                                             : scope.row.gpsStatus == 1
-                                            ? $t(
-                                                  "qualifiedProbability.gpsStatusText2"
-                                              )
-                                            : scope.row.gpsStatus == 2
-                                            ? $t(
-                                                  "qualifiedProbability.gpsStatusText3"
-                                              )
-                                            : $t(
-                                                  "qualifiedProbability.gpsStatusText4"
-                                              )
+                                              ? $t(
+                                                    "qualifiedProbability.gpsStatusText2",
+                                                )
+                                              : scope.row.gpsStatus == 2
+                                                ? $t(
+                                                      "qualifiedProbability.gpsStatusText3",
+                                                  )
+                                                : $t(
+                                                      "qualifiedProbability.gpsStatusText4",
+                                                  )
                                     }}</span>
                                 </template>
                             </el-table-column>
@@ -267,7 +267,7 @@
                                 prop="positionSignalStrength"
                                 :label="
                                     $t(
-                                        'qualifiedProbability.positionSignalStrength'
+                                        'qualifiedProbability.positionSignalStrength',
                                     )
                                 "
                                 width="150px"
@@ -441,7 +441,9 @@ import {
     BmPolyline,
     BmPolygon,
 } from "vue-baidu-map";
-require("@/assets/style/base.scss");
+import "@/assets/style/base.scss";
+import redPng from "@/assets/images/red.png";
+import bluePng from "@/assets/images/blue.png";
 export default {
     components: {
         TimeUtil,
@@ -522,7 +524,7 @@ export default {
         this.setTableHeight();
         this.allDateList = this.getAllDateCN(
             this.$route.query.startDate,
-            this.$route.query.endDate
+            this.$route.query.endDate,
         );
         this.getAllTable();
     },
@@ -585,7 +587,7 @@ export default {
                         if (!this.allDateList) {
                             this.allDateList = this.getAllDateCN(
                                 this.$route.query.startDate,
-                                this.$route.query.endDate
+                                this.$route.query.endDate,
                             );
                         }
                         this.allDateList.forEach((item, index) => {
@@ -622,7 +624,7 @@ export default {
                 arr.push({
                     showDate: `${showMonth.padStart(
                         2,
-                        "0"
+                        "0",
                     )}-${showDate.padStart(2, "0")}`,
                     date: date.replace(/\//g, "-"),
                 });
@@ -647,21 +649,21 @@ export default {
                 // 上报时间
                 info.push(
                     `<p style="padding:4px 8px">${this.$t(
-                        "qualifiedProbability.collectTime"
+                        "qualifiedProbability.collectTime",
                     )}
-                    : ${this.locationMessage["collectTime"]}</p>`
+                    : ${this.locationMessage["collectTime"]}</p>`,
                 );
                 // 车速（km/h）
                 info.push(
                     `<p style="padding:4px 8px">${this.$t(
-                        "qualifiedProbability.carSpeed"
-                    )}（km/h）:${this.locationMessage["speed"]}</p>`
+                        "qualifiedProbability.carSpeed",
+                    )}（km/h）:${this.locationMessage["speed"]}</p>`,
                 );
                 //位置
                 info.push(
                     `<p style="padding:4px 8px">${this.$t(
-                        "qualifiedProbability.position"
-                    )}: ${this.locationMessage["position"]}</p>`
+                        "qualifiedProbability.position",
+                    )}: ${this.locationMessage["position"]}</p>`,
                 );
                 let infoWindow = new AMap.InfoWindow({
                     content: info.join(""), //使用默认信息窗体框样式，显示信息内容
@@ -771,7 +773,7 @@ export default {
                                             if (res_1.data == true) {
                                                 let iframe_ =
                                                     document.createElement(
-                                                        "iframe"
+                                                        "iframe",
                                                     );
                                                 iframe_.src =
                                                     (process.env.BASE_API == "/"
@@ -782,10 +784,10 @@ export default {
                                                     fileName_;
                                                 iframe_.style.display = "none";
                                                 document.body.appendChild(
-                                                    iframe_
+                                                    iframe_,
                                                 );
                                                 window.clearInterval(
-                                                    _this.getExportResultInterval_
+                                                    _this.getExportResultInterval_,
                                                 );
                                                 _this.getExportResultInterval_ =
                                                     "";
@@ -795,12 +797,12 @@ export default {
                                             _this.$message.error(res_1.msg);
                                             _this.loadingAll = false;
                                             window.clearInterval(
-                                                _this.getExportResultInterval_
+                                                _this.getExportResultInterval_,
                                             );
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         _this.$message.error(_res.msg);
@@ -813,42 +815,42 @@ export default {
             this.params.pageSize = val;
             this.tableData = this.completeDataCopy.slice(
                 this.params.pageSize * (this.params.currentPage - 1),
-                this.params.pageSize * this.params.currentPage
+                this.params.pageSize * this.params.currentPage,
             );
             transferAddress(
                 this.tableData,
                 "longitude",
                 "latitude",
                 "GDPosition",
-                false
+                false,
             );
         },
         handleCurrentChange(val) {
             this.params.currentPage = val;
             this.tableData = this.completeDataCopy.slice(
                 this.params.pageSize * (this.params.currentPage - 1),
-                this.params.pageSize * this.params.currentPage
+                this.params.pageSize * this.params.currentPage,
             );
             transferAddress(
                 this.tableData,
                 "longitude",
                 "latitude",
                 "GDPosition",
-                false
+                false,
             );
         },
         handleSizeChange2(val) {
             this.params2.pageSize = val;
             this.incompleteData = this.incompleteDataCopy.slice(
                 this.params2.pageSize * (this.params2.currentPage - 1),
-                this.params2.pageSize * this.params2.currentPage
+                this.params2.pageSize * this.params2.currentPage,
             );
         },
         handleCurrentChange2(val) {
             this.params2.currentPage = val;
             this.incompleteData = this.incompleteDataCopy.slice(
                 this.params2.pageSize * (this.params2.currentPage - 1),
-                this.params2.pageSize * this.params2.currentPage
+                this.params2.pageSize * this.params2.currentPage,
             );
         },
         close() {
@@ -879,7 +881,7 @@ export default {
             ) {
                 // "请将时间段控制在24小时以内"
                 this.$message.error(
-                    this.$t("qualifiedProbability.keep24hours")
+                    this.$t("qualifiedProbability.keep24hours"),
                 );
             } else {
                 this.isShowPolylineArr = false;
@@ -933,7 +935,7 @@ export default {
             this.searchForm.startDate =
                 this.searchForm.operateTimeArr[0].substring(0, a1);
             this.searchForm.endDate = this.dateChange(
-                this.searchForm.operateTimeArr[0]
+                this.searchForm.operateTimeArr[0],
             ).substring(0, a1);
             //新增标识draw，接口接收到标识会转化坐标点为高德坐标点，方便在高德地图上绘制线条；字段已Gcj结尾的是经过转化的高德地图的点
             let carParam = Object.assign({ draw: true }, this.searchForm, {
@@ -949,13 +951,14 @@ export default {
                         if (res.data.results.length) {
                             let linePath = [];
                             this.incompleteDataCopy = JSON.parse(
-                                JSON.stringify(res.data.results)
+                                JSON.stringify(res.data.results),
                             );
                             this.total2 = res.data.totalRecords;
                             this.incompleteData = this.incompleteDataCopy.slice(
                                 this.params2.pageSize *
                                     (this.params2.currentPage - 1),
-                                this.params2.pageSize * this.params2.currentPage
+                                this.params2.pageSize *
+                                    this.params2.currentPage,
                             );
                             res.data.results.forEach((item) => {
                                 linePath = [
@@ -1030,7 +1033,7 @@ export default {
                         this.completeData = res.data.results;
                         this.total = res.data.totalRecords;
                         this.completeDataCopy = JSON.parse(
-                            JSON.stringify(this.completeData)
+                            JSON.stringify(this.completeData),
                         );
                         //新增地理位置
                         // this.completeDataCopy.forEach((item) => {
@@ -1053,14 +1056,14 @@ export default {
                         this.tableData = this.completeDataCopy.slice(
                             this.params.pageSize *
                                 (this.params.currentPage - 1),
-                            this.params.pageSize * this.params.currentPage
+                            this.params.pageSize * this.params.currentPage,
                         );
                         transferAddress(
                             this.tableData,
                             "longitude",
                             "latitude",
                             "GDPosition",
-                            false
+                            false,
                         );
                         // this.tableData.forEach((item)=>{                          item.longitudeGcj, item.latitudeGcj
                         //         getAddressSingle([item.longitude, item.latitude],true).then((result) => {
@@ -1087,9 +1090,9 @@ export default {
                                         index === 0
                                             ? 0
                                             : index + 1 ===
-                                              this.completeData.length
-                                            ? 2
-                                            : 1,
+                                                this.completeData.length
+                                              ? 2
+                                              : 1,
                                     //style:index
                                 });
                             });
@@ -1134,7 +1137,7 @@ export default {
                                             zIndex: 1111,
                                             cursor: "pointer",
                                             style: style,
-                                        }
+                                        },
                                     );
 
                                     //添加点击事件
@@ -1148,12 +1151,12 @@ export default {
                                                 e.data.longitudeGcj,
                                                 e.data.latitudeGcj,
                                             ],
-                                            false
+                                            false,
                                         ).then((result) => {
                                             this.$set(
                                                 this_.locationMessage,
                                                 "position",
-                                                result
+                                                result,
                                             );
                                         });
                                         if (this_.locationMessage.position) {
@@ -1162,29 +1165,29 @@ export default {
                                             // 上报时间
                                             info.push(
                                                 `<p style="padding:4px 8px">${this.$t(
-                                                    "qualifiedProbability.collectTime"
+                                                    "qualifiedProbability.collectTime",
                                                 )}
-                    : ${this.locationMessage["collectTime"]}</p>`
+                    : ${this.locationMessage["collectTime"]}</p>`,
                                             );
                                             // 车速（km/h）
                                             info.push(
                                                 `<p style="padding:4px 8px">${this.$t(
-                                                    "qualifiedProbability.carSpeed"
+                                                    "qualifiedProbability.carSpeed",
                                                 )}（km/h）:${
                                                     this.locationMessage[
                                                         "speed"
                                                     ]
-                                                }</p>`
+                                                }</p>`,
                                             );
                                             //位置
                                             info.push(
                                                 `<p style="padding:4px 8px">${this.$t(
-                                                    "qualifiedProbability.position"
+                                                    "qualifiedProbability.position",
                                                 )}: ${
                                                     this.locationMessage[
                                                         "position"
                                                     ]
-                                                }</p>`
+                                                }</p>`,
                                             );
                                             let infoWindow =
                                                 new AMap.InfoWindow({
@@ -1284,10 +1287,10 @@ export default {
                         let marker = new AMap.Marker({
                             position: new AMap.LngLat(
                                 item.startLongitude,
-                                item.startLatitude
+                                item.startLatitude,
                             ),
                             icon: new AMap.Icon({
-                                image: require("@/assets/images/red.png"),
+                                image: redPng,
                                 imageOffset: new AMap.Pixel(0, 0),
                             }),
                             extData: item,
@@ -1311,16 +1314,16 @@ export default {
                     this.driftPointArr.forEach((item) => {
                         item.setIcon(
                             new AMap.Icon({
-                                image: require("@/assets/images/red.png"),
+                                image: redPng,
                                 imageOffset: new AMap.Pixel(0, 0),
-                            })
+                            }),
                         );
                     });
                     e.target.setIcon(
                         new AMap.Icon({
-                            image: require("@/assets/images/blue.png"),
+                            image: bluePng,
                             imageOffset: new AMap.Pixel(0, 0),
-                        })
+                        }),
                     );
                     let info = [];
                     // info.push(
@@ -1336,21 +1339,21 @@ export default {
                     // 上报时间
                     info.push(
                         `<p style="padding:4px 8px">${this.$t(
-                            "qualifiedProbability.collectTime"
+                            "qualifiedProbability.collectTime",
                         )}
-                    : ${iconData.startTime}</p>`
+                    : ${iconData.startTime}</p>`,
                     );
                     // 车速（km/h）
                     info.push(
                         `<p style="padding:4px 8px">${this.$t(
-                            "qualifiedProbability.carSpeed"
-                        )}（km/h）:${iconData.speed}</p>`
+                            "qualifiedProbability.carSpeed",
+                        )}（km/h）:${iconData.speed}</p>`,
                     );
                     //位置
                     info.push(
                         `<p style="padding:4px 8px">${this.$t(
-                            "qualifiedProbability.position"
-                        )}: ${response.data["position"]}</p>`
+                            "qualifiedProbability.position",
+                        )}: ${response.data["position"]}</p>`,
                     );
                     let infoWindow = new AMap.InfoWindow({
                         content: info.join(""), //使用默认信息窗体框样式，显示信息内容

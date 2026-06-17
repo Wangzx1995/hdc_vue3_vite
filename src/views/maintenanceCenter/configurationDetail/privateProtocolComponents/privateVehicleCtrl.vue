@@ -29,7 +29,7 @@
                         style="width: 100%;"
                         type="primary"
                         :loading="loading"
-                        @click.native.prevent="makeSure"
+                        @click.prevent="makeSure"
                         >确认</el-button
                     >
                 </div>

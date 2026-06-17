@@ -95,9 +95,7 @@
                                     <input type="hidden" />
                                     <!-- 密码 -->
                                     <el-form-item
-                                        :label="
-                                            $t('userManage.password') + ':'
-                                        "
+                                        :label="$t('userManage.password') + ':'"
                                         prop="password"
                                     >
                                         <el-input
@@ -148,7 +146,7 @@
                                             @input="changePsd"
                                             :placeholder="
                                                 $t(
-                                                    'userManage.confirmPasswordPlaceholder'
+                                                    'userManage.confirmPasswordPlaceholder',
                                                 )
                                             "
                                             clearable
@@ -170,7 +168,7 @@
                                                 <!-- 启用 -->
                                                 {{
                                                     $t(
-                                                        "userManage.isFreezedMsg2"
+                                                        "userManage.isFreezedMsg2",
                                                     )
                                                 }}
                                             </el-radio>
@@ -178,7 +176,7 @@
                                                 <!-- 停用 -->
                                                 {{
                                                     $t(
-                                                        "userManage.isFreezedMsg3"
+                                                        "userManage.isFreezedMsg3",
                                                     )
                                                 }}
                                             </el-radio>
@@ -188,7 +186,7 @@
                                     <el-form-item
                                         :label="
                                             $t(
-                                                'userManage.loadingMasterAccount'
+                                                'userManage.loadingMasterAccount',
                                             ) + ':'
                                         "
                                         prop="userIdentityType"
@@ -219,7 +217,7 @@
                                     <el-form-item
                                         :label="
                                             $t(
-                                                'userManage.accountValidityPeriod'
+                                                'userManage.accountValidityPeriod',
                                             ) + ':'
                                         "
                                         prop="accountValidityPeriod"
@@ -239,7 +237,7 @@
                                             <!-- 账号过期后将无法登录 -->
                                             {{
                                                 $t(
-                                                    "userManage.accountValidityPeriodWarning"
+                                                    "userManage.accountValidityPeriodWarning",
                                                 )
                                             }}
                                         </div>
@@ -316,7 +314,7 @@
                                         class="login-auth"
                                         :label="
                                             $t(
-                                                'userManage.loginAuthTypeSupport'
+                                                'userManage.loginAuthTypeSupport',
                                             ) + ':'
                                         "
                                         prop="loginAuthTypeSupportList"
@@ -329,7 +327,7 @@
                                             <el-checkbox
                                                 :class="
                                                     !editForm.loginTypeSupportList.includes(
-                                                        'WEB'
+                                                        'WEB',
                                                     ) &&
                                                     item.sysDictCode ===
                                                         'appScanQR'
@@ -361,7 +359,7 @@
                                                 <!-- 车辆授权中心 -->
                                                 {{
                                                     $t(
-                                                        "userManage.vehicleAuthorizationCenter"
+                                                        "userManage.vehicleAuthorizationCenter",
                                                     )
                                                 }}
                                             </el-checkbox>
@@ -403,7 +401,7 @@
                                             effect="dark"
                                             :content="
                                                 $t(
-                                                    'userManage.selectCharacterMsg1'
+                                                    'userManage.selectCharacterMsg1',
                                                 )
                                             "
                                         >
@@ -456,7 +454,7 @@
                                                     allRoleListCopy.length
                                                         ? $t('common.noData')
                                                         : $t(
-                                                              'userManage.selectCharacterMsg2'
+                                                              'userManage.selectCharacterMsg2',
                                                           )
                                                 "
                                             ></el-empty>
@@ -470,7 +468,7 @@
                                         <!-- 平台权限预览 -->
                                         {{
                                             $t(
-                                                "userManage.platformPermissionPreview"
+                                                "userManage.platformPermissionPreview",
                                             )
                                         }}
                                     </span>
@@ -494,7 +492,7 @@
                                         <!-- APP权限预览 -->
                                         {{
                                             $t(
-                                                "userManage.appPermissionPreview"
+                                                "userManage.appPermissionPreview",
                                             )
                                         }}
                                     </span>
@@ -612,6 +610,8 @@ import RoleDialog from "./roleDialog";
 import { debounce } from "@/utils/controlFn.js";
 import { mapGetters } from "vuex";
 import waterMark from "@/utils/waterMark";
+import { sha256 } from "js-sha256";
+import emptyImage from "@/assets/images/icon_empty.png";
 export default {
     props: {
         userManageDialog: {
@@ -676,8 +676,8 @@ export default {
                     callback(
                         new Error(
                             this.$t("userManage.checkSpeccial") +
-                                "：\\/:*?\"<|'&%>"
-                        )
+                                "：\\/:*?\"<|'&%>",
+                        ),
                     );
                 } else {
                     callback();
@@ -721,8 +721,8 @@ export default {
                     // 不是有效的手机号码
                     callback(
                         new Error(
-                            this.$t("userManage.userManageDialogFormMsg1")
-                        )
+                            this.$t("userManage.userManageDialogFormMsg1"),
+                        ),
                     );
                 }
             } else {
@@ -737,14 +737,14 @@ export default {
                     callback(
                         // 账户名只允许输入英文、数字、下划线和@
                         new Error(
-                            this.$t("userManage.userManageDialogFormMsg2")
-                        )
+                            this.$t("userManage.userManageDialogFormMsg2"),
+                        ),
                     );
                 }
             } else {
                 // 账户名不能为空
                 callback(
-                    new Error(this.$t("userManage.userManageDialogFormMsg3"))
+                    new Error(this.$t("userManage.userManageDialogFormMsg3")),
                 );
             }
         };
@@ -756,8 +756,8 @@ export default {
                     // 姓名只允许输入中英文和数字
                     callback(
                         new Error(
-                            this.$t("userManage.userManageDialogFormMsg4")
-                        )
+                            this.$t("userManage.userManageDialogFormMsg4"),
+                        ),
                     );
                 }
             } else {
@@ -778,15 +778,15 @@ export default {
                         // 资源权限不能为空
                         callback(
                             new Error(
-                                this.$t("userManage.userManageDialogFormMsg5")
-                            )
+                                this.$t("userManage.userManageDialogFormMsg5"),
+                            ),
                         );
                     }
                 });
             }
         };
         return {
-            emptyImage: require("@/assets/images/icon_empty.png"),
+            emptyImage,
             userManageDialogVisible: this.userManageDialog,
             editForm: {
                 // 添加、编辑表单
@@ -909,7 +909,7 @@ export default {
                         type: "array",
                         // message: "选择角色不能为空",
                         message: this.$t(
-                            "userManage.userManageDialogFormMsg10"
+                            "userManage.userManageDialogFormMsg10",
                         ),
                         trigger: "blur",
                     },
@@ -920,7 +920,7 @@ export default {
                         type: "number",
                         // message: "启用状态不能为空",
                         message: this.$t(
-                            "userManage.userManageDialogFormMsg11"
+                            "userManage.userManageDialogFormMsg11",
                         ),
                         trigger: "blur",
                     },
@@ -936,7 +936,7 @@ export default {
                         type: "array",
                         // message: "登录方式不能为空",
                         message: this.$t(
-                            "userManage.userManageDialogFormMsg12"
+                            "userManage.userManageDialogFormMsg12",
                         ),
                         trigger: "blur",
                     },
@@ -947,7 +947,7 @@ export default {
                         type: "array",
                         // message: "认证方式不能为空",
                         message: this.$t(
-                            "userManage.userManageDialogFormMsg13"
+                            "userManage.userManageDialogFormMsg13",
                         ),
                         trigger: "blur",
                     },
@@ -996,7 +996,7 @@ export default {
                         this.filterTree(
                             item.children,
                             this.organizationName,
-                            1
+                            1,
                         );
                     }
                 }
@@ -1067,8 +1067,8 @@ export default {
                             this.editForm.roleIds =
                                 this.editForm.roleIds.filter((item) =>
                                     this.allRoleList.find(
-                                        (value) => value.id === item
-                                    )
+                                        (value) => value.id === item,
+                                    ),
                                 );
                         }
                         this.roleIdsChange(this.editForm.roleIds);
@@ -1168,7 +1168,7 @@ export default {
                                                           ...k.channelNoList,
                                                       ]),
                                                   ]
-                                                : k.channelNoList
+                                                : k.channelNoList,
                                         );
                                     } else {
                                         // // switch
@@ -1207,7 +1207,7 @@ export default {
                             ];
                             this.$nextTick(() => {
                                 this.$refs.appTree.setCheckedKeys(
-                                    this.editAppArr
+                                    this.editAppArr,
                                 );
                             });
                         } else {
@@ -1323,7 +1323,6 @@ export default {
                 if (valid) {
                     this.loading = true;
                     if (this.modalType == -1) {
-                        let sha256 = require("js-sha256").sha256;
                         let form = JSON.parse(JSON.stringify(this.editForm));
                         form.authorityCenter =
                             form.enablePlatform.indexOf(1) > -1 ? 1 : 0;
@@ -1338,7 +1337,7 @@ export default {
                                     this.loading = false;
                                     this.editModal = false;
                                     this.$message.success(
-                                        this.$t("userManage.addUserSuccess")
+                                        this.$t("userManage.addUserSuccess"),
                                     );
                                     this.close();
                                     this.$emit("search");
@@ -1353,7 +1352,7 @@ export default {
                     } else if (this.modalType == 0) {
                         // 编辑用户
                         let editForm = JSON.parse(
-                            JSON.stringify(this.editForm)
+                            JSON.stringify(this.editForm),
                         );
                         editForm.authorityCenter =
                             editForm.enablePlatform.indexOf(1) > -1 ? 1 : 0;
@@ -1367,7 +1366,7 @@ export default {
                                     this.loading = false;
                                     this.editModal = false;
                                     this.$message.success(
-                                        this.$t("userManage.editUserSuccess")
+                                        this.$t("userManage.editUserSuccess"),
                                     );
                                     this.close();
                                     this.$emit("search");
@@ -1387,12 +1386,12 @@ export default {
                 } else if (obj.roleIds) {
                     // 选择角色不能为空
                     this.$message.error(
-                        this.$t("userManage.userManageDialogFormMsg10")
+                        this.$t("userManage.userManageDialogFormMsg10"),
                     );
                 } else if (obj.groupIds) {
                     // 资源权限不能为空
                     this.$message.error(
-                        this.$t("userManage.userManageDialogFormMsg5")
+                        this.$t("userManage.userManageDialogFormMsg5"),
                     );
                 }
             });
@@ -1403,7 +1402,7 @@ export default {
         filterRole() {
             if (!this.roleSearchKey) {
                 this.allRoleList = JSON.parse(
-                    JSON.stringify(this.allRoleListCopy)
+                    JSON.stringify(this.allRoleListCopy),
                 );
             } else {
                 this.allRoleList = this.allRoleListCopy.filter((item) => {
@@ -1419,7 +1418,7 @@ export default {
             if (!val.includes("WEB")) {
                 this.editForm.loginAuthTypeSupportList =
                     this.editForm.loginAuthTypeSupportList.filter(
-                        (item) => item !== "appScanQR"
+                        (item) => item !== "appScanQR",
                     );
             }
         },

@@ -5,11 +5,11 @@
  *
  *  */
 
-import Vue from "vue";
 import BaseWebControl from "../base/BaseWebControl";
 import moment from "moment";
-let message = Vue.prototype.$message;
-let api = Vue.prototype.$api;
+import { ElMessage } from "element-plus";
+import api from "@/api/api";
+let message = ElMessage;
 
 class WebPlayBack_TimeBase extends BaseWebControl {
     constructor(domId, cb, option) {
@@ -23,7 +23,7 @@ class WebPlayBack_TimeBase extends BaseWebControl {
             //playbackTrackNotify回调
             playbackTrackNotifyFN: null,
             //playbackDownloadNotify回调
-            playbackDownloadNotifyFN: null
+            playbackDownloadNotifyFN: null,
         };
         option = { ...baseOption, ...option };
         this.option = option;
@@ -57,24 +57,34 @@ class WebPlayBack_TimeBase extends BaseWebControl {
                 cbConnectSuccess: () => {
                     playControl
                         .JS_StartService("window", {
-                            dllPath: "./WebPlayBack_TimeBase.dll"
+                            dllPath: "./WebPlayBack_TimeBase.dll",
                         })
                         .then(() => {
                             playControl.JS_SetWindowControlCallback({
-                                cbIntegrationCallBack: this.cbIntegrationCallBack
+                                cbIntegrationCallBack:
+                                    this.cbIntegrationCallBack,
                             });
                             playControl
-                                .JS_CreateWnd(this.domId, this.offsetWidth, this.offsetHeight)
+                                .JS_CreateWnd(
+                                    this.domId,
+                                    this.offsetWidth,
+                                    this.offsetHeight,
+                                )
                                 .then(() => {
                                     this.removeNodes();
                                     this.setDownloadShow(playControl);
                                     this.initIng = false;
-                                    let newDom = document.getElementById(this.domId);
+                                    let newDom = document.getElementById(
+                                        this.domId,
+                                    );
                                     if (!newDom) {
                                         playControl.JS_Disconnect();
                                         return;
                                     }
-                                    if (newDom.attributes["timeFlag"] !== this.dom.attributes["timeFlag"]) {
+                                    if (
+                                        newDom.attributes["timeFlag"] !==
+                                        this.dom.attributes["timeFlag"]
+                                    ) {
                                         playControl.JS_Disconnect();
                                         return;
                                     }
@@ -99,7 +109,7 @@ class WebPlayBack_TimeBase extends BaseWebControl {
                 },
                 cbConnectClose: () => {
                     this.removeNodes();
-                }
+                },
             });
         });
     }
@@ -115,15 +125,23 @@ class WebPlayBack_TimeBase extends BaseWebControl {
                 productKey: res.data.productKey,
                 plate: this.alarmData.carNumber
             },
-     * 
-     * 
+     *
+     *
      */
     getVideoAndsetFileInfos(params) {
-        let { startTime, endTime, deviceCode, productKey, plate, channelList, channelNo } = params;
-        let getListSinger = param => {
+        let {
+            startTime,
+            endTime,
+            deviceCode,
+            productKey,
+            plate,
+            channelList,
+            channelNo,
+        } = params;
+        let getListSinger = (param) => {
             return new Promise((resovle, reject) => {
                 api.getVideoList(param)
-                    .then(res => {
+                    .then((res) => {
                         if (res.success) {
                             resovle(res.data);
                         } else {
@@ -142,7 +160,7 @@ class WebPlayBack_TimeBase extends BaseWebControl {
             delete tempParam.channelList;
             pList.push(getListSinger(tempParam));
         } else {
-            channelList.forEach(channel => {
+            channelList.forEach((channel) => {
                 let tempParam = deepCopy(params);
                 tempParam.channelNo = channel;
                 delete tempParam.channelList;
@@ -151,15 +169,19 @@ class WebPlayBack_TimeBase extends BaseWebControl {
         }
         let videoBackList = [];
         Promise.all(pList)
-            .then(async resList => {
-                resList.forEach(videoList => {
+            .then(async (resList) => {
+                resList.forEach((videoList) => {
                     let fileList = [];
                     if (JSON.stringify(videoList) !== "{}") {
                         for (let key in videoList) {
                             let timeVideo = videoList[key];
                             timeVideo.forEach((item, index) => {
-                                videoList[key][index].startTimeStamp = moment(item.startTime).valueOf();
-                                videoList[key][index].endTimeStamp = moment(item.endTime).valueOf();
+                                videoList[key][index].startTimeStamp = moment(
+                                    item.startTime,
+                                ).valueOf();
+                                videoList[key][index].endTimeStamp = moment(
+                                    item.endTime,
+                                ).valueOf();
                                 fileList.push(videoList[key][index]);
                             });
                         }
@@ -168,30 +190,36 @@ class WebPlayBack_TimeBase extends BaseWebControl {
                             channelName: channelList.find(({ channel }) => {
                                 return channel === fileList[0].channel;
                             }).channelName,
-                            files: []
+                            files: [],
                         });
-                        videoBackList[videoBackList.length - 1].files = fileList;
+                        videoBackList[videoBackList.length - 1].files =
+                            fileList;
                     }
                 });
-                videoBackList = this.formatVideoList(videoBackList, startTime, endTime);
+                videoBackList = this.formatVideoList(
+                    videoBackList,
+                    startTime,
+                    endTime,
+                );
                 let fileInfo = {
                     infos: videoBackList,
                     minTime: startTime,
                     maxTime: endTime,
                     devSerialNum: deviceCode,
                     productKey,
-                    plate
+                    plate,
                 };
                 if (videoBackList.length === 0) {
                     message.info("暂无录像");
                 }
-                let firstPlayTime = await this.setPlaybackMultiChanFiles(fileInfo);
+                let firstPlayTime =
+                    await this.setPlaybackMultiChanFiles(fileInfo);
                 if (!firstPlayTime) {
                     return;
                 }
                 this.startPlaybackDllAtTime(firstPlayTime);
             })
-            .catch(e => {
+            .catch((e) => {
                 reject();
             });
     }
@@ -217,14 +245,14 @@ class WebPlayBack_TimeBase extends BaseWebControl {
     setPlaybackMultiChanFiles(videoBackList) {
         this.videoBackList = videoBackList;
         return new Promise((resove, reject) => {
-            debugger
+            debugger;
             if (!videoBackList.minTime) {
-                return resove()
+                return resove();
             }
             this.playControl
                 .JS_RequestInterface({
                     funcName: "setPlaybackMultiChanFiles",
-                    arguments: videoBackList
+                    arguments: videoBackList,
                 })
                 .then(() => {
                     let firstTime = null;
@@ -237,8 +265,13 @@ class WebPlayBack_TimeBase extends BaseWebControl {
                     if (fileList.length === 1) {
                         firstTime = fileList[0].startTime;
                     } else if (fileList.length === 2) {
-                        let startTimeStamp = Math.min(fileList[0].startTimeStamp, fileList[1].startTimeStamp);
-                        firstTime = moment(startTimeStamp).format("YYYY-MM-DD HH:mm:ss");
+                        let startTimeStamp = Math.min(
+                            fileList[0].startTimeStamp,
+                            fileList[1].startTimeStamp,
+                        );
+                        firstTime = moment(startTimeStamp).format(
+                            "YYYY-MM-DD HH:mm:ss",
+                        );
                     }
                     resove(firstTime);
                 })
@@ -247,8 +280,8 @@ class WebPlayBack_TimeBase extends BaseWebControl {
                 });
         });
     }
-    setCurrentCarId(id){
-        this.carId = id
+    setCurrentCarId(id) {
+        this.carId = id;
     }
     /**
      * @function(选定时刻，进行播放)
@@ -258,11 +291,14 @@ class WebPlayBack_TimeBase extends BaseWebControl {
         let currentPlayTimeS = moment(currentPlayTime).valueOf();
         let fileList = [];
         this.videoBackList.infos.forEach(({ files }) => {
-            let findFile = files.find(file => {
-                return file.startTimeStamp <= currentPlayTimeS && file.endTimeStamp >= currentPlayTimeS;
+            let findFile = files.find((file) => {
+                return (
+                    file.startTimeStamp <= currentPlayTimeS &&
+                    file.endTimeStamp >= currentPlayTimeS
+                );
             });
             if (!findFile) {
-                return
+                return;
             }
             let tempFile = deepCopy(findFile);
             tempFile.startTime = currentPlayTime;
@@ -270,11 +306,11 @@ class WebPlayBack_TimeBase extends BaseWebControl {
                 devSerialNum: this.videoBackList.devSerialNum,
                 plate: this.videoBackList.plate,
                 productKey: this.videoBackList.productKey,
-                channel: findFile.channelNo
+                channel: findFile.channelNo,
             });
             fileList.push(tempFile);
         });
-        fileList.forEach(file => {
+        fileList.forEach((file) => {
             this.startPlaybackDll(file);
         });
     }
@@ -283,12 +319,24 @@ class WebPlayBack_TimeBase extends BaseWebControl {
      * @param({
      */
     startPlaybackDll(params) {
-        let { devSerialNum, channel, productKey, startTime, endTime, fileSize, plate, channelName } = params;
+        let {
+            devSerialNum,
+            channel,
+            productKey,
+            startTime,
+            endTime,
+            fileSize,
+            plate,
+            channelName,
+        } = params;
         let avEncoding = {};
-        this.videoBackList.infos.forEach(item => {
+        this.videoBackList.infos.forEach((item) => {
             if (item.channel == channel && item.files) {
-                let file = item.files.find(itemin => {
-                    return itemin.fileSize === fileSize && itemin.endTime === endTime;
+                let file = item.files.find((itemin) => {
+                    return (
+                        itemin.fileSize === fileSize &&
+                        itemin.endTime === endTime
+                    );
                 });
                 if (file) {
                     avEncoding = file.avEncoding;
@@ -305,11 +353,15 @@ class WebPlayBack_TimeBase extends BaseWebControl {
             fileSize: fileSize,
             plate: plate,
             protocolType: 0,
-            ...avEncoding
+            ...avEncoding,
         };
-        Vue.prototype.$api.getPlayBackUrl(paramsAPI).then(res => {
+        api.getPlayBackUrl(paramsAPI).then((res) => {
             let errorCode = "";
-            if (res.code == "device_offline" || res.code == "EC.device.not.online" || res.code == "device_dormancy") {
+            if (
+                res.code == "device_offline" ||
+                res.code == "EC.device.not.online" ||
+                res.code == "device_dormancy"
+            ) {
                 errorCode = 0x01000000;
             }
             if (res.success == true) {
@@ -322,10 +374,10 @@ class WebPlayBack_TimeBase extends BaseWebControl {
                                 arguments: {
                                     msg: "startPlaybackNotify",
                                     errorCode: errorCode,
-                                    errorMsg: res.msg
-                                }
+                                    errorMsg: res.msg,
+                                },
                             })
-                            .then(oData => {
+                            .then((oData) => {
                                 message.error("获取url失败！");
                             });
                     } else {
@@ -336,10 +388,10 @@ class WebPlayBack_TimeBase extends BaseWebControl {
                                     url: url,
                                     code: 0,
                                     playTimeSync: true,
-                                    ...params
-                                }
+                                    ...params,
+                                },
                             })
-                            .then(function(oData) {
+                            .then(function (oData) {
                                 console.log(oData);
                             });
                     }
@@ -350,10 +402,10 @@ class WebPlayBack_TimeBase extends BaseWebControl {
                             arguments: {
                                 msg: "startPlaybackNotify",
                                 errorCode: errorCode,
-                                errorMsg: res.msg
-                            }
+                                errorMsg: res.msg,
+                            },
                         })
-                        .then(oData => {
+                        .then((oData) => {
                             message.error("获取url失败！");
                         });
                 }
@@ -364,10 +416,10 @@ class WebPlayBack_TimeBase extends BaseWebControl {
                         arguments: {
                             msg: "startPlaybackNotify",
                             errorCode: errorCode,
-                            errorMsg: res.msg
-                        }
+                            errorMsg: res.msg,
+                        },
                     })
-                    .then(oData => {
+                    .then((oData) => {
                         message.error(res.msg);
                     });
             }
@@ -377,7 +429,7 @@ class WebPlayBack_TimeBase extends BaseWebControl {
      * @function(控件初始化完成回调函数绑定)
      *
      */
-    cbIntegrationCallBack = async oData => {
+    cbIntegrationCallBack = async (oData) => {
         if (oData.responseMsg.event === "startPlaybackNotify") {
             let info = oData.responseMsg.msg;
             /**
@@ -410,8 +462,8 @@ class WebPlayBack_TimeBase extends BaseWebControl {
                 arguments: {
                     msg: "startPlaybackNotify",
                     errorCode: 0x01000000,
-                    errorMsg: "设备离线"
-                }
+                    errorMsg: "设备离线",
+                },
             });
         }
         if (oData.responseMsg.event === "playbackDownloadNotify") {
@@ -432,7 +484,7 @@ class WebPlayBack_TimeBase extends BaseWebControl {
     enterDownloadMode() {
         this.playControl.JS_RequestInterface({
             funcName: "enterDownloadMode",
-            arguments: {}
+            arguments: {},
         });
     }
     /**
@@ -444,7 +496,7 @@ class WebPlayBack_TimeBase extends BaseWebControl {
         if (this.playControl) {
             this.playControl.JS_RequestInterface({
                 funcName: "stopPlayback",
-                arguments: {}
+                arguments: {},
             });
         }
     }
@@ -472,24 +524,26 @@ class WebPlayBack_TimeBase extends BaseWebControl {
     }
     getCurrentTime() {
         return new Promise((resolve, reject) => {
-            this.playControl.JS_RequestInterface({
-                funcName: "getCurrentTime",
-                arguments: {}
-            }).then((e) => {
-                let content = e.responseMsg.content;
-                if (content && content.currentTime) {
-                    resolve(content.currentTime);
-                }
-                else {
-                    resolve(null)
-                }
-            }).catch((e) => {
-                reject(e);
-            })
-        })
+            this.playControl
+                .JS_RequestInterface({
+                    funcName: "getCurrentTime",
+                    arguments: {},
+                })
+                .then((e) => {
+                    let content = e.responseMsg.content;
+                    if (content && content.currentTime) {
+                        resolve(content.currentTime);
+                    } else {
+                        resolve(null);
+                    }
+                })
+                .catch((e) => {
+                    reject(e);
+                });
+        });
     }
 }
 export default {
     name: "WebPlayBack_TimeBase",
-    control: WebPlayBack_TimeBase
+    control: WebPlayBack_TimeBase,
 };

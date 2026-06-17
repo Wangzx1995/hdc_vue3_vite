@@ -17,5 +17,12 @@
         "vue",
         "markdown"
     ],
-    "workbench.editorAssociations": {}
+    "workbench.editorAssociations": {},
+    "i18n-ally.localesPaths": [
+        "src/i18n",
+        "src/i18n/langs",
+        "src/components/hui-pro/locale",
+        "src/components/hui-pro/locale/lang",
+        "src/components/hui-pro/plan/lang"
+    ]
 }

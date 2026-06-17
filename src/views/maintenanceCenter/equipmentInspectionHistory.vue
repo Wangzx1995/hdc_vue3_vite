@@ -15,7 +15,7 @@
                                     prop=""
                                     :label="
                                         $t(
-                                            'equipmentInspection.selfInspectionReportingTimePeriod'
+                                            'equipmentInspection.selfInspectionReportingTimePeriod',
                                         )
                                     "
                                 >
@@ -77,7 +77,7 @@
                                 prop="createTime"
                                 :label="
                                     $t(
-                                        'equipmentInspection.selfInspectionReportingTimePeriod'
+                                        'equipmentInspection.selfInspectionReportingTimePeriod',
                                     )
                                 "
                                 width=""
@@ -218,7 +218,7 @@
                                     show-overflow-tooltip
                                     :label="
                                         $t(
-                                            'equipmentInspection.selfInspectionItems'
+                                            'equipmentInspection.selfInspectionItems',
                                         )
                                     "
                                     width="140"
@@ -261,7 +261,7 @@
                                     show-overflow-tooltip
                                     :label="
                                         $t(
-                                            'equipmentInspection.selfInspectionItems'
+                                            'equipmentInspection.selfInspectionItems',
                                         )
                                     "
                                     width="140"
@@ -304,7 +304,7 @@
                                     show-overflow-tooltip
                                     :label="
                                         $t(
-                                            'equipmentInspection.selfInspectionItems'
+                                            'equipmentInspection.selfInspectionItems',
                                         )
                                     "
                                     width="140"
@@ -331,7 +331,7 @@
 </template>
 <script>
 import TimeUtil from "@/utils/time";
-require("@/assets/style/base.scss");
+import "@/assets/style/base.scss";
 export default {
     name: "equipment",
     data() {
@@ -366,7 +366,7 @@ export default {
             searchForm: {
                 // 搜索表单
                 beginDate: this.$moment(
-                    new Date(new Date() - 90 * 24 * 60 * 60 * 1000)
+                    new Date(new Date() - 90 * 24 * 60 * 60 * 1000),
                 )
                     .startOf("day")
                     .format("YYYY-MM-DD HH:mm:ss"),
@@ -592,7 +592,7 @@ export default {
                                         ) {
                                             const iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -603,18 +603,18 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(
-                            this.$t("common.exportFailed") + ":" + res.msg
+                            this.$t("common.exportFailed") + ":" + res.msg,
                         );
                         this.loadingAll = false;
                     }

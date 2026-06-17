@@ -507,12 +507,11 @@
 </template>
 <script>
 //import Vue from "vue";
-import Vue from "vue/dist/vue.esm.js";
-// const Vue = require('vue');
-import VueClipboard from "vue-clipboard2"; // 剪贴
+import Vue from "@/utils/vue-compat";
+// import VueClipboard from "vue-clipboard2"; // Vue 2 插件，Vue 3 不兼容，需替换
 import html2canvas from "html2canvas"; // 截图
 import userManageDialog from "./userManageDialog";
-Vue.use(VueClipboard);
+// Vue.use(VueClipboard);
 import {
     checkStrong,
     validatePhoneNo,
@@ -521,6 +520,7 @@ import {
     validateNumLetterSpecial,
 } from "@/utils/validate";
 import { validateSpecial } from "@/utils/validate";
+import { sha256 } from "js-sha256";
 export default {
     name: "userManage",
     components: { userManageDialog },
@@ -531,8 +531,8 @@ export default {
                     callback(
                         new Error(
                             this.$t("userManage.checkSpeccial") +
-                                "：\\/:*?\"<|'&%>"
-                        )
+                                "：\\/:*?\"<|'&%>",
+                        ),
                     );
                 } else {
                     callback();
@@ -548,8 +548,8 @@ export default {
                     callback(
                         new Error(
                             this.$t("userManage.checkSpeccial") +
-                                "：\\/:*?\"<|'&%>"
-                        )
+                                "：\\/:*?\"<|'&%>",
+                        ),
                     );
                 } else if (value.length < 4) {
                     // 请输入至少4位手机号码
@@ -819,7 +819,7 @@ export default {
                     if (this.params.currentPage == 1) {
                         let params = Object.assign(
                             this.params,
-                            this.searchForm
+                            this.searchForm,
                         );
                         this.getData(params);
                     } else {
@@ -882,12 +882,12 @@ export default {
         goAdd2() {
             if (
                 !this.$store.state.permission.routersMenus.find(
-                    (i) => i.id === 295
+                    (i) => i.id === 295,
                 )
             ) {
                 this.$message.warning(
                     // "当前用户无角色管理权限，请联系管理员处理"
-                    this.$t("userManage.noMenuPermissions")
+                    this.$t("userManage.noMenuPermissions"),
                 );
                 return;
             }
@@ -925,7 +925,6 @@ export default {
             this.$refs.resetForm.validate((valid) => {
                 if (valid) {
                     let form = JSON.parse(JSON.stringify(this.resetForm));
-                    let sha256 = require("js-sha256").sha256;
                     form.adminPassword = sha256(form.adminPassword);
                     form.password = sha256(form.password);
                     delete form.password2;
@@ -933,7 +932,7 @@ export default {
                         if (res.success == true) {
                             // this.$message.success("用户密码重置成功");
                             this.$message.success(
-                                this.$t("userManage.resetChildPasswordSuccess")
+                                this.$t("userManage.resetChildPasswordSuccess"),
                             );
                             this.resetModel = false;
                         } else {
@@ -946,12 +945,12 @@ export default {
         goEdit2(id) {
             if (
                 !this.$store.state.permission.routersMenus.find(
-                    (i) => i.id === 295
+                    (i) => i.id === 295,
                 )
             ) {
                 this.$message.warning(
                     // "当前用户无角色管理权限，请联系管理员处理"
-                    this.$t("userManage.noMenuPermissions")
+                    this.$t("userManage.noMenuPermissions"),
                 );
                 return;
             }
@@ -1018,7 +1017,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     // 批量删除
@@ -1032,7 +1031,7 @@ export default {
                             this.selection = [];
                             // 用户已删除成功
                             this.$message.success(
-                                this.$t("userManage.userDeleteMsg3")
+                                this.$t("userManage.userDeleteMsg3"),
                             );
                             this.search();
                         } else {
@@ -1051,7 +1050,6 @@ export default {
                 if (valid) {
                     this.loading = true;
                     if (this.modalType == -1) {
-                        let sha256 = require("js-sha256").sha256;
                         let form = JSON.parse(JSON.stringify(this.editForm));
                         form.password = sha256(this.editForm.password);
                         form.password2 = sha256(this.editForm.password2);
@@ -1061,7 +1059,7 @@ export default {
                                 this.loading = false;
                                 // 添加用户成功
                                 this.$message.success(
-                                    this.$t("userManage.addUserSuccess")
+                                    this.$t("userManage.addUserSuccess"),
                                 );
                                 this.saveInfo = res.data;
                                 this.saveInfoModal = true;
@@ -1074,7 +1072,7 @@ export default {
                     } else if (this.modalType == 0) {
                         // 编辑用户
                         let editForm = JSON.parse(
-                            JSON.stringify(this.editForm)
+                            JSON.stringify(this.editForm),
                         );
                         delete editForm.password;
                         delete editForm.password2;
@@ -1083,7 +1081,7 @@ export default {
                                 this.loading = false;
                                 // 编辑用户成功
                                 this.$message.success(
-                                    this.$t("userManage.editUserSuccess")
+                                    this.$t("userManage.editUserSuccess"),
                                 );
                                 this.search();
                             } else {

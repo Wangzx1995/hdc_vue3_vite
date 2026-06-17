@@ -28,29 +28,31 @@
                                 :index="index + ''"
                                 :key="firstMenu.id"
                                 v-if="
-                                    firstMenu.name &&
-                                    firstMenu.name == $t('headbar.homePage')
+                                    getMenuTitle(firstMenu) &&
+                                    getMenuTitle(firstMenu) ==
+                                        $t('headbar.homePage')
                                 "
                             >
                                 <router-link :to="firstMenu.path">{{
-                                    firstMenu.name
+                                    getMenuTitle(firstMenu)
                                 }}</router-link>
                             </el-menu-item>
-                            <el-submenu
+                            <el-sub-menu
                                 :class="{
                                     isAvtive:
                                         $route.path.split('/')[1] ===
                                         firstMenu.path.split('/')[1],
                                 }"
                                 :index="index + ''"
-                                :key="index"
+                                :key="firstMenu.id"
                                 v-if="
-                                    firstMenu.name &&
-                                    firstMenu.name !== $t('headbar.homePage')
+                                    getMenuTitle(firstMenu) &&
+                                    getMenuTitle(firstMenu) !==
+                                        $t('headbar.homePage')
                                 "
                             >
-                                <template slot="title">{{
-                                    firstMenu.name
+                                <template #title>{{
+                                    getMenuTitle(firstMenu)
                                 }}</template>
                                 <div
                                     :style="{ width: realWidth + 'px' }"
@@ -65,7 +67,11 @@
                                             class="second-name"
                                         >
                                             <template>
-                                                <p>{{ secondMenu.name }}</p>
+                                                <p>
+                                                    {{
+                                                        getMenuTitle(secondMenu)
+                                                    }}
+                                                </p>
                                                 <div
                                                     v-for="thirdMenu in secondMenu.children"
                                                     :key="thirdMenu.id"
@@ -82,7 +88,11 @@
                                                                 1
                                                             "
                                                         >
-                                                            {{ thirdMenu.name }}
+                                                            {{
+                                                                getMenuTitle(
+                                                                    thirdMenu,
+                                                                )
+                                                            }}
                                                         </p>
                                                         <router-link
                                                             v-else
@@ -93,7 +103,9 @@
                                                             }"
                                                             :to="thirdMenu.path"
                                                             >{{
-                                                                thirdMenu.name
+                                                                getMenuTitle(
+                                                                    thirdMenu,
+                                                                )
                                                             }}
                                                         </router-link>
                                                     </span>
@@ -106,7 +118,7 @@
                                         @click="goRouter(index + '')"
                                     ></i>
                                 </div>
-                            </el-submenu>
+                            </el-sub-menu>
                         </template>
                     </el-menu>
                 </el-row>
@@ -579,7 +591,7 @@
                             v-model="formUsername.password"
                             placeholder="请输入用户密码"
                             :readonly="readonly"
-                            @mousedown.native="mouseDown"
+                            @mousedown="mouseDown"
                             @focus="onFocus"
                             @blur="onBlur"
                             @change="onChange"
@@ -632,7 +644,7 @@
                                 <el-button
                                     style="width: 126px"
                                     :disabled="blackTime > 0"
-                                    @click.native.prevent="getNewPhoneCode"
+                                    @click.prevent="getNewPhoneCode"
                                     v-show="blackTime <= 0"
                                     >获取验证码</el-button
                                 >
@@ -840,11 +852,11 @@ import {
 } from "@/utils/validate";
 import AES from "@/utils/secret";
 import VideoControl from "../maintenanceCenter/configurationDetail/fileConfig.vue";
-let sha256 = require("js-sha256").sha256;
+import { sha256 } from "js-sha256";
 // 引入axios用来发请求
 import axios from "axios";
 // 引入docx-preview插件
-let docx = require("docx-preview");
+import * as docx from "docx-preview";
 import deepseek from "@/views/deepseek/deepseek.vue";
 export default {
     name: "headbar",
@@ -972,7 +984,7 @@ export default {
                     callback();
                 } else {
                     callback(
-                        new Error("账户名只允许输入英文、数字、下划线和@")
+                        new Error("账户名只允许输入英文、数字、下划线和@"),
                     );
                 }
             } else {
@@ -1329,6 +1341,9 @@ export default {
         localStorage.setItem("wordObj", JSON.stringify(obj));
     },
     methods: {
+        getMenuTitle(menu) {
+            return menu.meta && menu.meta.title ? menu.meta.title : menu.name;
+        },
         getUserTypeInfo() {
             this.$api.getUserTypeInfo().then((res) => {
                 if (res.success == true) {
@@ -1474,10 +1489,10 @@ export default {
                             this.resetUsernameModal = false;
                             this.$store.commit(
                                 "SET_NAME",
-                                this.formUsername.newUsername
+                                this.formUsername.newUsername,
                             );
                             this.$message.success(
-                                "账户名修改成功!请重新登录。"
+                                "账户名修改成功!请重新登录。",
                             );
                             localStorage.removeItem("otatoken");
                             setTimeout(() => {
@@ -1545,7 +1560,9 @@ export default {
             this.thirdMenuId = -1;
             if (this.permission_routers.length) {
                 this.permission_routers.forEach((item, index) => {
-                    if (item["name"] == this.$t("headbar.homePage")) {
+                    if (
+                        this.getMenuTitle(item) == this.$t("headbar.homePage")
+                    ) {
                         this.hoverIndex = index;
                     }
                 });
@@ -1732,7 +1749,7 @@ export default {
                     let form = {};
                     form.password = sha256(this.resetPasswordForm.password);
                     form.oldPassword = sha256(
-                        this.resetPasswordForm.oldPassword
+                        this.resetPasswordForm.oldPassword,
                     );
                     this.$api.updatePassword(form).then((res) => {
                         if (res.success == true) {
@@ -1781,7 +1798,6 @@ export default {
         doSave() {
             this.$refs.editForm.validate((valid) => {
                 if (valid) {
-                    let sha256 = require("js-sha256").sha256;
                     let p = sha256(this.editForm.pwd);
                     let formData = { pwd: p };
                     this.$api.setHdcUserPwd(formData).then((res) => {
@@ -1806,11 +1822,11 @@ export default {
                     localStorage.setItem("userHdcType", res.data.type);
                     localStorage.setItem(
                         "userSubType",
-                        res.data.subType || 999
+                        res.data.subType || 999,
                     );
                     this.$store.dispatch(
                         "setUserSubType",
-                        res.data.subType || 999
+                        res.data.subType || 999,
                     );
                     this.userInfo = { ...res.data };
                     this.copyEditUserForm = { ...res.data };
@@ -1987,7 +2003,7 @@ export default {
             this.isShowDeepseek = !this.isShowDeepseek;
         },
     },
-    destroyed() {
+    unmounted() {
         clearInterval(this.refreshSessionHandle);
     },
 };

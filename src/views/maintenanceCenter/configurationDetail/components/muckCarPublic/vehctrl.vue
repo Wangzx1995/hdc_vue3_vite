@@ -22,7 +22,7 @@
           <el-button style="width:100%;"
                      type="primary"
                      :loading="loading"
-                     @click.native.prevent="makeSure">确认</el-button>
+                     @click.prevent="makeSure">确认</el-button>
         </div>
       </div>
     </div>

@@ -129,10 +129,7 @@
                                 :maxlength="20"
                             ></el-input>
                         </el-form-item>
-                        <div
-                            class="password-safty"
-                            v-show="showLevel"
-                        >
+                        <div class="password-safty" v-show="showLevel">
                             <span :class="{ risk: passwordLevel == 0 }">
                                 <!-- 风险 -->
                                 {{ $t("login.risk") }}
@@ -154,7 +151,7 @@
                             <el-button
                                 type="primary"
                                 :loading="loading"
-                                @click.native.prevent="submitPassword"
+                                @click.prevent="submitPassword"
                                 v-if="
                                     (activeName == 'userName' && getPhone) ||
                                     activeName == 'phoneNo'
@@ -166,7 +163,7 @@
                             <el-button
                                 type="primary"
                                 :loading="loading"
-                                @click.native.prevent="nextStep"
+                                @click.prevent="nextStep"
                                 v-else
                             >
                                 <!-- 下一步 -->
@@ -207,7 +204,10 @@
                         {{ $t("login.itemName") }}
                         ：{{ item.projectName }}</span
                     >
-                    <a class="selectEvent" @click="handleModifyPassword(item.userName)">
+                    <a
+                        class="selectEvent"
+                        @click="handleModifyPassword(item.userName)"
+                    >
                         <!-- 选择 -->
                         {{ $t("login.select") }}
                     </a>
@@ -227,6 +227,7 @@
 import { checkStrong, validateNumLetterSpecial } from "@/utils/validate";
 // import AES from "@/utils/AES";
 import AES from "@/utils/secret";
+import { sha256 } from "js-sha256";
 
 export default {
     name: "forgetPassword",
@@ -271,30 +272,30 @@ export default {
             if (!value || value === "" || value === undefined) {
                 // 密码不能为空
                 callback(
-                    new Error(this.$t("forgetPassword.validatePasswordMsg1"))
+                    new Error(this.$t("forgetPassword.validatePasswordMsg1")),
                 );
             } else if (value.length < 8 || value.length > 20) {
                 // 密码长度必须为8-20位
                 callback(
-                    new Error(this.$t("forgetPassword.validatePasswordMsg2"))
+                    new Error(this.$t("forgetPassword.validatePasswordMsg2")),
                 );
             } else if (!validateNumLetterSpecial(value)) {
                 // 仅能输入数字、字母、英文特殊字符
                 callback(
-                    new Error(this.$t("forgetPassword.validatePasswordMsg3"))
+                    new Error(this.$t("forgetPassword.validatePasswordMsg3")),
                 );
             } else {
                 let actLevel = checkStrong(
                     value,
-                    this.forgetPasswordForm.userName
+                    this.forgetPasswordForm.userName,
                 );
                 this.passwordLevel = actLevel;
                 if (actLevel < 2) {
                     callback(
                         // 密码强度过低，请输入数字、大小字母或英文字符
                         new Error(
-                            this.$t("forgetPassword.validatePasswordMsg4")
-                        )
+                            this.$t("forgetPassword.validatePasswordMsg4"),
+                        ),
                     );
                 }
                 callback();
@@ -446,7 +447,7 @@ export default {
                                 this.$message({
                                     type: "warning",
                                     message: this.$t(
-                                        "forgetPassword.rulesMsg1"
+                                        "forgetPassword.rulesMsg1",
                                     ),
                                 });
                                 return;
@@ -455,7 +456,7 @@ export default {
                                 this.$message({
                                     type: "warning",
                                     message: this.$t(
-                                        "forgetPassword.validatePhoneMsg"
+                                        "forgetPassword.validatePhoneMsg",
                                     ),
                                 });
                                 return;
@@ -463,7 +464,7 @@ export default {
                         } else {
                             this.handleVery();
                         }
-                    }
+                    },
                 );
             } else if (this.activeName == "userName") {
                 this.handleVery();
@@ -486,7 +487,7 @@ export default {
                         this.$message({
                             type: "success",
                             message: this.$t(
-                                "forgetPassword.verificationCodeSentSuccessfully"
+                                "forgetPassword.verificationCodeSentSuccessfully",
                             ),
                         });
                     } else {
@@ -529,14 +530,14 @@ export default {
                                         this.eventSelectVisible = true;
                                     } else if (projectData.length == 1) {
                                         this.handleModifyPassword(
-                                            projectData[0].userName
+                                            projectData[0].userName,
                                         );
                                     } else {
                                         // "没有找到该手机号对应的项目"
                                         this.$message.warning(
                                             this.$t(
-                                                "forgetPassword.noCorrespondingProject"
-                                            )
+                                                "forgetPassword.noCorrespondingProject",
+                                            ),
                                         );
                                     }
                                 } else {
@@ -546,7 +547,7 @@ export default {
                             (res) => {
                                 this.loading = false;
                                 this.$message.error(res.msg);
-                            }
+                            },
                         )
                         .catch(() => {
                             this.loading = false;
@@ -595,13 +596,13 @@ export default {
                     }
                     if (
                         !validateNumLetterSpecial(
-                            this.forgetPasswordForm.password
+                            this.forgetPasswordForm.password,
                         )
                     ) {
                         this.$message({
                             type: "warning",
                             message: this.$t(
-                                "forgetPassword.validatePasswordMsg3"
+                                "forgetPassword.validatePasswordMsg3",
                             ),
                         });
                         return false;
@@ -617,7 +618,6 @@ export default {
             });
         },
         handleModifyPassword(userName) {
-            let sha256 = require("js-sha256").sha256;
             let params = {
                 phone: this.forgetPasswordForm.phoneNo,
                 password: sha256(this.forgetPasswordForm.password),
@@ -658,10 +658,10 @@ export default {
                     if (response.success) {
                         this.getPhone = true;
                         this.forgetPasswordForm.phoneNo = AES.dEncrypt(
-                            response.data
+                            response.data,
                         );
                         this.getPhoneVal = this.changePhone(
-                            this.forgetPasswordForm.phoneNo
+                            this.forgetPasswordForm.phoneNo,
                         );
                         this.$nextTick(() => {
                             this.$refs.forgetPasswordForm.resetFields();
@@ -680,7 +680,7 @@ export default {
             this.showLevel = true;
             let passwordLevel = checkStrong(
                 val,
-                this.forgetPasswordForm.username
+                this.forgetPasswordForm.username,
             );
             this.passwordLevel = passwordLevel <= 0 ? 0 : passwordLevel;
         },

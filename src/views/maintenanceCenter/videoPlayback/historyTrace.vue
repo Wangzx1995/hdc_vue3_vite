@@ -154,7 +154,7 @@ export default {
             zoom: 14
         });
     },
-    beforeDestroy() {
+    beforeUnmount() {
         this.map && this.map.destroy();
         this.map = null;
     }

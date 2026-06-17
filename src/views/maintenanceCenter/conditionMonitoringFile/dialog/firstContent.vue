@@ -35,7 +35,7 @@
                         <template
                             v-if="
                                 situation.hasOwnProperty(
-                                    'lostVideoChannelStatus'
+                                    'lostVideoChannelStatus',
                                 )
                             "
                         >
@@ -675,7 +675,7 @@
                     <template slot-scope="scope">
                         <span>{{
                             $moment(scope.row.createTime).format(
-                                "YYYY-MM-DD HH:mm:ss"
+                                "YYYY-MM-DD HH:mm:ss",
                             )
                         }}</span>
                     </template>
@@ -730,6 +730,7 @@
 <script>
 import timeLine from "./timeLine.vue";
 import signal from "@/views/maintenanceCenter/historyPlaybackFile/vue/signal.vue";
+import emptyImage from "@/assets/images/icon_empty.png";
 export default {
     name: "",
     components: { timeLine, signal },
@@ -741,7 +742,7 @@ export default {
     },
     data() {
         return {
-            emptyImage: require("@/assets/images/icon_empty.png"),
+            emptyImage,
             situation: {},
             statusObj: {
                 0: "异常",
@@ -1031,7 +1032,7 @@ export default {
                                 this.equipmentInspectionStorageStatus();
                             } else {
                                 this.$message.error(
-                                    "格式化指令下发失败：" + res.msg
+                                    "格式化指令下发失败：" + res.msg,
                                 );
                             }
                         });

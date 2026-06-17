@@ -1,10 +1,10 @@
-module.exports = file => {
-    try {
-        if (!file) return;
-        return require('@/views/' + file + '.vue')
+const modules = import.meta.glob("../views/**/*.vue");
+
+export default (file) => {
+    if (!file) return;
+    const path = `../views/${file}.vue`;
+    if (modules[path]) {
+        return modules[path];
     }
-    catch (err) {
-        return require('@/views/layout/noPage.vue')
-    }
-    
-}
+    return modules["../views/layout/noPage.vue"];
+};

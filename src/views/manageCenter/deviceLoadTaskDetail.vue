@@ -576,7 +576,7 @@
 </template>
 <script>
 //import Vue from "vue";
-import Vue from "vue/dist/vue.esm.js";
+import Vue from "@/utils/vue-compat";
 import TreeSelect from "@/components/hui-pro/tree-select/src/tree-select.vue";
 import "@/components/hui-pro/tree-select/theme/index.scss";
 import TimeUtil from "@/utils/time";
@@ -1126,7 +1126,7 @@ export default {
             this.$route.meta.title = this.$t("deviceLoadTaskManage.metaTitle3"); //"任务详情";
         }
     },
-    destroyed() {
+    unmounted() {
         this.$route.meta.title = undefined;
     },
 };

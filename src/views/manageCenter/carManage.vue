@@ -41,14 +41,14 @@
                             </el-form>
                             <div style="text-align: right; margin: 0">
                                 <el-button
-                                    type="link"
-                                    size="mini"
+                                    type="text"
+                                    size="small"
                                     @click="addOrganize"
                                     >{{ $t("common.ok") }}</el-button
                                 >
                             </div>
                             <el-button
-                                size="mini"
+                                size="small"
                                 slot="reference"
                                 icon="el-icon-plus"
                                 :disabled="
@@ -103,20 +103,20 @@
                             </el-form>
                             <div style="text-align: right; margin: 0">
                                 <el-button
-                                    type="link"
-                                    size="mini"
+                                    type="text"
+                                    size="small"
                                     @click="editOrganize"
                                     >{{ $t("common.ok") }}</el-button
                                 >
                                 <el-button
-                                    type="link"
-                                    size="mini"
+                                    type="text"
+                                    size="small"
                                     @click="cancelEdit"
                                     >{{ $t("common.cancel") }}</el-button
                                 >
                             </div>
                             <el-button
-                                size="mini"
+                                size="small"
                                 slot="reference"
                                 icon="el-icon-edit"
                                 :disabled="
@@ -141,13 +141,13 @@
                             <div style="text-align: right; margin: 0">
                                 <el-button
                                     type="primary"
-                                    size="mini"
+                                    size="small"
                                     @click="deleteVisible = false"
                                     >{{ $t("common.gotIt") }}</el-button
                                 >
                             </div>
                             <el-button
-                                size="mini"
+                                size="small"
                                 slot="reference"
                                 icon="el-icon-delete"
                                 :disabled="
@@ -169,19 +169,19 @@
                             <div style="text-align: right; margin: 0">
                                 <el-button
                                     type="default"
-                                    size="mini"
+                                    size="small"
                                     @click="deleteVisible = false"
                                     >{{ $t("common.cancel") }}</el-button
                                 >
                                 <el-button
                                     type="primary"
-                                    size="mini"
+                                    size="small"
                                     @click="deleteOrganize"
                                     >{{ $t("common.delete") }}</el-button
                                 >
                             </div>
                             <el-button
-                                size="mini"
+                                size="small"
                                 slot="reference"
                                 icon="el-icon-delete"
                                 :disabled="
@@ -438,7 +438,7 @@
                                 :label="$t('common.plateNum')"
                                 width="140px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="{ row }">
                                     <div
                                         style="
                                             display: flex;
@@ -446,17 +446,14 @@
                                         "
                                     >
                                         <el-button
-                                            @click="
-                                                showPlateNumDetails(scope.row)
-                                            "
+                                            @click="showPlateNumDetails(row)"
                                             type="text"
                                             style="font-size: 12px"
                                         >
-                                            {{ scope.row.plateNum || "--" }}
+                                            {{ row.plateNum || "--" }}
                                         </el-button>
                                         <div
-                                            v-for="(o, index) in scope.row
-                                                .deviceList"
+                                            v-for="(o, index) in row.deviceList"
                                             :key="index"
                                             style="
                                                 display: flex;
@@ -470,7 +467,7 @@
                                                 v-show="
                                                     item.type == 2 &&
                                                     item.deviceValue !=
-                                                        scope.row.plateNum
+                                                        row.plateNum
                                                 "
                                                 :open-delay="300"
                                                 trigger="hover"
@@ -478,14 +475,14 @@
                                                 <div class="marginBottom">
                                                     {{
                                                         $t(
-                                                            "carManage.platformPlateNum"
+                                                            "carManage.platformPlateNum",
                                                         )
-                                                    }}：{{ scope.row.plateNum }}
+                                                    }}：{{ row.plateNum }}
                                                 </div>
                                                 <div>
                                                     {{
                                                         $t(
-                                                            "carManage.devicePlateNum"
+                                                            "carManage.devicePlateNum",
                                                         )
                                                     }}：{{ item.deviceValue }}
                                                 </div>
@@ -493,7 +490,7 @@
                                                     @click="
                                                         toChange(
                                                             1,
-                                                            scope.row.plateNum
+                                                            row.plateNum,
                                                         )
                                                     "
                                                     class="m-r-sm"
@@ -508,7 +505,7 @@
                                             </el-popover>
                                         </div>
                                         <span
-                                            v-show="scope.row.freeze == 1"
+                                            v-show="row.freeze == 1"
                                             class="freeze-icon"
                                             >{{ $t("carManage.freeze") }}</span
                                         >
@@ -543,17 +540,16 @@
                                 :label="$t('common.deviceCode')"
                                 width="140px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="{ row }">
                                     <div
-                                        v-for="(val, index) in scope.row
-                                            .deviceList"
+                                        v-for="(val, index) in row.deviceList"
                                         :key="index"
                                     >
                                         <div
                                             class="devRow"
                                             :style="
                                                 index ==
-                                                scope.row.deviceList.length - 1
+                                                row.deviceList.length - 1
                                                     ? 'border-bottom: none;'
                                                     : 'border-bottom: 1px solid #ebebeb;'
                                             "
@@ -569,17 +565,15 @@
                                 :label="$t('common.deviceSerialNum')"
                                 width="140px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="{ row }">
                                     <div
                                         class="devRow"
                                         :style="
-                                            index ==
-                                            scope.row.deviceList.length - 1
+                                            index == row.deviceList.length - 1
                                                 ? 'border-bottom: none;'
                                                 : 'border-bottom: 1px solid #ebebeb;'
                                         "
-                                        v-for="(val, index) in scope.row
-                                            .deviceList"
+                                        v-for="(val, index) in row.deviceList"
                                         :key="index"
                                     >
                                         <el-button
@@ -604,21 +598,21 @@
                                             <p class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.deviceSerialNumAbnormal"
+                                                        "carManage.deviceSerialNumAbnormal",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformDeviceSerialNum"
+                                                        "carManage.platformDeviceSerialNum",
                                                     )
                                                 }}：{{ val.deviceSerialNum }}
                                             </div>
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.deviceDeviceSerialNum"
+                                                        "carManage.deviceDeviceSerialNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -626,7 +620,7 @@
                                                 @click="
                                                     toChange(
                                                         2,
-                                                        val.deviceSerialNum
+                                                        val.deviceSerialNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -648,17 +642,16 @@
                                 :label="$t('common.vin')"
                                 min-width="120px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="{ row }">
                                     <div
-                                        v-for="(val, index) in scope.row
-                                            .deviceList"
+                                        v-for="(val, index) in row.deviceList"
                                         :key="index"
                                     >
                                         <div
                                             class="devRow"
                                             :style="
                                                 index ==
-                                                scope.row.deviceList.length - 1
+                                                row.deviceList.length - 1
                                                     ? 'border-bottom: none;'
                                                     : 'border-bottom: 1px solid #ebebeb;'
                                             "
@@ -667,11 +660,11 @@
                                         </div>
                                     </div>
                                 </template>
-                                <!-- <template slot-scope="scope">
+                                <!-- <template #default="{ row }">
                                     <div>
                                         {{
                                             getArrStr(
-                                                scope.row.deviceList,
+                                                row.deviceList,
                                                 "vin"
                                             )
                                         }}
@@ -690,17 +683,16 @@
                                 :label="$t('carManage.time')"
                                 width="165px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="{ row }">
                                     <div
-                                        v-for="(val, index) in scope.row
-                                            .deviceList"
+                                        v-for="(val, index) in row.deviceList"
                                         :key="index"
                                     >
                                         <div
                                             class="devRow"
                                             :style="
                                                 index ==
-                                                scope.row.deviceList.length - 1
+                                                row.deviceList.length - 1
                                                     ? 'border-bottom: none;'
                                                     : 'border-bottom: 1px solid #ebebeb;'
                                             "
@@ -709,11 +701,11 @@
                                         </div>
                                     </div>
                                 </template>
-                                <!-- <template slot-scope="scope">
+                                <!-- <template #default="{ row }">
                                     <div>
                                         {{
                                             getArrStr(
-                                                scope.row.deviceList,
+                                                row.deviceList,
                                                 "lastGpsTime"
                                             )
                                         }}
@@ -726,11 +718,11 @@
                                 width="120px"
                                 fixed="right"
                             >
-                                <template slot-scope="scope">
+                                <template #default="{ row }">
                                     <el-button
                                         type="text"
                                         class="text-info colorBlue"
-                                        @click="goEdit(scope.row)"
+                                        @click="goEdit(row)"
                                         :disabled="currentNode.source != 1"
                                         v-btn="'carManageEdit'"
                                         >{{ $t("common.edit") }}
@@ -739,10 +731,7 @@
                                         type="text"
                                         class="text-info colorBlue"
                                         @click="
-                                            doDelete(
-                                                scope.row.carId,
-                                                scope.row.deviceList
-                                            )
+                                            doDelete(row.carId, row.deviceList)
                                         "
                                         :disabled="currentNode.source != 1"
                                         v-btn="'carManageDelete'"
@@ -1259,12 +1248,12 @@
 <script>
 import TreeSelect from "@/components/hui-pro/tree-select/src/tree-select.vue";
 import "@/components/hui-pro/tree-select/theme/index.scss";
-import CarImport from "@/components/importCarDialog";
-import carAdd from "./carAdd";
+import CarImport from "@/components/importCarDialog.vue";
+import carAdd from "./carAdd.vue";
 import TimeUtil from "@/utils/time";
 import { sort } from "semver";
 //import Vue from "vue";
-import Vue from "vue/dist/vue.esm.js";
+import Vue from "@/utils/vue-compat";
 
 /**
  * select 下拉框 底部触发指令
@@ -1273,7 +1262,7 @@ Vue.directive("selectLoadMore", {
     bind(el, binding) {
         // 获取element-ui定义好的scroll盒子
         const SELECTWRAP_DOM = el.querySelector(
-            ".el-select-dropdown .el-select-dropdown__wrap"
+            ".el-select-dropdown .el-select-dropdown__wrap",
         );
         SELECTWRAP_DOM.addEventListener("scroll", function () {
             if (this.scrollHeight - this.scrollTop < this.clientHeight + 1) {
@@ -1286,7 +1275,7 @@ Vue.directive("selectLoadMoreSerialNum", {
     bind(el, binding) {
         // 获取element-ui定义好的scroll盒子
         const SELECTWRAP_DOM = el.querySelector(
-            ".el-select-dropdown .el-select-dropdown__wrap"
+            ".el-select-dropdown .el-select-dropdown__wrap",
         );
         SELECTWRAP_DOM.addEventListener("scroll", function () {
             if (this.scrollHeight - this.scrollTop < this.clientHeight + 1) {
@@ -1377,7 +1366,7 @@ export default {
                 "/carManage/import",
             devImportTitle: this.$t("carManage.importVehicleInformation"), //导入车辆信息
             importResultTitle: this.$t(
-                "carManage.importVehicleInformationResults"
+                "carManage.importVehicleInformationResults",
             ), //导入车辆信息结果
             templateCode: "carInfoImport",
             devImportColumns: [
@@ -1423,7 +1412,7 @@ export default {
                                             ? "text-success"
                                             : "text-error",
                                 },
-                                params.row.msg
+                                params.row.msg,
                             ),
                         ]);
                     },
@@ -1538,9 +1527,9 @@ export default {
         },
         //下拉框收取
         visibleHandler() {
-            (this.currentPageCode = 1), //手机号页码
+            ((this.currentPageCode = 1), //手机号页码
                 (this.totalPagesCode = ""),
-                (this.currentPageSerialNum = 1);
+                (this.currentPageSerialNum = 1));
             this.totalPagesSerialNum = "";
         },
         //  下拉加载更多
@@ -1789,7 +1778,7 @@ export default {
         addOrganize() {
             if (!this.addOrganizeVal) {
                 this.$message.warning(
-                    this.$t("common.organizationCannotEmpty")
+                    this.$t("common.organizationCannotEmpty"),
                 );
                 return;
             }
@@ -1805,7 +1794,7 @@ export default {
                 if (res.success == true) {
                     this.$message.success(
                         this.$t("common.organization") +
-                            this.$t("common.addSuccess")
+                            this.$t("common.addSuccess"),
                     );
                     this.addVisible = false;
                     this.getOrgTree(true);
@@ -1872,7 +1861,7 @@ export default {
         editOrganize() {
             if (!this.editOrganizeVal) {
                 this.$message.warning(
-                    this.$t("common.organizationCannotEmpty")
+                    this.$t("common.organizationCannotEmpty"),
                 );
                 return;
             }
@@ -1897,7 +1886,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     this.editVisible = false;
@@ -1914,7 +1903,7 @@ export default {
                             if (res.success == true) {
                                 this.fullscreenLoading.close();
                                 this.$message.success(
-                                    this.$t("common.organizationalEditSuccess")
+                                    this.$t("common.organizationalEditSuccess"),
                                 );
                                 this.editVisible = false;
                                 this.getOrgTree(true);
@@ -1928,7 +1917,7 @@ export default {
                         (err) => {
                             this.fullscreenLoading.close();
                             this.editVisible = false;
-                        }
+                        },
                     );
                 })
                 .catch(() => {
@@ -1983,10 +1972,10 @@ export default {
                 if (res.success == true) {
                     this.$store.dispatch(
                         "RemoveDeviceManageId",
-                        this.params.organizeId
+                        this.params.organizeId,
                     );
                     this.$message.success(
-                        this.$t("common.organizationalDeleteSuccess")
+                        this.$t("common.organizationalDeleteSuccess"),
                     );
                     this.deleteVisible = false;
                     this.getOrgTree(true);
@@ -2012,7 +2001,7 @@ export default {
             this.$api.changeCarOrg(param).then((res) => {
                 if (res.success == true) {
                     this.$message.success(
-                        this.$t("common.vehicleOrganizationModifiedSuccess")
+                        this.$t("common.vehicleOrganizationModifiedSuccess"),
                     );
                     this.treeDialogVisible = false;
                     this.organizationName1 = "";
@@ -2123,7 +2112,7 @@ export default {
                     let params = Object.assign(
                         {},
                         this.params,
-                        this.searchForm
+                        this.searchForm,
                     );
                     params["containChildOrg"] = this.params.checked ? 1 : 0;
                     delete params.selectObj;
@@ -2208,7 +2197,7 @@ export default {
                         this.params.organizeId = Number(
                             this.$store.state.tree.deviceManageId
                                 ? this.$store.state.tree.deviceManageId
-                                : res.data[0].id
+                                : res.data[0].id,
                         );
                         this.searchForm.organizedName = res.data[0].name;
                         this.searchForm = this.$store.state.tree.searchForm
@@ -2216,7 +2205,7 @@ export default {
                             : this.searchForm;
                         this.params = Object.assign(
                             this.params,
-                            this.searchForm
+                            this.searchForm,
                         );
                         this.getData(this.params);
                         // this.getDeviceModelList();
@@ -2228,10 +2217,10 @@ export default {
                             this.currentNode = this.$refs.tree.getNode(
                                 this.$store.state.tree.deviceManageId
                                     ? this.$store.state.tree.deviceManageId
-                                    : res.data[0].id
+                                    : res.data[0].id,
                             ).data;
                             this.$refs["tree"].setCurrentKey(
-                                this.params.organizeId
+                                this.params.organizeId,
                             );
                         });
                     } else {
@@ -2252,7 +2241,7 @@ export default {
                         this.currentNode = this.$refs.tree.getNode(
                             this.$store.state.tree.deviceManageId
                                 ? this.$store.state.tree.deviceManageId
-                                : res.data[0].id
+                                : res.data[0].id,
                         ).data;
                     }, 1);
                 } else {
@@ -2300,7 +2289,7 @@ export default {
                                         ) {
                                             var iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -2311,14 +2300,14 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(res.msg);
@@ -2361,7 +2350,7 @@ export default {
                     this.$api.deleteCarInfos(param).then((res) => {
                         if (res.success == true) {
                             this.$message.success(
-                                this.$t("carManage.doBatchCarMsg3")
+                                this.$t("carManage.doBatchCarMsg3"),
                             );
                             this.$refs.table.clearSelection();
                             this.selection = [];
@@ -2397,7 +2386,7 @@ export default {
                     this.$api.deleteCarInfos(param).then((res) => {
                         if (res.success == true) {
                             this.$message.success(
-                                this.$t("carManage.doBatchCarMsg3")
+                                this.$t("carManage.doBatchCarMsg3"),
                             );
                             this.$refs.table.clearSelection();
                             this.selection = [];

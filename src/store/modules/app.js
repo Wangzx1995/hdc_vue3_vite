@@ -1,7 +1,3 @@
-//import Vue from "vue";
-import Vue from "vue/dist/vue.esm.js";
-// const Vue = require('vue')
-
 import Storage from "@/utils/storage";
 
 const app = {
@@ -138,7 +134,7 @@ const app = {
                 Object.assign(
                     state.searchState,
                     { show: !state.searchState.show },
-                    payload
+                    payload,
                 );
             }
         },

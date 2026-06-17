@@ -1,4 +1,3 @@
-import Vue from 'vue';
 // const Vue = require('vue')
 
 import addClass from '@hui-pro/utils/src/dom/add-class.js';
@@ -7,7 +6,7 @@ import removeClass from '@hui-pro/utils/src/dom/remove-class.js';
 let hasModal = false;
 
 const getModal = function(id, multiModal) {
-  if (Vue.prototype.$isServer) return;
+  if (typeof window === 'undefined') return;
   let modalDom;
   if (multiModal) {
     modalDom = PopupManager.multiModalDom[id];
@@ -102,7 +101,7 @@ const PopupManager = {
       opts
     );
     // id, zIndex, dom, modalClass, modalFade
-    if (Vue.prototype.$isServer) return;
+    if (typeof window === 'undefined') return;
     if (!opts.id || opts.zIndex === undefined) return;
     let modalStack;
     if (opts.multiModal) {
@@ -205,7 +204,7 @@ const PopupManager = {
 };
 
 const getTopPopup = function() {
-  if (Vue.prototype.$isServer) return;
+  if (typeof window === 'undefined') return;
   if (PopupManager.modalStack.length > 0) {
     const topPopup =
       PopupManager.modalStack[PopupManager.modalStack.length - 1];
@@ -216,7 +215,7 @@ const getTopPopup = function() {
   }
 };
 
-if (!Vue.prototype.$isServer) {
+if (!typeof window === 'undefined') {
   // handle `esc` key when the popup is shown
   window.addEventListener('keydown', function(event) {
     if (event.keyCode === 27) {

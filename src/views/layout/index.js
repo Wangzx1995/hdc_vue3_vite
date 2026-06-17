@@ -1,3 +1,3 @@
-export { default as Headbar } from './headbar';
+export { default as Headbar } from "./headbar.vue";
 
-export { default as AppMain } from './appmain';
+export { default as AppMain } from "./appmain.vue";

@@ -1,16 +1,12 @@
 /**
- * 自动加载filters，不再重复get了 edit by lifangqi
  * 全局Filter
- * register global utility filters.
+ * Vue 3 已移除 filter，改为全局方法挂载
  */
-// 导入模块
-import * as filters from './filters'
-import * as Filters from '@/filters/filters'
-import Vue from 'vue'
-// const Vue = require('vue')
+import * as Filters from "@/filters/filters";
 
-Object.keys(Filters).forEach(key => {
-    Vue.filter(key, Filters[key])
-})
-
-Vue.prototype.$filter = filters;
+export default {
+    install(app) {
+        // 将过滤器方法挂载到全局属性，模板中通过 $filter.xxx() 调用
+        app.config.globalProperties.$filter = Filters;
+    },
+};

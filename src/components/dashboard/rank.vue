@@ -45,11 +45,11 @@
                 height="328"
             >
                 <el-table-column>
-                    <template slot-scope="scope">
+                    <template #default="{ $index }">
                         <span
-                            :class="{ active: scope.$index < 3 }"
+                            :class="{ active: $index < 3 }"
                             class="circleTitle"
-                            >{{ scope.$index + 1 }}</span
+                            >{{ $index + 1 }}</span
                         >
                     </template>
                 </el-table-column>
@@ -59,53 +59,43 @@
                     width=""
                 ></el-table-column>
                 <el-table-column>
-                    <template slot-scope="scope">
-                        <span v-show="scope.row.deviceCode">{{
-                            scope.row.deviceCode
+                    <template #default="{ row }">
+                        <span v-show="row.deviceCode">{{
+                            row.deviceCode
                         }}</span>
-                        <!-- <span v-show="scope.row.deviceCodes">{{scope.row.deviceCodes}}</span> -->
+                        <!-- <span v-show="row.deviceCodes">{{row.deviceCodes}}</span> -->
                     </template>
                 </el-table-column>
                 <el-table-column>
-                    <template slot-scope="scope">
-                        <span
-                            v-show="
-                                scope.row.offlineDays == 0 ||
-                                scope.row.offlineDays
-                            "
-                        >
-                            {{ scope.row.offlineDays }}
+                    <template #default="{ row }">
+                        <span v-show="row.offlineDays == 0 || row.offlineDays">
+                            {{ row.offlineDays }}
                             <!-- 天 -->
                             {{ $t("dashboard.day") }}
                         </span>
-                        <span
-                            v-show="
-                                scope.row.faultNum == 0 || scope.row.faultNum
-                            "
-                        >
-                            {{ scope.row.faultNum }}
+                        <span v-show="row.faultNum == 0 || row.faultNum">
+                            {{ row.faultNum }}
                             <!-- 次 -->
                             {{ $t("dashboard.order") }}
                         </span>
                         <span
                             v-show="
-                                scope.row.onlineTimeHour == 0 ||
-                                scope.row.onlineTimeHour
+                                row.onlineTimeHour == 0 || row.onlineTimeHour
                             "
                         >
-                            {{ scope.row.onlineTimeHour }}
+                            {{ row.onlineTimeHour }}
                             <!-- 小时 -->
                             {{ $t("dashboard.hour") }}
                         </span>
                         <span
                             v-show="
-                                scope.row.trackCompletenessRate == 0 ||
-                                scope.row.trackCompletenessRate
+                                row.trackCompletenessRate == 0 ||
+                                row.trackCompletenessRate
                             "
                             >{{
-                                Number(
-                                    scope.row.trackCompletenessRate * 100
-                                ).toFixed(2)
+                                Number(row.trackCompletenessRate * 100).toFixed(
+                                    2,
+                                )
                             }}%</span
                         >
                     </template>

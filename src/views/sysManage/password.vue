@@ -90,6 +90,7 @@ import {
     validateNumLetterSpecial,
 } from "@/utils/validate";
 import AES from "@/utils/secret";
+import { sha256 } from "js-sha256";
 export default {
     data() {
         const resetValidatePassCheck = (rule, value, callback) => {
@@ -203,19 +204,18 @@ export default {
         doSavePassWord() {
             this.$refs.resetPasswordForm.validate((valid) => {
                 if (valid) {
-                    let sha256 = require("js-sha256").sha256;
                     let form = {};
                     form.name = this.resetPasswordForm.username;
                     form.password = sha256(this.resetPasswordForm.password);
                     form.oldPassword = sha256(
-                        this.resetPasswordForm.oldPassword
+                        this.resetPasswordForm.oldPassword,
                     );
                     this.$api.updateFirstPassword(form).then((res) => {
                         if (res.success == true) {
                             this.loading = false;
                             this.loadingAll = true;
                             this.$message.success(
-                                "修改密码成功，页面将在5秒中之后跳转至登录页面"
+                                "修改密码成功，页面将在5秒中之后跳转至登录页面",
                             );
                             let _this = this;
                             setTimeout(() => {

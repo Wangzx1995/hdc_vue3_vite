@@ -1,15 +1,17 @@
-@import '~@hui-pro/theme/index.scss';
+@import "../../theme/common/var-common.scss";
+@import "../../theme/mixins/utils.scss";
+@import "../../theme/mixins/mixins.scss";
 
 @include b(ellipsis) {
-  display: inline-block;
-  width: 100%;
-  vertical-align: bottom;
-  @include utils-ellipsis;
-  &.display-block {
-    display: block;
-  }
-  &.non-full {
-    width: auto;
-    max-width: 100%;
-  }
+    display: inline-block;
+    width: 100%;
+    vertical-align: bottom;
+    @include utils-ellipsis;
+    &.display-block {
+        display: block;
+    }
+    &.non-full {
+        width: auto;
+        max-width: 100%;
+    }
 }

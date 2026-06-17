@@ -867,7 +867,7 @@ export default {
         this.getDictionList();
         window.addEventListener("resize", this.setTableHeight);
     },
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener("resize", this.setTableHeight);
     },
     created() {

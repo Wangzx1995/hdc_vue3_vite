@@ -1,6 +1,5 @@
 /* eslint-disable */
-//import Vue from "vue";
-import Vue from "vue/dist/vue.esm.js";
+import api from "@/api/api";
 import { HATMediaJsPlugin } from "../../../static/jsplugin/HATMediaJsPlugin-1.0.0.js";
 
 const ERROR_STREAM_TRANS = 1001; // 码流传输过程异常
@@ -59,18 +58,18 @@ class HATPlugin_C {
         (s = ua.match(/rv:([\d.]+)\) like gecko/))
             ? (Sys.ie = s[1])
             : (s = ua.match(/msie ([\d\.]+)/))
-                ? (Sys.ie = s[1])
-                : (s = ua.match(/edge\/([\d\.]+)/))
-                    ? (Sys.edge = s[1])
-                    : (s = ua.match(/firefox\/([\d\.]+)/))
-                        ? (Sys.firefox = s[1])
-                        : (s = ua.match(/(?:opera|opr).([\d\.]+)/))
-                            ? (Sys.opera = s[1])
-                            : (s = ua.match(/chrome\/([\d\.]+)/))
-                                ? (Sys.chrome = s[1])
-                                : (s = ua.match(/version\/([\d\.]+).*safari/))
-                                    ? (Sys.safari = s[1])
-                                    : 0;
+              ? (Sys.ie = s[1])
+              : (s = ua.match(/edge\/([\d\.]+)/))
+                ? (Sys.edge = s[1])
+                : (s = ua.match(/firefox\/([\d\.]+)/))
+                  ? (Sys.firefox = s[1])
+                  : (s = ua.match(/(?:opera|opr).([\d\.]+)/))
+                    ? (Sys.opera = s[1])
+                    : (s = ua.match(/chrome\/([\d\.]+)/))
+                      ? (Sys.chrome = s[1])
+                      : (s = ua.match(/version\/([\d\.]+).*safari/))
+                        ? (Sys.safari = s[1])
+                        : 0;
         // 根据关系进行判断
         if (Sys.ie) return "IE: " + Sys.ie;
         if (Sys.edge) return "EDGE: " + Sys.edge;
@@ -124,16 +123,16 @@ class HATPlugin_C {
     }
     initCallBack() {
         this.callback = {
-            mouseEvent() { },
-            loadEventHandler() { },
-            windowEventSelect() { },
-            windowEventOver() { },
-            windowEventOut() { },
-            windowEventUp() { },
-            windowFullCcreenChange() { },
-            firstFrameDisplay() { },
-            performanceLack() { },
-            zoomEventResponse() { },
+            mouseEvent() {},
+            loadEventHandler() {},
+            windowEventSelect() {},
+            windowEventOver() {},
+            windowEventOut() {},
+            windowEventUp() {},
+            windowFullCcreenChange() {},
+            firstFrameDisplay() {},
+            performanceLack() {},
+            zoomEventResponse() {},
             pluginErrorHandler: async (iWndIndex, iErrorCode) => {
                 // const control = this.controlList[iWndIndex];
                 // switch (iErrorCode) {
@@ -219,8 +218,7 @@ class HATPlugin_C {
     }
     getPreviewUrl(params) {
         return new Promise((resolve, reject) => {
-            Vue.prototype.$api
-                .getPreviewUrl(params)
+            api.getPreviewUrl(params)
                 .then((res) => {
                     if (res.success) {
                         resolve(res.data);
@@ -235,8 +233,7 @@ class HATPlugin_C {
     }
     getPlayBackUrl(params) {
         return new Promise((resolve, reject) => {
-            Vue.prototype.$api
-                .getPlayBackUrl(params)
+            api.getPlayBackUrl(params)
                 .then((res) => {
                     if (res.success) {
                         resolve(res.data);
@@ -255,16 +252,14 @@ class HATPlugin_C {
     play(playParams) {
         const { url, channel, szStartTime, szStopTime } = playParams;
         try {
-
             const res = this.playControl.HATJS_Play(
                 url,
                 {
                     playURL: url,
                 },
-                0
+                0,
             );
             return Promise.resolve(res);
-
         } catch (e) {
             console.error(e);
             return Promise.reject("播放失败");
@@ -359,7 +354,6 @@ class HATPlugin_C {
     }
     clearRegion() {
         this.playControl.HATJS_ClearRegion();
-
     }
 }
 export default HATPlugin_C;

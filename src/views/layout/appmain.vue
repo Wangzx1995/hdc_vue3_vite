@@ -28,10 +28,7 @@
                     {{ $t("appmain.talkAboutItNextTime") }}
                 </span>
             </div>
-            <div
-                class="wenjuan"
-                slot="reference"
-            >
+            <div class="wenjuan" slot="reference">
                 <!-- @click="getQuestionnaireSurveyUrl" -->
                 <i class="iconfont icon-gift-full"></i>
             </div>
@@ -62,27 +59,11 @@
             </div>
         </el-popover> -->
 
-        <transition name="fade" mode="out-in">
-            <router-view
-                :key="key"
-                class="main-content"
-                ref="components"
-                v-if="isShow"
-            ></router-view>
-            <!-- <keep-alive>
-                <router-view
-                    v-if="$route.meta.keepAlive"
-                    class="main-content"
-                    ref="components"
-                ></router-view>
-                <router-view
-                    v-if="!$route.meta.keepAlive"
-                    :key="key"
-                    class="main-content"
-                    ref="components"
-                ></router-view>
-            </keep-alive> -->
-        </transition>
+        <router-view v-slot="{ Component }" :key="key" v-if="isShow">
+            <transition name="fade" mode="out-in">
+                <component :is="Component" class="main-content" />
+            </transition>
+        </router-view>
     </section>
 </template>
 
@@ -117,9 +98,7 @@ export default {
     },
     computed: {
         key() {
-            return this.$route.name !== undefined
-                ? this.$route.name + +new Date()
-                : this.$route + +new Date();
+            return this.$route.fullPath;
         },
     },
     methods: {
@@ -183,7 +162,7 @@ export default {
                     if (wsData.type === 1) {
                         this.$store.commit(
                             "getTaskRemind",
-                            JSON.parse(wsData.message)
+                            JSON.parse(wsData.message),
                         );
                     } else if (wsData.type === 0) {
                         this.playAudio();

@@ -55,7 +55,7 @@
                                     prop="time"
                                     :label="
                                         $t(
-                                            'equipmentInspection.selfInspectionReportingTimePeriod'
+                                            'equipmentInspection.selfInspectionReportingTimePeriod',
                                         )
                                     "
                                 >
@@ -141,21 +141,21 @@
                                                 <!-- 车牌号异常 -->
                                                 {{
                                                     $t(
-                                                        "deviceManage.abnormalLicensePlateNumber"
+                                                        "deviceManage.abnormalLicensePlateNumber",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformPlateNum"
+                                                        "carManage.platformPlateNum",
                                                     )
                                                 }}：{{ scope.row.plateNum }}
                                             </div>
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.devicePlateNum"
+                                                        "carManage.devicePlateNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -163,7 +163,7 @@
                                                 @click="
                                                     toChange(
                                                         1,
-                                                        scope.row.plateNum
+                                                        scope.row.plateNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -198,7 +198,7 @@
                                 prop="selfCheckUpdateTime"
                                 :label="
                                     $t(
-                                        'equipmentInspection.latestSelfCheckTime'
+                                        'equipmentInspection.latestSelfCheckTime',
                                     )
                                 "
                                 width="170px"
@@ -250,14 +250,14 @@
                                             <p class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.deviceSerialNumAbnormal"
+                                                        "carManage.deviceSerialNumAbnormal",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformDeviceSerialNum"
+                                                        "carManage.platformDeviceSerialNum",
                                                     )
                                                 }}：{{
                                                     scope.row.deviceSerialNum
@@ -266,7 +266,7 @@
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.deviceDeviceSerialNum"
+                                                        "carManage.deviceDeviceSerialNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -275,7 +275,7 @@
                                                     toChange(
                                                         2,
                                                         scope.row
-                                                            .deviceSerialNum
+                                                            .deviceSerialNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -310,7 +310,7 @@
                                         @click="
                                             showDetails(
                                                 scope.row.id,
-                                                scope.row.idString
+                                                scope.row.idString,
                                             )
                                         "
                                         v-btn="
@@ -326,7 +326,7 @@
                                         @click="
                                             showHistory(
                                                 scope.row.deviceCode,
-                                                scope.row.idString
+                                                scope.row.idString,
                                             )
                                         "
                                         v-btn="
@@ -420,7 +420,7 @@
                                     show-overflow-tooltip
                                     :label="
                                         $t(
-                                            'equipmentInspection.selfInspectionItems'
+                                            'equipmentInspection.selfInspectionItems',
                                         )
                                     "
                                     width="140"
@@ -464,7 +464,7 @@
                                     show-overflow-tooltip
                                     :label="
                                         $t(
-                                            'equipmentInspection.selfInspectionItems'
+                                            'equipmentInspection.selfInspectionItems',
                                         )
                                     "
                                     width="140"
@@ -508,7 +508,7 @@
                                     show-overflow-tooltip
                                     :label="
                                         $t(
-                                            'equipmentInspection.selfInspectionItems'
+                                            'equipmentInspection.selfInspectionItems',
                                         )
                                     "
                                     width="140"
@@ -551,7 +551,7 @@
 import TimeUtil from "@/utils/time";
 import timeCom from "@/components/timeCom";
 import AttendenceRecord from "@/components/AttendenceRecord";
-require("@/assets/style/base.scss");
+import "@/assets/style/base.scss";
 export default {
     name: "equipment",
     components: { TimeUtil, timeCom, AttendenceRecord },
@@ -823,7 +823,7 @@ export default {
                         let params = Object.assign(
                             {},
                             this.params,
-                            this.searchForm
+                            this.searchForm,
                         );
                         delete params.selectObj;
                         delete params.time;
@@ -833,7 +833,7 @@ export default {
                                 if (res.success == true) {
                                     res.data.results.forEach((item) => {
                                         item.createTime = TimeUtil.parseTime(
-                                            item.createTime
+                                            item.createTime,
                                         );
                                     });
                                     this.searchLoading = false;
@@ -1223,10 +1223,10 @@ export default {
                             ? this.$store.state.tree.searchForm
                             : this.searchForm;
                         this.searchForm.time[0] = TimeUtil.getDate(
-                            this.searchForm.time[0]
+                            this.searchForm.time[0],
                         );
                         this.searchForm.time[1] = TimeUtil.getDate(
-                            this.searchForm.time[1]
+                            this.searchForm.time[1],
                         );
                         // this.currentNode = res.data[0]
                         this.$nextTick(() => {
@@ -1234,7 +1234,7 @@ export default {
                                 this.expandedList.push(m.id);
                             });
                             this.$refs["tree"].setCurrentKey(
-                                this.params.organizeId
+                                this.params.organizeId,
                             );
                         });
                         this.search();
@@ -1297,7 +1297,7 @@ export default {
                                         ) {
                                             var iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -1308,18 +1308,18 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(
-                            this.$t("common.exportFailed") + ":" + res.msg
+                            this.$t("common.exportFailed") + ":" + res.msg,
                         );
                         this.loadingAll = false;
                     }

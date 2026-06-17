@@ -149,6 +149,7 @@
 </template>
 <script>
 import upgradeProgress from "@/components/upgradeProgress";
+import emptyImage from "@/assets/images/icon_empty.png";
 export default {
     name: "",
     components: { upgradeProgress },
@@ -160,7 +161,7 @@ export default {
     },
     data() {
         return {
-            emptyImage: require("@/assets/images/icon_empty.png"),
+            emptyImage,
             upgradeStateList: {
                 0: { name: "未开始", color: "#cbcbcb" },
                 1: { name: "进行中", color: "#36CBCB" },
@@ -204,7 +205,7 @@ export default {
                         content: "等待升级",
                         timestamp: val.createTime
                             ? this.$moment(val.createTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color: "#52C41A",
@@ -213,7 +214,7 @@ export default {
                         content: "下发命令",
                         timestamp: val.sendCmdTime
                             ? this.$moment(val.sendCmdTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color: val.sendCmdTime ? "#52C41A" : "#e4e7ed",
@@ -222,7 +223,7 @@ export default {
                         content: "升级成功",
                         timestamp: val.upgradeEndTime
                             ? this.$moment(val.upgradeEndTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color:
@@ -236,7 +237,7 @@ export default {
                         content: "固件烧写完成",
                         timestamp: val.upgradeResultCmdTime
                             ? this.$moment(val.upgradeResultCmdTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color: val.upgradeResultCmdTime ? "#52C41A" : "#e4e7ed",
@@ -248,7 +249,7 @@ export default {
                         content: "等待升级",
                         timestamp: val.createTime
                             ? this.$moment(val.createTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color: "#52C41A",
@@ -258,7 +259,7 @@ export default {
                     this.activities.push({
                         content: "下发命令",
                         timestamp: this.$moment(val.sendCmdTime).format(
-                            "YYYY-MM-DD HH:mm:ss"
+                            "YYYY-MM-DD HH:mm:ss",
                         ),
                         color: "#52C41A",
                     });
@@ -267,7 +268,7 @@ export default {
                     this.activities.push({
                         content: "固件烧写完成",
                         timestamp: this.$moment(
-                            val.upgradeResultCmdTime
+                            val.upgradeResultCmdTime,
                         ).format("YYYY-MM-DD HH:mm:ss"),
                         color: "#52C41A",
                     });
@@ -282,7 +283,7 @@ export default {
                     }`,
                     timestamp: val.upgradeEndTime
                         ? this.$moment(val.upgradeEndTime).format(
-                              "YYYY-MM-DD HH:mm:ss"
+                              "YYYY-MM-DD HH:mm:ss",
                           )
                         : "",
                     color: this.upgradeStateList[val.upgradeState].color,
@@ -307,13 +308,13 @@ export default {
                         this.faultRecordInfo.forEach((k) => {
                             k.faultSolution = k.faultSolution.replace(
                                 /；/g,
-                                "；<br/>"
+                                "；<br/>",
                             );
                         });
                         this.faultRecordStatus = !this.faultRecordInfo.find(
                             (i) => {
                                 return i.maintenanceStatus == 1;
-                            }
+                            },
                         );
                     } else {
                         this.$message.error(res.msg);
@@ -331,7 +332,7 @@ export default {
                         .subtract(1, "days")
                         .format("YYYY-MM-DD HH:mm:ss"),
                     anomalyTimeEnd: this.$moment().format(
-                        "YYYY-MM-DD HH:mm:ss"
+                        "YYYY-MM-DD HH:mm:ss",
                     ),
                 })
                 .then((res) => {
@@ -394,7 +395,7 @@ export default {
                 {},
                 this.taskForm,
                 { cars: cars },
-                { organizeId: this.detailData.organizeId }
+                { organizeId: this.detailData.organizeId },
             );
             this.taskVisible = true;
         },
@@ -435,7 +436,7 @@ export default {
         goAnomalyDetails() {
             sessionStorage.setItem(
                 "anomalyDetailsItem",
-                JSON.stringify(this.detailData)
+                JSON.stringify(this.detailData),
             );
             let { href } = this.$router.resolve({
                 path: "/maintenanceCenter/anomalyDetails",
@@ -446,7 +447,7 @@ export default {
         goDeviceUpgrade() {
             sessionStorage.setItem(
                 "deviceUpgradeItem",
-                JSON.stringify(this.detailData)
+                JSON.stringify(this.detailData),
             );
             let { href } = this.$router.resolve({
                 path: "/maintenanceCenter/deviceUpgrade",

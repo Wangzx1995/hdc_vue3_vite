@@ -203,10 +203,10 @@
                             <div
                                 v-if="item.showInspectionRecords[0].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -234,10 +234,10 @@
                             <div
                                 v-if="item.showInspectionRecords[1].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -265,10 +265,10 @@
                             <div
                                 v-if="item.showInspectionRecords[2].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -296,10 +296,10 @@
                             <div
                                 v-if="item.showInspectionRecords[3].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -328,10 +328,10 @@
                             <div
                                 v-if="item.showInspectionRecords[4].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -359,10 +359,10 @@
                             <div
                                 v-if="item.showInspectionRecords[5].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -390,10 +390,10 @@
                             <div
                                 v-if="item.showInspectionRecords[6].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line lineBlue"
@@ -421,10 +421,10 @@
                             <div
                                 v-if="item.showInspectionRecords[7].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line lineBlue"
@@ -452,10 +452,10 @@
                             <div
                                 v-if="item.showInspectionRecords[8].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line lineBlue"
@@ -483,10 +483,10 @@
                             <div
                                 v-if="item.showInspectionRecords[9].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -514,10 +514,10 @@
                             <div
                                 v-if="item.showInspectionRecords[10].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -545,10 +545,10 @@
                             <div
                                 v-if="item.showInspectionRecords[14].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -576,10 +576,10 @@
                             <div
                                 v-if="item.showInspectionRecords[15].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -607,10 +607,10 @@
                             <div
                                 v-if="item.showInspectionRecords[16].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -638,10 +638,10 @@
                             <div
                                 v-if="item.showInspectionRecords[11].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -667,10 +667,10 @@
                             <div
                                 v-if="item.showInspectionRecords[17].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -698,10 +698,10 @@
                             <div
                                 v-if="item.showInspectionRecords[12].length"
                                 :style="`height:${getFragmentHeight(
-                                    item_
+                                    item_,
                                 )}px; top:${getTop(
                                     item_.showStartTime,
-                                    item.date
+                                    item.date,
                                 )}px`"
                                 slot="reference"
                                 class="line"
@@ -717,7 +717,7 @@
 <script>
 import TimeUtil from "@/utils/time";
 // import func from 'vue-editor-bridge';
-require("@/assets/style/base.scss");
+import "@/assets/style/base.scss";
 export default {
     name: "conditionMonitoringPatrol",
     props: {
@@ -853,7 +853,7 @@ export default {
             };
             this.getdateList(
                 TimeUtil.getDate(this.time[0]),
-                TimeUtil.getDate(this.time[1])
+                TimeUtil.getDate(this.time[1]),
             );
             this.$api.getInspectionRecordByDevice(params).then((res) => {
                 if (res.success) {
@@ -917,7 +917,7 @@ export default {
                                             if (res1.data == true) {
                                                 let iframe =
                                                     document.createElement(
-                                                        "iframe"
+                                                        "iframe",
                                                     );
                                                 iframe.src =
                                                     (process.env.BASE_API == "/"
@@ -928,10 +928,10 @@ export default {
                                                     fileName;
                                                 iframe.style.display = "none";
                                                 document.body.appendChild(
-                                                    iframe
+                                                    iframe,
                                                 );
                                                 window.clearInterval(
-                                                    _this.getExportResultInterval
+                                                    _this.getExportResultInterval,
                                                 );
                                                 _this.getExportResultInterval =
                                                     "";
@@ -940,19 +940,19 @@ export default {
                                         } else {
                                             _this.loadingAll = false;
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                         let gpsParams = Object.assign(
                             {},
                             this.params,
                             this.searchForm,
-                            this.param
+                            this.param,
                         );
                         _this.$api
                             .equipmentInspectionExportGps(gpsParams)
@@ -970,7 +970,7 @@ export default {
                                                         ) {
                                                             let iframe_ =
                                                                 document.createElement(
-                                                                    "iframe"
+                                                                    "iframe",
                                                                 );
                                                             iframe_.src =
                                                                 (process.env
@@ -985,10 +985,10 @@ export default {
                                                             iframe_.style.display =
                                                                 "none";
                                                             document.body.appendChild(
-                                                                iframe_
+                                                                iframe_,
                                                             );
                                                             window.clearInterval(
-                                                                _this.getExportResultInterval2_
+                                                                _this.getExportResultInterval2_,
                                                             );
                                                             _this.getExportResultInterval2_ =
                                                                 "";
@@ -996,11 +996,11 @@ export default {
                                                         }
                                                     } else {
                                                         _this.$message.error(
-                                                            "导出GPS失败"
+                                                            "导出GPS失败",
                                                         );
                                                         _this.loadingAll = false;
                                                         window.clearInterval(
-                                                            _this.getExportResultInterval2_
+                                                            _this.getExportResultInterval2_,
                                                         );
                                                         _this.getExportResultInterval2_ =
                                                             "";
@@ -1018,7 +1018,7 @@ export default {
                             {},
                             this.params,
                             this.searchForm,
-                            this.param
+                            this.param,
                         );
                         let _this = this;
                         _this.$api
@@ -1037,7 +1037,7 @@ export default {
                                                         ) {
                                                             let iframe_ =
                                                                 document.createElement(
-                                                                    "iframe"
+                                                                    "iframe",
                                                                 );
                                                             iframe_.src =
                                                                 (process.env
@@ -1052,10 +1052,10 @@ export default {
                                                             iframe_.style.display =
                                                                 "none";
                                                             document.body.appendChild(
-                                                                iframe_
+                                                                iframe_,
                                                             );
                                                             window.clearInterval(
-                                                                _this.getExportResultInterval_
+                                                                _this.getExportResultInterval_,
                                                             );
                                                             _this.getExportResultInterval_ =
                                                                 "";
@@ -1063,11 +1063,11 @@ export default {
                                                         }
                                                     } else {
                                                         _this.$message.error(
-                                                            "导出GPS失败"
+                                                            "导出GPS失败",
                                                         );
                                                         _this.loadingAll = false;
                                                         window.clearInterval(
-                                                            _this.getExportResultInterval_
+                                                            _this.getExportResultInterval_,
                                                         );
                                                         _this.getExportResultInterval_ =
                                                             "";
@@ -1119,7 +1119,7 @@ export default {
     created() {
         this.getdateList(
             TimeUtil.getDate(this.time[0]),
-            TimeUtil.getDate(this.time[1])
+            TimeUtil.getDate(this.time[1]),
         );
         this.getInspectionRecordByDevice();
         this.setTableHeight();

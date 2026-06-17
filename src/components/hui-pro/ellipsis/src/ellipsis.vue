@@ -39,9 +39,7 @@ export default {
       this.labelTitle =
         t.clientWidth < t.scrollWidth ? this.title || t.innerText : '';
       // 调用传入的 mouseenter 事件
-      this.$listeners &&
-        this.$listeners.mouseenter &&
-        this.$listeners.mouseenter(e);
+      this.$attrs.onMouseenter && this.$attrs.onMouseenter(e);
     },
 
     /**
@@ -81,9 +79,13 @@ export default {
           width: this.nonFull ? 'auto' : '',
           maxWidth: this.nonFull ? '100%' : ''
         },
-        on: Object.assign({}, this.$listeners, {
-          mouseenter: this.hover
-        })
+        on: (() => {
+          const listeners = {};
+          for (const key in this.$attrs) {
+            if (key.startsWith('on')) listeners[key] = this.$attrs[key];
+          }
+          return Object.assign({}, listeners, { onMouseenter: this.hover });
+        })()
       },
       this.$slots.default
     );

@@ -178,7 +178,7 @@ export default {
                 cx: event.clientX,
                 cy: event.clientY,
             };
-            this.$bas.$emit("downloadEvent", obj);
+            this.$bas.emit("downloadEvent", obj);
         },
         exportExcel($event) {
             let param = {

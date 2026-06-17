@@ -11,13 +11,13 @@
 <script>
 import { Headbar, AppMain } from "@/views/layout";
 import { mapGetters } from "vuex";
-    import DownloadLead from '@/components/downloadLead';
-    export default {
+import DownloadLead from "@/components/downloadLead.vue";
+export default {
     name: "layout",
     components: {
         Headbar,
         AppMain,
-        DownloadLead
+        DownloadLead,
     },
     computed: {
         ...mapGetters(["current_page"]),

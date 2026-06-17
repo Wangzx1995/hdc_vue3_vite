@@ -1523,7 +1523,7 @@
 
 <script>
 //import Vue from "vue";
-import Vue from "vue/dist/vue.esm.js";
+import Vue from "@/utils/vue-compat";
 import protocolConfiguration from "@/views/protocolConfiguration/index.vue";
 
 /**
@@ -3204,7 +3204,7 @@ export default {
             this.canvasResize();
         });
     },
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener("resize", this.canvasResize);
     },
     created() {

@@ -1,11 +1,16 @@
 import api from "@/api/api";
 import utils from "@/utils/base";
 
-import { asyncRouterMap, constantRouterMap } from "@/router/index";
-const _import = require("../../router/_import_" + process.env.NODE_ENV);
-// const _import = require("../../router/_import");
-import Layout from "../../views/layout/layout";
-import emptyCom from "../../views/layout/emptyCom";
+import { constantRouterMap } from "@/router/constants";
+const modules = import.meta.glob("../../views/**/*.vue");
+const _import = (file) => {
+    if (!file) return;
+    const path = `../../views/${file}.vue`;
+    if (modules[path]) {
+        return modules[path];
+    }
+    return modules["../../views/layout/noPage.vue"];
+};
 const permission = {
     state: {
         routers: constantRouterMap,
@@ -32,13 +37,18 @@ const permission = {
             });
         },
         GenerateRoutes({ commit }) {
+            // 生成全局唯一的路由 name，避免父子/兄弟同名导致 vue-router 4 报错
+            const genUniqueName = (name, suffix) => {
+                if (!name) return undefined;
+                return suffix ? `${name}-${suffix}` : name;
+            };
             return new Promise((resolve, reject) => {
                 api.getUserMenus()
                     .then((response) => {
                         const accessedRoutersList = [];
                         commit(
                             "SET_ROUTERSMENUS",
-                            utils.toFlatArray(response.data)
+                            utils.toFlatArray(response.data),
                         );
                         commit(
                             "SET_BUTTONPERMISSIONS",
@@ -47,14 +57,18 @@ const permission = {
                                 .filter((item) => item.type === 3)
                                 .reduce((prev, cur) => {
                                     return prev.concat(cur["path"]);
-                                }, [])
+                                }, []),
                         );
                         response.data.forEach((item, index) => {
-                            item.component = Layout;
+                            item.component = _import("layout/layout");
                             accessedRoutersList.push({
                                 component: _import("layout/layout"),
                                 path: item.path,
-                                name: item.name,
+                                name: genUniqueName(
+                                    item.name,
+                                    item.id != null ? item.id : item.path,
+                                ),
+                                meta: { title: item.name },
                                 redirect: item.redirect,
                                 children: [],
                             });
@@ -63,7 +77,11 @@ const permission = {
                                     accessedRoutersList[index].children.push({
                                         component: _import("layout/emptyCom"),
                                         path: com.path,
-                                        name: com.name,
+                                        name: genUniqueName(
+                                            com.name,
+                                            com.id != null ? com.id : com.path,
+                                        ),
+                                        meta: { title: com.name },
                                         redirect: com.redirect,
                                         children: [],
                                     });
@@ -73,14 +91,20 @@ const permission = {
                                                 k.component.charAt(0) == "/"
                                                     ? k.component.replace(
                                                           /^./,
-                                                          ""
+                                                          "",
                                                       )
                                                     : k.component;
                                             accessedRoutersList[index].children[
                                                 i
                                             ].children.push({
                                                 component: _import(a),
-                                                name: k.name,
+                                                name: genUniqueName(
+                                                    k.name,
+                                                    k.id != null
+                                                        ? k.id
+                                                        : k.path,
+                                                ),
+                                                meta: { title: k.name },
                                                 path: item.path + "/" + k.path,
                                             });
                                         });
@@ -107,7 +131,7 @@ const permission = {
                         //     });
                         // }
                         accessedRoutersList.push({
-                            path: "*",
+                            path: "/:pathMatch(.*)*",
                             redirect: "/404",
                             hidden: true,
                         });
@@ -123,7 +147,7 @@ const permission = {
                                 {
                                     path: "/manageCenter/deviceLoadTaskManage/deviceLoadTaskDetail",
                                     component: _import(
-                                        "manageCenter/deviceLoadTaskDetail"
+                                        "manageCenter/deviceLoadTaskDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "" },
@@ -132,7 +156,7 @@ const permission = {
                                 {
                                     path: "/manageCenter/deviceLoadReportVerify/deviceLoadReportVerifyDetail",
                                     component: _import(
-                                        "manageCenter/deviceLoadReportVerifyDetail"
+                                        "manageCenter/deviceLoadReportVerifyDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "审核" },
@@ -141,7 +165,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceUpgrade/firmware",
                                     component: _import(
-                                        "maintenanceCenter/firmware"
+                                        "maintenanceCenter/firmware",
                                     ),
                                     hidden: true,
                                     meta: { title: "设备固件管理" },
@@ -150,7 +174,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/firmware/minorVersion",
                                     component: _import(
-                                        "maintenanceCenter/minorVersion"
+                                        "maintenanceCenter/minorVersion",
                                     ),
                                     hidden: true,
                                     meta: { title: "小版本管理" },
@@ -159,7 +183,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceUpgrade/firmware/minorVersion",
                                     component: _import(
-                                        "maintenanceCenter/minorVersion"
+                                        "maintenanceCenter/minorVersion",
                                     ),
                                     hidden: true,
                                     meta: { title: "小版本管理" },
@@ -168,7 +192,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceUpgrade/deviceUpgradeTask",
                                     component: _import(
-                                        "maintenanceCenter/deviceUpgradeTask"
+                                        "maintenanceCenter/deviceUpgradeTask",
                                     ),
                                     hidden: true,
                                     meta: { title: "" },
@@ -176,7 +200,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceUpgrade/deviceUpgradeTask/deviceUpgradeTaskDetail",
                                     component: _import(
-                                        "maintenanceCenter/deviceUpgradeTaskDetail"
+                                        "maintenanceCenter/deviceUpgradeTaskDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "详情" },
@@ -184,14 +208,14 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceUpgrade/deviceUpgradeNoComplete",
                                     component: _import(
-                                        "maintenanceCenter/deviceUpgradeNoComplete"
+                                        "maintenanceCenter/deviceUpgradeNoComplete",
                                     ),
                                     hidden: true,
                                 },
                                 {
                                     path: "/maintenanceCenter/deviceUpgrade/upgrade",
                                     component: _import(
-                                        "maintenanceCenter/upgrade"
+                                        "maintenanceCenter/upgrade",
                                     ),
                                     hidden: true,
                                     meta: { title: "升级" },
@@ -199,7 +223,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceUpgrade/history",
                                     component: _import(
-                                        "maintenanceCenter/history"
+                                        "maintenanceCenter/history",
                                     ),
                                     hidden: true,
                                     meta: { title: "升级历史" },
@@ -208,7 +232,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/maintainRecord/maintainRecordDetail",
                                     component: _import(
-                                        "maintenanceCenter/maintainRecordDetail"
+                                        "maintenanceCenter/maintainRecordDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "详情" },
@@ -217,7 +241,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configuration",
                                     component: _import(
-                                        "maintenanceCenter/configuration"
+                                        "maintenanceCenter/configuration",
                                     ),
                                     hidden: true,
                                     meta: { title: "配置" },
@@ -225,7 +249,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configurationDetail/agreementIndex",
                                     component: _import(
-                                        "maintenanceCenter/configurationDetail/agreementIndex"
+                                        "maintenanceCenter/configurationDetail/agreementIndex",
                                     ),
                                     hidden: true,
                                     meta: { title: "协议配置" },
@@ -233,7 +257,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configurationDetail/bubiao",
                                     component: _import(
-                                        "maintenanceCenter/configurationDetail/agreementIndex"
+                                        "maintenanceCenter/configurationDetail/agreementIndex",
                                     ),
                                     hidden: true,
                                     meta: { title: "部标配置" },
@@ -241,7 +265,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configurationDetail/fileIndex",
                                     component: _import(
-                                        "maintenanceCenter/configurationDetail/fileIndex"
+                                        "maintenanceCenter/configurationDetail/fileIndex",
                                     ),
                                     hidden: true,
                                     meta: { title: "文件配置" },
@@ -249,7 +273,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configurationDetail/privateProtocol",
                                     component: _import(
-                                        "maintenanceCenter/configurationDetail/privateProtocol"
+                                        "maintenanceCenter/configurationDetail/privateProtocol",
                                     ),
                                     hidden: true,
                                     meta: { title: "协议配置" },
@@ -258,7 +282,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/configurationTemplate/editTemplate",
                                     component: _import(
-                                        "maintenanceCenter/editTemplate"
+                                        "maintenanceCenter/editTemplate",
                                     ),
                                     hidden: true,
                                     meta: { title: "编辑" },
@@ -266,7 +290,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/configurationTemplate/protocolTemplate",
                                     component: _import(
-                                        "protocolConfiguration/components/protocolTemplate"
+                                        "protocolConfiguration/components/protocolTemplate",
                                     ),
                                     hidden: true,
                                     meta: { title: "编辑" },
@@ -275,7 +299,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configurationView",
                                     component: _import(
-                                        "maintenanceCenter/configurationView"
+                                        "maintenanceCenter/configurationView",
                                     ),
                                     hidden: true,
                                     meta: { title: "配置查看" },
@@ -283,7 +307,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configurationTask",
                                     component: _import(
-                                        "maintenanceCenter/configurationTask"
+                                        "maintenanceCenter/configurationTask",
                                     ),
                                     hidden: true,
                                     meta: { title: "我的配置任务" },
@@ -291,7 +315,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configurationTask/configurationTaskDetailNew",
                                     component: _import(
-                                        "maintenanceCenter/configurationTaskDetailNew"
+                                        "maintenanceCenter/configurationTaskDetailNew",
                                     ),
                                     hidden: true,
                                     meta: { title: "详情" },
@@ -299,7 +323,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configurationTask/configurationTaskDetailNew/editTemplate",
                                     component: _import(
-                                        "maintenanceCenter/editTemplate"
+                                        "maintenanceCenter/editTemplate",
                                     ),
                                     hidden: true,
                                     meta: { title: "详情" },
@@ -307,7 +331,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/showHistoryView",
                                     component: _import(
-                                        "maintenanceCenter/showHistoryView"
+                                        "maintenanceCenter/showHistoryView",
                                     ),
                                     hidden: true,
                                     meta: { title: "历史" },
@@ -315,7 +339,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/noConfiguration",
                                     component: _import(
-                                        "maintenanceCenter/noConfiguration"
+                                        "maintenanceCenter/noConfiguration",
                                     ),
                                     hidden: true,
                                     meta: { title: "未完成配置" },
@@ -323,7 +347,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configurationView/configurationTaskDetail",
                                     component: _import(
-                                        "maintenanceCenter/configurationTaskDetail"
+                                        "maintenanceCenter/configurationTaskDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "详情" },
@@ -331,7 +355,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configurationView/configurationTTSDetail",
                                     component: _import(
-                                        "maintenanceCenter/configurationTTSDetail"
+                                        "maintenanceCenter/configurationTTSDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "详情" },
@@ -339,7 +363,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configuration/editTemplate",
                                     component: _import(
-                                        "maintenanceCenter/editTemplate"
+                                        "maintenanceCenter/editTemplate",
                                     ),
                                     hidden: true,
                                     meta: { title: "编辑" },
@@ -347,7 +371,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configuration/configurationTemplate",
                                     component: _import(
-                                        "maintenanceCenter/configurationTemplate"
+                                        "maintenanceCenter/configurationTemplate",
                                     ),
                                     hidden: true,
                                     meta: { title: "配置模板管理" },
@@ -355,7 +379,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configurationTemplate/editTemplate",
                                     component: _import(
-                                        "maintenanceCenter/editTemplate"
+                                        "maintenanceCenter/editTemplate",
                                     ),
                                     hidden: true,
                                     meta: { title: "编辑" },
@@ -363,7 +387,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/configurationTemplate/",
                                     component: _import(
-                                        "maintenanceCenter/configurationTemplate"
+                                        "maintenanceCenter/configurationTemplate",
                                     ),
                                     hidden: true,
                                     meta: { title: "" },
@@ -372,7 +396,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/ttsConfiguration/ttsConfigurationDetail",
                                     component: _import(
-                                        "maintenanceCenter/ttsConfigurationDetail"
+                                        "maintenanceCenter/ttsConfigurationDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "配置" },
@@ -380,7 +404,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/ttsConfiguration/ttsConfigurationView",
                                     component: _import(
-                                        "maintenanceCenter/ttsConfigurationView"
+                                        "maintenanceCenter/ttsConfigurationView",
                                     ),
                                     hidden: true,
                                     meta: { title: "配置查看" },
@@ -388,7 +412,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/ttsConfiguration/ttsConfigurationCustomize",
                                     component: _import(
-                                        "maintenanceCenter/ttsConfigurationCustomize"
+                                        "maintenanceCenter/ttsConfigurationCustomize",
                                     ),
                                     hidden: true,
                                     meta: { title: "自定义配置" },
@@ -396,21 +420,21 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/ttsConfiguration/ttsConfigurationTask",
                                     component: _import(
-                                        "maintenanceCenter/ttsConfigurationTask"
+                                        "maintenanceCenter/ttsConfigurationTask",
                                     ),
                                     hidden: true,
                                 },
                                 {
                                     path: "/maintenanceCenter/ttsConfiguration/ttsConfigurationTask/ttsConfigurationTaskDetail",
                                     component: _import(
-                                        "maintenanceCenter/ttsConfigurationTaskDetail"
+                                        "maintenanceCenter/ttsConfigurationTaskDetail",
                                     ),
                                     hidden: true,
                                 },
                                 {
                                     path: "/maintenanceCenter/ttsConfiguration/TTSshowHistoryView",
                                     component: _import(
-                                        "maintenanceCenter/TTSshowHistoryView"
+                                        "maintenanceCenter/TTSshowHistoryView",
                                     ),
                                     hidden: true,
                                     meta: { title: "历史" },
@@ -418,7 +442,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/ttsConfiguration/ttsConfigurationNoView",
                                     component: _import(
-                                        "maintenanceCenter/ttsConfigurationNoView"
+                                        "maintenanceCenter/ttsConfigurationNoView",
                                     ),
                                     hidden: true,
                                     meta: { title: "未完成配置" },
@@ -427,7 +451,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/antIrotationNet/antIrotationNetTemplate",
                                     component: _import(
-                                        "maintenanceCenter/antIrotationNetTemplate"
+                                        "maintenanceCenter/antIrotationNetTemplate",
                                     ),
                                     hidden: true,
                                     meta: { title: "防转网模板管理" },
@@ -436,7 +460,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/equipmentInspection/equipmentInspectionHistory",
                                     component: _import(
-                                        "maintenanceCenter/equipmentInspectionHistory"
+                                        "maintenanceCenter/equipmentInspectionHistory",
                                     ),
                                     hidden: true,
                                     meta: { title: "历史" },
@@ -445,7 +469,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/handleFault/handleFaultDetail",
                                     component: _import(
-                                        "maintenanceCenter/handleFaultDetail"
+                                        "maintenanceCenter/handleFaultDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "详情" },
@@ -454,7 +478,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/faultSubsidiary/faultAccount",
                                     component: _import(
-                                        "maintenanceCenter/faultAccount"
+                                        "maintenanceCenter/faultAccount",
                                     ),
                                     hidden: true,
                                     meta: { title: "详情" },
@@ -463,7 +487,7 @@ const permission = {
                                 {
                                     path: "/reportCenter/qualifiedProbability/carDetail",
                                     component: _import(
-                                        "reportCenter/qualifiedProbabilityCarDetail"
+                                        "reportCenter/qualifiedProbabilityCarDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "轨迹回放" },
@@ -472,7 +496,7 @@ const permission = {
                                 {
                                     path: "/reportCenter/vehicleTrackIntegrityRate/carDetail",
                                     component: _import(
-                                        "reportCenter/vehicleTrackIntegrityRateCarDetail"
+                                        "reportCenter/vehicleTrackIntegrityRateCarDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "轨迹回放" },
@@ -481,7 +505,7 @@ const permission = {
                                 {
                                     path: "/reportCenter/groundTrackDrifting/carDetail",
                                     component: _import(
-                                        "reportCenter/groundTrackDriftingCarDetail"
+                                        "reportCenter/groundTrackDriftingCarDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "轨迹回放" },
@@ -489,7 +513,7 @@ const permission = {
                                 {
                                     path: "/reportCenter/groundTrackDrifting/groundTrackDriftingDetail",
                                     component: _import(
-                                        "reportCenter/groundTrackDriftingDetail"
+                                        "reportCenter/groundTrackDriftingDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "轨迹漂移明细" },
@@ -498,7 +522,7 @@ const permission = {
                                 {
                                     path: "/reportCenter/vehicleOnlineRate/detail",
                                     component: _import(
-                                        "reportCenter/vehicleOnlineRateDetail"
+                                        "reportCenter/vehicleOnlineRateDetail",
                                     ),
                                     hidden: true,
                                     meta: { title: "详情" },
@@ -507,7 +531,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/deviceConfiguration/protocolConfiguration",
                                     component: _import(
-                                        "protocolConfiguration/index"
+                                        "protocolConfiguration/index",
                                     ),
                                     hidden: true,
                                     meta: { title: "协议配置" },
@@ -516,7 +540,7 @@ const permission = {
                                 {
                                     path: "/maintenanceCenter/parameterQuery/module",
                                     component: _import(
-                                        "maintenanceCenter/parameterQueryFile/module"
+                                        "maintenanceCenter/parameterQueryFile/module",
                                     ),
                                     hidden: true,
                                 },

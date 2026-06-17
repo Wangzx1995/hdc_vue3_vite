@@ -155,7 +155,7 @@ export default {
     this.$on('plan-hover', this.handleHoverPlan);
   },
 
-  destroyed() {
+  unmounted() {
     // 组件销毁，一并移除绑定的resize事件
     if (this.windowResizeListener)
       off(this.$el, 'resize', this.windowResizeListener);

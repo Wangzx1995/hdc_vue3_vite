@@ -23,7 +23,7 @@
                                             <el-tooltip
                                                 :content="
                                                     $t(
-                                                        'deviceConfiguration.lastTimeDeviceConfiguredWithFile'
+                                                        'deviceConfiguration.lastTimeDeviceConfiguredWithFile',
                                                     )
                                                 "
                                                 placement="top"
@@ -120,10 +120,10 @@
                                                 {{
                                                     getBinFileFromDeviceLoad
                                                         ? $t(
-                                                              "deviceConfiguration.gettingInProgress"
+                                                              "deviceConfiguration.gettingInProgress",
                                                           )
                                                         : $t(
-                                                              "deviceConfiguration.fileIndexText1"
+                                                              "deviceConfiguration.fileIndexText1",
                                                           )
                                                 }}
                                             </el-button>
@@ -131,7 +131,7 @@
                                                 <!-- 未获取到 -->
                                                 {{
                                                     $t(
-                                                        "deviceConfiguration.notObtained"
+                                                        "deviceConfiguration.notObtained",
                                                     )
                                                 }}？</a
                                             >
@@ -216,7 +216,7 @@
                                     <!-- 本机尚未安装Web控件，请先安装，安装完成后刷新当前页面 -->
                                     1）{{
                                         $t(
-                                            "deviceConfiguration.fileConfigText8"
+                                            "deviceConfiguration.fileConfigText8",
                                         )
                                     }}！
                                 </span>
@@ -234,7 +234,7 @@
                                     <!-- 2）本机已安装Web控件，请先启动服务后刷新当前页面！ -->
                                     2）{{
                                         $t(
-                                            "deviceConfiguration.fileConfigText9"
+                                            "deviceConfiguration.fileConfigText9",
                                         )
                                     }}！
                                 </span>
@@ -304,8 +304,8 @@
 </template>
 <script>
 import { WebControl } from "web-control";
-import SaveTemplate from "@/components/coreManage/saveTemplate";
-import EmptyBox from "@/components/coreManage/emptyBox";
+import SaveTemplate from "@/components/coreManage/saveTemplate.vue";
+import EmptyBox from "@/components/coreManage/emptyBox.vue";
 import ocxWebControl from "@/utils/ocxWebControl";
 
 export default {
@@ -346,12 +346,12 @@ export default {
                     if (res.success) {
                         // "已向设备下发唤醒指令，静待1分钟左右设备将重新上线！"
                         this.$message.success(
-                            this.$t("videoPlayback.issueWakeupCommand")
+                            this.$t("videoPlayback.issueWakeupCommand"),
                         );
                     } else {
                         // 下发唤醒失败！
                         this.$message.error(
-                            this.$t("videoPlayback.wakeupFailed")
+                            this.$t("videoPlayback.wakeupFailed"),
                         );
                     }
                 })
@@ -404,9 +404,9 @@ export default {
                                 { templateType: 2, fileType: 0 },
                                 {
                                     templateContent: JSON.stringify(
-                                        this_.saveParam
+                                        this_.saveParam,
                                     ),
-                                }
+                                },
                             );
                             this_.$api
                                 .hikDevParamTempAdd(params)
@@ -415,8 +415,8 @@ export default {
                                         // this_.$message.success("模板保存成功");
                                         this_.$message.success(
                                             this.$t(
-                                                "deviceConfiguration.fileConfigText12"
-                                            )
+                                                "deviceConfiguration.fileConfigText12",
+                                            ),
                                         );
                                         this_.templateVisible = false;
                                     } else {
@@ -430,7 +430,7 @@ export default {
             } else {
                 // 控件未初始化
                 this.$message.error(
-                    this.$t("deviceConfiguration.fileConfigText11")
+                    this.$t("deviceConfiguration.fileConfigText11"),
                 );
             }
         },
@@ -491,7 +491,7 @@ export default {
                         this.sendFileConfiging = false;
                         // 控件未初始化
                         this.$message.error(
-                            this.$t("deviceConfiguration.fileConfigText11")
+                            this.$t("deviceConfiguration.fileConfigText11"),
                         );
                     }
                 } else {
@@ -516,7 +516,7 @@ export default {
                 if (null == data) {
                     // 控件返回值异常，请稍后重试
                     this.$message.error(
-                        this.$t("deviceConfiguration.fileConfigText13")
+                        this.$t("deviceConfiguration.fileConfigText13"),
                     );
                     return;
                 }
@@ -604,7 +604,7 @@ export default {
                                 "videoPlay",
                                 offsetWidth,
                                 offsetHeight,
-                                params
+                                params,
                             );
                         });
                         this.saveParam = params;
@@ -649,15 +649,15 @@ export default {
                                     }).then(function (oData) {
                                         //showCBInfo(JSON.stringify(oData.responseMsg));
                                     });
-                                }
+                                },
                             );
                         },
                         function () {
                             // this.$message.error("控件服务启动失败！");
                             that.$message.error(
-                                that.$t("deviceConfiguration.fileConfigText14")
+                                that.$t("deviceConfiguration.fileConfigText14"),
                             );
-                        }
+                        },
                     );
                 },
                 cbConnectError: () => {
@@ -717,8 +717,8 @@ export default {
                                                             // "当前Web控件版本已经是最新的！"
                                                             that.$message.info(
                                                                 that.$t(
-                                                                    "deviceConfiguration.fileConfigText15"
-                                                                )
+                                                                    "deviceConfiguration.fileConfigText15",
+                                                                ),
                                                             );
                                                             that.notLastVerson = false;
                                                         } else {
@@ -737,33 +737,33 @@ export default {
                                                             that.$confirm(
                                                                 // "当前控件版本不是最新,是否要下载最新控件,下载安装后需刷新页面。",
                                                                 that.$t(
-                                                                    "deviceConfiguration.fileConfigText16"
+                                                                    "deviceConfiguration.fileConfigText16",
                                                                 ),
                                                                 {
                                                                     confirmButtonText:
                                                                         this.$t(
-                                                                            "common.ok"
+                                                                            "common.ok",
                                                                         ),
                                                                     cancelButtonText:
                                                                         this.$t(
-                                                                            "common.cancel"
+                                                                            "common.cancel",
                                                                         ),
                                                                     type: "warning",
-                                                                }
+                                                                },
                                                             )
                                                                 .then(() => {
                                                                     that.downloadOcx();
                                                                 })
                                                                 .catch(
-                                                                    () => {}
+                                                                    () => {},
                                                                 );
                                                         }
                                                     } else {
                                                         // "调用控件版本比对接口失败！"
                                                         that.$message.error(
                                                             that.$t(
-                                                                "deviceConfiguration.fileConfigText16"
-                                                            )
+                                                                "deviceConfiguration.fileConfigText16",
+                                                            ),
                                                         );
                                                     }
                                                 });
@@ -771,20 +771,20 @@ export default {
                                             // 查询控件版本号失败！
                                             that.$message.error(
                                                 that.$t(
-                                                    "deviceConfiguration.fileConfigText18"
-                                                )
+                                                    "deviceConfiguration.fileConfigText18",
+                                                ),
                                             );
                                         }
                                     });
-                                }
+                                },
                             );
                         },
                         function () {
                             // that.$message.error("查询版本控件启动失败!!!!");
                             that.$message.error(
-                                that.$t("deviceConfiguration.fileConfigText19")
+                                that.$t("deviceConfiguration.fileConfigText19"),
                             );
-                        }
+                        },
                     );
                 },
                 cbConnectError: () => {
@@ -831,7 +831,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     this.downloadOcx();
@@ -882,8 +882,8 @@ export default {
                                         // "查询最新配置文件成功"
                                         this_.$message.success(
                                             this_.$t(
-                                                "deviceConfiguration.fileConfigText21"
-                                            )
+                                                "deviceConfiguration.fileConfigText21",
+                                            ),
                                         );
                                     }
                                     if (this_.operateForm.deviceId) {
@@ -895,8 +895,8 @@ export default {
                                         // "没有查询到配置文件信息"
                                         this_.$message(
                                             this_.$t(
-                                                "deviceConfiguration.fileConfigText22"
-                                            )
+                                                "deviceConfiguration.fileConfigText22",
+                                            ),
                                         );
                                     }
                                     this_.getBinFileFromDeviceLoad = false;
@@ -944,7 +944,7 @@ export default {
                         if (localStorage.getItem("radioType")) {
                             // this.$message.success("查询最新配置文件成功");
                             this.$message.success(
-                                this.$t("deviceConfiguration.fileConfigText21")
+                                this.$t("deviceConfiguration.fileConfigText21"),
                             );
                         }
                         this.operateForm.binId = res.data.id;
@@ -952,7 +952,7 @@ export default {
                         if (localStorage.getItem("radioType")) {
                             // this.$message("没有查询到配置文件信息");
                             this.$message(
-                                this.$t("deviceConfiguration.fileConfigText22")
+                                this.$t("deviceConfiguration.fileConfigText22"),
                             );
                         }
                         return;
@@ -978,7 +978,7 @@ export default {
                         if (localStorage.getItem("radioType")) {
                             // this.$message.success("查询最新配置文件成功");
                             this.$message.success(
-                                this.$t("deviceConfiguration.fileConfigText21")
+                                this.$t("deviceConfiguration.fileConfigText21"),
                             );
                         }
 
@@ -987,7 +987,7 @@ export default {
                         if (localStorage.getItem("radioType")) {
                             // this.$message("没有查询到配置文件信息");
                             this.$message(
-                                this.$t("deviceConfiguration.fileConfigText22")
+                                this.$t("deviceConfiguration.fileConfigText22"),
                             );
                         }
                         return;
@@ -1024,7 +1024,7 @@ export default {
         // this.getParamDeviceById()
         this.refreshSession();
         //监听页面滚动
-        window.addEventListener("scroll", () => {
+        (window.addEventListener("scroll", () => {
             if (this.videoPlayControl != null) {
                 let box = document.getElementById("videoPlay");
                 let offsetHeight = box.offsetHeight;
@@ -1033,7 +1033,7 @@ export default {
                     this.videoPlayControl,
                     "videoPlay",
                     offsetWidth,
-                    offsetHeight
+                    offsetHeight,
                 );
             }
         }),
@@ -1047,10 +1047,10 @@ export default {
                         this.videoPlayControl,
                         "videoPlay",
                         offsetWidth,
-                        offsetHeight
+                        offsetHeight,
                     );
                 }
-            });
+            }));
         // this.onCardClicked('params');
         //this.getDeviceBinFile(0)
         setTimeout(() => {
@@ -1059,12 +1059,12 @@ export default {
                     this.webVersionControl,
                     "AEStreamWebVersion",
                     0,
-                    0
+                    0,
                 );
             }
         }, 2000);
     },
-    beforeDestroy() {
+    beforeUnmount() {
         this.radioType == 3;
         this.operateForm.deviceId = "";
         localStorage.removeItem("radioType");
@@ -1072,7 +1072,7 @@ export default {
             //this.videoPlayControl.JS_Disconnect();
             this.videoPlayControl.JS_DestroyWnd().then(
                 () => {},
-                () => {}
+                () => {},
             );
             this.videoPlayControl = null;
             this.noneVideoPlay = false;
@@ -1083,7 +1083,7 @@ export default {
                 () => {},
                 () => {
                     // console.log('控件销毁失败');
-                }
+                },
             );
             this.webVersionControl = null;
             this.noneVideoPlay = false;

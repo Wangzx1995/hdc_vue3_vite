@@ -1086,7 +1086,7 @@
 
 <script>
 //import Vue from "vue";
-import Vue from "vue/dist/vue.esm.js";
+import Vue from "@/utils/vue-compat";
 import upgradeProgress from "@/components/upgradeProgress";
 
 /**
@@ -1526,7 +1526,7 @@ export default {
                     });
             }
         },
-        beforeDestroy() {
+        beforeUnmount() {
             clearInterval(this.timer);
             this.timer = null;
         },

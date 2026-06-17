@@ -309,7 +309,7 @@ import "@/components/hui-pro/tree-select/theme/index.scss";
 import TimeUtil from "@/utils/time";
 import timeCom from "@/components/timeCom";
 import AttendenceRecord from "@/components/AttendenceRecord";
-require("@/assets/style/base.scss");
+import "@/assets/style/base.scss";
 export default {
     name: "faultAccount",
     components: { TimeUtil, timeCom, AttendenceRecord, TreeSelect },
@@ -369,10 +369,10 @@ export default {
             handler(val) {
                 if (val && val.length > 0) {
                     this.searchForm.startTime = TimeUtil.getDateTime(
-                        this.timeRange[0]
+                        this.timeRange[0],
                     );
                     this.searchForm.endTime = TimeUtil.getDateTime(
-                        this.timeRange[1]
+                        this.timeRange[1],
                     );
                 } else {
                     this.searchForm.startTime = "";
@@ -411,8 +411,8 @@ export default {
             this.params.orderDir = !column.order
                 ? ""
                 : column.order == "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.params.orderColumn = !column.prop ? "" : column.prop;
             this.search();
         },
@@ -520,7 +520,7 @@ export default {
                                         ) {
                                             var iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -531,18 +531,18 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(
-                            this.$t("common.exportFailed") + ":" + res.msg
+                            this.$t("common.exportFailed") + ":" + res.msg,
                         );
                         this.loadingAll = false;
                     }
