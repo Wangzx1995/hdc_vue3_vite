@@ -140,7 +140,7 @@
                         :label="$t('devLog.uploaded')"
                         width="200px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span>
                                 {{
                                     $moment(scope.row.uploadTime).format(
@@ -161,7 +161,7 @@
                         :label="$t('devLog.uploadMode')"
                         width="200px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <div>
                                 <span>
                                     {{
@@ -195,7 +195,7 @@
                         :label="$t('devLog.fileSize') + '（MB）'"
                         width="200px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span v-if="!scope.row.fileSize"> -- </span>
                             <span v-else>
                                 <span
@@ -239,7 +239,7 @@
         <!-- 上传日志 -->
         <el-dialog
             :title="$t('devLog.uploadLogs')"
-            :visible.sync="uploadLogVisible"
+            v-model="uploadLogVisible"
             :close-on-click-modal="false"
             :width="'600px'"
             :custom-class="'upload-log-dialog'"
@@ -255,7 +255,7 @@
         <el-dialog
             :fullscreen="true"
             :title="$t('devLog.devLogRecord')"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             :custom-class="'devLog-record-dialog'"
         >
             <devLog-record v-if="dialogVisible"></devLog-record>
@@ -577,7 +577,7 @@ export default {
 <style lang="less" scoped>
 .car-query-log {
     height: 100%;
-    /deep/.top-box {
+    :deep(.top-box){
         display: flex;
         justify-content: center;
         align-items: center;

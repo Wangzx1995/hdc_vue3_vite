@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-dialog
-            :visible="thisModal"
+            v-model="thisModal"
             :title="title"
             class="modal-nopadding"
             @close="close"
@@ -18,7 +18,7 @@
                         style="width: 100%; margin-top: 20px"
                     >
                         <el-table-column type="expand">
-                            <template slot-scope="props">
+                            <template #default="props">
                                 <el-table
                                     stripe
                                     border
@@ -32,7 +32,7 @@
                                         "
                                         width="100"
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div>{{ scope.row.fixType }}</div>
                                         </template>
                                     </el-table-column>
@@ -44,12 +44,12 @@
                                         "
                                         width="100"
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div>
                                                 <!-- 中心 -->
                                                 {{
                                                     $t(
-                                                        "conditionMonitoring.center"
+                                                        "conditionMonitoring.center",
                                                     )
                                                 }}{{ scope.row.coreNum + 1 }}
                                             </div>
@@ -63,7 +63,7 @@
                                         "
                                         width="80"
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div>
                                                 <!-- "开启" "关闭" -->
                                                 {{
@@ -82,7 +82,7 @@
                                         "
                                         width="120"
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div>
                                                 {{
                                                     protocolTypeList[
@@ -98,7 +98,7 @@
                                         :label="$t('antIrotationNet.protocol')"
                                         width="120"
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div>
                                                 {{
                                                     protocolVersionOptions[
@@ -116,7 +116,7 @@
                                             $t('antIrotationNet.serverAddress')
                                         "
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div>
                                                 {{
                                                     scope.row.ipAddress || "--"
@@ -138,7 +138,7 @@
                             prop="name"
                             :label="$t('antIrotationNet.defenseRecord')"
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <div>{{ scope.row.ipLockName }}</div>
                             </template>
                         </el-table-column>
@@ -148,7 +148,7 @@
                             :label="$t('antIrotationNet.defenseTime')"
                             width="150"
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <div>{{ scope.row.createTime }}</div>
                             </template>
                         </el-table-column>
@@ -249,7 +249,7 @@ export default {
                     res.data.results.forEach((item) => {
                         // 格式化时间
                         item["createTime"] = TimeUtil.getDateTime(
-                            item["createTime"]
+                            item["createTime"],
                         );
                         // eval字符串
                         let deviceParams = eval(item.deviceParams);
@@ -290,17 +290,17 @@ export default {
                                                 Object.assign(i, {
                                                     // fixType: "修改前",
                                                     fixType: this.$t(
-                                                        "antIrotationNet.beforeModification"
+                                                        "antIrotationNet.beforeModification",
                                                     ),
-                                                })
+                                                }),
                                             );
                                             list.push(
                                                 Object.assign(j, {
                                                     // fixType: "修改后",
                                                     fixType: this.$t(
-                                                        "antIrotationNet.afterModification"
+                                                        "antIrotationNet.afterModification",
                                                     ),
-                                                })
+                                                }),
                                             );
                                             break;
                                         }

@@ -8,7 +8,7 @@
         >
             <el-dialog
                 title="全局标定"
-                :visible.sync="carbonateVisible"
+                v-model="carbonateVisible"
             >
                 <div class="carbonateContent">
                     <el-row type="flex" justify="space-between">
@@ -303,9 +303,9 @@
                                                               ].speedLimitMax
                                                     }`"
                                                     v-model="i.speedLimit"
-                                                    ><span slot="suffix"
+                                                    ><template #suffix><span
                                                         >km/h</span
-                                                    ></el-input
+                                                    ></template></el-input
                                                 >
                                             </el-form-item>
                                             <el-form-item
@@ -360,16 +360,16 @@
                                                         ].speedLimitMax
                                                     }`"
                                                     v-model="i.speedLimit"
-                                                    ><span slot="suffix"
+                                                    ><template #suffix><span
                                                         >km/h</span
-                                                    ></el-input
+                                                    ></template></el-input
                                                 >
                                             </el-form-item>
                                         </el-col>
                                         <!-- <el-col :span="7" > -->
                                         <!-- <el-form-item label="报警抑制时间 (100-600)" :rules="{ validator: checkNumber.bind({type:'int',min:100,max:600}), trigger: 'blur' }" :prop="item.commandId + '.adasAlarmInfoList.' + iIndex + '.interval'"> -->
                                         <!-- <el-form-item label="报警抑制时间" :rules="{ validator: checkNumber.bind({type:'int',min:form[item.commandId+'Capability'].capabilities[item.alarmLevel-1].intervalMin,max:form[item.commandId+'Capability'].capabilities[item.alarmLevel-1].intervalMax}), trigger: 'blur' }" :prop="item.commandId + '.adasAlarmInfoList.' + iIndex + '.interval'">
-                            <el-input v-model="i.interval"><span slot="suffix">ms</span></el-input>
+                            <el-input v-model="i.interval"><template #suffix><span>ms</span></template></el-input>
                         </el-form-item> -->
                                         <!-- </el-col> -->
                                         <el-col :span="7">
@@ -423,9 +423,9 @@
                                                         ].confidenceMax
                                                     }`"
                                                     v-model="i.confidence"
-                                                    ><span slot="suffix"
+                                                    ><template #suffix><span
                                                         >%</span
-                                                    ></el-input
+                                                    ></template></el-input
                                                 >
                                             </el-form-item>
                                         </el-col>
@@ -434,7 +434,7 @@
                                         <!-- <el-col :span="7" > -->
                                         <!-- <el-form-item label="碰撞时间" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="item.commandId + '.adasAlarmInfoList.' + iIndex + '.timeToCollision'"> -->
                                         <!-- <el-form-item label="碰撞时间" :rules="{ validator: checkNumber.bind({type:'int',min:form[item.commandId+'Capability'].capabilities[item.alarmLevel-1].timeToCollisionMin,max:form[item.commandId+'Capability'].capabilities[item.alarmLevel-1].timeToCollisionMax}), trigger: 'blur' }" :prop="item.commandId + '.adasAlarmInfoList.' + iIndex + '.timeToCollision'">
-                            <el-input v-model="i.timeToCollision"><span slot="suffix">s</span></el-input>
+                            <el-input v-model="i.timeToCollision"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col> -->
                                         <el-col :span="7">
@@ -563,7 +563,7 @@
                                         <!-- <el-col :span="7" > -->
                                         <!-- <el-form-item label="抓图间隔" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="item.commandId + '.adasAlarmInfoList.' + iIndex + '.snapShotTime'"> -->
                                         <!-- <el-form-item label="抓图间隔" :rules="{ validator: checkNumber.bind({type:'int',min:form[item.commandId+'Capability'].capabilities[item.alarmLevel-1].snapShotTimeMin,max:form[item.commandId+'Capability'].capabilities[item.alarmLevel-1].snapShotTimeMax}), trigger: 'blur' }" :prop="item.commandId + '.adasAlarmInfoList.' + iIndex + '.snapShotTime'">
-                              <el-input v-model="i.snapShotTime"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="i.snapShotTime"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col> -->
                                     </el-row>
@@ -639,9 +639,9 @@
                                                         ].timeToCollisionMax
                                                     }`"
                                                     v-model="i.timeToCollision"
-                                                    ><span slot="suffix"
+                                                    ><template #suffix><span
                                                         >ms</span
-                                                    ></el-input
+                                                    ></template></el-input
                                                 >
                                                 <!-- <el-select v-model="i.clipUpload">
                               <el-option label="关闭" :value="0"></el-option>
@@ -652,13 +652,13 @@
                                         <el-col :span="7"></el-col>
                                         <!-- <el-form-item label="短视频前半部分时长" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="item.commandId + '.adasAlarmInfoList.' + iIndex + '.clipPreDuration'"> -->
                                         <!-- <el-form-item label="短视频前半部分时长" :rules="{ validator: checkNumber.bind({type:'int',min:form[item.commandId+'Capability'].capabilities[item.alarmLevel-1].clipPreDurationMin,max:form[item.commandId+'Capability'].capabilities[item.alarmLevel-1].clipPreDurationMax}), trigger: 'blur' }" :prop="item.commandId + '.adasAlarmInfoList.' + iIndex + '.clipPreDuration'">
-                              <el-input v-model="i.clipPreDuration"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="i.clipPreDuration"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col> -->
                                         <!-- <el-col :span="7" > -->
                                         <!-- <el-form-item label="短视频后半部分时长" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="item.commandId + '.adasAlarmInfoList.' + iIndex + '.clipPostDuration'"> -->
                                         <!-- <el-form-item label="短视频后半部分时长" :rules="{ validator: checkNumber.bind({type:'int',min:form[item.commandId+'Capability'].capabilities[item.alarmLevel-1].clipPostDurationMin,max:form[item.commandId+'Capability'].capabilities[item.alarmLevel-1].clipPostDurationMax}), trigger: 'blur' }" :prop="item.commandId + '.adasAlarmInfoList.' + iIndex + '.clipPostDuration'">
-                              <el-input v-model="i.clipPostDuration"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="i.clipPostDuration"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col> -->
                                     </el-row>
@@ -666,7 +666,7 @@
                                         <!-- <el-col :span="7" > -->
                                         <!-- <el-form-item label="算法置信度（1-100）" :rules="{ validator: checkNumber.bind({type:'int',min:1,max:100}), trigger: 'blur' }" :prop="item.commandId + '.adasAlarmInfoList.' + iIndex + '.confidence'"> -->
                                         <!-- <el-form-item label="算法置信度" :rules="{ validator: checkNumber.bind({type:'int',min:form[item.commandId+'Capability'].capabilities[item.alarmLevel-1].confidenceMin,max:form[item.commandId+'Capability'].capabilities[item.alarmLevel-1].confidenceMax}), trigger: 'blur' }" :prop="item.commandId + '.adasAlarmInfoList.' + iIndex + '.confidence'">
-                              <el-input v-model="i.confidence"><span slot="suffix">%</span></el-input>
+                              <el-input v-model="i.confidence"><template #suffix><span>%</span></template></el-input>
                         </el-form-item>
                     </el-col> -->
                                         <!-- <el-col :span="7" > -->
@@ -686,7 +686,7 @@
         </el-form>
         <el-dialog
             title="ADAS全局音量调整"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
         >
             <div class="p-a-md">
                 <p class="m-b-sm">
@@ -700,7 +700,7 @@
                     show-input
                 ></el-slider>
             </div>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button
                     type="primary"
                     :loading="sendEveryVolume"
@@ -709,7 +709,7 @@
                     >{{ sendEveryVolume ? "设置中" : "确 定" }}</el-button
                 >
                 <el-button @click="dialogVisible = false">取 消</el-button>
-            </span>
+            </span></template>
         </el-dialog>
     </div>
 </template>

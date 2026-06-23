@@ -141,7 +141,7 @@
                     :label="$t('deviceLoadTaskManage.installDate')"
                     min-width="120px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span v-if="scope.row.startTime && scope.row.endTime"
                             >{{ scope.row.startTime }}
                             <!-- 至 -->
@@ -178,7 +178,7 @@
                     width="120px"
                 >
                     <!-- 0待启用    1启用中   2已关闭 -->
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div
                             class="task-status"
                             v-if="
@@ -193,7 +193,7 @@
                                     taskStatusList.find(
                                         (item) =>
                                             item.value ===
-                                            Number(scope.row.taskStatus)
+                                            Number(scope.row.taskStatus),
                                     ).label
                                 }}
                             </span>
@@ -207,7 +207,7 @@
                     width="200px"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div class="text-nowrap operate">
                             <el-button
                                 type="text"
@@ -270,7 +270,7 @@
                     ? $t('deviceLoadTaskManage.startTask')
                     : $t('deviceLoadTaskManage.endTask')
             }${$t('deviceLoadTaskManage.taskText2')}？`"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             width="500px"
             top="25vh"
             :close-on-click-modal="true"
@@ -288,32 +288,34 @@
                 <!-- 结束任务后，会将任务从应装车师傅小程序账号中删除。 -->
                 {{ $t("deviceLoadTaskManage.taskText4") }}
             </span>
-            <span slot="footer" class="dialog-footer">
-                <el-button
-                    @click="goUpdateStatus(true)"
-                    v-if="dialogTaskStatus === 1"
-                    v-btn="'deviceLoadTaskManageAdd'"
-                >
-                    <!-- 结束并复制 -->
-                    {{ $t("deviceLoadTaskManage.taskText5") }}
-                </el-button>
-                <el-button
-                    @click="goUpdateStatus(true)"
-                    v-if="dialogTaskStatus === 0"
-                    v-btn="'deviceLoadTaskManageAdd'"
-                >
-                    <!-- 启用并复制 -->
-                    {{ $t("deviceLoadTaskManage.taskText6") }}
-                </el-button>
-                <el-button @click="dialogVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button type="primary" @click="goUpdateStatus(false)">
-                     <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button
+                        @click="goUpdateStatus(true)"
+                        v-if="dialogTaskStatus === 1"
+                        v-btn="'deviceLoadTaskManageAdd'"
+                    >
+                        <!-- 结束并复制 -->
+                        {{ $t("deviceLoadTaskManage.taskText5") }}
+                    </el-button>
+                    <el-button
+                        @click="goUpdateStatus(true)"
+                        v-if="dialogTaskStatus === 0"
+                        v-btn="'deviceLoadTaskManageAdd'"
+                    >
+                        <!-- 启用并复制 -->
+                        {{ $t("deviceLoadTaskManage.taskText6") }}
+                    </el-button>
+                    <el-button @click="dialogVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button type="primary" @click="goUpdateStatus(false)">
+                         <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -391,10 +393,10 @@ export default {
             handler(val) {
                 if (val && val.length > 0) {
                     this.searchForm.startTime = TimeUtil.getDateTime(
-                        this.timeRange[0]
+                        this.timeRange[0],
                     );
                     this.searchForm.endTime = TimeUtil.getDateTime(
-                        this.timeRange[1]
+                        this.timeRange[1],
                     );
                 } else {
                     this.searchForm.startTime = "";
@@ -410,8 +412,8 @@ export default {
             this.searchForm.orderDir = !column.order
                 ? ""
                 : column.order === "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.searchForm.orderColumn = "operateTime";
             this.$nextTick(() => {
                 this.search();
@@ -425,7 +427,7 @@ export default {
                     this.$nextTick(() => {
                         if (this.searchForm.orgId) {
                             this.$refs.TreeSelect.setValue(
-                                this.searchForm.orgId
+                                this.searchForm.orgId,
                             );
                         }
                     });
@@ -438,7 +440,7 @@ export default {
                     if (this.params.currentPage == 1) {
                         const params = Object.assign(
                             this.params,
-                            this.searchForm
+                            this.searchForm,
                         );
                         this.$store.dispatch("SetCondtion", this.searchForm);
                         this.getData(params);
@@ -567,7 +569,9 @@ export default {
                             });
                         } else {
                             this.$message.success(
-                                this.$t("deviceLoadTaskManage.taskUpdateStatus")
+                                this.$t(
+                                    "deviceLoadTaskManage.taskUpdateStatus",
+                                ),
                             );
                             this.search();
                         }
@@ -648,13 +652,13 @@ export default {
         border-top: 1px solid #e4e4e4;
     }
 }
-div /deep/ .el-card__body {
+div :deep(.el-card__body){
     padding: 0 !important;
 }
 .save-info-dialog {
     width: 1100px;
     margin: 0 auto;
-    /deep/ .el-dialog__body {
+    :deep(.el-dialog__body){
         color: #4d4d4d;
         padding: 16px 24px;
         .info-bar {

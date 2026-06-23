@@ -31,7 +31,9 @@
                     :placeholder="$t('common.inputOrganizationName')"
                     clearable
                 >
-                    <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                    <template #suffix
+                        ><i class="el-input__icon el-icon-search"></i
+                    ></template>
                 </el-input>
                 <div :class="{ loading_: searchLoading }">
                     <el-tree
@@ -368,7 +370,7 @@
                                 fixed
                                 min-width="160px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div v-if="scope.row.plateNum">
                                         <div
                                             :class="{
@@ -431,10 +433,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference
+                                                ><i
+                                                    class="text-error el-icon-warning"
+                                                ></i
+                                            ></template>
                                         </el-popover>
                                         <span
                                             v-show="scope.row.freeze == 1"
@@ -459,7 +462,7 @@
                                 min-width="100px"
                                 key="signalIntensity"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         ref="popover1"
                                         placement="top"
@@ -546,7 +549,7 @@
                                     }
                                 "
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         ref="popover6"
                                         placement="top"
@@ -582,24 +585,27 @@
                                             :title="item.name"
                                         >
                                             <el-tooltip placement="top">
-                                                <div slot="content">
-                                                    {{
-                                                        item.name +
-                                                        "(" +
-                                                        item.capacity +
-                                                        "GB)"
-                                                    }}<br />{{
-                                                        $t(
-                                                            "conditionMonitoring.dataUpdateTime",
-                                                        ) +
-                                                        "：" +
-                                                        (scope.row
-                                                            .storageStatusTime ||
-                                                            "--") +
-                                                        " " +
-                                                        scope.row.storageDetail
-                                                    }}
-                                                </div>
+                                                <template #content
+                                                    ><div>
+                                                        {{
+                                                            item.name +
+                                                            "(" +
+                                                            item.capacity +
+                                                            "GB)"
+                                                        }}<br />{{
+                                                            $t(
+                                                                "conditionMonitoring.dataUpdateTime",
+                                                            ) +
+                                                            "：" +
+                                                            (scope.row
+                                                                .storageStatusTime ||
+                                                                "--") +
+                                                            " " +
+                                                            scope.row
+                                                                .storageDetail
+                                                        }}
+                                                    </div></template
+                                                >
                                                 <img
                                                     v-if="
                                                         item.status > 0 &&
@@ -679,7 +685,7 @@
                                 min-width="120px"
                                 column-key="gpsStatus"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         ref="popover5"
                                         placement="top"
@@ -810,7 +816,7 @@
                                     }
                                 "
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         :open-delay="300"
                                         ref="popover2"
@@ -977,7 +983,7 @@
                                     }
                                 "
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         ref="popover12"
                                         placement="top"
@@ -1030,7 +1036,7 @@
                                 min-width="100px"
                                 column-key="rightTurnSignalStatus"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         ref="popover8"
                                         placement="top"
@@ -1089,7 +1095,7 @@
                                 min-width="100px"
                                 column-key="leftTurnSignalStatus"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         ref="popover9"
                                         placement="top"
@@ -1150,7 +1156,7 @@
                                 min-width="100px"
                                 column-key="brakeSignalStatus"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         ref="popover10"
                                         placement="top"
@@ -1209,7 +1215,7 @@
                                 "
                                 min-width="160px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span v-if="scope.row.adasStatus > -1">
                                         {{
                                             adasStatusList.find(
@@ -1229,7 +1235,7 @@
                                 :label="$t('common.deviceCode')"
                                 min-width="140px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div v-if="scope.row.deviceCode">
                                         <div
                                             :class="{
@@ -1261,7 +1267,7 @@
                                 :label="$t('common.deviceSerialNum')"
                                 min-width="140px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         {{ scope.row.deviceSerialNum }}
                                         <el-popover
@@ -1313,10 +1319,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference
+                                                ><i
+                                                    class="text-error el-icon-warning"
+                                                ></i
+                                            ></template>
                                         </el-popover>
                                     </div>
                                 </template>
@@ -1364,7 +1371,7 @@
                                 filter-placement="bottom"
                                 key="deviceStatus"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         ref="popover7"
                                         placement="top"
@@ -1415,7 +1422,7 @@
                                 min-width="80px"
                                 fixed="right"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-button
                                         type="text"
                                         class="text-info"
@@ -1444,7 +1451,7 @@
         </div>
 
         <el-dialog
-            :visible="customBol"
+            v-model="customBol"
             :title="$t('conditionMonitoring.headerSettings')"
             fill="blue"
             @close="customBol = false"
@@ -1555,24 +1562,26 @@
                     </el-col>
                 </el-row>
             </div>
-            <div slot="footer">
-                <el-button size="small" type="default" @click="doDefault">
-                    {{ $t("sortHeader.restoreDefault") }}
-                </el-button>
-                <el-button
-                    :loading="updateCustomJsonBol"
-                    :disabled="updateCustomJsonBol"
-                    size="small"
-                    type="primary"
-                    @click="doSave"
-                >
-                    {{ $t("common.save") }}
-                </el-button>
-            </div>
+            <template #footer
+                ><div>
+                    <el-button size="small" type="default" @click="doDefault">
+                        {{ $t("sortHeader.restoreDefault") }}
+                    </el-button>
+                    <el-button
+                        :loading="updateCustomJsonBol"
+                        :disabled="updateCustomJsonBol"
+                        size="small"
+                        type="primary"
+                        @click="doSave"
+                    >
+                        {{ $t("common.save") }}
+                    </el-button>
+                </div></template
+            >
         </el-dialog>
         <el-drawer
             ref="drawerDetail"
-            :visible.sync="drawerShow"
+            v-model="drawerShow"
             :with-header="false"
             :size="880"
             :destroy-on-close="true"
@@ -1592,7 +1601,7 @@
             :title="$t('common.detail')"
             :fullscreen="true"
             :append-to-body="true"
-            :visible.sync="detailVisible"
+            v-model="detailVisible"
             width="30%"
             custom-class="conditionMonitoring-detail-dialog"
         >
@@ -2587,7 +2596,7 @@ export default {
         }
     }
 }
-/deep/.adas-status {
+:deep(.adas-status) {
     .el-input {
         width: 250px !important;
     }

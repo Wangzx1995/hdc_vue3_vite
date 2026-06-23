@@ -9,7 +9,9 @@
                     :placeholder="$t('common.inputOrganizationName')"
                     clearable
                 >
-                    <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                    <template #suffix>
+                        <i class="el-input__icon el-icon-search"></i>
+                    </template>
                 </el-input>
                 <div :class="{ loading_: searchLoading }">
                     <el-tree
@@ -167,7 +169,7 @@
                                 <!-- 整组配置 -->
                                 {{
                                     $t(
-                                        "ttsConfiguration.wholeGroupConfiguration"
+                                        "ttsConfiguration.wholeGroupConfiguration",
                                     )
                                 }}
                             </el-button>
@@ -214,7 +216,7 @@
                                     <!-- 配置模板管理 -->
                                     {{
                                         $t(
-                                            "deviceConfiguration.configureTemplateManagement"
+                                            "deviceConfiguration.configureTemplateManagement",
                                         )
                                     }}
                                 </el-button>
@@ -233,7 +235,7 @@
                                     <!-- 我的配置任务 -->
                                     {{
                                         $t(
-                                            "ttsConfiguration.myConfigurationTask"
+                                            "ttsConfiguration.myConfigurationTask",
                                         )
                                     }}
                                 </el-button>
@@ -249,7 +251,7 @@
                                     <!-- 未完成配置 -->
                                     {{
                                         $t(
-                                            "ttsConfiguration.batchImportIncompleteConfiguration"
+                                            "ttsConfiguration.batchImportIncompleteConfiguration",
                                         )
                                     }}
                                 </el-button>
@@ -286,29 +288,39 @@
                                 @close="closeAlert"
                                 class="select-alert"
                             >
-                                <div slot="title" class="alert-title">
-                                    <div>
-                                        <span>
-                                            {{ $t("devLog.selectTableMsg1") }}
-                                            {{ selection.length }}
-                                            {{ $t("devLog.selectTableMsg2") }}
-                                        </span>
-                                        <el-button
-                                            type="text"
-                                            @click="openSelection"
-                                        >
-                                            <!-- 查看 -->
-                                            {{ $t("devLog.selectTableMsg3") }}
-                                        </el-button>
-                                        <el-button
-                                            type="text"
-                                            @click="clearSelection"
-                                        >
-                                            <!-- 取消选择 -->
-                                            {{ $t("devLog.selectTableMsg4") }}
-                                        </el-button>
+                                <template #title>
+                                    <div class="alert-title">
+                                        <div>
+                                            <span>
+                                                {{
+                                                    $t("devLog.selectTableMsg1")
+                                                }}
+                                                {{ selection.length }}
+                                                {{
+                                                    $t("devLog.selectTableMsg2")
+                                                }}
+                                            </span>
+                                            <el-button
+                                                type="text"
+                                                @click="openSelection"
+                                            >
+                                                <!-- 查看 -->
+                                                {{
+                                                    $t("devLog.selectTableMsg3")
+                                                }}
+                                            </el-button>
+                                            <el-button
+                                                type="text"
+                                                @click="clearSelection"
+                                            >
+                                                <!-- 取消选择 -->
+                                                {{
+                                                    $t("devLog.selectTableMsg4")
+                                                }}
+                                            </el-button>
+                                        </div>
                                     </div>
-                                </div>
+                                </template>
                             </el-alert>
                         </div>
                     </div>
@@ -344,7 +356,7 @@
                                 :label="$t('common.plateNum')"
                                 min-width="160px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div v-if="scope.row.plateNum">
                                         <div
                                             :class="{
@@ -355,7 +367,7 @@
                                             class="flex-box"
                                             @click.stop="
                                                 copyCarNumber(
-                                                    scope.row.plateNum
+                                                    scope.row.plateNum,
                                                 )
                                             "
                                         >
@@ -379,21 +391,21 @@
                                                 <!-- 车牌号异常 -->
                                                 {{
                                                     $t(
-                                                        "deviceManage.abnormalLicensePlateNumber"
+                                                        "deviceManage.abnormalLicensePlateNumber",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformPlateNum"
+                                                        "carManage.platformPlateNum",
                                                     )
                                                 }}：{{ scope.row.plateNum }}
                                             </div>
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.devicePlateNum"
+                                                        "carManage.devicePlateNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -401,7 +413,7 @@
                                                 @click="
                                                     toChange(
                                                         1,
-                                                        scope.row.plateNum
+                                                        scope.row.plateNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -409,10 +421,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference>
+                                                <i
+                                                    class="text-error el-icon-warning"
+                                                ></i>
+                                            </template>
                                         </el-popover>
                                         <span
                                             v-show="scope.row.freeze == 1"
@@ -443,7 +456,7 @@
                                 prop="deviceParamLastTimeVo.lastOne.time"
                                 :label="
                                     $t(
-                                        'ttsConfiguration.configureProgressUpdateTime'
+                                        'ttsConfiguration.configureProgressUpdateTime',
                                     )
                                 "
                                 min-width="165px"
@@ -453,8 +466,8 @@
                                             h(
                                                 'span',
                                                 $t(
-                                                    'ttsConfiguration.configureProgressUpdateTime'
-                                                )
+                                                    'ttsConfiguration.configureProgressUpdateTime',
+                                                ),
                                             ), //表格当前列标题
                                             h(
                                                 'Poptip',
@@ -487,17 +500,17 @@
                                                         'span',
                                                         { slot: 'content' },
                                                         $t(
-                                                            'deviceConfiguration.configureProgressUpdateTimeText'
-                                                        )
+                                                            'deviceConfiguration.configureProgressUpdateTimeText',
+                                                        ),
                                                         // '鼠标移至时间可展示不同配置类型的进度更新时间及配置结果'
                                                     ),
-                                                ]
+                                                ],
                                             ),
                                         ]);
                                     }
                                 "
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         ref="popover"
                                         placement="top"
@@ -507,7 +520,7 @@
                                             <!-- 文件配置 -->
                                             {{
                                                 $t(
-                                                    "deviceConfiguration.fileConfiguration"
+                                                    "deviceConfiguration.fileConfiguration",
                                                 )
                                             }}：
                                         </p>
@@ -515,7 +528,7 @@
                                             <!-- 进度更新时间 -->
                                             {{
                                                 $t(
-                                                    "ttsConfiguration.progressUpdateTime"
+                                                    "ttsConfiguration.progressUpdateTime",
                                                 )
                                             }}：{{
                                                 (scope.row
@@ -576,7 +589,7 @@
                                             <!-- 协议配置 -->
                                             {{
                                                 $t(
-                                                    "configurationTemplate.protocolConfiguration"
+                                                    "configurationTemplate.protocolConfiguration",
                                                 )
                                             }}：
                                         </p>
@@ -584,7 +597,7 @@
                                             <!-- 进度更新时间 -->
                                             {{
                                                 $t(
-                                                    "ttsConfiguration.progressUpdateTime"
+                                                    "ttsConfiguration.progressUpdateTime",
                                                 )
                                             }}：{{
                                                 (scope.row
@@ -682,7 +695,7 @@
                                 :label="$t('common.deviceSerialNum')"
                                 min-width="125px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         {{ scope.row.deviceSerialNum }}
                                         <el-popover
@@ -701,14 +714,14 @@
                                             <p class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.deviceSerialNumAbnormal"
+                                                        "carManage.deviceSerialNumAbnormal",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformDeviceSerialNum"
+                                                        "carManage.platformDeviceSerialNum",
                                                     )
                                                 }}：{{
                                                     scope.row.deviceSerialNum
@@ -717,7 +730,7 @@
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.deviceDeviceSerialNum"
+                                                        "carManage.deviceDeviceSerialNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -726,7 +739,7 @@
                                                     toChange(
                                                         2,
                                                         scope.row
-                                                            .deviceSerialNum
+                                                            .deviceSerialNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -734,10 +747,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference>
+                                                <i
+                                                    class="text-error el-icon-warning"
+                                                ></i>
+                                            </template>
                                         </el-popover>
                                     </div>
                                 </template>
@@ -753,14 +767,14 @@
                                 prop="paramStatus"
                                 :label="
                                     $t(
-                                        'ttsConfiguration.lastConfigurationStatus'
+                                        'ttsConfiguration.lastConfigurationStatus',
                                     )
                                 "
                                 min-width="160px"
                                 show-overflow-tooltip
                                 fixed="right"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div
                                         v-if="
                                             scope.row.deviceParamLastTimeVo &&
@@ -804,13 +818,13 @@
                                 prop="failReason"
                                 :label="
                                     $t(
-                                        'ttsConfiguration.reasonForConfigurationFailure'
+                                        'ttsConfiguration.reasonForConfigurationFailure',
                                     )
                                 "
                                 min-width="120px"
                                 fixed="right"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div
                                         class="overflow-box"
                                         v-if="
@@ -838,7 +852,7 @@
                                 min-width="120px"
                                 :render-header="renderHeader"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <G-DeviceStatus :deviceInfo="scope.row">
                                     </G-DeviceStatus>
                                 </template>
@@ -849,7 +863,7 @@
                                 :label="$t('common.operate')"
                                 width="165px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <a
                                         class="m-r-sm colorBlue"
                                         @click="uploadFile(scope.row.id)"
@@ -873,7 +887,7 @@
                                         @show="
                                             getRemoteDevWebUrlEnable(
                                                 scope.row,
-                                                scope
+                                                scope,
                                             )
                                         "
                                     >
@@ -893,14 +907,14 @@
                                                     scope.row.dormantStatus,
                                                     scope.row.deviceModelCode,
                                                     'agree',
-                                                    scope.row
+                                                    scope.row,
                                                 )
                                             "
                                         >
                                             <!-- 协议配置 -->
                                             {{
                                                 $t(
-                                                    "configurationTemplate.protocolConfiguration"
+                                                    "configurationTemplate.protocolConfiguration",
                                                 )
                                             }}
                                         </a>
@@ -925,14 +939,14 @@
                                                     scope.row.deviceModelCode,
                                                     'agree',
                                                     scope.row,
-                                                    1
+                                                    1,
                                                 )
                                             "
                                         >
                                             <!-- 镜像配置 -->
                                             {{
                                                 $t(
-                                                    "configurationTemplate.mirroringConfiguration"
+                                                    "configurationTemplate.mirroringConfiguration",
                                                 )
                                             }}
                                         </a>
@@ -952,14 +966,14 @@
                                                     scope.row.dormantStatus,
                                                     scope.row.deviceModelCode,
                                                     'file',
-                                                    scope.row
+                                                    scope.row,
                                                 )
                                             "
                                         >
                                             <!-- 文件配置 -->
                                             {{
                                                 $t(
-                                                    "configurationTemplate.fileConfiguration"
+                                                    "configurationTemplate.fileConfiguration",
                                                 )
                                             }}
                                         </a>
@@ -973,14 +987,14 @@
                                                     scope.row.dormantStatus,
                                                     scope.row.deviceModelCode,
                                                     'template',
-                                                    scope.row
+                                                    scope.row,
                                                 )
                                             "
                                         >
                                             <!-- 模板配置 -->
                                             {{
                                                 $t(
-                                                    "configurationTemplate.templateConfiguration"
+                                                    "configurationTemplate.templateConfiguration",
                                                 )
                                             }}
                                         </a>
@@ -998,27 +1012,30 @@
                                             <!-- Web配置 -->
                                             {{
                                                 $t(
-                                                    "configurationTemplate.webConfiguration"
+                                                    "configurationTemplate.webConfiguration",
                                                 )
                                             }}
                                         </a>
-                                        <el-button
-                                            style="font-size: 12px"
-                                            class="colorBlue"
-                                            slot="reference"
-                                            type="text"
-                                            v-btn="
-                                                'deviceConfigurationConfigure'
-                                            "
-                                        >
-                                            <!-- 配置 -->
-                                            {{
-                                                $t(
-                                                    "ttsConfiguration.configuration"
-                                                )
-                                            }}
-                                            <i class="el-icon-arrow-down"></i
-                                        ></el-button>
+                                        <template #reference>
+                                            <el-button
+                                                style="font-size: 12px"
+                                                class="colorBlue"
+                                                type="text"
+                                                v-btn="
+                                                    'deviceConfigurationConfigure'
+                                                "
+                                            >
+                                                <!-- 配置 -->
+                                                {{
+                                                    $t(
+                                                        "ttsConfiguration.configuration",
+                                                    )
+                                                }}
+                                                <i
+                                                    class="el-icon-arrow-down"
+                                                ></i
+                                            ></el-button>
+                                        </template>
                                     </el-popover>
                                     <a
                                         class="m-r-sm colorBlue"
@@ -1041,7 +1058,7 @@
                                                 scope.row.id,
                                                 scope.row.deviceCode,
                                                 scope.row.deviceStatus,
-                                                scope.row.dormantStatus
+                                                scope.row.dormantStatus,
                                             )
                                         "
                                     >
@@ -1069,7 +1086,7 @@
         </el-row>
         <el-dialog
             :title="`${$t('devLog.selectTableMsg3')}(${selection.length})`"
-            :visible.sync="selectionVisible"
+            v-model="selectionVisible"
             :width="'1200px'"
             :custom-class="'selection-dialog'"
         >
@@ -1159,7 +1176,7 @@
                                 (selectionParams.currentPage - 1) *
                                     selectionParams.pageSize,
                                 selectionParams.currentPage *
-                                    selectionParams.pageSize
+                                    selectionParams.pageSize,
                             )
                         "
                         style="width: 100%"
@@ -1212,7 +1229,7 @@
                             :label="$t('common.operate')"
                             width="100"
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <a @click="deleteSelection(scope.row)">
                                     <!-- 移除 -->
                                     {{ $t("devLog.remove") }}
@@ -1238,7 +1255,7 @@
         <!-- //批量导入配置 -->
         <el-dialog
             :title="$t('deviceManage.batchImportconfiguration')"
-            :visible.sync="bulkImportVisible"
+            v-model="bulkImportVisible"
             :width="'900px'"
             @close="closeBulkImport"
         >
@@ -1272,7 +1289,7 @@
                         <el-select
                             v-model="bulkImportForm.plateNum"
                             :placeholder="`${typeListSelected}${$t(
-                                'ttsConfiguration.plateNumPlaceholderText1'
+                                'ttsConfiguration.plateNumPlaceholderText1',
                             )}${typeListSelected}`"
                             remote
                             :remote-method="remoteMethod2"
@@ -1282,7 +1299,7 @@
                             @visible-change="visibleHandler"
                             @change="selectCar"
                         >
-                            <template slot="prefix"
+                            <template #prefix
                                 ><span
                                     ><i class="iconfont icon-chaxun"></i></span
                             ></template>
@@ -1300,9 +1317,9 @@
                         :rows="10"
                         :spellcheck="false"
                         :placeholder="`${$t(
-                            'ttsConfiguration.plateNumPlaceholderText2'
+                            'ttsConfiguration.plateNumPlaceholderText2',
                         )}${typeListSelected}，${$t(
-                            'ttsConfiguration.plateNumPlaceholderText3'
+                            'ttsConfiguration.plateNumPlaceholderText3',
                         )}`"
                         v-model="bulkImportForm.textarea"
                         @blur="plateNumBlur"
@@ -1310,25 +1327,27 @@
                     </el-input>
                 </div>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="bulkImportVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    @click="doBulkImport(true)"
-                    :loading="importLoading"
-                >
-                    <!-- 下一步 -->
-                    {{ $t("common.nextStep") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="bulkImportVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        @click="doBulkImport(true)"
+                        :loading="importLoading"
+                    >
+                        <!-- 下一步 -->
+                        {{ $t("common.nextStep") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <!-- 批量导入 -->
         <el-dialog
             :title="`${$t('ttsConfiguration.batchImport')}${typeListSelected}`"
-            :visible.sync="deviceListVisible"
+            v-model="deviceListVisible"
             :width="'500px'"
         >
             <div class="device-list">
@@ -1364,23 +1383,25 @@
                     >
                 </el-radio-group>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="deviceListVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button type="primary" @click="doDeviceList">
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="deviceListVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button type="primary" @click="doDeviceList">
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <!-- 参数配置 -->
         <el-dialog
             :fullscreen="true"
             :custom-class="'protocol-dialog'"
             :title="$t('videoPlayback.parameterConfiguration')"
-            :visible="protocolConfigurationVisibile"
+            v-model="protocolConfigurationVisibile"
             @close="protocolConfigurationVisibile = false"
             class="no-padding no-border"
         >
@@ -1398,7 +1419,7 @@
             append-to-body
             width="450px"
             title=""
-            :visible.sync="awakenVisible"
+            v-model="awakenVisible"
             :custom-class="'awaken-dialog'"
         >
             <div class="awaken-dialog">
@@ -1434,25 +1455,27 @@
                     </el-form>
                 </div>
             </div>
-            <div slot="footer">
-                <el-button @click="awakenVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    @click="awakenDevice"
-                    :loading="loading"
-                    type="primary"
-                >
-                    <!-- 唤醒 -->
-                    {{ $t("videoPlayback.awaken") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button @click="awakenVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        @click="awakenDevice"
+                        :loading="loading"
+                        type="primary"
+                    >
+                        <!-- 唤醒 -->
+                        {{ $t("videoPlayback.awaken") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
         <!-- 文件配置 -->
         <el-dialog
             :title="$t('configurationTemplate.fileConfiguration')"
-            :visible.sync="fileConfigurationVisible"
+            v-model="fileConfigurationVisible"
             width="500px"
             @close="fileConfigClose"
         >
@@ -1503,20 +1526,22 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="fileConfigClose">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    :loading="fileConfigLoading"
-                    @click="fileConfig"
-                >
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="fileConfigClose">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        :loading="fileConfigLoading"
+                        @click="fileConfig"
+                    >
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -1533,7 +1558,7 @@ Vue.directive("selectLoadMore", {
     bind(el, binding) {
         // 获取element-ui定义好的scroll盒子
         const SELECTWRAP_DOM = el.querySelector(
-            ".el-select-dropdown .el-select-dropdown__wrap"
+            ".el-select-dropdown .el-select-dropdown__wrap",
         );
         SELECTWRAP_DOM.addEventListener("scroll", function () {
             if (this.scrollHeight - this.scrollTop < this.clientHeight + 1) {
@@ -1755,7 +1780,7 @@ export default {
             fileTypeList: [
                 {
                     label: this.$t(
-                        "deviceConfiguration.calibrationResultsDocument"
+                        "deviceConfiguration.calibrationResultsDocument",
                     ), //"标定成果物文件",
                     value: 1,
                 },
@@ -1860,7 +1885,7 @@ export default {
             oInput.remove();
             // this.$message.success("复制成功");
             this.$message.success(
-                this.$t("conditionMonitoring.replicatingSuccess")
+                this.$t("conditionMonitoring.replicatingSuccess"),
             );
         },
         cellMouseEnter(row, col) {
@@ -1899,7 +1924,7 @@ export default {
                             ? []
                             : this.searchForm.plateArr
                         ).concat(temp),
-                        jsonData.plateNum
+                        jsonData.plateNum,
                     );
                     if (res.data.length < 20) {
                         this.haveDataCar = false;
@@ -2020,7 +2045,7 @@ export default {
                 this.loadingAll = true;
                 let params = Object.assign(
                     { organizeId: this.params.organizeId },
-                    this.searchForm
+                    this.searchForm,
                 );
                 params["containChildOrg"] = this.params.checked ? 1 : 0;
                 this.$api.exportParamDeviceList(params).then((res) => {
@@ -2038,7 +2063,7 @@ export default {
                                         ) {
                                             var iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -2049,7 +2074,7 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
@@ -2062,11 +2087,11 @@ export default {
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(
-                            this.$t("common.exportFailed") + ":" + res.msg
+                            this.$t("common.exportFailed") + ":" + res.msg,
                         );
                         this.loadingAll = false;
                     }
@@ -2085,7 +2110,7 @@ export default {
                         this.filterTree(
                             item.children,
                             this.organizationName,
-                            1
+                            1,
                         );
                     }
                 }
@@ -2126,7 +2151,7 @@ export default {
                 if (this.selectionIds.length <= 0) {
                     // this.$message.warning("请选择需要查询的设备");
                     this.$message.warning(
-                        this.$t("ttsConfiguration.selectDevice")
+                        this.$t("ttsConfiguration.selectDevice"),
                     );
                     this.httpOption = "";
                     return;
@@ -2155,7 +2180,7 @@ export default {
                     this.$message.error(
                         this.$t("ttsConfiguration.httpOptionText2") +
                             ":" +
-                            res.msg
+                            res.msg,
                     );
                     this.httpOption = "";
                 }
@@ -2198,7 +2223,7 @@ export default {
                             this.params.organizeId =
                                 this.$store.state.tree.defaultOrganizeId;
                             this.TreeExpanded.push(
-                                this.$store.state.tree.defaultOrganizeId
+                                this.$store.state.tree.defaultOrganizeId,
                             );
                         }
                         this.currentNode = res.data[0];
@@ -2207,12 +2232,12 @@ export default {
                                 this.TreeExpanded.push(m.id);
                             });
                             this.$refs["tree"].setCurrentKey(
-                                this.params.organizeId
+                                this.params.organizeId,
                             );
                         });
                         if (this.$store.state.tree.deviceConfigurationId) {
                             this.TreeExpanded.push(
-                                this.$store.state.tree.deviceConfigurationId
+                                this.$store.state.tree.deviceConfigurationId,
                             );
                         }
                         this.checkOrgDeviceModelInfo();
@@ -2299,14 +2324,14 @@ export default {
                                 this.$refs.table &&
                                     this.$refs.table.toggleRowSelection(
                                         item,
-                                        false
+                                        false,
                                     );
                             });
                         });
                         this.$message.warning(
                             this.$t(
-                                "deviceConfiguration.batchConfigurationText"
-                            ) //"批量配置操作只能选择一种设备型号"
+                                "deviceConfiguration.batchConfigurationText",
+                            ), //"批量配置操作只能选择一种设备型号"
                         );
                     } else {
                         this.plSelection = this.tableData.filter((i) => {
@@ -2365,7 +2390,7 @@ export default {
                                         JSON.stringify(
                                             response.data[0][
                                                 "deviceParamLastTimeVo"
-                                            ]
+                                            ],
                                         ) == "{}"
                                     ) {
                                         response.data[0][
@@ -2380,7 +2405,7 @@ export default {
                                         "deviceParamLastTimeVo",
                                         response.data[0][
                                             "deviceParamLastTimeVo"
-                                        ]
+                                        ],
                                     );
                                 });
                         });
@@ -2451,7 +2476,7 @@ export default {
                 if (!isSame) {
                     // this.$message.warning("批量配置操作只能选择一种设备型号");
                     this.$message.warning(
-                        this.$t("deviceConfiguration.batchConfigurationText")
+                        this.$t("deviceConfiguration.batchConfigurationText"),
                     );
                     return;
                 }
@@ -2459,7 +2484,7 @@ export default {
             if (ids && ids.length <= 0) {
                 // this.$message.warning("请选择配置的设备");
                 this.$message.warning(
-                    this.$t("ttsConfiguration.selectConfiguredDevice")
+                    this.$t("ttsConfiguration.selectConfiguredDevice"),
                 );
                 return;
             }
@@ -2507,7 +2532,7 @@ export default {
                 if (!this.tableData.length) {
                     // this.$message.warning("无设备可以配置！");
                     this.$message.warning(
-                        this.$t("deviceConfiguration.noDeviceCanBeConfigured")
+                        this.$t("deviceConfiguration.noDeviceCanBeConfigured"),
                     );
                     return;
                 }
@@ -2547,7 +2572,7 @@ export default {
                 this.$message.warning(
                     `${this.$t("ttsConfiguration.plateNumPlaceholderText4")}${
                         this.typeListSelected
-                    }`
+                    }`,
                 );
                 return;
             }
@@ -2566,8 +2591,8 @@ export default {
                             let newPlateNumArr = plateNumArr.filter(
                                 (x) =>
                                     !res.data.nonexistentList.some(
-                                        (y) => y === x
-                                    )
+                                        (y) => y === x,
+                                    ),
                             );
                             this.bulkImportForm.textarea = [
                                 ...new Set(newPlateNumArr),
@@ -2596,10 +2621,10 @@ export default {
                                             this.deviceInfoList[0].checkDeviceInfos.reduce(
                                                 (prev, cur) => {
                                                     return prev.concat(
-                                                        cur["deviceId"]
+                                                        cur["deviceId"],
                                                     );
                                                 },
-                                                []
+                                                [],
                                             ),
                                         business: "DEVICE_CONFIG_BATCH_IMPORT",
                                     },
@@ -2646,7 +2671,7 @@ export default {
                               this.$t("deviceLoadTaskManage.individual") +
                               this.typeListSelected
                             : ""
-                    }${this.$t("deviceManage.deviceSettingTest14")}`
+                    }${this.$t("deviceManage.deviceSettingTest14")}`,
                 );
             }
         },
@@ -2663,7 +2688,7 @@ export default {
             deviceModelCode,
             type,
             row,
-            offline = 0
+            offline = 0,
         ) {
             if (type == "agree") {
                 let params = {
@@ -2722,8 +2747,8 @@ export default {
                             // );
                             this.$message.error(
                                 this.$t(
-                                    "deviceConfiguration.mirrorConfigurationText"
-                                )
+                                    "deviceConfiguration.mirrorConfigurationText",
+                                ),
                             );
                         }
                     }
@@ -2756,8 +2781,8 @@ export default {
                         // this.$message.warning("程序员正在加班开发中...");
                         this.$message.warning(
                             this.$t(
-                                "deviceConfiguration.programmersAreWorkingOvertime"
-                            )
+                                "deviceConfiguration.programmersAreWorkingOvertime",
+                            ),
                         );
                     } else {
                         // this.$message.error(
@@ -2765,8 +2790,8 @@ export default {
                         // );
                         this.$message.error(
                             this.$t(
-                                "deviceConfiguration.deviceNotSupportOfflineQuery"
-                            )
+                                "deviceConfiguration.deviceNotSupportOfflineQuery",
+                            ),
                         );
                     }
                 });
@@ -2792,7 +2817,7 @@ export default {
                     if (res.success == true) {
                         this.fileConfigurationVisible = true;
                         this.fileTypeList = res.data.filter(
-                            (i) => i.sysDictCode != 0
+                            (i) => i.sysDictCode != 0,
                         );
                         this.fileForm.deviceId = deviceId;
                     }
@@ -2812,7 +2837,7 @@ export default {
                     deviceModelCode: data.deviceModelCode,
                     protocolName: data.protocolName,
                     manufacturerNameString: this.getLabelSelf(
-                        data.manufacturerName
+                        data.manufacturerName,
                     ),
                     installServiceProvider: data.installServiceProvider,
                     accessProtocol: data.accessProtocol,
@@ -2843,13 +2868,13 @@ export default {
                         //     "已向设备下发唤醒指令，静待1分钟左右设备将重新上线"
                         // );
                         this.$message.success(
-                            this.$t("videoPlayback.issueWakeupCommand")
+                            this.$t("videoPlayback.issueWakeupCommand"),
                         );
                     } else {
                         this.loading = false;
                         // 下发唤醒失败！
                         this.$message.error(
-                            this.$t("videoPlayback.wakeupFailed")
+                            this.$t("videoPlayback.wakeupFailed"),
                         );
                     }
                 })
@@ -2932,7 +2957,7 @@ export default {
             return h("span", { class: "poptip" }, [
                 h(
                     "span",
-                    this.$t("common.deviceStatus") //"设备状态"
+                    this.$t("common.deviceStatus"), //"设备状态"
                 ), //表格当前列标题
                 h(
                     "Poptip",
@@ -2965,9 +2990,9 @@ export default {
                             "span",
                             { slot: "content" },
                             // "绿色为在线，深黄色是深休眠，浅黄色是浅休眠，灰色为离线"
-                            this.$t("common.deviceStatusDesc")
+                            this.$t("common.deviceStatusDesc"),
                         ),
-                    ]
+                    ],
                 ),
             ]);
         },
@@ -3003,7 +3028,7 @@ export default {
                         this.selectionForm["deviceStatus"] === 2)
                 ) {
                     this.selectionData = this.selectionData.filter(
-                        (item) => item[key] === this.selectionForm[key]
+                        (item) => item[key] === this.selectionForm[key],
                     );
                 } else if (this.selectionForm[key]) {
                     this.selectionData = this.selectionData.filter((item) => {
@@ -3029,7 +3054,7 @@ export default {
         deleteSelection(row) {
             this.$refs.table.toggleRowSelection(
                 this.$refs.table.selection.find((item) => item.id === row.id),
-                false
+                false,
             );
             this.selectionData.map((item, index) => {
                 if (item.id === row.id) {
@@ -3061,11 +3086,11 @@ export default {
         },
         doDeviceList() {
             let deviceArr = this.deviceInfoList.find(
-                (item) => item.deviceModelCode === this.deviceModelCode
+                (item) => item.deviceModelCode === this.deviceModelCode,
             );
             sessionStorage.setItem(
                 "deviceInfoList",
-                JSON.stringify(this.deviceInfoList)
+                JSON.stringify(this.deviceInfoList),
             );
             this.$router.push({
                 path: "/maintenanceCenter/deviceConfiguration/configuration",
@@ -3077,7 +3102,7 @@ export default {
                         (prev, cur) => {
                             return prev.concat(cur["deviceId"]);
                         },
-                        []
+                        [],
                     ),
                     business: "DEVICE_CONFIG_BATCH_IMPORT",
                 },
@@ -3089,7 +3114,7 @@ export default {
         },
         getLabelSelf(val) {
             let attribute = this.deviceDicList.find(
-                (e) => Number(e.sysDictCode) === Number(val)
+                (e) => Number(e.sysDictCode) === Number(val),
             );
             if (attribute) {
                 return attribute.sysDictName;
@@ -3143,9 +3168,9 @@ export default {
                             if (res.success == true) {
                                 this.$message.success(
                                     this.$t(
-                                        "deviceConfiguration.instructionsHaveBeenIssued"
+                                        "deviceConfiguration.instructionsHaveBeenIssued",
                                     ), // "已下发指令让设备上传文件，请耐心等待！可前往配置模版-文件配置中查看上传进度！",
-                                    3000
+                                    3000,
                                 );
                                 this.fileConfigClose();
                             } else {
@@ -3329,7 +3354,7 @@ export default {
     background: rgb(254, 228, 196);
 }
 
-/deep/.el-alert {
+:deep(.el-alert) {
     .el-alert__content,
     .el-alert__title {
         width: 100%;
@@ -3347,7 +3372,7 @@ export default {
         height: 18px;
     }
 }
-/deep/.bulk-import {
+:deep(.bulk-import) {
     font-size: 14px;
     p {
         font-size: 14px;
@@ -3409,7 +3434,7 @@ export default {
         display: flex;
         flex-direction: column;
     }
-    /deep/.el-radio {
+    :deep(.el-radio) {
         margin-left: 0px !important;
         margin-bottom: 12px;
         max-width: 400px !important;
@@ -3433,7 +3458,7 @@ export default {
     text-overflow: ellipsis;
     overflow: hidden;
 }
-/deep/.selection-box {
+:deep(.selection-box) {
     .el-form-item {
         margin-bottom: 1rem !important;
     }
@@ -3442,7 +3467,7 @@ export default {
         padding-left: 16px;
     }
 }
-/deep/.awaken-dialog {
+:deep(.awaken-dialog) {
     display: flex;
     padding-right: 12px;
     .el-icon-warning {

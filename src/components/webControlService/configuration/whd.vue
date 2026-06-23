@@ -25,7 +25,7 @@
         </div>
         <el-dialog
             :title="tipNum == 1 ? '第一步' : '第二步'"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             append-to-body
             cenetr
         >
@@ -42,11 +42,11 @@
                 "
                 style="width: 100%"
             />
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="tipChange">{{
                     tipNum == 1 ? "下一步" : "上一步"
                 }}</el-button>
-            </span>
+            </span></template>
         </el-dialog>
     </div>
 </template>

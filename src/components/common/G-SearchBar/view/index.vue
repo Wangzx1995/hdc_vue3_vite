@@ -18,8 +18,8 @@
                 </template>
             </G-Form>
             <div class="search-operation">
-                <el-button v-if="showSubmitBtn" size="mini" type="primary" @click="validateForm(true)">{{ submitBtnText }}</el-button>
-                <el-button v-if="showClearBtn" size="mini" @click="reset()">清除条件</el-button>
+                <el-button v-if="showSubmitBtn" size="small" type="primary" @click="validateForm(true)">{{ submitBtnText }}</el-button>
+                <el-button v-if="showClearBtn" size="small" @click="reset()">清除条件</el-button>
                 <slot name="btnOperation"></slot>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <template>
     <div style="height: 100%;">
         <el-input @change="inputVal($event, 'popupDisplayFrequency', 10, 1)" v-model="model" :style="{ width: width }" :placeholder="placeholder" @blur="blur($event)">
-            <div slot="suffix" style="font-Size:12px;line-height: 28px;" v-if="nautical">{{ nautical }}</div>
+            <template #suffix><div style="font-Size:12px;line-height: 28px;" v-if="nautical">{{ nautical }}</div></template>
         </el-input>
     </div>
 </template>

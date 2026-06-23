@@ -40,9 +40,9 @@
                     <span>{{ startDay ? startDay.substring(5) : "" }}</span>
                     <el-time-picker
                         value-format="HH:mm:ss"
-                        size="mini"
+                        size="small"
                         v-model="historyTrajectoryForm.sTime"
-                        default-value="00:00:00"
+                        :default-value="new Date(2020, 0, 1, 0, 0, 0)"
                         :clearable="false"
                     ></el-time-picker>
                 </div>
@@ -54,9 +54,9 @@
                     <span>{{ endDay ? endDay.substring(5) : "" }}</span>
                     <el-time-picker
                         value-format="HH:mm:ss"
-                        size="mini"
+                        size="small"
                         v-model="historyTrajectoryForm.eTime"
-                        default-value="23:59:59"
+                        :default-value="new Date(2020, 0, 1, 23, 59, 59)"
                         :clearable="false"
                     ></el-time-picker>
                 </div>
@@ -82,7 +82,7 @@
                                             <!-- 未定位数据为无效。设备为何显示无效定位 -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.invalidText1"
+                                                    "historyPlayback.invalidText1",
                                                 )
                                             }}
                                             ？
@@ -92,7 +92,7 @@
                                             <!-- 根据 JT/T808协议，平台接收终端的上传数据，在终端上传的定位数据中，有个位标识该条数据是否有效，如果无效，平台展示为无效； -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.invalidText2"
+                                                    "historyPlayback.invalidText2",
                                                 )
                                             }}
                                         </p>
@@ -101,7 +101,7 @@
                                             <!-- 出现无效定位的情况，可能存在以下几种情况 -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.invalidText3"
+                                                    "historyPlayback.invalidText3",
                                                 )
                                             }}：
                                         </p>
@@ -110,7 +110,7 @@
                                             <!-- GPS信号不好 -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.invalidText4"
+                                                    "historyPlayback.invalidText4",
                                                 )
                                             }}
                                         </p>
@@ -119,7 +119,7 @@
                                             <!-- 终端定位模块存在故障 -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.invalidText5"
+                                                    "historyPlayback.invalidText5",
                                                 )
                                             }}
                                         </p>
@@ -128,7 +128,7 @@
                                             <!-- 终端的GPS天线可能有问题 -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.invalidText6"
+                                                    "historyPlayback.invalidText6",
                                                 )
                                             }}
                                         </p>
@@ -137,16 +137,17 @@
                                             <!-- 出现该种情况，只能联系终端厂家来解决，平台无法处理 -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.invalidText7"
+                                                    "historyPlayback.invalidText7",
                                                 )
                                             }}
                                         </p>
                                     </div>
-                                    <i
-                                        class="el-icon-question"
-                                        slot="reference"
-                                        style="color: #66b1ff"
-                                    ></i> </el-popover
+                                    <template #reference>
+                                        <i
+                                            class="el-icon-question"
+                                            style="color: #66b1ff"
+                                        ></i>
+                                    </template> </el-popover
                             ></el-checkbox>
                             <el-checkbox :label="2">
                                 <!-- 不合格 -->
@@ -161,7 +162,7 @@
                                             <!-- 数据合格规则 -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.unqualifiedText1"
+                                                    "historyPlayback.unqualifiedText1",
                                                 )
                                             }}:
                                         </p>
@@ -170,7 +171,7 @@
                                             <!-- 经度合格，范围73°33E-135°05E -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.unqualifiedText2"
+                                                    "historyPlayback.unqualifiedText2",
                                                 )
                                             }}
                                         </p>
@@ -179,7 +180,7 @@
                                             <!-- 纬度合格，范围3°51N-53°33N -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.unqualifiedText3"
+                                                    "historyPlayback.unqualifiedText3",
                                                 )
                                             }}
                                         </p>
@@ -188,7 +189,7 @@
                                             <!-- 海拔合格，范围-200-6500m -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.unqualifiedText4"
+                                                    "historyPlayback.unqualifiedText4",
                                                 )
                                             }}
                                         </p>
@@ -197,7 +198,7 @@
                                             <!-- 方向合格，范围0°-359°之间且数值取整 -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.unqualifiedText5"
+                                                    "historyPlayback.unqualifiedText5",
                                                 )
                                             }}
                                         </p>
@@ -206,7 +207,7 @@
                                             <!-- 速度合格，范围0至160间 -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.unqualifiedText6"
+                                                    "historyPlayback.unqualifiedText6",
                                                 )
                                             }}
                                         </p>
@@ -215,16 +216,17 @@
                                             <!-- 卫星时间合格：GPS上报时间相对于定位时间不超过20小时 -->
                                             {{
                                                 $t(
-                                                    "historyPlayback.unqualifiedText7"
+                                                    "historyPlayback.unqualifiedText7",
                                                 )
                                             }}
                                         </p>
                                     </div>
-                                    <i
-                                        class="el-icon-question"
-                                        slot="reference"
-                                        style="color: #66b1ff"
-                                    ></i>
+                                    <template #reference>
+                                        <i
+                                            class="el-icon-question"
+                                            style="color: #66b1ff"
+                                        ></i>
+                                    </template>
                                 </el-popover>
                             </el-checkbox>
                             <!-- check-box bug  要字符传0 -->
@@ -295,7 +297,7 @@
                 </div>
                 <el-button
                     :disabled="loading"
-                    size="mini"
+                    size="small"
                     type="primary"
                     @click="searchHistoryTrajectory()"
                     class="button-div m-t"
@@ -381,7 +383,7 @@
                                 <!-- 有效定位点 -->
                                 {{
                                     $t(
-                                        "historyPlayback.effectivePositioningPoint"
+                                        "historyPlayback.effectivePositioningPoint",
                                     )
                                 }}
                                 ：
@@ -395,7 +397,7 @@
                                 <!-- 无效定位点 -->
                                 {{
                                     $t(
-                                        "historyPlayback.invalidPositioningPoint"
+                                        "historyPlayback.invalidPositioningPoint",
                                     )
                                 }}
                                 :
@@ -504,7 +506,7 @@
             >
                 <div class="full-screen">
                     <el-button
-                        size="mini"
+                        size="small"
                         type="primary"
                         @click="openSetModal"
                         v-show="contentActiveName === 'GPSTable'"
@@ -513,7 +515,7 @@
                         {{ $t("historyPlayback.setHeader") }}
                     </el-button>
                     <el-button
-                        size="mini"
+                        size="small"
                         type="primary"
                         @click="exportData"
                         :loading="exportLoading"
@@ -524,14 +526,14 @@
                         {{ $t("common.export") }}
                     </el-button>
                     <el-button
-                        size="mini"
+                        size="small"
                         type="primary"
                         @click="changeStateShow('bigger')"
                     >
                         <span class="el-icon-arrow-up"></span>
                     </el-button>
                     <el-button
-                        size="mini"
+                        size="small"
                         type="primary"
                         @click="changeStateShow('smaller')"
                     >
@@ -545,18 +547,20 @@
                     element-loading-background="rgba(0, 0, 0, 0.2)"
                 >
                     <el-tab-pane name="GPSTable">
-                        <span slot="label">
-                            <!-- 位置数据 -->
-                            {{ $t("historyPlayback.positionData") }}
-                            <span>
-                                ({{
-                                    playInfo.indexType === "normal"
-                                        ? historyTrajectoryTempData.length
-                                        : historyTrajectoryTempData_bak.length ||
-                                          0
-                                }})
-                            </span>
-                        </span>
+                        <template #label
+                            ><span>
+                                <!-- 位置数据 -->
+                                {{ $t("historyPlayback.positionData") }}
+                                <span>
+                                    ({{
+                                        playInfo.indexType === "normal"
+                                            ? historyTrajectoryTempData.length
+                                            : historyTrajectoryTempData_bak.length ||
+                                              0
+                                    }})
+                                </span>
+                            </span></template
+                        >
                         <gps-table
                             :locateTypeList="locateTypeList"
                             :uploadModeList="uploadModeList"
@@ -614,7 +618,7 @@
         <!-- 设置窗口是否展示温度、二氧化碳浓度、正反转状态 -->
         <!-- 自定义显示 -->
         <el-dialog
-            :visible.sync="setCarInfoShow"
+            v-model="setCarInfoShow"
             :close-on-click-modal="false"
             :close-on-press-escape="false"
             append-to-body
@@ -632,7 +636,7 @@
         </el-dialog>
         <!-- 导出轨迹 -->
         <el-dialog
-            :visible.sync="exportConfig"
+            v-model="exportConfig"
             :close-on-click-modal="false"
             :cless-escape="false"
             append-to-boose-on-prdy
@@ -728,20 +732,22 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <div slot="footer">
-                <el-button type="text" @click="exportConfig = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button type="primary" @click="exportGps">
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button type="text" @click="exportConfig = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button type="primary" @click="exportGps">
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
         <!-- 高级设置 -->
         <el-dialog
-            :visible.sync="settingModel"
+            v-model="settingModel"
             :close-on-click-modal="false"
             :close-on-press-escape="false"
             :show-close="false"
@@ -769,7 +775,7 @@
                 >
                     <div>
                         <el-color-picker
-                            size="mini"
+                            size="small"
                             v-model="advanceSetForm.colorList[0]"
                         ></el-color-picker>
                         <span>
@@ -779,7 +785,7 @@
                     </div>
                     <div v-for="(item, index) in locateTypeList" :key="index">
                         <el-color-picker
-                            size="mini"
+                            size="small"
                             v-model="advanceSetForm.colorList[index + 1]"
                         ></el-color-picker>
                         <span>
@@ -788,16 +794,18 @@
                     </div>
                 </div>
             </div>
-            <div slot="footer">
-                <el-button type="text" @click="closeSetting">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button type="primary" @click="saveAdvanceSetting">
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button type="text" @click="closeSetting">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button type="primary" @click="saveAdvanceSetting">
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
         <el-dialog
             :show-close="false"
@@ -806,7 +814,7 @@
             append-to-body
             width="450px"
             title=""
-            :visible.sync="awakenVisible"
+            v-model="awakenVisible"
             :custom-class="'awaken-dialog'"
         >
             <div class="awaken-dialog">
@@ -842,20 +850,22 @@
                     </el-form>
                 </div>
             </div>
-            <div slot="footer">
-                <el-button @click="awakenVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    @click="awakenDevice"
-                    :loading="loading"
-                    type="primary"
-                >
-                    <!-- 唤醒 -->
-                    {{ $t("videoPlayback.awaken") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button @click="awakenVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        @click="awakenDevice"
+                        :loading="loading"
+                        type="primary"
+                    >
+                        <!-- 唤醒 -->
+                        {{ $t("videoPlayback.awaken") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -1017,7 +1027,7 @@ export default {
                 {
                     // fieldNameCN: "超时驾驶预警",
                     fieldNameCN: this.$t(
-                        "historyPlayback.fatigueDrivingWarning"
+                        "historyPlayback.fatigueDrivingWarning",
                     ),
                     fieldNameEN: "fatigueDrivingWarning",
                 },
@@ -1039,7 +1049,7 @@ export default {
                 {
                     // fieldNameCN: "经纬度",
                     fieldNameCN: this.$t(
-                        "historyPlayback.longitudeAndLatitude"
+                        "historyPlayback.longitudeAndLatitude",
                     ),
                     fieldNameEN: "longitudeAndLatitude",
                 },
@@ -1084,14 +1094,14 @@ export default {
                 {
                     // fieldNameCN: "当天累计驾驶超时",
                     fieldNameCN: this.$t(
-                        "historyPlayback.cumulativeOvertimeDrivingAlarm"
+                        "historyPlayback.cumulativeOvertimeDrivingAlarm",
                     ),
                     fieldNameEN: "cumulativeOvertimeDrivingAlarm",
                 },
                 {
                     // fieldNameCN: "车辆非法点火",
                     fieldNameCN: this.$t(
-                        "historyPlayback.vehicleIllegalIgnition"
+                        "historyPlayback.vehicleIllegalIgnition",
                     ),
                     fieldNameEN: "vehicleIllegalIgnition",
                 },
@@ -1114,28 +1124,28 @@ export default {
                 {
                     // fieldNameCN: "GNSS天线未接或剪断",
                     fieldNameCN: this.$t(
-                        "historyPlayback.gnnsAntennaUnconnected"
+                        "historyPlayback.gnnsAntennaUnconnected",
                     ),
                     fieldNameEN: "gnnsAntennaUnconnected",
                 },
                 {
                     // fieldNameCN: "GNSS天线短路",
                     fieldNameCN: this.$t(
-                        "historyPlayback.gnnsAntennaShortCircuit"
+                        "historyPlayback.gnnsAntennaShortCircuit",
                     ),
                     fieldNameEN: "gnnsAntennaShortCircuit",
                 },
                 {
                     // fieldNameCN: "终端主电源欠压",
                     fieldNameCN: this.$t(
-                        "historyPlayback.terminalMainPowerUndervoltage"
+                        "historyPlayback.terminalMainPowerUndervoltage",
                     ),
                     fieldNameEN: "terminalMainPowerUndervoltage",
                 },
                 {
                     // fieldNameCN: "终端主电源掉电",
                     fieldNameCN: this.$t(
-                        "historyPlayback.terminalMainPowerDown"
+                        "historyPlayback.terminalMainPowerDown",
                     ),
                     fieldNameEN: "terminalMainPowerDown",
                 },
@@ -1162,7 +1172,7 @@ export default {
                 {
                     // fieldNameCN: "非法开门报警",
                     fieldNameCN: this.$t(
-                        "historyPlayback.vehicleIllegalDoorOpeningAlarm"
+                        "historyPlayback.vehicleIllegalDoorOpeningAlarm",
                     ),
                     fieldNameEN: "vehicleIllegalDoorOpeningAlarm",
                 },
@@ -1381,7 +1391,7 @@ export default {
                     };
                     this.$store.dispatch(
                         "SetDefaultMaintenanceCar",
-                        this.currentWachCar
+                        this.currentWachCar,
                     );
                     //选择日期默认为当天
                     if (this.trackPlaybackCar) {
@@ -1394,7 +1404,7 @@ export default {
                     };
                     this.$refs.datePannel.markRange(
                         this.selectDayRange.minDate,
-                        this.selectDayRange.maxDate
+                        this.selectDayRange.maxDate,
                     );
                 } else {
                     this.historyTrajectoryForm.deviceCode = "";
@@ -1460,13 +1470,13 @@ export default {
                         this.awakenVisible = false;
                         // "已向设备下发唤醒指令，静待1分钟左右设备将重新上线！"
                         this.$message.success(
-                            this.$t("videoPlayback.issueWakeupCommand")
+                            this.$t("videoPlayback.issueWakeupCommand"),
                         );
                     } else {
                         this.loading = false;
                         // 下发唤醒失败！
                         this.$message.error(
-                            this.$t("videoPlayback.wakeupFailed")
+                            this.$t("videoPlayback.wakeupFailed"),
                         );
                     }
                 })
@@ -1524,7 +1534,7 @@ export default {
             let param = {
                 ...this.tableSelect,
                 tableShowContent: JSON.stringify(
-                    this.tableSelect.tableColumnVoList
+                    this.tableSelect.tableColumnVoList,
                 ),
             };
             delete param.tableColumnVoList;
@@ -1554,7 +1564,7 @@ export default {
                             res.data.tableColumnVoList;
                     } else {
                         this.tableSelect.tableColumnVoList = this.$deepCopy(
-                            this.tableHeadSelection
+                            this.tableHeadSelection,
                         );
                     }
                 } else {
@@ -1617,7 +1627,7 @@ export default {
                     }
                     return item;
                     // return item.fieldNameEN !== "continuousDrivingDuration" && item.fieldNameEN !== "status" && item.fieldNameEN !== "parkingDuration";
-                }
+                },
             );
             tableColumnVoList.unshift({
                 // fieldNameCN: "车牌号",
@@ -1664,20 +1674,20 @@ export default {
                                         iframe.style.display = "none";
                                         document.body.appendChild(iframe);
                                         window.clearInterval(
-                                            _this.getExportResultInterval
+                                            _this.getExportResultInterval,
                                         );
                                         _this.getExportResultInterval = "";
                                         _this.exportLoading = false;
                                     }
                                 });
                         },
-                        2000
+                        2000,
                     );
                 } else {
                     notifyMy.close();
                     this.exportLoading = false;
                     this.$message.error(
-                        this.$t("common.exportFailed") + ":" + res.msg
+                        this.$t("common.exportFailed") + ":" + res.msg,
                     );
                 }
             });
@@ -1703,7 +1713,7 @@ export default {
                 }
                 Object.assign(
                     this.gpsExportHistoryTrajectoryForm,
-                    this.historyTrajectoryForm
+                    this.historyTrajectoryForm,
                 );
                 let startTime = null;
                 let endTime = null;
@@ -1735,13 +1745,13 @@ export default {
             if (Base_Map.trajectoryCorrection) {
                 this.playInfo.indexType = "trak";
                 this.historyTrajectoryTempData_bak = this.$deepCopy(
-                    this.historyTrajectoryTempData
+                    this.historyTrajectoryTempData,
                 );
                 let { collectTime } =
                     this.historyTrajectoryTempData[this.playInfo.frontIndex];
                 this.historyTrajectoryTempData.length = 0;
                 this.historyTrajectoryTempData.push(
-                    ...Base_Map.trajectoryCorrection
+                    ...Base_Map.trajectoryCorrection,
                 );
                 let index_play = 0;
                 this.historyTrajectoryTempData.forEach((item, index) => {
@@ -1770,7 +1780,7 @@ export default {
             });
             this.historyTrajectoryTempData.length = 0;
             this.historyTrajectoryTempData.push(
-                ...this.historyTrajectoryTempData_bak
+                ...this.historyTrajectoryTempData_bak,
             );
             this.openLayer.calculatePlayInfo();
             this.playInfo.frontIndex = index_play;
@@ -1795,7 +1805,7 @@ export default {
                             .slice(0, $index)
                             .map(({ lng, lat }) => {
                                 return [lng, lat];
-                            })
+                            }),
                     );
             }
             if (!this.playInfo.isPlay) {
@@ -1879,7 +1889,7 @@ export default {
             if (this.$refs.gpsTable && this.$refs.gpsTable.GpsParams)
                 this.$refs.gpsTable.GpsParams.currentPage = 1;
             this.alarmNum = 0;
-            (this.gpsTimeStatus = {
+            ((this.gpsTimeStatus = {
                 mileage: 0,
                 onlineTime: 0,
                 runningTime: 0,
@@ -1895,7 +1905,7 @@ export default {
                 (this.queryState = {
                     queryCount: 0,
                     queryTotal: null,
-                });
+                }));
             this.queryStateTime = {
                 queryCount: 0,
                 queryTotal: null,
@@ -1955,7 +1965,7 @@ export default {
             if (startTime == "" || endTime == "") {
                 // this.$message.error("请选择轨迹回放时间范围");
                 this.$message.error(
-                    this.$t("videoPlayback.selectTrajectoryPlaybackTime")
+                    this.$t("videoPlayback.selectTrajectoryPlaybackTime"),
                 );
                 return;
             } else if (
@@ -1964,7 +1974,7 @@ export default {
             ) {
                 // this.$message.error("开始时间不能晚于结束时间");
                 this.$message.error(
-                    this.$t("videoPlayback.starttimeNotLaterThanEndTime")
+                    this.$t("videoPlayback.starttimeNotLaterThanEndTime"),
                 );
                 return;
             }
@@ -2044,7 +2054,7 @@ export default {
             if (startTime == "" || endTime == "") {
                 // this.$message.error("请选择轨迹回放时间范围");
                 this.$message.error(
-                    this.$t("videoPlayback.selectTrajectoryPlaybackTime")
+                    this.$t("videoPlayback.selectTrajectoryPlaybackTime"),
                 );
                 return;
             } else if (
@@ -2053,23 +2063,23 @@ export default {
             ) {
                 // this.$message.error("开始时间不能晚于结束时间");
                 this.$message.error(
-                    this.$t("videoPlayback.starttimeNotLaterThanEndTime")
+                    this.$t("videoPlayback.starttimeNotLaterThanEndTime"),
                 );
                 return;
             }
             this.historyTrajectoryForm.startTime = startTime;
             this.historyTrajectoryForm.endTime = endTime;
             let startTimeTimestamp = parseInt(
-                this.$moment(this.historyTrajectoryForm.startTime).format("x")
+                this.$moment(this.historyTrajectoryForm.startTime).format("x"),
             );
             let endTimeTimestamp = parseInt(
-                this.$moment(this.historyTrajectoryForm.endTime).format("x")
+                this.$moment(this.historyTrajectoryForm.endTime).format("x"),
             );
             let diff = endTimeTimestamp - startTimeTimestamp;
             if (diff > 3 * 24 * 3600 * 1000) {
                 // this.$message.warning("查询时间不能超过3天");
                 this.$message.warning(
-                    this.$t("historyPlayback.queryTimeCannotExceed3days")
+                    this.$t("historyPlayback.queryTimeCannotExceed3days"),
                 );
                 return;
             }
@@ -2114,12 +2124,12 @@ export default {
                         let { lng: lngGaode, lat: latGaode } =
                             gpsConverter.gps_gaode(
                                 item.longitude,
-                                item.latitude
+                                item.latitude,
                             );
                         let { lng: lngBaidu, lat: latBaidu } =
                             gpsConverter.gaode_baidu(
                                 item.longitudeGcj,
-                                item.latitudeGcj
+                                item.latitudeGcj,
                             );
                         let [lng, lat] = fromLonLat([
                             item.longitude,
@@ -2140,7 +2150,7 @@ export default {
                     this.openLayer.addPath(info, this.advanceSetForm, false);
                     this.openLayer.drawMarker(
                         "start",
-                        this.historyTrajectoryTempData[0]
+                        this.historyTrajectoryTempData[0],
                     );
                 } else {
                     if (info === "last" || info === "error") {
@@ -2164,14 +2174,14 @@ export default {
                                 "end",
                                 this.historyTrajectoryTempData[
                                     this.historyTrajectoryTempData.length - 1
-                                ]
+                                ],
                             );
                             let gpsList = [gpsStart, gpsEnd];
                             await transferAddress(
                                 gpsList,
                                 "longitude",
                                 "latitude",
-                                "address"
+                                "address",
                             );
                             let startInfo = {
                                 address: gpsStart.address,
@@ -2192,7 +2202,7 @@ export default {
                         } else if (info !== "error") {
                             // this.$message.info("暂无轨迹");
                             this.$message.info(
-                                this.$t("historyPlayback.noTrajectory")
+                                this.$t("historyPlayback.noTrajectory"),
                             );
                         }
                     }
@@ -2255,7 +2265,7 @@ export default {
                 this.openLayer.addAllPath(
                     this.playInfo.filterGps,
                     this.advanceSetForm,
-                    "gray"
+                    "gray",
                 );
                 this.openLayer.play(this.advanceSetForm);
                 setTimeout(() => {
@@ -2281,7 +2291,7 @@ export default {
         getAdvanceSetting() {
             if (localStorage.getItem("advanceSetting")) {
                 let advanceSetting = JSON.parse(
-                    localStorage.getItem("advanceSetting")
+                    localStorage.getItem("advanceSetting"),
                 );
                 let advanceSetForm = {
                     ...advanceSetting,
@@ -2377,12 +2387,12 @@ export default {
                     this.advanceSetForm,
                     this.advanceSetForm.polylineShowType === 1
                         ? "gray"
-                        : "#409eff"
+                        : "#409eff",
                 );
 
                 if (this.advanceSetForm.polylineShowType === 1) {
                     this.openLayer.initGpsMakersLayer(
-                        this.advanceSetForm.colorList
+                        this.advanceSetForm.colorList,
                     );
                     this.openLayer.toggleGpsMarkers(true);
                 }
@@ -2436,46 +2446,46 @@ export default {
                     setTimeout(() => {
                         this.selectDayRange = {
                             minDate: this.$moment(
-                                historyItem.collectTime
+                                historyItem.collectTime,
                             ).format("YYYY-M-D"),
                             maxDate: this.$moment(historyItem.endTime).format(
-                                "YYYY-M-D"
+                                "YYYY-M-D",
                             ),
                         };
                         let startTimeTimestamp = parseInt(
-                            this.$moment(historyItem.collectTime).format("x")
+                            this.$moment(historyItem.collectTime).format("x"),
                         );
                         this.historyTrajectoryForm.sTime = this.$moment(
-                            historyItem.collectTime
+                            historyItem.collectTime,
                         ).format("HH:mm:ss");
                         let endTimeTimestamp = parseInt(
-                            this.$moment(historyItem.endTime).format("x")
+                            this.$moment(historyItem.endTime).format("x"),
                         );
                         let diff = endTimeTimestamp - startTimeTimestamp;
                         if (diff > 3 * 24 * 3600 * 1000) {
                             this.historyTrajectoryForm.eTime = this.$moment(
-                                historyItem.collectTime
+                                historyItem.collectTime,
                             )
                                 .add(2, "d")
                                 .format("HH:mm:ss");
                             this.selectDayRange.maxDate = this.$moment(
-                                historyItem.collectTime
+                                historyItem.collectTime,
                             )
                                 .add(2, "d")
                                 .format("YYYY-M-D");
                         } else {
                             this.historyTrajectoryForm.eTime = this.$moment(
-                                historyItem.endTime
+                                historyItem.endTime,
                             ).format("HH:mm:ss");
                         }
 
                         //选择日期
                         this.$refs.datePannel.markRange(
                             this.selectDayRange.minDate,
-                            this.selectDayRange.maxDate
+                            this.selectDayRange.maxDate,
                         );
                         let month = this.$moment(
-                            historyItem.collectTime
+                            historyItem.collectTime,
                         ).format("M");
                         while (month < new Date().getMonth() + 1) {
                             this.$refs.datePannel.changeMonth(-1);
@@ -2487,7 +2497,7 @@ export default {
                 }, 500);
             } else if (this.$store.state.tree.defaultMaintenanceCar) {
                 let defaultMaintenanceCar = JSON.parse(
-                    this.$store.state.tree.defaultMaintenanceCar
+                    this.$store.state.tree.defaultMaintenanceCar,
                 );
                 this.searchForm.deviceCode = defaultMaintenanceCar.deviceCode;
                 this.currentWachCar = defaultMaintenanceCar;
@@ -2513,7 +2523,7 @@ export default {
             "openLayer",
             this.playInfo,
             utilMethods,
-            this.advanceSetForm.colorList
+            this.advanceSetForm.colorList,
         );
         this.getTableConfig();
         this.historyTrajectoryTempData = this.playInfo.path;
@@ -2529,11 +2539,11 @@ export default {
             {
                 minHeight: 41,
                 ifTopBoxHeight: false,
-            }
+            },
         );
         dragMoveDiv(
             document.getElementsByClassName("play-content")[0],
-            document.getElementsByClassName("number")[0]
+            document.getElementsByClassName("number")[0],
         );
         this.$nextTick(() => {
             this.pageResize();
@@ -2668,20 +2678,20 @@ export default {
     color: #e6a23c;
 }
 .error-Item {
-    /deep/ .el-form-item__error {
+    :deep(.el-form-item__error) {
         margin-top: -10px;
     }
 }
 
 .G-input-number-in {
-    /deep/ .el-input__inner {
+    :deep(.el-input__inner) {
         height: 24px;
         width: 60px;
     }
 }
 
 .G-Number-input {
-    /deep/.el-input {
+    :deep(.el-input) {
         width: 110px !important;
     }
 }
@@ -2738,17 +2748,17 @@ export default {
         // margin-left: 1rem;
         height: 10px;
 
-        /deep/.el-slider__runway {
+        :deep(.el-slider__runway) {
             margin: 3px;
         }
 
-        /deep/.el-slider__button-wrapper {
+        :deep(.el-slider__button-wrapper) {
             width: 18px;
             height: 18px;
             top: -7px;
         }
 
-        /deep/.el-slider__button-wrapper {
+        :deep(.el-slider__button-wrapper) {
             z-index: 999;
         }
     }
@@ -2841,7 +2851,7 @@ export default {
     }
 }
 
-.history-content-bottom /deep/.el-tabs__header {
+.history-content-bottom :deep(.el-tabs__header) {
     margin: 0px;
     padding: 0;
 
@@ -3022,7 +3032,7 @@ export default {
 .alarmCheckedStyle {
     display: block;
 
-    /deep/.el-checkbox__label {
+    :deep(.el-checkbox__label) {
         font-size: 0.8rem !important;
     }
 }
@@ -3123,11 +3133,11 @@ export default {
     background: white;
     height: 100%;
 
-    /deep/.el-tabs__content {
+    :deep(.el-tabs__content) {
         height: calc(~"100% - 44px");
     }
 
-    /deep/ .el-tab-pane {
+    :deep(.el-tab-pane) {
         height: 100%;
     }
 
@@ -3144,7 +3154,7 @@ export default {
     color: "red";
 }
 
-.polyline-width /deep/ .el-slider__runway {
+.polyline-width :deep(.el-slider__runway) {
     margin: 11px 0px !important;
 }
 
@@ -3241,7 +3251,7 @@ export default {
         }
     }
 }
-/deep/.awaken-dialog {
+:deep(.awaken-dialog) {
     display: flex;
     padding-right: 12px;
     .el-icon-warning {

@@ -1,7 +1,7 @@
 <template>
   <div class="configuration-detail">
     <AgreementConfig v-if="showAgreenMeentConfigBol" :isApiDeciveBols="$route.query.isBubiao?false:isApiDeciveBol" @open="openDialog" @protocolSuccess="configSuccess"></AgreementConfig>
-    <StartConfig :visible.sync="startConfigVisible" :organizeId="organizeId" :batchCode="batchCode" :configType="configType" :top="configType=='file'?'200px':'middle'"></StartConfig>
+    <StartConfig v-model="startConfigVisible" :organizeId="organizeId" :batchCode="batchCode" :configType="configType" :top="configType=='file'?'200px':'middle'"></StartConfig>
   </div>
   
 </template>

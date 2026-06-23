@@ -1,7 +1,7 @@
 <template>
     <el-dialog
         title="上传小版本"
-        :visible="minorVersionVisible"
+        v-model="minorVersionVisible"
         :close-on-click-modal="false"
         :close-on-press-escape="false"
         @close="close"
@@ -108,12 +108,17 @@
                 ></el-input>
             </el-form-item>
         </el-form>
-        <span slot="footer" class="dialog-footer">
-            <el-button @click="close">取 消</el-button>
-            <el-button type="primary" @click="submit" :disabled="uploadStatus"
-                >确 定</el-button
-            >
-        </span>
+        <template #footer>
+            <span class="dialog-footer">
+                <el-button @click="close">取 消</el-button>
+                <el-button
+                    type="primary"
+                    @click="submit"
+                    :disabled="uploadStatus"
+                    >确 定</el-button
+                >
+            </span>
+        </template>
     </el-dialog>
 </template>
 
@@ -425,7 +430,7 @@ export default {
                             })
                             .catch(function onRejected(error) {
                                 this_.$message.error(
-                                    "获取上传文件参数失败:" + error
+                                    "获取上传文件参数失败:" + error,
                                 );
                                 return false;
                             });
@@ -584,7 +589,7 @@ export default {
     font-size: small;
     margin-right: 30px;
 }
-/deep/.upload-demo[disabled] {
+:deep(.upload-demo[disabled]) {
     .ivu-upload-select {
         display: none;
     }

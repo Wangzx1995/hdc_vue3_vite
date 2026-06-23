@@ -19,12 +19,14 @@
                     :props="defaultProps"
                     @check="treeCheck"
                 >
-                    <span class="custom-tree-node" slot-scope="{ node, data }">
-                        <span>{{ data.label }}</span>
-                        <el-tooltip :content="data.tips" placement="right">
-                            <i class="el-icon-warning" v-if="data.tips"></i>
-                        </el-tooltip>
-                    </span>
+                    <template #default="{ node, data }"
+                        ><span class="custom-tree-node">
+                            <span>{{ data.label }}</span>
+                            <el-tooltip :content="data.tips" placement="right">
+                                <i class="el-icon-warning" v-if="data.tips"></i>
+                            </el-tooltip>
+                        </span>
+                    </template>
                 </el-tree>
             </div>
             <div class="right-form">
@@ -109,7 +111,7 @@ export default {
                     return prev.concat(cur);
                 }, []);
             this.setDisabledTree(
-                checkedParentNode ? checkedParentNode[this.nodeKey] : null
+                checkedParentNode ? checkedParentNode[this.nodeKey] : null,
             );
         },
         setDisabledTree(key) {
@@ -137,7 +139,7 @@ export default {
                     const findChildren = treeFindPath(
                         data.children,
                         func,
-                        path
+                        path,
                     );
                     if (findChildren.length) return findChildren;
                 }
@@ -201,7 +203,7 @@ export default {
                 if (res.success && res.data) {
                     this.$message.success(
                         "已下发导出指令，请到下载中心查看任务！",
-                        2000
+                        2000,
                     );
                     this.downloadAvi($event);
                 } else {

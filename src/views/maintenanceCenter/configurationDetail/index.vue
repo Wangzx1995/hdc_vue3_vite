@@ -31,35 +31,35 @@
         <!-- dialog-未获取到 -->
         <el-dialog
             title="获取最新配置"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             :width="'500px'"
         >
             <p>- 在线设备可实时获取最新配置信息；</p>
             <p>- 离线和休眠设备需设备在线后才可以获取最新配置信息；</p>
             <p>- HTTP协议类型的设备需要再次重启后才可以获取最新配置信息。</p>
-            <span slot="footer">
+            <template #footer><span>
                 <el-button type="primary" @click="dialogVisible = false"
                     >知道了</el-button
                 >
-            </span>
+            </span></template>
         </el-dialog>
         <el-dialog
             title="选择配置类型"
-            :visible.sync="typeVisible"
+            v-model="typeVisible"
             :width="'500px'"
         >
             <p>- 文件配置：支持部标协议+部标拓展协议+私有协议的参数配置</p>
             <p>- TTS文本下发配置：短信配置，私有指令远程控制终端</p>
             <p>- 协议配置：基于部标协议+部标拓展协议的参数配置</p>
             <p>- HTTP终端参数查询：仅支持Http协议模式的终端查询终端参数</p>
-            <span slot="footer">
+            <template #footer><span>
                 <el-button type="primary" @click="typeVisible = false"
                     >知道了</el-button
                 >
-            </span>
+            </span></template>
         </el-dialog>
         <StartConfig
-            :visible.sync="startConfigVisible"
+            v-model="startConfigVisible"
             :organizeId="organizeId"
             :batchCode="batchCode"
             :configType="configType"

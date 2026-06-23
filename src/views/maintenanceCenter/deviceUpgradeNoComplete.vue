@@ -21,7 +21,7 @@
                         <el-switch
                             @change="getScreenData"
                             v-model="screenTerm"
-                            size="mini"
+                            size="small"
                             disabled
                         ></el-switch>
                     </el-tooltip>
@@ -29,7 +29,7 @@
                         v-show="okTree"
                         @change="getScreenData"
                         v-model="screenTerm"
-                        size="mini"
+                        size="small"
                         :disabled="!params.organizeId"
                     ></el-switch>
                 </div>
@@ -40,11 +40,12 @@
                         :placeholder="$t('common.inputOrganizationName')"
                         clearable
                     >
-                        <i
-                            slot="suffix"
-                            @click="filterTree"
-                            class="el-input__icon el-icon-search"
-                        ></i>
+                        <template #suffix>
+                            <i
+                                @click="filterTree"
+                                class="el-input__icon el-icon-search"
+                            ></i>
+                        </template>
                     </el-input>
                     <div :class="{ loading_: searchLoading }">
                         <el-tree
@@ -60,7 +61,6 @@
                             :props="defaultProps"
                             :current-node-key="params.organizeId"
                             :style="{ height: treeHeight + 'px' }"
-                            slot="reference"
                             :expand-on-click-node="false"
                         ></el-tree>
                     </div>
@@ -72,11 +72,12 @@
                         :placeholder="$t('common.inputOrganizationName')"
                         clearable
                     >
-                        <i
-                            slot="suffix"
-                            @click="filterTree1"
-                            class="el-input__icon el-icon-search"
-                        ></i>
+                        <template #suffix>
+                            <i
+                                @click="filterTree1"
+                                class="el-input__icon el-icon-search"
+                            ></i>
+                        </template>
                     </el-input>
                     <div :class="{ loading_: searchLoading }">
                         <el-tree
@@ -92,15 +93,16 @@
                             :props="defaultProps"
                             :current-node-key="params.organizeId"
                             :style="{ height: treeHeight + 'px' }"
-                            slot="reference"
                             :expand-on-click-node="false"
                         >
-                            <span slot-scope="{ node, data }">
-                                <i class="el-icon-s-flag"></i>
-                                <span class="tree-node-span">{{
-                                    node.label
-                                }}</span>
-                            </span>
+                            <template #default="{ node, data }">
+                                <span>
+                                    <i class="el-icon-s-flag"></i>
+                                    <span class="tree-node-span">{{
+                                        node.label
+                                    }}</span>
+                                </span>
+                            </template>
                         </el-tree>
                     </div>
                 </div>
@@ -490,7 +492,7 @@
                                 :label="$t('deviceUpgrade.upgradeStateTime')"
                                 width="180px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     {{
                                         $moment(
                                             scope.row.upgradeStateTime,
@@ -505,7 +507,7 @@
                                 :label="$t('firmware.firmwareType')"
                                 width="100px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span v-if="scope.row.type === 'main'">
                                         <!-- 主机 -->
                                         {{ $t("firmware.host") }}
@@ -564,7 +566,7 @@
                                 :label="$t('operationLog.operationTime')"
                                 width="180px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span v-if="scope.row.createTime">
                                         {{
                                             $moment(
@@ -591,7 +593,7 @@
                                 :label="$t('common.deviceStatus')"
                                 min-width="120px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-tag
                                         type="success"
                                         v-if="scope.row.deviceStatus === 1"
@@ -637,7 +639,7 @@
                                 min-width="130px"
                                 fixed="right"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <upgradeProgress :upgradeData="scope.row">
                                     </upgradeProgress>
                                 </template>
@@ -661,7 +663,7 @@
                                 :label="$t('common.operate')"
                                 width="120px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <a
                                         @click="
                                             stopUpgrade(
@@ -719,7 +721,7 @@
         </div>
         <!-- 表头设置 -->
         <el-dialog
-            :visible="customBol"
+            v-model="customBol"
             :title="$t('conditionMonitoring.headerSettings')"
             fill="blue"
             @close="customBol = false"
@@ -831,22 +833,24 @@
                     </el-col>
                 </el-row>
             </div>
-            <div slot="footer">
-                <el-button size="small" type="default" @click="doDefault">
-                    <!-- 恢复默认 -->
-                    {{ $t("sortHeader.restoreDefault") }}
-                </el-button>
-                <el-button
-                    :loading="updateCustomJsonBol"
-                    :disabled="updateCustomJsonBol"
-                    size="small"
-                    type="primary"
-                    @click="doSave"
-                >
-                    <!-- 保存 -->
-                    {{ $t("common.save") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button size="small" type="default" @click="doDefault">
+                        <!-- 恢复默认 -->
+                        {{ $t("sortHeader.restoreDefault") }}
+                    </el-button>
+                    <el-button
+                        :loading="updateCustomJsonBol"
+                        :disabled="updateCustomJsonBol"
+                        size="small"
+                        type="primary"
+                        @click="doSave"
+                    >
+                        <!-- 保存 -->
+                        {{ $t("common.save") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
     </div>
 </template>

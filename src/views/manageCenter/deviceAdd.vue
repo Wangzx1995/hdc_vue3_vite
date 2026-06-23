@@ -43,19 +43,20 @@
                                 "
                                 class="item"
                             >
-                                <span slot="label" class="label-slot"
-                                    >{{ $t("common.deviceCode") }}
-                                    <el-tooltip
-                                        :content="
-                                            $t(
-                                                'deviceManage.deviceCodeDescription'
-                                            )
-                                        "
-                                    >
-                                        <i
-                                            class="el-icon-question"
-                                        ></i> </el-tooltip
-                                ></span>
+                                <template #label
+                                    ><span class="label-slot"
+                                        >{{ $t("common.deviceCode") }}
+                                        <el-tooltip
+                                            :content="
+                                                $t(
+                                                    'deviceManage.deviceCodeDescription',
+                                                )
+                                            "
+                                        >
+                                            <i
+                                                class="el-icon-question"
+                                            ></i> </el-tooltip></span
+                                ></template>
                                 <el-input
                                     v-model="addTerminalForm.deviceCode"
                                     :disabled="type === 'edit'"
@@ -81,7 +82,7 @@
                                     default-first-option
                                     :placeholder="
                                         $t(
-                                            'deviceManage.deviceModelCodeDescription'
+                                            'deviceManage.deviceModelCodeDescription',
                                         )
                                     "
                                 >
@@ -294,17 +295,19 @@
         <!-- 设备序列号 -->
         <el-dialog
             :title="$t('common.deviceSerialNum')"
-            :visible="exampleVisible"
+            v-model="exampleVisible"
             append-to-body
             @close="exampleVisible = false"
         >
             <img :src="device_code" alt="" style="width: 100%" />
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="exampleVisible = false">
-                    <!-- 知道了 -->
-                    {{ $t("common.gotIt") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="exampleVisible = false">
+                        <!-- 知道了 -->
+                        {{ $t("common.gotIt") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <!-- <el-tab-pane :label="type == 'edit' ? '编辑外设' : '添加外设'" name="second">
             <div>
@@ -327,33 +330,35 @@
                 </el-button>
             </div>
         </div>
-        <!-- <el-dialog title="提示" :visible.sync="showIfReAdd" :width="'800px'">
+        <!-- <el-dialog title="提示" v-model="showIfReAdd" :width="'800px'">
             车牌号:{{ addTerminalForm.plateNum }},已存在，是否继续添加？
-            <div slot="footer" class="dialog-footer">
+            <template #footer><div class="dialog-footer">
                 <el-button type="primary" @click="submit"> 确 定 </el-button>
                 <el-button @click="doTipCancel">取 消</el-button>
-            </div>
+            </div></template>
         </el-dialog> -->
         <el-dialog
             :title="$t('common.prompt')"
-            :visible.sync="showIfReAdd"
+            v-model="showIfReAdd"
             :width="'800px'"
         >
             {{ $t("common.plateNum") }}:{{ addTerminalForm.plateNum
             }}{{ $t("carManage.alreadyExists") }}
-            <div slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="submit">{{
-                    $t("common.ok")
-                }}</el-button>
-                <el-button @click="doTipCancel">{{
-                    $t("common.cancel")
-                }}</el-button>
-            </div>
+            <template #footer>
+                <div class="dialog-footer">
+                    <el-button type="primary" @click="submit">{{
+                        $t("common.ok")
+                    }}</el-button>
+                    <el-button @click="doTipCancel">{{
+                        $t("common.cancel")
+                    }}</el-button>
+                </div>
+            </template>
         </el-dialog>
         <el-dialog
             title="查看资料"
             append-to-body
-            :visible.sync="msgDialogVisible"
+            v-model="msgDialogVisible"
             width="800px"
         >
             <div style="padding: 1rem 0; font-size: 1rem; color: #000">
@@ -388,11 +393,13 @@
                 <el-table-column prop="need" label="是否必需" width="100">
                 </el-table-column>
             </el-table> -->
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="copyText"
-                    >复制域名/IP</el-button
-                >
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="copyText"
+                        >复制域名/IP</el-button
+                    >
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -425,8 +432,8 @@ export default {
                     callback(
                         new Error(
                             that.$t("deviceManage.deviceAddText2") +
-                                "：\\/:*?\"<|'&%>"
-                        )
+                                "：\\/:*?\"<|'&%>",
+                        ),
                     );
                 } else {
                     callback();
@@ -445,8 +452,8 @@ export default {
                     callback(
                         new Error(
                             that.$t("deviceManage.deviceAddText4") +
-                                "：\\/:*?\"<|'&%>"
-                        )
+                                "：\\/:*?\"<|'&%>",
+                        ),
                     );
                 } else {
                     callback();
@@ -685,7 +692,7 @@ export default {
                             if (res.success == true) {
                                 // this.$message.success("设备添加成功!");
                                 this.$message.success(
-                                    this.$t("deviceManage.deviceAddText14")
+                                    this.$t("deviceManage.deviceAddText14"),
                                 );
                                 this.cancelDialog();
                                 this.$emit("handleSuccess");
@@ -705,7 +712,7 @@ export default {
                             if (res.success == true) {
                                 // this.$message.success("设备编辑成功!");
                                 this.$message.success(
-                                    this.$t("deviceManage.deviceAddText15")
+                                    this.$t("deviceManage.deviceAddText15"),
                                 );
                                 this.cancelDialog();
                                 this.$emit("handleSuccess");
@@ -767,7 +774,7 @@ export default {
                 if (this.addTerminalForm.videoChannels.length >= 24) {
                     // this.$message.error("最多只能添加24个通道");
                     this.$message.error(
-                        this.$t("deviceManage.deviceAddText16")
+                        this.$t("deviceManage.deviceAddText16"),
                     );
                 } else {
                     let length = this.addTerminalForm.videoChannels.length;
@@ -829,7 +836,7 @@ export default {
                 },
                 () => {
                     this.$message.error("复制失败，请重试");
-                }
+                },
             );
         },
         clearNoUseDeviceModel() {
@@ -841,7 +848,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     this.$api.clearNoUseDeviceModel().then((res) => {
@@ -849,7 +856,7 @@ export default {
                             this.getDeviceModelList();
                             // this.$message.success("清除成功！");
                             this.$message.success(
-                                this.$t("deviceManage.deviceAddText18")
+                                this.$t("deviceManage.deviceAddText18"),
                             );
                         } else {
                             this.$message.error(res.msg);
@@ -875,7 +882,7 @@ export default {
     .add-device-tab {
         height: 760px;
     }
-    // /deep/ .el-input,.el-select {
+    // :deep(.el-input),.el-select {
     //     width: 500px;
     // }
     .container {
@@ -919,7 +926,7 @@ export default {
     }
     .channel-edit {
         width: 1150px;
-        /deep/ .el-input,
+        :deep(.el-input),
         .el-select {
             width: 100%;
         }

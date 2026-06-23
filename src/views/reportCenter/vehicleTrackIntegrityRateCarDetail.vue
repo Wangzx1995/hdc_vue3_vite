@@ -39,7 +39,7 @@
                     :label="$t('common.operate')"
                     width="80px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a @click="searchGps(scope.row.date)">
                             <!-- 轨迹回放 -->
                             {{ $t("qualifiedProbability.trackPlayback") }}
@@ -151,7 +151,7 @@
                                 width="100px"
                                 show-overflow-tooltip
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span>{{
                                         // scope.row.supplementSign
                                         //     ? "补报"
@@ -173,7 +173,7 @@
                                 width="100px"
                                 show-overflow-tooltip
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span>{{
                                         // !scope.row.gpsStatus
                                         //     ? "ACCOFF & 定位无效"
@@ -232,7 +232,7 @@
                                 width="100px"
                                 show-overflow-tooltip
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span
                                         >{{ scope.row.longitude }}，{{
                                             scope.row.latitude
@@ -286,7 +286,7 @@
                                 "
                                 width="150px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div
                                         class="position-signal"
                                         v-if="
@@ -422,7 +422,7 @@
                                 :label="$t('common.startTime')"
                                 min-width="150px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span>
                                         {{
                                             $moment(scope.row.startTime).format(
@@ -437,7 +437,7 @@
                                 :label="$t('common.endTime')"
                                 min-width="150px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span>
                                         {{
                                             $moment(scope.row.endTime).format(

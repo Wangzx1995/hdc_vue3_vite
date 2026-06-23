@@ -9,7 +9,9 @@
                     :placeholder="$t('common.inputOrganizationName')"
                     clearable
                 >
-                    <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                    <template #suffix
+                        ><i class="el-input__icon el-icon-search"></i
+                    ></template>
                 </el-input>
                 <div :class="{ loading_: searchLoading }">
                     <el-tree
@@ -92,7 +94,7 @@
                                                     <!-- 全选模板 -->
                                                     {{
                                                         $t(
-                                                            "antIrotationNet.selectAllTemplates"
+                                                            "antIrotationNet.selectAllTemplates",
                                                         )
                                                     }}
                                                 </span>
@@ -137,7 +139,7 @@
                                 <!-- 批量防转网 -->
                                 {{
                                     $t(
-                                        "antIrotationNet.batchAntiTransferNetwork"
+                                        "antIrotationNet.batchAntiTransferNetwork",
                                     )
                                 }}{{
                                     selectionLength
@@ -155,7 +157,7 @@
                                 <!-- 整组防转网 -->
                                 {{
                                     $t(
-                                        "antIrotationNet.entireAntiRotationNetwork"
+                                        "antIrotationNet.entireAntiRotationNetwork",
                                     )
                                 }}
                             </el-button>
@@ -168,7 +170,7 @@
                                         selection.find(
                                             (item) =>
                                                 item.ipLockId !== 0 &&
-                                                item.capacityLock === 0
+                                                item.capacityLock === 0,
                                         )
                                     )
                                 "
@@ -180,13 +182,13 @@
                                     selection.filter(
                                         (item) =>
                                             item.ipLockId !== 0 &&
-                                            item.capacityLock === 0
+                                            item.capacityLock === 0,
                                     ).length
                                         ? "(" +
                                           selection.filter(
                                               (item) =>
                                                   item.ipLockId !== 0 &&
-                                                  item.capacityLock === 0
+                                                  item.capacityLock === 0,
                                           ).length +
                                           ")"
                                         : ""
@@ -201,7 +203,7 @@
                                         selection.find(
                                             (item) =>
                                                 item.ipLockId !== 0 &&
-                                                item.capacityLock === 1
+                                                item.capacityLock === 1,
                                         )
                                     )
                                 "
@@ -213,13 +215,13 @@
                                     selection.filter(
                                         (item) =>
                                             item.ipLockId !== 0 &&
-                                            item.capacityLock === 1
+                                            item.capacityLock === 1,
                                     ).length
                                         ? "(" +
                                           selection.filter(
                                               (item) =>
                                                   item.ipLockId !== 0 &&
-                                                  item.capacityLock === 1
+                                                  item.capacityLock === 1,
                                           ).length +
                                           ")"
                                         : ""
@@ -280,7 +282,7 @@
                                 :label="$t('common.plateNum')"
                                 width="160px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         {{ scope.row.plateNum
                                         }}<span
@@ -311,12 +313,12 @@
                                 min-width="60px"
                                 align="right"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <a
                                         @click="
                                             openIpLockNum(
                                                 scope.row.ipLockNum,
-                                                scope.row.id
+                                                scope.row.id,
                                             )
                                         "
                                         v-if="scope.row.ipLockNum > 0"
@@ -343,7 +345,7 @@
                                 width="160px"
                                 fixed="right"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-switch
                                         @change="changeCapacityLock(scope.row)"
                                         v-if="scope.row.ipLockId"
@@ -375,7 +377,7 @@
         </el-row>
         <!-- 防转网到期通知 -->
         <el-dialog
-            :visible="noticeBol"
+            v-model="noticeBol"
             :title="$t('parameterQuery.noticeBolText1')"
             @close="noticeBol = false"
             class="modal-nopadding"
@@ -404,7 +406,7 @@
         </el-dialog>
         <!-- 防转网设备确认 -->
         <el-dialog
-            :visible="showIplocked"
+            v-model="showIplocked"
             :title="$t('parameterQuery.showIplocked1')"
             class="modal-nopadding"
             @close="doCancel"
@@ -493,7 +495,7 @@
                                 {{
                                     makeSureLoading
                                         ? this.$t(
-                                              "antIrotationNet.inApplication"
+                                              "antIrotationNet.inApplication",
                                           )
                                         : this.$t("common.ok")
                                 }}
@@ -718,21 +720,21 @@ export default {
                                     // this.noIplockedManage = `不包含${res.data.recordExistIpLockNum}个已应用模板的设备`;
                                     // this.iplockedManage = `包含${res.data.recordExistIpLockNum}个已应用模板的设备`;
                                     this.showIplockedManage = `${this.$t(
-                                        "antIrotationNet.applyIpLockDoText1"
+                                        "antIrotationNet.applyIpLockDoText1",
                                     )}${res.data.recordTotleNum}${this.$t(
-                                        "antIrotationNet.applyIpLockDoText2"
+                                        "antIrotationNet.applyIpLockDoText2",
                                     )}${res.data.recordExistIpLockNum}${this.$t(
-                                        "antIrotationNet.applyIpLockDoText3"
+                                        "antIrotationNet.applyIpLockDoText3",
                                     )}`;
                                     this.noIplockedManage = `${this.$t(
-                                        "antIrotationNet.applyIpLockDoText4"
+                                        "antIrotationNet.applyIpLockDoText4",
                                     )}${res.data.recordExistIpLockNum}${this.$t(
-                                        "antIrotationNet.applyIpLockDoText5"
+                                        "antIrotationNet.applyIpLockDoText5",
                                     )}`;
                                     this.iplockedManage = `${this.$t(
-                                        "antIrotationNet.applyIpLockDoText6"
+                                        "antIrotationNet.applyIpLockDoText6",
                                     )}${res.data.recordExistIpLockNum}${this.$t(
-                                        "antIrotationNet.applyIpLockDoText7"
+                                        "antIrotationNet.applyIpLockDoText7",
                                     )}`;
                                     this.showIplocked = true;
                                     this.iplockedPramas.organizeId =
@@ -790,13 +792,13 @@ export default {
                         // 解除防转网成功
                         this.$message.success(
                             this.$t(
-                                "antIrotationNet.removedAntiTransferNetwork"
-                            )
+                                "antIrotationNet.removedAntiTransferNetwork",
+                            ),
                         );
                     } else {
                         // 应用成功
                         this.$message.success(
-                            this.$t("antIrotationNet.applicationSuccessful")
+                            this.$t("antIrotationNet.applicationSuccessful"),
                         );
                         this.useLoading = false;
                         this.showIplocked = false;
@@ -814,7 +816,7 @@ export default {
         //跳转至模板管理页
         goIplockTemplate() {
             this.$router.push(
-                "/maintenanceCenter/antIrotationNet/antIrotationNetTemplate"
+                "/maintenanceCenter/antIrotationNet/antIrotationNetTemplate",
             );
         },
         //获取模板列表
@@ -863,7 +865,7 @@ export default {
                                 this.TreeExpanded.push(m.id);
                             });
                             this.$refs["tree"].setCurrentKey(
-                                this.params.organizeId
+                                this.params.organizeId,
                             );
                         });
                         let groupArr = this.groupIds.filter((item) => {
@@ -900,7 +902,7 @@ export default {
             if (!this.selection.length) {
                 // 请勾选需要设置防转网的设备
                 this.$message.info(
-                    this.$t("antIrotationNet.antIrotationDoText1")
+                    this.$t("antIrotationNet.antIrotationDoText1"),
                 );
             } else {
                 if (
@@ -913,11 +915,11 @@ export default {
                         this.$t("common.prompt"),
                         {
                             confirmButtonText: this.$t(
-                                "antIrotationNet.antIrotationDoText3"
+                                "antIrotationNet.antIrotationDoText3",
                             ), //"现在添加",
                             cancelButtonText: this.$t("common.cancel"),
                             type: "info",
-                        }
+                        },
                     )
                         .then(() => {
                             this.$router.push({
@@ -953,12 +955,12 @@ export default {
                         `${
                             item.capacityLock == 1
                                 ? this.$t(
-                                      "antIrotationNet.changeCapacityLockText1"
+                                      "antIrotationNet.changeCapacityLockText1",
                                   )
                                 : this.$t(
-                                      "antIrotationNet.changeCapacityLockText2"
+                                      "antIrotationNet.changeCapacityLockText2",
                                   )
-                        }${this.$t("antIrotationNet.changeCapacityLockText3")}}`
+                        }${this.$t("antIrotationNet.changeCapacityLockText3")}}`,
                     );
                     this.getIpLockDevicePage();
                 } else {
@@ -969,14 +971,14 @@ export default {
                         `${
                             item.capacityLock == 1
                                 ? this.$t(
-                                      "antIrotationNet.changeCapacityLockText1"
+                                      "antIrotationNet.changeCapacityLockText1",
                                   )
                                 : this.$t(
-                                      "antIrotationNet.changeCapacityLockText2"
+                                      "antIrotationNet.changeCapacityLockText2",
                                   )
                         }${this.$t(
-                            "antIrotationNet.changeCapacityLockText4"
-                        )}：${res.msg}`
+                            "antIrotationNet.changeCapacityLockText4",
+                        )}：${res.msg}`,
                     );
                 }
             });
@@ -1003,18 +1005,18 @@ export default {
                             this.$message.success(
                                 // `批量${num == 1 ? "启用" : "停用"}模板成功`
                                 `${this.$t(
-                                    "antIrotationNet.changeCapacityLockText5"
+                                    "antIrotationNet.changeCapacityLockText5",
                                 )}${
                                     num == 1
                                         ? this.$t(
-                                              "antIrotationNet.changeCapacityLockText1"
+                                              "antIrotationNet.changeCapacityLockText1",
                                           )
                                         : this.$t(
-                                              "antIrotationNet.changeCapacityLockText2"
+                                              "antIrotationNet.changeCapacityLockText2",
                                           )
                                 }${this.$t(
-                                    "antIrotationNet.changeCapacityLockText3"
-                                )}`
+                                    "antIrotationNet.changeCapacityLockText3",
+                                )}`,
                             );
                             this.getIpLockDevicePage(true);
                         } else {
@@ -1024,18 +1026,18 @@ export default {
                                 //     res.msg
                                 // }`
                                 `${this.$t(
-                                    "antIrotationNet.changeCapacityLockText5"
+                                    "antIrotationNet.changeCapacityLockText5",
                                 )}${
                                     num == 1
                                         ? this.$t(
-                                              "antIrotationNet.changeCapacityLockText1"
+                                              "antIrotationNet.changeCapacityLockText1",
                                           )
                                         : this.$t(
-                                              "antIrotationNet.changeCapacityLockText2"
+                                              "antIrotationNet.changeCapacityLockText2",
                                           )
                                 }${this.$t(
-                                    "antIrotationNet.changeCapacityLockText4"
-                                )}：${res.msg}`
+                                    "antIrotationNet.changeCapacityLockText4",
+                                )}：${res.msg}`,
                             );
                         }
                     });
@@ -1043,7 +1045,7 @@ export default {
             } else {
                 // 请勾选需要操作设备
                 this.$message.info(
-                    this.$t("antIrotationNet.changeCapacityLockText6")
+                    this.$t("antIrotationNet.changeCapacityLockText6"),
                 );
             }
         },
@@ -1066,11 +1068,11 @@ export default {
                     this.$t("common.prompt"),
                     {
                         confirmButtonText: this.$t(
-                            "antIrotationNet.oneGroupText3"
+                            "antIrotationNet.oneGroupText3",
                         ), //"现在添加",
                         cancelButtonText: this.$t("common.cancel"),
                         type: "info",
-                    }
+                    },
                 )
                     .then(() => {
                         this.$router.push({
@@ -1092,7 +1094,7 @@ export default {
             if (!this.selection.length) {
                 // 请勾选需要解除防转网的设备
                 this.$message.info(
-                    this.$t("antIrotationNet.antIrotationExitText1")
+                    this.$t("antIrotationNet.antIrotationExitText1"),
                 );
             } else {
                 this.$confirm(
@@ -1103,7 +1105,7 @@ export default {
                         confirmButtonText: this.$t("common.confirm"),
                         cancelButtonText: this.$t("common.cancel"),
                         type: "info",
-                    }
+                    },
                 )
                     .then(() => {
                         this.updateDeviceIpLock(2);
@@ -1346,7 +1348,7 @@ export default {
                         type === 1
                             ? this.$t("antIrotationNet.lock")
                             : this.$t("antIrotationNet.unlock")
-                    }${this.$t("antIrotationNet.handleLockText2")}`
+                    }${this.$t("antIrotationNet.handleLockText2")}`,
                 );
             } else {
                 let deviceIds = this.selection.reduce((prev, cur) => {
@@ -1365,7 +1367,7 @@ export default {
                         confirmButtonText: this.$t("common.ok"),
                         cancelButtonText: this.$t("common.cancel"),
                         type: "warning",
-                    }
+                    },
                 )
                     .then(() => {
                         this.$api
@@ -1379,12 +1381,12 @@ export default {
                                         `${
                                             type === 1
                                                 ? this.$t(
-                                                      "antIrotationNet.lock"
+                                                      "antIrotationNet.lock",
                                                   )
                                                 : this.$t(
-                                                      "antIrotationNet.unlock"
+                                                      "antIrotationNet.unlock",
                                                   )
-                                        }${this.$t("common.success")}}`
+                                        }${this.$t("common.success")}}`,
                                     );
                                 } else {
                                     this.$message.error(res.msg);
@@ -1451,7 +1453,7 @@ export default {
 .marginBottom {
     margin-bottom: 0.5rem;
 }
-/deep/.ipLockIds {
+:deep(.ipLockIds) {
     width: 220px;
     .el-select__tags-text {
         overflow: hidden;

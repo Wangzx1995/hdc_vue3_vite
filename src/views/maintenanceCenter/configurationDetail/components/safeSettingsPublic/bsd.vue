@@ -12,12 +12,12 @@
               <div class="configurations">
                 <div v-if="form['F367']" class="configuration-item">
                   <el-form-item label="后方接近报警时间阈值" prop="F367.backApproachAlarmTimeThreshold">
-                    <el-input v-model="form['F367'].backApproachAlarmTimeThreshold"><span slot="suffix">s</span></el-input>
+                    <el-input v-model="form['F367'].backApproachAlarmTimeThreshold"><template #suffix><span>s</span></template></el-input>
                   </el-form-item>
                 </div>
                 <div v-if="form['F367']" class="configuration-item">
                   <el-form-item label="侧后方接近报警时间阈值" prop="F367.sideBackApproachAlarmTimeThreshold">
-                    <el-input v-model="form['F367'].sideBackApproachAlarmTimeThreshold"><span slot="suffix">s</span></el-input>
+                    <el-input v-model="form['F367'].sideBackApproachAlarmTimeThreshold"><template #suffix><span>s</span></template></el-input>
                   </el-form-item>
                 </div>
               </div>

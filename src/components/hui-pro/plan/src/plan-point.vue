@@ -27,11 +27,11 @@
           style="width:120px"
         ></el-time-select>
         <div style="text-align: right; margin: 10px 0 0;">
-          <el-button size="mini" type="link" @click="save">
+          <el-button size="small" type="text" @click="save">
             {{ t('h.plan.save') }}
           </el-button>
           <el-button
-            size="mini"
+            size="small"
             type="text"
             class="h-plan-popover-delbtn"
             @click="destroy"

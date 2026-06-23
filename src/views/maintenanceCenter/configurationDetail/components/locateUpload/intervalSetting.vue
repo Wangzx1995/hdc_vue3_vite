@@ -12,22 +12,22 @@
           <div class="configurations">
             <div v-if="form['0027']" class="configuration-item">
               <el-form-item label="休眠汇报时间间隔" prop="0027.reportTimeIntervalDuringSleep">
-                  <el-input v-model="form['0027'].reportTimeIntervalDuringSleep"><span slot="suffix">s</span></el-input>
+                  <el-input v-model="form['0027'].reportTimeIntervalDuringSleep"><template #suffix><span>s</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if="form['0028']" class="configuration-item">
               <el-form-item label="紧急报警汇报时间间隔" prop="0028.reportTimeIntervalDuringAlarm">
-                  <el-input v-model="form['0028'].reportTimeIntervalDuringAlarm"><span slot="suffix">s</span></el-input>
+                  <el-input v-model="form['0028'].reportTimeIntervalDuringAlarm"><template #suffix><span>s</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if="form['0029']" class="configuration-item">
               <el-form-item label="缺省时间汇报时间间隔" prop="0029.reportTimeIntervalDuringDefault">
-                  <el-input v-model="form['0029'].reportTimeIntervalDuringDefault"><span slot="suffix">s</span></el-input>
+                  <el-input v-model="form['0029'].reportTimeIntervalDuringDefault"><template #suffix><span>s</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if="form['0022']" class="configuration-item">
               <el-form-item label="驾驶员未登录汇报时间间隔" prop="0022.driverUnloginUploadTimeInterval">
-                  <el-input v-model="form['0022'].driverUnloginUploadTimeInterval"><span slot="suffix">s</span></el-input>
+                  <el-input v-model="form['0022'].driverUnloginUploadTimeInterval"><template #suffix><span>s</span></template></el-input>
               </el-form-item>
             </div>
           </div>
@@ -52,22 +52,22 @@
         <div class="configurations">
           <div v-if="form['002C']" class="configuration-item">
             <el-form-item label="缺省距离汇报间隔" prop="002C.defaultDistanceReportingInterval">
-                <el-input v-model="form['002C'].defaultDistanceReportingInterval"><span slot="suffix">m</span></el-input>
+                <el-input v-model="form['002C'].defaultDistanceReportingInterval"><template #suffix><span>m</span></template></el-input>
             </el-form-item>
           </div>
           <div v-if="form['002D']" class="configuration-item">
             <el-form-item label="驾驶员未登录汇报距离间隔" prop="002D.driverNotLoggedInReportingInterval">
-                <el-input v-model="form['002D'].driverNotLoggedInReportingInterval"><span slot="suffix">m</span></el-input>
+                <el-input v-model="form['002D'].driverNotLoggedInReportingInterval"><template #suffix><span>m</span></template></el-input>
             </el-form-item>
           </div>
           <div v-if="form['002E']" class="configuration-item">
             <el-form-item label="休眠时汇报距离间隔" prop="002E.sleepDistanceReportingInterval">
-                <el-input v-model="form['002E'].sleepDistanceReportingInterval"><span slot="suffix">m</span></el-input>
+                <el-input v-model="form['002E'].sleepDistanceReportingInterval"><template #suffix><span>m</span></template></el-input>
             </el-form-item>
           </div>
           <div v-if="form['002F']" class="configuration-item">
             <el-form-item label="紧急报警时汇报距离间隔" prop="002F.alarmDistanceReportingInterval">
-                <el-input v-model="form['002F'].alarmDistanceReportingInterval"><span slot="suffix">m</span></el-input>
+                <el-input v-model="form['002F'].alarmDistanceReportingInterval"><template #suffix><span>m</span></template></el-input>
             </el-form-item>
           </div>
         </div>

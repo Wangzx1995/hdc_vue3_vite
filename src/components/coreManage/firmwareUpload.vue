@@ -3,7 +3,7 @@
         <!-- 上传固件包 -->
         <el-dialog
             :title="$t('firmware.uploadFirmwarePackage')"
-            :visible="firmwareVisible"
+            v-model="firmwareVisible"
             :close-on-click-modal="false"
             :close-on-press-escape="false"
             @close="close"
@@ -74,7 +74,7 @@
                                     ? deviceModelList.filter(
                                           (k) =>
                                               k.fieldNameEN ===
-                                              $route.query.deviceModelCode
+                                              $route.query.deviceModelCode,
                                       )
                                     : deviceModelList"
                                 :key="index"
@@ -127,7 +127,7 @@
                         prop="shareOpen"
                         v-if="isAdmin && firmwareForm.serverType == '0'"
                     >
-                        <template slot="label">
+                        <template #label>
                             <span>
                                 <!-- 是否分享给子账号 -->
                                 {{ $t("firmware.shareWithSubAccount") }}
@@ -245,7 +245,7 @@
                                         {{
                                             readFileing
                                                 ? $t(
-                                                      "firmware.analyzingInProgress"
+                                                      "firmware.analyzingInProgress",
                                                   ) + "..."
                                                 : $t("firmware.selectFile")
                                         }}
@@ -331,23 +331,27 @@
                 </el-form>
             </div>
 
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="close">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    :loading="uploadStatus"
-                    :disabled="uploadStatus"
-                    @click="submit"
-                >
-                    <!-- "添加中" : "确 定"  -->
-                    {{
-                        uploadStatus ? $t("firmware.addingIn") : $t("common.ok")
-                    }}
-                </el-button>
-            </span>
+            <template #footer
+                ><span class="dialog-footer">
+                    <el-button @click="close">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        :loading="uploadStatus"
+                        :disabled="uploadStatus"
+                        @click="submit"
+                    >
+                        <!-- "添加中" : "确 定"  -->
+                        {{
+                            uploadStatus
+                                ? $t("firmware.addingIn")
+                                : $t("common.ok")
+                        }}
+                    </el-button>
+                </span></template
+            >
         </el-dialog>
     </div>
 </template>
@@ -454,13 +458,13 @@ export default {
             if (this.networkError) {
                 // 上传失败，请检查网络是否正常
                 callback(
-                    new Error(this.$t("firmware.firmwareUploadValidatorText1"))
+                    new Error(this.$t("firmware.firmwareUploadValidatorText1")),
                 );
             }
             if (this.diffPackage === 1) {
                 callback(
                     // 上传失败，仅支持上传全量包，不支持上传差分包
-                    new Error(this.$t("firmware.firmwareUploadValidatorText2"))
+                    new Error(this.$t("firmware.firmwareUploadValidatorText2")),
                 );
             }
             this.diffPackage = 0;
@@ -469,7 +473,7 @@ export default {
             } else {
                 // 请选择固件
                 callback(
-                    new Error(this.$t("firmware.firmwareUploadValidatorText3"))
+                    new Error(this.$t("firmware.firmwareUploadValidatorText3")),
                 );
             }
         };
@@ -482,8 +486,8 @@ export default {
                     // 设备版本号+build号不合规范
                     callback(
                         new Error(
-                            this.$t("firmware.firmwareUploadValidatorText4")
-                        )
+                            this.$t("firmware.firmwareUploadValidatorText4"),
+                        ),
                     );
                 } else {
                     callback();
@@ -491,7 +495,7 @@ export default {
             } else {
                 // 请输入设备版本号+build号
                 callback(
-                    new Error(this.$t("firmware.firmwareUploadValidatorText5"))
+                    new Error(this.$t("firmware.firmwareUploadValidatorText5")),
                 );
             }
         };
@@ -501,8 +505,8 @@ export default {
                     // FTP URL地址不合规范
                     callback(
                         new Error(
-                            this.$t("firmware.firmwareUploadValidatorText7")
-                        )
+                            this.$t("firmware.firmwareUploadValidatorText7"),
+                        ),
                     );
                 } else {
                     callback();
@@ -510,7 +514,7 @@ export default {
             } else {
                 // 请输入FTP URL地址
                 callback(
-                    new Error(this.$t("firmware.firmwareUploadValidatorText8"))
+                    new Error(this.$t("firmware.firmwareUploadValidatorText8")),
                 );
             }
         };
@@ -524,7 +528,7 @@ export default {
                         required: true,
                         // message: "请选择设备型号",
                         message: this.$t(
-                            "firmware.firmwareUploadValidatorText9"
+                            "firmware.firmwareUploadValidatorText9",
                         ),
                     },
                 ],
@@ -543,7 +547,7 @@ export default {
                         required: true,
                         // message: "请选择服务器类型",
                         message: this.$t(
-                            "firmware.firmwareUploadValidatorText10"
+                            "firmware.firmwareUploadValidatorText10",
                         ),
                         trigger: "change",
                     },
@@ -553,7 +557,7 @@ export default {
                         required: true,
                         // message: "请选择是否分享给子账号",
                         message: this.$t(
-                            "firmware.firmwareUploadValidatorText11"
+                            "firmware.firmwareUploadValidatorText11",
                         ),
                         trigger: "change",
                     },
@@ -563,7 +567,7 @@ export default {
                         required: true,
                         // message: "请选择固件类型",
                         message: this.$t(
-                            "firmware.firmwareUploadValidatorText12"
+                            "firmware.firmwareUploadValidatorText12",
                         ),
                         trigger: "change",
                     },
@@ -580,7 +584,7 @@ export default {
                         max: 32,
                         // message: "定制单号长度不超过32个字符",
                         message: this.$t(
-                            "firmware.firmwareUploadValidatorText13"
+                            "firmware.firmwareUploadValidatorText13",
                         ),
                         trigger: "blur",
                     },
@@ -590,7 +594,7 @@ export default {
                         required: true,
                         // message: "请选择外设名称",
                         message: this.$t(
-                            "firmware.firmwareUploadValidatorText14"
+                            "firmware.firmwareUploadValidatorText14",
                         ),
                         trigger: "blur change",
                     },
@@ -722,7 +726,7 @@ export default {
             if (!isTYPE) {
                 // this.$message.error(`上传格式只能是 ${typeStr} 格式!`);
                 this.$message.error(
-                    this.$t("firmware.fileTypeText1", { typeStr: typeStr })
+                    this.$t("firmware.fileTypeText1", { typeStr: typeStr }),
                 );
                 return false;
             }
@@ -800,7 +804,7 @@ export default {
                                     return new Promise((resolve, reject) => {
                                         this_.$api
                                             .getFileUploadInfoByOriginalFileName(
-                                                params
+                                                params,
                                             )
                                             .then((res) => {
                                                 if (res.success == true) {
@@ -851,7 +855,7 @@ export default {
                                 let promise = new Promise((resolve, reject) => {
                                     this_.$api
                                         .getFileUploadInfoByOriginalFileName(
-                                            params
+                                            params,
                                         )
                                         .then((res) => {
                                             if (res.success == true) {
@@ -936,7 +940,7 @@ export default {
                                     this.firmwareForm.ftpUrl = "";
                                     this.$refs.firmwareForm.clearValidate();
                                     this.$refs.firmwareForm.validateField(
-                                        "fileName"
+                                        "fileName",
                                     );
                                     reject();
                                 } else {
@@ -982,7 +986,7 @@ export default {
                             this.$emit("close", true);
                             // 添加固件成功！
                             this.$message.success(
-                                this.$t("firmware.addFirmwareSuccess")
+                                this.$t("firmware.addFirmwareSuccess"),
                             );
                         } else {
                             this.$message.error(res.msg);
@@ -1128,7 +1132,7 @@ export default {
                     this.firmwareForm.type == "main"
                         ? this.$t("common.deviceModelCode")
                         : this.$t("common.peripheralName")
-                }`
+                }`,
             );
         },
         newFirmwareGetOmsProjectFileSpace() {
@@ -1180,7 +1184,7 @@ export default {
 .alert-tip {
     padding: 0 21px 12px;
 }
-/deep/.upload-demo {
+:deep(.upload-demo) {
     .ivu-upload-list {
         margin-top: 0px !important;
     }
@@ -1192,7 +1196,7 @@ export default {
     }
 }
 
-/deep/.upload-demo[disabled] {
+:deep(.upload-demo[disabled]) {
     .ivu-upload-select {
         display: none;
     }

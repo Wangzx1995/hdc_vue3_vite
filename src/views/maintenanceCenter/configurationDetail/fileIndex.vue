@@ -5,7 +5,7 @@
             @fileSuccess="configFileSuccess"
         ></FileConfig>
         <StartConfig
-            :visible.sync="startConfigVisible"
+            v-model="startConfigVisible"
             :organizeId="organizeId"
             :batchCode="batchCode"
             :configType="configType"
@@ -14,7 +14,7 @@
         <!-- 获取最新配置 -->
         <el-dialog
             :title="$t('deviceConfiguration.fileIndexText1')"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             :width="'500px'"
         >
             <p>
@@ -29,12 +29,12 @@
                 <!-- HTTP协议类型的设备需要再次重启后才可以获取最新配置信息。 -->
                 -{{ $t("deviceConfiguration.fileIndexText4") }}。
             </p>
-            <span slot="footer">
+            <template #footer><span>
                 <el-button type="primary" @click="dialogVisible = false">
                     <!-- 知道了 -->
                     {{ $t("common.gotIt") }}
                 </el-button>
-            </span>
+            </span></template>
         </el-dialog>
     </div>
 </template>

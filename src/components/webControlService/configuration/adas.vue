@@ -32,7 +32,7 @@
         </div>
         <el-dialog
             :title="tipNum == 1 ? '第一步' : '第二步'"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             append-to-body
             cenetr
         >
@@ -63,14 +63,14 @@
                 :src="'/static/images/image_adas_3.png'"
                 style="width: 100%"
             />
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="tipChange(-1)" v-if="tipNum !== 1"
                     >上一步</el-button
                 >
                 <el-button @click="tipChange(1)" v-if="tipNum !== 3"
                     >下一步</el-button
                 >
-            </span>
+            </span></template>
         </el-dialog>
     </div>
 </template>

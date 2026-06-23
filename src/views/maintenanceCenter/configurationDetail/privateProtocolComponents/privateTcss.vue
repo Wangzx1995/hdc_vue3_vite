@@ -137,7 +137,9 @@
                                 tips-placement="top-end"
                                 :tips="`键入值范围为${deviceCapability['zhatu']['containerStatus']['staticSpeed']['min']}~${deviceCapability['zhatu']['containerStatus']['staticSpeed']['max']}`"
                                 v-model.number="form['param1305'].staticSpeed"
-                                ><span slot="suffix">km/h</span></el-input
+                                ><template #suffix
+                                    ><span>km/h</span></template
+                                ></el-input
                             >
                             <span class="prompt"
                                 >0-20表示静止, 20以上表示运动</span
@@ -168,7 +170,9 @@
                                 v-model.number="
                                     form['param1305'].staticContinue
                                 "
-                                ><span slot="suffix">s</span></el-input
+                                ><template #suffix
+                                    ><span>s</span></template
+                                ></el-input
                             >
                         </el-form-item>
                     </el-col>
@@ -198,7 +202,7 @@
                                 v-model.number="
                                     form['param1305'].speedThreshold
                                 "
-                                ><span slot="suffix">km/h</span></el-input
+                                ><template #suffix><span>km/h</span></template></el-input
                             >
                         </el-form-item>
                     </el-col>
@@ -367,7 +371,7 @@ export default {
                 if (val && !this.isTemplate) {
                     val.tcssList.forEach((item, index) => {
                         let name = JSON.parse(
-                            JSON.stringify(this.dictionaryData["tcssList"])
+                            JSON.stringify(this.dictionaryData["tcssList"]),
                         ).find((e) => e.tcssType === item.tcssType).label;
                         this.formData[
                             "param1305.tcssList_" + index + ".acquireType"
@@ -382,7 +386,9 @@ export default {
                                       ].find(
                                           (e) =>
                                               e.id ===
-                                              val.tcssList[index]["acquireType"]
+                                              val.tcssList[index][
+                                                  "acquireType"
+                                              ],
                                       ).label
                                   }&${
                                       this.copyForm.param1305.tcssList[index][
@@ -405,7 +411,7 @@ export default {
                                               e.id ===
                                               val.tcssList[index][
                                                   "manualStatus"
-                                              ]
+                                              ],
                                       ).label
                                   }&${
                                       this.copyForm.param1305.tcssList[index][
@@ -598,7 +604,7 @@ export default {
                         this.$set(
                             this.copyForm,
                             "param1305",
-                            JSON.parse(JSON.stringify(formData))
+                            JSON.parse(JSON.stringify(formData)),
                         );
                         this.childConfigParams = false;
                     } else {

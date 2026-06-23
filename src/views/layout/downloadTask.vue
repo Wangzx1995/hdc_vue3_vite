@@ -165,7 +165,7 @@
                         width="140"
                         label="文件开始时间"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.fileStartTime
                                     ? $moment(scope.row.fileStartTime).format(
@@ -181,7 +181,7 @@
                         width="140"
                         label="文件结束时间"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.fileEndTime
                                     ? $moment(scope.row.fileEndTime).format(
@@ -198,7 +198,7 @@
                         :formatter="timeTotal"
                     ></el-table-column>
                     <el-table-column prop="fileSize" key="fileSize" width="100">
-                        <template slot="header">
+                        <template #header>
                             <span>文件大小</span>
                             <el-tooltip
                                 class="item"
@@ -212,7 +212,7 @@
                                 ></i>
                             </el-tooltip>
                         </template>
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{ scope.row.fileSize | fileSize }}
                         </template>
                     </el-table-column>
@@ -222,7 +222,7 @@
                         width="140"
                         label="下载时间"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.createTime
                                     ? $moment(scope.row.createTime).format(
@@ -238,7 +238,7 @@
                         width="140"
                         label="文件上传结束时间"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.uploadEndTime
                                     ? $moment(scope.row.uploadEndTime).format(
@@ -264,7 +264,7 @@
                         label="文件类型"
                         key="type"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span>
                                 {{
                                     downTypeList.find(
@@ -285,7 +285,7 @@
                         key="createTime"
                         width="140"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.createTime
                                     ? $moment(scope.row.createTime).format(
@@ -297,7 +297,7 @@
                     </el-table-column>
                 </template>
                 <el-table-column prop="downStatus" width="120" label="上传状态">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span :class="`downStatus-${scope.row.downStatus}`">
                             <i class="dot"></i
                             >{{
@@ -323,7 +323,7 @@
                 >
                 </el-table-column>
                 <el-table-column width="160" label="操作">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div class="flex-layout flex-middle flex-end">
                             <el-progress
                                 :show-text="false"
@@ -705,12 +705,12 @@ export default {
 </script>
 <style lang="less" scoped>
 .wrap {
-    /deep/ .el-alert--info {
+    :deep(.el-alert--info){
         background: rgb(225, 248, 255);
         border: 1px solid rgb(133, 219, 255);
         color: #606266;
     }
-    /deep/ .el-alert__icon {
+    :deep(.el-alert__icon){
         color: rgb(0, 148, 255);
     }
 }
@@ -739,7 +739,7 @@ export default {
         background: #ffc313 !important;
     }
 }
-/deep/.el-tabs {
+:deep(.el-tabs){
     .el-tabs__nav-scroll {
         padding: 0 14px;
     }

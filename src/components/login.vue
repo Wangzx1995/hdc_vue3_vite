@@ -2,11 +2,11 @@
     <div class="vm-login">
         <el-dialog
             :title="diaTitle"
-            :visible="noticeBol"
+            v-model="noticeBol"
             :width="'580px'"
             @close="noticeBol = false"
         >
-            <template slot="title">
+            <template #title>
                 <div
                     class="m-l-sm"
                     style="color: #000; font-size: 20px; font-weight: 800"
@@ -27,8 +27,7 @@
                 <div class="content-text" v-html="item.content"></div>
             </div>
 
-            <span
-                slot="footer"
+            <template #footer><span
                 class="dialog-footer"
                 style="
                     justify-content: space-between;
@@ -44,7 +43,7 @@
                     <!-- 知道了 -->
                     {{ $t("common.gotIt") }}
                 </el-button>
-            </span>
+            </span></template>
         </el-dialog>
         <PromptUser
             :showManage="JSON.stringify(validateOverdueManages)"
@@ -144,7 +143,7 @@
                                 <el-input
                                     v-model="loginForm.username"
                                     type="text"
-                                    prefix-icon="el-icon-user-solid"
+                                    prefix-icon="el-icon-user-filled"
                                     :placeholder="
                                         $t('login.AccountNameNotPhoneNumber')
                                     "
@@ -213,8 +212,7 @@
                     </div>
                     <div class="m-t m-b-0 login-form">
                         <el-button
-                            size="small"
-                            :max-width="500"
+                            class="login-btn"
                             type="primary"
                             :loading="loading"
                             @click.prevent="handleLogin"
@@ -237,7 +235,7 @@
                             <el-input
                                 v-model="phoneLoginForm.phone"
                                 type="text"
-                                prefix-icon="el-icon-mobile-phone"
+                                prefix-icon="el-icon-iphone"
                                 :placeholder="$t('login.cellPhoneNumber')"
                                 @keyup.enter="selectProject"
                                 autoComplete="on"
@@ -292,8 +290,7 @@
                         </div>-->
                         <div class="m-t m-b-1">
                             <el-button
-                                size="small"
-                                :max-width="500"
+                                class="login-btn"
                                 type="primary"
                                 :loading="loading"
                                 @click.prevent="selectProject"
@@ -404,7 +401,7 @@
 
         <!--忘记密码-->
         <el-dialog
-            :visible="setPasswordModal"
+            v-model="setPasswordModal"
             :title="$t('login.forgotPassword')"
             class="no-padding"
             @close="closeSetPassword"
@@ -431,7 +428,7 @@
                                 :placeholder="$t('login.cellPhoneNumber')"
                                 autoComplete="new-password"
                             >
-                                <span slot="prepend">+86</span>
+                                <template #prepend><span>+86</span></template>
                             </el-input>
                         </el-form-item>
                         <el-form-item
@@ -559,13 +556,13 @@
                 </el-form>
                 <!--</div>-->
             </div>
-            <div slot="footer"></div>
+            <template #footer><div></div></template>
             <!-- </Modal> -->
         </el-dialog>
         <!-- 多项目选择 -->
         <el-dialog
             :title="$t('login.selectItem')"
-            :visible.sync="eventSelectVisible"
+            v-model="eventSelectVisible"
             @close="closeSelect"
             :width="'600px'"
         >
@@ -1674,12 +1671,8 @@ export default {
 };
 </script>
 <style scoped lang="less">
-//     div /deep/.el-    {
-// 	/* 修改为您想要的文字大小 */
-//     font-size: 20px!important;
-// }
 .login-form {
-    /deep/.el-input {
+    :deep(.el-input) {
         .el-input__icon {
             line-height: 40px;
         }
@@ -1696,7 +1689,6 @@ export default {
     text-align: justify;
     letter-spacing: 1px;
     line-height: 24px;
-    // margin: 10px 5px;
 }
 .noticeTime {
     font-size: 16px;
@@ -1708,9 +1700,6 @@ export default {
 }
 .login,
 .lock-screen {
-    /*display: flex;
-        justify-content: center;
-        align-items: center;*/
     position: absolute;
     height: 100%;
     width: 100%;
@@ -1735,7 +1724,6 @@ export default {
 }
 .vm-login,
 .vm-register {
-    /*margin-top: -150px;*/
     width: auto;
     height: 620px;
     display: inline-block;
@@ -1744,56 +1732,62 @@ export default {
         font-size: 22px !important;
     }
     .vm-panel {
-        padding: 90px;
+        padding: 21px 90px;
         width: 500px;
+        box-sizing: border-box;
         border-radius: 4px;
         background: #f2f2f2;
-        .ivu-form-item-content {
-            margin-top: -1px;
-            .ivu-icon {
-                left: 0;
-                right: auto;
-                line-height: 40px;
-                z-index: 4;
-            }
-            .ivu-input {
-                padding-left: 32px;
-                padding-right: 7px;
-                border-radius: 0;
-            }
+        :deep(.el-input__wrapper) {
+            width: 100%;
+            display: flex;
+            height: 40px;
+            border: 1px solid #dcdfe6;
+            border-radius: 2px;
+            box-shadow: none;
+            background-color: transparent;
+            padding: 0;
         }
-        .ivu-form-item {
-            &:first-child .ivu-input {
-                border-top-left-radius: 4px;
-                border-top-right-radius: 4px;
-            }
-            &:last-child .ivu-input {
-                border-bottom-left-radius: 4px;
-                border-bottom-right-radius: 4px;
-            }
+        :deep(.el-input__wrapper:hover) {
+            border-color: #c0c4cc;
         }
-        .no-verify {
-            .ivu-form-item {
-                &:nth-child(2) .ivu-input {
-                    border-bottom-left-radius: 4px;
-                    border-bottom-right-radius: 4px;
-                }
-            }
+        :deep(.el-input__wrapper.is-focus) {
+            border-color: #1890ff;
         }
-        .ivu-input:hover,
-        .ivu-input:active,
-        .ivu-input:focus {
-            z-index: 3;
+        :deep(.el-input__inner) {
+            width: 100% !important;
+            height: 40px;
+            line-height: 40px;
+            border: none;
+            padding-left: 30px;
+            font-size: 13px;
+            color: #606266;
+            box-shadow: none;
+            background-color: #fff;
         }
-        .ivu-form-item-error .ivu-input {
-            z-index: 2;
+        :deep(.el-input__inner:focus) {
+            border: none;
+            box-shadow: none;
         }
-        .input-verify {
-            .ivu-input {
-                padding-right: 100px;
-                border-bottom-left-radius: 4px;
-                border-bottom-right-radius: 4px;
-            }
+        :deep(.el-input__prefix) {
+            left: 5px;
+            color: #c0c4cc;
+        }
+        :deep(.el-input__prefix .el-icon) {
+            line-height: 40px;
+        }
+        :deep(.el-button) {
+            width: 100% !important;
+            max-width: none !important;
+            display: block;
+            height: 40px;
+            border-radius: 3px;
+            font-size: 0.875rem;
+        }
+        :deep(.el-form-item__content) {
+            line-height: 40px;
+        }
+        :deep(.el-input) {
+            width: 100%;
         }
         .img-verify {
             position: absolute;
@@ -1809,6 +1803,7 @@ export default {
 .passwordType {
     padding: 4px 10px;
     cursor: pointer;
+    color: #424951;
 }
 .checked {
     padding: 4px 10px;
@@ -1886,5 +1881,18 @@ export default {
 }
 .content-text {
     text-align: left;
+}
+:deep(.pos-abt) {
+    font-size: 14px !important;
+}
+.login-btn {
+    width: 100% !important;
+    max-width: none !important;
+    display: flex !important;
+    height: 40px;
+    border-radius: 3px;
+    font-size: 0.875rem;
+    justify-content: center;
+    align-items: center;
 }
 </style>

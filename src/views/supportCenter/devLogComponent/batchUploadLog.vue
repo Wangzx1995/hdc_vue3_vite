@@ -13,7 +13,7 @@
                         :label="$t('common.orgPath')"
                         prop="organizeId"
                     >
-                         <TreeSelect
+                        <TreeSelect
                             :placeholder="$t('common.select')"
                             ref="TreeSelect"
                             :treeData="treeData"
@@ -125,23 +125,25 @@
                 @close="setTableHeight"
                 class="select-alert"
             >
-                <div slot="title" class="alert-title">
-                    <div>
-                        <span>
-                            {{ $t("devLog.selectTableMsg1") }}
-                            {{ selection.length }}
-                            {{ $t("devLog.selectTableMsg2") }}
-                        </span>
-                        <el-button type="text" @click="openSelection">
-                            <!-- 查看 -->
-                            {{ $t("devLog.selectTableMsg3") }}
-                        </el-button>
-                        <el-button type="text" @click="clearSelection">
-                            <!-- 取消选择 -->
-                            {{ $t("devLog.selectTableMsg4") }}
-                        </el-button>
+                <template #title>
+                    <div class="alert-title">
+                        <div>
+                            <span>
+                                {{ $t("devLog.selectTableMsg1") }}
+                                {{ selection.length }}
+                                {{ $t("devLog.selectTableMsg2") }}
+                            </span>
+                            <el-button type="text" @click="openSelection">
+                                <!-- 查看 -->
+                                {{ $t("devLog.selectTableMsg3") }}
+                            </el-button>
+                            <el-button type="text" @click="clearSelection">
+                                <!-- 取消选择 -->
+                                {{ $t("devLog.selectTableMsg4") }}
+                            </el-button>
+                        </div>
                     </div>
-                </div>
+                </template>
             </el-alert>
         </div>
         <el-table
@@ -207,7 +209,7 @@
             </el-table-column>
             <!-- 设备状态 -->
             <el-table-column :label="$t('common.deviceStatus')" width="100px">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <div>
                         <el-tag
                             type="success"
@@ -236,11 +238,11 @@
             </el-table-column>
             <!-- 最近一次上传时间 -->
             <el-table-column :label="$t('devLog.lastUploadTime')" width="200px">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span v-if="scope.row.lastUploadTime">
                         {{
                             $moment(scope.row.lastUploadTime).format(
-                                "YYYY-MM-DD HH:mm:ss"
+                                "YYYY-MM-DD HH:mm:ss",
                             )
                         }}
                     </span>
@@ -262,7 +264,7 @@
         </div>
         <el-dialog
             :title="`${$t('devLog.selectTableMsg3')}(${selection.length})`"
-            :visible.sync="selectionVisible"
+            v-model="selectionVisible"
             :width="'1200px'"
         >
             <div v-if="selectionVisible" class="wrap selection-box">
@@ -304,7 +306,7 @@
                                 (selectionParams.currentPage - 1) *
                                     selectionParams.pageSize,
                                 selectionParams.currentPage *
-                                    selectionParams.pageSize
+                                    selectionParams.pageSize,
                             )
                         "
                         style="width: 100%"
@@ -363,7 +365,7 @@
                             :label="$t('common.operate')"
                             width="100"
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <a @click="deleteSelection(scope.row)">
                                     <!-- 移除 -->
                                     {{ $t("devLog.remove") }}
@@ -389,7 +391,7 @@
         <!-- 上传日志 -->
         <el-dialog
             :title="$t('devLog.uploadLogs')"
-            :visible.sync="uploadLogVisible"
+            v-model="uploadLogVisible"
             :close-on-click-modal="false"
             :width="'600px'"
             :custom-class="'upload-log-dialog'"
@@ -615,7 +617,7 @@ export default {
                         this.selectionForm["deviceStatus"] === 2)
                 ) {
                     this.selectionData = this.selectionData.filter(
-                        (item) => item[key] === this.selectionForm[key]
+                        (item) => item[key] === this.selectionForm[key],
                     );
                 } else if (this.selectionForm[key]) {
                     this.selectionData = this.selectionData.filter((item) => {
@@ -633,7 +635,7 @@ export default {
         deleteSelection(row) {
             this.$refs.table.toggleRowSelection(
                 this.$refs.table.selection.find((item) => item.id === row.id),
-                false
+                false,
             );
             this.selectionData.map((item, index) => {
                 if (item.deviceCode === row.deviceCode) {

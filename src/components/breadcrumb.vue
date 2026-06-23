@@ -44,7 +44,7 @@
             width="600px"
             :close-on-click-modal="false"
             :close-on-press-escape="false"
-            :visible.sync="operaBookVisible"
+            v-model="operaBookVisible"
             title="操作指引"
             class="opera-book"
         >
@@ -70,11 +70,13 @@
                     </div>
                 </div>
             </div>
-            <div slot="footer">
-                <el-button type="text" @click="operaBookVisible = false"
-                    >知道了</el-button
-                >
-            </div>
+            <template #footer
+                ><div>
+                    <el-button type="text" @click="operaBookVisible = false"
+                        >知道了</el-button
+                    >
+                </div></template
+            >
         </el-dialog>
     </div>
 </template>
@@ -493,6 +495,9 @@ export default {
                 }
             });
             this.$route.meta.title &&
+                this.$route.meta.title !==
+                    (breadcrumb[breadcrumb.length - 1] &&
+                        breadcrumb[breadcrumb.length - 1].name) &&
                 breadcrumb.push({
                     name: this.$route.meta.title,
                     path: "",
@@ -567,16 +572,55 @@ export default {
         background: rgba(0, 0, 0, 0.06);
     }
 }
-.el-breadcrumb {
+.breadcrumb-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+:deep(.el-breadcrumb) {
     height: 18px;
     line-height: 18px;
     display: flex;
     align-items: center;
     font-size: 12px;
-}
-.breadcrumb-box {
-    display: flex;
-    justify-content: space-between;
+
+    .el-breadcrumb__item {
+        .el-breadcrumb__inner {
+            color: #606266;
+            cursor: text;
+
+            &.is-link {
+                color: #606266;
+                cursor: pointer;
+                font-weight: normal;
+
+                &:hover {
+                    color: #2e87ff;
+                }
+            }
+        }
+
+        &:last-child {
+            .el-breadcrumb__inner {
+                color: #303133;
+                font-weight: 700;
+                cursor: text;
+
+                &.is-link {
+                    cursor: pointer;
+                    &:hover {
+                        color: #2e87ff;
+                    }
+                }
+            }
+        }
+    }
+
+    .el-breadcrumb__separator {
+        color: #c0c4cc;
+        margin: 0 9px;
+    }
 }
 .open-book {
     display: flex;

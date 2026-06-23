@@ -131,7 +131,6 @@
                     "
                     :loading="loadingTable"
                 >
-                     
                     <!-- 查询 -->
                     {{ $t("common.search") }}
                 </el-button>
@@ -247,7 +246,7 @@
                     :label="$t('plateNumAndDeviceCode.acquisitionTime')"
                     width="170px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             scope.row.acquisitionTime | formatTime
                         }}</span>
@@ -266,7 +265,7 @@
                     :label="$t('common.operate')"
                     min-width="120px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a
                             @click="
                                 modifyVal(scope.row, 2);
@@ -323,7 +322,7 @@
                                 h(
                                     'span',
                                     $t('plateNumAndDeviceCode.deviceEnd') +
-                                        $t('common.plateNum')
+                                        $t('common.plateNum'),
                                 ), //表格当前列标题
                                 h('Poptip', {
                                     props: {
@@ -348,7 +347,7 @@
                     :label="$t('plateNumAndDeviceCode.acquisitionTime')"
                     width="170px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             scope.row.acquisitionTime | formatTime
                         }}</span>
@@ -367,7 +366,7 @@
                     :label="$t('common.operate')"
                     min-width="240px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a
                             @click="
                                 modifyVal(scope.row, 1);
@@ -410,7 +409,7 @@
                     width="120px"
                     fixed="left"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span v-if="scope.row.type == 1">
                             <!-- 设备序列号 -->
                             {{ $t("common.deviceSerialNum") }}
@@ -456,7 +455,7 @@
                     sortable
                     width="170px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{ scope.row.updateTime | formatTime }}</span>
                     </template>
                 </el-table-column>
@@ -468,7 +467,7 @@
                     "
                     width="170px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span v-if="scope.row.latestLocationReportingTime">
                             {{
                                 scope.row.latestLocationReportingTime
@@ -485,7 +484,7 @@
                     width="140px"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span v-if="scope.row.updateResult == 1" class="green"
                             >●</span
                         >
@@ -524,7 +523,7 @@
                     min-width="120px"
                     :render-header="renderHeader"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <el-tag
                             type="success"
                             v-if="scope.row.deviceStatus === 1"
@@ -573,7 +572,7 @@
                     min-width="140px"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a
                             v-if="
                                 scope.row.updateResult == 0 ||
@@ -597,7 +596,7 @@
                             <!-- 终止下发 -->
                             {{
                                 $t(
-                                    "plateNumAndDeviceCode.terminationDistribution"
+                                    "plateNumAndDeviceCode.terminationDistribution",
                                 )
                             }}
                         </a>
@@ -617,7 +616,7 @@
         </div>
         <!-- 批量使用设备端 -->
         <el-dialog
-            :visible.sync="batchDeviceVisible"
+            v-model="batchDeviceVisible"
             :title="$t('common.prompt')"
         >
             <span>
@@ -637,26 +636,28 @@
                 {{ $t("plateNumAndDeviceCode.batchDeviceTest3") }}
                 ？</span
             >
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="batchDeviceVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    @click="
-                        batchDeviceVisible = false;
-                        batchUpdateDataAbnormal();
-                    "
-                >
-                     <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="batchDeviceVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        @click="
+                            batchDeviceVisible = false;
+                            batchUpdateDataAbnormal();
+                        "
+                    >
+                         <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <!--操作-使用设备端/使用平台端 -->
         <el-dialog
-            :visible.sync="oneDeviceCodeVisible"
+            v-model="oneDeviceCodeVisible"
             :title="$t('common.prompt')"
         >
             <div class="span-box">
@@ -702,22 +703,24 @@
                     。</span
                 >
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="oneDeviceCodeVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    @click="
-                        oneDeviceCodeVisible = false;
-                        oneUpdateDataAbnormal();
-                    "
-                >
-                     <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="oneDeviceCodeVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        @click="
+                            oneDeviceCodeVisible = false;
+                            oneUpdateDataAbnormal();
+                        "
+                    >
+                         <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <el-dialog
             :title="`${
@@ -725,7 +728,7 @@
                     ? $t('plateNumAndDeviceCode.deviceSerialNumAbnormal')
                     : $t('plateNumAndDeviceCode.plateNumAbnormal')
             }（${gridData.length}）`"
-            :visible.sync="dialogTableVisible"
+            v-model="dialogTableVisible"
             :width="'900px'"
         >
             <el-table :data="gridData" :height="400">
@@ -915,10 +918,10 @@ export default {
                         h(
                             "span",
                             { slot: "content" },
-                            this.$t("common.deviceStatusDesc")
+                            this.$t("common.deviceStatusDesc"),
                             // "绿色为在线，深黄色是深休眠，浅黄色是浅休眠，灰色为离线"
                         ),
-                    ]
+                    ],
                 ),
             ]);
         },
@@ -935,7 +938,7 @@ export default {
             } else {
                 // 请选择一个设备修改！
                 this.$message.warning(
-                    this.$t("plateNumAndDeviceCode.selectDeviceModify")
+                    this.$t("plateNumAndDeviceCode.selectDeviceModify"),
                 );
             }
         },
@@ -1006,7 +1009,7 @@ export default {
                     } else {
                         // 修改成功！
                         this.$message.success(
-                            this.$t("common.modifiedSuccess")
+                            this.$t("common.modifiedSuccess"),
                         );
                     }
                 } else {
@@ -1040,8 +1043,8 @@ export default {
             this.params.orderDir = !column.order
                 ? ""
                 : column.order === "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.params.orderColumn = !column.prop ? "" : "acquisitionTime";
             this.search();
         },
@@ -1049,8 +1052,8 @@ export default {
             this.params.orderDir = !column.order
                 ? ""
                 : column.order === "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.params.orderColumn = !column.prop ? "" : "acquisitionTime";
             this.search();
         },
@@ -1058,8 +1061,8 @@ export default {
             this.params.orderDir = !column.order
                 ? ""
                 : column.order === "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.params.orderColumn = !column.prop ? "" : "updateTime";
             this.search();
         },
@@ -1073,7 +1076,7 @@ export default {
                 this.form.orgIds = this.form.organizationSigns.toString();
                 let params = Object.assign(
                     { listType: this.params.listType },
-                    this.form
+                    this.form,
                 );
                 this.$api.exportDeviceData(params).then((res) => {
                     if (res.success == true) {
@@ -1090,7 +1093,7 @@ export default {
                                         ) {
                                             var iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -1101,14 +1104,14 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(res.msg);
@@ -1288,7 +1291,7 @@ export default {
         word-wrap: break-word;
     }
 }
-/deep/.el-tabs {
+:deep(.el-tabs){
     .el-tabs__header {
         margin: 0 0 12px !important;
     }

@@ -1,7 +1,7 @@
 @import "../../theme/common/var-common.scss";
 @import "../../theme/mixins/utils.scss";
 @import "../../theme/mixins/mixins.scss";
-@import "../ellipsis/theme/index.scss";
+@import "../../ellipsis/theme/index.scss";
 
 $theme-color: $--color-brand; // 组件的主题色(继承自hui的主题设置)
 $bg-week-wrapper: $--color-neutral-rgba-9; // 星期部分的背景色
@@ -71,7 +71,7 @@ $font-color-light: $--color-neutral-rgba-3; // 字体颜色浅色
         input {
             cursor: pointer;
         }
-        // /deep/ .el-date-editor {
+        // :deep(.el-date-editor){
         //   width: 100%;
         // }
         // width: auto;

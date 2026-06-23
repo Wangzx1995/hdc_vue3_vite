@@ -19,7 +19,7 @@
         @timeerror="timeerror"
         @setCol="setCol"
       >
-        <template v-if="$slots.popover" slot="popover">
+        <template v-if="$slots.popover" #popover>
           <slot name="popover" />
         </template>
       </range>

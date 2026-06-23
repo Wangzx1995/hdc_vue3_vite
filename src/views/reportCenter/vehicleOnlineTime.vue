@@ -9,10 +9,9 @@
                         :placeholder="$t('common.input')"
                         clearable
                     >
-                        <i
-                            slot="suffix"
-                            class="el-input__icon el-icon-search"
-                        ></i>
+                        <template #suffix>
+                            <i class="el-input__icon el-icon-search"></i>
+                        </template>
                     </el-input>
                     <el-tree
                         class="m-t"
@@ -71,7 +70,7 @@
                                     collapse-tags
                                     :placeholder="
                                         $t(
-                                            'devLog.enterThreeLicensePlateNumbers'
+                                            'devLog.enterThreeLicensePlateNumbers',
                                         )
                                     "
                                     v-model="params.plateNums"
@@ -149,7 +148,7 @@
                                     collapse-tags
                                     :placeholder="
                                         $t(
-                                            'devLog.enterThreeLicensePlateNumbers'
+                                            'devLog.enterThreeLicensePlateNumbers',
                                         )
                                     "
                                     v-model="params.plateNums"
@@ -279,7 +278,7 @@
                                 :label="$t('vehicleOnlineTime.lineStatus')"
                                 min-width="160px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div
                                         v-if="
                                             scope.row.deviceOnlineVo &&
@@ -294,7 +293,7 @@
                                             "
                                             @openDialog="
                                                 showModalOnline(
-                                                    scope.row.deviceOnlineVo
+                                                    scope.row.deviceOnlineVo,
                                                 )
                                             "
                                         ></timeCom>
@@ -387,7 +386,7 @@
                                 :key="String(monthDay.length) + index"
                                 width="70px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div
                                         v-for="i in scope.row
                                             .carOnlineTimeDayList"
@@ -398,7 +397,7 @@
                                             @click="
                                                 showModalOnline(
                                                     i.deviceOnlineVo,
-                                                    true
+                                                    true,
                                                 )
                                             "
                                             :disabled="!i.deviceOnlineVo"
@@ -406,7 +405,7 @@
                                             {{
                                                 i.onlineTimeHour
                                                     ? Number(
-                                                          i.onlineTimeHour
+                                                          i.onlineTimeHour,
                                                       ).toFixed(2)
                                                     : "--"
                                             }}
@@ -434,7 +433,7 @@
         <!-- 当日上线/离线时间 -->
         <el-dialog
             :width="'1200px'"
-            :visible.sync="modalOnline"
+            v-model="modalOnline"
             :title="$t('vehicleOnlineTime.dailyOnlineOfflineTime')"
         >
             <!-- <AttendenceRecord
@@ -533,7 +532,7 @@ export default {
         date: {
             handler(val) {
                 this.params.currentPage = 1;
-                (this.params.orderDir = ""), (this.params.orderColumn = "");
+                ((this.params.orderDir = ""), (this.params.orderColumn = ""));
                 this.getData();
             },
             deep: true,
@@ -541,7 +540,7 @@ export default {
         month: {
             handler(val) {
                 this.params.currentPage = 1;
-                (this.params.orderDir = ""), (this.params.orderColumn = "");
+                ((this.params.orderDir = ""), (this.params.orderColumn = ""));
                 this.changeMonthDayCount();
                 this.getData();
             },
@@ -585,13 +584,13 @@ export default {
             this.params.orderDir = !column.order
                 ? ""
                 : column.order == "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.params.orderColumn = !column.prop
                 ? ""
                 : column.prop == "onlineTimeHour"
-                ? "onlineTime"
-                : column.prop;
+                  ? "onlineTime"
+                  : column.prop;
             this.getData();
         },
         filterTree(data, val, type) {
@@ -632,7 +631,7 @@ export default {
             // this.params.plateNums = [];
             // this.params.plateArr = [];
             this.params.currentPage = 1;
-            (this.params.orderDir = ""), (this.params.orderColumn = "");
+            ((this.params.orderDir = ""), (this.params.orderColumn = ""));
             this.$store.dispatch("SetTabName", this.reportType);
 
             this.getData();
@@ -674,7 +673,7 @@ export default {
                     if (!this.date) {
                         // 请选择日期
                         this.$message.warning(
-                            this.$t("vehicleOnlineTime.pleaseSelectDate")
+                            this.$t("vehicleOnlineTime.pleaseSelectDate"),
                         );
                         return;
                     }
@@ -695,7 +694,7 @@ export default {
                                             ) {
                                                 var iframe =
                                                     document.createElement(
-                                                        "iframe"
+                                                        "iframe",
                                                     );
                                                 iframe.src =
                                                     (process.env.BASE_API == "/"
@@ -706,10 +705,10 @@ export default {
                                                     fileName;
                                                 iframe.style.display = "none";
                                                 document.body.appendChild(
-                                                    iframe
+                                                    iframe,
                                                 );
                                                 window.clearInterval(
-                                                    _this.getExportResultInterval
+                                                    _this.getExportResultInterval,
                                                 );
                                                 _this.getExportResultInterval =
                                                     "";
@@ -717,11 +716,11 @@ export default {
                                             }
                                         });
                                 },
-                                2000
+                                2000,
                             );
                         } else {
                             this.$message.error(
-                                this.$t("common.exportFailed") + ":" + res.msg
+                                this.$t("common.exportFailed") + ":" + res.msg,
                             );
                             this.loadingAll = false;
                         }
@@ -730,7 +729,7 @@ export default {
                     if (!this.month) {
                         // this.$message.warning("请选择月份");
                         this.$message.warning(
-                            this.$t("vehicleOnlineRate.pleaseSelectMonthFirst")
+                            this.$t("vehicleOnlineRate.pleaseSelectMonthFirst"),
                         );
                         return;
                     }
@@ -751,7 +750,7 @@ export default {
                                             ) {
                                                 var iframe =
                                                     document.createElement(
-                                                        "iframe"
+                                                        "iframe",
                                                     );
                                                 iframe.src =
                                                     (process.env.BASE_API == "/"
@@ -762,10 +761,10 @@ export default {
                                                     fileName;
                                                 iframe.style.display = "none";
                                                 document.body.appendChild(
-                                                    iframe
+                                                    iframe,
                                                 );
                                                 window.clearInterval(
-                                                    _this.getExportResultInterval
+                                                    _this.getExportResultInterval,
                                                 );
                                                 _this.getExportResultInterval =
                                                     "";
@@ -773,11 +772,11 @@ export default {
                                             }
                                         });
                                 },
-                                2000
+                                2000,
                             );
                         } else {
                             this.$message.error(
-                                this.$t("common.exportFailed") + ":" + res.msg
+                                this.$t("common.exportFailed") + ":" + res.msg,
                             );
                             this.loadingAll = false;
                         }
@@ -809,7 +808,7 @@ export default {
             this.$store.dispatch("SetDate", TimeUtil.getDate(this.date));
             this.$store.dispatch(
                 "SetMonth",
-                TimeUtil.format(this.month, "YYYY-MM")
+                TimeUtil.format(this.month, "YYYY-MM"),
             );
             this.$store.dispatch("SetCondtion", this.params);
             this.getData();
@@ -853,7 +852,7 @@ export default {
                                 this.expandedList.push(m.id);
                             });
                             this.$refs["tree"].setCurrentKey(
-                                this.params.organizeId
+                                this.params.organizeId,
                             );
                         });
                         this.getData();
@@ -889,7 +888,7 @@ export default {
                 if (!this.date) {
                     // 请选择日期
                     this.$message.warning(
-                        this.$t("vehicleOnlineTime.pleaseSelectDate")
+                        this.$t("vehicleOnlineTime.pleaseSelectDate"),
                     );
                     return;
                 }
@@ -939,7 +938,7 @@ export default {
                 if (!this.month) {
                     // this.$message.warning("请选择月份");
                     this.$message.warning(
-                        this.$t("vehicleOnlineRate.pleaseSelectMonthFirst")
+                        this.$t("vehicleOnlineRate.pleaseSelectMonthFirst"),
                     );
                     return;
                 }
@@ -1019,7 +1018,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/deep/.el-select {
+:deep(.el-select){
     .el-input__inner {
         height: 32px !important;
     }

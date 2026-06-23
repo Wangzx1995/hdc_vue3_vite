@@ -9,7 +9,9 @@
                     :placeholder="$t('common.inputOrganizationName')"
                     clearable
                 >
-                    <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                    <template #suffix>
+                        <i class="el-input__icon el-icon-search"></i>
+                    </template>
                 </el-input>
                 <div :class="{ loading_: searchLoading }">
                     <el-tree
@@ -182,7 +184,7 @@
                             <el-alert
                                 :title="
                                     $t(
-                                        'parameterQuery.supportsOfflineParameterQuery'
+                                        'parameterQuery.supportsOfflineParameterQuery',
                                     ) + `！`
                                 "
                                 :closable="true"
@@ -204,29 +206,39 @@
                                 @close="closeAlert"
                                 class="select-alert"
                             >
-                                <div slot="title" class="alert-title">
-                                    <div>
-                                        <span>
-                                            {{ $t("devLog.selectTableMsg1") }}
-                                            {{ selection.length }}
-                                            {{ $t("devLog.selectTableMsg2") }}
-                                        </span>
-                                        <el-button
-                                            type="text"
-                                            @click="openSelection"
-                                        >
-                                            <!-- 查看 -->
-                                            {{ $t("devLog.selectTableMsg3") }}
-                                        </el-button>
-                                        <el-button
-                                            type="text"
-                                            @click="clearSelection"
-                                        >
-                                            <!-- 取消选择 -->
-                                            {{ $t("devLog.selectTableMsg4") }}
-                                        </el-button>
+                                <template #title>
+                                    <div class="alert-title">
+                                        <div>
+                                            <span>
+                                                {{
+                                                    $t("devLog.selectTableMsg1")
+                                                }}
+                                                {{ selection.length }}
+                                                {{
+                                                    $t("devLog.selectTableMsg2")
+                                                }}
+                                            </span>
+                                            <el-button
+                                                type="text"
+                                                @click="openSelection"
+                                            >
+                                                <!-- 查看 -->
+                                                {{
+                                                    $t("devLog.selectTableMsg3")
+                                                }}
+                                            </el-button>
+                                            <el-button
+                                                type="text"
+                                                @click="clearSelection"
+                                            >
+                                                <!-- 取消选择 -->
+                                                {{
+                                                    $t("devLog.selectTableMsg4")
+                                                }}
+                                            </el-button>
+                                        </div>
                                     </div>
-                                </div>
+                                </template>
                             </el-alert>
                         </div>
                     </div>
@@ -260,7 +272,7 @@
                                 :label="$t('common.plateNum')"
                                 min-width="160px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div v-if="scope.row.plateNum">
                                         <div
                                             :class="{
@@ -271,7 +283,7 @@
                                             class="flex-box"
                                             @click.stop="
                                                 copyCarNumber(
-                                                    scope.row.plateNum
+                                                    scope.row.plateNum,
                                                 )
                                             "
                                         >
@@ -295,21 +307,21 @@
                                                 <!-- 车牌号异常 -->
                                                 {{
                                                     $t(
-                                                        "deviceManage.abnormalLicensePlateNumber"
+                                                        "deviceManage.abnormalLicensePlateNumber",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformPlateNum"
+                                                        "carManage.platformPlateNum",
                                                     )
                                                 }}：{{ scope.row.plateNum }}
                                             </div>
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.devicePlateNum"
+                                                        "carManage.devicePlateNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -317,7 +329,7 @@
                                                 @click="
                                                     toChange(
                                                         1,
-                                                        scope.row.plateNum
+                                                        scope.row.plateNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -325,10 +337,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference>
+                                                <i
+                                                    class="text-error el-icon-warning"
+                                                ></i>
+                                            </template>
                                         </el-popover>
                                         <span
                                             v-show="scope.row.freeze == 1"
@@ -382,7 +395,7 @@
                                 :label="$t('common.deviceSerialNum')"
                                 min-width="125px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         {{ scope.row.deviceSerialNum }}
                                         <el-popover
@@ -401,14 +414,14 @@
                                             <p class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.deviceSerialNumAbnormal"
+                                                        "carManage.deviceSerialNumAbnormal",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformDeviceSerialNum"
+                                                        "carManage.platformDeviceSerialNum",
                                                     )
                                                 }}：{{
                                                     scope.row.deviceSerialNum
@@ -417,7 +430,7 @@
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.deviceDeviceSerialNum"
+                                                        "carManage.deviceDeviceSerialNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -426,7 +439,7 @@
                                                     toChange(
                                                         2,
                                                         scope.row
-                                                            .deviceSerialNum
+                                                            .deviceSerialNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -434,10 +447,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference>
+                                                <i
+                                                    class="text-error el-icon-warning"
+                                                ></i>
+                                            </template>
                                         </el-popover>
                                     </div>
                                 </template>
@@ -456,7 +470,7 @@
                                 min-width="120px"
                                 :render-header="renderHeader"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-tag
                                         type="success"
                                         v-if="scope.row.deviceStatus === 1"
@@ -500,7 +514,7 @@
                                 :label="$t('common.operate')"
                                 width="140px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <a
                                         class="m-r-sm colorBlue"
                                         @click="searchModule(scope.row)"
@@ -530,7 +544,7 @@
         </el-row>
         <el-dialog
             :title="`${$t('devLog.selectTableMsg3')}(${selection.length})`"
-            :visible.sync="selectionVisible"
+            v-model="selectionVisible"
             :width="'1200px'"
             :custom-class="'selection-dialog'"
         >
@@ -609,7 +623,7 @@
                                 (selectionParams.currentPage - 1) *
                                     selectionParams.pageSize,
                                 selectionParams.currentPage *
-                                    selectionParams.pageSize
+                                    selectionParams.pageSize,
                             )
                         "
                         style="width: 100%"
@@ -661,7 +675,7 @@
                             :label="$t('common.operate')"
                             width="100"
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <a @click="deleteSelection(scope.row)">
                                     <!-- 移除 -->
                                     {{ $t("devLog.remove") }}
@@ -687,7 +701,7 @@
         <!-- //批量导入查询 -->
         <el-dialog
             :title="$t('parameterQuery.batchImportQuery')"
-            :visible.sync="bulkImportVisible"
+            v-model="bulkImportVisible"
             :width="'900px'"
             @close="closeBulkImport"
         >
@@ -725,9 +739,9 @@
                         <el-select
                             v-model="bulkImportForm.plateNum"
                             :placeholder="`${typeListSelected}${$t(
-                                'common.search'
+                                'common.search',
                             )}，${$t(
-                                'parameterQuery.enterLeastThree'
+                                'parameterQuery.enterLeastThree',
                             )}${typeListSelected}`"
                             remote
                             :remote-method="remoteMethod2"
@@ -737,7 +751,7 @@
                             @visible-change="visibleHandler"
                             @change="selectCar"
                         >
-                            <template slot="prefix"
+                            <template #prefix
                                 ><span
                                     ><i class="iconfont icon-chaxun"></i></span
                             ></template>
@@ -755,9 +769,9 @@
                         :rows="10"
                         :spellcheck="false"
                         :placeholder="`${$t(
-                            'common.input'
+                            'common.input',
                         )}${typeListSelected}，${$t(
-                            'parameterQuery.pleaseSeparate'
+                            'parameterQuery.pleaseSeparate',
                         )}`"
                         v-model="bulkImportForm.textarea"
                         @blur="plateNumBlur"
@@ -765,20 +779,22 @@
                     </el-input>
                 </div>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="bulkImportVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    @click="doBulkImport(true)"
-                    :loading="importLoading"
-                >
-                    <!-- 下一步 -->
-                    {{ $t("common.nextStep") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="bulkImportVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        @click="doBulkImport(true)"
+                        :loading="importLoading"
+                    >
+                        <!-- 下一步 -->
+                        {{ $t("common.nextStep") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -794,7 +810,7 @@ Vue.directive("selectLoadMore", {
     bind(el, binding) {
         // 获取element-ui定义好的scroll盒子
         const SELECTWRAP_DOM = el.querySelector(
-            ".el-select-dropdown .el-select-dropdown__wrap"
+            ".el-select-dropdown .el-select-dropdown__wrap",
         );
         SELECTWRAP_DOM.addEventListener("scroll", function () {
             if (this.scrollHeight - this.scrollTop < this.clientHeight + 1) {
@@ -1009,7 +1025,7 @@ export default {
             oInput.remove();
             // 复制成功
             this.$message.success(
-                this.$t("conditionMonitoring.replicatingSuccess")
+                this.$t("conditionMonitoring.replicatingSuccess"),
             );
         },
         cellMouseEnter(row, col) {
@@ -1048,7 +1064,7 @@ export default {
                             ? []
                             : this.searchForm.plateArr
                         ).concat(temp),
-                        jsonData.plateNum
+                        jsonData.plateNum,
                     );
                     if (res.data.length < 20) {
                         this.haveDataCar = false;
@@ -1169,7 +1185,7 @@ export default {
                 this.loadingAll = true;
                 let params = Object.assign(
                     { organizeId: this.params.organizeId },
-                    this.searchForm
+                    this.searchForm,
                 );
                 this.$api.exportParamDeviceList(params).then((res) => {
                     if (res.success == true) {
@@ -1186,7 +1202,7 @@ export default {
                                         ) {
                                             var iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -1197,7 +1213,7 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
@@ -1210,11 +1226,11 @@ export default {
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(
-                            this.$t("common.exportFailed") + ":" + res.msg
+                            this.$t("common.exportFailed") + ":" + res.msg,
                         );
                         this.loadingAll = false;
                     }
@@ -1233,7 +1249,7 @@ export default {
                         this.filterTree(
                             item.children,
                             this.organizationName,
-                            1
+                            1,
                         );
                     }
                 }
@@ -1308,12 +1324,12 @@ export default {
                                 this.TreeExpanded.push(m.id);
                             });
                             this.$refs["tree"].setCurrentKey(
-                                this.params.organizeId
+                                this.params.organizeId,
                             );
                         });
                         if (this.$store.state.tree.deviceConfigurationId) {
                             this.TreeExpanded.push(
-                                this.$store.state.tree.deviceConfigurationId
+                                this.$store.state.tree.deviceConfigurationId,
                             );
                         }
                         this.checkOrgDeviceModelInfo();
@@ -1431,8 +1447,8 @@ export default {
                                 // 无设备可以查询！
                                 this.$message.warning(
                                     this.$t(
-                                        "parameterQuery.noDevicesAvailableForQuerying"
-                                    ) + "！"
+                                        "parameterQuery.noDevicesAvailableForQuerying",
+                                    ) + "！",
                                 );
                                 this.searchLoading = false;
                                 return;
@@ -1440,7 +1456,7 @@ export default {
                                 // 参数查询最多支持同时查询1000个设备！
                                 this.$message.warning(
                                     this.$t("parameterQuery.limit1000Devices") +
-                                        "！"
+                                        "！",
                                 );
                                 this.searchLoading = false;
                                 return;
@@ -1513,7 +1529,7 @@ export default {
             if (ids && ids.length <= 0) {
                 // 请选择查询的设备
                 this.$message.warning(
-                    this.$t("parameterQuery.pleaseSelectDevice")
+                    this.$t("parameterQuery.pleaseSelectDevice"),
                 );
                 return;
             }
@@ -1560,7 +1576,7 @@ export default {
                 // 请输入待查询
                 this.$message.warning(
                     `${this.$t("parameterQuery.enterToBeQueried")}
-                    ${this.typeListSelected}`
+                    ${this.typeListSelected}`,
                 );
                 return;
             }
@@ -1579,8 +1595,8 @@ export default {
                             let newPlateNumArr = plateNumArr.filter(
                                 (x) =>
                                     !res.data.nonexistentList.some(
-                                        (y) => y === x
-                                    )
+                                        (y) => y === x,
+                                    ),
                             );
                             this.bulkImportForm.textarea = [
                                 ...new Set(newPlateNumArr),
@@ -1593,7 +1609,7 @@ export default {
                                 (prev, cur) => {
                                     return prev.concat(cur["checkDeviceInfos"]);
                                 },
-                                []
+                                [],
                             );
                             this.$router.push({
                                 path: "/maintenanceCenter/parameterQuery/module",
@@ -1602,7 +1618,7 @@ export default {
                                         (prev, cur) => {
                                             return prev.concat(cur["deviceId"]);
                                         },
-                                        []
+                                        [],
                                     ),
                                 },
                             });
@@ -1647,7 +1663,7 @@ export default {
                               this.$t("deviceLoadTaskManage.individual") +
                               this.typeListSelected
                             : ""
-                    }${this.$t("deviceManage.deviceSettingTest14")}`
+                    }${this.$t("deviceManage.deviceSettingTest14")}`,
                 );
             }
         },
@@ -1663,7 +1679,7 @@ export default {
             dormantStatus,
             deviceModelCode,
             type,
-            row
+            row,
         ) {
             if (type == "agree") {
                 let params = {
@@ -1836,10 +1852,10 @@ export default {
                         h(
                             "span",
                             { slot: "content" },
-                            this.$t("common.deviceStatusDesc")
+                            this.$t("common.deviceStatusDesc"),
                             // "绿色为在线，深黄色是深休眠，浅黄色是浅休眠，灰色为离线"
                         ),
-                    ]
+                    ],
                 ),
             ]);
         },
@@ -1876,7 +1892,7 @@ export default {
                         this.selectionForm["deviceStatus"] === 2)
                 ) {
                     this.selectionData = this.selectionData.filter(
-                        (item) => item[key] === this.selectionForm[key]
+                        (item) => item[key] === this.selectionForm[key],
                     );
                 } else if (this.selectionForm[key]) {
                     this.selectionData = this.selectionData.filter((item) => {
@@ -1902,7 +1918,7 @@ export default {
         deleteSelection(row) {
             this.$refs.table.toggleRowSelection(
                 this.$refs.table.selection.find((item) => item.id === row.id),
-                false
+                false,
             );
             this.selectionData.map((item, index) => {
                 if (item.id === row.id) {
@@ -1934,11 +1950,11 @@ export default {
         },
         doDeviceList() {
             let deviceArr = this.deviceInfoList.find(
-                (item) => item.deviceModelCode === this.deviceModelCode
+                (item) => item.deviceModelCode === this.deviceModelCode,
             );
             sessionStorage.setItem(
                 "deviceInfoList",
-                JSON.stringify(this.deviceInfoList)
+                JSON.stringify(this.deviceInfoList),
             );
             this.$router.push({
                 path: "/maintenanceCenter/deviceConfiguration/configuration",
@@ -1950,7 +1966,7 @@ export default {
                         (prev, cur) => {
                             return prev.concat(cur["deviceId"]);
                         },
-                        []
+                        [],
                     ),
                     business: "DEVICE_CONFIG_BATCH_IMPORT",
                 },
@@ -1962,7 +1978,7 @@ export default {
         },
         getLabelSelf(val) {
             let attribute = this.deviceDicList.find(
-                (e) => Number(e.sysDictCode) === Number(val)
+                (e) => Number(e.sysDictCode) === Number(val),
             );
             if (attribute) {
                 return attribute.sysDictName;
@@ -2116,7 +2132,7 @@ export default {
     background: rgb(254, 228, 196);
 }
 
-/deep/.el-alert {
+:deep(.el-alert){
     .el-alert__content,
     .el-alert__title {
         width: 100%;
@@ -2134,7 +2150,7 @@ export default {
         height: 18px;
     }
 }
-/deep/.bulk-import {
+:deep(.bulk-import){
     font-size: 14px;
     p {
         font-size: 14px;
@@ -2196,7 +2212,7 @@ export default {
         display: flex;
         flex-direction: column;
     }
-    /deep/.el-radio {
+    :deep(.el-radio){
         margin-left: 0px !important;
         margin-bottom: 12px;
         max-width: 400px !important;
@@ -2220,7 +2236,7 @@ export default {
     text-overflow: ellipsis;
     overflow: hidden;
 }
-/deep/.selection-box {
+:deep(.selection-box){
     .el-form-item {
         margin-bottom: 1rem !important;
     }
@@ -2229,7 +2245,7 @@ export default {
         padding-left: 16px;
     }
 }
-/deep/.awaken-dialog {
+:deep(.awaken-dialog){
     display: flex;
     padding-right: 12px;
     .el-icon-warning {

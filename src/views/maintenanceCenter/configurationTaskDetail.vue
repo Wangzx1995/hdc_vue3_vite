@@ -150,7 +150,7 @@
                         label="配置结果"
                         min-width="160px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <div>
                                 <span
                                     :class="
@@ -172,8 +172,11 @@
                         label="配置结果说明"
                         min-width="200px"
                     ></el-table-column>
-                    <el-table-column :label="$t('common.operate')" width="100px">
-                        <template slot-scope="scope">
+                    <el-table-column
+                        :label="$t('common.operate')"
+                        width="100px"
+                    >
+                        <template #default="scope">
                             <a
                                 @click="
                                     startConfig(
@@ -181,7 +184,7 @@
                                         scope.row.id,
                                         scope.row.plateNum,
                                         scope.row.deviceCode,
-                                        scope.row.cmd
+                                        scope.row.cmd,
                                     )
                                 "
                                 v-show="
@@ -200,7 +203,7 @@
                                         scope.row.batchCode,
                                         scope.row.id,
                                         scope.row.plateNum,
-                                        scope.row.deviceCode
+                                        scope.row.deviceCode,
                                     )
                                 "
                                 v-show="
@@ -362,7 +365,7 @@ export default {
                                 this.search();
                             } else {
                                 this.$message.error(
-                                    "设备重新配置失败:" + res.msg
+                                    "设备重新配置失败:" + res.msg,
                                 );
                             }
                         });
@@ -380,7 +383,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     let params = {
@@ -410,7 +413,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     let params = {
@@ -424,7 +427,7 @@ export default {
                                 this.search();
                             } else {
                                 this.$message.error(
-                                    "设备重新配置失败:" + res.msg
+                                    "设备重新配置失败:" + res.msg,
                                 );
                             }
                         });
@@ -481,7 +484,7 @@ export default {
 };
 </script>
 
-<style scoped lang="less" scoped>
+<style scoped lang="less">
 .wrap {
     height: 100%;
     display: flex;

@@ -64,7 +64,7 @@
                                 v-else
                                 :content="
                                     $t(
-                                        'deviceConfiguration.noConfigurationDetails'
+                                        'deviceConfiguration.noConfigurationDetails',
                                     )
                                 "
                                 placement="top"
@@ -108,12 +108,11 @@
                         <div class="no-data" v-show="!isShowEcharts">
                             暂无数据
                         </div>
-                        <el-button
+                        <template #reference><el-button
                             type="text"
-                            slot="reference"
                             icon="el-icon-pie-chart"
                             >失败原因分析</el-button
-                        >
+                        ></template>
                     </el-popover> -->
                 </div>
             </div>
@@ -266,7 +265,7 @@
                         :label="$t('ttsConfiguration.configurationResult')"
                         min-width="140px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <div>
                                 <span
                                     :class="
@@ -289,7 +288,7 @@
                         :label="$t('plateNumAndDeviceCode.failureReason')"
                         min-width="200px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <el-tooltip
                                 v-if="scope.row.failReason"
                                 popper-class="workorder-reason-popper"
@@ -319,7 +318,7 @@
                         width="100px"
                         fixed="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <a
                                 @click="
                                     startConfig(
@@ -327,7 +326,7 @@
                                         scope.row.id,
                                         scope.row.plateNum,
                                         scope.row.deviceCode,
-                                        scope.row.cmd
+                                        scope.row.cmd,
                                     )
                                 "
                                 v-if="
@@ -347,7 +346,7 @@
                                         scope.row.batchCode,
                                         scope.row.id,
                                         scope.row.plateNum,
-                                        scope.row.deviceCode
+                                        scope.row.deviceCode,
                                     )
                                 "
                                 v-if="
@@ -363,7 +362,7 @@
                                 <!-- 终止配置 -->
                                 {{
                                     $t(
-                                        "ttsConfiguration.terminateConfiguration"
+                                        "ttsConfiguration.terminateConfiguration",
                                     )
                                 }}
                             </a>
@@ -388,7 +387,7 @@
         <el-dialog
             :title="$t('deviceConfiguration.configurationDetails')"
             top="2%"
-            :visible.sync="dialogTableVisible"
+            v-model="dialogTableVisible"
             :width="'1300px'"
         >
             <div v-if="dialogTableVisible">
@@ -403,17 +402,19 @@
                     :dialogTableVisible="dialogTableVisible"
                 ></EditTemplate>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="noVisible">
-                    <!-- 关 闭 -->
-                    {{ $t("common.close") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="noVisible">
+                        <!-- 关 闭 -->
+                        {{ $t("common.close") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <!-- 配置详情 -->
         <el-dialog
             :title="$t('deviceConfiguration.configurationDetails')"
-            :visible.sync="dialogTableVisible1"
+            v-model="dialogTableVisible1"
             :width="'800px'"
             @close="noVisibleTable"
         >
@@ -443,12 +444,14 @@
                     ></el-table-column>
                 </el-table>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="noVisibleTable">
-                    <!-- 关 闭 -->
-                    {{ $t("common.close") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="noVisibleTable">
+                        <!-- 关 闭 -->
+                        {{ $t("common.close") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -706,7 +709,7 @@ export default {
             if (this.tableData.length <= 0) {
                 // this.$message.warning("该批次号下无设备！");
                 this.$message.warning(
-                    this.$t("ttsConfiguration.startAllConfigText1")
+                    this.$t("ttsConfiguration.startAllConfigText1"),
                 );
                 return;
             }
@@ -717,7 +720,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     let params = {
@@ -738,7 +741,7 @@ export default {
             if (this.tableData.length <= 0) {
                 // this.$message.warning("该批次号下无设备！");
                 this.$message.warning(
-                    this.$t("ttsConfiguration.startAllConfigText1")
+                    this.$t("ttsConfiguration.startAllConfigText1"),
                 );
                 return;
             } else {
@@ -751,7 +754,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     let params = {
@@ -779,26 +782,26 @@ export default {
                         if (secondTitle.title === "显示输出") {
                             for (let key of Object.keys(secondTitle.children)) {
                                 let objData = JSON.parse(
-                                    secondTitle.children[key].split("&")[2]
+                                    secondTitle.children[key].split("&")[2],
                                 );
                                 let valArr = objData.splitChanBinds.reduce(
                                     (prev, cur) => {
                                         if (cur.chanNo) {
                                             return prev.concat(
-                                                `通道${cur.chanNo}`
+                                                `通道${cur.chanNo}`,
                                             );
                                         } else {
                                             return prev;
                                         }
                                     },
-                                    []
+                                    [],
                                 );
                                 let val = {
                                     name: `${firstTitle.title}>${
                                         secondTitle.title
                                     }>${
                                         this.eventDisplayList.find(
-                                            (e) => e.value === Number(key)
+                                            (e) => e.value === Number(key),
                                         ).label
                                     }`,
                                     content: `使能:${
@@ -839,7 +842,7 @@ export default {
                             };
                             if (
                                 obj.name.indexOf(
-                                    "中心/定位上传设置/拐点补传角度"
+                                    "中心/定位上传设置/拐点补传角度",
                                 ) > -1
                             ) {
                                 obj.name += "<=180度）";

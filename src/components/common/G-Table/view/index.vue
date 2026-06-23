@@ -4,7 +4,7 @@
             <el-table
                 v-if="tableType === 'table'"
                 ref="table"
-                size="medium"
+                size="small"
                 tooltip-effect="dark"
                 :border="true"
                 stripe
@@ -20,11 +20,13 @@
                 @row-dblclick="rowDblclick"
                 @sort-change="onSortChange"
             >
-                <template v-for="(item, index) in columns">
+                <template
+                    v-for="(item, index) in columns"
+                    :key="(item.prop || item.type) + index"
+                >
                     <el-table-column
                         v-if="!item.slot"
                         :fixed="item.fixed"
-                        :key="(item.prop || item.type) + index"
                         :type="item.type"
                         :selectable="item.selectable"
                         :prop="item.prop"
@@ -36,7 +38,7 @@
                         :align="item.align"
                         :reserve-selection="true"
                     >
-                        <template slot="header">
+                        <template #header>
                             <el-tooltip
                                 effect="dark"
                                 :content="item.label"
@@ -59,12 +61,12 @@
                         :min-width="item.minWidth"
                         :align="item.align"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <slot :name="item.slot" :data="scope.row"></slot>
                         </template>
                     </el-table-column>
                 </template>
-                <template slot="empty">
+                <template #empty>
                     <slot name="empty"></slot>
                 </template>
             </el-table>
@@ -199,7 +201,7 @@ export default {
             this.tableHeight =
                 utils.getTableHeight.call(
                     this.$parent,
-                    ...this.calcHeightRefs
+                    ...this.calcHeightRefs,
                 ) -
                 paginationHeight -
                 30 -
@@ -291,7 +293,7 @@ export default {
         pageInWeb(params) {
             let tableData = this.handleData.slice(
                 (this.pagination.currentPage - 1) * this.pagination.pageSize,
-                this.pagination.currentPage * this.pagination.pageSize
+                this.pagination.currentPage * this.pagination.pageSize,
             );
             return tableData;
         },
@@ -378,7 +380,7 @@ export default {
 .pagination {
     padding: 12px 0px !important;
 }
-/deep/.el-table {
+:deep(.el-table) {
     height: 100%;
     .el-table__body-wrapper {
         height: calc(~"100% - 34px") !important;

@@ -3,11 +3,11 @@
         <div class="vm-login">
             <el-dialog
                 :title="diaTitle"
-                :visible="noticeBol"
+                v-model="noticeBol"
                 :width="'580px'"
                 @close="noticeBol = false"
             >
-                <template slot="title">
+                <template #title>
                     <div
                         class="m-l-sm"
                         style="color: #000; font-size: 20px; font-weight: 800"
@@ -28,20 +28,21 @@
                     <div class="content-text" v-html="item.content"></div>
                 </div>
 
-                <span
-                    slot="footer"
-                    class="dialog-footer"
-                    style="
-                        justify-content: space-between;
-                        display: flex;
-                        align-items: center;
-                    "
-                >
-                    <el-checkbox v-model="noTice">不再提醒</el-checkbox>
-                    <el-button type="primary" @click="closeDialog()"
-                        >知道了</el-button
+                <template #footer
+                    ><span
+                        class="dialog-footer"
+                        style="
+                            justify-content: space-between;
+                            display: flex;
+                            align-items: center;
+                        "
                     >
-                </span>
+                        <el-checkbox v-model="noTice">不再提醒</el-checkbox>
+                        <el-button type="primary" @click="closeDialog()"
+                            >知道了</el-button
+                        >
+                    </span></template
+                >
             </el-dialog>
             <PromptUser
                 :showManage="JSON.stringify(validateOverdueManages)"
@@ -334,7 +335,7 @@
 
             <!--忘记密码-->
             <el-dialog
-                :visible="setPasswordModal"
+                v-model="setPasswordModal"
                 title="忘记密码"
                 class="no-padding"
                 @close="closeSetPassword"
@@ -360,7 +361,9 @@
                                     placeholder="手机号"
                                     autoComplete="new-password"
                                 >
-                                    <span slot="prepend">+86</span>
+                                    <template #prepend
+                                        ><span>+86</span></template
+                                    >
                                 </el-input>
                             </el-form-item>
                             <el-form-item
@@ -479,13 +482,13 @@
                     </el-form>
                     <!--</div>-->
                 </div>
-                <div slot="footer"></div>
+                <template #footer><div></div></template>
                 <!-- </Modal> -->
             </el-dialog>
             <!-- 多项目选择 -->
             <el-dialog
                 title="选择项目"
-                :visible.sync="eventSelectVisible"
+                v-model="eventSelectVisible"
                 @close="closeSelect"
                 :width="'600px'"
             >
@@ -1542,12 +1545,12 @@ export default {
     //     width: auto;
     // }
 }
-//     div /deep/.el-    {
+//     div :deep(.el-){
 // 	/* 修改为您想要的文字大小 */
 //     font-size: 20px!important;
 // }
 .login-form {
-    /deep/.el-input {
+    :deep(.el-input){
         .el-input__icon {
             line-height: 40px;
         }

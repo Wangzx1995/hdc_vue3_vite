@@ -142,7 +142,7 @@
                                     <el-select
                                         v-model="form.plateNum"
                                         :placeholder="`${typeListSelected}${$t(
-                                            'ttsConfiguration.plateNumPlaceholderText1'
+                                            'ttsConfiguration.plateNumPlaceholderText1',
                                         )}${typeListSelected}`"
                                         remote
                                         :remote-method="remoteMethod2"
@@ -152,7 +152,7 @@
                                         @visible-change="visibleHandler"
                                         @change="selectCar"
                                     >
-                                        <template slot="prefix"
+                                        <template #prefix
                                             ><span
                                                 ><i
                                                     class="iconfont icon-chaxun"
@@ -172,9 +172,9 @@
                                     :rows="6"
                                     :spellcheck="false"
                                     :placeholder="`${$t(
-                                        'ttsConfiguration.plateNumPlaceholderText2'
+                                        'ttsConfiguration.plateNumPlaceholderText2',
                                     )}${typeListSelected}，${$t(
-                                        'ttsConfiguration.plateNumPlaceholderText3'
+                                        'ttsConfiguration.plateNumPlaceholderText3',
                                     )}`"
                                     v-model="form.deviceCodes"
                                     @blur="plateNumBlur"
@@ -321,7 +321,7 @@
         <!-- 新增 -->
         <el-dialog
             :title="$t('common.add')"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             @close="cancel"
         >
             <el-form
@@ -354,19 +354,21 @@
                     </el-input>
                 </el-form-item>
             </el-form>
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="saveConfig">
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-                <el-button @click="cancel">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="saveConfig">
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                    <el-button @click="cancel">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <el-dialog
-            :visible="firmwareVisible"
+            v-model="firmwareVisible"
             :show-close="false"
             @close="close"
             :width="'600px'"
@@ -383,16 +385,18 @@
                     {{ $t("ttsConfiguration.configurationCommandText2") }}
                 </span>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="goTask">
-                    <!-- 查看任务 -->
-                    {{ $t("ttsConfiguration.configurationCommandText3") }}
-                </el-button>
-                <el-button type="primary" @click="close">
-                    <!-- 知道了 -->
-                    {{ $t("common.gotIt") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="goTask">
+                        <!-- 查看任务 -->
+                        {{ $t("ttsConfiguration.configurationCommandText3") }}
+                    </el-button>
+                    <el-button type="primary" @click="close">
+                        <!-- 知道了 -->
+                        {{ $t("common.gotIt") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -406,7 +410,9 @@ export default {
             if (!k.trim()) {
                 // 配置内容不能为空
                 callback(
-                    new Error(that.$t("ttsConfiguration.ttsFormValidatorText1"))
+                    new Error(
+                        that.$t("ttsConfiguration.ttsFormValidatorText1"),
+                    ),
                 );
             }
             if (value !== " " && value !== null && value !== undefined) {
@@ -414,8 +420,8 @@ export default {
                     // 配置内容不得超过500个字符
                     callback(
                         new Error(
-                            that.$t("ttsConfiguration.ttsFormValidatorText2")
-                        )
+                            that.$t("ttsConfiguration.ttsFormValidatorText2"),
+                        ),
                     );
                 } else {
                     callback();
@@ -423,7 +429,9 @@ export default {
             } else {
                 // 配置内容不能为空
                 callback(
-                    new Error(that.$t("ttsConfiguration.ttsFormValidatorText1"))
+                    new Error(
+                        that.$t("ttsConfiguration.ttsFormValidatorText1"),
+                    ),
                 );
             }
         };
@@ -433,7 +441,9 @@ export default {
             if (!k.trim()) {
                 // 待配置车辆不能为空
                 callback(
-                    new Error(that.$t("ttsConfiguration.ttsFormValidatorText5"))
+                    new Error(
+                        that.$t("ttsConfiguration.ttsFormValidatorText5"),
+                    ),
                 );
             }
             if (value !== " " && value !== null && value !== undefined) {
@@ -441,8 +451,8 @@ export default {
                     // 待配置车辆不得超过12000个字符
                     callback(
                         new Error(
-                            that.$t("ttsConfiguration.ttsFormValidatorText6")
-                        )
+                            that.$t("ttsConfiguration.ttsFormValidatorText6"),
+                        ),
                     );
                 } else {
                     callback();
@@ -450,7 +460,9 @@ export default {
             } else {
                 // 待配置车辆不能为空
                 callback(
-                    new Error(that.$t("ttsConfiguration.ttsFormValidatorText5"))
+                    new Error(
+                        that.$t("ttsConfiguration.ttsFormValidatorText5"),
+                    ),
                 );
             }
         };
@@ -460,7 +472,9 @@ export default {
             if (!k.trim()) {
                 // 标题不能为空
                 callback(
-                    new Error(that.$t("ttsConfiguration.ttsFormValidatorText4"))
+                    new Error(
+                        that.$t("ttsConfiguration.ttsFormValidatorText4"),
+                    ),
                 );
             }
             if (value !== "" && value !== null && value !== undefined) {
@@ -468,8 +482,8 @@ export default {
                     // 标题不得超过20个字符
                     callback(
                         new Error(
-                            that.$t("ttsConfiguration.ttsFormValidatorText3")
-                        )
+                            that.$t("ttsConfiguration.ttsFormValidatorText3"),
+                        ),
                     );
                 } else {
                     callback();
@@ -477,7 +491,9 @@ export default {
             } else {
                 // 标题不能为空
                 callback(
-                    new Error(that.$t("ttsConfiguration.ttsFormValidatorText4"))
+                    new Error(
+                        that.$t("ttsConfiguration.ttsFormValidatorText4"),
+                    ),
                 );
             }
         };
@@ -493,7 +509,7 @@ export default {
                         required: false,
                         max: 20,
                         message: this.$t(
-                            "ttsConfiguration.ttsFormValidatorText3"
+                            "ttsConfiguration.ttsFormValidatorText3",
                         ), //"不能超过20个字符",
                         trigger: "blur",
                     },
@@ -646,8 +662,8 @@ export default {
                                 // TTS下发成功
                                 this.$message.success(
                                     this.$t(
-                                        "ttsConfiguration.ttsSuccessfullyIssued"
-                                    )
+                                        "ttsConfiguration.ttsSuccessfullyIssued",
+                                    ),
                                 );
                                 this.loadSubmit = false;
                                 this.batchCode = res.data;
@@ -720,8 +736,8 @@ export default {
                             // 添加TTS常用指令成功！
                             this.$message.success(
                                 this.$t(
-                                    "ttsConfiguration.addedCommonTTSCommands"
-                                )
+                                    "ttsConfiguration.addedCommonTTSCommands",
+                                ),
                             );
                             this.dialogVisible = false;
                             this.getTTSCmdList();
@@ -744,7 +760,7 @@ export default {
             if (ids.length == 0) {
                 // 未勾选指令！
                 this.$message.warning(
-                    this.$t("ttsConfiguration.instructionNotSelected")
+                    this.$t("ttsConfiguration.instructionNotSelected"),
                 );
                 return;
             }
@@ -753,7 +769,7 @@ export default {
                 if (res.success == true) {
                     // 删除TTS常用指令成功！
                     this.$message.success(
-                        this.$t("ttsConfiguration.deletedCommonTTSCommands")
+                        this.$t("ttsConfiguration.deletedCommonTTSCommands"),
                     );
                     this.getTTSCmdList();
                     this.changeEdit(false);
@@ -788,8 +804,8 @@ export default {
                     // 请输入待配置
                     this.$message.warning(
                         `${this.$t(
-                            "ttsConfiguration.plateNumPlaceholderText4"
-                        )}${this.typeListSelected}`
+                            "ttsConfiguration.plateNumPlaceholderText4",
+                        )}${this.typeListSelected}`,
                     );
                     this.loadSubmit = false;
                     return;
@@ -809,8 +825,8 @@ export default {
                                 let newPlateNumArr = plateNumArr.filter(
                                     (x) =>
                                         !res.data.nonexistentList.some(
-                                            (y) => y === x
-                                        )
+                                            (y) => y === x,
+                                        ),
                                 );
                                 this.form.deviceCodes = [
                                     ...new Set(newPlateNumArr),
@@ -823,7 +839,7 @@ export default {
                                 res.data.modelVoList.forEach((item) => {
                                     item.checkDeviceInfos.forEach((k) => {
                                         this.form.deviceCodeList.push(
-                                            k.deviceCode
+                                            k.deviceCode,
                                         );
                                     });
                                 });
@@ -919,7 +935,7 @@ export default {
                               repeatArr.length +
                               this.$t("deviceManage.deviceSettingTest13")
                             : ""
-                    }${this.$t("deviceManage.deviceSettingTest14")}`
+                    }${this.$t("deviceManage.deviceSettingTest14")}`,
                 );
             }
         },
@@ -1033,7 +1049,7 @@ export default {
         }
     }
 }
-/deep/.bulk-import {
+:deep(.bulk-import) {
     font-size: 14px;
     margin-top: 4px;
     .inspection-content {
@@ -1104,7 +1120,7 @@ export default {
     flex-direction: column;
     color: #000;
 }
-/deep/.config-radio {
+:deep(.config-radio) {
     .el-radio {
         &:hover {
             background-color: #f5f5f5;

@@ -21,7 +21,7 @@
                 <span>功能</span>
                 <el-button
                     v-if="!isTemplate"
-                    size="mini"
+                    size="small"
                     type="primary"
                     icon="el-icon-refresh-left"
                     @click="resetValue"
@@ -1845,7 +1845,7 @@ export default {
 </script>
 <style lang="less" scoped>
 @import "./configurationForm.less";
-/deep/.el-collapse {
+:deep(.el-collapse){
     .el-collapse-item__content {
         padding-top: 20px;
     }

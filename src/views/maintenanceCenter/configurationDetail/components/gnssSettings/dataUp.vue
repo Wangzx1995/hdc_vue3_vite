@@ -25,9 +25,9 @@
             <div v-if="form['0095']" class="configuration-item">
               <el-form-item label="GNSS模块详细定位数据上传设置">
                 <el-input v-if="form['0094'].positioningUploadType == 0" :disabled="true" v-model="form['0093'].positioningInputFrequency"></el-input>
-                <el-input v-else-if="form['0094'].positioningUploadType == 1 || form['0094'].positioningUploadType == 11" v-model="form['0093'].positioningInputFrequency"><span slot="suffix">秒</span></el-input>
-                <el-input v-else-if="form['0094'].positioningUploadType == 2 || form['0094'].positioningUploadType == 12" v-model="form['0093'].positioningInputFrequency"><span slot="suffix">米</span></el-input>
-                <el-input v-else-if="form['0094'].positioningUploadType == 13" v-model="form['0093'].positioningInputFrequency"><span slot="suffix">条</span></el-input>
+                <el-input v-else-if="form['0094'].positioningUploadType == 1 || form['0094'].positioningUploadType == 11" v-model="form['0093'].positioningInputFrequency"><template #suffix><span>秒</span></template></el-input>
+                <el-input v-else-if="form['0094'].positioningUploadType == 2 || form['0094'].positioningUploadType == 12" v-model="form['0093'].positioningInputFrequency"><template #suffix><span>米</span></template></el-input>
+                <el-input v-else-if="form['0094'].positioningUploadType == 13" v-model="form['0093'].positioningInputFrequency"><template #suffix><span>条</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if="form['0092']" class="configuration-item">
@@ -43,7 +43,7 @@
             </div>
             <div v-if="form['0093']" class="configuration-item">
               <el-form-item label="GNSS模块详细定位数据采集频率" prop="0093.positioningInputFrequency">
-                  <el-input v-model="form['0093'].positioningInputFrequency"><span slot="suffix">s</span></el-input>
+                  <el-input v-model="form['0093'].positioningInputFrequency"><template #suffix><span>s</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if="form['0091']" class="configuration-item">

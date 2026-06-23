@@ -558,7 +558,7 @@ export default {
 .marginBottom {
     margin-bottom: 1rem;
 }
-/deep/.el-select {
+:deep(.el-select){
     .el-input__inner {
         height: 32px !important;
     }

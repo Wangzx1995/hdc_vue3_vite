@@ -177,6 +177,7 @@ const cn = {
         keywordsPlaceholder:
             "请输入至少3位车牌号、终端手机号、设备序列号、VIN码",
         includingVehicles: "包含下级组织车辆",
+        onlyUnboundDevices: "仅查看未绑定设备的车辆",
     },
 
     carManage: {

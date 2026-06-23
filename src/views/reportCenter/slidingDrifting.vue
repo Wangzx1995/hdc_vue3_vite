@@ -92,7 +92,7 @@
                             :placeholder="$t('common.input')"
                             v-model.number="searchForm.driftSpeed"
                         >
-                            <template slot="prepend">
+                            <template #prepend>
                                 <span class="fontBorder">></span></template
                             >
                         </el-input>

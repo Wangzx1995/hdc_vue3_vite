@@ -2,7 +2,7 @@
     <!-- title="服务到期提醒" -->
     <el-dialog
         :title="$t('promptUser.promptTest1')"
-        :visible.sync="dialogVisible"
+        v-model="dialogVisible"
         :width="'500px'"
     >
         <div style="text-align: left">
@@ -46,12 +46,12 @@
                 。
             </p>
         </div>
-        <span slot="footer">
+        <template #footer><span>
             <el-button type="primary" @click="dialogVisible = false">
                 <!-- 知道了 -->
                 {{ $t("promptUser.promptTest9") }}
             </el-button>
-        </span>
+        </span></template>
     </el-dialog>
 </template>
 <script>

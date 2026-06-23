@@ -183,11 +183,11 @@
                 fixed="left"
                 width="200px"
             >
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span>
                         {{
                             $moment(scope.row.operateTime).format(
-                                "YYYY-MM-DD HH:mm:ss"
+                                "YYYY-MM-DD HH:mm:ss",
                             )
                         }}
                     </span>
@@ -200,11 +200,11 @@
                 :label="$t('devLog.uploaded')"
                 width="200px"
             >
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span v-if="scope.row.uploadTime">
                         {{
                             $moment(scope.row.uploadTime).format(
-                                "YYYY-MM-DD HH:mm:ss"
+                                "YYYY-MM-DD HH:mm:ss",
                             )
                         }}
                     </span>
@@ -224,11 +224,11 @@
                 :label="$t('devLog.uploadMode')"
                 width="200px"
             >
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span>
                         {{
                             uploadMethodList.find(
-                                (e) => e.value === scope.row.uploadMode
+                                (e) => e.value === scope.row.uploadMode,
                             ).label
                         }}
                     </span>
@@ -262,7 +262,7 @@
                 fixed="right"
                 show-overflow-tooltip
             >
-                <template slot-scope="scope">
+                <template #default="scope">
                     <div>
                         <span
                             class="status status-1"
@@ -313,7 +313,7 @@
                 :label="$t('common.operate')"
                 width="120px"
             >
-                <template slot-scope="scope">
+                <template #default="scope">
                     <a
                         v-if="scope.row.uploadResultCode === 1"
                         @click="
@@ -451,8 +451,8 @@ export default {
             this.searchForm.orderDir = !column.order
                 ? ""
                 : column.order === "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.searchForm.orderColumn = !column.prop ? "" : column.prop;
             this.getData();
         },
@@ -499,7 +499,7 @@ export default {
             let params = {};
             if (this.timeRange && this.timeRange.length > 0) {
                 params.operateBeginTime = TimeUtil.getDateTime(
-                    this.timeRange[0]
+                    this.timeRange[0],
                 );
                 params.operateEndTime = TimeUtil.getDateTime(this.timeRange[1]);
             } else {
@@ -601,7 +601,7 @@ export default {
                             "devLog/getFtpDevLogDown" +
                             "?devLogId=" +
                             devLogId,
-                        { headers: { "X-Token": this.$store.getters.token } }
+                        { headers: { "X-Token": this.$store.getters.token } },
                     )
                     .then(function (ret) {
                         console.log(ret);
@@ -611,7 +611,7 @@ export default {
                             resetDownloadTimeLimit();
                         } else {
                             window.open(
-                                `${ret.data.data}${self.$store.getters.token}`
+                                `${ret.data.data}${self.$store.getters.token}`,
                             );
                             self.loadingEnd = false;
                             this.$api.eventTrackTrigger({

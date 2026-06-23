@@ -8,7 +8,7 @@
             <span class="screenTitle">仅看有配置任务组织</span>
             <el-switch @change="getOrganizeTreeWithParamData"
                        v-model="screenTerm"
-                       size="mini"></el-switch>
+                       size="small"></el-switch>
           </div> -->
                     <el-tree
                         ref="tree"
@@ -186,16 +186,16 @@
                                 label="配置内容"
                                 min-width="240px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         placement="top"
                                         :open-delay="300"
                                         trigger="hover"
                                     >
                                         <span>{{ scope.row.params }}</span>
-                                        <span slot="reference">{{
-                                            scope.row.params
-                                        }}</span>
+                                        <template #reference>
+                                            <span>{{ scope.row.params }}</span>
+                                        </template>
                                     </el-popover>
                                 </template>
                             </el-table-column>
@@ -204,7 +204,7 @@
                                 label="配置结果"
                                 min-width="160px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         <span
                                             :class="
@@ -257,16 +257,16 @@
                                 label="配置内容"
                                 min-width="240px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         placement="top"
                                         :open-delay="300"
                                         trigger="hover"
                                     >
                                         <span>{{ scope.row.params }}</span>
-                                        <span slot="reference">{{
-                                            scope.row.params
-                                        }}</span>
+                                        <template #reference>
+                                            <span>{{ scope.row.params }}</span>
+                                        </template>
                                     </el-popover>
                                 </template>
                             </el-table-column>
@@ -275,7 +275,7 @@
                                 label="发布属性"
                                 min-width="200px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     {{ scope.row.configPropertyString || "--" }}
                                 </template>
                             </el-table-column>
@@ -288,7 +288,7 @@
                                 label="成功/进行中/失败"
                                 min-width="160px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     {{
                                         `${scope.row.successNum}/${scope.row.ingNum}/${scope.row.failNum}`
                                     }}
@@ -304,7 +304,7 @@
                                 fixed="right"
                                 width="80px"
                             >
-                                <template slot-scope="scope" width="100px">
+                                <template #default="scope" width="100px">
                                     <a @click="taskDetail(scope.row.batchCode)"
                                         >详情</a
                                     >
@@ -497,7 +497,7 @@ export default {
                                 this.getTableData();
                             } else {
                                 this.$message.error(
-                                    "设备重新配置失败:" + res.msg
+                                    "设备重新配置失败:" + res.msg,
                                 );
                             }
                         });
@@ -553,7 +553,7 @@ export default {
                                                 ) {
                                                     const iframe =
                                                         document.createElement(
-                                                            "iframe"
+                                                            "iframe",
                                                         );
                                                     iframe.src =
                                                         (process.env.BASE_API ==
@@ -566,10 +566,10 @@ export default {
                                                     iframe.style.display =
                                                         "none";
                                                     document.body.appendChild(
-                                                        iframe
+                                                        iframe,
                                                     );
                                                     window.clearInterval(
-                                                        _this.getExportResultInterval
+                                                        _this.getExportResultInterval,
                                                     );
                                                     _this.getExportResultInterval =
                                                         "";
@@ -579,8 +579,10 @@ export default {
                                     }, 2000);
                             } else {
                                 this.$message.error(
-                                this.$t("common.exportFailed") + ":" +res.msg
-                            );
+                                    this.$t("common.exportFailed") +
+                                        ":" +
+                                        res.msg,
+                                );
                                 this.loadingAll = false;
                             }
                         });
@@ -605,7 +607,7 @@ export default {
                                             ) {
                                                 const iframe =
                                                     document.createElement(
-                                                        "iframe"
+                                                        "iframe",
                                                     );
                                                 iframe.src =
                                                     (process.env.BASE_API == "/"
@@ -616,10 +618,10 @@ export default {
                                                     fileName;
                                                 iframe.style.display = "none";
                                                 document.body.appendChild(
-                                                    iframe
+                                                    iframe,
                                                 );
                                                 window.clearInterval(
-                                                    _this.getExportResultInterval_
+                                                    _this.getExportResultInterval_,
                                                 );
                                                 _this.getExportResultInterval_ =
                                                     "";
@@ -627,11 +629,11 @@ export default {
                                             }
                                         });
                                 },
-                                2000
+                                2000,
                             );
                         } else {
                             this.$message.error(
-                                this.$t("common.exportFailed") + ":" +res.msg
+                                this.$t("common.exportFailed") + ":" + res.msg,
                             );
                             this.loadingAll2 = false;
                         }
@@ -766,7 +768,7 @@ export default {
                             this.total = res.data.totalRecords;
                         } else {
                             this.$message.error(
-                                "获取设备配置信息失败:" + res.msg
+                                "获取设备配置信息失败:" + res.msg,
                             );
                         }
                         this.searchLoading = false;
@@ -789,7 +791,7 @@ export default {
                                             .split(",")
                                             .forEach((item_) => {
                                                 ttsArr.push(
-                                                    this.ttsContent[item_]
+                                                    this.ttsContent[item_],
                                                 );
                                             });
                                         item["configPropertyString"] =
@@ -810,7 +812,7 @@ export default {
                             this.total2 = res.data.totalRecords;
                         } else {
                             this.$message.error(
-                                "获取设备配置信息失败:" + res.msg
+                                "获取设备配置信息失败:" + res.msg,
                             );
                         }
                         this.searchLoading = false;

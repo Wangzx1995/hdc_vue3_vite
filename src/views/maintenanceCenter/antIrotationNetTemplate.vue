@@ -61,7 +61,7 @@
                 >
                     <!-- <el-table-column type="radio"></el-table-column> -->
                     <el-table-column type="expand">
-                        <template slot-scope="props">
+                        <template #default="props">
                             <el-table :data="props.row.ipLockParamsInfoList">
                                 <!-- 是否锁定 -->
                                 <el-table-column
@@ -70,7 +70,7 @@
                                     width="120"
                                     :render-header="renderHeader"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <i
                                             v-for="(
                                                 item, index
@@ -129,7 +129,7 @@
                                     "
                                     width="80"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <div>
                                             <!-- 中心 -->
                                             {{ $t("conditionMonitoring.center")
@@ -143,7 +143,7 @@
                                     :label="$t('conditionMonitoring.enable')"
                                     width="80"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <div v-if="props.$index !== editIndex">
                                             <!-- "开启" "关闭" -->
                                             {{
@@ -176,7 +176,7 @@
                                     :label="$t('antIrotationNet.platformType')"
                                     width=""
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <div v-if="props.$index !== editIndex">
                                             {{ scope.row.protocolTypeName }}
                                         </div>
@@ -210,7 +210,7 @@
                                     :label="$t('antIrotationNet.protocol')"
                                     width=""
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <div v-if="props.$index !== editIndex">
                                             {{ scope.row.protocolVersionName }}
                                         </div>
@@ -246,7 +246,7 @@
                                     "
                                     width="260"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <div v-if="props.$index !== editIndex">
                                             <!-- "IP地址"
                                                     : "域名" -->
@@ -298,7 +298,7 @@
                                     :label="$t('antIrotationNet.serverAddress')"
                                     width=""
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <div v-if="props.$index !== editIndex">
                                             {{
                                                 scope.row.addressFormatType ===
@@ -356,7 +356,7 @@
                                     :label="$t('antIrotationNet.port')"
                                     width=""
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <div v-if="props.$index !== editIndex">
                                             {{ scope.row.addressPort }}
                                         </div>
@@ -391,7 +391,7 @@
                         :label="$t('antIrotationNet.templateName')"
                         min-width="140px"
                     >
-                        <template slot-scope="props">
+                        <template #default="props">
                             <div v-if="props.$index !== editIndex">
                                 {{ props.row.ipLockInfo.name }}
                             </div>
@@ -411,7 +411,7 @@
                         :label="$t('antIrotationNet.createName')"
                         width=""
                     >
-                        <template slot-scope="props">
+                        <template #default="props">
                             <div>{{ props.row.ipLockInfo.createName }}</div>
                         </template>
                     </el-table-column>
@@ -423,7 +423,7 @@
                         :label="$t('antIrotationNet.updateTime')"
                         width=""
                     >
-                        <template slot-scope="props">
+                        <template #default="props">
                             <div>{{ props.row.ipLockInfo.updateTime }}</div>
                         </template>
                     </el-table-column>
@@ -434,7 +434,7 @@
                         :label="$t('userManage.enableStatus')"
                         width=""
                     >
-                        <template slot-scope="props">
+                        <template #default="props">
                             <el-switch
                                 @change="(val) => useEnableDo(val, props.row)"
                                 v-model="props.row.ipLockInfo.useEnable"
@@ -452,7 +452,7 @@
                         :label="$t('common.operate')"
                         width=""
                     >
-                        <template slot-scope="props">
+                        <template #default="props">
                             <el-button
                                 :disabled="subType == 1"
                                 v-if="props.$index !== editIndex"

@@ -22,7 +22,7 @@
                             ]
                         "
                     >
-                        <template slot="title">
+                        <template #title>
                             <div class="slot-title">
                                 <span>{{ tabItem.label }}</span>
                                 <el-button
@@ -149,7 +149,7 @@
                                             bitRateTypeChange(
                                                 val,
                                                 tabItem.chanNo,
-                                                tabItem.type
+                                                tabItem.type,
                                             )
                                     "
                                 >
@@ -234,15 +234,16 @@
                                 label="图像镜像"
                                 v-if="tabItem.hasOwnProperty('reverse')"
                             >
-                                <span slot="label" class="label-slot"
-                                    >图像镜像
-                                    <el-tooltip
-                                        content="配置图像镜像时，对应通道的算法使能需关闭"
-                                    >
-                                        <i
-                                            class="el-icon-question"
-                                        ></i> </el-tooltip
-                                ></span>
+                                <template #label
+                                    ><span class="label-slot"
+                                        >图像镜像
+                                        <el-tooltip
+                                            content="配置图像镜像时，对应通道的算法使能需关闭"
+                                        >
+                                            <i
+                                                class="el-icon-question"
+                                            ></i> </el-tooltip></span
+                                ></template>
                                 <el-select
                                     v-model="
                                         newForm[
@@ -265,16 +266,18 @@
         </el-form>
         <el-dialog
             title="批量应用"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             @close="close"
             :width="'460px'"
             :append-to-body="true"
         >
             <div class="global-setting">
                 <el-card class="card-left">
-                    <div slot="header" class="clearfix">
-                        <span>模板配置</span>
-                    </div>
+                    <template #header>
+                        <div class="clearfix">
+                            <span>模板配置</span>
+                        </div>
+                    </template>
                     <el-checkbox-group v-model="paramsCheckList">
                         <el-checkbox
                             label="resolution"
@@ -319,9 +322,11 @@
                     </el-checkbox-group>
                 </el-card>
                 <el-card class="card-right">
-                    <div slot="header" class="clearfix">
-                        <span>应用至</span>
-                    </div>
+                    <template #header>
+                        <div class="clearfix">
+                            <span>应用至</span>
+                        </div>
+                    </template>
                     <el-checkbox-group
                         v-model="chanNoCheckList"
                         v-for="(item, index) in checkVideoList"
@@ -333,10 +338,12 @@
                     </el-checkbox-group>
                 </el-card>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="send">确 定</el-button>
-                <el-button @click="close">取 消</el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="send">确 定</el-button>
+                    <el-button @click="close">取 消</el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -400,7 +407,7 @@ export default {
                                           tabItem.resolutionList,
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
-                                          ].resolution
+                                          ].resolution,
                                       )}&${
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
@@ -424,7 +431,7 @@ export default {
                                           tabItem.resList,
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
-                                          ].res
+                                          ].res,
                                       )}&${
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
@@ -467,7 +474,7 @@ export default {
                                           tabItem.encodeModeList,
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
-                                          ].encodeMode
+                                          ].encodeMode,
                                       )}&${
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
@@ -492,7 +499,7 @@ export default {
                                           tabItem.bitRateTypeList,
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
-                                          ].bitRateType
+                                          ].bitRateType,
                                       )}&${
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
@@ -516,7 +523,7 @@ export default {
                                           tabItem.bitRateList,
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
-                                          ].bitRate
+                                          ].bitRate,
                                       )}&${
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
@@ -540,7 +547,7 @@ export default {
                                           tabItem.videoTypeList,
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
-                                          ].videoType
+                                          ].videoType,
                                       )}&${
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
@@ -564,7 +571,7 @@ export default {
                                           tabItem.imageQualityList,
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
-                                          ].imageQuality
+                                          ].imageQuality,
                                       )}&${
                                           val[
                                               `param188_${tabItem.chanNo}_${tabItem.type}`
@@ -595,7 +602,7 @@ export default {
                                           tabItem.reverseList,
                                           val[
                                               `param2205_${tabItem.chanNo}_reverse`
-                                          ].reverse
+                                          ].reverse,
                                       )}&${
                                           val[
                                               `param2205_${tabItem.chanNo}_reverse`
@@ -633,8 +640,8 @@ export default {
                 JSON.stringify(
                     this.videoList
                         .filter((item) => item.type === 0)
-                        .filter((item) => item.reverse)
-                )
+                        .filter((item) => item.reverse),
+                ),
             );
             this.videoList.forEach((item) => {
                 initConfigList.push(
@@ -644,54 +651,54 @@ export default {
                             streamType: item.type,
                             chanNo: item.chanNo,
                         },
-                        item
-                    )
+                        item,
+                    ),
                 );
                 item.label = `通道${item.chanNo}${
                     this.enumerationJSON["compress_type"].find(
-                        (e) => e.value === item.type
+                        (e) => e.value === item.type,
                     ).label
                 }`;
                 if (item.resolution && item.resolution.length) {
                     item.resolutionList = this.getEnumerationValue(
                         item.resolution,
-                        "compress_resolution"
+                        "compress_resolution",
                     );
                 }
                 if (item.res && item.res.length) {
                     item.resList = this.getEnumerationValue(
                         item.res,
-                        "compress_res"
+                        "compress_res",
                     );
                 }
                 if (item.encodeMode && item.encodeMode.length) {
                     item.encodeModeList = this.getEnumerationValue(
                         item.encodeMode,
-                        "compress_encodeMode"
+                        "compress_encodeMode",
                     );
                 }
                 if (item.bitRateType && item.bitRateType.length) {
                     item.bitRateTypeList = this.getEnumerationValue(
                         item.bitRateType,
-                        "compress_bitRateType"
+                        "compress_bitRateType",
                     );
                 }
                 if (item.videoType && item.videoType.length) {
                     item.videoTypeList = this.getEnumerationValue(
                         item.videoType,
-                        "compress_videoType"
+                        "compress_videoType",
                     );
                 }
                 if (item.bitRate && item.bitRate.length) {
                     item.bitRateList = this.getEnumerationValue(
                         item.bitRate,
-                        "compress_bitRate"
+                        "compress_bitRate",
                     );
                 }
                 if (item.imageQuality && item.imageQuality.length) {
                     item.imageQualityList = this.getEnumerationValue(
                         item.imageQuality,
-                        "compress_imageQuality"
+                        "compress_imageQuality",
                     );
                 }
             });
@@ -700,14 +707,14 @@ export default {
                 if (item.reverse && item.reverse.length) {
                     item.reverseList = this.getEnumerationValue(
                         item.reverse,
-                        "compress_reverse"
+                        "compress_reverse",
                     );
                 }
                 initConfigList.push(
                     this.getEHomeConfig(2205, {
                         chanNo: item.chanNo,
                         type: "reverse",
-                    })
+                    }),
                 );
             });
             if (this.videoList.length) {
@@ -802,7 +809,7 @@ export default {
 </script>
 <style lang="less" scoped>
 @import "./configurationForm.less";
-/deep/.el-collapse {
+:deep(.el-collapse){
     .el-collapse-item__content {
         padding-top: 20px;
     }
@@ -810,14 +817,14 @@ export default {
 .global-setting {
     display: flex;
     justify-content: space-between;
-    /deep/.el-card {
+    :deep(.el-card){
         .el-card__body {
             max-height: 300px;
             overflow-y: auto;
         }
     }
     .el-radio-group,
-    /deep/.el-checkbox {
+    :deep(.el-checkbox){
         display: flex;
         margin-bottom: 8px;
         .el-checkbox__input {

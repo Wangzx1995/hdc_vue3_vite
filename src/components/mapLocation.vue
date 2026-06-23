@@ -4,7 +4,7 @@
         <el-dialog
             :width="'800px'"
             class="map-location"
-            :visible.sync="modalMap"
+            v-model="modalMap"
             :title="$t('vehicleOfflineLongTime.offlineLocation')"
             :show-close="false"
         >
@@ -20,13 +20,13 @@
                 <bm-marker :position="center" animation="BMAP_ANIMATION_BOUNCE">
                 </bm-marker>
             </baidu-map>
-            <div slot="footer" class="dialog-footer">
+            <template #footer><div class="dialog-footer">
                 <span class="location">{{ rowData.locationName }}</span>
                 <el-button type="primary" @click="close">
                     <!-- 确定 -->
                     {{ $t("common.ok") }}
                 </el-button>
-            </div>
+            </div></template>
         </el-dialog>
     </div>
 </template>

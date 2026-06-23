@@ -159,11 +159,11 @@ export default {
             color: #1890ff;
             margin-left: 16px;
         }
-        /deep/.el-tabs__content {
+        :deep(.el-tabs__content){
             padding: 0px;
             border: none;
         }
-        /deep/.el-tabs__nav {
+        :deep(.el-tabs__nav){
             height: 32px;
             background: #ffffff;
             .el-tabs__item {
@@ -183,7 +183,7 @@ export default {
         height: calc(~"100% - 53px");
     }
 }
-/deep/.el-tabs {
+:deep(.el-tabs){
     box-shadow: none;
     .el-tabs__header {
         border-bottom: none;

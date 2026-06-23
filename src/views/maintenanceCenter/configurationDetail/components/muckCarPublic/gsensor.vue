@@ -24,7 +24,7 @@
               </el-col>
               <el-col :span="7" >
                 <el-form-item label="车速限制速度" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtGsensorTurnCapability']['gsensor'].limitSpeedMin,max:form['IsApiZtGsensorTurnCapability']['gsensor'].limitSpeedMax}), trigger: 'blur'}" :prop="'IsApiZtGsensorTurn_'+item.GsensorTurnType+'.turnAlarm.limitSpeed'">
-                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].limitSpeedMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].limitSpeedMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.limitSpeed"><span slot="suffix">km/h</span></el-input>
+                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].limitSpeedMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].limitSpeedMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.limitSpeed"><template #suffix><span>km/h</span></template></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="7" >
@@ -46,7 +46,7 @@
               </el-col>
               <el-col :span="7" >
                 <el-form-item label="报警间隔时间" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtGsensorTurnCapability']['gsensor'].intervalTimeMin,max:form['IsApiZtGsensorTurnCapability']['gsensor'].intervalTimeMax}), trigger: 'blur'}" :prop="'IsApiZtGsensorTurn_'+item.GsensorTurnType+'.turnAlarm.intervalTime'">
-                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].intervalTimeMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].intervalTimeMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.intervalTime"><span slot="suffix">s</span></el-input>
+                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].intervalTimeMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].intervalTimeMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.intervalTime"><template #suffix><span>s</span></template></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="7" >
@@ -59,12 +59,12 @@
             <el-row type="flex" justify="space-between" class="m-t-sm">
               <el-col :span="7" >
                 <el-form-item label="抓图张数" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtGsensorTurnCapability']['gsensor'].pictureNumMin,max:form['IsApiZtGsensorTurnCapability']['gsensor'].pictureNumMax}), trigger: 'blur'}" :prop="'IsApiZtGsensorTurn_'+item.GsensorTurnType+'.turnAlarm.pictureNum'">
-                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].pictureNumMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].pictureNumMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.pictureNum"><span slot="suffix">张</span></el-input>
+                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].pictureNumMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].pictureNumMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.pictureNum"><template #suffix><span>张</span></template></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="7" >
                 <el-form-item label="抓图间隔时间" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtGsensorTurnCapability']['gsensor'].snapIntervalTimeMin,max:form['IsApiZtGsensorTurnCapability']['gsensor'].snapIntervalTimeMax}), trigger: 'blur'}" :prop="'IsApiZtGsensorTurn_'+item.GsensorTurnType+'.turnAlarm.snapIntervalTime'">
-                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].snapIntervalTimeMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].snapIntervalTimeMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.snapIntervalTime"><span slot="suffix">s</span></el-input>
+                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].snapIntervalTimeMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].snapIntervalTimeMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.snapIntervalTime"><template #suffix><span>s</span></template></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="7" >
@@ -77,17 +77,17 @@
             <el-row type="flex" justify="space-between" class="m-t-sm">
               <el-col :span="7" >
                 <el-form-item label="小视频预录时间" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtGsensorTurnCapability']['gsensor'].videoPreRecordTimeMin,max:form['IsApiZtGsensorTurnCapability']['gsensor'].videoPreRecordTimeMax}), trigger: 'blur'}" :prop="'IsApiZtGsensorTurn_'+item.GsensorTurnType+'.turnAlarm.videoPreRecordTime'">
-                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].videoPreRecordTimeMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].videoPreRecordTimeMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.videoPreRecordTime"><span slot="suffix">s</span></el-input>
+                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].videoPreRecordTimeMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].videoPreRecordTimeMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.videoPreRecordTime"><template #suffix><span>s</span></template></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="7" >
                 <el-form-item label="小视频延录时间" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtGsensorTurnCapability']['gsensor'].videoDelayRecordTimeMin,max:form['IsApiZtGsensorTurnCapability']['gsensor'].videoDelayRecordTimeMax}), trigger: 'blur'}" :prop="'IsApiZtGsensorTurn_'+item.GsensorTurnType+'.turnAlarm.videoDelayRecordTime'">
-                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].videoDelayRecordTimeMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].videoDelayRecordTimeMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.videoDelayRecordTime"><span slot="suffix">s</span></el-input>
+                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].videoDelayRecordTimeMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].videoDelayRecordTimeMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.videoDelayRecordTime"><template #suffix><span>s</span></template></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="7" >
                 <el-form-item label="转向角度" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtGsensorTurnCapability']['gsensor'].angleMin,max:form['IsApiZtGsensorTurnCapability']['gsensor'].angleMax}), trigger: 'blur'}" :prop="'IsApiZtGsensorTurn_'+item.GsensorTurnType+'.turnAlarm.angle'">
-                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].angleMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].angleMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.angle"><span slot="suffix">°</span></el-input>
+                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtGsensorTurnCapability']['gsensor'].angleMin}~${form['IsApiZtGsensorTurnCapability']['gsensor'].angleMax}`" v-model.number="form['IsApiZtGsensorTurn_'+item.GsensorTurnType].turnAlarm.angle"><template #suffix><span>°</span></template></el-input>
                 </el-form-item>
               </el-col>
             </el-row>

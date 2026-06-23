@@ -209,8 +209,7 @@
                                             introduction="灵敏度越高越容易触发报警"
                                             v-if="levelItem.sensitivity"
                                         >
-                                            <span
-                                                slot="label"
+                                            <template #label><span
                                                 class="label-slot"
                                                 >算法灵敏度
                                                 <el-tooltip
@@ -219,7 +218,7 @@
                                                     <i
                                                         class="el-icon-question"
                                                     ></i> </el-tooltip
-                                            ></span>
+                                            ></span></template>
                                             <el-select
                                                 v-model="
                                                     newForm[
@@ -520,7 +519,7 @@
         <div id="id" style="width: 0; height: 0"></div>
         <el-dialog
             title="标定检测区域"
-            :visible.sync="openSurveyBol"
+            v-model="openSurveyBol"
             :before-close="handleClose"
             append-to-body
         >
@@ -588,10 +587,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- <span slot="footer" class="dialog-footer">
+                <!-- <template #footer><span class="dialog-footer">
         <el-button type="primary" @click="openSurveyBol=false">确 定</el-button>
         <el-button @click="openSurveyBol = false">取 消</el-button> -->
-                <!-- </span> -->
+                <!-- </span></template> -->
             </div>
         </el-dialog>
     </div>

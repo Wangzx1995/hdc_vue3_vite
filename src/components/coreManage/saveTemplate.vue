@@ -3,7 +3,7 @@
         <el-dialog
             title="存至模板"
             :top="2 + '%'"
-            :visible.sync="templateVisible"
+            v-model="templateVisible"
             :width="'500px'"
             @close="close"
             :custom-class="'save-template-body'"
@@ -35,11 +35,11 @@
                     ></el-input>
                 </el-form-item>
             </el-form>
-            <span slot="footer">
+            <template #footer><span>
                 <!-- <el-button type="default" @click="lookMouble">查看</el-button> -->
                 <el-button type="default" @click="close">取消</el-button>
                 <el-button type="primary" @click="submit">确定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
     </div>
 </template>

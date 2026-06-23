@@ -185,7 +185,7 @@
                                     <el-row type="flex" justify="space-between">
                                         <!-- <el-col :span="7" >
                         <el-form-item label="时间阈值" :rules="{ validator: checkNumber.bind({type:'int',min:form[item.commandId+'Capability'].intervalTimeMin,max:form[item.commandId+'Capability'].intervalTimeMax}), trigger: 'blur' }" :prop="item.commandId + '.dbaList.' + iIndex + '.intervalTime'">
-                            <el-input v-model="i.intervalTime"><span slot="suffix">s</span></el-input>
+                            <el-input v-model="i.intervalTime"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col> -->
                                         <el-col :span="7">
@@ -267,9 +267,9 @@
                                                         ) - 20
                                                     }`"
                                                     v-model="i.limitSpeed"
-                                                    ><span slot="suffix"
+                                                    ><template #suffix><span
                                                         >km/h</span
-                                                    ></el-input
+                                                    ></template></el-input
                                                 >
                                             </el-form-item>
                                             <el-form-item
@@ -318,15 +318,15 @@
                                                         ].limitSpeedMax
                                                     }`"
                                                     v-model="i.limitSpeed"
-                                                    ><span slot="suffix"
+                                                    ><template #suffix><span
                                                         >km/h</span
-                                                    ></el-input
+                                                    ></template></el-input
                                                 >
                                             </el-form-item>
                                         </el-col>
                                         <!-- <el-col :span="7" >
                         <el-form-item label="报警抑制时间" :rules="{ validator: checkNumber.bind({type:'int',min:form[item.commandId+'Capability'].intervalTimeMin,max:form[item.commandId+'Capability'].intervalTimeMax}), trigger: 'blur' }" :prop="item.commandId + '.dbaList.' + iIndex + '.intervalTime'">
-                            <el-input v-model="i.intervalTime"><span slot="suffix">ms</span></el-input>
+                            <el-input v-model="i.intervalTime"><template #suffix><span>ms</span></template></el-input>
                         </el-form-item>
                     </el-col> -->
                                         <el-col :span="7">
@@ -369,9 +369,9 @@
                                                         ].sensitivityMax
                                                     }`"
                                                     v-model="i.sensitivity"
-                                                    ><span slot="suffix"
+                                                    ><template #suffix><span
                                                         >s</span
-                                                    ></el-input
+                                                    ></template></el-input
                                                 >
                                             </el-form-item>
                                         </el-col>
@@ -402,7 +402,7 @@
                     </el-col>
                     <el-col :span="7" >
                         <el-form-item label="抓图间隔" :rules="{ validator: checkNumber.bind({type:'int',min:form[item.commandId+'Capability'].snapIntervalTimeMin,max:form[item.commandId+'Capability'].snapIntervalTimeMax}), trigger: 'blur' }" :prop="item.commandId + '.dbaList.' + iIndex + '.snapIntervalTime'">
-                              <el-input v-model="i.snapIntervalTime"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="i.snapIntervalTime"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span=7>
@@ -420,12 +420,12 @@
                     </el-col> -->
                                         <!-- <el-col :span="7" >
                         <el-form-item label="短视频前半部分时长" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="'IsApiDbaInfoList.' + iIndex + '.' + item.commandId +'.clipPreDuration'">
-                              <el-input v-model="i[item.commandId].clipPreDuration"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="i[item.commandId].clipPreDuration"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="7" >
                         <el-form-item label="短视频后半部分时长" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="'IsApiDbaInfoList.' + iIndex + '.' + item.commandId +'.clipPostDuration'">
-                              <el-input v-model="i[item.commandId].clipPostDuration"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="i[item.commandId].clipPostDuration"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col> -->
                                     </el-row>
@@ -436,7 +436,7 @@
                 </el-tab-pane>
             </el-tabs>
         </el-form>
-        <el-dialog title="DBA全局音量调整" :visible.sync="dialogVisible">
+        <el-dialog title="DBA全局音量调整" v-model="dialogVisible">
             <div class="p-a-md">
                 <p class="m-b-sm">
                     点击确定后DBA所有报警项音量将调整为该值,下发至终端成功后生效。
@@ -449,7 +449,7 @@
                     show-input
                 ></el-slider>
             </div>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button
                     type="primary"
                     :loading="sendEveryVolume"
@@ -458,7 +458,7 @@
                     >{{ sendEveryVolume ? "设置中" : "确 定" }}</el-button
                 >
                 <el-button @click="dialogVisible = false">取 消</el-button>
-            </span>
+            </span></template>
         </el-dialog>
     </div>
 </template>

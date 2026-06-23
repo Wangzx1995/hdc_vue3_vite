@@ -151,7 +151,7 @@
                         prop="operateResult"
                         :label="$t('operationLog.operationResult')"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <a
                                 v-if="scope.row.controlTypeName == '直连操作'"
                                 class="text-link"
@@ -310,10 +310,10 @@ export default {
                 if (valid) {
                     if (this.searchForm.operateTimeArr.length > 0) {
                         this.searchForm.startTime = TimeUtil.getDateTime(
-                            this.searchForm.operateTimeArr[0]
+                            this.searchForm.operateTimeArr[0],
                         );
                         this.searchForm.endTime = TimeUtil.getDateTime(
-                            this.searchForm.operateTimeArr[1]
+                            this.searchForm.operateTimeArr[1],
                         );
                     } else {
                         this.searchForm.startTime = "";
@@ -322,7 +322,7 @@ export default {
                     if (this.params.currentPage == 1) {
                         let params = Object.assign(
                             this.params,
-                            this.searchForm
+                            this.searchForm,
                         );
                         this.getData(params);
                     } else {
@@ -375,8 +375,8 @@ export default {
             this.params.orderDir = !column.order
                 ? ""
                 : column.order == "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.params.orderColumn = !column.prop ? "" : column.prop;
             // this.getData(this.params)
         },
@@ -418,7 +418,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-div /deep/ .el-card__body {
+div :deep(.el-card__body){
     padding: 0 !important;
 }
 .el-form-item {

@@ -27,48 +27,48 @@
                   </el-col>
                   <el-col :span="7" >
                       <el-form-item label="正常胎压值" prop="F366.normalTyrePressureValue">
-                          <el-input v-model="form['F366'].normalTyrePressureValue"><span slot="suffix">PSI</span></el-input>
+                          <el-input v-model="form['F366'].normalTyrePressureValue"><template #suffix><span>PSI</span></template></el-input>
                       </el-form-item>
                   </el-col>
               </el-row>
               <el-row type="flex" justify="space-between" style="margin-top: 10px">
                   <el-col :span="7" >
                       <el-form-item label="胎压不平衡门限" prop="F366.tyrePressureImbalanceThreshold">
-                          <el-input v-model="form['F366'].tyrePressureImbalanceThreshold"><span slot="suffix">%</span></el-input>
+                          <el-input v-model="form['F366'].tyrePressureImbalanceThreshold"><template #suffix><span>%</span></template></el-input>
                       </el-form-item>
                   </el-col>
                   <el-col :span="7" >
                       <el-form-item label="慢漏气门限" prop="F366.slowAirLeakThreshold">
-                          <el-input v-model="form['F366'].slowAirLeakThreshold"><span slot="suffix">%</span></el-input>
+                          <el-input v-model="form['F366'].slowAirLeakThreshold"><template #suffix><span>%</span></template></el-input>
                       </el-form-item>
                   </el-col>
                   <el-col :span="7" >
                       <el-form-item label="低压阈值" prop="F366.lowPressureThreshold">
-                          <el-input v-model="form['F366'].lowPressureThreshold"><span slot="suffix">PSI</span></el-input>
+                          <el-input v-model="form['F366'].lowPressureThreshold"><template #suffix><span>PSI</span></template></el-input>
                       </el-form-item>
                   </el-col>
               </el-row>
               <el-row type="flex" justify="space-between" style="margin-top: 10px">
                   <el-col :span="7" >
                       <el-form-item label="高压阈值" prop="F366.highPressureThreshold">
-                          <el-input v-model="form['F366'].highPressureThreshold"><span slot="suffix">PSI</span></el-input>
+                          <el-input v-model="form['F366'].highPressureThreshold"><template #suffix><span>PSI</span></template></el-input>
                       </el-form-item>
                   </el-col>
                   <el-col :span="7" >
                       <el-form-item label="高温阈值" prop="F366.highTemperatureThreshold">
-                          <el-input v-model="form['F366'].highTemperatureThreshold"><span slot="suffix">℃</span></el-input>
+                          <el-input v-model="form['F366'].highTemperatureThreshold"><template #suffix><span>℃</span></template></el-input>
                       </el-form-item>
                   </el-col>
                   <el-col :span="7" >
                       <el-form-item label="电压阈值" prop="F366.voltageThreshold">
-                          <el-input v-model="form['F366'].voltageThreshold"><span slot="suffix">%</span></el-input>
+                          <el-input v-model="form['F366'].voltageThreshold"><template #suffix><span>%</span></template></el-input>
                       </el-form-item>
                   </el-col>
               </el-row>
               <el-row type="flex" justify="space-between" style="margin-top: 10px">
                   <el-col :span="7" >
                       <el-form-item label="定时上报时间间隔" prop="F366.scheduleUploadTimeInterval">
-                          <el-input v-model="form['F366'].scheduleUploadTimeInterval"><span slot="suffix">s</span></el-input>
+                          <el-input v-model="form['F366'].scheduleUploadTimeInterval"><template #suffix><span>s</span></template></el-input>
                       </el-form-item>
                   </el-col>
                   <el-col :span="7"></el-col>

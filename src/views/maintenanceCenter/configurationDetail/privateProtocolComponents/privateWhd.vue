@@ -1,10 +1,7 @@
 <template>
     <div class="p-a-md">
         <div id="id" style="width: 0; height: 0"></div>
-        <el-dialog
-            title="全局标定检测区域"
-            :visible.sync="dialogVisible"
-        >
+        <el-dialog title="全局标定检测区域" v-model="dialogVisible">
             <div class="divHeight">
                 <!-- <div class="h-full inline" style="height:100%;width:100%;" id="videoPlay"></div> -->
                 <!--控件版本-->
@@ -210,8 +207,8 @@
                                                 'info'
                                             ][0]['speed']
                                         "
-                                        ><span slot="suffix"
-                                            >km/h</span
+                                        ><template #suffix
+                                            ><span>km/h</span></template
                                         ></el-input
                                     >
                                 </el-form-item>
@@ -253,7 +250,9 @@
                                                 'info'
                                             ][0]['confidence']
                                         "
-                                        ><span slot="suffix">%</span></el-input
+                                        ><template #suffix
+                                            ><span>%</span></template
+                                        ></el-input
                                     >
                                 </el-form-item>
                             </div>
@@ -599,7 +598,7 @@ export default {
                         this.tabAndConfiguration[this.chanNoIndex],
                         "",
                         "",
-                        true
+                        true,
                     );
                 }
             },
@@ -730,7 +729,8 @@ export default {
                                   ].tabList[this.tabIndex].capabilitys[
                                       this.chooseIndex
                                   ].sensitivityList.find(
-                                      (e) => e.value === val.info[0].sensitivity
+                                      (e) =>
+                                          e.value === val.info[0].sensitivity,
                                   ).label
                               }&${
                                   this.tabAndConfiguration[
@@ -744,7 +744,7 @@ export default {
                                               this.activeChannel
                                           ]["param938_1"]["info"][0][
                                               "sensitivity"
-                                          ]
+                                          ],
                                   ).label
                               }`
                             : "";
@@ -860,7 +860,7 @@ export default {
                               }/双手脱离方向盘/一级报警/事件上传平台设置&第${val[
                                   "info"
                               ][0]["uploadEventPlatform"].join(
-                                  "、"
+                                  "、",
                               )}中心&第${this.copyForm["param938"][
                                   this.activeChannel
                               ]["param938_1"]["info"][0][
@@ -960,7 +960,8 @@ export default {
                                   ].tabList[this.tabIndex].capabilitys[
                                       this.chooseIndex
                                   ].sensitivityList.find(
-                                      (e) => e.value === val.info[0].sensitivity
+                                      (e) =>
+                                          e.value === val.info[0].sensitivity,
                                   ).label
                               }&${
                                   this.tabAndConfiguration[
@@ -974,7 +975,7 @@ export default {
                                               this.activeChannel
                                           ]["param938_2"]["info"][0][
                                               "sensitivity"
-                                          ]
+                                          ],
                                   ).label
                               }`
                             : "";
@@ -1090,7 +1091,7 @@ export default {
                               }/双手脱离方向盘/二级报警/事件上传平台设置&第${val[
                                   "info"
                               ][0]["uploadEventPlatform"].join(
-                                  "、"
+                                  "、",
                               )}中心&第${this.copyForm["param938"][
                                   this.activeChannel
                               ]["param938_2"]["info"][0][
@@ -1190,7 +1191,8 @@ export default {
                                   ].tabList[this.tabIndex].capabilitys[
                                       this.chooseIndex
                                   ].sensitivityList.find(
-                                      (e) => e.value === val.info[0].sensitivity
+                                      (e) =>
+                                          e.value === val.info[0].sensitivity,
                                   ).label
                               }&${
                                   this.tabAndConfiguration[
@@ -1204,7 +1206,7 @@ export default {
                                               this.activeChannel
                                           ]["param938_3"]["info"][0][
                                               "sensitivity"
-                                          ]
+                                          ],
                                   ).label
                               }`
                             : "";
@@ -1320,7 +1322,7 @@ export default {
                               }/单手脱离方向盘/一级报警/事件上传平台设置&第${val[
                                   "info"
                               ][0]["uploadEventPlatform"].join(
-                                  "、"
+                                  "、",
                               )}中心&第${this.copyForm["param938"][
                                   this.activeChannel
                               ]["param938_3"]["info"][0][
@@ -1420,7 +1422,8 @@ export default {
                                   ].tabList[this.tabIndex].capabilitys[
                                       this.chooseIndex
                                   ].sensitivityList.find(
-                                      (e) => e.value === val.info[0].sensitivity
+                                      (e) =>
+                                          e.value === val.info[0].sensitivity,
                                   ).label
                               }&${
                                   this.tabAndConfiguration[
@@ -1434,7 +1437,7 @@ export default {
                                               this.activeChannel
                                           ]["param938_4"]["info"][0][
                                               "sensitivity"
-                                          ]
+                                          ],
                                   ).label
                               }`
                             : "";
@@ -1550,7 +1553,7 @@ export default {
                               }/单手脱离方向盘/二级报警/事件上传平台设置&第${val[
                                   "info"
                               ][0]["uploadEventPlatform"].join(
-                                  "、"
+                                  "、",
                               )}中心&第${this.copyForm["param938"][
                                   this.activeChannel
                               ]["param938_4"]["info"][0][
@@ -1650,7 +1653,8 @@ export default {
                                   ].tabList[this.tabIndex].capabilitys[
                                       this.chooseIndex
                                   ].sensitivityList.find(
-                                      (e) => e.value === val.info[0].sensitivity
+                                      (e) =>
+                                          e.value === val.info[0].sensitivity,
                                   ).label
                               }&${
                                   this.tabAndConfiguration[
@@ -1664,7 +1668,7 @@ export default {
                                               this.activeChannel
                                           ]["param938_5"]["info"][0][
                                               "sensitivity"
-                                          ]
+                                          ],
                                   ).label
                               }`
                             : "";
@@ -1780,7 +1784,7 @@ export default {
                               }/玩手机/一级报警/事件上传平台设置&第${val[
                                   "info"
                               ][0]["uploadEventPlatform"].join(
-                                  "、"
+                                  "、",
                               )}中心&第${this.copyForm["param938"][
                                   this.activeChannel
                               ]["param938_5"]["info"][0][
@@ -1880,7 +1884,8 @@ export default {
                                   ].tabList[this.tabIndex].capabilitys[
                                       this.chooseIndex
                                   ].sensitivityList.find(
-                                      (e) => e.value === val.info[0].sensitivity
+                                      (e) =>
+                                          e.value === val.info[0].sensitivity,
                                   ).label
                               }&${
                                   this.tabAndConfiguration[
@@ -1894,7 +1899,7 @@ export default {
                                               this.activeChannel
                                           ]["param938_6"]["info"][0][
                                               "sensitivity"
-                                          ]
+                                          ],
                                   ).label
                               }`
                             : "";
@@ -2010,7 +2015,7 @@ export default {
                               }/玩手机/二级报警/事件上传平台设置&第${val[
                                   "info"
                               ][0]["uploadEventPlatform"].join(
-                                  "、"
+                                  "、",
                               )}中心&第${this.copyForm["param938"][
                                   this.activeChannel
                               ]["param938_6"]["info"][0][
@@ -2089,7 +2094,7 @@ export default {
             chooseType,
             chooseIndex,
             bol,
-            index_
+            index_,
         ) {
             this.activeName = activeName;
             if (chooseType !== "" && chooseIndex !== "") {
@@ -2185,13 +2190,13 @@ export default {
                             this.$set(
                                 this.copyForm,
                                 `param938_`,
-                                JSON.parse(JSON.stringify(formData))
+                                JSON.parse(JSON.stringify(formData)),
                             );
                             if (!this.copyForm["param938"])
                                 this.$set(
                                     this.copyForm,
                                     "param938",
-                                    JSON.parse(JSON.stringify({}))
+                                    JSON.parse(JSON.stringify({})),
                                 );
                             if (
                                 this.copyForm["param938"] &&
@@ -2200,7 +2205,7 @@ export default {
                                 this.$set(
                                     this.copyForm["param938"],
                                     this.activeChannel,
-                                    JSON.parse(JSON.stringify({}))
+                                    JSON.parse(JSON.stringify({})),
                                 );
                             if (
                                 this.copyForm["param938"] &&
@@ -2214,7 +2219,7 @@ export default {
                                         this.activeChannel
                                     ],
                                     `param938_`,
-                                    JSON.parse(JSON.stringify(formData))
+                                    JSON.parse(JSON.stringify(formData)),
                                 );
                         }
                         this.$set(
@@ -2224,7 +2229,7 @@ export default {
                                     ? ""
                                     : this.chooseType
                             }`,
-                            formData
+                            formData,
                         );
                         if (!this.form["param938"])
                             this.$set(this.form, "param938", {});
@@ -2235,7 +2240,7 @@ export default {
                             this.$set(
                                 this.form["param938"],
                                 this.activeChannel,
-                                {}
+                                {},
                             );
                         if (
                             this.form["param938"] &&
@@ -2255,18 +2260,18 @@ export default {
                                         ? ""
                                         : this.chooseType
                                 }`,
-                                formData
+                                formData,
                             );
                         this.$set(
                             this.copyForm,
                             `param938_${this.chooseType}`,
-                            JSON.parse(JSON.stringify(formData))
+                            JSON.parse(JSON.stringify(formData)),
                         );
                         if (!this.copyForm["param938"])
                             this.$set(
                                 this.copyForm,
                                 "param938",
-                                JSON.parse(JSON.stringify({}))
+                                JSON.parse(JSON.stringify({})),
                             );
                         if (
                             this.copyForm["param938"] &&
@@ -2275,7 +2280,7 @@ export default {
                             this.$set(
                                 this.copyForm["param938"],
                                 this.activeChannel,
-                                JSON.parse(JSON.stringify({}))
+                                JSON.parse(JSON.stringify({})),
                             );
                         if (
                             this.copyForm["param938"] &&
@@ -2291,7 +2296,7 @@ export default {
                                         ? ""
                                         : this.chooseType
                                 }`,
-                                JSON.parse(JSON.stringify(formData))
+                                JSON.parse(JSON.stringify(formData)),
                             );
                         this.childConfigParams = false;
                     } else {
@@ -2309,7 +2314,7 @@ export default {
             this.form = Object.assign(
                 {},
                 this.form,
-                this.form["param938"][chanNo]
+                this.form["param938"][chanNo],
             );
             this.activeChannel = chanNo;
             this.activeName =
@@ -2336,7 +2341,7 @@ export default {
                 this.activeName,
                 this.tabAndConfiguration[this.chanNoIndex],
                 "",
-                ""
+                "",
             );
         },
         //切换报警等级
@@ -2355,7 +2360,7 @@ export default {
                         this.chooseType,
                         this.chooseIndex,
                         false,
-                        index_
+                        index_,
                     );
                 }
             });
@@ -2371,21 +2376,21 @@ export default {
                     this.tabAndConfiguration[index]["tabList"],
                     "双手脱离方向盘",
                     1,
-                    2
+                    2,
                 );
                 this.tabListPublic(
                     item,
                     this.tabAndConfiguration[index]["tabList"],
                     "单手脱离方向盘",
                     3,
-                    4
+                    4,
                 );
                 this.tabListPublic(
                     item,
                     this.tabAndConfiguration[index]["tabList"],
                     "玩手机",
                     5,
-                    6
+                    6,
                 );
             });
             console.log(this.tabAndConfiguration);
@@ -2521,7 +2526,7 @@ export default {
                 () => {},
                 () => {
                     console.log("控件销毁失败");
-                }
+                },
             );
             this.dialogVisible = false;
         },
@@ -2560,7 +2565,7 @@ export default {
                         "videoPlay",
                         offsetWidth,
                         offsetHeight,
-                        areaContent
+                        areaContent,
                     );
                     // setTimeout(() => {
                     //   this.webVersionControl = this.initWebControl(this.webVersionControl, "AEStreamWebVersion",0, 0);
@@ -2582,7 +2587,7 @@ export default {
                         this.downloadOcx();
                     },
                     onCancel: () => {},
-                }
+                },
             );
         },
         // 安装
@@ -2646,7 +2651,7 @@ export default {
                                                             res.data;
                                                         if (isLastVerson) {
                                                             that.$message.info(
-                                                                "当前Web控件版本已经是最新的！"
+                                                                "当前Web控件版本已经是最新的！",
                                                             );
                                                             that.notLastVerson = false;
                                                         } else {
@@ -2657,9 +2662,13 @@ export default {
                                                                 "当前控件版本不是最新,是否要下载最新控件,下载安装后需刷新页面。",
                                                                 {
                                                                     confirmButtonText:
-                                                                        this.$t("common.ok"),
+                                                                        this.$t(
+                                                                            "common.ok",
+                                                                        ),
                                                                     cancelButtonText:
-                                                                        this.$t("common.cancel"),
+                                                                        this.$t(
+                                                                            "common.cancel",
+                                                                        ),
                                                                     customClass:
                                                                         "MessageTop",
                                                                     onConfirm:
@@ -2668,7 +2677,7 @@ export default {
                                                                         },
                                                                     onCancel:
                                                                         () => {},
-                                                                }
+                                                                },
                                                             );
                                                             // that.$Modal.confirm({
                                                             //   content: '<h3 class="m-b-sm">当前控件版本不是最新,是否要下载最新控件,下载安装后需刷新页面</h3>',
@@ -2681,22 +2690,22 @@ export default {
                                                         }
                                                     } else {
                                                         that.$message.error(
-                                                            "调用控件版本比对接口失败！"
+                                                            "调用控件版本比对接口失败！",
                                                         );
                                                     }
                                                 });
                                         } else {
                                             that.$message.error(
-                                                "查询控件版本号失败！"
+                                                "查询控件版本号失败！",
                                             );
                                         }
                                     });
-                                }
+                                },
                             );
                         },
                         function () {
                             that.$message.error("查询版本控件启动失败!!!!");
-                        }
+                        },
                     );
                 },
                 cbConnectError: () => {
@@ -2724,7 +2733,7 @@ export default {
                             this_.setCallbacks();
                             obj.JS_CreateWnd(id, width, height).then(
                                 function () {
-                                    obj
+                                    (obj
                                         .JS_RequestInterface({
                                             funcName: "SetWHDAreaParams",
                                             arguments: {
@@ -2753,13 +2762,13 @@ export default {
                                             })
                                             .then((oData) => {
                                                 console.log(oData);
-                                            });
-                                }
+                                            }));
+                                },
                             );
                         },
                         function () {
                             this.$message.error("控件服务启动失败！");
-                        }
+                        },
                     );
                 },
                 // getBSDArea(){
@@ -2810,7 +2819,8 @@ export default {
                         "param938_." +
                             this.activeChannel +
                             ".info.0.area.useless.useless.useless"
-                    ] = `param938_.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WHD/玩手机/WHD全局标定检测区域/全局检测标定区域&新区域`;
+                    ] =
+                        `param938_.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WHD/玩手机/WHD全局标定检测区域/全局检测标定区域&新区域`;
                     this.$message.success("设置成功，点击下发至终端生效");
                     this.$emit("changeData", this.formData);
                 } else if (oData.responseMsg.event == "CancelBtnClicked") {
@@ -2858,11 +2868,11 @@ export default {
                     this.webVersionControl,
                     "AEStreamWebVersion",
                     0,
-                    0
+                    0,
                 );
             }
         }, 2000);
-        window.addEventListener("scroll", () => {
+        (window.addEventListener("scroll", () => {
             if (this.videoPlayControl != null) {
                 let box = document.getElementById("videoPlay");
                 let offsetHeight = box.offsetHeight;
@@ -2871,7 +2881,7 @@ export default {
                     this.videoPlayControl,
                     "videoPlay",
                     offsetWidth,
-                    offsetHeight
+                    offsetHeight,
                 );
             }
         }),
@@ -2885,10 +2895,10 @@ export default {
                         this.videoPlayControl,
                         "videoPlay",
                         offsetWidth,
-                        offsetHeight
+                        offsetHeight,
                     );
                 }
-            });
+            }));
     },
 };
 </script>

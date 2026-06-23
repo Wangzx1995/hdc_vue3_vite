@@ -16,7 +16,7 @@
                                         :label="$t('common.updateTime')"
                                         class="subheading"
                                     >
-                                        <template slot="label">
+                                        <template #label>
                                             <!-- 更新时间 -->
                                             {{ $t("common.updateTime") }}
                                             <!-- 设备最后一次进行文件配置的时间 -->
@@ -149,10 +149,12 @@
             </h2>
             <template v-if="!operateForm.binId">
                 <EmptyBox>
-                    <p slot="description" class="text-md">
-                        <!-- 暂无数据，请点击“获取最新配置”按键获取设备配置详情～ -->
-                        {{ $t("deviceConfiguration.fileConfigText1") }}
-                    </p>
+                    <template #description
+                        ><p class="text-md">
+                            <!-- 暂无数据，请点击“获取最新配置”按键获取设备配置详情～ -->
+                            {{ $t("deviceConfiguration.fileConfigText1") }}
+                        </p></template
+                    >
                 </EmptyBox>
             </template>
             <template v-else>
@@ -263,12 +265,12 @@
             </el-button>
         </div>
         <SaveTemplate
-            :visible.sync="templateVisible"
+            v-model="templateVisible"
             @submit="submitTemp"
         ></SaveTemplate>
         <!-- 确认 -->
         <el-dialog
-            :visible="confirmConfig"
+            v-model="confirmConfig"
             :title="$t('common.confirm')"
             :show-close="false"
             :width="'400px'"
@@ -279,26 +281,28 @@
                     {{ $t("deviceConfiguration.fileConfigText10") }}？</span
                 >
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button
-                    :disabled="sendFileConfiging"
-                    :loading="sendFileConfiging"
-                    @click="sendFileConfig"
-                >
-                    <!-- 下发 -->
-                    {{ $t("common.issued") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    @click="
-                        confirmConfig = false;
-                        sendFileConfiging = false;
-                    "
-                >
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-            </span>
+            <template #footer
+                ><span class="dialog-footer">
+                    <el-button
+                        :disabled="sendFileConfiging"
+                        :loading="sendFileConfiging"
+                        @click="sendFileConfig"
+                    >
+                        <!-- 下发 -->
+                        {{ $t("common.issued") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        @click="
+                            confirmConfig = false;
+                            sendFileConfiging = false;
+                        "
+                    >
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                </span></template
+            >
         </el-dialog>
     </div>
 </template>

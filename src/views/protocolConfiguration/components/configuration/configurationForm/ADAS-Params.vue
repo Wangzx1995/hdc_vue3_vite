@@ -25,13 +25,16 @@
                                     chanNoItem.calibration.verticalDistance
                                 "
                             >
-                                <span slot="label" class="label-slot"
-                                    >垂直距离
-                                    <el-tooltip content="相机镜头距离地面高度">
-                                        <i
-                                            class="el-icon-question"
-                                        ></i> </el-tooltip
-                                ></span>
+                                <template #label
+                                    ><span class="label-slot"
+                                        >垂直距离
+                                        <el-tooltip
+                                            content="相机镜头距离地面高度"
+                                        >
+                                            <i
+                                                class="el-icon-question"
+                                            ></i> </el-tooltip></span
+                                ></template>
                                 <el-input-number
                                     :precision="0"
                                     controls-position="right"
@@ -54,7 +57,7 @@
                                                 newForm[
                                                     `param903_${chanNoItem.chanNo}`
                                                 ].verticalDistance = Number(
-                                                    e.target.ariaValueMin
+                                                    e.target.ariaValueMin,
                                                 );
                                             }
                                         }
@@ -68,13 +71,16 @@
                                     chanNoItem.calibration.headerDistance
                                 "
                             >
-                                <span slot="label" class="label-slot"
-                                    >车头距离
-                                    <el-tooltip content="相机镜头距离车头距离">
-                                        <i
-                                            class="el-icon-question"
-                                        ></i> </el-tooltip
-                                ></span>
+                                <template #label
+                                    ><span class="label-slot"
+                                        >车头距离
+                                        <el-tooltip
+                                            content="相机镜头距离车头距离"
+                                        >
+                                            <i
+                                                class="el-icon-question"
+                                            ></i> </el-tooltip></span
+                                ></template>
                                 <el-input-number
                                     :precision="0"
                                     controls-position="right"
@@ -97,7 +103,7 @@
                                                 newForm[
                                                     `param903_${chanNoItem.chanNo}`
                                                 ].headerDistance = Number(
-                                                    e.target.ariaValueMin
+                                                    e.target.ariaValueMin,
                                                 );
                                             }
                                         }
@@ -111,15 +117,16 @@
                                     chanNoItem.calibration.leftWheelDistance
                                 "
                             >
-                                <span slot="label" class="label-slot"
-                                    >左轮距离
-                                    <el-tooltip
-                                        content="相机镜头距离左前车轮外沿的水平距离"
-                                    >
-                                        <i
-                                            class="el-icon-question"
-                                        ></i> </el-tooltip
-                                ></span>
+                                <template #label
+                                    ><span class="label-slot"
+                                        >左轮距离
+                                        <el-tooltip
+                                            content="相机镜头距离左前车轮外沿的水平距离"
+                                        >
+                                            <i
+                                                class="el-icon-question"
+                                            ></i> </el-tooltip></span
+                                ></template>
                                 <el-input-number
                                     :precision="0"
                                     controls-position="right"
@@ -142,7 +149,7 @@
                                                 newForm[
                                                     `param903_${chanNoItem.chanNo}`
                                                 ].leftWheelDistance = Number(
-                                                    e.target.ariaValueMin
+                                                    e.target.ariaValueMin,
                                                 );
                                             }
                                         }
@@ -156,15 +163,16 @@
                                     chanNoItem.calibration.rightWheelDistance
                                 "
                             >
-                                <span slot="label" class="label-slot"
-                                    >右轮距离
-                                    <el-tooltip
-                                        content="相机镜头距离右前车轮外沿的水平距离"
-                                    >
-                                        <i
-                                            class="el-icon-question"
-                                        ></i> </el-tooltip
-                                ></span>
+                                <template #label
+                                    ><span class="label-slot"
+                                        >右轮距离
+                                        <el-tooltip
+                                            content="相机镜头距离右前车轮外沿的水平距离"
+                                        >
+                                            <i
+                                                class="el-icon-question"
+                                            ></i> </el-tooltip></span
+                                ></template>
                                 <el-input-number
                                     :precision="0"
                                     controls-position="right"
@@ -187,7 +195,7 @@
                                                 newForm[
                                                     `param903_${chanNoItem.chanNo}`
                                                 ].rightWheelDistance = Number(
-                                                    e.target.ariaValueMin
+                                                    e.target.ariaValueMin,
                                                 );
                                             }
                                         }
@@ -201,15 +209,16 @@
                                     chanNoItem.calibration.headerLinePercent
                                 "
                             >
-                                <span slot="label" class="label-slot"
-                                    >车头占比
-                                    <el-tooltip
-                                        content="车头部分在相机中的占比"
-                                    >
-                                        <i
-                                            class="el-icon-question"
-                                        ></i> </el-tooltip
-                                ></span>
+                                <template #label
+                                    ><span class="label-slot"
+                                        >车头占比
+                                        <el-tooltip
+                                            content="车头部分在相机中的占比"
+                                        >
+                                            <i
+                                                class="el-icon-question"
+                                            ></i> </el-tooltip></span
+                                ></template>
                                 <el-input-number
                                     :precision="0"
                                     controls-position="right"
@@ -232,7 +241,7 @@
                                                 newForm[
                                                     `param903_${chanNoItem.chanNo}`
                                                 ].headerLinePercent = Number(
-                                                    e.target.ariaValueMin
+                                                    e.target.ariaValueMin,
                                                 );
                                             }
                                         }
@@ -299,7 +308,6 @@
                                     style="width: 100%"
                                     >ADAS全局音量配置</el-button
                                 >
-                                
                             </el-form-item>
                             <el-form-item
                                 label="联动抓拍的通道"
@@ -351,7 +359,7 @@
                                 :class="{
                                     'template-hide': setTemplateHide(
                                         chanNoItem,
-                                        infoItem
+                                        infoItem,
                                     ),
                                 }"
                             >
@@ -416,7 +424,7 @@
                                                     (e) =>
                                                         speedBlur(
                                                             chanNoItem,
-                                                            key
+                                                            key,
                                                         )
                                                 "
                                                 data-unit="km/h"
@@ -431,7 +439,7 @@
                                                             ].info[0].speed =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -442,17 +450,16 @@
                                             label="算法置信度"
                                             v-if="levelItem.confidence"
                                         >
-                                            <span
-                                                slot="label"
-                                                class="label-slot"
-                                                >算法置信度
-                                                <el-tooltip
-                                                    content="置信度越高，检出越低检准越高"
-                                                >
-                                                    <i
-                                                        class="el-icon-question"
-                                                    ></i> </el-tooltip
-                                            ></span>
+                                            <template #label
+                                                ><span class="label-slot"
+                                                    >算法置信度
+                                                    <el-tooltip
+                                                        content="置信度越高，检出越低检准越高"
+                                                    >
+                                                        <i
+                                                            class="el-icon-question"
+                                                        ></i> </el-tooltip></span
+                                            ></template>
                                             <el-select
                                                 v-model="
                                                     newForm[
@@ -473,17 +480,16 @@
                                             introduction="灵敏度越高越容易触发报警"
                                             v-if="levelItem.sensitivity"
                                         >
-                                            <span
-                                                slot="label"
-                                                class="label-slot"
-                                                >算法灵敏度
-                                                <el-tooltip
-                                                    content="灵敏度越高越容易触发报警"
-                                                >
-                                                    <i
-                                                        class="el-icon-question"
-                                                    ></i> </el-tooltip
-                                            ></span>
+                                            <template #label
+                                                ><span class="label-slot"
+                                                    >算法灵敏度
+                                                    <el-tooltip
+                                                        content="灵敏度越高越容易触发报警"
+                                                    >
+                                                        <i
+                                                            class="el-icon-question"
+                                                        ></i> </el-tooltip></span
+                                            ></template>
                                             <el-select
                                                 v-model="
                                                     newForm[
@@ -538,7 +544,7 @@
                                                             ].info[0].volume =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -580,7 +586,7 @@
                                                             ].info[0].snapshot.number =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -643,7 +649,7 @@
                                                             ].info[0].clip.perRecord =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -685,7 +691,7 @@
                                                             ].info[0].clip.afterRecord =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -713,7 +719,7 @@
                                                             val,
                                                             'snapshot',
                                                             chanNoItem.chanNo,
-                                                            levelItem.type
+                                                            levelItem.type,
                                                         )
                                                 "
                                             ></el-switch>
@@ -739,7 +745,7 @@
                                                             val,
                                                             'clip',
                                                             chanNoItem.chanNo,
-                                                            levelItem.type
+                                                            levelItem.type,
                                                         )
                                                 "
                                             ></el-switch>
@@ -776,7 +782,7 @@
                                                             ].info[0].inhibitionTime =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -805,7 +811,7 @@
                                                         Number(item) - 1 ===
                                                         Number(
                                                             capability.network
-                                                                .isHikPlatform
+                                                                .isHikPlatform,
                                                         )
                                                             ? '海康云平台'
                                                             : '第' +
@@ -843,7 +849,7 @@
                                                             ].info[0].heightLimit =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -876,7 +882,7 @@
                                                             ].info[0].weightLimit =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -915,7 +921,7 @@
                                                             ].info[0].wheelAngle =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -954,7 +960,7 @@
                                                             ].info[0].distanceBeyongLane =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -993,7 +999,7 @@
                                                             ].info[0].nearCarDistance =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -1051,7 +1057,7 @@
                                                             ].info[0].brakeSuppressionTime =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -1090,7 +1096,7 @@
                                                             ].info[0].collisionDistance =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -1134,7 +1140,7 @@
                                                             ].info[0].collisionAccelerationi =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -1184,7 +1190,7 @@
         </el-form>
         <el-dialog
             title="ADAS全局音量调整"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             @close="close"
             :append-to-body="true"
         >
@@ -1200,14 +1206,16 @@
                     show-input
                 ></el-slider>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="send">确 定</el-button>
-                <el-button @click="close">取 消</el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="send">确 定</el-button>
+                    <el-button @click="close">取 消</el-button>
+                </span>
+            </template>
         </el-dialog>
         <el-dialog
             title="消隐线"
-            :visible.sync="openSurveyBol"
+            v-model="openSurveyBol"
             :before-close="handleClose"
             append-to-body
         >
@@ -1286,7 +1294,7 @@ export default {
         chanNoActive(val) {
             this.activeCollapse = [];
             let obj = this.AdasList.find(
-                (item) => item.chanNo == Number(val.split("通道")[1])
+                (item) => item.chanNo == Number(val.split("通道")[1]),
             );
             for (let key of Object.keys(obj.info)) {
                 if (!this.activeCollapse.length) {
@@ -1306,12 +1314,12 @@ export default {
                 if (val) {
                     this.AdasList.forEach((chanNoItem) => {
                         let _type = Object.entries(chanNoItem.info)[0][0].split(
-                            "-"
+                            "-",
                         )[0];
                         if (val[`param903_${chanNoItem.chanNo}`]) {
                             if (
                                 !this.setForm.hasOwnProperty(
-                                    `通道${chanNoItem.chanNo}>相机参数设置&param903_${chanNoItem.chanNo}`
+                                    `通道${chanNoItem.chanNo}>相机参数设置&param903_${chanNoItem.chanNo}`,
                                 )
                             ) {
                                 this.setForm[
@@ -1392,7 +1400,7 @@ export default {
                         if (val[`param901_${chanNoItem.chanNo}_${_type}`]) {
                             if (
                                 !this.setForm.hasOwnProperty(
-                                    `通道${chanNoItem.chanNo}>ADAS全局参数&param901_${chanNoItem.chanNo}_${_type}`
+                                    `通道${chanNoItem.chanNo}>ADAS全局参数&param901_${chanNoItem.chanNo}_${_type}`,
                                 )
                             ) {
                                 this.setForm[
@@ -1422,7 +1430,7 @@ export default {
                                     .linkChannel,
                                 this.oldForm[
                                     `param901_${chanNoItem.chanNo}_${_type}`
-                                ].linkChannel
+                                ].linkChannel,
                             )
                                 ? `param901_${
                                       chanNoItem.chanNo
@@ -1430,7 +1438,7 @@ export default {
                                   &${this.getLinkChannel(
                                       val[
                                           `param901_${chanNoItem.chanNo}_${_type}`
-                                      ].linkChannel
+                                      ].linkChannel,
                                   )}&${
                                       val[
                                           `param901_${chanNoItem.chanNo}_${_type}`
@@ -1449,7 +1457,7 @@ export default {
                                     let objName = `通道${
                                         chanNoItem.chanNo
                                     }>${this.getLabelByType(
-                                        typeItem.type
+                                        typeItem.type,
                                     )}&${paramStr}`;
                                     if (!this.setForm.hasOwnProperty(objName)) {
                                         this.setForm[objName] = {
@@ -1484,12 +1492,12 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "confidence"
+                                                "confidence",
                                             ))
                                             ? `${paramStr}.info.0.confidence&算法置信度&${this.getLabelSelf(
                                                   typeItem.confidenceList,
                                                   val[paramStr].info[0]
-                                                      .confidence
+                                                      .confidence,
                                               )}&${
                                                   val[paramStr].info[0]
                                                       .confidence
@@ -1503,12 +1511,12 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "sensitivity"
+                                                "sensitivity",
                                             ))
                                             ? `${paramStr}.info.0.sensitivity&算法灵敏度&${this.getLabelSelf(
                                                   typeItem.sensitivityList,
                                                   val[paramStr].info[0]
-                                                      .sensitivity
+                                                      .sensitivity,
                                               )}&${
                                                   val[paramStr].info[0]
                                                       .sensitivity
@@ -1522,7 +1530,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "volumeEnable"
+                                                "volumeEnable",
                                             ))
                                             ? `${paramStr}.info.0.volumeEnable&音量使能switch&${val[paramStr].info[0].volumeEnable}`
                                             : null;
@@ -1546,7 +1554,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].snapshot.hasOwnProperty(
-                                                "number"
+                                                "number",
                                             ))
                                             ? `${paramStr}.info.0.snapshot.number&抓图张数number&${val[paramStr].info[0].snapshot.number}`
                                             : null;
@@ -1561,12 +1569,12 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].snapshot.hasOwnProperty(
-                                                "interval"
+                                                "interval",
                                             ))
                                             ? `${paramStr}.info.0.snapshot.interval&抓图间隔number&${
                                                   Number(
                                                       val[paramStr].info[0]
-                                                          .snapshot.interval
+                                                          .snapshot.interval,
                                                   ) * 100
                                               }毫秒&${
                                                   val[paramStr].info[0].snapshot
@@ -1583,7 +1591,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].clip.hasOwnProperty(
-                                                "perRecord"
+                                                "perRecord",
                                             ))
                                             ? `${paramStr}.info.0.clip.perRecord&报警短视频前半部分时长number&${val[paramStr].info[0].clip.perRecord}`
                                             : null;
@@ -1598,7 +1606,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].clip.hasOwnProperty(
-                                                "afterRecord"
+                                                "afterRecord",
                                             ))
                                             ? `${paramStr}.info.0.clip.afterRecord&报警短视频后半部分时长number&${val[paramStr].info[0].clip.afterRecord}`
                                             : null;
@@ -1612,7 +1620,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "snapshot.upload"
+                                                "snapshot.upload",
                                             ))
                                             ? `${paramStr}.info.0.snapshot.upload&报警图片上传使能switch&${val[paramStr].info[0].snapshot.upload}`
                                             : null;
@@ -1624,7 +1632,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "clip.upload"
+                                                "clip.upload",
                                             ))
                                             ? `${paramStr}.info.0.clip.upload&报警视频上传使能switch&${val[paramStr].info[0].clip.upload}`
                                             : null;
@@ -1638,7 +1646,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "inhibitionTime"
+                                                "inhibitionTime",
                                             ))
                                             ? `${paramStr}.info.0.inhibitionTime&报警抑制时间number&${val[paramStr].info[0].inhibitionTime}`
                                             : null;
@@ -1649,17 +1657,17 @@ export default {
                                             val[paramStr].info[0]
                                                 .uploadEventPlatform,
                                             this.oldForm[paramStr].info[0]
-                                                .uploadEventPlatform
+                                                .uploadEventPlatform,
                                         ) ||
                                         (this.isTemplate &&
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "uploadEventPlatform"
+                                                "uploadEventPlatform",
                                             ))
                                             ? `${paramStr}.info.0.uploadEventPlatform&事件上传平台使能array&${this.getUploadEventPlatform(
                                                   val[paramStr].info[0]
-                                                      .uploadEventPlatform
+                                                      .uploadEventPlatform,
                                               )}&${
                                                   val[paramStr].info[0]
                                                       .uploadEventPlatform
@@ -1673,7 +1681,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "heightLimit"
+                                                "heightLimit",
                                             ))
                                             ? `${paramStr}.info.0.heightLimit&限高number&${val[paramStr].info[0].heightLimit}`
                                             : null;
@@ -1685,7 +1693,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "weightLimit"
+                                                "weightLimit",
                                             ))
                                             ? `${paramStr}.info.0.weightLimit&限重number&${val[paramStr].info[0].weightLimit}`
                                             : null;
@@ -1697,7 +1705,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "wheelAngle"
+                                                "wheelAngle",
                                             ))
                                             ? `${paramStr}.info.0.wheelAngle&方向盘角度number&${val[paramStr].info[0].wheelAngle}`
                                             : null;
@@ -1712,7 +1720,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "distanceBeyongLane"
+                                                "distanceBeyongLane",
                                             ))
                                             ? `${paramStr}.info.0.distanceBeyongLane&本车超过本车道线的距离number&${val[paramStr].info[0].distanceBeyongLane}`
                                             : null;
@@ -1726,7 +1734,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "nearCarDistance"
+                                                "nearCarDistance",
                                             ))
                                             ? `${paramStr}.info.0.nearCarDistance&距离相邻车的距离number&${val[paramStr].info[0].nearCarDistance}`
                                             : null;
@@ -1741,7 +1749,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "brakeSuppression"
+                                                "brakeSuppression",
                                             ))
                                             ? `${paramStr}.info.0.brakeSuppression&刹车抑制switch&${val[paramStr].info[0].brakeSuppression}`
                                             : null;
@@ -1756,7 +1764,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "brakeSuppressionTime"
+                                                "brakeSuppressionTime",
                                             ))
                                             ? `${paramStr}.info.0.brakeSuppressionTime&刹车抑制时间number&${val[paramStr].info[0].brakeSuppressionTime}`
                                             : null;
@@ -1771,7 +1779,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "collisionDistance"
+                                                "collisionDistance",
                                             ))
                                             ? `${paramStr}.info.0.collisionDistance&碰撞报警前方物体距离number&${val[paramStr].info[0].collisionDistance}`
                                             : null;
@@ -1786,7 +1794,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "collisionAccelerationi"
+                                                "collisionAccelerationi",
                                             ))
                                             ? `${paramStr}.info.0.collisionAccelerationi&碰撞报警加速度number&${val[paramStr].info[0].collisionAccelerationi}`
                                             : null;
@@ -1797,17 +1805,17 @@ export default {
                                             val[paramStr].info[0].snapshot
                                                 .linkChannel,
                                             this.oldForm[paramStr].info[0]
-                                                .snapshot.linkChannel
+                                                .snapshot.linkChannel,
                                         ) ||
                                         (this.isTemplate &&
                                             val[
                                                 paramStr
                                             ].info[0].snapshot.hasOwnProperty(
-                                                "linkChannel"
+                                                "linkChannel",
                                             ))
                                             ? `${paramStr}.info.0.snapshot.linkChannel&联动抓拍的通道array&${this.getLinkChannel(
                                                   val[paramStr].info[0].snapshot
-                                                      .linkChannel
+                                                      .linkChannel,
                                               )}&${
                                                   val[paramStr].info[0].snapshot
                                                       .linkChannel
@@ -1824,7 +1832,7 @@ export default {
                     ) {
                         if (
                             !this.setForm.hasOwnProperty(
-                                "通道1>消隐线设置&param2205_1_horizonVanishLine"
+                                "通道1>消隐线设置&param2205_1_horizonVanishLine",
                             )
                         ) {
                             this.setForm[
@@ -1881,8 +1889,8 @@ export default {
                             type: "",
                             chanNo: chanNoItem.chanNo,
                         },
-                        "ADAS"
-                    )
+                        "ADAS",
+                    ),
                 );
                 let obj = {
                     ...chanNoItem,
@@ -1973,7 +1981,7 @@ export default {
                     }
                     /* --------------------算法置信度 end-------------------------*/
                     for (let key of Object.keys(
-                        this.enumerationJSON["intelliDrive_ADAS_type"]
+                        this.enumerationJSON["intelliDrive_ADAS_type"],
                     )) {
                         if (
                             this.enumerationJSON["intelliDrive_ADAS_type"][
@@ -1996,8 +2004,8 @@ export default {
                                 type: infoItem.type,
                                 chanNo: chanNoItem.chanNo,
                             },
-                            "ADAS"
-                        )
+                            "ADAS",
+                        ),
                     );
                 });
                 if (
@@ -2014,13 +2022,13 @@ export default {
                         this.getEHomeConfig(2205, {
                             chanNo: 1,
                             type: "verticalVanishLine",
-                        })
+                        }),
                     );
                     initConfigList.push(
                         this.getEHomeConfig(2205, {
                             chanNo: 1,
                             type: "horizonVanishLine",
-                        })
+                        }),
                     );
                 }
                 if (obj.calibration) {
@@ -2028,7 +2036,7 @@ export default {
                         this.getEHomeConfig(903, {
                             type: "",
                             chanNo: chanNoItem.chanNo,
-                        })
+                        }),
                     );
                 }
                 this.AdasList.push(obj);
@@ -2039,7 +2047,7 @@ export default {
                 this.typeObj = {};
                 this.AdasList.forEach((item) => {
                     this.typeObj[item.chanNo] = Object.entries(
-                        item.info
+                        item.info,
                     ).reduce((prev, cur) => {
                         let arr = [];
                         cur[1].forEach((k) => {
@@ -2050,10 +2058,10 @@ export default {
                 });
                 let chanNo = this.chanNoActive.split("通道")[1];
                 this.firstType = this.typeObj[chanNo].find(
-                    (type) => this.newForm[`param901_${chanNo}_${type}`]
+                    (type) => this.newForm[`param901_${chanNo}_${type}`],
                 );
                 for (let key of Object.keys(
-                    this.enumerationJSON["intelliDrive_ADAS_type"]
+                    this.enumerationJSON["intelliDrive_ADAS_type"],
                 )) {
                     if (
                         this.enumerationJSON["intelliDrive_ADAS_type"][
@@ -2069,11 +2077,11 @@ export default {
         getLabelByType(type) {
             let label = "";
             for (let key of Object.keys(
-                this.enumerationJSON["intelliDrive_ADAS_type"]
+                this.enumerationJSON["intelliDrive_ADAS_type"],
             )) {
                 let index =
                     this.enumerationJSON["intelliDrive_ADAS_type"][key].indexOf(
-                        type
+                        type,
                     );
                 if (index === 0) {
                     label = key + ">一级报警";
@@ -2092,14 +2100,14 @@ export default {
                         confirmButtonText: this.$t("common.ok"),
                         cancelButtonText: this.$t("common.cancel"),
                         type: "warning",
-                    }
+                    },
                 )
                     .then(() => {
                         let chanNo = this.chanNoActive.split("通道")[1];
                         this.AdasList.forEach((chanNoItem) => {
                             if (Number(chanNoItem.chanNo) === Number(chanNo)) {
                                 for (let typeName of Object.keys(
-                                    chanNoItem.info
+                                    chanNoItem.info,
                                 )) {
                                     chanNoItem.info[typeName].forEach(
                                         (typeItem) => {
@@ -2117,11 +2125,11 @@ export default {
                                                     JSON.stringify(
                                                         this.oldForm[
                                                             `param901_${chanNo}_${typeItem.type}`
-                                                        ]
-                                                    )
+                                                        ],
+                                                    ),
                                                 );
                                             }
-                                        }
+                                        },
                                     );
                                 }
                             }
@@ -2184,7 +2192,7 @@ export default {
                     this.$message.error(
                         `${
                             key.split("-")[1]
-                        }一级报警与二级报警报警判断速度阈值小于20！`
+                        }一级报警与二级报警报警判断速度阈值小于20！`,
                     );
                 }
             }
@@ -2207,7 +2215,7 @@ export default {
                                 ...this.newForm[
                                     `param901_${chanNoItem.chanNo}_${levelItem.type}`
                                 ],
-                            }
+                            },
                         );
                     }
                 });
@@ -2242,7 +2250,7 @@ export default {
                 this.$message.warning(
                     `设备处于${
                         this.deviceInfo.deviceStatus == 0 ? "离线" : "深休眠"
-                    }状态，无法进行标定操作！`
+                    }状态，无法进行标定操作！`,
                 );
                 return;
             }
@@ -2272,20 +2280,19 @@ export default {
             let params = {
                 deviceId: this.$route.query.deviceId || null,
                 channelNo: this.chanNoActive.split("通道")[1],
-                protocolType: this.isPlugin ? 0 : 3, 
+                protocolType: this.isPlugin ? 0 : 3,
             };
             this.$api.previewPlay(params).then((res) => {
                 if (res.success) {
                     this.playUrl = res.data;
                 } else {
-                    
                 }
                 this.$nextTick(() => {
                     this.$refs.ADASNoPlugin.openHatPlugin(
                         this.playUrl,
                         areaContent,
                         !this.isTemplate,
-                        "private"
+                        "private",
                     );
                 });
             });

@@ -9,10 +9,9 @@
                         clearable
                         style="margin-bottom: 0.5rem"
                     >
-                        <i
-                            slot="suffix"
-                            class="el-input__icon el-icon-search"
-                        ></i>
+                        <template #suffix>
+                            <i class="el-input__icon el-icon-search"></i>
+                        </template>
                     </el-input>
                     <el-tree
                         ref="tree"
@@ -118,7 +117,7 @@
                                 width="140px"
                                 fixed="left"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div v-if="scope.row.plateNum">
                                         <div class="flex-box">
                                             <div>{{ scope.row.plateNum }}</div>
@@ -171,10 +170,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference>
+                                                <i
+                                                    class="text-error el-icon-warning"
+                                                ></i>
+                                            </template>
                                         </el-popover>
                                         <span
                                             v-show="scope.row.freeze == 1"
@@ -231,7 +231,7 @@
                                 :label="$t('common.deviceSerialNum')"
                                 width="140px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         {{ scope.row.deviceSerialNum }}
                                         <el-popover
@@ -283,10 +283,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference>
+                                                <i
+                                                    class="text-error el-icon-warning"
+                                                ></i>
+                                            </template>
                                         </el-popover>
                                     </div>
                                 </template>
@@ -303,7 +304,7 @@
                                 width="120px"
                                 fixed="right"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-button
                                         type="text"
                                         :disabled="!scope.row.idString"
@@ -359,26 +360,28 @@
         <el-dialog
             :fullscreen="true"
             :title="$t('equipmentInspection.selfInspectionResults')"
-            :visible="showDetailBol"
+            v-model="showDetailBol"
             @close="showDetailBol = false"
             class="no-padding no-border"
             append-to-body
             custom-class="self-inspection-results"
         >
-            <div slot="title" class="fullscreen-title">
-                <h2>
-                    <!-- 自检结果 -->
-                    {{ $t("equipmentInspection.selfInspectionResults") }}
-                </h2>
-                <el-button
-                    icon="el-icon-close"
-                    type="text"
-                    @click="showDetailBol = false"
-                >
-                    <!-- 关闭 -->
-                    {{ $t("common.close") }}
-                </el-button>
-            </div>
+            <template #title>
+                <div class="fullscreen-title">
+                    <h2>
+                        <!-- 自检结果 -->
+                        {{ $t("equipmentInspection.selfInspectionResults") }}
+                    </h2>
+                    <el-button
+                        icon="el-icon-close"
+                        type="text"
+                        @click="showDetailBol = false"
+                    >
+                        <!-- 关闭 -->
+                        {{ $t("common.close") }}
+                    </el-button>
+                </div>
+            </template>
             <el-tabs v-model="config" @tab-click="handleTabClick">
                 <!-- 报文 -->
                 <el-tab-pane
@@ -430,7 +433,7 @@
                                     :label="$t('equipmentInspection.content')"
                                     show-overflow-tooltip
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <span>{{ scope.row.content }}</span>
                                     </template>
                                 </el-table-column>
@@ -474,7 +477,7 @@
                                     :label="$t('equipmentInspection.content')"
                                     show-overflow-tooltip
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <span>{{ scope.row.content }}</span>
                                     </template>
                                 </el-table-column>
@@ -518,7 +521,7 @@
                                     :label="$t('equipmentInspection.content')"
                                     show-overflow-tooltip
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <span>{{ scope.row.content }}</span>
                                     </template>
                                 </el-table-column>
@@ -534,7 +537,7 @@
         <!-- 当日上线/离线时间 -->
         <el-dialog
             :width="'600px'"
-            :visible.sync="modalOnline"
+            v-model="modalOnline"
             :title="$t('vehicleOnlineTime.dailyOnlineOfflineTime')"
         >
             <AttendenceRecord
@@ -543,7 +546,7 @@
                 :totalMinutes="totalMinutes"
                 :totalSeconds="totalSeconds"
             ></AttendenceRecord>
-            <div slot="footer"></div>
+            <template #footer><div></div></template>
         </el-dialog>
     </div>
 </template>

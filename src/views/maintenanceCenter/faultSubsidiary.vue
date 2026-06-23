@@ -130,7 +130,7 @@
                         :label="$t('common.operate')"
                         width="100"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <a
                                 @click="goDetail(scope.row)"
                                 v-btn="'faultSubsidiaryFaultDetails'"

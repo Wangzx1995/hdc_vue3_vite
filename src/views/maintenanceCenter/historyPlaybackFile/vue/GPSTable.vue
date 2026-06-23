@@ -3,7 +3,7 @@
         <el-table
             :data="GPSData"
             border
-            size="medium"
+            size="small"
             height="calc(100% - 38px)"
             tooltip-effect="dark"
             ref="tableGPS"
@@ -12,7 +12,10 @@
             @row-click="tableClick"
             highlight-current-row
         >
-            <template v-for="(item, index) in tableColumnVoList">
+            <template
+                v-for="(item, index) in tableColumnVoList"
+                :key="item.fieldNameEN + index"
+            >
                 <template v-if="item.fieldNameEN === 'collectTime'">
                     <!-- 上报时间 -->
                     <el-table-column
@@ -20,7 +23,6 @@
                         prop="collectTime"
                         min-width="150"
                         :label="$t('historyPlayback.collectTime')"
-                        :key="item.fieldNameEN + index"
                     >
                     </el-table-column>
                 </template>
@@ -30,17 +32,16 @@
                         show-overflow-tooltip
                         min-width="110"
                         :label="$t('historyPlayback.supplementSign')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <!-- { 0: "正常上报", 1: "补传" }[ -->
                             {{
                                 {
                                     0: $t(
-                                        "qualifiedProbability.supplementSignText2"
+                                        "qualifiedProbability.supplementSignText2",
                                     ),
                                     1: $t(
-                                        "qualifiedProbability.supplementSignText1"
+                                        "qualifiedProbability.supplementSignText1",
                                     ),
                                 }[scope.row.supplementSign]
                             }}
@@ -53,9 +54,8 @@
                         show-overflow-tooltip
                         min-width="150"
                         :label="$t('historyPlayback.gpsStatus')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span v-show="scope.row.gpsStatus == 0">
                                 <!-- ACC关&无定位 -->
                                 {{ $t("qualifiedProbability.gpsStatusText1") }}
@@ -82,7 +82,6 @@
                         prop="createTime"
                         min-width="150"
                         :label="$t('historyPlayback.createTime')"
-                        :key="item.fieldNameEN + index"
                     >
                     </el-table-column>
                 </template>
@@ -93,7 +92,6 @@
                         prop="speed"
                         min-width="150"
                         :label="$t('historyPlayback.GPSSpeed') + '(km/h)'"
-                        :key="item.fieldNameEN + index"
                     >
                     </el-table-column>
                 </template>
@@ -104,7 +102,6 @@
                         prop="recorderSpeed"
                         min-width="150"
                         :label="$t('historyPlayback.recorderSpeed') + '(km/h)'"
-                        :key="item.fieldNameEN + index"
                     >
                     </el-table-column>
                 </template>
@@ -115,9 +112,8 @@
                         prop="overSpeedWarning"
                         min-width="100"
                         :label="$t('historyPlayback.overSpeedWarning')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <!-- {{ scope.row.overSpeedWarning ? "是" : "否" }} -->
                             {{
                                 scope.row.overSpeedWarning
@@ -134,9 +130,8 @@
                         prop="overSpeedAlarm"
                         min-width="100"
                         :label="$t('historyPlayback.overSpeedAlarm')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.overSpeedAlarm
                                     ? $t("common.yes")
@@ -152,9 +147,8 @@
                         prop="fatigueDrivingWarning"
                         min-width="100"
                         :label="$t('historyPlayback.fatigueDrivingWarning')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.fatigueDrivingWarning
                                     ? $t("common.yes")
@@ -170,9 +164,8 @@
                         prop="fatigueDrivingAlarm"
                         min-width="100"
                         :label="$t('historyPlayback.fatigueDrivingAlarm')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.fatigueDrivingAlarm
                                     ? $t("common.yes")
@@ -188,19 +181,18 @@
                         prop="locateType"
                         min-width="100"
                         :label="$t('historyPlayback.locateType')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 locateTypeList.find(
                                     (e) =>
                                         Number(e.value) ==
-                                        Number(scope.row.locateType)
+                                        Number(scope.row.locateType),
                                 )
                                     ? locateTypeList.find(
                                           (e) =>
                                               Number(e.value) ==
-                                              Number(scope.row.locateType)
+                                              Number(scope.row.locateType),
                                       ).key
                                     : "--"
                             }}
@@ -214,19 +206,18 @@
                         prop="uploadMode"
                         min-width="100"
                         :label="$t('historyPlayback.uploadMode')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 uploadModeList.find(
                                     (e) =>
                                         Number(e.value) ==
-                                        Number(scope.row.uploadMode)
+                                        Number(scope.row.uploadMode),
                                 )
                                     ? uploadModeList.find(
                                           (e) =>
                                               Number(e.value) ==
-                                              Number(scope.row.uploadMode)
+                                              Number(scope.row.uploadMode),
                                       ).key
                                     : "--"
                             }}
@@ -239,9 +230,8 @@
                         show-overflow-tooltip
                         min-width="160"
                         :label="$t('historyPlayback.longitudeAndLatitude')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span
                                 >{{
                                     scope.row.longitude
@@ -263,7 +253,6 @@
                         prop="totalMileage"
                         :label="$t('historyPlayback.totalMileage') + '(km)'"
                         min-width="100"
-                        :key="item.fieldNameEN + index"
                     >
                     </el-table-column>
                 </template>
@@ -274,7 +263,6 @@
                         min-width="220"
                         prop="address"
                         :label="$t('historyPlayback.geographyLocation')"
-                        :key="item.fieldNameEN + index"
                     >
                     </el-table-column>
                 </template>
@@ -285,7 +273,6 @@
                         prop="direction"
                         :label="$t('historyPlayback.direction') + '(°)'"
                         min-width="80"
-                        :key="item.fieldNameEN + index"
                     >
                     </el-table-column>
                 </template>
@@ -296,7 +283,6 @@
                         prop="altitude"
                         :label="$t('historyPlayback.altitude') + '(m)'"
                         min-width="80"
-                        :key="item.fieldNameEN + index"
                     >
                     </el-table-column>
                 </template>
@@ -307,7 +293,6 @@
                         prop="locationSignal"
                         :label="$t('historyPlayback.locationSignal')"
                         min-width="100"
-                        :key="item.fieldNameEN + index"
                     >
                     </el-table-column>
                 </template>
@@ -321,14 +306,13 @@
                             '（dBm）'
                         "
                         min-width="160"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot="header" slot-scope="scope">
+                        <template #header>
                             <span class="positionSignalStrength">
                                 <!-- 网络信号强度 -->
                                 {{
                                     $t(
-                                        "qualifiedProbability.positionSignalStrength"
+                                        "qualifiedProbability.positionSignalStrength",
                                     )
                                 }}
                                 (dBm)</span
@@ -339,48 +323,50 @@
                                 placement="top"
                                 :popper-class="'signal-popper'"
                             >
-                                <div slot="content" class="signal-description">
-                                    <div>
-                                        <!-- 通讯信号强度说明 -->
-                                        {{
-                                            $t(
-                                                "videoPlayback.explanationOfCommunication"
-                                            )
-                                        }}
+                                <template #content>
+                                    <div class="signal-description">
+                                        <div>
+                                            <!-- 通讯信号强度说明 -->
+                                            {{
+                                                $t(
+                                                    "videoPlayback.explanationOfCommunication",
+                                                )
+                                            }}
+                                        </div>
+                                        <p>
+                                            <signal :strength="5"></signal>
+                                            <span>[-69, +∞)</span>
+                                        </p>
+                                        <p>
+                                            <signal :strength="4"></signal>
+                                            <span>[-77, -69)</span>
+                                        </p>
+                                        <p>
+                                            <signal :strength="3"></signal>
+                                            <span>[-87, -77)</span>
+                                        </p>
+                                        <p>
+                                            <signal :strength="2"></signal>
+                                            <span>[-93, -87)</span>
+                                        </p>
+                                        <p>
+                                            <signal :strength="1"></signal>
+                                            <span>[-103, -93)</span>
+                                        </p>
+                                        <p>
+                                            <signal :strength="0"></signal>
+                                            <span>(-∞, -103)</span>
+                                        </p>
                                     </div>
-                                    <p>
-                                        <signal :strength="5"></signal>
-                                        <span>[-69, +∞)</span>
-                                    </p>
-                                    <p>
-                                        <signal :strength="4"></signal>
-                                        <span>[-77, -69)</span>
-                                    </p>
-                                    <p>
-                                        <signal :strength="3"></signal>
-                                        <span>[-87, -77)</span>
-                                    </p>
-                                    <p>
-                                        <signal :strength="2"></signal>
-                                        <span>[-93, -87)</span>
-                                    </p>
-                                    <p>
-                                        <signal :strength="1"></signal>
-                                        <span>[-103, -93)</span>
-                                    </p>
-                                    <p>
-                                        <signal :strength="0"></signal>
-                                        <span>(-∞, -103)</span>
-                                    </p>
-                                </div>
+                                </template>
                                 <i class="el-icon-warning-outline"></i>
                             </el-tooltip>
                         </template>
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <div
                                 v-if="
                                     scope.row.hasOwnProperty(
-                                        'positionSignalStrength'
+                                        'positionSignalStrength',
                                     )
                                 "
                                 class="signal"
@@ -388,7 +374,7 @@
                                 <signal
                                     :strength="
                                         calcDBM(
-                                            scope.row.positionSignalStrength
+                                            scope.row.positionSignalStrength,
                                         )
                                     "
                                 ></signal>
@@ -406,9 +392,8 @@
                         prop="emergencyAlarm"
                         min-width="100"
                         :label="$t('historyPlayback.emergencyAlarm')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.emergencyAlarm
                                     ? $t("common.yes")
@@ -428,9 +413,8 @@
                         :label="
                             $t('historyPlayback.cumulativeOvertimeDrivingAlarm')
                         "
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.cumulativeOvertimeDrivingAlarm
                                     ? $t("common.yes")
@@ -446,9 +430,8 @@
                         prop="vehicleIllegalIgnition"
                         min-width="100"
                         :label="$t('historyPlayback.vehicleIllegalIgnition')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.vehicleIllegalIgnition
                                     ? $t("common.yes")
@@ -464,9 +447,8 @@
                         prop="vehicleIllegalMove"
                         min-width="100"
                         :label="$t('historyPlayback.vehicleIllegalMove')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.vehicleIllegalMove
                                     ? $t("common.yes")
@@ -482,9 +464,8 @@
                         prop="illegalDrivingAlarm"
                         min-width="100"
                         :label="$t('historyPlayback.illegalDrivingAlarm')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.illegalDrivingAlarm
                                     ? $t("common.yes")
@@ -501,9 +482,8 @@
                         prop="gnnsModuleFault"
                         min-width="120"
                         :label="$t('historyPlayback.gnnsModuleFault')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.gnnsModuleFault
                                     ? $t("common.yes")
@@ -519,9 +499,8 @@
                         prop="gnnsAntennaUnconnected"
                         min-width="140"
                         :label="$t('historyPlayback.gnnsAntennaUnconnected')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.gnnsAntennaUnconnected
                                     ? $t("common.yes")
@@ -538,9 +517,8 @@
                         prop="gnnsAntennaShortCircuit"
                         min-width="120"
                         :label="$t('historyPlayback.gnnsAntennaShortCircuit')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.gnnsAntennaShortCircuit
                                     ? $t("common.yes")
@@ -559,9 +537,8 @@
                         :label="
                             $t('historyPlayback.terminalMainPowerUndervoltage')
                         "
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.terminalMainPowerUndervoltage
                                     ? $t("common.yes")
@@ -576,9 +553,8 @@
                         prop="terminalMainPowerDown"
                         min-width="120"
                         :label="$t('historyPlayback.terminalMainPowerDown')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.terminalMainPowerDown
                                     ? $t("common.yes")
@@ -593,9 +569,8 @@
                         prop="terminalLcdFault"
                         min-width="160"
                         :label="$t('historyPlayback.terminalLcdFault')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.terminalLcdFault
                                     ? $t("common.yes")
@@ -610,9 +585,8 @@
                         prop="ttsModuleFault"
                         min-width="100"
                         :label="$t('historyPlayback.ttsModuleFault')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.ttsModuleFault
                                     ? $t("common.yes")
@@ -627,9 +601,8 @@
                         prop="cameraFault"
                         min-width="100"
                         :label="$t('historyPlayback.cameraFault')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.cameraFault
                                     ? $t("common.yes")
@@ -644,9 +617,8 @@
                         prop="icModuleFault"
                         min-width="160"
                         :label="$t('historyPlayback.icModuleFault')"
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.icModuleFault
                                     ? $t("common.yes")
@@ -665,9 +637,8 @@
                         :label="
                             $t('historyPlayback.vehicleIllegalDoorOpeningAlarm')
                         "
-                        :key="item.fieldNameEN + index"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.vehicleIllegalDoorOpeningAlarm
                                     ? $t("common.yes")
@@ -683,7 +654,6 @@
                         prop="alarmStatusNum"
                         :label="$t('historyPlayback.alarmStatusNum')"
                         min-width="85"
-                        :key="item.fieldNameEN + index"
                     >
                     </el-table-column>
                 </template>
@@ -865,7 +835,7 @@ export default {
         },
         setColumn(collectTime) {
             let dataIndex = this.GpsDataTotal.findIndex(
-                (item) => item.collectTime == collectTime
+                (item) => item.collectTime == collectTime,
             );
             if (this.GpsTotal > 0) {
                 this.GpsParams.currentPage =
@@ -885,11 +855,11 @@ export default {
                 this.GPSData = data;
                 this.$nextTick(() => {
                     this.$refs.tableGPS.setCurrentRow(
-                        this.GPSData[dataIndex - start]
+                        this.GPSData[dataIndex - start],
                     );
                     const tableBodyWrapper =
                         this.$refs.tableGPS.$el.querySelector(
-                            ".el-table__body-wrapper"
+                            ".el-table__body-wrapper",
                         );
                     tableBodyWrapper.scrollTop = 36 * (dataIndex - start);
                 });
@@ -900,7 +870,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .el-table {
-    /deep/tbody tr:hover > td {
+    :deep(tbody tr:hover > td) {
         cursor: pointer;
     }
 }
@@ -921,7 +891,7 @@ export default {
     }
 }
 
-/deep/.signal {
+:deep(.signal) {
     display: flex;
     align-items: center;
 
@@ -930,7 +900,7 @@ export default {
     }
 }
 
-/deep/.positionSignalStrength {
+:deep(.positionSignalStrength) {
     margin-right: 4px;
 }
 

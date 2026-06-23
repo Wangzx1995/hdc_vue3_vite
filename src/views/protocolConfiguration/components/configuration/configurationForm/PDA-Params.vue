@@ -316,7 +316,7 @@
         <div id="id" style="width: 0; height: 0"></div>
         <el-dialog
             title="标定检测区域"
-            :visible.sync="openSurveyBol"
+            v-model="openSurveyBol"
             :before-close="handleClose"
             append-to-body
         >

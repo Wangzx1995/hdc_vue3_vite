@@ -7,7 +7,7 @@
                     ? $t('userManage.addUser')
                     : $t('userManage.editUser')
             "
-            :visible.sync="userManageDialogVisible"
+            v-model="userManageDialogVisible"
             @close="close"
             :width="'1500px'"
             :top="'50px'"
@@ -575,16 +575,22 @@
                 </el-form>
             </div>
 
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="close">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button type="primary" :loading="loading" @click="doSave()">
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="close">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        :loading="loading"
+                        @click="doSave()"
+                    >
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <RoleDialog
             :append-to-body="true"
@@ -1437,7 +1443,7 @@ export default {
         padding: 16px 0;
         border-bottom: 1px solid #d7dde4;
     }
-    /deep/.basic-msg {
+    :deep(.basic-msg){
         padding: 0 20px;
         background: #ffffff;
         .edit-form {
@@ -1478,7 +1484,7 @@ export default {
         justify-content: space-between;
         margin-bottom: 8px;
     }
-    /deep/.select-role {
+    :deep(.select-role){
         margin-top: 16px;
         padding: 0 20px 20px;
         background: #ffffff;
@@ -1567,7 +1573,7 @@ export default {
             border: 1px solid #d7dde4 !important;
             width: 400px;
             height: 500px;
-            /deep/.organization-tree-search {
+            :deep(.organization-tree-search){
                 padding: 8px 16px;
                 border-bottom: 1px solid #d7dde4;
                 .el-input__inner {
@@ -1581,7 +1587,7 @@ export default {
         }
     }
 }
-/deep/.role-dialog-select {
+:deep(.role-dialog-select){
     .el-tag {
         .el-tag__close {
             display: none;

@@ -20,7 +20,7 @@
                             v-bind:key="item.index"
                             :index="item.index"
                         >
-                            <template slot="title">{{ item.title }}</template>
+                            <template #title>{{ item.title }}</template>
                             <el-menu-item
                                 :index="i.value"
                                 v-for="i in item.children"
@@ -43,7 +43,7 @@
                             v-bind:key="item.index"
                             :index="item.index"
                         >
-                            <template slot="title">{{ item.title }}</template>
+                            <template #title>{{ item.title }}</template>
                             <el-menu-item
                                 :index="i.value"
                                 v-for="i in item.children"
@@ -69,7 +69,7 @@
                             v-bind:key="item.index"
                             :index="item.index"
                         >
-                            <template slot="title">{{ item.title }}</template>
+                            <template #title>{{ item.title }}</template>
                             <el-menu-item
                                 :index="i.value"
                                 v-for="i in item.children"
@@ -1429,7 +1429,7 @@ export default {
                                 () => {},
                                 () => {
                                     // console.log('控件销毁失败');
-                                }
+                                },
                             );
                             this.videoPlayControl = null;
                             this.noneVideoPlay = false;
@@ -1670,7 +1670,7 @@ export default {
                                     ].push(
                                         item_["IsApiPlatform"][
                                             "platformInfoList"
-                                        ][0]
+                                        ][0],
                                     );
                                     formData["IsApiPlatformCapability"] =
                                         item_["IsApiPlatformCapability"];
@@ -2008,8 +2008,8 @@ export default {
                         this.componentName = this.componentName
                             ? this.componentName
                             : item["markKey"].includes("957")
-                            ? "PrivateOverSpeed"
-                            : "PrivateOvertimeDriving";
+                              ? "PrivateOverSpeed"
+                              : "PrivateOvertimeDriving";
                     });
                 }
             });
@@ -2293,7 +2293,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "不使用",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2319,7 +2319,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "苏标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2345,7 +2345,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "浙标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2371,7 +2371,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "陕标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2397,7 +2397,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "渝标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2423,7 +2423,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "川标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2449,7 +2449,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "RTSM",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2475,7 +2475,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "HATC",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2501,7 +2501,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "宇通V+平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2527,7 +2527,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "沪标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2553,7 +2553,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "粤标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2579,7 +2579,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "黑标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2605,7 +2605,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "中联",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2631,7 +2631,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "辽标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2657,7 +2657,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "其他平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2672,7 +2672,7 @@ export default {
                                                                                 "其他平台";
                                                                             break;
                                                                     }
-                                                                }
+                                                                },
                                                             );
                                                             break;
                                                         case 1:
@@ -2712,7 +2712,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "不使用",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2738,7 +2738,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "苏标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2764,7 +2764,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "浙标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2790,7 +2790,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "陕标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2816,7 +2816,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "渝标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2842,7 +2842,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "川标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2868,7 +2868,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "RTSM",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2894,7 +2894,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "HATC",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2920,7 +2920,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "宇通V+平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2946,7 +2946,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "沪标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2972,7 +2972,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "粤标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -2998,7 +2998,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "黑标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3024,7 +3024,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "中联",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3050,7 +3050,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "辽标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3076,7 +3076,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "其他平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3091,7 +3091,7 @@ export default {
                                                                                 "其他平台";
                                                                             break;
                                                                     }
-                                                                }
+                                                                },
                                                             );
                                                             break;
                                                         case 2:
@@ -3131,7 +3131,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "不使用",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3157,7 +3157,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "苏标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3183,7 +3183,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "浙标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3209,7 +3209,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "陕标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3235,7 +3235,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "渝标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3261,7 +3261,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "川标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3287,7 +3287,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "RTSM",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3313,7 +3313,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "HATC",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3339,7 +3339,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "宇通V+平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3365,7 +3365,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "沪标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3391,7 +3391,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "粤标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3417,7 +3417,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "黑标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3443,7 +3443,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "中联",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3469,7 +3469,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "辽标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3495,7 +3495,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "其他平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3510,7 +3510,7 @@ export default {
                                                                                 "其他平台";
                                                                             break;
                                                                     }
-                                                                }
+                                                                },
                                                             );
                                                             break;
                                                         case 3:
@@ -3550,7 +3550,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "不使用",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3576,7 +3576,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "苏标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3602,7 +3602,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "浙标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3628,7 +3628,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "陕标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3654,7 +3654,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "渝标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3680,7 +3680,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "川标协议",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3706,7 +3706,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "RTSM",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3732,7 +3732,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "HATC",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3758,7 +3758,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "宇通V+平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3784,7 +3784,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "沪标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3810,7 +3810,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "粤标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3836,7 +3836,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "黑标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3862,7 +3862,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "中联",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3888,7 +3888,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "辽标平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3914,7 +3914,7 @@ export default {
                                                                                 {
                                                                                     id: item_,
                                                                                     label: "其他平台",
-                                                                                }
+                                                                                },
                                                                             );
                                                                             this.enumerationData[
                                                                                 "extensionProtocolJson" +
@@ -3929,7 +3929,7 @@ export default {
                                                                                 "其他平台";
                                                                             break;
                                                                     }
-                                                                }
+                                                                },
                                                             );
                                                             break;
                                                     }
@@ -4533,15 +4533,15 @@ export default {
                                         this.$set(
                                             this.enumerationData,
                                             "bsdcameraPosList" + item["chanNo"],
-                                            positionList
+                                            positionList,
                                         );
                                         this.$set(
                                             this.enumerationData,
                                             "bsdcameraPosJson" + item["chanNo"],
-                                            positionJson
+                                            positionJson,
                                         );
                                     }
-                                }
+                                },
                             );
                             for (
                                 let i = 0;
@@ -5180,14 +5180,14 @@ export default {
                     (valid, invalidFields) => {
                         if (!valid) {
                             this.$message.info(
-                                "当前配置界面内有不符合规范的配置项，请检查修改后存为模板！"
+                                "当前配置界面内有不符合规范的配置项，请检查修改后存为模板！",
                             );
                         } else {
                             let params = {
                                 templateType: this.type,
                                 id: this.id,
                                 templateContent: JSON.stringify(
-                                    this.privateData
+                                    this.privateData,
                                 ),
                             };
                             this.$api
@@ -5198,12 +5198,12 @@ export default {
                                         this.goBack(1);
                                     } else {
                                         this.$message.error(
-                                            "编辑模板失败:" + res.msg
+                                            "编辑模板失败:" + res.msg,
                                         );
                                     }
                                 });
                         }
-                    }
+                    },
                 );
             }
         },
@@ -5216,7 +5216,7 @@ export default {
                             templateType: this.type,
                             id: this.id,
                             templateContent: JSON.stringify(
-                                this.saveTempalteData
+                                this.saveTempalteData,
                             ),
                         };
                         this.$api.hikDevParamTempUpdate(params).then((res) => {
@@ -5329,11 +5329,11 @@ export default {
                             this.componentName = val.value;
                         } else {
                             this.$message.warning(
-                                `当前表单验证不通过，请先完善！`
+                                `当前表单验证不通过，请先完善！`,
                             );
                             this.$refs.menu.activeIndex = this.componentName;
                         }
-                    }
+                    },
                 );
             } else {
                 this.componentName = val.value;
@@ -5380,7 +5380,7 @@ export default {
                                 .length
                         ) {
                             this.isapiData = JSON.parse(
-                                res.data.templateContent
+                                res.data.templateContent,
                             );
                             this.sideBarItem = this.isapiData["menuList"].length
                                 ? this.isapiData["menuList"]
@@ -5396,7 +5396,7 @@ export default {
                             });
                         } else {
                             for (let x in JSON.parse(
-                                res.data.templateContent
+                                res.data.templateContent,
                             )) {
                                 form[x] = JSON.parse(res.data.templateContent)[
                                     x
@@ -5419,7 +5419,7 @@ export default {
                         }
                     } else if (this.type == 2) {
                         this.initFileData = JSON.parse(
-                            res.data.templateContent
+                            res.data.templateContent,
                         );
                         this.$nextTick(() => {
                             this.downLoadFile(this.initFileData);
@@ -5437,7 +5437,7 @@ export default {
                     }
                 } else {
                     this.$message.error(
-                        "根据模板ID获取模板信息失败:" + res.msg
+                        "根据模板ID获取模板信息失败:" + res.msg,
                     );
                 }
             });
@@ -5472,7 +5472,7 @@ export default {
                                 "videoPlay",
                                 offsetWidth,
                                 offsetHeight,
-                                params
+                                params,
                             );
                         });
                     }
@@ -5515,12 +5515,12 @@ export default {
                                     }).then(function (oData) {
                                         //showCBInfo(JSON.stringify(oData.responseMsg));
                                     });
-                                }
+                                },
                             );
                         },
                         function () {
                             this.$message.error("控件服务启动失败！");
-                        }
+                        },
                     );
                 },
                 cbConnectError: () => {
@@ -5583,7 +5583,7 @@ export default {
         // document.head.appendChild(script);
 
         //监听页面滚动
-        window.addEventListener("scroll", () => {
+        (window.addEventListener("scroll", () => {
             if (this.videoPlayControl != null) {
                 let box = document.getElementById("videoPlay");
                 let offsetHeight = box.offsetHeight;
@@ -5592,7 +5592,7 @@ export default {
                     this.videoPlayControl,
                     "videoPlay",
                     offsetWidth,
-                    offsetHeight
+                    offsetHeight,
                 );
             }
         }),
@@ -5606,10 +5606,10 @@ export default {
                         this.videoPlayControl,
                         "videoPlay",
                         offsetWidth,
-                        offsetHeight
+                        offsetHeight,
                     );
                 }
-            });
+            }));
     },
     beforeUnmount() {
         if (this.videoPlayControl != null) {
@@ -5618,7 +5618,7 @@ export default {
                 () => {},
                 () => {
                     // console.log('控件销毁失败');
-                }
+                },
             );
             this.videoPlayControl = null;
             this.noneVideoPlay = false;

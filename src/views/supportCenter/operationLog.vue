@@ -137,7 +137,7 @@
                 >
                     <!-- 操作类型 -->
                     <el-table-column :label="$t('operationLog.operationType')">
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span v-if="scope.row.operateType == '1'">
                                 <!-- 添加 -->
                                 {{ $t("common.add") }}
@@ -257,10 +257,10 @@ export default {
             handler(val) {
                 if (val && this.searchForm.operateTimeArr.length > 0) {
                     this.searchForm.operateStart = TimeUtil.getDateTime(
-                        this.searchForm.operateTimeArr[0]
+                        this.searchForm.operateTimeArr[0],
                     );
                     this.searchForm.operateEnd = TimeUtil.getDateTime(
-                        this.searchForm.operateTimeArr[1]
+                        this.searchForm.operateTimeArr[1],
                     );
                 }
                 let params = Object.assign(val, this.searchForm);
@@ -337,10 +337,10 @@ export default {
                         this.searchForm.operateTimeArr.length > 0
                     ) {
                         this.searchForm.operateStart = TimeUtil.getDateTime(
-                            this.searchForm.operateTimeArr[0]
+                            this.searchForm.operateTimeArr[0],
                         );
                         this.searchForm.operateEnd = TimeUtil.getDateTime(
-                            this.searchForm.operateTimeArr[1]
+                            this.searchForm.operateTimeArr[1],
                         );
                     } else {
                         this.searchForm.operateStart = "";
@@ -349,7 +349,7 @@ export default {
                     if (this.params.currentPage == 1) {
                         let params = Object.assign(
                             this.params,
-                            this.searchForm
+                            this.searchForm,
                         );
                         this.getData(params);
                     } else {
@@ -376,10 +376,10 @@ export default {
                 this.searchForm.operateTimeArr.length > 0
             ) {
                 _params.operateStart = TimeUtil.getDateTime(
-                    this.searchForm.operateTimeArr[0]
+                    this.searchForm.operateTimeArr[0],
                 );
                 _params.operateEnd = TimeUtil.getDateTime(
-                    this.searchForm.operateTimeArr[1]
+                    this.searchForm.operateTimeArr[1],
                 );
             } else {
                 _params.operateStart = "";
@@ -404,8 +404,8 @@ export default {
             this.params.orderDir = !column.order
                 ? ""
                 : column.order == "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.params.orderColumn = !column.prop ? "" : column.prop;
             this.getData(this.params);
         },
@@ -461,7 +461,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-div /deep/ .el-card__body {
+div :deep(.el-card__body){
     padding: 0 !important;
 }
 .el-form-item {

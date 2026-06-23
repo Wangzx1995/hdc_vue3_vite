@@ -2,14 +2,14 @@
     <div>
         <el-dialog
             :title="diaTitle"
-            :visible="noticeBol"
+            v-model="noticeBol"
             @close="noticeBol = false"
             :close-on-click-modal="false"
             :close-on-press-escape="false"
             :destroy-on-close="true"
             :show-close="updateTime == 0"
         >
-            <template slot="title">
+            <template #title>
                 <div
                     class="m-l-sm"
                     style="color: #000; font-size: 20px; font-weight: 800"
@@ -34,30 +34,31 @@
                 </p> -->
                 </div>
             </div>
-            <span
-                slot="footer"
-                class="dialog-footer"
-                style="
-                    justify-content: space-between;
-                    display: flex;
-                    align-items: center;
-                "
-            >
-                <el-checkbox v-model="noTice">
-                    <!-- 不再提醒 -->
-                    {{ $t("login.doNotRemindAgain") }}
-                </el-checkbox>
-                <el-button
-                    type="primary"
-                    @click="closeDialog"
-                    :disabled="updateTime > 0"
-                    >{{
-                        updateTime == 0
-                            ? $t("common.gotIt")
-                            : `${updateTime}` + $t("dashboard.second")
-                    }}</el-button
+            <template #footer
+                ><span
+                    class="dialog-footer"
+                    style="
+                        justify-content: space-between;
+                        display: flex;
+                        align-items: center;
+                    "
                 >
-            </span>
+                    <el-checkbox v-model="noTice">
+                        <!-- 不再提醒 -->
+                        {{ $t("login.doNotRemindAgain") }}
+                    </el-checkbox>
+                    <el-button
+                        type="primary"
+                        @click="closeDialog"
+                        :disabled="updateTime > 0"
+                        >{{
+                            updateTime == 0
+                                ? $t("common.gotIt")
+                                : `${updateTime}` + $t("dashboard.second")
+                        }}</el-button
+                    >
+                </span></template
+            >
         </el-dialog>
         <PromptUser
             :showManage="JSON.stringify(validateOverdueManages)"
@@ -182,12 +183,12 @@
                     <el-button
                         @click="showItemBol = false"
                         type="default"
-                        size="mini"
+                        size="small"
                     >
                         <!-- 取消 -->
                         {{ $t("common.cancel") }}
                     </el-button>
-                    <el-button @click="saveItem" type="primary" size="mini">
+                    <el-button @click="saveItem" type="primary" size="small">
                         <!-- 保存 -->
                         {{ $t("common.save") }}
                     </el-button>

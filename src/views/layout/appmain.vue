@@ -1,7 +1,7 @@
 <template>
     <section class="app-body">
         <el-alert v-if="isIE" show-icon simple type="warning">
-            <span slot="title">
+            <template #title><span>
                 <!-- 为了更好的用户体验，并访问所有功能，我们建议您使用Chrome浏览器 -->
                 {{ $t("appmain.useChrome") }}
                 <a
@@ -12,7 +12,7 @@
                      <!-- （点击下载） -->
                     （{{ $t("appmain.clickToDownload") }}）
                 </a></span
-            >
+            ></template>
         </el-alert>
         <div class="p-y-sm b-b clearfix bread-crumb-main">
             <Breadcrumb class="m-l-xs"></Breadcrumb>
@@ -28,10 +28,10 @@
                     {{ $t("appmain.talkAboutItNextTime") }}
                 </span>
             </div>
-            <div class="wenjuan" slot="reference">
+            <template #reference><div class="wenjuan">
                 <!-- @click="getQuestionnaireSurveyUrl" -->
                 <i class="iconfont icon-gift-full"></i>
-            </div>
+            </div></template>
         </el-popover>
         <!-- <el-popover
             id="bbb"
@@ -47,16 +47,15 @@
             v-model="assistantVisible"
         >
             <deepseek @close="close"></deepseek>
-            <div
+            <template #reference><div
                 class="assistant"
-                slot="reference"
                 v-dragSwitch="{
                     click: assistantClick,
                     drag: close,
                 }"
             >
                 <svg-icon iconClass="ai" :width="52" :height="52" />
-            </div>
+            </div></template>
         </el-popover> -->
 
         <router-view v-slot="{ Component }" :key="key" v-if="isShow">

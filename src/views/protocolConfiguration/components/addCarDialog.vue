@@ -151,7 +151,7 @@
                 <el-table-column prop="deviceSerialNum" label="设备序列号">
                 </el-table-column>
                 <el-table-column label="设备状态" width="100px">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div>
                             <el-tag
                                 type="success"

@@ -17,12 +17,12 @@
             </div>
             <div v-if="form['0079']" class="configuration-item">
               <el-form-item label="特殊报警录像持续时间" prop="0079.durationTime">
-                  <el-input v-model="form['0079'].durationTime"><span slot="suffix">min</span></el-input>
+                  <el-input v-model="form['0079'].durationTime"><template #suffix><span>min</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if="form['0079']" class="configuration-item">
               <el-form-item label="特殊报警标识起始时间" prop="0079.startTime">
-                  <el-input v-model="form['0079'].startTime"><span slot="suffix">min</span></el-input>
+                  <el-input v-model="form['0079'].startTime"><template #suffix><span>min</span></template></el-input>
               </el-form-item>
             </div>
           </div>

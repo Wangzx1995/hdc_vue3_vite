@@ -48,10 +48,10 @@
                                 {{ item.status === 1 ? "已解决" : "待维护" }}
                             </span>
                             <el-tooltip placement="top" effect="light">
-                                <div slot="content">
+                                <template #content><div>
                                     <b>解决建议：</b>
                                     <p v-html="item.faultSolution"></p>
-                                </div>
+                                </div></template>
                                 <span>
                                     {{ item.faultTypeString }}
                                 </span>
@@ -99,7 +99,7 @@
         </el-tabs>
         <el-dialog
             title="生成维护任务"
-            :visible.sync="taskVisible"
+            v-model="taskVisible"
             :width="'520px'"
             append-to-body
             @close="handleExit"
@@ -136,7 +136,7 @@
                     </el-input>
                 </el-form-item>
             </el-form>
-            <span slot="footer">
+            <template #footer><span>
                 <el-button @click="handleExit">取 消</el-button>
                 <el-button
                     type="primary"
@@ -144,7 +144,7 @@
                     :disabled="loadingBtn"
                     >确 定</el-button
                 >
-            </span>
+            </span></template>
         </el-dialog>
     </div>
 </template>
@@ -494,7 +494,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-/deep/.el-tabs {
+:deep(.el-tabs){
     height: 100%;
     .el-tabs__content {
         height: calc(~"100% - 59px");

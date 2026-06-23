@@ -28,7 +28,7 @@
                 </el-radio-group>
                 <el-button
                     :disabled="loading"
-                    size="medium"
+                    size="small"
                     type="primary"
                     @click="startPreView()"
                     class="button-div m-t"
@@ -204,7 +204,7 @@
                                     <el-form-item
                                         :label="
                                             $t(
-                                                'videoPlayback.defaultSubtitlePosition'
+                                                'videoPlayback.defaultSubtitlePosition',
                                             ) + '：'
                                         "
                                     >
@@ -245,7 +245,7 @@
                             :title="$t('videoPlayback.setUp')"
                         />
                         <!-- <div class="voice-class">
-                        <el-slider v-model="settingForm.voice" vertical size="mini" height="80px" v-if="showVoice"
+                        <el-slider v-model="settingForm.voice" vertical size="small" height="80px" v-if="showVoice"
                             @change="changeVoice"></el-slider>
                         <img src="/static/images/control/voice-black.svg" title="音量" @click="showVoice = !showVoice" />
                     </div> -->
@@ -270,7 +270,7 @@
             append-to-body
             width="450px"
             title=""
-            :visible.sync="awakenVisible"
+            v-model="awakenVisible"
             :custom-class="'awaken-dialog'"
         >
             <div class="awaken-dialog">
@@ -306,20 +306,22 @@
                     </el-form>
                 </div>
             </div>
-            <div slot="footer">
-                <el-button @click="awakenVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    @click="awakenDevice"
-                    :loading="loading"
-                    type="primary"
-                >
-                    <!-- 唤醒 -->
-                    {{ $t("videoPlayback.awaken") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button @click="awakenVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        @click="awakenDevice"
+                        :loading="loading"
+                        type="primary"
+                    >
+                        <!-- 唤醒 -->
+                        {{ $t("videoPlayback.awaken") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -439,14 +441,14 @@ export default {
                     obj.left - 445,
                     0,
                     obj.width + 3,
-                    obj.height - 88
+                    obj.height - 88,
                 );
             } else {
                 this.playControlHave.repairPartWindow(
                     obj.left - 445,
                     0,
                     obj.width + 3,
-                    obj.height - 88
+                    obj.height - 88,
                 );
             }
         },
@@ -535,7 +537,7 @@ export default {
                     };
                     this.$store.dispatch(
                         "SetDefaultMaintenanceCar",
-                        this.searchForm.selectObj
+                        this.searchForm.selectObj,
                     );
                 } else {
                     this.deviceInfo = {};
@@ -562,13 +564,13 @@ export default {
                         this.awakenVisible = false;
                         // "已向设备下发唤醒指令，静待1分钟左右设备将重新上线！"
                         this.$message.success(
-                            this.$t("videoPlayback.issueWakeupCommand")
+                            this.$t("videoPlayback.issueWakeupCommand"),
                         );
                     } else {
                         this.loading = false;
                         // 下发唤醒失败！
                         this.$message.error(
-                            this.$t("videoPlayback.wakeupFailed")
+                            this.$t("videoPlayback.wakeupFailed"),
                         );
                     }
                 })
@@ -595,12 +597,12 @@ export default {
             let control = this.playControlNone.activeControlList.find(
                 (item) => {
                     return item.voiceState;
-                }
+                },
             );
             if (control) {
                 this.playControlNone.setVolume(
                     control.iWndNum,
-                    this.settingForm.voice
+                    this.settingForm.voice,
                 );
             }
             this.saveSetting();
@@ -657,24 +659,27 @@ export default {
                             let channelList = channelListTotal.map(
                                 ({ channelNum }) => {
                                     return channelNum;
-                                }
+                                },
                             );
                             let channelCount = channelList.length;
                             if (channelCount === 0) {
                                 // 通道数为0，预览失败
                                 this.$message.error(
-                                    this.$t("livePreview.previewFailed")
+                                    this.$t("livePreview.previewFailed"),
                                 );
                                 return resovle(null);
                             }
                             this.$nextTick(() => {
-                                const radios = this.$refs.radio.$el.querySelectorAll('.el-radio');
+                                const radios =
+                                    this.$refs.radio.$el.querySelectorAll(
+                                        ".el-radio",
+                                    );
                                 radios.forEach((item) => {
                                     item.removeAttribute("aria-hidden");
                                 });
                             });
                             let livePreviewItem = JSON.parse(
-                                sessionStorage.getItem("livePreviewItem")
+                                sessionStorage.getItem("livePreviewItem"),
                             );
                             if (
                                 livePreviewItem &&
@@ -703,7 +708,7 @@ export default {
             let channelListTotal = this.deviceInfo.channelList.filter(
                 (item) => {
                     return item.channelNum == this.channelCheckObj;
-                }
+                },
             );
             let channelList = channelListTotal.map(({ channelNum }) => {
                 return channelNum;
@@ -711,7 +716,7 @@ export default {
             let channelNamelist = channelListTotal.map(
                 ({ channelNum, channelName }) => {
                     return { channelNum, channelName };
-                }
+                },
             );
             // if (this.showControl) {
             //     if (channelList.length > 8) {
@@ -745,7 +750,7 @@ export default {
             if (!this.channelCheckObj) {
                 // 请先选择车辆通道
                 this.$message.error(
-                    this.$t("livePreview.selectVehicleChannelFirst")
+                    this.$t("livePreview.selectVehicleChannelFirst"),
                 );
                 return;
             }
@@ -772,13 +777,13 @@ export default {
                             "playControlNone",
                             {},
                             deviceChannelList,
-                            this.settingForm
+                            this.settingForm,
                         );
                         this.playControlNone.playAll();
                     } else {
                         setTimeout(async () => {
                             await this.playControlNone.setDeviceChannelList(
-                                deviceChannelList
+                                deviceChannelList,
                             );
                             this.playControlNone.playAll();
                         }, 200);
@@ -795,7 +800,7 @@ export default {
                                             .plateNum,
                                     },
                                     this.deviceInfo.id,
-                                    this.channelCheckObj
+                                    this.channelCheckObj,
                                 );
                             })
                             .catch(() => {});
@@ -808,7 +813,7 @@ export default {
                                 plate: this.searchForm.selectObj.plateNum,
                             },
                             this.deviceInfo.id,
-                            this.channelCheckObj
+                            this.channelCheckObj,
                         );
                     }
                 }
@@ -824,7 +829,7 @@ export default {
                         } else {
                             reject();
                         }
-                    }
+                    },
                 );
             });
         },
@@ -859,7 +864,7 @@ export default {
                                             .plateNum,
                                     },
                                     this.deviceInfo.id,
-                                    this.channelCheckObj
+                                    this.channelCheckObj,
                                 );
                             })
                             .catch(() => {});
@@ -872,7 +877,7 @@ export default {
                                 plate: this.searchForm.selectObj.plateNum,
                             },
                             this.deviceInfo.id,
-                            this.channelCheckObj
+                            this.channelCheckObj,
                         );
                     }
                 } else {
@@ -887,12 +892,12 @@ export default {
                             "playControlNone",
                             {},
                             deviceChannelList,
-                            this.settingForm
+                            this.settingForm,
                         );
                         this.playControlNone.playAll();
                     } else {
                         await this.playControlNone.setDeviceChannelList(
-                            deviceChannelList
+                            deviceChannelList,
                         );
                         this.playControlNone.playAll();
                     }
@@ -945,7 +950,7 @@ export default {
                 0,
                 5,
                 164,
-                this.showOptionHeight
+                this.showOptionHeight,
             );
             if (h > -1) {
                 this.showOptionHeight = h + 1;
@@ -953,20 +958,20 @@ export default {
                     0,
                     5,
                     164,
-                    this.showOptionHeight
+                    this.showOptionHeight,
                 );
             } else {
                 this.playControlHave.repairPartWindow(
                     0,
                     5,
                     164,
-                    this.showOptionHeight
+                    this.showOptionHeight,
                 );
             }
         },
         setDeault() {
             let livePreviewItem = JSON.parse(
-                sessionStorage.getItem("livePreviewItem")
+                sessionStorage.getItem("livePreviewItem"),
             );
             if (livePreviewItem) {
                 setTimeout(() => {
@@ -996,7 +1001,7 @@ export default {
                 }, 500);
             } else if (this.$store.state.tree.defaultMaintenanceCar) {
                 let defaultMaintenanceCar = JSON.parse(
-                    this.$store.state.tree.defaultMaintenanceCar
+                    this.$store.state.tree.defaultMaintenanceCar,
                 );
                 this.searchForm.deviceCode = defaultMaintenanceCar.deviceCode;
                 this.searchForm.selectObj = defaultMaintenanceCar;
@@ -1020,7 +1025,7 @@ export default {
         if (localStorage.getItem("preViewSetting")) {
             Object.assign(
                 this.settingForm,
-                JSON.parse(localStorage.getItem("preViewSetting"))
+                JSON.parse(localStorage.getItem("preViewSetting")),
             );
         }
         this.isVideoPreview = true;
@@ -1029,7 +1034,7 @@ export default {
                 "playControlNone",
                 {},
                 [],
-                this.settingForm
+                this.settingForm,
             );
         });
         window.addEventListener("resize", this.resizeFunc);
@@ -1140,16 +1145,16 @@ export default {
         bottom: 25px;
         left: 12px;
 
-        /deep/ .el-slider__runway {
+        :deep(.el-slider__runway){
             margin: 0 !important;
             background: #777;
         }
 
-        /deep/ .el-slider__button {
+        :deep(.el-slider__button){
             border: rgba(0, 0, 0, 0.3);
         }
 
-        /deep/.el-slider__bar {
+        :deep(.el-slider__bar){
             background: #fff;
         }
     }
@@ -1257,7 +1262,7 @@ export default {
 .deviceStatus-2 {
     color: #e6a23c;
 }
-/deep/.awaken-dialog {
+:deep(.awaken-dialog){
     display: flex;
     padding-right: 12px;
     .el-icon-warning {

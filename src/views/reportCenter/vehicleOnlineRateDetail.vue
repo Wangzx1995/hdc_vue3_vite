@@ -56,7 +56,7 @@
                     :key="String(monthDay.length) + index"
                     :fixed="item == monthDay.length ? 'right' : false"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div
                             v-for="i in scope.row.upLineStatusList"
                             :key="i.index"
@@ -120,8 +120,8 @@ export default {
             this.params.orderDir = !column.order
                 ? ""
                 : column.order == "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.params.orderColumn = !column.prop ? "" : column.prop;
             this.getData();
         },

@@ -13,33 +13,33 @@
             <el-row type="flex" justify="space-between">
                 <el-col :span="7" >
                     <el-form-item label="当天累计驾驶时间" prop="IsApiFatigueDrivingOthers.accumulatedDrivingTimeThresholdOfTheDay">
-                      <el-input tips-placement="top-end" tips="键入值范围为0~50000" v-model="form['IsApiFatigueDrivingOthers'].accumulatedDrivingTimeThresholdOfTheDay"><span slot="suffix">min</span></el-input>
+                      <el-input tips-placement="top-end" tips="键入值范围为0~50000" v-model="form['IsApiFatigueDrivingOthers'].accumulatedDrivingTimeThresholdOfTheDay"><template #suffix><span>min</span></template></el-input>
                     </el-form-item>
                     
                 </el-col>
                 <el-col :span="7" >
                     <el-form-item label="疲劳驾驶预警差值" prop="IsApiFatigueDrivingOthers.fatigueDrivingWarningValue">
-                      <el-input tips-placement="top-end" tips="键入值范围为0~32767" v-model="form['IsApiFatigueDrivingOthers'].fatigueDrivingWarningValue"><span slot="suffix">s</span></el-input>
+                      <el-input tips-placement="top-end" tips="键入值范围为0~32767" v-model="form['IsApiFatigueDrivingOthers'].fatigueDrivingWarningValue"><template #suffix><span>s</span></template></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="7" >
                   <el-form-item label="最小休息时间" prop="IsApiFatigueDrivingOthers.minimumRestTime">
-                       <el-input tips-placement="top-end" tips="键入值范围为0~50000" v-model="form['IsApiFatigueDrivingOthers'].minimumRestTime"><span slot="suffix">min</span></el-input>
+                       <el-input tips-placement="top-end" tips="键入值范围为0~50000" v-model="form['IsApiFatigueDrivingOthers'].minimumRestTime"><template #suffix><span>min</span></template></el-input>
                     </el-form-item>
                <!-- <el-form-item label="最长停车时间" prop="005A.maximumParkingTime">
-                      <el-input v-model="form['IsApiFatigueDrivingOthers'].maximumParkingTime"><span slot="suffix">min</span></el-input>
+                      <el-input v-model="form['IsApiFatigueDrivingOthers'].maximumParkingTime"><template #suffix><span>min</span></template></el-input>
                     </el-form-item> -->
                 </el-col>
             </el-row>
             <!--<el-row type="flex" justify="space-between">
                 <el-col :span="7" >
                     <el-form-item label="连续驾驶时间门限" prop="0057.continuousDrivingTimeThreshold">
-                       <el-input v-model="form['0057'].continuousDrivingTimeThreshold"><span slot="suffix">min</span></el-input>
+                       <el-input v-model="form['0057'].continuousDrivingTimeThreshold"><template #suffix><span>min</span></template></el-input>
                     </el-form-item>
                 </el-col>-->
                 <!--<el-col :span="7" >
                     <el-form-item label="最小休息时间" prop="0059.minimumRestTime">
-                       <el-input v-model="form['0059'].minimumRestTime"><span slot="suffix">min</span></el-input>
+                       <el-input v-model="form['0059'].minimumRestTime"><template #suffix><span>min</span></template></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="7" ></el-col>
@@ -74,7 +74,7 @@
                 <el-col :span="7" > -->
                     <!--换绑定参数-->
                     <!-- <el-form-item label="夜晚连续驾驶时间" prop="IsApiFatigueDrive.nightDuration">
-                      <el-input v-model="form['IsApiFatigueDrive'].nightDuration"><span slot="suffix">min</span></el-input>
+                      <el-input v-model="form['IsApiFatigueDrive'].nightDuration"><template #suffix><span>min</span></template></el-input>
                     </el-form-item> -->
                     <!---->
                 <!-- </el-col>
@@ -82,7 +82,7 @@
             <el-row type="flex" justify="space-between">
                 <el-col :span="7" >
                     <el-form-item label="白天连续驾驶时间" prop="IsApiFatigueDrive.daytimeDuration">
-                      <el-input v-model="form['IsApiFatigueDrive'].daytimeDuration"><span slot="suffix">min</span></el-input>
+                      <el-input v-model="form['IsApiFatigueDrive'].daytimeDuration"><template #suffix><span>min</span></template></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="7" >

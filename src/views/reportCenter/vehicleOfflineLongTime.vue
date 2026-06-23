@@ -10,10 +10,9 @@
                         :placeholder="$t('common.input')"
                         clearable
                     >
-                        <i
-                            slot="suffix"
-                            class="el-input__icon el-icon-search"
-                        ></i>
+                        <template #suffix>
+                            <i class="el-input__icon el-icon-search"></i>
+                        </template>
                     </el-input>
                     <el-tree
                         ref="tree"
@@ -56,7 +55,7 @@
                                             <!-- 长时间离线 -->
                                             {{
                                                 $t(
-                                                    "vehicleOfflineLongTime.longTermOffline"
+                                                    "vehicleOfflineLongTime.longTermOffline",
                                                 )
                                             }}
                                         </el-radio-button>
@@ -64,7 +63,7 @@
                                             <!-- 从未上线 -->
                                             {{
                                                 $t(
-                                                    "vehicleOfflineLongTime.neverOnline"
+                                                    "vehicleOfflineLongTime.neverOnline",
                                                 )
                                             }}
                                         </el-radio-button>
@@ -89,7 +88,7 @@
                                         collapse-tags
                                         :placeholder="
                                             $t(
-                                                'devLog.enterThreeLicensePlateNumbers'
+                                                'devLog.enterThreeLicensePlateNumbers',
                                             )
                                         "
                                         v-model="searchForm.plateNums"
@@ -145,7 +144,7 @@
                                     prop="dateTimeRange"
                                     :label="
                                         $t(
-                                            'vehicleOfflineLongTime.selectTimePeriod'
+                                            'vehicleOfflineLongTime.selectTimePeriod',
                                         )
                                     "
                                     v-show="searchForm.radioType == 3"
@@ -174,12 +173,12 @@
                                         v-model="searchForm.gtOfflineDay"
                                         :placeholder="
                                             $t(
-                                                'vehicleOfflineLongTime.offlineDaysTip'
+                                                'vehicleOfflineLongTime.offlineDaysTip',
                                             )
                                         "
                                         clearable
                                     >
-                                        <template slot="prepend"
+                                        <template #prepend
                                             ><span class="fontBorder"
                                                 >≥</span
                                             ></template
@@ -297,7 +296,7 @@
                                 width="180px"
                                 v-if="searchForm.radioType != 2"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div
                                         :title="scope.row.offlineTimeString"
                                         style="
@@ -320,7 +319,7 @@
                                 v-if="searchForm.radioType != 2"
                                 show-overflow-tooltip
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-button
                                         type="text"
                                         @click="getMapAddress(scope.row)"
@@ -369,7 +368,7 @@
         <!-- 导出 -->
         <el-dialog
             :width="'600px'"
-            :visible.sync="exportDialog"
+            v-model="exportDialog"
             :title="$t('common.export')"
             @closed="closeExportDialog"
         >
@@ -421,7 +420,7 @@
                     class="m-b"
                     :title="
                         $t(
-                            'vehicleOfflineLongTime.pleaseSelectOrganizationExport'
+                            'vehicleOfflineLongTime.pleaseSelectOrganizationExport',
                         )
                     "
                     type="warning"
@@ -452,20 +451,22 @@
                     <!-- :default-checked-keys="[currentNodeId]" -->
                 </div>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="closeExportDialog">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    :loading="loading2"
-                    @click="goExport()"
-                >
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="closeExportDialog">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        :loading="loading2"
+                        @click="goExport()"
+                    >
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -489,15 +490,15 @@ export default {
                 // 请输入大于等于3的值
                 callback(
                     new Error(
-                        this.$t("qualifiedProbability.validateHeightMsg1")
-                    )
+                        this.$t("qualifiedProbability.validateHeightMsg1"),
+                    ),
                 );
             } else if (!validateNum(value)) {
                 // 只能输入数字值
                 callback(
                     new Error(
-                        this.$t("qualifiedProbability.validateHeightMsg2")
-                    )
+                        this.$t("qualifiedProbability.validateHeightMsg2"),
+                    ),
                 );
             } else {
                 callback();
@@ -520,7 +521,7 @@ export default {
                 gtOfflineDay: 3,
                 plateNum: "",
                 dateTime: TimeUtil.getDate(
-                    new Date(new Date() - 1 * 24 * 60 * 60 * 1000)
+                    new Date(new Date() - 1 * 24 * 60 * 60 * 1000),
                 ),
                 radioType: 1,
                 dateTimeRange: [],
@@ -636,7 +637,7 @@ export default {
                         this.filterTree(
                             item.children,
                             this.organizationName2,
-                            1
+                            1,
                         );
                     }
                 }
@@ -672,8 +673,8 @@ export default {
             this.params.orderDir = !column.order
                 ? ""
                 : column.order == "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.params.orderColumn = !column.prop ? "" : column.prop;
             this.search();
         },
@@ -685,7 +686,7 @@ export default {
                 this.searchForm.gtOfflineDay = 3;
                 // 最少离线天数不能小于3天
                 this.$message.info(
-                    this.$t("vehicleOfflineLongTime.minimum3Days")
+                    this.$t("vehicleOfflineLongTime.minimum3Days"),
                 );
             }
         },
@@ -763,10 +764,10 @@ export default {
             this.searchForm.plateNums = [];
             this.searchForm.plateArr = [];
             this.searchForm.dateTime = TimeUtil.getDate(
-                new Date(new Date() - 1 * 24 * 60 * 60 * 1000)
+                new Date(new Date() - 1 * 24 * 60 * 60 * 1000),
             );
-            (this.searchForm.gtOfflineDay = 3),
-                (this.searchForm.radioType = tempRadioType);
+            ((this.searchForm.gtOfflineDay = 3),
+                (this.searchForm.radioType = tempRadioType));
             this.searchForm.dateTimeRange = [];
             this.getData();
             this.$store.dispatch("SetDeviceUpgradeId", data.id);
@@ -953,8 +954,8 @@ export default {
                 // "请勾选要导出的组织"
                 this.$message.warning(
                     this.$t(
-                        "vehicleOfflineLongTime.pleaseSelectOrganizationExport"
-                    )
+                        "vehicleOfflineLongTime.pleaseSelectOrganizationExport",
+                    ),
                 );
                 return;
             }
@@ -1015,7 +1016,7 @@ export default {
                                         ) {
                                             var iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -1026,18 +1027,18 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(
-                            this.$t("common.exportFailed") + ":" + res.msg
+                            this.$t("common.exportFailed") + ":" + res.msg,
                         );
                         this.loadingAll = false;
                     }
@@ -1058,7 +1059,7 @@ export default {
                                         ) {
                                             var iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -1069,18 +1070,18 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(
-                            this.$t("common.exportFailed") + ":" + res.msg
+                            this.$t("common.exportFailed") + ":" + res.msg,
                         );
                         this.loadingAll = false;
                     }

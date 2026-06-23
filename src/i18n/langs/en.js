@@ -267,6 +267,12 @@ const en = {
         exception_type: "Exception Type/Module Name",
         get_sysLog_fail: "Getting the system log list failed:",
     },
+    deviceSearch: {
+        keywordsPlaceholder:
+            "Please enter at least 3 digits of license plate, terminal phone, device serial number, VIN",
+        includingVehicles: "Include subordinate organization vehicles",
+        onlyUnboundDevices: "Only view vehicles with unbound devices",
+    },
     carManage: {
         number_plate: "License Plate No.",
         devise_serial_number: "Device Serial No.",

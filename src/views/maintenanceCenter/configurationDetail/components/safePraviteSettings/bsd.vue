@@ -44,12 +44,12 @@
                     </el-col>
                     <el-col :span="7" >
                         <el-form-item label="报警判断速度阈值" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="item.commandId + '.speedLimit'">
-                            <el-input v-model="form[item.commandId].speedLimit"><span slot="suffix">km/h</span></el-input>
+                            <el-input v-model="form[item.commandId].speedLimit"><template #suffix><span>km/h</span></template></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="7" >
                         <el-form-item label="报警抑制时间 (100-600)" :rules="{ validator: checkNumber.bind({type:'int',min:100,max:600}), trigger: 'blur' }" :prop="item.commandId + '.interval'">
-                            <el-input v-model="form[item.commandId].interval"><span slot="suffix">ms</span></el-input>
+                            <el-input v-model="form[item.commandId].interval"><template #suffix><span>ms</span></template></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -92,7 +92,7 @@
                     </el-col>
                     <el-col :span="7" >
                         <el-form-item label="抓图间隔" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="item.commandId + '.snapShotTime'">
-                              <el-input v-model="form[item.commandId].snapShotTime"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="form[item.commandId].snapShotTime"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -107,19 +107,19 @@
                     </el-col>
                     <el-col :span="7" >
                         <el-form-item label="短视频前半部分时长" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="item.commandId + '.clipPreDuration'">
-                              <el-input v-model="form[item.commandId].clipPreDuration"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="form[item.commandId].clipPreDuration"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="7" >
                         <el-form-item label="短视频后半部分时长" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="item.commandId + '.clipPostDuration'">
-                              <el-input v-model="form[item.commandId].clipPostDuration"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="form[item.commandId].clipPostDuration"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row type="flex" justify="space-between">
                     <el-col :span="7" >
                         <el-form-item label="算法置信度（1-100）" :rules="{ validator: checkNumber.bind({type:'int',min:1,max:100}), trigger: 'blur' }" :prop="item.commandId + '.confidence'">
-                              <el-input v-model="form[item.commandId].confidence"><span slot="suffix">%</span></el-input>
+                              <el-input v-model="form[item.commandId].confidence"><template #suffix><span>%</span></template></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="7" >
@@ -129,14 +129,14 @@
                     </el-col>
                     <el-col :span="7" >
                       <el-form-item label="相机安装高度" :rules="{ validator: checkNumber.bind({type:'int',min:1,max:100}), trigger: 'blur' }" :prop="item.commandId + '.confidence'">
-                              <el-input v-model="form[item.commandId].confidence"><span slot="suffix">m</span></el-input>
+                              <el-input v-model="form[item.commandId].confidence"><template #suffix><span>m</span></template></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row type="flex" justify="space-between">
                     <el-col :span="7" >
                         <el-form-item label="转向角" :rules="{ validator: checkNumber.bind({type:'int',min:1,max:100}), trigger: 'blur' }" :prop="item.commandId + '.confidence'">
-                              <el-input v-model="form[item.commandId].confidence"><span slot="suffix">。</span></el-input>
+                              <el-input v-model="form[item.commandId].confidence"><template #suffix><span>。</span></template></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="7" >

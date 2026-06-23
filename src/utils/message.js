@@ -1,4 +1,9 @@
-import { ElMessage } from "element-plus";
+import {
+    ElMessage,
+    ElMessageBox,
+    ElNotification,
+    ElLoading,
+} from "element-plus";
 
 export default {
     install(app) {
@@ -63,5 +68,11 @@ export default {
                 duration: duration,
             });
         };
+
+        app.config.globalProperties.$confirm = ElMessageBox.confirm;
+        app.config.globalProperties.$prompt = ElMessageBox.prompt;
+        app.config.globalProperties.$alert = ElMessageBox.alert;
+        app.config.globalProperties.$notify = ElNotification;
+        app.config.globalProperties.$loading = ElLoading.service;
     },
 };

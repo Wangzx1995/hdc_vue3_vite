@@ -141,10 +141,10 @@
                         :label="$t('operationLog.operationTime')"
                         min-width="160px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 $moment(scope.row.createTime).format(
-                                    "YYYY-MM-DD HH:mm:ss"
+                                    "YYYY-MM-DD HH:mm:ss",
                                 )
                             }}
                         </template>
@@ -175,7 +175,7 @@
                         prop="type"
                         :label="$t('firmware.firmwareType')"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span v-if="scope.row.type === 'main'">
                                 <!-- 主机 -->
                                 {{ $t("firmware.host") }}
@@ -192,7 +192,7 @@
                         :label="$t('firmware.peripheralName')"
                         width="160px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span
                                 v-if="
                                     scope.row.peripheralType &&
@@ -203,12 +203,12 @@
                                     deviceTypeList.find(
                                         (i) =>
                                             i.sysDictCode ==
-                                            scope.row.peripheralType
+                                            scope.row.peripheralType,
                                     )
                                         ? deviceTypeList.find(
                                               (i) =>
                                                   i.sysDictCode ==
-                                                  scope.row.peripheralType
+                                                  scope.row.peripheralType,
                                           ).sysDictName
                                         : "--"
                                 }}
@@ -222,7 +222,7 @@
                         :label="$t('deviceUpgrade.upgradesTotalNumber')"
                         align="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <!-- <span v-if="scope.row.taskState !== 7">
                                 {{ scope.row.taskDevRecordTotalNum }}</span
                             > -->
@@ -245,7 +245,7 @@
                         :label="$t('upgradeProgress.upgradeSuccessful')"
                         align="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <el-button
                                 type="text"
                                 v-if="scope.row.taskDevSuccessNum"
@@ -261,7 +261,7 @@
                         :label="$t('upgradeProgress.inProgress')"
                         align="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <el-button
                                 type="text"
                                 v-if="scope.row.taskDevIngNum"
@@ -277,7 +277,7 @@
                         :label="$t('upgradeProgress.upgradeFailed')"
                         align="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <el-button
                                 type="text"
                                 style="color: #f56c6c"
@@ -294,7 +294,7 @@
                         :label="$t('upgradeProgress.upgradeTermination')"
                         align="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <el-button
                                 type="text"
                                 v-if="scope.row.taskDevEndNum"
@@ -310,7 +310,7 @@
                         :label="$t('deviceUpgrade.taskStatus')"
                         width="120px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <div
                                 class="device-taskState"
                                 v-if="
@@ -347,17 +347,19 @@
                                             {{ activity.name }}
                                         </el-timeline-item>
                                     </el-timeline>
-                                    <div
-                                        slot="reference"
-                                        class="taskState-content"
-                                    >
-                                        <i
-                                            :class="`taskState${scope.row.taskState}`"
-                                        ></i>
-                                        <span>{{
-                                            getName(scope.row.taskState, "name")
-                                        }}</span>
-                                    </div>
+                                    <template #reference>
+                                        <div class="taskState-content">
+                                            <i
+                                                :class="`taskState${scope.row.taskState}`"
+                                            ></i>
+                                            <span>{{
+                                                getName(
+                                                    scope.row.taskState,
+                                                    "name",
+                                                )
+                                            }}</span>
+                                        </div>
+                                    </template>
                                 </el-popover>
                             </div>
                             <div
@@ -378,10 +380,10 @@
                         :label="$t('common.updateTime')"
                         min-width="160px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 $moment(scope.row.statisticsRefreshTime).format(
-                                    "YYYY-MM-DD HH:mm:ss"
+                                    "YYYY-MM-DD HH:mm:ss",
                                 )
                             }}
                         </template>
@@ -393,7 +395,7 @@
                         min-width="160px"
                         show-overflow-tooltip
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 scope.row.omsUpgradeTaskReasonInfoList
                                     .reduce((prev, cur) => {
@@ -408,7 +410,7 @@
                         width="120px"
                         fixed="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <a @click="goDetail(scope.row)">
                                 <!-- 详情 -->
                                 {{ $t("common.detail") }}
@@ -606,21 +608,21 @@ export default {
                                     {
                                         // content: "等待升级",
                                         content: this.$t(
-                                            "upgradeProgress.waitingForUpgrade"
+                                            "upgradeProgress.waitingForUpgrade",
                                         ),
                                         timestamp: this.$moment(
-                                            item.sendCmdTime
+                                            item.sendCmdTime,
                                         ).format("YYYY-MM-DD HH:mm:ss"),
                                         color: "#52C41A",
                                     },
                                     {
                                         // content: "下发命令",
                                         content: this.$t(
-                                            "upgradeProgress.issueCommand"
+                                            "upgradeProgress.issueCommand",
                                         ),
                                         timestamp: item.sendCmdTime
                                             ? this.$moment(
-                                                  item.sendCmdTime
+                                                  item.sendCmdTime,
                                               ).format("YYYY-MM-DD HH:mm:ss")
                                             : "",
                                         color: item.sendCmdTime
@@ -630,11 +632,11 @@ export default {
                                     {
                                         // content: "固件烧写完成",
                                         content: this.$t(
-                                            "upgradeProgress.firmwareBurningCompleted"
+                                            "upgradeProgress.firmwareBurningCompleted",
                                         ),
                                         timestamp: item.upgradeResultCmdTime
                                             ? this.$moment(
-                                                  item.upgradeResultCmdTime
+                                                  item.upgradeResultCmdTime,
                                               ).format("YYYY-MM-DD HH:mm:ss")
                                             : "",
                                         color: item.upgradeResultCmdTime
@@ -644,11 +646,11 @@ export default {
                                     {
                                         // content: "升级成功",
                                         content: this.$t(
-                                            "upgradeProgress.upgradeSuccessful"
+                                            "upgradeProgress.upgradeSuccessful",
                                         ),
                                         timestamp: item.upgradeEndTime
                                             ? this.$moment(
-                                                  item.upgradeEndTime
+                                                  item.upgradeEndTime,
                                               ).format("YYYY-MM-DD HH:mm:ss")
                                             : "",
                                         color:
@@ -662,10 +664,10 @@ export default {
                                     {
                                         // content: "等待升级",
                                         content: this.$t(
-                                            "upgradeProgress.waitingForUpgrade"
+                                            "upgradeProgress.waitingForUpgrade",
                                         ),
                                         timestamp: this.$moment(
-                                            item.createTime
+                                            item.createTime,
                                         ).format("YYYY-MM-DD HH:mm:ss"),
                                         color: "#52C41A",
                                     },
@@ -674,10 +676,10 @@ export default {
                                     item.activities.push({
                                         // content: "下发命令",
                                         content: this.$t(
-                                            "upgradeProgress.issueCommand"
+                                            "upgradeProgress.issueCommand",
                                         ),
                                         timestamp: this.$moment(
-                                            item.sendCmdTime
+                                            item.sendCmdTime,
                                         ).format("YYYY-MM-DD HH:mm:ss"),
                                         color: "#52C41A",
                                     });
@@ -686,10 +688,10 @@ export default {
                                     item.activities.push({
                                         // content: "固件烧写完成",
                                         content: this.$t(
-                                            "upgradeProgress.firmwareBurningCompleted"
+                                            "upgradeProgress.firmwareBurningCompleted",
                                         ),
                                         timestamp: this.$moment(
-                                            item.upgradeResultCmdTime
+                                            item.upgradeResultCmdTime,
                                         ).format("YYYY-MM-DD HH:mm:ss"),
                                         color: "#52C41A",
                                     });
@@ -705,7 +707,7 @@ export default {
                                     }`,
                                     timestamp: item.upgradeEndTime
                                         ? this.$moment(
-                                              item.upgradeEndTime
+                                              item.upgradeEndTime,
                                           ).format("YYYY-MM-DD HH:mm:ss")
                                         : "",
                                     color: this.upgradeStateList[
@@ -819,7 +821,7 @@ export default {
                         // this.$message.success("恢复任务成功");
                         this.$message.success(
                             this.$t("deviceUpgrade.recoveryTask") +
-                                this.$t("common.success")
+                                this.$t("common.success"),
                         );
                         this.getTableData();
                     } else {
@@ -895,7 +897,7 @@ export default {
     }
     .bottom {
     }
-    /deep/.el-pagination {
+    :deep(.el-pagination){
         display: flex;
         .el-pager {
             height: 28px;

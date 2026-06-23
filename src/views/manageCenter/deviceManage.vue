@@ -4,19 +4,23 @@
             <!-- 左边树 -->
             <el-col :span="4" class="p-a b-r">
                 <el-input
-                    class=""
+                    class="tree-search-input"
                     v-model="organizationName"
                     :placeholder="$t('common.inputOrganizationName')"
                     clearable
                 >
-                    <i
-                        slot="suffix"
-                        @click="filterTree"
-                        class="searchIcon el-input__icon el-icon-search"
-                    ></i>
+                    <template #suffix>
+                        <i
+                            @click="filterTree"
+                            class="searchIcon el-input__icon el-icon-search"
+                        ></i>
+                    </template>
                 </el-input>
-                <div :class="{ loading_: searchLoading }" class="m-t">
-                    <div>
+                <div
+                    :class="{ loading_: searchLoading }"
+                    class="m-t tree-left-panel"
+                >
+                    <div class="tree-action-bar">
                         <el-popover
                             placement="bottom"
                             width="250"
@@ -41,22 +45,23 @@
                             </el-form>
                             <div style="text-align: right; margin: 0">
                                 <el-button
-                                    type="link"
-                                    size="mini"
+                                    type="text"
+                                    size="small"
                                     @click="addOrganize"
                                     >{{ $t("common.ok") }}</el-button
                                 >
                             </div>
-                            <el-button
-                                size="mini"
-                                slot="reference"
-                                icon="el-icon-plus"
-                                :disabled="
-                                    !params.organizeId ||
-                                    currentNode.source != 1
-                                "
-                                v-btn="'deviceManageAddGroup'"
-                            />
+                            <template #reference>
+                                <el-button
+                                    size="small"
+                                    icon="el-icon-plus"
+                                    :disabled="
+                                        !params.organizeId ||
+                                        currentNode.source != 1
+                                    "
+                                    v-btn="'deviceManageAddGroup'"
+                                />
+                            </template>
                         </el-popover>
                         <el-popover
                             placement="bottom"
@@ -102,30 +107,31 @@
                             </el-form>
                             <div style="text-align: right; margin: 0">
                                 <el-button
-                                    type="link"
-                                    size="mini"
+                                    type="text"
+                                    size="small"
                                     @click="editOrganize"
                                     >{{ $t("common.ok") }}</el-button
                                 >
                                 <el-button
-                                    type="link"
-                                    size="mini"
+                                    type="text"
+                                    size="small"
                                     @click="cancelEdit"
                                     >{{ $t("common.cancel") }}</el-button
                                 >
                             </div>
-                            <el-button
-                                size="mini"
-                                slot="reference"
-                                icon="el-icon-edit"
-                                :disabled="
-                                    !params.organizeId ||
-                                    currentNode.defaultNode == 0 ||
-                                    currentNode.source != 1
-                                "
-                                @click="editVisibleClick()"
-                                v-btn="'deviceManageEditGroup'"
-                            />
+                            <template #reference>
+                                <el-button
+                                    size="small"
+                                    icon="el-icon-edit"
+                                    :disabled="
+                                        !params.organizeId ||
+                                        currentNode.defaultNode == 0 ||
+                                        currentNode.source != 1
+                                    "
+                                    @click="editVisibleClick()"
+                                    v-btn="'deviceManageEditGroup'"
+                                />
+                            </template>
                         </el-popover>
 
                         <el-popover
@@ -141,22 +147,23 @@
                             <div style="text-align: right; margin: 0">
                                 <el-button
                                     type="primary"
-                                    size="mini"
+                                    size="small"
                                     @click="deleteVisible = false"
                                     >{{ $t("common.gotIt") }}</el-button
                                 >
                             </div>
-                            <el-button
-                                size="mini"
-                                slot="reference"
-                                icon="el-icon-delete"
-                                :disabled="
-                                    !params.organizeId ||
-                                    currentNode.source != 1 ||
-                                    currentNode.defaultNode == 0
-                                "
-                                v-btn="'deviceManageDeleteGroup'"
-                            />
+                            <template #reference>
+                                <el-button
+                                    size="small"
+                                    icon="el-icon-delete"
+                                    :disabled="
+                                        !params.organizeId ||
+                                        currentNode.source != 1 ||
+                                        currentNode.defaultNode == 0
+                                    "
+                                    v-btn="'deviceManageDeleteGroup'"
+                                />
+                            </template>
                         </el-popover>
                         <el-popover
                             @show="showPopover"
@@ -169,28 +176,29 @@
                             <div style="text-align: right; margin: 0">
                                 <el-button
                                     type="default"
-                                    size="mini"
+                                    size="small"
                                     @click="deleteVisible = false"
                                     >{{ $t("common.cancel") }}</el-button
                                 >
                                 <el-button
                                     type="primary"
-                                    size="mini"
+                                    size="small"
                                     @click="deleteOrganize"
                                     >{{ $t("common.delete") }}</el-button
                                 >
                             </div>
-                            <el-button
-                                size="mini"
-                                slot="reference"
-                                icon="el-icon-delete"
-                                :disabled="
-                                    !params.organizeId ||
-                                    currentNode.source != 1 ||
-                                    currentNode.defaultNode == 0
-                                "
-                                v-btn="'deviceManageDeleteGroup'"
-                            />
+                            <template #reference>
+                                <el-button
+                                    size="small"
+                                    icon="el-icon-delete"
+                                    :disabled="
+                                        !params.organizeId ||
+                                        currentNode.source != 1 ||
+                                        currentNode.defaultNode == 0
+                                    "
+                                    v-btn="'deviceManageDeleteGroup'"
+                                />
+                            </template>
                         </el-popover>
                     </div>
                     <div :style="editVisible ? 'pointer-events: none;' : ''">
@@ -349,7 +357,7 @@
                                 v-btn="'deviceManageAdd'"
                                 >{{ $t("common.add") }}
                                 <el-tooltip>
-                                    <div slot="content">
+                                    <template #content>
                                         <div v-show="currentNode.source != 1">
                                             {{ $t("carManage.addMsg1") }}：<a
                                                 href="https://vms.hikvisionauto.com:8040/"
@@ -365,7 +373,7 @@
                                         >
                                             {{ $t("carManage.addMsg2") }}
                                         </div>
-                                    </div>
+                                    </template>
                                     <i
                                         v-show="
                                             currentNode.defaultNode == 0 ||
@@ -402,7 +410,7 @@
                                 v-btn="'deviceManageImport'"
                                 >{{ $t("common.import") }}
                                 <el-tooltip>
-                                    <div slot="content">
+                                    <template #content>
                                         <div>
                                             {{ $t("carManage.addMsg1") }}：<a
                                                 href="https://vms.hikvisionauto.com:8040/"
@@ -410,7 +418,7 @@
                                                 >https://vms.hikvisionauto.com:8040/</a
                                             >
                                         </div>
-                                    </div>
+                                    </template>
                                     <i
                                         v-show="currentNode.source != 1"
                                         class="el-icon-question el-icon--right"
@@ -439,38 +447,40 @@
                                         class="el-icon-arrow-down el-icon--right"
                                     ></i>
                                 </el-button>
-                                <el-dropdown-menu slot="dropdown">
-                                    <el-dropdown-item command="a">
-                                        <!-- 配置选中设备 -->
-                                        {{
-                                            $t(
-                                                "deviceManage.configureSelectedDevices"
-                                            )
-                                        }}
-                                        <span v-if="selection.length"
-                                            >({{ selection.length }})</span
-                                        ></el-dropdown-item
-                                    >
-                                    <el-dropdown-item
-                                        command="b"
-                                        v-if="currentNode.parentId !== 0"
-                                    >
-                                        <!-- 配置整组设备 -->
-                                        {{
-                                            $t(
-                                                "deviceManage.configureTheEntireSetOfDevices"
-                                            )
-                                        }}
-                                    </el-dropdown-item>
-                                    <el-dropdown-item command="c">
-                                        <!-- 批量导入配置 -->
-                                        {{
-                                            $t(
-                                                "deviceManage.batchImportconfiguration"
-                                            )
-                                        }}
-                                    </el-dropdown-item>
-                                </el-dropdown-menu>
+                                <template #dropdown
+                                    ><el-dropdown-menu>
+                                        <el-dropdown-item command="a">
+                                            <!-- 配置选中设备 -->
+                                            {{
+                                                $t(
+                                                    "deviceManage.configureSelectedDevices",
+                                                )
+                                            }}
+                                            <span v-if="selection.length"
+                                                >({{ selection.length }})</span
+                                            ></el-dropdown-item
+                                        >
+                                        <el-dropdown-item
+                                            command="b"
+                                            v-if="currentNode.parentId !== 0"
+                                        >
+                                            <!-- 配置整组设备 -->
+                                            {{
+                                                $t(
+                                                    "deviceManage.configureTheEntireSetOfDevices",
+                                                )
+                                            }}
+                                        </el-dropdown-item>
+                                        <el-dropdown-item command="c">
+                                            <!-- 批量导入配置 -->
+                                            {{
+                                                $t(
+                                                    "deviceManage.batchImportconfiguration",
+                                                )
+                                            }}
+                                        </el-dropdown-item>
+                                    </el-dropdown-menu></template
+                                >
                             </el-dropdown>
                             <el-badge
                                 :value="syncNum"
@@ -486,7 +496,7 @@
                                     <!-- 显示同步 -->
                                     {{
                                         $t(
-                                            "deviceManage.displaySynchronization"
+                                            "deviceManage.displaySynchronization",
                                         )
                                     }}
                                 </el-button>
@@ -497,7 +507,7 @@
                                 <!-- 包含下级组织设备 -->
                                 {{
                                     $t(
-                                        "deviceManage.includeEquipmentFromSubordinateOrganizations"
+                                        "deviceManage.includeEquipmentFromSubordinateOrganizations",
                                     )
                                 }}
                             </el-checkbox>
@@ -530,7 +540,7 @@
                                 :label="$t('common.plateNum')"
                                 width="140px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         {{ scope.row.plateNum }}
                                         <el-popover
@@ -550,21 +560,21 @@
                                                 <!-- 车牌号异常 -->
                                                 {{
                                                     $t(
-                                                        "deviceManage.abnormalLicensePlateNumber"
+                                                        "deviceManage.abnormalLicensePlateNumber",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformPlateNum"
+                                                        "carManage.platformPlateNum",
                                                     )
                                                 }}：{{ scope.row.plateNum }}
                                             </div>
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.devicePlateNum"
+                                                        "carManage.devicePlateNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -572,7 +582,7 @@
                                                 @click="
                                                     toChange(
                                                         1,
-                                                        scope.row.plateNum
+                                                        scope.row.plateNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -580,10 +590,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference>
+                                                <i
+                                                    class="text-error el-icon-warning"
+                                                ></i>
+                                            </template>
                                         </el-popover>
                                         <span
                                             v-show="scope.row.freeze == 1"
@@ -606,7 +617,7 @@
                                 :label="$t('common.deviceCode')"
                                 min-width="120px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-button
                                         @click="showDetails(scope.row.id)"
                                         type="text"
@@ -622,7 +633,7 @@
                                 :label="$t('common.deviceSerialNum')"
                                 min-width="125px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span>
                                         {{ scope.row.deviceSerialNum }}
                                     </span>
@@ -642,21 +653,21 @@
                                         <p class="marginBottom">
                                             {{
                                                 $t(
-                                                    "carManage.deviceSerialNumAbnormal"
+                                                    "carManage.deviceSerialNumAbnormal",
                                                 )
                                             }}
                                         </p>
                                         <div class="marginBottom">
                                             {{
                                                 $t(
-                                                    "carManage.platformDeviceSerialNum"
+                                                    "carManage.platformDeviceSerialNum",
                                                 )
                                             }}：{{ scope.row.deviceSerialNum }}
                                         </div>
                                         <div>
                                             {{
                                                 $t(
-                                                    "carManage.deviceDeviceSerialNum"
+                                                    "carManage.deviceDeviceSerialNum",
                                                 )
                                             }}：{{ item.deviceValue }}
                                         </div>
@@ -664,16 +675,17 @@
                                             @click="
                                                 toChange(
                                                     2,
-                                                    scope.row.deviceSerialNum
+                                                    scope.row.deviceSerialNum,
                                                 )
                                             "
                                             class="m-r-sm"
                                             >{{ $t("carManage.goModify") }}</a
                                         >
-                                        <i
-                                            class="text-error el-icon-warning"
-                                            slot="reference"
-                                        ></i>
+                                        <template #reference>
+                                            <i
+                                                class="text-error el-icon-warning"
+                                            ></i>
+                                        </template>
                                     </el-popover>
                                 </template>
                             </el-table-column>
@@ -724,7 +736,7 @@
                                 :label="$t('common.manufacturerNameString')"
                                 min-width="120"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span>{{
                                         getLabelSelf(scope.row.manufacturerName)
                                     }}</span>
@@ -738,7 +750,7 @@
                                 :render-header="renderHeader"
                                 fixed="right"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-tag
                                         type="success"
                                         v-if="scope.row.deviceStatus === 1"
@@ -799,7 +811,7 @@
                                 :label="$t('common.operate')"
                                 width="120px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-button
                                         type="text"
                                         class="text-info"
@@ -838,7 +850,7 @@
         <!-- 设备详情 -->
         <el-dialog
             :title="$t('carManage.deviceDetails')"
-            :visible="processModal"
+            v-model="processModal"
             :close-on-press-escape="false"
             @close="processModal = false"
             class="no-padding no-border"
@@ -1139,7 +1151,7 @@
         <!-- 同步结果 -->
         <el-dialog
             :title="$t('deviceManage.synchronizationResults')"
-            :visible.sync="syncModel"
+            v-model="syncModel"
             :before-close="cancelSync"
             :width="'1080px'"
         >
@@ -1254,7 +1266,7 @@
                         :label="$t('deviceManage.synchronizationResults')"
                         min-width="80px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span
                                 v-if="scope.row.resultType == 1"
                                 style="color: green"
@@ -1308,7 +1320,7 @@
                         :label="$t('common.operate')"
                         width="120px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <el-button
                                 type="text"
                                 class="text-info"
@@ -1341,9 +1353,9 @@
             </div>
             <!-- </div> -->
 
-            <!-- <span slot="footer" class="dialog-footer">
+            <!-- <template #footer><span class="dialog-footer">
               <el-button @click="cancelSync">关闭</el-button>
-            </span> -->
+            </span></template> -->
         </el-dialog>
         <!-- 导入 -->
         <DeviceImport
@@ -1365,7 +1377,7 @@
         <!-- 移动设备到组织 -->
         <el-dialog
             :title="$t('deviceManage.mobileDevicesToOrganizations')"
-            :visible.sync="treeDialogVisible"
+            v-model="treeDialogVisible"
             :width="'500px'"
             @close="doCancel"
         >
@@ -1375,7 +1387,9 @@
                 :placeholder="$t('common.input')"
                 clearable
             >
-                <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                <template #suffix>
+                    <i class="el-input__icon el-icon-search"></i>
+                </template>
             </el-input>
             <div style="height: 500px; overflow-y: auto">
                 <el-tree
@@ -1392,21 +1406,23 @@
                     :current-node-key="dialogNode2.id"
                 ></el-tree>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="updateCarOrgRelation">
-                    <!-- 确 定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-                <el-button
-                    @click="
-                        treeDialogVisible = false;
-                        organizationName1 = '';
-                    "
-                >
-                    <!-- 取 消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="updateCarOrgRelation">
+                        <!-- 确 定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                    <el-button
+                        @click="
+                            treeDialogVisible = false;
+                            organizationName1 = '';
+                        "
+                    >
+                        <!-- 取 消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <el-dialog
             :title="
@@ -1414,7 +1430,7 @@
                     ? $t('common.edit') + $t('deviceManage.terminal')
                     : $t('common.add') + $t('deviceManage.terminal')
             "
-            :visible="deviceVisible"
+            v-model="deviceVisible"
             @close="deviceVisibleClose"
             :custom-class="'no-padding-dialog'"
             :width="'1200px'"
@@ -1428,7 +1444,7 @@
         </el-dialog>
         <el-dialog
             :title="settingTitle"
-            :visible="settingVisible"
+            v-model="settingVisible"
             @close="settingVisibleClose"
             :custom-class="'no-padding-dialog'"
             :width="'600px'"
@@ -1462,7 +1478,7 @@ Vue.directive("selectLoadMore", {
     bind(el, binding) {
         // 获取element-ui定义好的scroll盒子
         const SELECTWRAP_DOM = el.querySelector(
-            ".el-select-dropdown .el-select-dropdown__wrap"
+            ".el-select-dropdown .el-select-dropdown__wrap",
         );
         SELECTWRAP_DOM.addEventListener("scroll", function () {
             if (this.scrollHeight - this.scrollTop < this.clientHeight + 1) {
@@ -1582,7 +1598,7 @@ export default {
             devImportTitle: this.$t("deviceManage.importTerminalDevices"),
             // 导入终端设备结果
             importResultTitle: this.$t(
-                "deviceManage.importTerminalDevicesResults"
+                "deviceManage.importTerminalDevicesResults",
             ),
             moduleCode: "deviceInfo",
             templateCode: "deviceInfo",
@@ -1621,7 +1637,7 @@ export default {
                                             ? "text-success"
                                             : "text-error",
                                 },
-                                params.row.msg
+                                params.row.msg,
                             ),
                         ]);
                     },
@@ -1649,10 +1665,10 @@ export default {
             handler(val) {
                 if (val && val.length > 0) {
                     this.syncParams.beginDate = TimeUtil.getDate(
-                        this.timeRange[0]
+                        this.timeRange[0],
                     );
                     this.syncParams.endDate = TimeUtil.getDate(
-                        this.timeRange[1]
+                        this.timeRange[1],
                     );
                 } else {
                     this.syncParams.beginDate = "";
@@ -1859,7 +1875,9 @@ export default {
                 if ((res.success = true)) {
                     // 立即同步成功
                     this.$message.success(
-                        this.$t("deviceManage.instantSynchronizationSuccessful")
+                        this.$t(
+                            "deviceManage.instantSynchronizationSuccessful",
+                        ),
                     );
                 } else {
                     this.$message.error(res.msg);
@@ -1897,7 +1915,7 @@ export default {
                 if (res.success == true) {
                     // 重新同步成功
                     this.$message.success(
-                        this.$t("deviceManage.resynchronizedSuccessfully")
+                        this.$t("deviceManage.resynchronizedSuccessfully"),
                     );
                     this.getSyncInfo();
                 } else {
@@ -2020,7 +2038,7 @@ export default {
         addOrganize() {
             if (!this.addOrganizeVal) {
                 this.$message.warning(
-                    this.$t("common.organizationCannotEmpty")
+                    this.$t("common.organizationCannotEmpty"),
                 );
                 return;
             }
@@ -2036,7 +2054,7 @@ export default {
                 if (res.success == true) {
                     this.$message.success(
                         this.$t("common.organization") +
-                            this.$t("common.addSuccess")
+                            this.$t("common.addSuccess"),
                     );
                     this.addVisible = false;
                     this.getOrgTree(true);
@@ -2102,7 +2120,7 @@ export default {
         editOrganize() {
             if (!this.editOrganizeVal) {
                 this.$message.warning(
-                    this.$t("common.organizationCannotEmpty")
+                    this.$t("common.organizationCannotEmpty"),
                 );
                 return;
             }
@@ -2125,7 +2143,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     this.editVisible = false;
@@ -2142,7 +2160,7 @@ export default {
                             if (res.success == true) {
                                 this.fullscreenLoading.close();
                                 this.$message.success(
-                                    this.$t("common.organizationalEditSuccess")
+                                    this.$t("common.organizationalEditSuccess"),
                                 );
                                 this.editVisible = false;
                                 this.getOrgTree(true);
@@ -2157,7 +2175,7 @@ export default {
                             // this.$message.error('组织修改失败:' + err.status)
                             this.fullscreenLoading.close();
                             this.editVisible = false;
-                        }
+                        },
                     );
                 })
                 .catch(() => {
@@ -2214,10 +2232,10 @@ export default {
                             "span",
                             { slot: "content" },
                             that.$t(
-                                "deviceManage.renderHeaderDeviceStatusPoptip"
-                            )
+                                "deviceManage.renderHeaderDeviceStatusPoptip",
+                            ),
                         ),
-                    ]
+                    ],
                 ),
             ]);
         },
@@ -2229,10 +2247,10 @@ export default {
                 if (res.success == true) {
                     this.$store.dispatch(
                         "RemoveDeviceManageId",
-                        this.params.organizeId
+                        this.params.organizeId,
                     );
                     this.$message.success(
-                        this.$t("common.organizationalDeleteSuccess")
+                        this.$t("common.organizationalDeleteSuccess"),
                     );
                     this.deleteVisible = false;
                     this.getOrgTree(true);
@@ -2263,7 +2281,7 @@ export default {
             this.$api.updateCarOrgRelation(param).then((res) => {
                 if (res.success == true) {
                     this.$message.success(
-                        this.$t("common.vehicleOrganizationModifiedSuccess")
+                        this.$t("common.vehicleOrganizationModifiedSuccess"),
                     );
                     this.treeDialogVisible = false;
                     this.organizationName1 = "";
@@ -2376,7 +2394,7 @@ export default {
                     let params = Object.assign(
                         {},
                         this.params,
-                        this.searchForm
+                        this.searchForm,
                     );
                     params.containChildOrg = this.params.checked ? 1 : 0;
                     delete params.selectObj;
@@ -2478,7 +2496,7 @@ export default {
                             : this.searchForm;
                         this.params = Object.assign(
                             this.params,
-                            this.searchForm
+                            this.searchForm,
                         );
                         this.getData(this.params);
                         this.getDeviceModelList();
@@ -2489,10 +2507,10 @@ export default {
                             this.currentNode = this.$refs.tree.getNode(
                                 this.$store.state.tree.deviceManageId
                                     ? this.$store.state.tree.deviceManageId
-                                    : res.data[0].id
+                                    : res.data[0].id,
                             ).data;
                             this.$refs["tree"].setCurrentKey(
-                                this.params.organizeId
+                                this.params.organizeId,
                             );
                         });
                         // if(type){
@@ -2519,7 +2537,7 @@ export default {
                         this.currentNode = this.$refs.tree.getNode(
                             this.$store.state.tree.deviceManageId
                                 ? this.$store.state.tree.deviceManageId
-                                : res.data[0].id
+                                : res.data[0].id,
                         ).data;
                     }, 1);
                 } else {
@@ -2574,7 +2592,7 @@ export default {
                         organizeId: this.params.organizeId,
                         containChildOrg: this.params.checked == true ? 1 : 0,
                     },
-                    this.searchForm
+                    this.searchForm,
                 );
                 this.$api.doExportDevice(params).then((res) => {
                     if (res.success == true) {
@@ -2591,7 +2609,7 @@ export default {
                                         ) {
                                             var iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -2602,14 +2620,14 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(res.msg);
@@ -2627,7 +2645,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     // 批量删除
@@ -2641,7 +2659,7 @@ export default {
                     this.$api.deleteDevice(param).then((res) => {
                         if (res.success == true) {
                             this.$message.success(
-                                this.$t("deviceManage.doBatchDeleteTitle3")
+                                this.$t("deviceManage.doBatchDeleteTitle3"),
                             );
                             this.$refs.table.clearSelection();
                             this.selection = [];
@@ -2663,7 +2681,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     let ids = [];
@@ -2674,7 +2692,7 @@ export default {
                     this.$api.deleteDevice(param).then((res) => {
                         if (res.success == true) {
                             this.$message.success(
-                                this.$t("deviceManage.doBatchDeleteTitle3")
+                                this.$t("deviceManage.doBatchDeleteTitle3"),
                             );
                             this.$refs.table.clearSelection();
                             this.selection = [];
@@ -2689,7 +2707,7 @@ export default {
         },
         getLabelSelf(val) {
             let attribute = this.deviceDicList.find(
-                (e) => Number(e.sysDictCode) === Number(val)
+                (e) => Number(e.sysDictCode) === Number(val),
             );
             if (attribute) {
                 return attribute.sysDictName;
@@ -2723,9 +2741,9 @@ export default {
                     });
                     if (ids.length) {
                         this.settingTitle = `${this.$t(
-                            "deviceManage.handleCommandText1"
+                            "deviceManage.handleCommandText1",
                         )}${this.selection.length}${this.$t(
-                            "deviceManage.handleCommandText2"
+                            "deviceManage.handleCommandText2",
                         )}`;
                         this.settingParam = {
                             configType: 1,
@@ -2735,7 +2753,7 @@ export default {
                         this.settingDialogVisible = true;
                     } else {
                         this.$message.warning(
-                            this.$t("deviceManage.handleCommandText3")
+                            this.$t("deviceManage.handleCommandText3"),
                         );
                     }
                     break;
@@ -2750,7 +2768,7 @@ export default {
                         .then((res) => {
                             if (!!res.data.totalRecords) {
                                 this.settingTitle = this.$t(
-                                    "deviceManage.handleCommandText4"
+                                    "deviceManage.handleCommandText4",
                                 );
                                 this.settingParam = {
                                     configType: 2,
@@ -2760,7 +2778,7 @@ export default {
                                 this.settingDialogVisible = true;
                             } else {
                                 this.$message.warning(
-                                    this.$t("deviceManage.handleCommandText5")
+                                    this.$t("deviceManage.handleCommandText5"),
                                 );
                             }
                         });
@@ -2768,7 +2786,7 @@ export default {
                     break;
                 case "c":
                     this.settingTitle = this.$t(
-                        "deviceManage.handleCommandText6"
+                        "deviceManage.handleCommandText6",
                     );
                     this.settingParam = {
                         configType: 3,
@@ -2861,6 +2879,149 @@ export default {
     .treeHeightDev {
         min-height: calc(~"100vh - 9rem");
         overflow-x: scroll;
+    }
+
+    /* 左侧组织树样式重写 */
+    .p-a.b-r {
+        padding: 16px 12px 16px 16px !important;
+        background: #fff;
+
+        .tree-search-input {
+            margin-bottom: 12px;
+
+            &:deep(.el-input__wrapper) {
+                height: 32px;
+                padding: 5px 30px 5px 8px !important;
+                border: 1px solid #dcdfe6 !important;
+                border-radius: 2px !important;
+                box-shadow: none !important;
+                background-color: #fff;
+
+                &:hover,
+                &.is-focus,
+                &.is-hover {
+                    border-color: #dcdfe6 !important;
+                    box-shadow: none !important;
+                }
+
+                .el-input__inner {
+                    height: 30px;
+                    line-height: 30px;
+                    font-size: 14px;
+                    color: #606266;
+                    border: none !important;
+                    background: transparent;
+                    box-shadow: none !important;
+
+                    &::placeholder {
+                        color: #c0c4cc;
+                    }
+                }
+
+                .el-input__icon {
+                    color: #c0c4cc;
+                    font-size: 14px;
+                    width: 25px;
+                    line-height: 30px;
+                }
+            }
+        }
+
+        .tree-action-bar {
+            display: flex;
+            gap: 0;
+            margin-bottom: 12px;
+
+            &:deep(.el-button) {
+                width: 38px;
+                height: 26px;
+                margin: 0 2px 0 0;
+                padding: 6px 12px !important;
+                border: 1px solid #dcdfe6 !important;
+                border-radius: 3px !important;
+                background-color: #fff !important;
+                color: #606266 !important;
+                font-size: 12px !important;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                &:hover:not(.is-disabled) {
+                    background-color: #ecf5ff !important;
+                    border-color: #c6e2ff !important;
+                    color: #409eff !important;
+                }
+
+                &.is-disabled {
+                    border-color: #ebeef5 !important;
+                    background-color: #fff !important;
+                    color: #c0c4cc !important;
+                }
+
+                i {
+                    font-size: 12px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        :deep(.el-tree) {
+            background: transparent;
+            color: #303133;
+            font-size: 14px;
+
+            .el-tree-node__content {
+                height: 32px;
+                line-height: 32px;
+                padding-left: 8px !important;
+                border-radius: 4px;
+                transition: background-color 0.2s;
+
+                &:hover {
+                    background-color: #f5f7fa;
+                }
+
+                .el-tree-node__expand-icon {
+                    color: #606266;
+                    font-size: 12px;
+                    margin-right: 4px;
+                    padding: 6px;
+
+                    &.is-leaf {
+                        color: transparent;
+                    }
+                }
+
+                .el-icon {
+                    color: #909399;
+                    margin-right: 6px;
+                    font-size: 14px;
+                }
+
+                .el-tree-node__label {
+                    font-size: 14px;
+                    color: #303133;
+                }
+            }
+
+            .el-tree-node.is-current > .el-tree-node__content {
+                background-color: #edf1f6 !important;
+
+                .el-tree-node__label {
+                    color: #303133;
+                    font-weight: 600;
+                }
+
+                .el-tree-node__expand-icon {
+                    color: #303133;
+                }
+            }
+
+            .el-tree-node:focus > .el-tree-node__content {
+                background-color: #edf1f6 !important;
+            }
+        }
     }
 
     .loading_ {

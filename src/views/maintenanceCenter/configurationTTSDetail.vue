@@ -38,7 +38,7 @@
             <el-table-column prop="createName" label="操作人员" min-width="160px"></el-table-column>
             <el-table-column prop="organizeName" label="所属组织" min-width="160px"></el-table-column>
             <el-table-column prop="result" label="配置结果" min-width="160px">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <div>
                       <span :class="configStatusList[scope.row.result] && configStatusList[scope.row.result].color" v-if="configStatusList[scope.row.result]">●</span>
                       {{configStatusList[scope.row.result]&&configStatusList[scope.row.result].name}}

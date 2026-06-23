@@ -125,8 +125,8 @@
                                     h(
                                         'span',
                                         $t(
-                                            'configurationTemplate.mandatoryApplicationTemplate'
-                                        )
+                                            'configurationTemplate.mandatoryApplicationTemplate',
+                                        ),
                                     ), //表格当前列标题
                                     h(
                                         'Poptip',
@@ -160,16 +160,16 @@
                                                 { slot: 'content' },
                                                 // '设备开机后检查配置项是否修改，若修改则强制下发该配置模板'
                                                 $t(
-                                                    'configurationTemplate.mandatoryApplicationTemplateDesc'
-                                                )
+                                                    'configurationTemplate.mandatoryApplicationTemplateDesc',
+                                                ),
                                             ),
-                                        ]
+                                        ],
                                     ),
                                 ]);
                             }
                         "
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <el-switch
                                 v-btn="
                                     'configurationTemplateEnable&DisableTemplates'
@@ -186,13 +186,13 @@
                         width="120px"
                         fixed="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <a
                                 @click="
                                     goEdit(
                                         scope.row.templateType,
                                         scope.row.id,
-                                        organizeId
+                                        organizeId,
                                     )
                                 "
                                 v-btn="'configurationTemplateEditTemplates'"
@@ -204,7 +204,7 @@
                                 @click="
                                     goDelete(
                                         scope.row.templateType,
-                                        scope.row.id
+                                        scope.row.id,
                                     )
                                 "
                                 v-btn="'configurationTemplateDeleteTemplates'"
@@ -251,18 +251,18 @@
                         :label="$t('configurationTemplate.fileType')"
                         min-width="120px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span
                                 >{{
                                     fileTypeList.find(
                                         (e) =>
                                             Number(e.sysDictCode) ==
-                                            Number(scope.row.fileType)
+                                            Number(scope.row.fileType),
                                     )
                                         ? fileTypeList.find(
                                               (e) =>
                                                   Number(e.sysDictCode) ==
-                                                  Number(scope.row.fileType)
+                                                  Number(scope.row.fileType),
                                           ).sysDictName
                                         : "--"
                                 }}
@@ -293,7 +293,7 @@
                         :label="$t('configurationTemplate.uploadStatus')"
                         min-width="120px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <div class="status-box">
                                 <span v-if="scope.row.uploadStatus === 1"
                                     ><i class="status-1"></i
@@ -326,12 +326,12 @@
                         width="140px"
                         fixed="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <a
                                 @click="
                                     goDelete(
                                         scope.row.templateType,
-                                        scope.row.id
+                                        scope.row.id,
                                     )
                                 "
                                 class="m-r-sm"
@@ -345,7 +345,7 @@
                                     goEdit(
                                         scope.row.templateType,
                                         scope.row.id,
-                                        organizeId
+                                        organizeId,
                                     )
                                 "
                                 class="m-r-sm"
@@ -382,7 +382,7 @@
         </div>
         <!-- 请选择车辆 -->
         <el-dialog
-            :visible="customBol"
+            v-model="customBol"
             :title="$t('configurationTemplate.pleaseSelectVehicle')"
             fill="blue"
             @close="doExit"
@@ -424,7 +424,7 @@
                                         : item.plateNum +
                                           '（' +
                                           $t(
-                                              'configurationTemplate.alreadyBound'
+                                              'configurationTemplate.alreadyBound',
                                           ) +
                                           '）'
                                 "
@@ -434,21 +434,23 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <div slot="footer">
-                <el-button type="default" @click="doExit">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    :loading="updateCustomJsonBol"
-                    :disabled="updateCustomJsonBol"
-                    type="primary"
-                    @click="doSave"
-                >
-                    <!-- 保存 -->
-                    {{ $t("common.save") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button type="default" @click="doExit">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        :loading="updateCustomJsonBol"
+                        :disabled="updateCustomJsonBol"
+                        type="primary"
+                        @click="doSave"
+                    >
+                        <!-- 保存 -->
+                        {{ $t("common.save") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -466,8 +468,8 @@ export default {
                 // 请至少选择一台车辆
                 callback(
                     new Error(
-                        this.$t("configurationTemplate.selectLeastOneVehicle")
-                    )
+                        this.$t("configurationTemplate.selectLeastOneVehicle"),
+                    ),
                 );
             }
         };
@@ -578,12 +580,12 @@ export default {
                     if (res.success) {
                         // 关闭成功！
                         this.$message.success(
-                            this.$t("configurationTemplate.closeSuccess")
+                            this.$t("configurationTemplate.closeSuccess"),
                         );
                     } else {
                         // 关闭失败！
                         this.$message.success(
-                            this.$t("configurationTemplate.closeFail")
+                            this.$t("configurationTemplate.closeFail"),
                         );
                     }
                 });
@@ -597,8 +599,8 @@ export default {
                             this.customBol = false;
                             this.$message.success(
                                 this.$t(
-                                    "configurationTemplate.successfullyOpened"
-                                )
+                                    "configurationTemplate.successfullyOpened",
+                                ),
                             );
                             let params = Object.assign(
                                 {},
@@ -607,15 +609,14 @@ export default {
                                         this.config == "protocol" ? 1 : 2,
                                 },
                                 this.searchForm,
-                                this.params
+                                this.params,
                             );
                             this.hikDevParamTempPage(params);
                         } else {
                             this.$refs["form"].focusFirstField();
                             this.customBol = false;
-                            this.tableData[this.openStatusIndex][
-                                "openStatus"
-                            ] = false;
+                            this.tableData[this.openStatusIndex]["openStatus"] =
+                                false;
                             this.$message.error(`${res.msg}`);
                         }
                     });
@@ -651,7 +652,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     let params = { id: id };
@@ -659,13 +660,13 @@ export default {
                         if (res.success == true) {
                             // 模板已删除成功
                             this.$message.success(
-                                this.$t("configurationTemplate.goDeleteText3")
+                                this.$t("configurationTemplate.goDeleteText3"),
                             );
                         } else {
                             this.$message.error(
                                 this.$t("configurationTemplate.goDeleteText4") +
                                     ":" +
-                                    res.msg
+                                    res.msg,
                             );
                         }
                         this.search();
@@ -835,7 +836,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     let params = {
@@ -847,7 +848,7 @@ export default {
                         if (res.success == true) {
                             // 模板已批量删除成功
                             this.$message.success(
-                                this.$t("configurationTemplate.goDeleteText6")
+                                this.$t("configurationTemplate.goDeleteText6"),
                             );
                         } else {
                             this.$message.error(res.msg);
@@ -894,7 +895,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/deep/.el-tabs {
+:deep(.el-tabs) {
     .el-tabs__header {
         margin: 0 0 12px !important;
     }

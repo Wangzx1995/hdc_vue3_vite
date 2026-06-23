@@ -123,7 +123,7 @@
                                     "
                                     min-width="100px"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <div>{{ scope.row.faultName }}</div>
                                     </template>
                                 </el-table-column>
@@ -178,7 +178,7 @@
                                     "
                                     min-width="100px"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <div>
                                             {{ scope.row.faultName }}
                                             <span

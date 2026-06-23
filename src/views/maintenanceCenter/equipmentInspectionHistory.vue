@@ -129,7 +129,7 @@
                                 :label="$t('common.operate')"
                                 width=""
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-button
                                         type="text"
                                         class="text-info"
@@ -159,25 +159,27 @@
         <el-dialog
             :fullscreen="true"
             :title="$t('equipmentInspection.selfInspectionResults')"
-            :visible="showDetailBol"
+            v-model="showDetailBol"
             @close="showDetailBol = false"
             class="no-padding no-border"
             :custom-class="'zijian'"
         >
-            <div slot="title" class="zijian-title">
-                <h2>
-                    <!-- 自检结果 -->
-                    {{ $t("equipmentInspection.selfInspectionResults") }}
-                </h2>
-                <el-button
-                    icon="el-icon-close"
-                    type="text"
-                    @click="showDetailBol = false"
-                >
-                    <!-- 关闭 -->
-                    {{ $t("common.close") }}
-                </el-button>
-            </div>
+            <template #title>
+                <div class="zijian-title">
+                    <h2>
+                        <!-- 自检结果 -->
+                        {{ $t("equipmentInspection.selfInspectionResults") }}
+                    </h2>
+                    <el-button
+                        icon="el-icon-close"
+                        type="text"
+                        @click="showDetailBol = false"
+                    >
+                        <!-- 关闭 -->
+                        {{ $t("common.close") }}
+                    </el-button>
+                </div>
+            </template>
             <el-tabs v-model="config" @tab-click="handleTabClick">
                 <!-- 报文 -->
                 <el-tab-pane
@@ -228,7 +230,7 @@
                                     :label="$t('equipmentInspection.content')"
                                     show-overflow-tooltip
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <span>{{ scope.row.content }}</span>
                                     </template>
                                 </el-table-column>
@@ -271,7 +273,7 @@
                                     :label="$t('equipmentInspection.content')"
                                     show-overflow-tooltip
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <span>{{ scope.row.content }}</span>
                                     </template>
                                 </el-table-column>
@@ -314,7 +316,7 @@
                                     :label="$t('equipmentInspection.content')"
                                     show-overflow-tooltip
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <span>{{ scope.row.content }}</span>
                                     </template>
                                 </el-table-column>

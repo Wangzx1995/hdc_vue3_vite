@@ -28,7 +28,7 @@
                 </el-tag>
                 <span v-else>--</span>
             </div>
-            <div slot="content">
+            <template #content><div>
                 <span> {{ $t("conditionMonitoring.dataUpdateTime") }}： </span>
                 <span v-if="deviceInfo.deviceStatusTime">
                     {{
@@ -45,12 +45,12 @@
                 >
                     {{ $t("conditionMonitoring.onlineAndOfflineStatus") }}
                 </el-button>
-            </div>
+            </div></template>
         </el-tooltip>
 
         <el-dialog
             :title="$t('common.dailyOnlineAndOfflineStatus')"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             :append-to-body="true"
             :close-on-click-modal="true"
             width="1100px"

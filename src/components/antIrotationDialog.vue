@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-dialog
-            :visible="thisModal"
+            v-model="thisModal"
             :title="title"
             class="modal-nopadding"
             @close="doCancel"
@@ -20,7 +20,7 @@
                     >
                         <!-- <el-table-column type="radio"></el-table-column> -->
                         <el-table-column type="expand">
-                            <template slot-scope="props">
+                            <template #default="props">
                                 <el-table
                                     :data="props.row.ipLockParamsInfoList"
                                     stripe
@@ -32,12 +32,12 @@
                                             $t('conditionMonitoring.centerName')
                                         "
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div>
                                                 <!-- 中心 -->
                                                 {{
                                                     $t(
-                                                        "conditionMonitoring.center"
+                                                        "conditionMonitoring.center",
                                                     )
                                                 }}{{ scope.row.coreNum + 1 }}
                                             </div>
@@ -51,7 +51,7 @@
                                         "
                                         width="120"
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div>
                                                 <!-- "开启" "关闭" -->
                                                 {{
@@ -70,7 +70,7 @@
                                         "
                                         width="160"
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div>
                                                 {{ scope.row.protocolTypeName }}
                                             </div>
@@ -82,7 +82,7 @@
                                         :label="$t('antIrotationNet.protocol')"
                                         width="120"
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div>
                                                 {{
                                                     scope.row
@@ -99,7 +99,7 @@
                                         "
                                         width="120"
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div>
                                                 {{
                                                     scope.row
@@ -126,7 +126,7 @@
                             :label="$t('antIrotationNet.templateName')"
                             width="360"
                         >
-                            <template slot-scope="props">
+                            <template #default="props">
                                 <div>{{ props.row.ipLockInfo.name }}</div>
                             </template>
                         </el-table-column>
@@ -136,7 +136,7 @@
                             :label="$t('antIrotationNet.createName')"
                             width="120"
                         >
-                            <template slot-scope="props">
+                            <template #default="props">
                                 <div>{{ props.row.ipLockInfo.createName }}</div>
                             </template>
                         </el-table-column>
@@ -145,7 +145,7 @@
                             prop="updateTime"
                             :label="$t('antIrotationNet.updateTime')"
                         >
-                            <template slot-scope="props">
+                            <template #default="props">
                                 <div>{{ props.row.ipLockInfo.updateTime }}</div>
                             </template>
                         </el-table-column>
@@ -246,7 +246,7 @@ export default {
                 if (this.organizeIdTitle) {
                     // this.title = `整组防转网(统计中。。。)`;
                     this.title = `${this.$t(
-                        "antIrotationNet.entireAntiRotationNetwork"
+                        "antIrotationNet.entireAntiRotationNetwork",
                     )}(${this.$t("antIrotationNet.inStatistics")}。。。)`;
                     this.$api
                         .getExistIpLockDevice({
@@ -256,14 +256,14 @@ export default {
                             if (res.success) {
                                 // this.title = `整组防转网（${res.data.recordTotleNum}）`;
                                 this.title = `${this.$t(
-                                    "antIrotationNet.entireAntiRotationNetwork"
+                                    "antIrotationNet.entireAntiRotationNetwork",
                                 )}（${res.data.recordTotleNum}）`;
                             }
                         });
                 } else {
                     // this.title = `批量防转网（${this.selectionNum}）`;
                     this.title = `${this.$t(
-                        "antIrotationNet.batchAntiRotationNetwork"
+                        "antIrotationNet.batchAntiRotationNetwork",
                     )}（${this.selectionNum}）`;
                 }
             },
@@ -309,7 +309,7 @@ export default {
             } else {
                 // this.$message.warning("请选择一个模板");
                 this.$message.warning(
-                    this.$t("antIrotationNet.pleaseChooseATemplate")
+                    this.$t("antIrotationNet.pleaseChooseATemplate"),
                 );
                 this.$emit("ipLockId", "");
                 return;
@@ -356,7 +356,7 @@ export default {
                 if (res.success == true) {
                     res.data.results.forEach((item) => {
                         item["ipLockInfo"].updateTime = TimeUtil.getDateTime(
-                            item["ipLockInfo"].updateTime
+                            item["ipLockInfo"].updateTime,
                         );
                         item["ipLockParamsInfoList"].forEach((item_) => {
                             if (item_.protocolType) {

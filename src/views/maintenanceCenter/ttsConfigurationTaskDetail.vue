@@ -283,7 +283,7 @@
                         :label="$t('ttsConfiguration.configurationResult')"
                         min-width="160px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <div>
                                 <span
                                     :class="
@@ -312,7 +312,7 @@
                         :label="$t('common.deviceStatus')"
                         min-width="120px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <el-tag
                                 type="success"
                                 v-if="scope.row.deviceStatus === 1"
@@ -354,7 +354,7 @@
                         :label="$t('common.operate')"
                         width="100px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <a
                                 @click="
                                     startConfig(
@@ -862,7 +862,7 @@ export default {
 };
 </script>
 
-<style scoped lang="less" scoped>
+<style scoped lang="less">
 .wrap {
     height: calc(~"100% - 35px");
     display: flex;

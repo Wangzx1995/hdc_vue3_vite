@@ -140,7 +140,7 @@
                     :label="$t('cardSwapRecord.createTime')"
                     min-width="180px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span v-if="scope.row.createTime">
                             {{
                                 $moment(scope.row.createTime).format(
@@ -169,7 +169,7 @@
                     :label="$t('firmware.firmwareType')"
                     min-width="150px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span v-if="scope.row.type === 'main'">
                             <!-- 主机 -->
                             {{ $t("firmware.host") }}
@@ -186,7 +186,7 @@
                     prop="peripheralType"
                     width="160px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span
                             v-if="
                                 scope.row.peripheralType &&
@@ -216,7 +216,7 @@
                     :label="$t('deviceUpgrade.upgradeStateTime')"
                     min-width="160px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         {{
                             $moment(scope.row.upgradeStateTime).format(
                                 "YYYY-MM-DD HH:mm:ss"
@@ -246,7 +246,7 @@
                     min-width="130px"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <upgradeProgress :upgradeData="scope.row">
                             <span>
                                 <!-- "自动": "手动" -->
@@ -458,7 +458,7 @@ export default {
 }
 .el-timeline {
     padding-left: 8px;
-    /deep/.el-timeline-item {
+    :deep(.el-timeline-item){
         padding-bottom: 8px;
         .el-timeline-item__wrapper {
             height: 44px;

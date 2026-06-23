@@ -51,9 +51,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow1">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[0].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
               <el-col :span="5">
@@ -73,9 +73,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div class="channelShow2">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[0].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -89,9 +89,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow2">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[2].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
               <el-col :span="11">
@@ -107,9 +107,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow2">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[1].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -123,9 +123,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow2">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[3].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
             </el-row>
@@ -143,9 +143,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow3">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[0].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <div class="contentBottom" type="flex" justify="space-between">
                     <el-popover
@@ -160,9 +160,9 @@
                           :value="item.value">
                         </el-option>
                       </el-select>
-                      <el-form-item slot="reference" class="textCenter" style="width:48%;float:left" label="">
+                      <template #reference><el-form-item class="textCenter" style="width:48%;float:left" label="">
                         <div class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[5].inputChannel}}</div>
-                      </el-form-item>
+                      </el-form-item></template>
                     </el-popover>
                     <el-popover
                       placement="top"
@@ -176,9 +176,9 @@
                           :value="item.value">
                         </el-option>
                       </el-select>
-                      <el-form-item slot="reference" class="textCenter" style="width:48%;float:right" label="">
+                      <template #reference><el-form-item class="textCenter" style="width:48%;float:right" label="">
                         <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[4].inputChannel}}</div>
-                      </el-form-item>
+                      </el-form-item></template>
                     </el-popover>
                 </div>
               </el-col>
@@ -195,9 +195,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[1].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -211,9 +211,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[2].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -227,9 +227,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[3].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
             </el-row>
@@ -247,9 +247,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[0].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -263,9 +263,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[3].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -279,9 +279,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[6].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
               <el-col :span="7">
@@ -297,9 +297,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[1].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -313,9 +313,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[4].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -329,9 +329,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[7].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
                 <el-col :span="7">
@@ -347,9 +347,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[2].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -363,9 +363,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[5].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -379,9 +379,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiProgramMgrInfo_'+index]['pageList'].windowList[8].inputChannel}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
             </el-row>
@@ -430,9 +430,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div class="channelShow1">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][0].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
               <el-col :span="5">
@@ -452,9 +452,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow2">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][0].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -468,9 +468,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow2">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][2].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
               <el-col :span="11">
@@ -486,9 +486,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow2">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][1].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -502,9 +502,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow2">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][3].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
             </el-row>
@@ -522,9 +522,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow3">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][0].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <div class="contentBottom" type="flex" justify="space-between">
                     <el-popover
@@ -539,9 +539,9 @@
                           :value="item.value">
                         </el-option>
                       </el-select>
-                      <el-form-item slot="reference" class="textCenter" style="width:48%;float:left" label="">
+                      <template #reference><el-form-item class="textCenter" style="width:48%;float:left" label="">
                         <div class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][5].displayChannelNo}}</div>
-                      </el-form-item>
+                      </el-form-item></template>
                     </el-popover>
                     <el-popover
                       placement="top"
@@ -555,9 +555,9 @@
                           :value="item.value">
                         </el-option>
                       </el-select>
-                      <el-form-item slot="reference" class="textCenter" style="width:48%;float:right" label="">
+                      <template #reference><el-form-item class="textCenter" style="width:48%;float:right" label="">
                         <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][4].displayChannelNo}}</div>
-                      </el-form-item>
+                      </el-form-item></template>
                     </el-popover>
                 </div>
               </el-col>
@@ -574,9 +574,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][1].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -590,9 +590,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][2].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -606,9 +606,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][3].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
             </el-row>
@@ -626,9 +626,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][0].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -642,9 +642,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][3].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -658,9 +658,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][6].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
               <el-col :span="7">
@@ -676,9 +676,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][1].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -692,9 +692,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][4].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -708,9 +708,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][7].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
                 <el-col :span="7">
@@ -726,9 +726,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][2].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -742,9 +742,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][5].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
                 <el-popover
                   placement="top"
@@ -758,9 +758,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div  class="channelShow4">{{'通道'+form['IsApiPreviewSwitchInfo']['displayWindowList'][8].displayChannelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
             </el-row>
@@ -790,9 +790,9 @@
                       :value="item.value">
                     </el-option>
                   </el-select>
-                  <el-form-item slot="reference" class="textCenter" label="">
+                  <template #reference><el-form-item class="textCenter" label="">
                     <div class="channelShow1">{{'通道'+form['IsApiSensorInInfo_'+index].channelNo}}</div>
-                  </el-form-item>
+                  </el-form-item></template>
                 </el-popover>
               </el-col>
               <el-col :span="5">

@@ -1,10 +1,7 @@
 <template>
     <div class="p-a-md">
         <div id="id" style="width: 0; height: 0"></div>
-        <el-dialog
-            title="标定检测区域"
-            :visible.sync="openSurveyBol"
-        >
+        <el-dialog title="标定检测区域" v-model="openSurveyBol">
             <div class="divHeight">
                 <!-- <div class="h-full inline" style="height:100%;width:100%;" id="videoPlay"></div> -->
                 <!--控件版本-->
@@ -49,10 +46,10 @@
                     </div>
                 </div>
             </div>
-            <!-- <span slot="footer" class="dialog-footer">
+            <!-- <template #footer><span class="dialog-footer">
         <el-button type="primary" @click="openSurveyBol=false">确 定</el-button>
         <el-button @click="openSurveyBol = false">取 消</el-button> -->
-            <!-- </span> -->
+            <!-- </span></template> -->
         </el-dialog>
         <el-form
             ref="PrivateWiwForm"
@@ -171,8 +168,8 @@
                                                 'info'
                                             ][0]['speed']
                                         "
-                                        ><span slot="suffix"
-                                            >km/h</span
+                                        ><template #suffix
+                                            ><span>km/h</span></template
                                         ></el-input
                                     >
                                 </el-form-item>
@@ -305,7 +302,9 @@
                                                 'info'
                                             ][0]['installHeight']
                                         "
-                                        ><span slot="suffix">米</span></el-input
+                                        ><template #suffix
+                                            ><span>米</span></template
+                                        ></el-input
                                     >
                                 </el-form-item>
                             </div>
@@ -346,7 +345,7 @@
                                                 'info'
                                             ][0]['confidence']
                                         "
-                                        ><span slot="suffix">%</span></el-input
+                                        ><template #suffix><span>%</span></template></el-input
                                     >
                                 </el-form-item> -->
                                 <el-form-item label="算法置信度">
@@ -461,7 +460,9 @@
                                                 'info'
                                             ][0]['angle']
                                         "
-                                        ><span slot="suffix">°</span></el-input
+                                        ><template #suffix
+                                            ><span>°</span></template
+                                        ></el-input
                                     >
                                 </el-form-item>
                             </div>
@@ -836,7 +837,7 @@ export default {
                         this.tabAndConfiguration[this.chanNoIndex],
                         "",
                         "",
-                        true
+                        true,
                     );
                 }
             },
@@ -976,7 +977,7 @@ export default {
                                   ].tabList[this.tabIndex].capabilitys[
                                       this.chooseIndex
                                   ].confidenceList.find(
-                                      (e) => e.value === val.info[0].confidence
+                                      (e) => e.value === val.info[0].confidence,
                                   ).label
                               }&${
                                   this.tabAndConfiguration[
@@ -990,7 +991,7 @@ export default {
                                               this.activeChannel
                                           ]["param983_1"]["info"][0][
                                               "confidence"
-                                          ]
+                                          ],
                                   ).label
                               }`
                             : "";
@@ -1013,7 +1014,8 @@ export default {
                                   ].tabList[this.tabIndex].capabilitys[
                                       this.chooseIndex
                                   ].sensitivityList.find(
-                                      (e) => e.value === val.info[0].sensitivity
+                                      (e) =>
+                                          e.value === val.info[0].sensitivity,
                                   ).label
                               }&${
                                   this.tabAndConfiguration[
@@ -1027,7 +1029,7 @@ export default {
                                               this.activeChannel
                                           ]["param983_1"]["info"][0][
                                               "sensitivity"
-                                          ]
+                                          ],
                                   ).label
                               }`
                             : "";
@@ -1252,7 +1254,7 @@ export default {
                               }/左后方注水报警/事件上传平台设置&第${val[
                                   "info"
                               ][0]["uploadEventPlatform"].join(
-                                  "、"
+                                  "、",
                               )}中心&第${this.copyForm["param983"][
                                   this.activeChannel
                               ]["param983_1"]["info"][0][
@@ -1402,7 +1404,7 @@ export default {
                                   ].tabList[this.tabIndex].capabilitys[
                                       this.chooseIndex
                                   ].confidenceList.find(
-                                      (e) => e.value === val.info[0].confidence
+                                      (e) => e.value === val.info[0].confidence,
                                   ).label
                               }&${
                                   this.tabAndConfiguration[
@@ -1416,7 +1418,7 @@ export default {
                                               this.activeChannel
                                           ]["param983_2"]["info"][0][
                                               "confidence"
-                                          ]
+                                          ],
                                   ).label
                               }`
                             : "";
@@ -1439,7 +1441,8 @@ export default {
                                   ].tabList[this.tabIndex].capabilitys[
                                       this.chooseIndex
                                   ].sensitivityList.find(
-                                      (e) => e.value === val.info[0].sensitivity
+                                      (e) =>
+                                          e.value === val.info[0].sensitivity,
                                   ).label
                               }&${
                                   this.tabAndConfiguration[
@@ -1453,7 +1456,7 @@ export default {
                                               this.activeChannel
                                           ]["param983_2"]["info"][0][
                                               "sensitivity"
-                                          ]
+                                          ],
                                   ).label
                               }`
                             : "";
@@ -1678,7 +1681,7 @@ export default {
                               }/右后方注水报警/事件上传平台设置&第${val[
                                   "info"
                               ][0]["uploadEventPlatform"].join(
-                                  "、"
+                                  "、",
                               )}中心&第${this.copyForm["param983"][
                                   this.activeChannel
                               ]["param983_2"]["info"][0][
@@ -1777,7 +1780,7 @@ export default {
             chooseType,
             chooseIndex,
             bol,
-            index_
+            index_,
         ) {
             this.activeName = activeName;
             if (chooseType !== "" && chooseIndex !== "") {
@@ -1873,7 +1876,7 @@ export default {
                             this.$set(
                                 this.copyForm,
                                 `param983_`,
-                                JSON.parse(JSON.stringify(formData))
+                                JSON.parse(JSON.stringify(formData)),
                             );
                             if (!this.form["param983"])
                                 this.$set(this.form, "param983", {});
@@ -1884,7 +1887,7 @@ export default {
                                 this.$set(
                                     this.form["param983"],
                                     this.activeChannel,
-                                    {}
+                                    {},
                                 );
                             if (
                                 this.form["param983"] &&
@@ -1896,18 +1899,18 @@ export default {
                                 this.$set(
                                     this.form["param983"][this.activeChannel],
                                     `param983_`,
-                                    formData
+                                    formData,
                                 );
                             this.$set(
                                 this.copyForm,
                                 `param983_`,
-                                JSON.parse(JSON.stringify(formData))
+                                JSON.parse(JSON.stringify(formData)),
                             );
                             if (!this.copyForm["param983"])
                                 this.$set(
                                     this.copyForm,
                                     "param983",
-                                    JSON.parse(JSON.stringify({}))
+                                    JSON.parse(JSON.stringify({})),
                                 );
                             if (
                                 this.copyForm["param983"] &&
@@ -1916,7 +1919,7 @@ export default {
                                 this.$set(
                                     this.copyForm["param983"],
                                     this.activeChannel,
-                                    JSON.parse(JSON.stringify({}))
+                                    JSON.parse(JSON.stringify({})),
                                 );
                             if (
                                 this.copyForm["param983"] &&
@@ -1930,13 +1933,13 @@ export default {
                                         this.activeChannel
                                     ],
                                     `param983_`,
-                                    JSON.parse(JSON.stringify(formData))
+                                    JSON.parse(JSON.stringify(formData)),
                                 );
                         }
                         this.$set(
                             this.form,
                             `param983_${this.chooseType}`,
-                            formData
+                            formData,
                         );
                         if (!this.form["param983"])
                             this.$set(this.form, "param983", {});
@@ -1947,7 +1950,7 @@ export default {
                             this.$set(
                                 this.form["param983"],
                                 this.activeChannel,
-                                {}
+                                {},
                             );
                         if (
                             this.form["param983"] &&
@@ -1959,18 +1962,18 @@ export default {
                             this.$set(
                                 this.form["param983"][this.activeChannel],
                                 `param983_${this.chooseType}`,
-                                formData
+                                formData,
                             );
                         this.$set(
                             this.copyForm,
                             `param983_${this.chooseType}`,
-                            JSON.parse(JSON.stringify(formData))
+                            JSON.parse(JSON.stringify(formData)),
                         );
                         if (!this.copyForm["param983"])
                             this.$set(
                                 this.copyForm,
                                 "param983",
-                                JSON.parse(JSON.stringify({}))
+                                JSON.parse(JSON.stringify({})),
                             );
                         if (
                             this.copyForm["param983"] &&
@@ -1979,7 +1982,7 @@ export default {
                             this.$set(
                                 this.copyForm["param983"],
                                 this.activeChannel,
-                                JSON.parse(JSON.stringify({}))
+                                JSON.parse(JSON.stringify({})),
                             );
                         if (
                             this.copyForm["param983"] &&
@@ -1991,7 +1994,7 @@ export default {
                             this.$set(
                                 this.copyForm["param983"][this.activeChannel],
                                 `param983_${this.chooseType}`,
-                                JSON.parse(JSON.stringify(formData))
+                                JSON.parse(JSON.stringify(formData)),
                             );
                         this.childConfigParams = false;
                         console.log(this.form);
@@ -2015,7 +2018,7 @@ export default {
                     this.form = Object.assign(
                         {},
                         this.form,
-                        this.form["param983"][chanNo]
+                        this.form["param983"][chanNo],
                     );
                     this.activeChannel = chanNo;
                     //this.activeName = (this.deviceCapability['intelliDrive_WIW'][index]['enable'] && this.deviceCapability['intelliDrive_WIW'][index]['enable'].length) || this.deviceCapability['intelliDrive_WIW'][index]['speedCalibration'] ? 'WIW全局配置' : this.tabAndConfiguration[index]['tabList'][0]['name'];
@@ -2041,7 +2044,7 @@ export default {
                         this.activeName,
                         this.tabAndConfiguration[this.chanNoIndex],
                         "",
-                        ""
+                        "",
                     );
                 }
             });
@@ -2072,7 +2075,7 @@ export default {
                         this.chooseType,
                         this.chooseIndex,
                         false,
-                        index_
+                        index_,
                     );
                 }
             });
@@ -2087,13 +2090,13 @@ export default {
                     item,
                     this.tabAndConfiguration[index]["tabList"],
                     "左后方注水报警",
-                    1
+                    1,
                 );
                 this.tabListPublic(
                     item,
                     this.tabAndConfiguration[index]["tabList"],
                     "右后方注水报警",
-                    2
+                    2,
                 );
             });
             console.log(this.tabAndConfiguration);
@@ -2233,7 +2236,7 @@ export default {
                             this_.setCallbacks();
                             obj.JS_CreateWnd(id, width, height).then(
                                 function () {
-                                    obj
+                                    (obj
                                         .JS_RequestInterface({
                                             funcName: "SetWIWAreaParams",
                                             arguments: {
@@ -2319,13 +2322,13 @@ export default {
                                             })
                                             .then((oData) => {
                                                 console.log(oData);
-                                            });
-                                }
+                                            }));
+                                },
                             );
                         },
                         function () {
                             this.$message.error("控件服务启动失败！");
-                        }
+                        },
                     );
                 },
                 // getWIWArea(){
@@ -2404,63 +2407,72 @@ export default {
                                 "param983_0." +
                                     this.activeChannel +
                                     ".info.0.area.useless.useless.useless"
-                            ] = `param983_0.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/左后方注水报警/标定区域&新区域`;
+                            ] =
+                                `param983_0.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/左后方注水报警/标定区域&新区域`;
                             break;
                         case 1:
                             this.formData[
                                 "param983_1." +
                                     this.activeChannel +
                                     ".info.0.area.useless.useless.useless"
-                            ] = `param983_1.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/左后方注水报警/标定区域&新区域`;
+                            ] =
+                                `param983_1.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/左后方注水报警/标定区域&新区域`;
                             break;
                         case 2:
                             this.formData[
                                 "param983_2." +
                                     this.activeChannel +
                                     ".info.0.area.useless.useless.useless"
-                            ] = `param983_2.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/右后方注水报警/标定区域&新区域`;
+                            ] =
+                                `param983_2.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/右后方注水报警/标定区域&新区域`;
                             break;
                         case 3:
                             this.formData[
                                 "param983_3." +
                                     this.activeChannel +
                                     ".info.0.area.useless.useless.useless"
-                            ] = `param983_3.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/右后方注水报警/标定区域&新区域`;
+                            ] =
+                                `param983_3.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/右后方注水报警/标定区域&新区域`;
                             break;
                         case 4:
                             this.formData[
                                 "param983_4." +
                                     this.activeChannel +
                                     ".info.0.area.useless.useless.useless"
-                            ] = `param983_4.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/全区域（M2设备）/标定区域&新区域`;
+                            ] =
+                                `param983_4.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/全区域（M2设备）/标定区域&新区域`;
                             break;
                         case 5:
                             this.formData[
                                 "param983_5." +
                                     this.activeChannel +
                                     ".info.0.area.useless.useless.useless"
-                            ] = `param983_5.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/前侧盲区/左后方注水报警/标定区域&新区域`;
+                            ] =
+                                `param983_5.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/前侧盲区/左后方注水报警/标定区域&新区域`;
                             break;
                         case 6:
                             this.formData[
                                 "param983_6." +
                                     this.activeChannel +
                                     ".info.0.area.useless.useless.useless"
-                            ] = `param983_6.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/前侧盲区/右后方注水报警/标定区域&新区域`;
+                            ] =
+                                `param983_6.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/前侧盲区/右后方注水报警/标定区域&新区域`;
                             break;
                         case 7:
                             this.formData[
                                 "param983_7." +
                                     this.activeChannel +
                                     ".info.0.area.useless.useless.useless"
-                            ] = `param983_7.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/后侧盲区/左后方注水报警/标定区域&新区域`;
+                            ] =
+                                `param983_7.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/后侧盲区/左后方注水报警/标定区域&新区域`;
                             break;
                         case 8:
                             this.formData[
                                 "param983_8." +
                                     this.activeChannel +
                                     ".info.0.area.useless.useless.useless"
-                            ] = `param983_8.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/后侧盲区/右后方注水报警/标定区域&新区域`;
+                            ] =
+                                `param983_8.${this.activeChannel}.info.0.area.useless.useless.useless&主动安全设置/WIW/通道${this.activeChannel}/后侧盲区/右后方注水报警/标定区域&新区域`;
                             break;
                     }
 
@@ -2570,7 +2582,7 @@ export default {
                         "videoPlay",
                         offsetWidth,
                         offsetHeight,
-                        areaContent
+                        areaContent,
                     );
                     // setTimeout(() => {
                     //   this.webVersionControl = this.initWebControl(this.webVersionControl, "AEStreamWebVersion",0, 0);
@@ -2585,7 +2597,7 @@ export default {
                 () => {},
                 () => {
                     console.log("控件销毁失败");
-                }
+                },
             );
             this.openSurveyBol = false;
         },
@@ -2626,7 +2638,7 @@ export default {
                                                             res.data;
                                                         if (isLastVerson) {
                                                             that.$message.info(
-                                                                "当前Web控件版本已经是最新的！"
+                                                                "当前Web控件版本已经是最新的！",
                                                             );
                                                             that.notLastVerson = false;
                                                         } else {
@@ -2650,9 +2662,13 @@ export default {
                                                                 "当前控件版本不是最新,是否要下载最新控件,下载安装后需刷新页面。",
                                                                 {
                                                                     confirmButtonText:
-                                                                        this.$t("common.ok"),
+                                                                        this.$t(
+                                                                            "common.ok",
+                                                                        ),
                                                                     cancelButtonText:
-                                                                        this.$t("common.cancel"),
+                                                                        this.$t(
+                                                                            "common.cancel",
+                                                                        ),
                                                                     customClass:
                                                                         "MessageTop",
                                                                     onConfirm:
@@ -2661,27 +2677,27 @@ export default {
                                                                         },
                                                                     onCancel:
                                                                         () => {},
-                                                                }
+                                                                },
                                                             );
                                                         }
                                                     } else {
                                                         that.$message.error(
-                                                            "调用控件版本比对接口失败！"
+                                                            "调用控件版本比对接口失败！",
                                                         );
                                                     }
                                                 });
                                         } else {
                                             that.$message.error(
-                                                "查询控件版本号失败！"
+                                                "查询控件版本号失败！",
                                             );
                                         }
                                     });
-                                }
+                                },
                             );
                         },
                         function () {
                             that.$message.error("查询版本控件启动失败!!!!");
-                        }
+                        },
                     );
                 },
                 cbConnectError: () => {
@@ -2730,7 +2746,7 @@ export default {
                         this.downloadOcx();
                     },
                     onCancel: () => {},
-                }
+                },
             );
         },
     },
@@ -2744,11 +2760,11 @@ export default {
                     this.webVersionControl,
                     "AEStreamWebVersion",
                     0,
-                    0
+                    0,
                 );
             }
         }, 2000);
-        window.addEventListener("scroll", () => {
+        (window.addEventListener("scroll", () => {
             if (this.videoPlayControl != null) {
                 let box = document.getElementById("videoPlay");
                 let offsetHeight = box.offsetHeight;
@@ -2757,7 +2773,7 @@ export default {
                     this.videoPlayControl,
                     "videoPlay",
                     offsetWidth,
-                    offsetHeight
+                    offsetHeight,
                 );
             }
         }),
@@ -2771,10 +2787,10 @@ export default {
                         this.videoPlayControl,
                         "videoPlay",
                         offsetWidth,
-                        offsetHeight
+                        offsetHeight,
                     );
                 }
-            });
+            }));
     },
 };
 </script>

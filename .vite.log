@@ -1,0 +1,1807 @@
+
+  VITE v5.4.21  ready in 391 ms
+
+  ➜  Local:   http://localhost:19528/
+  ➜  Network: http://30.159.33.61:19528/
+  ➜  Network: http://192.168.255.254:19528/
+  ➜  Network: http://30.41.34.199:19528/
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+Files in the public directory are served at the root path.
+Instead of /static/jsplugin/jquery.cookie.js, use /jsplugin/jquery.cookie.js.
+Files in the public directory are served at the root path.
+Instead of /static/jsplugin/uuid.js, use /jsplugin/uuid.js.
+Files in the public directory are served at the root path.
+Instead of /static/js/marked.min.js, use /js/marked.min.js.
+Files in the public directory are served at the root path.
+Instead of /static/jsplugin/HATMediaJsPlugin-1.0.0.js, use /jsplugin/HATMediaJsPlugin-1.0.0.js.
+Files in the public directory are served at the root path.
+Instead of /static/jsplugin/jquery-1.12.1.min.js, use /jsplugin/jquery-1.12.1.min.js.
+Files in the public directory are served at the root path.
+Instead of /static/jsplugin/cryptico.min.js, use /jsplugin/cryptico.min.js.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.js, use /js/WasmTest.js.
+Files in the public directory are served at the root path.
+Instead of /static/js/web-control.min.js, use /js/web-control.min.js.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+DEPRECATION WARNING [legacy-js-api]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+
+More info: https://sass-lang.com/d/legacy-js-api
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "../../theme/common/var-common.scss";
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/hui-pro/tree-select/theme/index.scss 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+2 │ @import "../../theme/mixins/utils.scss";
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/hui-pro/tree-select/theme/index.scss 2:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+3 │ @import "../../theme/mixins/mixins.scss";
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/hui-pro/tree-select/theme/index.scss 3:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import 'function';
+  │         ^^^^^^^^^^
+  ╵
+    src/components/hui-pro/theme/mixins/mixins.scss 1:9      @import
+    src/components/hui-pro/tree-select/theme/index.scss 3:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import 'config';
+  │         ^^^^^^^^
+  ╵
+    src/components/hui-pro/theme/mixins/function.scss 1:9    @import
+    src/components/hui-pro/theme/mixins/mixins.scss 1:9      @import
+    src/components/hui-pro/tree-select/theme/index.scss 3:9  root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use string.index instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+13 │   @if str-index($selector, $modifier-separator) {
+   │       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    src/components/hui-pro/theme/mixins/function.scss 13:7    containsModifier()
+    src/components/hui-pro/theme/mixins/function.scss 39:11   hitAllSpecialNestRule()
+    src/components/hui-pro/theme/mixins/mixins.scss 26:7      e()
+    src/components/hui-pro/tree-select/theme/index.scss 33:5  @content
+    src/components/hui-pro/theme/mixins/mixins.scss 9:5       b()
+    src/components/hui-pro/tree-select/theme/index.scss 5:1   root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use string.index instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+22 │   @if str-index($selector, '.' + $state-prefix) {
+   │       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    src/components/hui-pro/theme/mixins/function.scss 22:7    containWhenFlag()
+    src/components/hui-pro/theme/mixins/function.scss 39:42   hitAllSpecialNestRule()
+    src/components/hui-pro/theme/mixins/mixins.scss 26:7      e()
+    src/components/hui-pro/tree-select/theme/index.scss 33:5  @content
+    src/components/hui-pro/theme/mixins/mixins.scss 9:5       b()
+    src/components/hui-pro/tree-select/theme/index.scss 5:1   root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use string.index instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+31 │   @if str-index($selector, ':') {
+   │       ^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    src/components/hui-pro/theme/mixins/function.scss 31:7    containPseudoClass()
+    src/components/hui-pro/theme/mixins/function.scss 40:5    hitAllSpecialNestRule()
+    src/components/hui-pro/theme/mixins/mixins.scss 26:7      e()
+    src/components/hui-pro/tree-select/theme/index.scss 33:5  @content
+    src/components/hui-pro/theme/mixins/mixins.scss 9:5       b()
+    src/components/hui-pro/tree-select/theme/index.scss 5:1   root stylesheet
+
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+3:45:14 PM [vite] warning: <div> cannot be child of <tr>, according to HTML specifications. This can cause hydration errors or potentially disrupt future functionality.
+33 |                  <tbody>
+34 |                      <tr style="padding: 0 0; width: 100%">
+35 |                          <div
+   |                          ^^^^
+36 |                              style="
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 |                                  padding: 0 0.95rem;
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+38 |                                  background-color: rgb(245, 245, 245);
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 |                              "
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+40 |                          >
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^
+41 |                              <th v-for="(week, key) in WEEKS" :key="key">
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+42 |                                  {{ week }}
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 |                              </th>
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+44 |                          </div>
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  Plugin: vite:vue
+  File: /Users/wzx/Desktop/vue/hdc_vue3_vite/src/components/datePannel.vue
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/noData.svg instead of /static/images/noData.svg.
+If you intend to use the URL of that asset, use /images/noData.svg?url.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+3:48:26 PM [vite] hmr update /src/views/404.vue
+3:48:26 PM [vite] hmr update /src/views/404.vue
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/noData.svg instead of /static/images/noData.svg.
+If you intend to use the URL of that asset, use /images/noData.svg?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/noData.svg, use /images/noData.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/alarm.png, use /images/alarm.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/Parking-on.png, use /images/Parking-on.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/region.png, use /images/region.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/historyPlay/play.png, use /images/historyPlay/play.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/historyPlay/setting.png, use /images/historyPlay/setting.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/historyPlay/collapse.png, use /images/historyPlay/collapse.png.
+4:00:32 PM [vite] hmr update /src/views/maintenanceCenter/historyPlayback.vue
+4:00:32 PM [vite] hmr update /src/views/maintenanceCenter/historyPlaybackFile/vue/speedCurve.vue
+Files in the public directory are served at the root path.
+Instead of /static/jsplugin/uuid.js, use /jsplugin/uuid.js.
+Files in the public directory are served at the root path.
+Instead of /static/jsplugin/HATMediaJsPlugin-1.0.0.js, use /jsplugin/HATMediaJsPlugin-1.0.0.js.
+Files in the public directory are served at the root path.
+Instead of /static/jsplugin/jquery-1.12.1.min.js, use /jsplugin/jquery-1.12.1.min.js.
+Files in the public directory are served at the root path.
+Instead of /static/jsplugin/jquery.cookie.js, use /jsplugin/jquery.cookie.js.
+Files in the public directory are served at the root path.
+Instead of /static/jsplugin/cryptico.min.js, use /jsplugin/cryptico.min.js.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.js, use /js/WasmTest.js.
+Files in the public directory are served at the root path.
+Instead of /static/js/web-control.min.js, use /js/web-control.min.js.
+Files in the public directory are served at the root path.
+Instead of /static/js/marked.min.js, use /js/marked.min.js.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+4:44:47 PM [vite] page reload index.html
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/noData.svg instead of /static/images/noData.svg.
+If you intend to use the URL of that asset, use /images/noData.svg?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/noData.svg, use /images/noData.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/alarm.png, use /images/alarm.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/Parking-on.png, use /images/Parking-on.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/region.png, use /images/region.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/historyPlay/play.png, use /images/historyPlay/play.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/historyPlay/setting.png, use /images/historyPlay/setting.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/historyPlay/collapse.png, use /images/historyPlay/collapse.png.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/control/downLoad.svg instead of /static/images/control/downLoad.svg.
+If you intend to use the URL of that asset, use /images/control/downLoad.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/control/stop.svg instead of /static/images/control/stop.svg.
+If you intend to use the URL of that asset, use /images/control/stop.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/control/setting.svg instead of /static/images/control/setting.svg.
+If you intend to use the URL of that asset, use /images/control/setting.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/control/rotate.svg instead of /static/images/control/rotate.svg.
+If you intend to use the URL of that asset, use /images/control/rotate.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/control/carmera.svg instead of /static/images/control/carmera.svg.
+If you intend to use the URL of that asset, use /images/control/carmera.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/control/bigger.svg instead of /static/images/control/bigger.svg.
+If you intend to use the URL of that asset, use /images/control/bigger.svg?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/downLoad.svg, use /images/control/downLoad.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/play.svg, use /images/control/play.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/stop.svg, use /images/control/stop.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/setting.svg, use /images/control/setting.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/keyframe-close.svg, use /images/control/keyframe-close.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/video_bg.svg, use /images/video_bg.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/play.png, use /images/control/play.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/rotate.svg, use /images/control/rotate.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/noVoice.svg, use /images/control/noVoice.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/carmera.svg, use /images/control/carmera.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/record-close.svg, use /images/control/record-close.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/bigger.svg, use /images/control/bigger.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+4:53:54 PM [vite] hmr update /src/assets/less/vue3-compat.less
+4:55:04 PM [vite] hmr update /src/views/maintenanceCenter/historyPlaybackFile/vue/GPSTable.vue?vue&type=style&index=0&scoped=72d92cd4&lang.less, /src/views/maintenanceCenter/historyPlaybackFile/vue/GPSTable.vue
+4:56:56 PM [vite] hmr update /src/views/maintenanceCenter/historyPlayback.vue
+4:57:37 PM [vite] hmr update /src/views/maintenanceCenter/videoPlayback.vue
+4:58:45 PM [vite] hmr update /src/components/importCarDialog.vue
+4:58:45 PM [vite] hmr update /src/components/common/G-Table/view/index.vue
+Files in the public directory are served at the root path.
+Instead of /static/images/noData.svg, use /images/noData.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/Parking-on.png, use /images/Parking-on.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/historyPlay/collapse.png, use /images/historyPlay/collapse.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/alarm.png, use /images/alarm.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/region.png, use /images/region.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/historyPlay/play.png, use /images/historyPlay/play.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/historyPlay/setting.png, use /images/historyPlay/setting.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/play.svg, use /images/control/play.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/stop.svg, use /images/control/stop.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/downLoad.svg, use /images/control/downLoad.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/setting.svg, use /images/control/setting.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/keyframe-close.svg, use /images/control/keyframe-close.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/play.png, use /images/control/play.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/rotate.svg, use /images/control/rotate.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/noVoice.svg, use /images/control/noVoice.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/carmera.svg, use /images/control/carmera.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/record-close.svg, use /images/control/record-close.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/bigger.svg, use /images/control/bigger.svg.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+6:00:40 PM [vite] page reload index.html
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+6:31:04 PM [vite] hmr update /src/components/importCarDialog.vue
+6:31:06 PM [vite] hmr update /src/components/InputNumberRange.vue
+6:31:08 PM [vite] hmr update /src/components/upgradeProgress.vue
+6:31:08 PM [vite] hmr update /src/components/sortHeader.vue
+6:31:09 PM [vite] hmr update /src/components/dashboard/dashboardCard.vue
+6:31:14 PM [vite] hmr update /src/views/maintenanceCenter/videoPlayback.vue?vue&type=style&index=0&scoped=d954caaf&lang.less, /src/views/maintenanceCenter/videoPlayback.vue
+6:31:14 PM [vite] hmr update /src/assets/less/vue3-compat.less
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_out_logo.png, use /images/qr_out_logo.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+6:38:38 PM [vite] hmr update /src/components/InputNumberRange.vue
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+7:23:05 PM [vite] page reload index.html
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/control/downLoad.svg instead of /static/images/control/downLoad.svg.
+If you intend to use the URL of that asset, use /images/control/downLoad.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/control/stop.svg instead of /static/images/control/stop.svg.
+If you intend to use the URL of that asset, use /images/control/stop.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/control/setting.svg instead of /static/images/control/setting.svg.
+If you intend to use the URL of that asset, use /images/control/setting.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/control/rotate.svg instead of /static/images/control/rotate.svg.
+If you intend to use the URL of that asset, use /images/control/rotate.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/control/carmera.svg instead of /static/images/control/carmera.svg.
+If you intend to use the URL of that asset, use /images/control/carmera.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/control/bigger.svg instead of /static/images/control/bigger.svg.
+If you intend to use the URL of that asset, use /images/control/bigger.svg?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/downLoad.svg, use /images/control/downLoad.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/play.svg, use /images/control/play.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/stop.svg, use /images/control/stop.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/setting.svg, use /images/control/setting.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/keyframe-close.svg, use /images/control/keyframe-close.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/video_bg.svg, use /images/video_bg.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/play.png, use /images/control/play.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/rotate.svg, use /images/control/rotate.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/noVoice.svg, use /images/control/noVoice.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/carmera.svg, use /images/control/carmera.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/record-close.svg, use /images/control/record-close.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/control/bigger.svg, use /images/control/bigger.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+7:24:31 PM [vite] hmr update /src/components/InputNumberRange.vue
+7:27:43 PM [vite] hmr update /src/views/manageCenter/carManage.vue?vue&type=style&index=0&scoped=1407b6e7&lang.less
+7:28:11 PM [vite] hmr update /src/assets/less/vue3-compat.less
+7:28:55 PM [vite] hmr update /src/views/manageCenter/carManage.vue?vue&type=style&index=0&scoped=1407b6e7&lang.less
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+7:34:00 PM [vite] hmr update /src/assets/less/vue3-compat.less
+7:34:08 PM [vite] hmr update /src/views/manageCenter/carManage.vue
+7:34:08 PM [vite] hmr update /src/views/manageCenter/carManage.vue
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+7:34:26 PM [vite] hmr update /src/views/manageCenter/carManage.vue?vue&type=style&index=0&scoped=1407b6e7&lang.less
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+7:42:43 PM [vite] hmr update /src/views/manageCenter/carManage.vue
+7:43:02 PM [vite] hmr update /src/views/manageCenter/carManage.vue?vue&type=style&index=0&scoped=1407b6e7&lang.less
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+7:53:58 PM [vite] hmr update /src/views/manageCenter/carManage.vue?vue&type=style&index=0&scoped=1407b6e7&lang.less
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+8:05:36 PM [vite] page reload index.html
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+8:08:02 PM [vite] hmr update /src/views/manageCenter/carManage.vue?vue&type=style&index=0&scoped=1407b6e7&lang.less
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+8:16:53 PM [vite] hmr update /src/views/manageCenter/carManage.vue?vue&type=style&index=0&scoped=1407b6e7&lang.less
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+8:29:32 PM [vite] hmr update /src/views/manageCenter/deviceManage.vue
+8:29:52 PM [vite] hmr update /src/views/manageCenter/deviceManage.vue?vue&type=style&index=0&scoped=af621a00&lang.less
+9:14:47 PM [vite] hmr update /src/views/manageCenter/carManage.vue
+9:14:48 PM [vite] hmr update /src/views/manageCenter/deviceManage.vue
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+9:14:56 PM [vite] page reload index.html
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.

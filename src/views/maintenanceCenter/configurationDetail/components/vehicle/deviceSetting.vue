@@ -66,10 +66,10 @@
                         v-model="partVisible">
                         <p class="popover-text">确定部分恢复出厂设置吗？</p>
                         <div style="text-align: right;" class="m-t-md">
-                            <el-button size="mini" type="default" @click="partVisible = false">取消</el-button>
-                            <el-button type="primary" size="mini" @click="partVisible = false">确定</el-button>
+                            <el-button size="small" type="default" @click="partVisible = false">取消</el-button>
+                            <el-button type="primary" size="small" @click="partVisible = false">确定</el-button>
                         </div>
-                        <el-button slot="reference" :max-width="500" style="width:100%">部分恢复出厂设置</el-button>
+                        <template #reference><el-button :max-width="500" style="width:100%">部分恢复出厂设置</el-button></template>
                     </el-popover>
                 </el-form-item>
             </div>
@@ -82,10 +82,10 @@
                         v-model="allVisible">
                         <p class="popover-text">确定恢复出厂设置吗？</p>
                         <div style="text-align: right;" class="m-t-md">
-                            <el-button size="mini" type="default" @click="allVisible = false">取消</el-button>
-                            <el-button type="primary" size="mini" @click="allVisible = false">确定</el-button>
+                            <el-button size="small" type="default" @click="allVisible = false">取消</el-button>
+                            <el-button type="primary" size="small" @click="allVisible = false">确定</el-button>
                         </div>
-                        <el-button slot="reference" :max-width="500" style="width:100%">恢复出厂设置</el-button>
+                        <template #reference><el-button :max-width="500" style="width:100%">恢复出厂设置</el-button></template>
                     </el-popover>
                 </el-form-item>
             </div>
@@ -98,10 +98,10 @@
                         v-model="restartVisible">
                         <p class="popover-text">确定重启设备吗？</p>
                         <div style="text-align: right;" class="m-t-md">
-                            <el-button size="mini" type="default" @click="restartVisible = false">取消</el-button>
-                            <el-button type="primary" size="mini" @click="restartVisible = false">确定</el-button>
+                            <el-button size="small" type="default" @click="restartVisible = false">取消</el-button>
+                            <el-button type="primary" size="small" @click="restartVisible = false">确定</el-button>
                         </div>
-                        <el-button slot="reference" :max-width="500" style="width:100%">重启设备</el-button>
+                        <template #reference><el-button :max-width="500" style="width:100%">重启设备</el-button></template>
                     </el-popover>
                 </el-form-item>
             </div>

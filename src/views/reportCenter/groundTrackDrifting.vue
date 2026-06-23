@@ -210,7 +210,7 @@
                     min-width="100px"
                     align="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a
                             v-if="scope.row.driftTimes"
                             @click="
@@ -226,7 +226,7 @@
                     </template>
                 </el-table-column>
                 <el-table-column label="操作" width="100px">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a
                             @click="goPlayback(scope.row)"
                             v-btn="'groundTrackDriftingTrackReplay'"
@@ -743,7 +743,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/deep/.el-tabs {
+:deep(.el-tabs){
     .el-tabs__header {
         margin: 0 0 12px !important;
     }
@@ -803,7 +803,7 @@ export default {
         margin-top: 28px;
     }
 }
-/deep/.el-select {
+:deep(.el-select){
     .el-input__inner {
         height: 32px !important;
     }

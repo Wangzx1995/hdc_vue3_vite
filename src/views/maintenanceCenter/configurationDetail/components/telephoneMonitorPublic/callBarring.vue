@@ -25,7 +25,7 @@
                 </el-col>
                 <el-col :span="7" >
                     <el-form-item label="每月最长通话时间（输入0为不允许通话）" prop="0047.maximumTalkTimeOfTheMonth">
-                        <el-input v-model="form['0047'].maximumTalkTimeOfTheMonth"><span slot="suffix">s</span></el-input>
+                        <el-input v-model="form['0047'].maximumTalkTimeOfTheMonth"><template #suffix><span>s</span></template></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>

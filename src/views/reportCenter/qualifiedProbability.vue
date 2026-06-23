@@ -299,7 +299,7 @@
                     :label="$t('common.operate')"
                     width="100px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a
                             @click="
                                 goDetail(
@@ -430,7 +430,7 @@
                     :label="$t('common.operate')"
                     width="100px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a @click="goPlayback(scope.row)">
                             <!-- 轨迹回放 -->
                             {{ $t("qualifiedProbability.trackPlayback") }}
@@ -466,7 +466,7 @@
         <!-- 轨迹回放 -->
         <el-dialog
             :title="$t('qualifiedProbability.trackPlayback')"
-            :visible.sync="trackPlaybackVisible"
+            v-model="trackPlaybackVisible"
             :close-on-click-modal="false"
             :width="'1200px'"
             :custom-class="'track-playback-dialog'"
@@ -1053,7 +1053,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/deep/.el-tabs {
+:deep(.el-tabs){
     .el-tabs__header {
         margin: 0 0 12px !important;
     }
@@ -1105,12 +1105,12 @@ export default {
     width: 100%;
     border-top: 1px solid #e4e4e4;
 }
-/deep/.el-tabs {
+:deep(.el-tabs){
     .el-tab-pane {
         padding-right: 204px;
     }
 }
-/deep/.el-select {
+:deep(.el-select){
     .el-input__inner {
         height: 32px !important;
     }

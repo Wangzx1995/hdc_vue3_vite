@@ -33,7 +33,7 @@
                         prop="label"
                         :label="$t('sortHeader.order')"
                     >
-                        <template slot-scope="{ row, col, $index }">
+                        <template #default="{ row, col }">
                             <div :key="row.fieldNameEN">
                                 {{ row.fieldNameCN }}
                                 <div class="drop-icon">
@@ -130,7 +130,7 @@ export default {
                         } else {
                             return fieldNameEN;
                         }
-                    }
+                    },
                 );
                 //this.$emit("changeShowTable", this.showTableHeadDataCopy);
                 //this.$emit("comfirm", true);
@@ -175,7 +175,7 @@ export default {
                     } else {
                         this.$emit(
                             "changeShowTable",
-                            this.showTableHeadDataCopy
+                            this.showTableHeadDataCopy,
                         );
                     }
                 })
@@ -184,7 +184,7 @@ export default {
         pullSort() {
             //监听拖动事件
             const el = this.$refs.sortHeadRef.$el.querySelectorAll(
-                ".el-table__body-wrapper > table > tbody"
+                ".el-table__body-wrapper > table > tbody",
             )[0];
             this.sortable = Sortable.create(el, {
                 sort: true,
@@ -192,7 +192,7 @@ export default {
                 onEnd: (e) => {
                     const currRow = this.showTableHeadDataCopy.splice(
                         e.oldIndex,
-                        1
+                        1,
                     )[0];
                     this.showTableHeadDataCopy.splice(e.newIndex, 0, currRow);
                     const newArr = this.showTableHeadDataCopy.slice(0);
@@ -231,7 +231,7 @@ export default {
                 } else if (newVal.length < oldVal.length) {
                     //删除
                     let filterFieldNameEN = oldVal.filter(
-                        (v) => !newVal.includes(v)
+                        (v) => !newVal.includes(v),
                     );
                     let filterIndex;
                     for (
@@ -284,7 +284,7 @@ export default {
                 }
             });
             this.showTableHeadDataCopy = this.tableHeadSelection.filter(
-                (item) => !this.defaultUnvisible.includes(item.fieldNameEN)
+                (item) => !this.defaultUnvisible.includes(item.fieldNameEN),
             );
         }
     },
@@ -325,10 +325,10 @@ export default {
 .checkbox-container {
     width: 690px;
     max-height: 600px;
-    // /deep/.el-checkbox{
+    // :deep(.el-checkbox){
     //     overflow: hidden;
     // }
-    /deep/.el-checkbox__label {
+    :deep(.el-checkbox__label) {
         min-width: 120px;
     }
 }

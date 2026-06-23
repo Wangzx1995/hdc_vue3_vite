@@ -197,7 +197,7 @@
                     min-width="300px"
                     show-overflow-tooltip
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span style="white-space: pre-wrap">{{
                             scope.row.params
                         }}</span>
@@ -209,7 +209,7 @@
                     :label="$t('ttsConfiguration.configureProperties')"
                     min-width="300px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         {{ scope.row.configPropertyString }}
                     </template>
                 </el-table-column>
@@ -227,7 +227,7 @@
                     :label="$t('ttsConfiguration.configurationResult')"
                     min-width="240px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div>
                             <span
                                 :class="

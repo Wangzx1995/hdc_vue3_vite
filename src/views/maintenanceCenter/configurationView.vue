@@ -9,7 +9,7 @@
                         <el-switch
                             @change="getScreenData"
                             v-model="screenTerm"
-                            size="mini"
+                            size="small"
                         ></el-switch>
                     </div>
                     <el-tree
@@ -265,7 +265,7 @@
                                 label="配置类型"
                                 min-width="240px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     {{
                                         scope.row.cmd
                                             ? cmdList[scope.row.cmd]
@@ -287,7 +287,7 @@
                                 "
                                 min-width="160px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         <span
                                             :class="
@@ -326,7 +326,7 @@
                                 fixed="right"
                                 width="100px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <a
                                         @click="
                                             startConfig(
@@ -375,10 +375,10 @@
                                     v-model="reconfigurationVisible">
                                     <p class="popover-text">此操作将会重新配置批次号“XXXXX”下的所有配置失败设备，是否确认重新配置？</p>
                                     <div style="text-align: right; margin: 0">
-                                        <el-button type="link" size="mini" @click="reconfigurationVisible = false">确定</el-button>
-                                        <el-button size="mini" type="text" @click="reconfigurationVisible = false">取消</el-button>
+                                        <el-button type="text" size="small" @click="reconfigurationVisible = false">确定</el-button>
+                                        <el-button size="small" type="text" @click="reconfigurationVisible = false">取消</el-button>
                                     </div>
-                                    <a slot="reference">重新配置</a>
+                                    <template #reference><a>重新配置</a></template>
                                 </el-popover>
                                 <el-popover
                                    v-show="scope.row.result == '3' || scope.row.result == '4' || scope.row.result == '6'"
@@ -389,10 +389,10 @@
                                     v-model="abortConfigurationVisible">
                                     <p class="popover-text">此操作将会终止配置批次号“XXXXX”下的所有未开始配置设备，是否确认终止配置？</p>
                                     <div style="text-align: right; margin: 0">
-                                        <el-button type="link" size="mini" @click="abortConfigurationVisible = false">确定</el-button>
-                                        <el-button size="mini" type="text" @click="abortConfigurationVisible = false">取消</el-button>
+                                        <el-button type="text" size="small" @click="abortConfigurationVisible = false">确定</el-button>
+                                        <el-button size="small" type="text" @click="abortConfigurationVisible = false">取消</el-button>
                                     </div>
-                                    <a slot="reference">终止配置</a>
+                                    <template #reference><a>终止配置</a></template>
                                 </el-popover> -->
                                 </template>
                             </el-table-column>
@@ -441,7 +441,7 @@
                                 label="配置类型"
                                 min-width="240px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     {{
                                         scope.row.cmd
                                             ? cmdList[scope.row.cmd]
@@ -458,7 +458,7 @@
                                 label="成功/进行中/失败"
                                 min-width="160px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     {{
                                         `${scope.row.successNum}/${scope.row.ingNum}/${scope.row.failNum}`
                                     }}
@@ -469,7 +469,7 @@
                                 fixed="right"
                                 width="80px"
                             >
-                                <template slot-scope="scope" width="100px">
+                                <template #default="scope" width="100px">
                                     <a
                                         @click="
                                             taskDetail(
@@ -531,7 +531,7 @@
                                 min-width="100px"
                             ></el-table-column>
                             <el-table-column label="配置结果" min-width="160px">
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         <span
                                             :class="
@@ -560,7 +560,7 @@
                                 </template>
                             </el-table-column>
                             <!-- <el-table-column prop="result" label="操作" width="120px">
-                           <template slot-scope="scope">
+                           <template #default="scope">
                               <a @click="ttsDetail(scope.row.batchCode)">详情</a>
                             </template>
                         </el-table-column> -->
@@ -631,7 +631,7 @@
                                 label="配置类型"
                                 min-width="240px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     {{
                                         scope.row.cmd
                                             ? cmdList[scope.row.cmd]
@@ -649,7 +649,7 @@
                                 label="获取结果"
                                 min-width="180px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         <span
                                             :class="

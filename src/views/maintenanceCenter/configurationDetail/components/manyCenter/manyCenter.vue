@@ -81,14 +81,14 @@
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="缺省时间汇报时间间隔" v-if="item['IsApiPlatformOthers' + index]" :rules="{ validator: checkNumber.bind({type:'int',min:1,max:50000}), trigger: 'change' }" :prop="'IsApiPlatform.platformInfoList.' + index + '.IsApiPlatformOthers' + index +'.reportTimeIntervalDuringDefault'">
-                                <el-input v-model="item['IsApiPlatformOthers' + index].reportTimeIntervalDuringDefault"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="item['IsApiPlatformOthers' + index].reportTimeIntervalDuringDefault"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                       <el-row type="flex" justify="space-between" >
                          <el-col :span="7" >
                             <el-form-item label="休眠汇报时间间隔" v-if="item['IsApiPlatformOthers' + index]" :rules="{ validator: checkNumber.bind({type:'int',min:1,max:50000}), trigger: 'change' }" :prop="'IsApiPlatform.platformInfoList.' + index + '.IsApiPlatformOthers' + index +'.reportTimeIntervalDuringSleep'">
-                                <el-input v-model="item['IsApiPlatformOthers' + index].reportTimeIntervalDuringSleep"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="item['IsApiPlatformOthers' + index].reportTimeIntervalDuringSleep"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                           <!--<el-col :span="7" >
@@ -98,7 +98,7 @@
                         </el-col>-->
                         <el-col :span="7" >
                             <el-form-item label="紧急报警汇报时间间隔" v-if="item['IsApiPlatformOthers' + index]" :rules="{ validator: checkNumber.bind({type:'int',min:1,max:50000}), trigger: 'change' }" :prop="'IsApiPlatform.platformInfoList.' + index + '.IsApiPlatformOthers' + index + '.reportTimeIntervalDuringAlarm'">
-                                <el-input v-model="item['IsApiPlatformOthers' + index].reportTimeIntervalDuringAlarm"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="item['IsApiPlatformOthers' + index].reportTimeIntervalDuringAlarm"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
@@ -148,7 +148,7 @@
         </template>
 
         <EmptyBox v-else style="height:100%">
-          <p slot="description" class="text-md">暂无数据～</p>
+          <template #description><p class="text-md">暂无数据～</p></template>
         </EmptyBox>
       </el-form>
     </div>

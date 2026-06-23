@@ -242,7 +242,7 @@
                         :label="$t('common.operate')"
                         min-width="100px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <a
                                 @click="
                                     goDetail(scope.row.orgId, scope.row.orgName)
@@ -314,7 +314,7 @@
                         :fixed="item == monthDay.length ? 'right' : false"
                         align="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <div
                                 v-for="i in scope.row.upLineStatusList"
                                 :key="i.index"
@@ -797,7 +797,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/deep/.el-tabs {
+:deep(.el-tabs){
     .el-tabs__header {
         margin: 0 0 12px !important;
     }
@@ -841,7 +841,7 @@ export default {
         }
     }
 }
-/deep/.el-select {
+:deep(.el-select){
     .el-input__inner {
         height: 32px !important;
     }

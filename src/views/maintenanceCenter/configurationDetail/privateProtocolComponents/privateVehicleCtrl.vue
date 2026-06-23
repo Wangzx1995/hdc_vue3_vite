@@ -14,19 +14,20 @@
                         placeholder="请输入密码解锁"
                         autoComplete="on"
                     >
-                        <i
-                            slot="suffix"
-                            class="el-input__icon"
-                            style="margin-top: 2px"
-                            :class="passwordIcon"
-                            @mousedown="onMousedownClick"
-                            @mouseup="onMouseupClick"
-                        ></i>
+                        <template #suffix>
+                            <i
+                                class="el-input__icon"
+                                style="margin-top: 2px"
+                                :class="passwordIcon"
+                                @mousedown="onMousedownClick"
+                                @mouseup="onMouseupClick"
+                            ></i>
+                        </template>
                     </el-input>
                 </div>
                 <div class="passwordBox">
                     <el-button
-                        style="width: 100%;"
+                        style="width: 100%"
                         type="primary"
                         :loading="loading"
                         @click.prevent="makeSure"
@@ -164,8 +165,8 @@
                                         v-model.number="
                                             form['param960'].speedLimit
                                         "
-                                        ><span slot="suffix"
-                                            >km/h</span
+                                        ><template #suffix
+                                            ><span>km/h</span></template
                                         ></el-input
                                     >
                                     <span v-if="item.id == 2" class="prompt"
@@ -214,7 +215,7 @@ export default {
                 that.setTableHeight();
             })();
         console.log(
-            JSON.parse(JSON.stringify(this.dictionaryData["vehCtrlModesList"]))
+            JSON.parse(JSON.stringify(this.dictionaryData["vehCtrlModesList"])),
         );
     },
     props: {
@@ -457,7 +458,7 @@ export default {
                         this.$set(
                             this.copyForm,
                             "param960",
-                            JSON.parse(JSON.stringify(formData))
+                            JSON.parse(JSON.stringify(formData)),
                         );
                         this.childConfigParams = false;
                     } else {

@@ -19,10 +19,10 @@
                     v-if="item.slot"
                 ></slot>
             </template>
-            <template slot="btnOperation">
+            <template #btnOperation>
                 <slot name="btnOperation"></slot>
             </template>
-            <template slot="searchOperation">
+            <template #searchOperation>
                 <slot name="searchOperation"></slot>
             </template>
         </G-SearchBar>
@@ -50,7 +50,7 @@
             @rowClick="rowClick"
             @rowDblclick="rowDblclick"
         >
-            <template slot="card" slot-scope="scope">
+            <template #card="scope">
                 <slot
                     name="card"
                     :data="scope.data"

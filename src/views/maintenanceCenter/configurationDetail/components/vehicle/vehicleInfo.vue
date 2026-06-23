@@ -54,14 +54,14 @@
         <div v-if="form['IsApiVehicleRecord']" class="configuration-item">
           <el-form-item label="车辆初始里程" class="m-r-md p-r" prop="IsApiVehicleRecord.mileageInit">
             <el-input v-model="form['IsApiVehicleRecord'].mileageInit">
-              <span slot="suffix">km</span>
+              <template #suffix><span>km</span></template>
             </el-input>
           </el-form-item>
         </div>
         <div v-if="form['IsApiVehicleRecord']" class="configuration-item">
           <el-form-item label="车辆累计里程" class="m-r-md p-r" prop="IsApiVehicleRecord.mileageTotal">
             <el-input v-model="form['IsApiVehicleRecord'].mileageTotal">
-              <span slot="suffix">km</span>
+              <template #suffix><span>km</span></template>
             </el-input>
           </el-form-item>
         </div>
@@ -247,7 +247,7 @@
               <el-col :span="7">
                 <el-form-item label="车辆初始里程" class="m-r-md p-r">
                     <el-input v-model="form.vehicleVINNumber">
-                        <span slot="suffix">km</span>
+                        <template #suffix><span>km</span></template>
                     </el-input>
                 </el-form-item>
               </el-col>
@@ -257,7 +257,7 @@
               <el-col :span="7">
                  <el-form-item label="车辆累计里程" class="m-r-md p-r">
                     <el-input v-model="form.engineNumber">
-                        <span slot="suffix">km</span>
+                        <template #suffix><span>km</span></template>
                     </el-input>
                 </el-form-item>
               </el-col>
@@ -280,7 +280,7 @@
               <el-col :span="7">
                 <el-form-item label="MCU的脉冲占空比" class="m-r-md p-r">
                     <el-input v-model="form.engineNumber">
-                        <span slot="suffix">%</span>
+                        <template #suffix><span>%</span></template>
                     </el-input>
                 </el-form-item>
               </el-col>

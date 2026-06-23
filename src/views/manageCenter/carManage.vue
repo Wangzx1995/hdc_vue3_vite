@@ -4,19 +4,23 @@
             <!-- 左边树 -->
             <el-col :span="4" class="p-a b-r">
                 <el-input
-                    class=""
+                    class="tree-search-input"
                     v-model="organizationName"
                     :placeholder="$t('common.inputOrganizationName')"
                     clearable
                 >
-                    <i
-                        slot="suffix"
-                        @click="filterTree"
-                        class="searchIcon el-input__icon el-icon-search"
-                    ></i>
+                    <template #suffix>
+                        <i
+                            @click="filterTree"
+                            class="searchIcon el-input__icon el-icon-search"
+                        ></i>
+                    </template>
                 </el-input>
-                <div :class="{ loading_: searchLoading }" class="m-t">
-                    <div>
+                <div
+                    :class="{ loading_: searchLoading }"
+                    class="m-t tree-left-panel"
+                >
+                    <div class="tree-action-bar">
                         <el-popover
                             placement="bottom"
                             width="250"
@@ -47,16 +51,17 @@
                                     >{{ $t("common.ok") }}</el-button
                                 >
                             </div>
-                            <el-button
-                                size="small"
-                                slot="reference"
-                                icon="el-icon-plus"
-                                :disabled="
-                                    !params.organizeId ||
-                                    currentNode.source != 1
-                                "
-                                v-btn="'carManageAddGroup'"
-                            />
+                            <template #reference>
+                                <el-button
+                                    size="small"
+                                    icon="el-icon-plus"
+                                    :disabled="
+                                        !params.organizeId ||
+                                        currentNode.source != 1
+                                    "
+                                    v-btn="'carManageAddGroup'"
+                                />
+                            </template>
                         </el-popover>
                         <el-popover
                             placement="bottom"
@@ -115,18 +120,19 @@
                                     >{{ $t("common.cancel") }}</el-button
                                 >
                             </div>
-                            <el-button
-                                size="small"
-                                slot="reference"
-                                icon="el-icon-edit"
-                                :disabled="
-                                    !params.organizeId ||
-                                    currentNode.defaultNode == 0 ||
-                                    currentNode.source != 1
-                                "
-                                @click="editVisibleClick()"
-                                v-btn="'carManageEditGroup'"
-                            />
+                            <template #reference>
+                                <el-button
+                                    size="small"
+                                    icon="el-icon-edit"
+                                    :disabled="
+                                        !params.organizeId ||
+                                        currentNode.defaultNode == 0 ||
+                                        currentNode.source != 1
+                                    "
+                                    @click="editVisibleClick()"
+                                    v-btn="'carManageEditGroup'"
+                                />
+                            </template>
                         </el-popover>
                         <el-popover
                             placement="bottom"
@@ -146,17 +152,18 @@
                                     >{{ $t("common.gotIt") }}</el-button
                                 >
                             </div>
-                            <el-button
-                                size="small"
-                                slot="reference"
-                                icon="el-icon-delete"
-                                :disabled="
-                                    !params.organizeId ||
-                                    currentNode.source != 1 ||
-                                    currentNode.defaultNode == 0
-                                "
-                                v-btn="'carManageDeleteGroup'"
-                            />
+                            <template #reference>
+                                <el-button
+                                    size="small"
+                                    icon="el-icon-delete"
+                                    :disabled="
+                                        !params.organizeId ||
+                                        currentNode.source != 1 ||
+                                        currentNode.defaultNode == 0
+                                    "
+                                    v-btn="'carManageDeleteGroup'"
+                                />
+                            </template>
                         </el-popover>
                         <el-popover
                             @show="showPopover"
@@ -180,17 +187,18 @@
                                     >{{ $t("common.delete") }}</el-button
                                 >
                             </div>
-                            <el-button
-                                size="small"
-                                slot="reference"
-                                icon="el-icon-delete"
-                                :disabled="
-                                    !params.organizeId ||
-                                    currentNode.source != 1 ||
-                                    currentNode.defaultNode == 0
-                                "
-                                v-btn="'carManageDeleteGroup'"
-                            />
+                            <template #reference>
+                                <el-button
+                                    size="small"
+                                    icon="el-icon-delete"
+                                    :disabled="
+                                        !params.organizeId ||
+                                        currentNode.source != 1 ||
+                                        currentNode.defaultNode == 0
+                                    "
+                                    v-btn="'carManageDeleteGroup'"
+                                />
+                            </template>
                         </el-popover>
                     </div>
                     <div :style="editVisible ? 'pointer-events: none;' : ''">
@@ -198,6 +206,7 @@
                             class="m-t"
                             ref="tree"
                             :data="treeData"
+                            :key="treeKey"
                             :default-expanded-keys="TreeExpanded"
                             :expand-on-click-node="false"
                             @node-click="handleNodeClick"
@@ -206,6 +215,7 @@
                             :filter-node-method="filterNode"
                             :props="defaultProps"
                             :current-node-key="params.organizeId"
+                            default-icon="el-icon-folder"
                             :style="{ height: treeHeight + 'px' }"
                         >
                         </el-tree>
@@ -312,7 +322,7 @@
                                 v-btn="'carManageAdd'"
                                 >{{ $t("common.add") }}
                                 <el-tooltip>
-                                    <div slot="content">
+                                    <template #content>
                                         <div v-show="currentNode.source != 1">
                                             {{ $t("carManage.addMsg1") }}：<a
                                                 href="https://vms.hikvisionauto.com:8040/"
@@ -328,7 +338,7 @@
                                         >
                                             {{ $t("carManage.addMsg2") }}
                                         </div>
-                                    </div>
+                                    </template>
                                     <i
                                         v-show="
                                             currentNode.defaultNode == 0 ||
@@ -368,7 +378,7 @@
                                 v-btn="'carManageImport'"
                                 >{{ $t("common.import") }}
                                 <el-tooltip>
-                                    <div slot="content">
+                                    <template #content>
                                         <div v-show="currentNode.source != 1">
                                             {{ $t("carManage.addMsg1") }}：<a
                                                 href="https://vms.hikvisionauto.com:8040/"
@@ -384,7 +394,7 @@
                                         >
                                             {{ $t("carManage.addMsg2") }}
                                         </div>
-                                    </div>
+                                    </template>
                                     <i
                                         v-show="
                                             currentNode.defaultNode == 0 ||
@@ -403,6 +413,11 @@
                                 <!-- 导出 -->
                                 {{ $t("common.export") }}
                             </el-button>
+                        </div>
+                        <div style="display: flex; align-items: center">
+                            <el-checkbox v-model="params.unBindDev">{{
+                                $t("deviceSearch.onlyUnboundDevices")
+                            }}</el-checkbox>
                         </div>
                         <!-- 包含下级组织车辆 -->
                         <div style="display: flex; align-items: center">
@@ -498,10 +513,11 @@
                                                         $t("carManage.goModify")
                                                     }}</a
                                                 >
-                                                <i
-                                                    class="text-error el-icon-warning"
-                                                    slot="reference"
-                                                ></i>
+                                                <template #reference>
+                                                    <i
+                                                        class="text-error el-icon-warning"
+                                                    ></i>
+                                                </template>
                                             </el-popover>
                                         </div>
                                         <span
@@ -628,10 +644,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference>
+                                                <i
+                                                    class="text-error el-icon-warning"
+                                                ></i>
+                                            </template>
                                         </el-popover>
                                     </div>
                                 </template>
@@ -759,7 +776,7 @@
         <!-- 设备详情 -->
         <el-dialog
             :title="$t('carManage.deviceDetails')"
-            :visible="processModal"
+            v-model="processModal"
             :close-on-press-escape="false"
             @close="processModal = false"
             class="no-padding no-border"
@@ -1060,7 +1077,7 @@
         <!-- 车辆详情 -->
         <el-dialog
             :title="$t('carManage.vehicleDetails')"
-            :visible="processModalPlate"
+            v-model="processModalPlate"
             :close-on-press-escape="false"
             @close="processModalPlate = false"
             class="no-padding no-border"
@@ -1183,7 +1200,7 @@
         <!-- 移动车辆到组织 -->
         <el-dialog
             :title="$t('carManage.moveVehiclesToTheOrganization')"
-            :visible.sync="treeDialogVisible"
+            v-model="treeDialogVisible"
             :width="'500px'"
             @close="doCancel"
         >
@@ -1193,7 +1210,9 @@
                 :placeholder="$t('common.inputOrganizationName')"
                 clearable
             >
-                <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                <template #suffix>
+                    <i class="el-input__icon el-icon-search"></i>
+                </template>
             </el-input>
             <div style="height: 500px; overflow-y: auto">
                 <el-tree
@@ -1211,18 +1230,20 @@
                 ></el-tree>
             </div>
 
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="updateCarOrgRelation">{{
-                    $t("common.ok")
-                }}</el-button>
-                <el-button
-                    @click="
-                        treeDialogVisible = false;
-                        organizationName1 = '';
-                    "
-                    >{{ $t("common.cancel") }}</el-button
-                >
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="updateCarOrgRelation">{{
+                        $t("common.ok")
+                    }}</el-button>
+                    <el-button
+                        @click="
+                            treeDialogVisible = false;
+                            organizationName1 = '';
+                        "
+                        >{{ $t("common.cancel") }}</el-button
+                    >
+                </span>
+            </template>
         </el-dialog>
         <el-dialog
             :title="
@@ -1230,7 +1251,7 @@
                     ? $t('carManage.editVehicle')
                     : $t('carManage.addVehicle')
             "
-            :visible="carVisible"
+            v-model="carVisible"
             @close="carVisibleClose"
             :custom-class="'no-padding-dialog'"
             :width="'1100px'"
@@ -1320,6 +1341,7 @@ export default {
             },
             treeData: [],
             TreeExpanded: [],
+            treeKey: 0,
             treeData2: [],
             treeDataId: [],
             moveOldId: "", //组织移动的时候原来id
@@ -1353,6 +1375,7 @@ export default {
                 orderDir: "asc", //排序方向
                 organizeId: null,
                 checked: true,
+                unBindDev: false,
             },
             total: 0,
             tableHeight: 500,
@@ -1485,6 +1508,13 @@ export default {
             deep: true,
         },
         "params.checked": {
+            handler(val) {
+                this.params.currentPage = 1;
+                this.search();
+            },
+            deep: true,
+        },
+        "params.unBindDev": {
             handler(val) {
                 this.params.currentPage = 1;
                 this.search();
@@ -2140,6 +2170,7 @@ export default {
                 deviceSerialNum: params.deviceSerialNum,
                 carType: params.carType,
                 containChildOrg: params.containChildOrg,
+                unBindDev: this.params.unBindDev,
             };
             this.$api
                 .getCarManagerPage(param)
@@ -2214,6 +2245,7 @@ export default {
                             this.treeData.forEach((m) => {
                                 this.TreeExpanded.push(m.id);
                             });
+                            this.treeKey += 1;
                             this.currentNode = this.$refs.tree.getNode(
                                 this.$store.state.tree.deviceManageId
                                     ? this.$store.state.tree.deviceManageId
@@ -2266,6 +2298,7 @@ export default {
                     deviceCode: this.searchForm.deviceCode,
                     deviceSerialNum: this.searchForm.deviceSerialNum,
                     containChildOrg: this.params.checked ? 1 : 0,
+                    unBindDev: this.params.unBindDev ? true : false,
                 };
                 let params = Object.assign(param, this.searchForm);
                 this.$api.doExportCar(params).then((res) => {
@@ -2505,6 +2538,149 @@ export default {
     .dialog-center {
         width: 20rem;
         margin: auto;
+    }
+
+    /* 左侧组织树样式重写 */
+    .p-a.b-r {
+        padding: 16px 12px 16px 16px !important;
+        background: #fff;
+
+        .tree-search-input {
+            margin-bottom: 12px;
+
+            &:deep(.el-input__wrapper) {
+                height: 32px;
+                padding: 5px 30px 5px 8px !important;
+                border: 1px solid #dcdfe6 !important;
+                border-radius: 2px !important;
+                box-shadow: none !important;
+                background-color: #fff;
+
+                &:hover,
+                &.is-focus,
+                &.is-hover {
+                    border-color: #dcdfe6 !important;
+                    box-shadow: none !important;
+                }
+
+                .el-input__inner {
+                    height: 30px;
+                    line-height: 30px;
+                    font-size: 14px;
+                    color: #606266;
+                    border: none !important;
+                    background: transparent;
+                    box-shadow: none !important;
+
+                    &::placeholder {
+                        color: #c0c4cc;
+                    }
+                }
+
+                .el-input__icon {
+                    color: #c0c4cc;
+                    font-size: 14px;
+                    width: 25px;
+                    line-height: 30px;
+                }
+            }
+        }
+
+        .tree-action-bar {
+            display: flex;
+            gap: 0;
+            margin-bottom: 12px;
+
+            &:deep(.el-button) {
+                width: 38px;
+                height: 26px;
+                margin: 0 2px 0 0;
+                padding: 6px 12px !important;
+                border: 1px solid #dcdfe6 !important;
+                border-radius: 3px !important;
+                background-color: #fff !important;
+                color: #606266 !important;
+                font-size: 12px !important;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                &:hover:not(.is-disabled) {
+                    background-color: #ecf5ff !important;
+                    border-color: #c6e2ff !important;
+                    color: #409eff !important;
+                }
+
+                &.is-disabled {
+                    border-color: #ebeef5 !important;
+                    background-color: #fff !important;
+                    color: #c0c4cc !important;
+                }
+
+                i {
+                    font-size: 12px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        :deep(.el-tree) {
+            background: transparent;
+            color: #303133;
+            font-size: 14px;
+
+            .el-tree-node__content {
+                height: 32px;
+                line-height: 32px;
+                padding-left: 8px !important;
+                border-radius: 4px;
+                transition: background-color 0.2s;
+
+                &:hover {
+                    background-color: #f5f7fa;
+                }
+
+                .el-tree-node__expand-icon {
+                    color: #606266;
+                    font-size: 12px;
+                    margin-right: 4px;
+                    padding: 6px;
+
+                    &.is-leaf {
+                        color: transparent;
+                    }
+                }
+
+                .el-icon {
+                    color: #909399;
+                    margin-right: 6px;
+                    font-size: 14px;
+                }
+
+                .el-tree-node__label {
+                    font-size: 14px;
+                    color: #303133;
+                }
+            }
+
+            .el-tree-node.is-current > .el-tree-node__content {
+                background-color: #edf1f6 !important;
+
+                .el-tree-node__label {
+                    color: #303133;
+                    font-weight: 600;
+                }
+
+                .el-tree-node__expand-icon {
+                    color: #303133;
+                }
+            }
+
+            .el-tree-node:focus > .el-tree-node__content {
+                background-color: #edf1f6 !important;
+            }
+        }
     }
 
     .wrap {

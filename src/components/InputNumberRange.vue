@@ -44,7 +44,7 @@ export default {
 
     props: {
         // 初始化范围
-        value: { required: true },
+        modelValue: { required: true },
 
         // 是否禁用
         disabled: {
@@ -78,7 +78,7 @@ export default {
     },
 
     watch: {
-        value: {
+        modelValue: {
             immediate: true,
             handler(value) {
                 /** 初始化范围 */
@@ -98,7 +98,7 @@ export default {
             if (precision === undefined) precision = 0;
             return parseFloat(
                 Math.round(num * Math.pow(10, precision)) /
-                    Math.pow(10, precision)
+                    Math.pow(10, precision),
             );
         },
 
@@ -121,7 +121,10 @@ export default {
                         ? this.userInputForm
                         : this.userInputTo;
             }
-            this.$emit("input", [this.userInputForm, this.userInputTo]);
+            this.$emit("update:modelValue", [
+                this.userInputForm,
+                this.userInputTo,
+            ]);
             this.$emit("blurfrom", event);
         },
 
@@ -150,7 +153,10 @@ export default {
                         : this.userInputForm;
             }
 
-            this.$emit("input", [this.userInputForm, this.userInputTo]);
+            this.$emit("update:modelValue", [
+                this.userInputForm,
+                this.userInputTo,
+            ]);
             this.$emit("blurto", event);
         },
 
@@ -170,7 +176,7 @@ export default {
         handleInputChangeFrom(value) {
             // 如果是非数字空返回null
             if (isNaN(value) || value === "") {
-                this.$emit("input", [null, this.userInputTo]);
+                this.$emit("update:modelValue", [null, this.userInputTo]);
                 this.$emit("changefrom", this.userInputForm);
                 return;
             }
@@ -189,7 +195,10 @@ export default {
             //             ? this.userInputForm
             //             : this.userInputTo;
             // }
-            this.$emit("input", [this.userInputForm, this.userInputTo]);
+            this.$emit("update:modelValue", [
+                this.userInputForm,
+                this.userInputTo,
+            ]);
             this.$emit("changefrom", this.userInputForm);
         },
 
@@ -197,7 +206,7 @@ export default {
         handleInputChangeTo(value) {
             // 如果是非数字空返回null
             if (isNaN(value) || value === "") {
-                this.$emit("input", [this.userInputForm, null]);
+                this.$emit("update:modelValue", [this.userInputForm, null]);
                 this.$emit("changefrom", this.userInputTo);
                 return;
             }
@@ -216,7 +225,10 @@ export default {
             //             ? this.userInputTo
             //             : this.userInputForm;
             // }
-            this.$emit("input", [this.userInputForm, this.userInputTo]);
+            this.$emit("update:modelValue", [
+                this.userInputForm,
+                this.userInputTo,
+            ]);
             this.$emit("changeto", this.userInputTo);
         },
 
@@ -234,7 +246,7 @@ export default {
 <style lang="less" scoped>
 .input-number-range {
     // 取消element原有的input框样式
-    /deep/.el-input__inner {
+    :deep(.el-input__inner) {
         border: 0px;
         margin: 0;
         padding: 0 15px;

@@ -12,22 +12,22 @@
           <div class="configurations">
             <div v-if="form['0058']" class="configuration-item">
               <el-form-item label="当天累计驾驶时间" prop="0058.accumulatedDrivingTimeThresholdOfTheDay">
-                <el-input v-model="form['0058'].accumulatedDrivingTimeThresholdOfTheDay"><span slot="suffix">min</span></el-input>
+                <el-input v-model="form['0058'].accumulatedDrivingTimeThresholdOfTheDay"><template #suffix><span>min</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if="form['0059']" class="configuration-item">
               <el-form-item label="最小休息时间" prop="0059.minimumRestTime">
-                  <el-input v-model="form['0059'].minimumRestTime"><span slot="suffix">min</span></el-input>
+                  <el-input v-model="form['0059'].minimumRestTime"><template #suffix><span>min</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if="form['005C']" class="configuration-item">
               <el-form-item label="疲劳驾驶预警差值" prop="005C.fatigueDrivingWarningValue">
-                <el-input v-model="form['005C'].fatigueDrivingWarningValue"><span slot="suffix">s</span></el-input>
+                <el-input v-model="form['005C'].fatigueDrivingWarningValue"><template #suffix><span>s</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if="form['005A']" class="configuration-item">
               <el-form-item label="最长停车时间" prop="005A.maximumParkingTime">
-                <el-input v-model="form['005A'].maximumParkingTime"><span slot="suffix">min</span></el-input>
+                <el-input v-model="form['005A'].maximumParkingTime"><template #suffix><span>min</span></template></el-input>
               </el-form-item>
             </div>
           </div>
@@ -46,12 +46,12 @@
             <!--<el-row type="flex" justify="space-between">
                 <el-col :span="7" >
                     <el-form-item label="连续驾驶时间门限" prop="0057.continuousDrivingTimeThreshold">
-                       <el-input v-model="form['0057'].continuousDrivingTimeThreshold"><span slot="suffix">min</span></el-input>
+                       <el-input v-model="form['0057'].continuousDrivingTimeThreshold"><template #suffix><span>min</span></template></el-input>
                     </el-form-item>
                 </el-col>-->
                 <!--<el-col :span="7" >
                     <el-form-item label="最小休息时间" prop="0059.minimumRestTime">
-                       <el-input v-model="form['0059'].minimumRestTime"><span slot="suffix">min</span></el-input>
+                       <el-input v-model="form['0059'].minimumRestTime"><template #suffix><span>min</span></template></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="7" ></el-col>
@@ -85,13 +85,13 @@
             <div v-if="form['IsApiFatigueDrive']" class="configuration-item">
               <!--换绑定参数-->
               <el-form-item label="夜晚连续驾驶时间" prop="IsApiFatigueDrive.nightDuration">
-                <el-input v-model="form['IsApiFatigueDrive'].nightDuration"><span slot="suffix">min</span></el-input>
+                <el-input v-model="form['IsApiFatigueDrive'].nightDuration"><template #suffix><span>min</span></template></el-input>
               </el-form-item>
               <!---->
             </div>
             <div v-if="form['IsApiFatigueDrive']" class="configuration-item">
               <el-form-item label="白天连续驾驶时间" prop="IsApiFatigueDrive.daytimeDuration">
-                <el-input v-model="form['IsApiFatigueDrive'].daytimeDuration"><span slot="suffix">min</span></el-input>
+                <el-input v-model="form['IsApiFatigueDrive'].daytimeDuration"><template #suffix><span>min</span></template></el-input>
               </el-form-item>
             </div>
           </div>

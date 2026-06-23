@@ -675,7 +675,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-/deep/.el-tabs {
+:deep(.el-tabs) {
     .el-tabs__item {
         padding-left: 24px !important;
         padding-right: 24px !important;

@@ -11,6 +11,10 @@ import mitt from "mitt";
 import App from "./app.vue";
 import VueCompat, { setCompatApp } from "@/utils/vue-compat";
 import ElementPlus from "element-plus";
+import zhCn from "element-plus/dist/locale/zh-cn.mjs";
+// 恢复 Element UI 风格：分页上一页/下一页使用图标而非文字
+zhCn.el.pagination.prev = "";
+zhCn.el.pagination.next = "";
 import "element-plus/dist/index.css";
 import "./assets/index.scss";
 
@@ -32,6 +36,9 @@ import "./moudulesConfig/downLoadWatcher";
 import log from "@/utils/log"; // error log
 import "@/utils/permission"; // 权限
 import "./theme/iconfont/iconfont.css";
+import "./theme/element-ui-icons.css";
+import "./theme/index.css";
+import "./assets/less/vue3-compat.less";
 import sub from "./store/sub";
 window.sub = sub;
 import "@/components/webControlService/webControlClass";
@@ -44,8 +51,16 @@ const app = createApp(App);
 setCompatApp(app);
 window.Vue = VueCompat;
 
-app.use(ElementPlus);
+app.use(ElementPlus, { locale: zhCn });
 import "./moudulesConfig/element";
+
+// 注册 Element Plus 图标组件的 el-icon-* 别名，兼容旧代码中 el-button/icon 的字符串图标
+import * as ElementPlusIconsVue from "@element-plus/icons-vue";
+Object.entries(ElementPlusIconsVue).forEach(([key, component]) => {
+    const alias =
+        "el-icon-" + key.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+    app.component(alias, component);
+});
 
 window.__vue_errors__ = [];
 window.__vue_warns__ = [];

@@ -127,7 +127,7 @@
         </div>
         <el-dialog
             title="保存为模板"
-            :visible.sync="templateDialogVisible"
+            v-model="templateDialogVisible"
             :width="'600px'"
             :custom-class="'add-car-dialog'"
         >
@@ -997,7 +997,7 @@ export default {
         }
     }
 }
-/deep/.main-tab {
+:deep(.main-tab){
     height: calc(~"100% - 48px");
     & > .el-tabs__header {
         // box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.08);

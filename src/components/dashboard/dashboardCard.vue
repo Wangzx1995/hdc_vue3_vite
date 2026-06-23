@@ -6,17 +6,19 @@
             class="box-card"
             :class="showItem4 ? ' m-r-md' : ''"
         >
-            <div slot="header" class="card-header">
-                <span class="marginTop">
-                    <!-- 升级任务 -->
-                    {{ $t("dashboard.itemsTitle1") }}
-                </span>
-                <span class="more-fault" @click="goToUpgradeTask">
-                    <!-- 更多 -->
-                    {{ $t("common.more") }}
-                    ></span
-                >
-            </div>
+            <template #header
+                ><div class="card-header">
+                    <span class="marginTop">
+                        <!-- 升级任务 -->
+                        {{ $t("dashboard.itemsTitle1") }}
+                    </span>
+                    <span class="more-fault" @click="goToUpgradeTask">
+                        <!-- 更多 -->
+                        {{ $t("common.more") }}
+                        ></span
+                    >
+                </div></template
+            >
             <div v-if="taskUpdateData">
                 <!-- 暂无数据 -->
                 {{ $t("common.noData") }}
@@ -28,17 +30,19 @@
             ></TaskItem>
         </el-card>
         <el-card v-show="showItem4" class="box-card" style="padding-top: 0px">
-            <div slot="header" class="card-header">
-                <span class="marginTop">
-                    <!-- 配置任务 -->
-                    {{ $t("dashboard.itemsTitle3") }}
-                </span>
-                <span class="more-fault" @click="goToConfigTask">
-                    <!-- 更多 -->
-                    {{ $t("common.more") }}
-                    ></span
-                >
-            </div>
+            <template #header
+                ><div class="card-header">
+                    <span class="marginTop">
+                        <!-- 配置任务 -->
+                        {{ $t("dashboard.itemsTitle3") }}
+                    </span>
+                    <span class="more-fault" @click="goToConfigTask">
+                        <!-- 更多 -->
+                        {{ $t("common.more") }}
+                        ></span
+                    >
+                </div></template
+            >
             <div v-if="taskConfigData">
                 <!-- 暂无数据 -->
                 {{ $t("common.noData") }}
@@ -189,7 +193,7 @@ export default {
 };
 </script>
 <style scoped lang="less">
-div /deep/ .el-card__body {
+div :deep(.el-card__body) {
     padding-top: 0 !important;
 }
 .marginTop {

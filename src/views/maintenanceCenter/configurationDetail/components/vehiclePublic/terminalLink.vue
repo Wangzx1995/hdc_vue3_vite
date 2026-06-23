@@ -6,14 +6,14 @@
         <el-col :span="7">
           <el-form-item label="终端心跳发送间隔" prop="0001.heartbeat">
             <el-input v-model="form['0001'].heartbeat">
-                <span slot="suffix">s</span>
+                <template #suffix><span>s</span></template>
             </el-input>
           </el-form-item>
         </el-col>
         <el-col :span="7">
           <el-form-item label="TCP消息应答超时时间" prop="0002.overtime">
             <el-input v-model="form['0002'].overtime">
-                <span slot="suffix">s</span>
+                <template #suffix><span>s</span></template>
             </el-input>
           </el-form-item>
         </el-col>
@@ -27,7 +27,7 @@
         <el-col :span="7">
           <el-form-item label="UDP消息应答超时时间" prop="0004.overtime">
             <el-input v-model="form['0004'].overtime">
-                <span slot="suffix">s</span>
+                <template #suffix><span>s</span></template>
             </el-input>
           </el-form-item>
         </el-col>
@@ -39,7 +39,7 @@
         <el-col :span="7">
           <el-form-item label="SMS消息应答超时时间"  prop="0006.overtime">
             <el-input v-model="form['0006'].overtime">
-                <span slot="suffix">s</span>
+                <template #suffix><span>s</span></template>
             </el-input>
           </el-form-item>
         </el-col>

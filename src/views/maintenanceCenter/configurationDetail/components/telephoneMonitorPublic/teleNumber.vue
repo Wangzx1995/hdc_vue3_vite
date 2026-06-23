@@ -18,11 +18,11 @@
                 </el-col>
                 <el-col :span="7">
                     <el-form-item>
-                        <span slot="label" class="label-slot"
+                        <template #label><span class="label-slot"
                             >复位电话号码
                             <el-tooltip content="可采用此电话号码拨打终端电话让终端复位">
                                 <i class="el-icon-question"></i> </el-tooltip
-                        ></span>
+                        ></span></template>
                         <el-input
                             v-model="form['0041'].resetPhoneNum"
                         ></el-input>
@@ -30,11 +30,11 @@
                 </el-col>
                 <el-col :span="7">
                     <el-form-item>
-                        <span slot="label" class="label-slot"
+                        <template #label><span class="label-slot"
                             >恢复出厂设置电话号码
                             <el-tooltip content="可采用此电话号码拨打终端电话让终端恢复出厂设置">
                                 <i class="el-icon-question"></i> </el-tooltip
-                        ></span>
+                        ></span></template>
                         <el-input
                             v-model="
                                 form['0042'].restoreFactorySettingsPhoneNum

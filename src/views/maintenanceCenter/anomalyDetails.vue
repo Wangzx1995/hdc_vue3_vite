@@ -10,10 +10,9 @@
                             :placeholder="$t('common.inputOrganizationName')"
                             clearable
                         >
-                            <i
-                                slot="suffix"
+                            <template #suffix><i
                                 class="el-input__icon el-icon-search"
-                            ></i>
+                            ></i></template>
                         </el-input>
                         <el-tree
                             ref="tree"
@@ -263,7 +262,7 @@
                                         :label="$t('common.plateNum')"
                                         min-width="140px"
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div>
                                                 {{ scope.row.plateNum }}
                                                 <span
@@ -308,7 +307,7 @@
                                         "
                                         min-width="140px"
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <div v-if="!scope.row.handleState">
                                                 <span class="text-error"
                                                     >●</span
@@ -385,7 +384,7 @@
                                         width="150"
                                         fixed="right"
                                     >
-                                        <template slot-scope="scope">
+                                        <template #default="scope">
                                             <a
                                                 v-if="!scope.row.handleState"
                                                 @click="doHandle(scope.row)"
@@ -417,7 +416,7 @@
         </div>
         <el-dialog
             :title="title"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             :width="'576px'"
             @close="handleExit"
         >
@@ -464,7 +463,7 @@
                     </el-input>
                 </el-form-item>
             </el-form>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="handleExit">
                     <!-- 取消 -->
                     {{ $t("common.cancel") }}
@@ -473,7 +472,7 @@
                     <!-- 确定 -->
                     {{ $t("common.ok") }}
                 </el-button>
-            </span>
+            </span></template>
         </el-dialog>
     </div>
 </template>

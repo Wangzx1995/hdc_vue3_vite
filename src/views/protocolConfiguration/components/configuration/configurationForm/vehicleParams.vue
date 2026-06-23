@@ -54,11 +54,11 @@
                                         .max
                                 ) {
                                     newForm['param8'].provinceID = String(
-                                        val
+                                        val,
                                     ).slice(
                                         0,
                                         capability.generic.vehicleDetail
-                                            .provinceID.max
+                                            .provinceID.max,
                                     );
                                 }
                             }
@@ -67,7 +67,7 @@
                             (e) => {
                                 if (e.target.value === '') {
                                     newForm['param8'].provinceID = Number(
-                                        e.target.ariaValueMin
+                                        e.target.ariaValueMin,
                                     );
                                 }
                             }
@@ -95,11 +95,11 @@
                                     capability.generic.vehicleDetail.cityID.max
                                 ) {
                                     newForm['param8'].cityID = String(
-                                        val
+                                        val,
                                     ).slice(
                                         0,
                                         capability.generic.vehicleDetail.cityID
-                                            .max
+                                            .max,
                                     );
                                 }
                             }
@@ -108,7 +108,7 @@
                             (e) => {
                                 if (e.target.value === '') {
                                     newForm['param8'].cityID = Number(
-                                        e.target.ariaValueMin
+                                        e.target.ariaValueMin,
                                     );
                                 }
                             }
@@ -137,11 +137,11 @@
                                         .manufacturerID.max
                                 ) {
                                     newForm['param8'].manufacturerID = String(
-                                        val
+                                        val,
                                     ).slice(
                                         0,
                                         capability.generic.vehicleDetail
-                                            .manufacturerID.max
+                                            .manufacturerID.max,
                                     );
                                 }
                             }
@@ -150,7 +150,7 @@
                             (e) => {
                                 if (e.target.value === '') {
                                     newForm['param8'].manufacturerID = Number(
-                                        e.target.ariaValueMin
+                                        e.target.ariaValueMin,
                                     );
                                 }
                             }
@@ -293,7 +293,7 @@
                             (e) => {
                                 if (e.target.value === '') {
                                     newForm['param8'].height = Number(
-                                        e.target.ariaValueMin
+                                        e.target.ariaValueMin,
                                     );
                                 }
                             }
@@ -320,7 +320,7 @@
                             (e) => {
                                 if (e.target.value === '') {
                                     newForm['param8'].weight = Number(
-                                        e.target.ariaValueMin
+                                        e.target.ariaValueMin,
                                     );
                                 }
                             }
@@ -386,7 +386,7 @@
                             (e) => {
                                 if (e.target.value === '') {
                                     newForm['param2222'].addUpMileage = Number(
-                                        e.target.ariaValueMin
+                                        e.target.ariaValueMin,
                                     );
                                 }
                             }
@@ -421,7 +421,7 @@
                             (e) => {
                                 if (e.target.value === '') {
                                     newForm['param2222'].mileageRadio = Number(
-                                        e.target.ariaValueMin
+                                        e.target.ariaValueMin,
                                     );
                                 }
                             }
@@ -772,7 +772,7 @@
                             (e) => {
                                 if (e.target.value === '') {
                                     newForm['param1305'].staticSpeed = Number(
-                                        e.target.ariaValueMin
+                                        e.target.ariaValueMin,
                                     );
                                 }
                             }
@@ -886,7 +886,7 @@
                             (e) => {
                                 if (e.target.value === '') {
                                     newForm['param965'].vehicleType = Number(
-                                        e.target.ariaValueMin
+                                        e.target.ariaValueMin,
                                     );
                                 }
                             }
@@ -921,9 +921,8 @@
                         @change="controlEnableChange"
                     ></el-switch>
                 </el-form-item>
-                <template v-for="item in vehCtrlList">
+                <template v-for="item in vehCtrlList" :key="item.ctrlType">
                     <el-form-item
-                        :key="item.ctrlType"
                         :label="item.label"
                         v-if="
                             newForm['param960'].controlEnable &&
@@ -1314,7 +1313,7 @@ export default {
                                 val["param8"].hasOwnProperty("plateColor"))
                                 ? `param8.plateColor&车牌颜色&${this.getLabel(
                                       "generic_vehicleDetail_plateColor",
-                                      val["param8"].plateColor
+                                      val["param8"].plateColor,
                                   )}&${val["param8"].plateColor}`
                                 : null;
                         this.setForm["车辆信息&param8"].plateType =
@@ -1324,7 +1323,7 @@ export default {
                                 val["param8"].hasOwnProperty("plateType"))
                                 ? `param8.plateType&车辆类型&${this.getLabel(
                                       "generic_vehicleDetail_plateType",
-                                      val["param8"].plateType
+                                      val["param8"].plateType,
                                   )}&${val["param8"].plateType}`
                                 : null;
                         this.setForm["车辆信息&param8"].vehCharacter =
@@ -1346,7 +1345,7 @@ export default {
                             (this.isTemplate &&
                                 val["param8"].hasOwnProperty("engineNum"))
                                 ? `param8.engineNum&${this.$t(
-                                      "protocolConfiguration.engineNo"
+                                      "protocolConfiguration.engineNo",
                                   )}&${val["param8"].engineNum}`
                                 : null;
                         this.setForm["车辆信息&param8"].height =
@@ -1379,7 +1378,7 @@ export default {
                                 this.oldForm["param2222"].initialMileage ||
                             (this.isTemplate &&
                                 val["param2222"].hasOwnProperty(
-                                    "initialMileage"
+                                    "initialMileage",
                                 ))
                                 ? `param2222.initialMileage&车辆初始里程&${val["param2222"].initialMileage}`
                                 : null;
@@ -1439,7 +1438,7 @@ export default {
                                 val["param930"].hasOwnProperty("speedSource"))
                                 ? `param930.speedSource&车速来源number&${this.getLabel(
                                       "intelliDrive_sensor_pulseSetting_speedSource",
-                                      val["param930"].speedSource
+                                      val["param930"].speedSource,
                                   )}&${val["param930"].speedSource}`
                                 : null;
                         this.setForm["车速配置&param930"].velocityPulseVoltage =
@@ -1447,7 +1446,7 @@ export default {
                                 this.oldForm["param930"].velocityPulseVoltage ||
                             (this.isTemplate &&
                                 val["param930"].hasOwnProperty(
-                                    "velocityPulseVoltage"
+                                    "velocityPulseVoltage",
                                 ))
                                 ? `param930.velocityPulseVoltage&速度脉冲电压上拉开关switch&${val["param930"].velocityPulseVoltage}`
                                 : null;
@@ -1456,11 +1455,11 @@ export default {
                                 this.oldForm["param930"].pulseCalibrationMode ||
                             (this.isTemplate &&
                                 val["param930"].hasOwnProperty(
-                                    "pulseCalibrationMode"
+                                    "pulseCalibrationMode",
                                 ))
                                 ? `param930.pulseCalibrationMode&脉冲系数校准模式number&${this.getLabel(
                                       "intelliDrive_sensor_pulseSetting_pulseCalibrationMode",
-                                      val["param930"].pulseCalibrationMode
+                                      val["param930"].pulseCalibrationMode,
                                   )}&${val["param930"].pulseCalibrationMode}`
                                 : null;
                         this.setForm["车速配置&param930"].pulseCoefficient =
@@ -1468,7 +1467,7 @@ export default {
                                 this.oldForm["param930"].pulseCoefficient ||
                             (this.isTemplate &&
                                 val["param930"].hasOwnProperty(
-                                    "pulseCoefficient"
+                                    "pulseCoefficient",
                                 ))
                                 ? `param930.pulseCoefficient&脉冲系数&${val["param930"].pulseCoefficient}`
                                 : null;
@@ -1479,7 +1478,7 @@ export default {
                                 val["param930"].hasOwnProperty("PWM"))
                                 ? `param930.PWM&占空比number&${this.getLabel(
                                       "intelliDrive_sensor_pulseSetting_PWM",
-                                      val["param930"].PWM
+                                      val["param930"].PWM,
                                   )}&${val["param930"].PWM}`
                                 : null;
                     }
@@ -1500,7 +1499,7 @@ export default {
                                     ? `param1305.tcssList.${index}.acquireType&采集类型number&${this.getLabelSelf(
                                           item.acquireTypeList,
                                           val["param1305"].tcssList[index]
-                                              .acquireType
+                                              .acquireType,
                                       )}&${
                                           val["param1305"].tcssList[index]
                                               .acquireType
@@ -1517,7 +1516,7 @@ export default {
                                     ? `param1305.tcssList.${index}.manualStatus&手动设置状态number&${this.getLabelSelf(
                                           item.manualStatusList,
                                           val["param1305"].tcssList[index]
-                                              .manualStatus
+                                              .manualStatus,
                                       )}&${
                                           val["param1305"].tcssList[index]
                                               .manualStatus
@@ -1534,7 +1533,7 @@ export default {
                                     ? `param1305.tcssList.${index}.curStatus&当前状态number&${this.getLabelSelf(
                                           item.curStatusList,
                                           val["param1305"].tcssList[index]
-                                              .curStatus
+                                              .curStatus,
                                       )}&${
                                           val["param1305"].tcssList[index]
                                               .curStatus
@@ -1543,7 +1542,7 @@ export default {
                         });
                         if (
                             !this.setForm.hasOwnProperty(
-                                "静态手动设置&param1305"
+                                "静态手动设置&param1305",
                             )
                         ) {
                             this.setForm["静态手动设置&param1305"] = {};
@@ -1567,13 +1566,13 @@ export default {
                                 this.oldForm["param1305"].staticContinue ||
                             (this.isTemplate &&
                                 val["param1305"].hasOwnProperty(
-                                    "staticContinue"
+                                    "staticContinue",
                                 ))
                                 ? `param1305.staticContinue&持续时间number&${val["param1305"].staticContinue}`
                                 : null;
                         if (
                             !this.setForm.hasOwnProperty(
-                                "车厢状态OSD开关&param1305"
+                                "车厢状态OSD开关&param1305",
                             )
                         ) {
                             this.setForm["车厢状态OSD开关&param1305"] = {};
@@ -1587,7 +1586,7 @@ export default {
                                         .enable ||
                                 (this.isTemplate &&
                                     val["param1305"].hasOwnProperty(
-                                        "osdEnable"
+                                        "osdEnable",
                                     ))
                                     ? `param1305.osdEnable.${index}.enable&通道${item.chanNo}switch&${val["param1305"].osdEnable[index].enable}`
                                     : null;
@@ -1632,9 +1631,9 @@ export default {
                                 val["param960"].hasOwnProperty("lock"))
                                 ? `param960.lock&锁车指令number&${this.getLabelSelf(
                                       this.vehCtrlList.find(
-                                          (item) => item.ctrlType === 1
+                                          (item) => item.ctrlType === 1,
                                       ).ctrlStatusList,
-                                      val["param960"].lock
+                                      val["param960"].lock,
                                   )}&${val["param960"].lock}`
                                 : null;
                         this.setForm["控车参数&param960"].speedLimit =
@@ -1651,9 +1650,9 @@ export default {
                                 val["param960"].hasOwnProperty("liftLimit"))
                                 ? `param960.liftLimit&限举指令number&${this.getLabelSelf(
                                       this.vehCtrlList.find(
-                                          (item) => item.ctrlType === 3
+                                          (item) => item.ctrlType === 3,
                                       ).ctrlStatusList,
-                                      val["param960"].liftLimit
+                                      val["param960"].liftLimit,
                                   )}&${val["param960"].liftLimit}`
                                 : null;
                     }
@@ -1668,34 +1667,35 @@ export default {
                                 this.oldForm["param38"].iccidlockStatus ||
                             (this.isTemplate &&
                                 val["param38"].hasOwnProperty(
-                                    "iccidlockStatus"
+                                    "iccidlockStatus",
                                 ))
                                 ? `param38.iccidlockStatus&ICC锁定状态switch&${val["param38"].iccidlockStatus}`
                                 : null;
 
                         this.setForm["锁定参数&param38"].jtStandardList =
                             JSON.stringify(
-                                val["param38"].platformLockStatus.jtStandardList
+                                val["param38"].platformLockStatus
+                                    .jtStandardList,
                             ) !=
                                 JSON.stringify(
                                     this.oldForm["param38"].platformLockStatus
-                                        .jtStandardList
+                                        .jtStandardList,
                                 ) ||
                             (this.isTemplate &&
                                 val["param38"].hasOwnProperty(
-                                    "platformLockStatus"
+                                    "platformLockStatus",
                                 ) &&
                                 val["param38"][
                                     "platformLockStatus"
                                 ].hasOwnProperty("jtStandardList"))
                                 ? `param38.platformLockStatus.jtStandard&锁定部标平台参数objArray&${this.getUploadEventPlatform(
                                       val["param38"].platformLockStatus
-                                          .jtStandardList
+                                          .jtStandardList,
                                   )}&${this.getJtStandard(
                                       val["param38"].platformLockStatus
                                           .jtStandardList,
                                       val["param38"].platformLockStatus
-                                          .jtStandard
+                                          .jtStandard,
                                   )}`
                                 : null;
                         this.setForm[
@@ -1706,7 +1706,7 @@ export default {
                                     .vehicleParamLockStatus ||
                             (this.isTemplate &&
                                 val["param38"].hasOwnProperty(
-                                    "vehicleParamLockStatus"
+                                    "vehicleParamLockStatus",
                                 ))
                                 ? `param38.vehicleParamLockStatus&信息锁定状态switch&${val["param38"].vehicleParamLockStatus}`
                                 : null;
@@ -1722,7 +1722,7 @@ export default {
                                 val["param20"].hasOwnProperty("positionType"))
                                 ? `param20.positionType&定位方式&${this.getLabel(
                                       "generic_positioning_positionType",
-                                      val["param20"].positionType
+                                      val["param20"].positionType,
                                   )}&${val["param20"].positionType}`
                                 : null;
                         this.setForm["定位配置&param20"].bdReportInterval =
@@ -1730,7 +1730,7 @@ export default {
                                 this.oldForm["param20"].bdReportInterval ||
                             (this.isTemplate &&
                                 val["param20"].hasOwnProperty(
-                                    "bdReportInterval"
+                                    "bdReportInterval",
                                 ))
                                 ? `param20.bdReportInterval&北斗上报周期&${val["param20"].bdReportInterval}`
                                 : null;
@@ -1756,7 +1756,7 @@ export default {
                                 this.oldForm["param6"].underVoltageThreshold ||
                             (this.isTemplate &&
                                 val["param6"].hasOwnProperty(
-                                    "underVoltageThreshold"
+                                    "underVoltageThreshold",
                                 ))
                                 ? `param6.underVoltageThreshold&欠压报警阈值&${val["param6"].underVoltageThreshold}`
                                 : null;
@@ -1819,19 +1819,19 @@ export default {
                 this.tcssList.forEach((item) => {
                     item.label = this.getJsonLabel(
                         "zhatu_containerStatus_tcssList_tcssType",
-                        item.tcssType
+                        item.tcssType,
                     );
                     item.acquireTypeList = this.getEnumerationValue(
                         item.acquireType,
-                        "zhatu_containerStatus_tcssList_acquireType"
+                        "zhatu_containerStatus_tcssList_acquireType",
                     );
                     item.curStatusList = this.getEnumerationValue(
                         item.curStatus,
-                        `zhatu_containerStatus_tcssList_Status_${item.tcssType}`
+                        `zhatu_containerStatus_tcssList_Status_${item.tcssType}`,
                     );
                     item.manualStatusList = this.getEnumerationValue(
                         item.manualStatus,
-                        `zhatu_containerStatus_tcssList_Status_${item.tcssType}`
+                        `zhatu_containerStatus_tcssList_Status_${item.tcssType}`,
                     );
                 });
             }
@@ -1846,15 +1846,15 @@ export default {
                 this.vehCtrlList.forEach((item) => {
                     item.label = this.getJsonLabel(
                         "zhatu_vehicleControl_vehCtrlList_ctrlType",
-                        item.ctrlType
+                        item.ctrlType,
                     );
                     item.param = this.getJsonLabel(
                         "zhatu_vehicleControl_vehCtrlList_ctrlType_param",
-                        item.ctrlType
+                        item.ctrlType,
                     );
                     item.ctrlStatusList = this.getEnumerationValue(
                         item.ctrlStatus,
-                        "zhatu_vehicleControl_vehCtrlList_ctrlStatus"
+                        "zhatu_vehicleControl_vehCtrlList_ctrlStatus",
                     );
                 });
             }
@@ -1875,12 +1875,12 @@ export default {
 </script>
 <style lang="less" scoped>
 @import "./configurationForm.less";
-/deep/.el-collapse {
+:deep(.el-collapse){
     .el-collapse-item__content {
         padding-top: 20px;
     }
 }
-/deep/ .validTime {
+:deep(.validTime){
     .el-input__validateIcon {
         display: none !important;
     }

@@ -62,7 +62,7 @@
                             prop="add"
                             :label="$t('deviceLoadReportVerify.ipAddress')"
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <span class="red" v-if="scope.row.add === ''">
                                     <!-- 未输入 -->
                                     {{
@@ -82,7 +82,7 @@
                             prop="port"
                             :label="$t('deviceLoadReportVerify.portNumber')"
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <span class="red" v-if="scope.row.port === ''">
                                     <!-- 未输入 -->
                                     {{
@@ -104,12 +104,12 @@
                                 $t('deviceLoadReportVerify.connectionStatus')
                             "
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <span v-if="scope.row.status === 1">
                                     <!-- 已连接 -->
                                     {{
                                         $t(
-                                            "deviceLoadReportVerify.connectionStatusText1"
+                                            "deviceLoadReportVerify.connectionStatusText1",
                                         )
                                     }}
                                 </span>
@@ -120,7 +120,7 @@
                                     <!-- 未连接 -->
                                     {{
                                         $t(
-                                            "deviceLoadReportVerify.connectionStatusText2"
+                                            "deviceLoadReportVerify.connectionStatusText2",
                                         )
                                     }}
                                 </span>
@@ -245,7 +245,7 @@
         </div>
         <el-dialog
             :title="$t('deviceLoadReportVerify.reportStatusText3')"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
         >
             <el-form
                 :model="form"
@@ -271,16 +271,18 @@
                     ></el-input>
                 </el-form-item>
             </el-form>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="handleCancel">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button type="primary" @click="handleConfirm">
-                     <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="handleCancel">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button type="primary" @click="handleConfirm">
+                         <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -372,12 +374,12 @@ export default {
                                     // "报告审核不通过！"
                                     this.$message.success(
                                         this.$t(
-                                            "deviceLoadReportVerify.reportReviewFailed"
-                                        )
+                                            "deviceLoadReportVerify.reportReviewFailed",
+                                        ),
                                     );
                                     this.dialogVisible = false;
                                     this.$router.push(
-                                        "/manageCenter/deviceLoadReportVerify"
+                                        "/manageCenter/deviceLoadReportVerify",
                                     );
                                 } else {
                                     this.$message.error(res.msg);
@@ -400,12 +402,12 @@ export default {
                                     // "报告审核不通过！"
                                     this.$message.success(
                                         this.$t(
-                                            "deviceLoadReportVerify.reportReviewFailed"
-                                        )
+                                            "deviceLoadReportVerify.reportReviewFailed",
+                                        ),
                                     );
                                     this.dialogVisible = false;
                                     this.$router.push(
-                                        "/manageCenter/deviceLoadReportVerify"
+                                        "/manageCenter/deviceLoadReportVerify",
                                     );
                                 } else {
                                     this.$message.error(res.msg);
@@ -428,7 +430,7 @@ export default {
                     confirmButtonText: this.$t("deviceLoadReportVerify.pass"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     this.$api
@@ -438,11 +440,11 @@ export default {
                                 // "报告审核通过！"
                                 this.$message.success(
                                     this.$t(
-                                        "deviceLoadReportVerify.reportReviewSuccess"
-                                    )
+                                        "deviceLoadReportVerify.reportReviewSuccess",
+                                    ),
                                 );
                                 this.$router.push(
-                                    "/manageCenter/deviceLoadReportVerify"
+                                    "/manageCenter/deviceLoadReportVerify",
                                 );
                             } else {
                                 this.$message.error(res.msg);
@@ -464,7 +466,7 @@ export default {
                     confirmButtonText: this.$t("deviceLoadReportVerify.pass"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     this.$api
@@ -477,11 +479,11 @@ export default {
                                 // "报告审核通过！"
                                 this.$message.success(
                                     this.$t(
-                                        "deviceLoadReportVerify.reportReviewSuccess"
-                                    )
+                                        "deviceLoadReportVerify.reportReviewSuccess",
+                                    ),
                                 );
                                 this.$router.push(
-                                    "/manageCenter/deviceLoadReportVerify"
+                                    "/manageCenter/deviceLoadReportVerify",
                                 );
                             } else {
                                 this.$message.error(res.msg);
@@ -501,7 +503,7 @@ export default {
                 this.$route.meta.title = this.$t("common.detail"); //"详情";
             } else {
                 this.$route.meta.title = this.$t(
-                    "deviceLoadReportVerify.examine"
+                    "deviceLoadReportVerify.examine",
                 ); //"审核";
             }
             this.reportDetail = [];
@@ -542,7 +544,7 @@ export default {
                                     {
                                         // title: "车辆使用性质",
                                         title: this.$t(
-                                            "common.vehicleUsageNature"
+                                            "common.vehicleUsageNature",
                                         ),
                                         content: carInfo.carType,
                                         isNormal: true,
@@ -570,7 +572,7 @@ export default {
                             const storageObj = {
                                 // title: "磁盘信息",
                                 title: this.$t(
-                                    "deviceLoadReportVerify.diskInformation"
+                                    "deviceLoadReportVerify.diskInformation",
                                 ),
                                 state:
                                     storageStateNum > 0 ? "unnormal" : "normal",
@@ -598,7 +600,7 @@ export default {
                             const videoObj = {
                                 // title: "视频信息",
                                 title: this.$t(
-                                    "deviceLoadReportVerify.videoInformation"
+                                    "deviceLoadReportVerify.videoInformation",
                                 ),
                                 state:
                                     videoStateNum > 0 ? "unnormal" : "normal",
@@ -631,7 +633,7 @@ export default {
                             const platformObj = {
                                 // title: "平台信息",
                                 title: this.$t(
-                                    "deviceLoadReportVerify.platformInformation"
+                                    "deviceLoadReportVerify.platformInformation",
                                 ),
                                 state:
                                     platformStateNum > 0
@@ -650,7 +652,7 @@ export default {
                             const driverObj = {
                                 // title: "驾驶员信息",
                                 title: this.$t(
-                                    "deviceLoadReportVerify.driverInformation"
+                                    "deviceLoadReportVerify.driverInformation",
                                 ),
                                 state: "normal",
                                 stateNum: 0,
@@ -658,7 +660,7 @@ export default {
                                     {
                                         // title: "驾驶员姓名",
                                         title: this.$t(
-                                            "deviceLoadReportVerify.driverName"
+                                            "deviceLoadReportVerify.driverName",
                                         ),
                                         content: driver.name,
                                         isNormal: true,
@@ -666,7 +668,7 @@ export default {
                                     {
                                         // title: "驾驶证号",
                                         title: this.$t(
-                                            "deviceLoadReportVerify.driverNo"
+                                            "deviceLoadReportVerify.driverNo",
                                         ),
                                         content: driver.driverNo,
                                         isNormal: true,
@@ -674,7 +676,7 @@ export default {
                                     {
                                         // title: "有效期",
                                         title: this.$t(
-                                            "deviceLoadReportVerify.driverValidDate"
+                                            "deviceLoadReportVerify.driverValidDate",
                                         ),
                                         content: driver.validDate,
                                         isNormal: true,
@@ -682,7 +684,7 @@ export default {
                                     {
                                         // title: "从业资格证号",
                                         title: this.$t(
-                                            "deviceLoadReportVerify.driverQualificationNo"
+                                            "deviceLoadReportVerify.driverQualificationNo",
                                         ),
                                         content: driver.qualificationNo,
                                         isNormal: true,
@@ -690,7 +692,7 @@ export default {
                                     {
                                         // title: "发证机构",
                                         title: this.$t(
-                                            "deviceLoadReportVerify.driverCertificateOrg"
+                                            "deviceLoadReportVerify.driverCertificateOrg",
                                         ),
                                         content: driver.certificateOrg,
                                         isNormal: true,
@@ -708,7 +710,7 @@ export default {
                             const locateObj = {
                                 // title: "定位信息",
                                 title: this.$t(
-                                    "deviceLoadReportVerify.locateInformation"
+                                    "deviceLoadReportVerify.locateInformation",
                                 ),
                                 state: "normal",
                                 stateNum: 0,
@@ -716,7 +718,7 @@ export default {
                                     {
                                         // title: "定位状态",
                                         title: this.$t(
-                                            "deviceLoadReportVerify.positioningStatus"
+                                            "deviceLoadReportVerify.positioningStatus",
                                         ),
                                         content:
                                             this.locateLinkMap[locate.link],
@@ -725,7 +727,7 @@ export default {
                                     {
                                         // title: "连接星数",
                                         title: this.$t(
-                                            "deviceLoadReportVerify.connectedStarsNumber"
+                                            "deviceLoadReportVerify.connectedStarsNumber",
                                         ),
                                         content: locate.strength,
                                         isNormal: true,
@@ -744,7 +746,7 @@ export default {
                             const netObj = {
                                 // title: "网络信息",
                                 title: this.$t(
-                                    "deviceLoadReportVerify.networkInformation"
+                                    "deviceLoadReportVerify.networkInformation",
                                 ),
                                 state: netStateNum > 0 ? "unnormal" : "normal",
                                 stateNum: netStateNum,
@@ -752,7 +754,7 @@ export default {
                                     {
                                         // title: "蜂窝网络模块",
                                         title: this.$t(
-                                            "deviceLoadReportVerify.cellularNetworkModule"
+                                            "deviceLoadReportVerify.cellularNetworkModule",
                                         ),
                                         content: net.moduleNum,
                                         isNormal: true,
@@ -760,7 +762,7 @@ export default {
                                     {
                                         // title: "拨号状态",
                                         title: this.$t(
-                                            "deviceLoadReportVerify.dialing"
+                                            "deviceLoadReportVerify.dialing",
                                         ),
                                         content: `${
                                             this.netStatusMap[net.status]
@@ -774,12 +776,12 @@ export default {
                                     {
                                         // title: "信号强度",
                                         title: this.$t(
-                                            "deviceLoadReportVerify.signalStrength"
+                                            "deviceLoadReportVerify.signalStrength",
                                         ),
                                         content: net.strength
                                             ? net.strength
                                             : this.$t(
-                                                  "deviceLoadReportVerify.noSignal"
+                                                  "deviceLoadReportVerify.noSignal",
                                               ), //"无信号"
                                         isNormal: true,
                                     },
@@ -794,7 +796,7 @@ export default {
                             const calibrationObj = {
                                 // title: "标定信息",
                                 title: this.$t(
-                                    "deviceLoadReportVerify.calibrationInformation"
+                                    "deviceLoadReportVerify.calibrationInformation",
                                 ),
                                 state: "normal",
                                 stateNum: 0,
@@ -810,7 +812,7 @@ export default {
                                             {
                                                 // title: "ADAS标定状态",
                                                 title: this.$t(
-                                                    "deviceLoadReportVerify.calibrationInformationText1"
+                                                    "deviceLoadReportVerify.calibrationInformationText1",
                                                 ),
                                                 content:
                                                     this.calibrationStatusMap[
@@ -821,7 +823,7 @@ export default {
                                             {
                                                 // title: "启用状态",
                                                 title: this.$t(
-                                                    "deviceLoadReportVerify.calibrationInformationText2"
+                                                    "deviceLoadReportVerify.calibrationInformationText2",
                                                 ),
                                                 content: adas.enabled
                                                     ? this.$t("common.open")
@@ -831,7 +833,7 @@ export default {
                                             {
                                                 // title: "通道",
                                                 title: this.$t(
-                                                    "deviceLoadReportVerify.calibrationInformationText3"
+                                                    "deviceLoadReportVerify.calibrationInformationText3",
                                                 ),
                                                 content: adas.channelId,
                                                 isNormal: true,
@@ -839,52 +841,52 @@ export default {
                                             {
                                                 // title: "垂直距离",
                                                 title: this.$t(
-                                                    "deviceLoadReportVerify.calibrationInformationText4"
+                                                    "deviceLoadReportVerify.calibrationInformationText4",
                                                 ),
                                                 content: adas.vehicleDistance,
                                                 unit: this.$t(
-                                                    "deviceLoadReportVerify.cm"
+                                                    "deviceLoadReportVerify.cm",
                                                 ),
                                                 isNormal: true,
                                             },
                                             {
                                                 // title: "车头距离",
                                                 title: this.$t(
-                                                    "deviceLoadReportVerify.calibrationInformationText5"
+                                                    "deviceLoadReportVerify.calibrationInformationText5",
                                                 ),
                                                 content: adas.headDistance,
                                                 unit: this.$t(
-                                                    "deviceLoadReportVerify.cm"
+                                                    "deviceLoadReportVerify.cm",
                                                 ),
                                                 isNormal: true,
                                             },
                                             {
                                                 // title: "左轮距离",
                                                 title: this.$t(
-                                                    "deviceLoadReportVerify.calibrationInformationText6"
+                                                    "deviceLoadReportVerify.calibrationInformationText6",
                                                 ),
                                                 content: adas.leftWheelDistance,
                                                 unit: this.$t(
-                                                    "deviceLoadReportVerify.cm"
+                                                    "deviceLoadReportVerify.cm",
                                                 ),
                                                 isNormal: true,
                                             },
                                             {
                                                 // title: "右轮距离",
                                                 title: this.$t(
-                                                    "deviceLoadReportVerify.calibrationInformationText7"
+                                                    "deviceLoadReportVerify.calibrationInformationText7",
                                                 ),
                                                 content:
                                                     adas.rightWheelDistance,
                                                 unit: this.$t(
-                                                    "deviceLoadReportVerify.cm"
+                                                    "deviceLoadReportVerify.cm",
                                                 ),
                                                 isNormal: true,
                                             },
                                             {
                                                 // title: "车头占比",
                                                 title: this.$t(
-                                                    "deviceLoadReportVerify.calibrationInformationText8"
+                                                    "deviceLoadReportVerify.calibrationInformationText8",
                                                 ),
                                                 content: adas.headRatio,
                                                 unit: "%",
@@ -893,13 +895,13 @@ export default {
                                             {
                                                 // title: "图像",
                                                 title: this.$t(
-                                                    "deviceLoadReportVerify.calibrationInformationText9"
+                                                    "deviceLoadReportVerify.calibrationInformationText9",
                                                 ),
                                                 content:
                                                     adas.imageUrl == "" ||
                                                     adas.imageUrl == undefined
                                                         ? this.$t(
-                                                              "deviceLoadReportVerify.notUploaded"
+                                                              "deviceLoadReportVerify.notUploaded",
                                                           )
                                                         : adas.imageUrl,
                                                 isNormal:
@@ -925,13 +927,13 @@ export default {
                                                 title:
                                                     i.name +
                                                     this.$t(
-                                                        "deviceLoadReportVerify.calibrationInformationText9"
+                                                        "deviceLoadReportVerify.calibrationInformationText9",
                                                     ), //图像,
                                                 content:
                                                     i.imageUrl == "" ||
                                                     i.imageUrl == undefined
                                                         ? this.$t(
-                                                              "deviceLoadReportVerify.notUploaded"
+                                                              "deviceLoadReportVerify.notUploaded",
                                                           )
                                                         : i.imageUrl,
                                                 isNormal:
@@ -946,7 +948,7 @@ export default {
                                             {
                                                 // title: "通道",
                                                 title: this.$t(
-                                                    "deviceLoadTaskManage.channel"
+                                                    "deviceLoadTaskManage.channel",
                                                 ),
                                                 content: i.channelId,
                                                 isNormal: true,
@@ -957,13 +959,13 @@ export default {
                                     calibrationObj.listData.push({
                                         // name: "刹车",
                                         name: this.$t(
-                                            "deviceLoadReportVerify.brake"
+                                            "deviceLoadReportVerify.brake",
                                         ),
                                         listDatas: [
                                             {
                                                 // title: "刹车状态",
                                                 title: this.$t(
-                                                    "deviceLoadReportVerify.brakeStatus"
+                                                    "deviceLoadReportVerify.brakeStatus",
                                                 ),
                                                 content:
                                                     this.calibrationStatusMap[
@@ -977,13 +979,13 @@ export default {
                                     calibrationObj.listData.push({
                                         // name: "左转向灯",
                                         name: this.$t(
-                                            "deviceLoadReportVerify.leftTurnSignal"
+                                            "deviceLoadReportVerify.leftTurnSignal",
                                         ),
                                         listDatas: [
                                             {
                                                 // title: "左转向灯状态",
                                                 title: this.$t(
-                                                    "deviceLoadReportVerify.leftTurnSignalStatus"
+                                                    "deviceLoadReportVerify.leftTurnSignalStatus",
                                                 ),
                                                 content:
                                                     this.calibrationStatusMap[
@@ -997,13 +999,13 @@ export default {
                                     calibrationObj.listData.push({
                                         // name: "右转向灯",
                                         name: this.$t(
-                                            "deviceLoadReportVerify.rightTurnSignal"
+                                            "deviceLoadReportVerify.rightTurnSignal",
                                         ),
                                         listDatas: [
                                             {
                                                 // title: "右转向灯状态",
                                                 title: this.$t(
-                                                    "deviceLoadReportVerify.rightTurnSignalStatus"
+                                                    "deviceLoadReportVerify.rightTurnSignalStatus",
                                                 ),
                                                 content:
                                                     this.calibrationStatusMap[
@@ -1021,7 +1023,7 @@ export default {
                                                 title:
                                                     i.name +
                                                     this.$t(
-                                                        "deviceLoadTaskManage.taskStatus"
+                                                        "deviceLoadTaskManage.taskStatus",
                                                     ),
                                                 content:
                                                     this.calibrationStatusMap[
@@ -1040,7 +1042,7 @@ export default {
                         const picObj = {
                             // title: "装车图片",
                             title: this.$t(
-                                "deviceLoadReportVerify.loadingPicture"
+                                "deviceLoadReportVerify.loadingPicture",
                             ),
                             state: "normal",
                             stateNum: 0,
@@ -1048,14 +1050,14 @@ export default {
                                 {
                                     // title: "GPS天线图像",
                                     title: this.$t(
-                                        "deviceLoadReportVerify.loadingPictureText1"
+                                        "deviceLoadReportVerify.loadingPictureText1",
                                     ),
                                     content:
                                         this.reportInfo.gpsAntennaImage == "" ||
                                         this.reportInfo.gpsAntennaImage ==
                                             undefined
                                             ? this.$t(
-                                                  "deviceLoadReportVerify.notUploaded"
+                                                  "deviceLoadReportVerify.notUploaded",
                                               )
                                             : this.reportInfo.gpsAntennaImage,
                                     isNormal:
@@ -1072,14 +1074,14 @@ export default {
                                 {
                                     // title: "4G天线图像",
                                     title: this.$t(
-                                        "deviceLoadReportVerify.loadingPictureText2"
+                                        "deviceLoadReportVerify.loadingPictureText2",
                                     ),
                                     content:
                                         this.reportInfo.c4gAntennaImage == "" ||
                                         this.reportInfo.c4gAntennaImage ==
                                             undefined
                                             ? this.$t(
-                                                  "deviceLoadReportVerify.notUploaded"
+                                                  "deviceLoadReportVerify.notUploaded",
                                               )
                                             : this.reportInfo.c4gAntennaImage,
                                     isNormal:
@@ -1096,14 +1098,14 @@ export default {
                                 {
                                     // title: "整车图像",
                                     title: this.$t(
-                                        "deviceLoadReportVerify.loadingPictureText3"
+                                        "deviceLoadReportVerify.loadingPictureText3",
                                     ),
                                     content:
                                         this.reportInfo.carOverallImage == "" ||
                                         this.reportInfo.carOverallImage ==
                                             undefined
                                             ? this.$t(
-                                                  "deviceLoadReportVerify.notUploaded"
+                                                  "deviceLoadReportVerify.notUploaded",
                                               )
                                             : this.reportInfo.carOverallImage,
                                     isNormal:
@@ -1120,13 +1122,13 @@ export default {
                                 {
                                     // title: "主机图像",
                                     title: this.$t(
-                                        "deviceLoadReportVerify.loadingPictureText4"
+                                        "deviceLoadReportVerify.loadingPictureText4",
                                     ),
                                     content:
                                         this.reportInfo.hostImage == "" ||
                                         this.reportInfo.hostImage == undefined
                                             ? this.$t(
-                                                  "deviceLoadReportVerify.notUploaded"
+                                                  "deviceLoadReportVerify.notUploaded",
                                               )
                                             : this.reportInfo.hostImage,
                                     isNormal:
@@ -1141,7 +1143,7 @@ export default {
                                 {
                                     // title: "ADAS位置图像",
                                     title: this.$t(
-                                        "deviceLoadReportVerify.loadingPictureText5"
+                                        "deviceLoadReportVerify.loadingPictureText5",
                                     ),
                                     content:
                                         this.reportInfo.adasLocationImage ==
@@ -1149,7 +1151,7 @@ export default {
                                         this.reportInfo.adasLocationImage ==
                                             undefined
                                             ? this.$t(
-                                                  "deviceLoadReportVerify.notUploaded"
+                                                  "deviceLoadReportVerify.notUploaded",
                                               )
                                             : this.reportInfo.adasLocationImage,
                                     isNormal:
@@ -1168,7 +1170,7 @@ export default {
                                 {
                                     // title: "DSM位置图像",
                                     title: this.$t(
-                                        "deviceLoadReportVerify.loadingPictureText6"
+                                        "deviceLoadReportVerify.loadingPictureText6",
                                     ),
                                     content:
                                         this.reportInfo.dbaLocationImage ==
@@ -1176,7 +1178,7 @@ export default {
                                         this.reportInfo.dbaLocationImage ==
                                             undefined
                                             ? this.$t(
-                                                  "deviceLoadReportVerify.notUploaded"
+                                                  "deviceLoadReportVerify.notUploaded",
                                               )
                                             : this.reportInfo.dbaLocationImage,
                                     isNormal:

@@ -6,7 +6,7 @@
     placement="top"
     popper-class="h-plan__drag-handle--tooltip"
   >
-    <span slot="content">{{ formatValue }}</span>
+    <template #content><span>{{ formatValue }}</span></template>
     <div
       :class="'h-plan__drag-handle ' + 'h-plan__drag-handle--' + align"
       @mousedown="handleMouseDown"

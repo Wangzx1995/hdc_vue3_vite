@@ -877,7 +877,7 @@ export default {
 </script>
 <style lang="less" scoped>
 @import "./configurationForm.less";
-/deep/.el-select {
+:deep(.el-select){
     .el-tag {
         .el-tag--maxwidth {
             max-width: 64px !important;

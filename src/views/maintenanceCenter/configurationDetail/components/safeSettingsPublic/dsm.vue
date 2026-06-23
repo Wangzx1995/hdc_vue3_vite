@@ -20,7 +20,7 @@
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="报警判断速度阈值（0-60）" prop="F365.speedThreshold">
-                                <el-input v-model="form['F365'].speedThreshold"><span slot="suffix">km/h</span></el-input>
+                                <el-input v-model="form['F365'].speedThreshold"><template #suffix><span>km/h</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
@@ -35,7 +35,7 @@
                     <el-row type="flex" justify="space-between">
                         <el-col :span="7" >
                             <el-form-item label="主动拍照策略">
-                                <el-select v-model="form['F365'].activePhotoStrategy"><span slot="suffix">s</span>
+                                <el-select v-model="form['F365'].activePhotoStrategy"><template #suffix><span>s</span></template>
                                   <el-option label="不开启" :value="0"></el-option>
                                   <el-option label="定时拍照" :value="1"></el-option>
                                   <el-option label="定距拍照" :value="2"></el-option>
@@ -46,12 +46,12 @@
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="主动定时拍照时间间隔" prop="F365.timeIntervalOfActiveTimingPhotography">
-                                <el-input v-model="form['F365'].timeIntervalOfActiveTimingPhotography"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="form['F365'].timeIntervalOfActiveTimingPhotography"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="主动定距拍照距离间隔" prop="F365.distanceIntervalOfActiveDistancePhotographing">
-                                <el-input v-model="form['F365'].distanceIntervalOfActiveDistancePhotographing"><span slot="suffix">m</span></el-input>
+                                <el-input v-model="form['F365'].distanceIntervalOfActiveDistancePhotographing"><template #suffix><span>m</span></template></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -63,7 +63,7 @@
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="单次主动拍照时间间隔" prop="F365.timeIntervalOfSingleActivePhotographing">
-                                <el-input v-model="form['F365'].timeIntervalOfSingleActivePhotographing"><span slot="suffix">ms</span></el-input>
+                                <el-input v-model="form['F365'].timeIntervalOfSingleActivePhotographing"><template #suffix><span>ms</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
@@ -110,12 +110,12 @@
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="疲劳驾驶报警分级速度阈值" prop="F365.fatiguedDriveAlarmSpeedThreshold">
-                                <el-input v-model="form['F365'].fatiguedDriveAlarmSpeedThreshold"><span slot="suffix">km/h</span></el-input>
+                                <el-input v-model="form['F365'].fatiguedDriveAlarmSpeedThreshold"><template #suffix><span>km/h</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="疲劳驾驶报警前后视频录制时间" prop="F365.fatiguedDriveAlarmVideoRecordTime">
-                                <el-input v-model="form['F365'].fatiguedDriveAlarmVideoRecordTime"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="form['F365'].fatiguedDriveAlarmVideoRecordTime"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
@@ -127,7 +127,7 @@
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="疲劳驾驶报警拍照间隔时间" prop="F365.fatiguedDriveAlarmPhotoIntervalTime">
-                                <el-input v-model="form['F365'].fatiguedDriveAlarmPhotoIntervalTime"><span slot="suffix">100ms</span></el-input>
+                                <el-input v-model="form['F365'].fatiguedDriveAlarmPhotoIntervalTime"><template #suffix><span>100ms</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" ></el-col>
@@ -138,12 +138,12 @@
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="接打电话报警分级速度阈值" prop="F365.phoneAlarmSpeedThreshold">
-                                <el-input v-model="form['F365'].phoneAlarmSpeedThreshold"><span slot="suffix">km/h</span></el-input>
+                                <el-input v-model="form['F365'].phoneAlarmSpeedThreshold"><template #suffix><span>km/h</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="接打电话报警前后视频录制时间" prop="F365.phoneAlarmVideoRecordTime">
-                                <el-input v-model="form['F365'].phoneAlarmVideoRecordTime"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="form['F365'].phoneAlarmVideoRecordTime"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
@@ -155,12 +155,12 @@
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="接打电话报警判断时间间隔" prop="F365.phoneAlarmJudgeTimeInterval">
-                                <el-input v-model="form['F365'].phoneAlarmJudgeTimeInterval"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="form['F365'].phoneAlarmJudgeTimeInterval"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="接打电话报警拍驾驶员面部特征照片间隔时间" prop="F365.phoneAlarmDriverFaceCharacterPhotoIntervalTime">
-                                <el-input v-model="form['F365'].phoneAlarmDriverFaceCharacterPhotoIntervalTime"><span slot="suffix">100ms</span></el-input>
+                                <el-input v-model="form['F365'].phoneAlarmDriverFaceCharacterPhotoIntervalTime"><template #suffix><span>100ms</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" ></el-col>
@@ -170,12 +170,12 @@
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="抽烟报警分级车速阈值" prop="F365.smokeAlarmSpeedThreshold">
-                                <el-input v-model="form['F365'].smokeAlarmSpeedThreshold"><span slot="suffix">km/h</span></el-input>
+                                <el-input v-model="form['F365'].smokeAlarmSpeedThreshold"><template #suffix><span>km/h</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="抽烟报警前后视频录制时间" prop="F365.smokeAlarmVideoRecordTime">
-                                <el-input v-model="form['F365'].smokeAlarmVideoRecordTime"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="form['F365'].smokeAlarmVideoRecordTime"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
@@ -187,12 +187,12 @@
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="抽烟报警拍驾驶员面部特征照片间隔时间" prop="F365.smokeAlarmDriverFaceCharacterPhotoIntervalTime">
-                                <el-input v-model="form['F365'].smokeAlarmDriverFaceCharacterPhotoIntervalTime"><span slot="suffix">100ms</span></el-input>
+                                <el-input v-model="form['F365'].smokeAlarmDriverFaceCharacterPhotoIntervalTime"><template #suffix><span>100ms</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                           <el-form-item label="抽烟报警判断时间间隔" prop="F365.smokeAlarmJudgeTimeInterval">
-                                <el-input v-model="form['F365'].smokeAlarmJudgeTimeInterval"><span slot="suffix">100ms</span></el-input>
+                                <el-input v-model="form['F365'].smokeAlarmJudgeTimeInterval"><template #suffix><span>100ms</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" ></el-col>
@@ -202,12 +202,12 @@
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="分神驾驶报警分级车速阈值" prop="F365.distractDriveAlarmSpeedThreshold">
-                                <el-input v-model="form['F365'].distractDriveAlarmSpeedThreshold"><span slot="suffix">km/h</span></el-input>
+                                <el-input v-model="form['F365'].distractDriveAlarmSpeedThreshold"><template #suffix><span>km/h</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="分神驾驶报警前后视频录制时间" prop="F365.distractDriveAlarmVideoRecordTime">
-                                <el-input v-model="form['F365'].distractDriveAlarmVideoRecordTime"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="form['F365'].distractDriveAlarmVideoRecordTime"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
@@ -219,7 +219,7 @@
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="分神驾驶报警拍照间隔时间" prop="F365.distractDriveAlarmPhotoIntervalTime">
-                                <el-input v-model="form['F365'].distractDriveAlarmPhotoIntervalTime"><span slot="suffix">100ms</span></el-input>
+                                <el-input v-model="form['F365'].distractDriveAlarmPhotoIntervalTime"><template #suffix><span>100ms</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" ></el-col>
@@ -230,12 +230,12 @@
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="驾驶行为异常分级速度阈值" prop="F365.driveBehaviorAbnormalSpeedThreshold">
-                                <el-input v-model="form['F365'].driveBehaviorAbnormalSpeedThreshold"><span slot="suffix">km/h</span></el-input>
+                                <el-input v-model="form['F365'].driveBehaviorAbnormalSpeedThreshold"><template #suffix><span>km/h</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="驾驶行为异常视频录制时间" prop="F365.driveBehaviorAbnormalVideoRecordTime">
-                                <el-input v-model="form['F365'].driveBehaviorAbnormalVideoRecordTime"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="form['F365'].driveBehaviorAbnormalVideoRecordTime"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
@@ -247,7 +247,7 @@
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="驾驶行为异常拍照间隔" prop="F365.driveBehaviorAbnormalPhotoIntervalTime">
-                                <el-input v-model="form['F365'].driveBehaviorAbnormalPhotoIntervalTime"><span slot="suffix">100ms</span></el-input>
+                                <el-input v-model="form['F365'].driveBehaviorAbnormalPhotoIntervalTime"><template #suffix><span>100ms</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >

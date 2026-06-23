@@ -58,7 +58,7 @@
                         <!-- 操作时间 -->
                         {{ $t("operationLog.operationTime") }}：{{
                             $moment(devUpgradeLogData.createTime).format(
-                                "YYYY-MM-DD HH:mm:ss"
+                                "YYYY-MM-DD HH:mm:ss",
                             )
                         }}</span
                     >
@@ -111,14 +111,12 @@
                         <!-- 暂无数据 -->
                         {{ $t("common.noData") }}
                     </div>
-                    <el-button
-                        type="text"
-                        slot="reference"
-                        icon="el-icon-pie-chart"
-                    >
-                        <!-- 失败原因分析 -->
-                        {{ $t("deviceUpgrade.failureAnalysis") }}
-                    </el-button>
+                    <template #reference>
+                        <el-button type="text" icon="el-icon-pie-chart">
+                            <!-- 失败原因分析 -->
+                            {{ $t("deviceUpgrade.failureAnalysis") }}
+                        </el-button>
+                    </template>
                 </el-popover>
             </div>
         </div>
@@ -161,7 +159,7 @@
                         <el-form-item
                             :label="
                                 $t(
-                                    'deviceLoadReportVerify.activeCodeErrorMessage'
+                                    'deviceLoadReportVerify.activeCodeErrorMessage',
                                 )
                             "
                             v-if="searchForm.upgradeState == '[5]'"
@@ -267,10 +265,10 @@
                         :label="$t('deviceUpgrade.upgradeStateTime')"
                         min-width="165px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 $moment(scope.row.upgradeStateTime).format(
-                                    "YYYY-MM-DD HH:mm:ss"
+                                    "YYYY-MM-DD HH:mm:ss",
                                 )
                             }}
                         </template>
@@ -300,18 +298,18 @@
                         :label="$t('common.peripheralName')"
                         min-width="165px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span v-if="scope.row.peripheralType">
                                 {{
                                     deviceTypeList.find(
                                         (i) =>
                                             i.sysDictCode ==
-                                            scope.row.peripheralType
+                                            scope.row.peripheralType,
                                     )
                                         ? deviceTypeList.find(
                                               (i) =>
                                                   i.sysDictCode ==
-                                                  scope.row.peripheralType
+                                                  scope.row.peripheralType,
                                           ).sysDictName
                                         : "--"
                                 }}
@@ -325,7 +323,7 @@
                         :label="$t('deviceUpgrade.numberUpgrades')"
                         min-width="110px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <el-popover
                                 placement="left"
                                 width="350"
@@ -342,7 +340,7 @@
                                 <el-tabs :tab-position="'left'">
                                     <el-tab-pane
                                         :label="`${$t(
-                                            'conditionMonitoring.the'
+                                            'conditionMonitoring.the',
                                         )}${
                                             scope.row.omsUpgradeTaskDevLogList
                                                 .length - index
@@ -350,7 +348,7 @@
                                             item.upgradeMode === 1
                                                 ? $t('deviceUpgrade.automatic')
                                                 : $t(
-                                                      'deviceUpgrade.handMovement'
+                                                      'deviceUpgrade.handMovement',
                                                   )
                                         }）`"
                                         v-for="(item, index) in scope.row
@@ -372,14 +370,16 @@
                                         </el-timeline>
                                     </el-tab-pane>
                                 </el-tabs>
-                                <el-button slot="reference" type="text">
-                                    {{
-                                        JSON.parse(
-                                            scope.row
-                                                .omsUpgradeTaskDevLogListStr
-                                        ).length
-                                    }}</el-button
-                                >
+                                <template #reference>
+                                    <el-button type="text">
+                                        {{
+                                            JSON.parse(
+                                                scope.row
+                                                    .omsUpgradeTaskDevLogListStr,
+                                            ).length
+                                        }}</el-button
+                                    >
+                                </template>
                             </el-popover>
 
                             <span v-else> -- </span>
@@ -392,7 +392,7 @@
                         :label="$t('common.deviceStatus')"
                         min-width="120px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <el-tag
                                 type="success"
                                 v-if="scope.row.deviceStatus === 1"
@@ -444,7 +444,7 @@
                         min-width="130px"
                         fixed="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <div
                                 class="device-upgrade-status"
                                 v-if="scope.row.upgradeState >= 0"
@@ -472,14 +472,14 @@
                         :label="$t('common.operate')"
                         width="100px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <a
                                 @click="
                                     stopUpgrade(
                                         scope.row.taskId,
                                         scope.row.id,
                                         scope.row.plateNum,
-                                        scope.row.deviceCode
+                                        scope.row.deviceCode,
                                     )
                                 "
                                 v-if="
@@ -498,7 +498,7 @@
                                         scope.row.taskId,
                                         scope.row.id,
                                         scope.row.plateNum,
-                                        scope.row.deviceCode
+                                        scope.row.deviceCode,
                                     )
                                 "
                                 v-if="
@@ -529,7 +529,7 @@
             <!-- 版本升级进度详情 -->
             <el-dialog
                 :title="$t('deviceUpgrade.versionUpgradeProgressDetails')"
-                :visible="progressDetailVisible"
+                v-model="progressDetailVisible"
                 @close="close"
                 class="progress-dialog"
             >
@@ -683,7 +683,7 @@ export default {
                 if (res.success == true) {
                     // "查询成功"
                     this.$message.success(
-                        this.$t("common.search") + this.$t("common.success")
+                        this.$t("common.search") + this.$t("common.success"),
                     );
                 } else {
                     this.$message.error(res.msg);
@@ -717,7 +717,7 @@ export default {
                                         ) {
                                             var iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -728,18 +728,18 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval
+                                                _this.getExportResultInterval,
                                             );
                                             _this.getExportResultInterval = "";
                                             _this.loadingAll = false;
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(
-                            this.$t("common.exportFailed") + ":" + res.msg
+                            this.$t("common.exportFailed") + ":" + res.msg,
                         );
                         this.loadingAll = false;
                     }
@@ -795,7 +795,7 @@ export default {
                     this.tableData.forEach((item) => {
                         if (item.omsUpgradeTaskDevLogListStr) {
                             item.omsUpgradeTaskDevLogList = JSON.parse(
-                                item.omsUpgradeTaskDevLogListStr
+                                item.omsUpgradeTaskDevLogListStr,
                             );
                             item.omsUpgradeTaskDevLogList.forEach((k) => {
                                 this.setActive(k);
@@ -824,7 +824,7 @@ export default {
                         content: this.$t("upgradeProgress.waitingForUpgrade"),
                         timestamp: item.createTime
                             ? this.$moment(item.createTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color: "#52C41A",
@@ -834,7 +834,7 @@ export default {
                         content: this.$t("upgradeProgress.issueCommand"),
                         timestamp: item.sendCmdTime
                             ? this.$moment(item.sendCmdTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color: item.sendCmdTime ? "#52C41A" : "#e4e7ed",
@@ -844,7 +844,7 @@ export default {
                         content: this.$t("upgradeProgress.upgradeSuccessful"),
                         timestamp: item.upgradeEndTime
                             ? this.$moment(item.upgradeEndTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color:
@@ -857,11 +857,11 @@ export default {
                     item.activities.splice(2, 0, {
                         // content: "固件烧写完成",
                         content: this.$t(
-                            "upgradeProgress.firmwareBurningCompleted"
+                            "upgradeProgress.firmwareBurningCompleted",
                         ),
                         timestamp: item.upgradeResultCmdTime
                             ? this.$moment(item.upgradeResultCmdTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color: item.upgradeResultCmdTime
@@ -876,7 +876,7 @@ export default {
                         content: this.$t("upgradeProgress.waitingForUpgrade"),
                         timestamp: item.createTime
                             ? this.$moment(item.createTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color: "#52C41A",
@@ -887,7 +887,7 @@ export default {
                         // content: "下发命令",
                         content: this.$t("upgradeProgress.issueCommand"),
                         timestamp: this.$moment(item.sendCmdTime).format(
-                            "YYYY-MM-DD HH:mm:ss"
+                            "YYYY-MM-DD HH:mm:ss",
                         ),
                         color: "#52C41A",
                     });
@@ -896,10 +896,10 @@ export default {
                     item.activities.push({
                         // content: "固件烧写完成",
                         content: this.$t(
-                            "upgradeProgress.firmwareBurningCompleted"
+                            "upgradeProgress.firmwareBurningCompleted",
                         ),
                         timestamp: this.$moment(
-                            item.upgradeResultCmdTime
+                            item.upgradeResultCmdTime,
                         ).format("YYYY-MM-DD HH:mm:ss"),
                         color: "#52C41A",
                     });
@@ -914,7 +914,7 @@ export default {
                     }`,
                     timestamp: item.upgradeEndTime
                         ? this.$moment(item.upgradeEndTime).format(
-                              "YYYY-MM-DD HH:mm:ss"
+                              "YYYY-MM-DD HH:mm:ss",
                           )
                         : "",
                     color: this.upgradeStateList[item.upgradeState].color,
@@ -947,7 +947,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     let params = {
@@ -983,7 +983,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     let params = {
@@ -1010,7 +1010,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     let params = {
@@ -1050,7 +1050,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     let params = {
@@ -1096,7 +1096,7 @@ export default {
         initEcharts() {
             this.getTaskErrorAnalysisById().then((errData) => {
                 this.chart = this.$echarts.init(
-                    document.getElementById("echarts-box")
+                    document.getElementById("echarts-box"),
                 ); //初始加载动节点
                 this.chart.clear();
                 this.chart.resize();
@@ -1133,7 +1133,7 @@ export default {
                     title: [
                         {
                             text: this.$t(
-                                "deviceUpgrade.totalNumberOfFailures"
+                                "deviceUpgrade.totalNumberOfFailures",
                             ), //"失败总数",
                             top: "42%",
                             left: "27%",
@@ -1335,7 +1335,7 @@ export default {
         }
     }
 }
-/deep/.progress-dialog {
+:deep(.progress-dialog) {
     .el-step__description {
         width: 200px;
     }
@@ -1430,7 +1430,7 @@ export default {
 }
 .el-timeline {
     padding-left: 8px;
-    /deep/.el-timeline-item {
+    :deep(.el-timeline-item) {
         padding-bottom: 8px;
         .el-timeline-item__wrapper {
             height: 44px;
@@ -1455,11 +1455,11 @@ export default {
     }
 }
 .el-tabs {
-    /deep/.el-tabs__item {
+    :deep(.el-tabs__item) {
         padding: 0px 8px 0 0;
     }
 }
-/deep/#echarts-box {
+:deep(#echarts-box) {
     width: 450px;
     height: 300px;
 }

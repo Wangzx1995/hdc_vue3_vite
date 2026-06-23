@@ -3214,7 +3214,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-/deep/.el-tabs {
+:deep(.el-tabs){
     .el-tabs__item {
         display: inline-flex;
     }
@@ -3225,12 +3225,12 @@ export default {
     }
 }
 @import "./configurationForm.less";
-/deep/.el-collapse {
+:deep(.el-collapse){
     .el-collapse-item__content {
         padding-top: 20px;
     }
 }
-/deep/.el-collapse.face-setting {
+:deep(.el-collapse.face-setting){
     .el-collapse-item__content {
         padding: 0 16px;
     }

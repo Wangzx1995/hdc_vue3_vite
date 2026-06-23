@@ -91,7 +91,7 @@
                     :label="$t('roleManage.roleNameList')"
                     min-width="140px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         {{ scope.row.roleNameList }}
                     </template>
                 </el-table-column>
@@ -101,7 +101,7 @@
                     :label="$t('roleManage.userCount')"
                     width="100px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div
                             v-show="scope.row.isSysMust != '1'"
                             class="text-nowrap"
@@ -116,7 +116,7 @@
                     width="100px"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div
                             v-show="scope.row.isSysMust != '1'"
                             class="text-nowrap"

@@ -22,13 +22,16 @@
                         {{ activity.content }}
                     </el-timeline-item>
                 </el-timeline>
-                <el-tag
-                    slot="reference"
-                    effect="dark"
-                    :color="upgradeStateList[upgradeData.upgradeState].color"
+                <template #reference
+                    ><el-tag
+                        effect="dark"
+                        :color="
+                            upgradeStateList[upgradeData.upgradeState].color
+                        "
+                    >
+                        {{ upgradeStateList[upgradeData.upgradeState].name }}
+                    </el-tag></template
                 >
-                    {{ upgradeStateList[upgradeData.upgradeState].name }}
-                </el-tag>
             </el-popover>
         </div>
         <div
@@ -36,7 +39,6 @@
             v-else-if="upgradeData.upgradeState == 0"
         >
             <el-tag
-                slot="reference"
                 effect="dark"
                 :color="upgradeStateList[upgradeData.upgradeState].color"
             >
@@ -119,7 +121,7 @@ export default {
                         content: this.$t("upgradeProgress.waitingForUpgrade"),
                         timestamp: val.createTime
                             ? this.$moment(val.createTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color: "#52C41A",
@@ -129,7 +131,7 @@ export default {
                         content: this.$t("upgradeProgress.issueCommand"),
                         timestamp: val.sendCmdTime
                             ? this.$moment(val.sendCmdTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color: val.sendCmdTime ? "#52C41A" : "#e4e7ed",
@@ -139,7 +141,7 @@ export default {
                         content: this.$t("upgradeProgress.upgradeSuccessful"),
                         timestamp: val.upgradeEndTime
                             ? this.$moment(val.upgradeEndTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color:
@@ -152,11 +154,11 @@ export default {
                     this.activities.splice(2, 0, {
                         // content: "固件烧写完成",
                         content: this.$t(
-                            "upgradeProgress.firmwareBurningCompleted"
+                            "upgradeProgress.firmwareBurningCompleted",
                         ),
                         timestamp: val.upgradeResultCmdTime
                             ? this.$moment(val.upgradeResultCmdTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color: val.upgradeResultCmdTime ? "#52C41A" : "#e4e7ed",
@@ -169,7 +171,7 @@ export default {
                         content: this.$t("upgradeProgress.waitingForUpgrade"),
                         timestamp: val.createTime
                             ? this.$moment(val.createTime).format(
-                                  "YYYY-MM-DD HH:mm:ss"
+                                  "YYYY-MM-DD HH:mm:ss",
                               )
                             : "",
                         color: "#52C41A",
@@ -180,7 +182,7 @@ export default {
                         // content: "下发命令",
                         content: this.$t("upgradeProgress.issueCommand"),
                         timestamp: this.$moment(val.sendCmdTime).format(
-                            "YYYY-MM-DD HH:mm:ss"
+                            "YYYY-MM-DD HH:mm:ss",
                         ),
                         color: "#52C41A",
                     });
@@ -189,10 +191,10 @@ export default {
                     this.activities.push({
                         // content: "固件烧写完成",
                         content: this.$t(
-                            "upgradeProgress.firmwareBurningCompleted"
+                            "upgradeProgress.firmwareBurningCompleted",
                         ),
                         timestamp: this.$moment(
-                            val.upgradeResultCmdTime
+                            val.upgradeResultCmdTime,
                         ).format("YYYY-MM-DD HH:mm:ss"),
                         color: "#52C41A",
                     });
@@ -207,7 +209,7 @@ export default {
                     }`,
                     timestamp: val.upgradeEndTime
                         ? this.$moment(val.upgradeEndTime).format(
-                              "YYYY-MM-DD HH:mm:ss"
+                              "YYYY-MM-DD HH:mm:ss",
                           )
                         : "",
                     color: this.upgradeStateList[val.upgradeState].color,
@@ -219,7 +221,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .el-timeline {
-    /deep/.el-timeline-item {
+    :deep(.el-timeline-item) {
         padding-bottom: 8px;
         .el-timeline-item__wrapper {
             height: 44px;

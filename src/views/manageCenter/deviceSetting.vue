@@ -548,7 +548,7 @@ export default {
         }
     }
 }
-/deep/.text-on-switch {
+:deep(.text-on-switch){
     margin: 0 8px;
     .el-switch__label {
         position: absolute;
@@ -573,10 +573,10 @@ export default {
         width: 60px !important;
     }
 }
-/deep/.text-on-switch.el-switch.is-checked .el-switch__core {
+:deep(.text-on-switch.el-switch.is-checked .el-switch__core){
     background-color: #409eff;
 }
-/deep/.bulk-import {
+:deep(.bulk-import){
     font-size: 14px;
     p {
         font-size: 14px;

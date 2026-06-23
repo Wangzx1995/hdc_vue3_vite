@@ -10,7 +10,7 @@
             :handleData="carList"
             :key="tableKey"
         >
-            <div class="p-b" slot="searchOperation">
+            <template #searchOperation><div class="p-b">
                 <el-button type="primary" @click="openDialog()"
                     >添加车辆</el-button
                 >
@@ -19,7 +19,7 @@
                     @click="deleteCar(selectionIds)"
                     >删除车辆</el-button
                 >
-            </div>
+            </div></template>
             <template v-slot:deviceModelCode="scope">
                 <div>
                     {{ scope.data.deviceModelCode
@@ -58,7 +58,7 @@
         </G-SearchTableList>
         <el-dialog
             title="添加车辆"
-            :visible.sync="addCarVisible"
+            v-model="addCarVisible"
             :close-on-click-modal="false"
             :width="'1400px'"
             :custom-class="'add-car-dialog'"

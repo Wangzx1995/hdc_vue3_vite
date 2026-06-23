@@ -85,7 +85,7 @@
                     min-width="120px"
                     v-if="searchForm.templateType == 2"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span
                             >{{
                                 fileTypeList.find(
@@ -139,7 +139,7 @@
                     fixed="right"
                     width="80px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div>
                             <el-button
                                 v-if="
@@ -220,7 +220,7 @@
             </div>
         </el-footer>
         <StartConfig
-            :visible.sync="startConfigVisible"
+            v-model="startConfigVisible"
             :organizeId="organizeId ? organizeId : null"
             :batchCode="batchCode"
             :configType="searchForm.templateType == 3 ? 'tts' : null"
@@ -232,7 +232,7 @@
         <!-- 批量导入 -->
         <el-dialog
             :title="`${$t('ttsConfiguration.batchImport')}${typeListSelected}`"
-            :visible.sync="deviceListVisible"
+            v-model="deviceListVisible"
             :width="'500px'"
         >
             <div class="device-list">
@@ -268,7 +268,7 @@
                     >
                 </el-radio-group>
             </div>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="deviceListVisible = false">
                     <!-- 取消 -->
                     {{ $t("common.cancel") }}
@@ -277,7 +277,7 @@
                     <!-- 确定 -->
                     {{ $t("common.ok") }}
                 </el-button>
-            </span>
+            </span></template>
         </el-dialog>
     </div>
 </template>
@@ -674,7 +674,7 @@ export default {
         display: flex;
         flex-direction: column;
     }
-    /deep/.el-radio {
+    :deep(.el-radio){
         margin-left: 0px !important;
         margin-bottom: 12px;
         max-width: 400px !important;

@@ -120,17 +120,22 @@
                     :label="$t('deviceLoadTaskManage.necessaryReview')"
                     class="item"
                 >
-                    <span slot="label" class="label-slot">
-                        <!-- 是否需要审核 -->
-                        {{ $t("deviceLoadTaskManage.necessaryReview") }}
-                        <!-- 不需要审核，在装车报告提交后将自动审核通过 -->
-                        <el-tooltip
-                            :content="
-                                $t('deviceLoadTaskManage.necessaryReviewMsg')
-                            "
-                        >
-                            <i class="el-icon-question"></i> </el-tooltip
-                    ></span>
+                    <template #label
+                        ><span class="label-slot">
+                            <!-- 是否需要审核 -->
+                            {{ $t("deviceLoadTaskManage.necessaryReview") }}
+                            <!-- 不需要审核，在装车报告提交后将自动审核通过 -->
+                            <el-tooltip
+                                :content="
+                                    $t(
+                                        'deviceLoadTaskManage.necessaryReviewMsg',
+                                    )
+                                "
+                            >
+                                <i
+                                    class="el-icon-question"
+                                ></i> </el-tooltip></span
+                    ></template>
                     <el-radio-group v-model="form.needCheck">
                         <el-radio :label="0">
                             <!-- 不需要 -->
@@ -177,7 +182,7 @@
                     :label="$t('deviceLoadTaskManage.classification')"
                     width="100"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div class="type-name">
                             <span>
                                 {{ scope.row.typeName }}
@@ -217,7 +222,7 @@
                 </el-table-column>
                 <!-- 设置 -->
                 <el-table-column :label="$t('deviceLoadTaskManage.setUp')">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div
                             class="sub-content"
                             v-if="
@@ -234,7 +239,7 @@
                                 <!-- 个数 -->
                                 {{ $t("deviceLoadTaskManage.number") }}
                                 ：<el-input-number
-                                    size="mini"
+                                    size="small"
                                     v-model="scope.row.num"
                                     :disabled="type == 'detail'"
                                     style="width: 120px"
@@ -248,7 +253,7 @@
                                         (e) => {
                                             if (e.target.value === '') {
                                                 scope.row.num = Number(
-                                                    e.target.ariaValueMin
+                                                    e.target.ariaValueMin,
                                                 );
                                             }
                                         }
@@ -263,7 +268,7 @@
                                 <!-- 容量 -->
                                 {{ $t("deviceLoadTaskManage.capacity") }}
                                 ：<el-input-number
-                                    size="mini"
+                                    size="small"
                                     v-model="scope.row.capacity"
                                     :disabled="type == 'detail'"
                                     style="width: 120px"
@@ -273,7 +278,7 @@
                                         (e) => {
                                             if (e.target.value === '') {
                                                 scope.row.capacity = Number(
-                                                    e.target.ariaValueMin
+                                                    e.target.ariaValueMin,
                                                 );
                                             }
                                         }
@@ -311,7 +316,7 @@
                                                 v-for="itemx in channelList"
                                                 :key="itemx"
                                                 :label="`${$t(
-                                                    'deviceLoadTaskManage.channel'
+                                                    'deviceLoadTaskManage.channel',
                                                 )}${itemx}`"
                                                 :value="itemx"
                                             >
@@ -326,7 +331,7 @@
                                                 <!-- 通道 -->
                                                 {{
                                                     $t(
-                                                        "deviceLoadTaskManage.channel"
+                                                        "deviceLoadTaskManage.channel",
                                                     )
                                                 }}
                                                 {{ itemx
@@ -355,7 +360,7 @@
                     width="80"
                     align="center"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <el-checkbox
                             :true-label="1"
                             :false-label="0"
@@ -383,7 +388,7 @@
                     :label="$t('deviceLoadTaskManage.classification')"
                     width="100"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div class="type-name">
                             <span>
                                 {{ scope.row.typeName }}
@@ -418,7 +423,7 @@
                 </el-table-column>
                 <!-- 设置 -->
                 <el-table-column :label="$t('deviceLoadTaskManage.setUp')">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div
                             class="sub-content"
                             v-if="
@@ -442,7 +447,7 @@
                                 <!-- 个数 -->
                                 {{ $t("deviceLoadTaskManage.number") }}
                                 ：<el-input-number
-                                    size="mini"
+                                    size="small"
                                     v-model="scope.row.num"
                                     :disabled="type == 'detail'"
                                     style="width: 120px"
@@ -499,7 +504,7 @@
                                         v-for="itemx in channelList"
                                         :key="itemx"
                                         :label="`${$t(
-                                            'deviceLoadTaskManage.channel'
+                                            'deviceLoadTaskManage.channel',
                                         )}${itemx}`"
                                         :value="itemx"
                                     >
@@ -535,7 +540,7 @@
                     width="80"
                     align="center"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <el-checkbox
                             :true-label="1"
                             :false-label="0"
@@ -599,8 +604,8 @@ export default {
                     callback(
                         new Error(
                             this.$t("userManage.checkSpeccial") +
-                                "：\\/:*?\"<|'&%>"
-                        )
+                                "：\\/:*?\"<|'&%>",
+                        ),
                     );
                 } else {
                     callback();
@@ -608,7 +613,7 @@ export default {
             } else {
                 // 请输入任务名称
                 callback(
-                    new Error(this.$t("deviceLoadTaskManage.taskValidateMsg1"))
+                    new Error(this.$t("deviceLoadTaskManage.taskValidateMsg1")),
                 );
             }
         };
@@ -618,15 +623,15 @@ export default {
                     // 请输入正确的整数
                     callback(
                         new Error(
-                            this.$t("deviceLoadTaskManage.taskValidateMsg2")
-                        )
+                            this.$t("deviceLoadTaskManage.taskValidateMsg2"),
+                        ),
                     );
                 } else if (Number(value) > 100000) {
                     // 装车车辆数不能大于100000辆
                     callback(
                         new Error(
-                            this.$t("deviceLoadTaskManage.taskValidateMsg3")
-                        )
+                            this.$t("deviceLoadTaskManage.taskValidateMsg3"),
+                        ),
                     );
                 } else {
                     callback();
@@ -641,29 +646,29 @@ export default {
                     // 激活码长度需为8~15
                     callback(
                         new Error(
-                            this.$t("deviceLoadTaskManage.taskValidateMsg4")
-                        )
+                            this.$t("deviceLoadTaskManage.taskValidateMsg4"),
+                        ),
                     );
                 } else if (value.length > 15) {
                     // 激活码长度需为8~15
                     callback(
                         new Error(
-                            this.$t("deviceLoadTaskManage.taskValidateMsg4")
-                        )
+                            this.$t("deviceLoadTaskManage.taskValidateMsg4"),
+                        ),
                     );
                 } else if (!validateEnglishNumber(value)) {
                     // 激活码只限数字，大小写字母
                     callback(
                         new Error(
-                            this.$t("deviceLoadTaskManage.taskValidateMsg5")
-                        )
+                            this.$t("deviceLoadTaskManage.taskValidateMsg5"),
+                        ),
                     );
                 } else if (checkEnglishNumberAll(value) != 3) {
                     // "激活码必须包含数字、大写字母、小写字母三种字符"
                     callback(
                         new Error(
-                            this.$t("deviceLoadTaskManage.taskValidateMsg6")
-                        )
+                            this.$t("deviceLoadTaskManage.taskValidateMsg6"),
+                        ),
                     );
                 } else {
                     callback();
@@ -671,7 +676,7 @@ export default {
             } else {
                 // 请输入激活码
                 callback(
-                    new Error(this.$t("deviceLoadTaskManage.taskValidateMsg7"))
+                    new Error(this.$t("deviceLoadTaskManage.taskValidateMsg7")),
                 );
             }
         };
@@ -689,7 +694,7 @@ export default {
                         required: true,
                         // message: "请选择安装通道号",
                         message: this.$t(
-                            "deviceLoadTaskManage.taskValidateMsg8"
+                            "deviceLoadTaskManage.taskValidateMsg8",
                         ),
                         trigger: "change",
                     },
@@ -708,7 +713,7 @@ export default {
                         required: true,
                         // message: "请选择企业",
                         message: this.$t(
-                            "deviceLoadTaskManage.taskValidateMsg9"
+                            "deviceLoadTaskManage.taskValidateMsg9",
                         ),
                         type: "number",
                         trigger: "change",
@@ -719,7 +724,7 @@ export default {
                         required: true,
                         // message: "请选择关联装车师傅账号",
                         message: this.$t(
-                            "deviceLoadTaskManage.taskValidateMsg10"
+                            "deviceLoadTaskManage.taskValidateMsg10",
                         ),
                         trigger: "blur",
                     },
@@ -767,7 +772,7 @@ export default {
             handler(val) {
                 if (val && val.length > 0) {
                     this.form.startTime = TimeUtil.getDateTime(
-                        this.timeRange[0]
+                        this.timeRange[0],
                     );
                     this.form.endTime = TimeUtil.getDateTime(this.timeRange[1]);
                 } else {
@@ -858,13 +863,13 @@ export default {
                             userIds.forEach((i) => {
                                 if (
                                     this.loadUsersList.find(
-                                        (item) => item.id === i
+                                        (item) => item.id === i,
                                     )
                                 ) {
                                     newArr.push(
                                         this.loadUsersList.find(
-                                            (item) => item.id === i
-                                        ).id
+                                            (item) => item.id === i,
+                                        ).id,
                                     );
                                 }
                             });
@@ -936,8 +941,8 @@ export default {
                                 // "请验证存储容量是否输入合法的数字！"
                                 this.$message.warning(
                                     this.$t(
-                                        "deviceLoadTaskManage.taskValidateMsg11"
-                                    )
+                                        "deviceLoadTaskManage.taskValidateMsg11",
+                                    ),
                                 );
                                 return;
                             }
@@ -945,8 +950,8 @@ export default {
                                 // "请选择视频安装通道号！"
                                 this.$message.warning(
                                     this.$t(
-                                        "deviceLoadTaskManage.taskValidateMsg12"
-                                    )
+                                        "deviceLoadTaskManage.taskValidateMsg12",
+                                    ),
                                 );
                                 return;
                             }
@@ -956,7 +961,7 @@ export default {
                                 installCheckSettings: this.standardList,
                             };
                             param.userIds = param.userIds.filter(
-                                (i) => i !== 0
+                                (i) => i !== 0,
                             );
                             if (this.type == "edit") {
                                 param.id = Number(this.taskId);
@@ -972,16 +977,16 @@ export default {
                                             `${
                                                 this.type == "edit"
                                                     ? this.$t(
-                                                          "deviceLoadTaskManage.taskValidateMsg13"
+                                                          "deviceLoadTaskManage.taskValidateMsg13",
                                                       )
                                                     : this.$t(
-                                                          "deviceLoadTaskManage.taskValidateMsg14"
+                                                          "deviceLoadTaskManage.taskValidateMsg14",
                                                       )
-                                            }！`
+                                            }！`,
                                         );
                                         this.loadSubmit = false;
                                         this.$router.push(
-                                            "/manageCenter/deviceLoadTaskManage"
+                                            "/manageCenter/deviceLoadTaskManage",
                                         );
                                     } else {
                                         this.loadSubmit = false;
@@ -1047,7 +1052,7 @@ export default {
                                         childrenIndex: index,
                                         ...k,
                                     });
-                                }
+                                },
                             );
                         });
                         this.form = {

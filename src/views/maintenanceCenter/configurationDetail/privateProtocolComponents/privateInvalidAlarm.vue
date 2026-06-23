@@ -114,9 +114,9 @@
                                                     index
                                                 ]['limitSpeed']
                                             "
-                                            ><span slot="suffix"
+                                            ><template #suffix><span
                                                 >km/h</span
-                                            ></el-input
+                                            ></template></el-input
                                         >
                                     </el-form-item>
                                 </el-col>
@@ -152,9 +152,9 @@
                                                     index
                                                 ]['triggerSpeed']
                                             "
-                                            ><span slot="suffix"
+                                            ><template #suffix><span
                                                 >km/h</span
-                                            ></el-input
+                                            ></template></el-input
                                         >
                                     </el-form-item>
                                 </el-col>
@@ -188,9 +188,9 @@
                                                     index
                                                 ]['continueTime']
                                             "
-                                            ><span slot="suffix"
+                                            ><template #suffix><span
                                                 >s</span
-                                            ></el-input
+                                            ></template></el-input
                                         >
                                     </el-form-item>
                                 </el-col>

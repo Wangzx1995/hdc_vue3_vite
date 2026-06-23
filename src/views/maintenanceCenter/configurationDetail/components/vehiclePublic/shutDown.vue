@@ -15,7 +15,7 @@
                 </el-option>
             </el-select>
             <!-- <el-input v-model="form['IsApiShutdownCfgInfo'].delayTimes">
-                <span slot="suffix">min</span>
+                <template #suffix><span>min</span></template>
             </el-input> -->
           </el-form-item>
         </el-col>
@@ -24,14 +24,14 @@
         <el-col :span="7">
           <el-form-item label="CAN总线通道2上传时间间隔(0为不上传)" prop="0103.heartbeat">
             <el-input v-model="form['0103'].heartbeat">
-                <span slot="suffix">s</span>
+                <template #suffix><span>s</span></template>
             </el-input>
           </el-form-item>
         </el-col>
         <el-col :span="7">
           <el-form-item label="CAN总线ID单独采集时间间隔(0为不采集)" prop="0110.heartbeat">
             <el-input v-model="form['0110'].heartbeat">
-              <span slot="suffix">s</span>
+              <template #suffix><span>s</span></template>
             </el-input>
           </el-form-item>
         </el-col>
@@ -78,7 +78,7 @@
                 </el-form-item>
                 <el-form-item label="起始位(1-8)" class="m-r-md p-r">
                   <el-input v-model="form.startPosition">
-                    <span slot="suffix">bit</span>
+                    <template #suffix><span>bit</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="CAN信息开关开启数值" class="m-r-md p-r">
@@ -94,7 +94,7 @@
                 </el-form-item>
                 <el-form-item label="结束字节" class="m-r-md p-r">
                   <el-input v-model="form.endByte">
-                    <span slot="suffix">Byte</span>
+                    <template #suffix><span>Byte</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="CAN信息开关关闭数值" class="m-r-md p-r">
@@ -107,12 +107,12 @@
               <el-col :span="6">
                 <el-form-item label="起始字节" class="m-r-md p-r">
                   <el-input v-model="form.startByte">
-                    <span slot="suffix">Byte</span>
+                    <template #suffix><span>Byte</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="结束位(1-8)" class="m-r-md p-r">
                   <el-input v-model="form.endPosition">
-                    <span slot="suffix">bit</span>
+                    <template #suffix><span>bit</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="比例系数" class="m-r-md p-r">
@@ -129,7 +129,7 @@
                 </el-form-item>
                 <el-form-item label="起始位(1-8)" class="m-r-md p-r">
                   <el-input v-model="form.startPosition">
-                    <span slot="suffix">bit</span>
+                    <template #suffix><span>bit</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="CAN信息开关开启数值" class="m-r-md p-r">
@@ -145,7 +145,7 @@
                 </el-form-item>
                 <el-form-item label="结束字节" class="m-r-md p-r">
                   <el-input v-model="form.endByte">
-                    <span slot="suffix">Byte</span>
+                    <template #suffix><span>Byte</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="CAN信息开关关闭数值" class="m-r-md p-r">
@@ -158,12 +158,12 @@
               <el-col :span="6">
                 <el-form-item label="起始字节" class="m-r-md p-r">
                   <el-input v-model="form.startByte">
-                    <span slot="suffix">Byte</span>
+                    <template #suffix><span>Byte</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="结束位(1-8)" class="m-r-md p-r">
                   <el-input v-model="form.endPosition">
-                    <span slot="suffix">bit</span>
+                    <template #suffix><span>bit</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="比例系数" class="m-r-md p-r">
@@ -180,7 +180,7 @@
                 </el-form-item>
                 <el-form-item label="起始位(1-8)" class="m-r-md p-r">
                   <el-input v-model="form.startPosition">
-                    <span slot="suffix">bit</span>
+                    <template #suffix><span>bit</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="CAN信息开关开启数值" class="m-r-md p-r">
@@ -196,7 +196,7 @@
                 </el-form-item>
                 <el-form-item label="结束字节" class="m-r-md p-r">
                   <el-input v-model="form.endByte">
-                    <span slot="suffix">Byte</span>
+                    <template #suffix><span>Byte</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="CAN信息开关关闭数值" class="m-r-md p-r">
@@ -209,12 +209,12 @@
               <el-col :span="6">
                 <el-form-item label="起始字节" class="m-r-md p-r">
                   <el-input v-model="form.startByte">
-                    <span slot="suffix">Byte</span>
+                    <template #suffix><span>Byte</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="结束位(1-8)" class="m-r-md p-r">
                   <el-input v-model="form.endPosition">
-                    <span slot="suffix">bit</span>
+                    <template #suffix><span>bit</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="比例系数" class="m-r-md p-r">
@@ -231,7 +231,7 @@
                 </el-form-item>
                 <el-form-item label="起始位(1-8)" class="m-r-md p-r">
                   <el-input v-model="form.startPosition">
-                    <span slot="suffix">bit</span>
+                    <template #suffix><span>bit</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="CAN信息开关开启数值" class="m-r-md p-r">
@@ -247,7 +247,7 @@
                 </el-form-item>
                 <el-form-item label="结束字节" class="m-r-md p-r">
                   <el-input v-model="form.endByte">
-                    <span slot="suffix">Byte</span>
+                    <template #suffix><span>Byte</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="CAN信息开关关闭数值" class="m-r-md p-r">
@@ -260,12 +260,12 @@
               <el-col :span="6">
                 <el-form-item label="起始字节" class="m-r-md p-r">
                   <el-input v-model="form.startByte">
-                    <span slot="suffix">Byte</span>
+                    <template #suffix><span>Byte</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="结束位(1-8)" class="m-r-md p-r">
                   <el-input v-model="form.endPosition">
-                    <span slot="suffix">bit</span>
+                    <template #suffix><span>bit</span></template>
                   </el-input>
                 </el-form-item>
                 <el-form-item label="比例系数" class="m-r-md p-r">

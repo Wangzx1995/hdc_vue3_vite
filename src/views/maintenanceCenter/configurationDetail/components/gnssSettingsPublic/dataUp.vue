@@ -48,7 +48,7 @@
             <el-row type="flex" justify="space-between">
                 <el-col :span="7" >
                     <el-form-item label="GNSS模块详细定位数据采集频率" prop="0093.positioningInputFrequency">
-                        <el-input v-model="form['0093'].positioningInputFrequency"><span slot="suffix">s</span></el-input>
+                        <el-input v-model="form['0093'].positioningInputFrequency"><template #suffix><span>s</span></template></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="7" >

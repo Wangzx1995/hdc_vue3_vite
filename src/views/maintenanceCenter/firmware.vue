@@ -143,7 +143,7 @@
                     :label="$t('devLog.uploaded')"
                     min-width="165px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         {{
                             $moment(scope.row.createTime).format(
                                 "YYYY-MM-DD HH:mm:ss"
@@ -187,7 +187,7 @@
                     :render-header="renderHeader"
                     v-if="isAdmin"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <h-switch
                             v-model="scope.row.shareOpen"
                             :active-value="1"
@@ -221,7 +221,7 @@
                     min-width="100px"
                     align="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div v-if="scope.row.fileSize">
                             {{
                                 Math.ceil(
@@ -253,7 +253,7 @@
                     :label="$t('common.operate')"
                     width="100px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a
                             @click="downLoad(scope.row.downloadUrl)"
                             class="m-r-sm"
@@ -867,7 +867,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/deep/.firmware-box {
+:deep(.firmware-box){
     height: 100%;
     position: relative;
     // padding: 0 12px;

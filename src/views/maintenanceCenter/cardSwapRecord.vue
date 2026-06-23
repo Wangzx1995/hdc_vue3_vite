@@ -169,7 +169,7 @@
                 :label="$t('cardSwapRecord.certificateType')"
                 width="100px"
             >
-                <template slot-scope="scope">
+                <template #default="scope">
                     <div>
                         <!-- {{ scope.row.certificateType == 0 ? "IC卡" : "未知" }} -->
                         {{
@@ -192,7 +192,7 @@
                 :label="$t('operationLog.operationType')"
                 width="100px"
             >
-                <template slot-scope="scope">
+                <template #default="scope">
                     <!-- <div>{{ scope.row.operation == 1 ? "插卡" : "拔卡" }}</div> -->
                     <div>
                         {{

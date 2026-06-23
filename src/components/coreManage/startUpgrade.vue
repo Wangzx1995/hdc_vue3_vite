@@ -1,14 +1,14 @@
 <template>
     <div class="start-upgrade">
         <el-dialog
-            :visible="firmwareVisible"
+            v-model="firmwareVisible"
             :show-close="false"
             :custom-class="'start-upgrade-dialog'"
             @close="close"
             :close-on-click-modal="false"
             :width="'480px'"
         >
-            <span slot="title"> </span>
+            <template #title><span> </span></template>
             <div class="title">
                 <i class="el-icon-success" />
                 <span>已发送升级命令</span>
@@ -18,20 +18,24 @@
                     >已向设备发送升级命令，可在“我的升级任务”中查看进度。</span
                 >
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="goTask" v-btn="'deviceUpgradeQueryMyTasks'"
-                    >查看任务</el-button
-                >
-                <el-button
-                    type="primary"
-                    v-if="showNext"
-                    @click="continueUpgrade"
-                    >继续升级</el-button
-                >
-                <el-button type="primary" v-else @click="close"
-                    >知道了</el-button
-                >
-            </span>
+            <template #footer
+                ><span class="dialog-footer">
+                    <el-button
+                        @click="goTask"
+                        v-btn="'deviceUpgradeQueryMyTasks'"
+                        >查看任务</el-button
+                    >
+                    <el-button
+                        type="primary"
+                        v-if="showNext"
+                        @click="continueUpgrade"
+                        >继续升级</el-button
+                    >
+                    <el-button type="primary" v-else @click="close"
+                        >知道了</el-button
+                    >
+                </span></template
+            >
         </el-dialog>
     </div>
 </template>

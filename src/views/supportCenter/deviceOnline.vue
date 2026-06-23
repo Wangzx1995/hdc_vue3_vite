@@ -109,7 +109,7 @@
                         prop="onlineStatus"
                         :label="$t('common.deviceStatus')"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <el-tag
                                 type="success"
                                 v-if="scope.row.onlineStatus == 1"
@@ -139,11 +139,11 @@
                         prop="createTime"
                         :label="$t('deviceOnline.upDownTime')"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span v-if="scope.row.createTime">
                                 {{
                                     $moment(scope.row.createTime).format(
-                                        "YYYY-MM-DD HH:mm:ss"
+                                        "YYYY-MM-DD HH:mm:ss",
                                     )
                                 }}
                             </span>
@@ -155,11 +155,11 @@
                         prop="collectTime"
                         :label="$t('deviceOnline.reportTime')"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span v-if="scope.row.collectTime">
                                 {{
                                     $moment(scope.row.collectTime).format(
-                                        "YYYY-MM-DD HH:mm:ss"
+                                        "YYYY-MM-DD HH:mm:ss",
                                     )
                                 }}
                             </span>
@@ -230,7 +230,7 @@ export default {
                     if (this.params.currentPage == 1) {
                         let params = Object.assign(
                             this.params,
-                            this.searchForm
+                            this.searchForm,
                         );
                         this.getData(params);
                     } else {
@@ -251,10 +251,10 @@ export default {
                 this.searchForm.operateTimeArr.length > 0
             ) {
                 _params.startTime = TimeUtil.getDateTime(
-                    this.searchForm.operateTimeArr[0]
+                    this.searchForm.operateTimeArr[0],
                 );
                 _params.endTime = TimeUtil.getDateTime(
-                    this.searchForm.operateTimeArr[1]
+                    this.searchForm.operateTimeArr[1],
                 );
             } else {
                 _params.startTime = "";
@@ -310,7 +310,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-div /deep/ .el-card__body {
+div :deep(.el-card__body){
     padding: 0 !important;
 }
 .el-form-item {

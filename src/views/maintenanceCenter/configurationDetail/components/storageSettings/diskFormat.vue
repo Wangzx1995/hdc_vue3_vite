@@ -11,12 +11,12 @@
                     <span @click="dialogVisible = true" style="font-size: large;color: dodgerblue" >
                         格式化
                     </span>
-                    <el-dialog :visible.sync="dialogVisible" >
+                    <el-dialog v-model="dialogVisible" >
                         确定格式化SD卡1吗？
-                        <span slot="footer" class="dialog-footer">
+                        <template #footer><span class="dialog-footer">
                           <el-button type="primary" @click="dialogVisible = false">取消</el-button>
                           <el-button @click="dialogVisible = false">格式化</el-button>
-                        </span>
+                        </span></template>
                     </el-dialog>
                 </template>
             </el-col>
@@ -32,12 +32,12 @@
                     <span @click="dialogVisible = true" style="font-size: large;color: dodgerblue" >
                         格式化
                     </span>
-                    <el-dialog :visible.sync="dialogVisible" >
+                    <el-dialog v-model="dialogVisible" >
                         确定格式化SD卡2吗？
-                        <span slot="footer" class="dialog-footer">
+                        <template #footer><span class="dialog-footer">
                           <el-button type="primary" @click="dialogVisible = false">取消</el-button>
                           <el-button @click="dialogVisible = false">格式化</el-button>
-                        </span>
+                        </span></template>
                     </el-dialog>
                 </template>
             </el-col>
@@ -54,12 +54,12 @@
                     <span @click="dialogVisible = true" style="font-size: large;color: dodgerblue" >
                         格式化
                     </span>
-                    <el-dialog :visible.sync="dialogVisible" >
+                    <el-dialog v-model="dialogVisible" >
                         确定格式化HDD吗？
-                        <span slot="footer" class="dialog-footer">
+                        <template #footer><span class="dialog-footer">
                           <el-button type="primary" @click="dialogVisible = false">取消</el-button>
                           <el-button @click="dialogVisible = false">格式化</el-button>
-                        </span>
+                        </span></template>
                     </el-dialog>
                 </template>
             </el-col>

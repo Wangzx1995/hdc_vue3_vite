@@ -148,9 +148,9 @@
                                                 chooseType - 1
                                             ]['limitSpeed']
                                         "
-                                        ><span slot="suffix"
+                                        ><template #suffix><span
                                             >km/h</span
-                                        ></el-input
+                                        ></template></el-input
                                     >
                                 </el-form-item>
                             </el-col>
@@ -344,7 +344,7 @@
                                                 chooseType - 1
                                             ]['intervalTime']
                                         "
-                                        ><span slot="suffix">s</span></el-input
+                                        ><template #suffix><span>s</span></template></el-input
                                     >
                                 </el-form-item>
                             </el-col>
@@ -414,7 +414,7 @@
                                                 chooseType - 1
                                             ]['pictureNum']
                                         "
-                                        ><span slot="suffix">张</span></el-input
+                                        ><template #suffix><span>张</span></template></el-input
                                     >
                                 </el-form-item>
                             </el-col>
@@ -473,7 +473,7 @@
                                                 chooseType - 1
                                             ]['snapintervalTime']
                                         "
-                                        ><span slot="suffix">s</span></el-input
+                                        ><template #suffix><span>s</span></template></el-input
                                     >
                                 </el-form-item>
                             </el-col>
@@ -545,7 +545,7 @@
                                                 chooseType - 1
                                             ]['videoPreRecordTime']
                                         "
-                                        ><span slot="suffix">s</span></el-input
+                                        ><template #suffix><span>s</span></template></el-input
                                     >
                                 </el-form-item>
                             </el-col>
@@ -604,7 +604,7 @@
                                                 chooseType - 1
                                             ]['videoDelayRecordTime']
                                         "
-                                        ><span slot="suffix">s</span></el-input
+                                        ><template #suffix><span>s</span></template></el-input
                                     >
                                 </el-form-item>
                             </el-col>
@@ -661,7 +661,7 @@
                                                 chooseType - 1
                                             ]['angle']
                                         "
-                                        ><span slot="suffix">°</span></el-input
+                                        ><template #suffix><span>°</span></template></el-input
                                     >
                                 </el-form-item>
                             </el-col>

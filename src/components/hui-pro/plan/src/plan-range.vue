@@ -37,10 +37,10 @@
           />
         </div>
         <div class="h-plan__popover--action">
-          <el-button size="mini" type="link" @click="save">
+          <el-button size="small" type="text" @click="save">
             {{ t('h.plan.save') }}
           </el-button>
-          <el-button size="mini" type="text" @click="destroy">
+          <el-button size="small" type="text" @click="destroy">
             {{ t('h.plan.delete') }}
           </el-button>
         </div>

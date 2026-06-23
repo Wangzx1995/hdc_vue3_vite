@@ -3,7 +3,7 @@
         <div id="id" style="width: 0; height: 0"></div>
         <el-dialog
             title="标定检测区域"
-            :visible.sync="openSurveyBol"
+            v-model="openSurveyBol"
             :before-close="handleClose"
         >
             <el-switch
@@ -69,10 +69,10 @@
                     </div>
                 </div>
             </div>
-            <!-- <span slot="footer" class="dialog-footer">
+            <!-- <template #footer><span class="dialog-footer">
         <el-button type="primary" @click="openSurveyBol=false">确 定</el-button>
         <el-button @click="openSurveyBol = false">取 消</el-button> -->
-            <!-- </span> -->
+            <!-- </span></template> -->
         </el-dialog>
         <el-form
             ref="PublicBsd"
@@ -191,9 +191,9 @@
                                                     item['indexItem']
                                                 ].limitSpeed
                                             "
-                                            ><span slot="suffix"
+                                            ><template #suffix><span
                                                 >km/h</span
-                                            ></el-input
+                                            ></template></el-input
                                         >
                                     </el-form-item>
                                 </el-col>
@@ -224,7 +224,7 @@
                                 </el-col>
                                 <!-- <el-col :span="7" >
                     <el-form-item label="报警抑制时间 (100-600)" :rules="{ validator: checkNumber.bind({type:'int',min:form['IsApiBsdInfoCapability'].intervalTimeMin,max:form['IsApiBsdInfoCapability'].intervalTimeMax}), trigger: 'blur' }" prop="IsApiBsdInfo.BSD[0].intervalTime">
-                        <el-input v-model="form['IsApiBsdInfo'].BSD[0].intervalTime"><span slot="suffix">ms</span></el-input>
+                        <el-input v-model="form['IsApiBsdInfo'].BSD[0].intervalTime"><template #suffix><span>ms</span></template></el-input>
                     </el-form-item>
                   </el-col> -->
                             </el-row>
@@ -326,9 +326,9 @@
                                                     item['indexItem']
                                                 ].installHeight
                                             "
-                                            ><span slot="suffix"
+                                            ><template #suffix><span
                                                 >m</span
-                                            ></el-input
+                                            ></template></el-input
                                         >
                                     </el-form-item>
                                 </el-col>
@@ -336,7 +336,7 @@
                             <el-row type="flex" justify="space-between">
                                 <!-- <el-col :span="7" >
                   <el-form-item label="算法置信度(1-100)" :rules="{ validator: checkNumber.bind({type:'int',min:0,max:100}), trigger: 'blur' }" prop="IsApiBsdInfo.BSD[0].confidence">
-                    <el-input v-model="form['IsApiBsdInfo'].BSD[0].confidence"><span slot="suffix">%</span></el-input> -->
+                    <el-input v-model="form['IsApiBsdInfo'].BSD[0].confidence"><template #suffix><span>%</span></template></el-input> -->
                                 <!-- <el-select v-model="item.eventEnabled">
                         <el-option label="不上传" :value="0"></el-option>
                         <el-option label="上传" :value="1"></el-option>
@@ -448,9 +448,9 @@
                                                     item['indexItem']
                                                 ].turnAngle
                                             "
-                                            ><span slot="suffix"
+                                            ><template #suffix><span
                                                 >°</span
-                                            ></el-input
+                                            ></template></el-input
                                         >
                                     </el-form-item>
                                 </el-col>
@@ -458,7 +458,7 @@
                             <el-row type="flex" justify="space-between">
                                 <!-- <el-col :span="7" >
                 <el-form-item label="抓图间隔" :rules="{ validator: checkNumber.bind({type:'int',min:form['IsApiBsdInfoCapability'].snapIntervalTimeMin,max:form['IsApiBsdInfoCapability'].snapIntervalTimeMax}), trigger: 'blur' }" prop="IsApiBsdInfo.BSD[0].snapIntervalTime">
-                  <el-input v-model="form['IsApiBsdInfo'].BSD[0].snapIntervalTime"><span slot="suffix">s</span></el-input> -->
+                  <el-input v-model="form['IsApiBsdInfo'].BSD[0].snapIntervalTime"><template #suffix><span>s</span></template></el-input> -->
                                 <!-- <el-select v-model="item.clipUpload">
                       <el-option label="关闭" :value="0"></el-option>
                       <el-option label="打开" :value="1"></el-option>
@@ -579,7 +579,7 @@
                                 </el-col>
                                 <el-col :span="7">
                                     <!-- <el-form-item label="短视频前半部分时长" :rules="{ validator: checkNumber.bind({type:'int',min:1,max:100}), trigger: 'blur' }" prop="IsApiBsdInfo.BSD[0].limitSpeed">
-                    <el-input v-model="form['IsApiBsdInfo'].BSD[0].videoPreRecordTime"><span slot="suffix">s</span></el-input>
+                    <el-input v-model="form['IsApiBsdInfo'].BSD[0].videoPreRecordTime"><template #suffix><span>s</span></template></el-input>
                   </el-form-item> -->
                                 </el-col>
                                 <el-col :span="7">

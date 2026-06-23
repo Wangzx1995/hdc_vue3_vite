@@ -32,7 +32,7 @@
                     :label="$t('common.operate')"
                     width="100px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a @click="searchGps(scope.row.date)">
                             <!-- 轨迹回放 -->
                             {{ $t("qualifiedProbability.trackPlayback") }}
@@ -137,7 +137,7 @@
                                 "
                                 min-width="120px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span>{{
                                         // scope.row.supplementSign
                                         //     ? "补报"
@@ -159,7 +159,7 @@
                                 width="100px"
                                 show-overflow-tooltip
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span>{{
                                         // !scope.row.gpsStatus
                                         //     ? "ACCOFF & 定位无效"
@@ -218,7 +218,7 @@
                                 width="100px"
                                 show-overflow-tooltip
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span
                                         >{{ scope.row.longitude }}，{{
                                             scope.row.latitude
@@ -272,7 +272,7 @@
                                 "
                                 width="150px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div
                                         class="position-signal"
                                         v-if="
@@ -1498,7 +1498,7 @@ export default {
         }
     }
 }
-/deep/.el-select {
+:deep(.el-select){
     .el-input__inner {
         height: 32px !important;
     }

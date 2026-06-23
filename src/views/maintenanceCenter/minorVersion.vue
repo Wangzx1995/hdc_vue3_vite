@@ -77,7 +77,7 @@
                         label="大小(MB)"
                         min-width="100px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <div v-if="scope.row.fileSize">
                                 {{
                                     `${parseFloat(
@@ -94,7 +94,7 @@
                         min-width="160px"
                     ></el-table-column>
                     <el-table-column :label="$t('common.operate')" width="180px">
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <a
                                 @click="downLoad(scope.row.url)"
                                 class="m-r-sm"
@@ -325,7 +325,7 @@ export default {
     font-size: small;
     margin-right: 30px;
 }
-/deep/.upload-demo[disabled] {
+:deep(.upload-demo[disabled]){
     .ivu-upload-select {
         display: none;
     }

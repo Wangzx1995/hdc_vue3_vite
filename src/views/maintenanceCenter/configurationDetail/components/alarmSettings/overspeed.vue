@@ -12,17 +12,17 @@
           <div class="configurations">
             <div v-if="form['0056']" class="configuration-item">
               <el-form-item label="超速持续时间" prop="0056.overSpeedDurationTime">
-                  <el-input v-model="form['0056'].overSpeedDurationTime"><span slot="suffix">s</span></el-input>
+                  <el-input v-model="form['0056'].overSpeedDurationTime"><template #suffix><span>s</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if="form['005B']" class="configuration-item">
               <el-form-item label="超速预警差值" prop="005B.overSpeedAlarmWarningValue">
-                  <el-input v-model="form['005B'].overSpeedAlarmWarningValue"><span slot="suffix">0.1 km/h</span></el-input>
+                  <el-input v-model="form['005B'].overSpeedAlarmWarningValue"><template #suffix><span>0.1 km/h</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if="form['0055']" class="configuration-item">
               <el-form-item label="超速阈值" prop="0055.maxSpeed">
-                  <el-input v-model="form['0055'].maxSpeed"><span slot="suffix">km/h</span></el-input>
+                  <el-input v-model="form['0055'].maxSpeed"><template #suffix><span>km/h</span></template></el-input>
               </el-form-item>
             </div>
           </div>

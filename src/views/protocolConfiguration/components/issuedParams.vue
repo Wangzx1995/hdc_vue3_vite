@@ -26,7 +26,7 @@
                                         :key="index3"
                                         :label="third.label"
                                     >
-                                        <template slot="label">
+                                        <template #label>
                                             <div class="label-solt">
                                                 <i
                                                     class="el-icon-remove"
@@ -85,9 +85,8 @@
                                             :key="item.value"
                                             :name="item.label"
                                         >
-                                            <div
+                                            <template #label><div
                                                 class="label-solt"
-                                                slot="label"
                                             >
                                                 <i
                                                     class="el-icon-remove"
@@ -98,7 +97,7 @@
                                                 <span>
                                                     {{ item.label }}
                                                 </span>
-                                            </div>
+                                            </div></template>
                                             <div>
                                                 <el-form-item
                                                     label="使能"
@@ -174,7 +173,7 @@
             :size="'lg'"
         ></el-empty>
         <StartConfig
-            :visible.sync="startConfigVisible"
+            v-model="startConfigVisible"
             :organizeId="Number($route.query.organizeId)"
             :batchCode="batchCode"
             @reload="reload"
@@ -1187,8 +1186,8 @@ export default {
             }
         }
     }
-    /deep/.el-form-item__label,
-    /deep/.el-tabs {
+    :deep(.el-form-item__label),
+    :deep(.el-tabs){
         width: 100%;
         .label-solt {
             display: flex;

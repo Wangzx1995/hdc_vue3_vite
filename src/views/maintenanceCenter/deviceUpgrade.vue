@@ -9,7 +9,9 @@
                     :placeholder="$t('common.inputOrganizationName')"
                     clearable
                 >
-                    <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                    <template #suffix>
+                        <i class="el-input__icon el-icon-search"></i>
+                    </template>
                 </el-input>
                 <div :class="{ loading_: searchLoading }">
                     <el-tree
@@ -216,7 +218,7 @@
                                     <!-- 设备固件管理 -->
                                     {{
                                         $t(
-                                            "deviceUpgrade.deviceFirmwareManagement"
+                                            "deviceUpgrade.deviceFirmwareManagement",
                                         )
                                     }}
                                 </el-button>
@@ -275,29 +277,39 @@
                                 @close="closeAlert"
                                 class="select-alert"
                             >
-                                <div slot="title" class="alert-title">
-                                    <div>
-                                        <span>
-                                            {{ $t("devLog.selectTableMsg1") }}
-                                            {{ selection.length }}
-                                            {{ $t("devLog.selectTableMsg2") }}
-                                        </span>
-                                        <el-button
-                                            type="text"
-                                            @click="openSelection"
-                                        >
-                                            <!-- 查看 -->
-                                            {{ $t("devLog.selectTableMsg3") }}
-                                        </el-button>
-                                        <el-button
-                                            type="text"
-                                            @click="clearSelection"
-                                        >
-                                            <!-- 取消选择 -->
-                                            {{ $t("devLog.selectTableMsg4") }}
-                                        </el-button>
+                                <template #title>
+                                    <div class="alert-title">
+                                        <div>
+                                            <span>
+                                                {{
+                                                    $t("devLog.selectTableMsg1")
+                                                }}
+                                                {{ selection.length }}
+                                                {{
+                                                    $t("devLog.selectTableMsg2")
+                                                }}
+                                            </span>
+                                            <el-button
+                                                type="text"
+                                                @click="openSelection"
+                                            >
+                                                <!-- 查看 -->
+                                                {{
+                                                    $t("devLog.selectTableMsg3")
+                                                }}
+                                            </el-button>
+                                            <el-button
+                                                type="text"
+                                                @click="clearSelection"
+                                            >
+                                                <!-- 取消选择 -->
+                                                {{
+                                                    $t("devLog.selectTableMsg4")
+                                                }}
+                                            </el-button>
+                                        </div>
                                     </div>
-                                </div>
+                                </template>
                             </el-alert>
                         </div>
                     </div>
@@ -332,7 +344,7 @@
                                 :label="$t('common.plateNum')"
                                 min-width="160px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div v-if="scope.row.plateNum">
                                         <div
                                             :class="{
@@ -343,7 +355,7 @@
                                             class="flex-box"
                                             @click.stop="
                                                 copyCarNumber(
-                                                    scope.row.plateNum
+                                                    scope.row.plateNum,
                                                 )
                                             "
                                         >
@@ -367,21 +379,21 @@
                                                 <!-- 车牌号异常 -->
                                                 {{
                                                     $t(
-                                                        "deviceManage.abnormalLicensePlateNumber"
+                                                        "deviceManage.abnormalLicensePlateNumber",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformPlateNum"
+                                                        "carManage.platformPlateNum",
                                                     )
                                                 }}：{{ scope.row.plateNum }}
                                             </div>
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.devicePlateNum"
+                                                        "carManage.devicePlateNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -389,7 +401,7 @@
                                                 @click="
                                                     toChange(
                                                         1,
-                                                        scope.row.plateNum
+                                                        scope.row.plateNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -397,10 +409,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference>
+                                                <i
+                                                    class="text-error el-icon-warning"
+                                                ></i>
+                                            </template>
                                         </el-popover>
                                         <span
                                             v-if="scope.row.freeze == 1"
@@ -432,11 +445,11 @@
                                 :label="$t('deviceUpgrade.upgradeStateTime')"
                                 min-width="165px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span v-if="scope.row.upgradeStateTime">
                                         {{
                                             $moment(
-                                                scope.row.upgradeStateTime
+                                                scope.row.upgradeStateTime,
                                             ).format("YYYY-MM-DD HH:mm:ss")
                                         }}
                                     </span>
@@ -448,7 +461,7 @@
                                 :label="$t('deviceUpgrade.terminalPeripherals')"
                                 min-width="100px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <el-popover
                                         placement="bottom"
                                         :width="
@@ -485,7 +498,7 @@
                                                         <!-- 外设类型 -->
                                                         {{
                                                             $t(
-                                                                "common.peripheralType"
+                                                                "common.peripheralType",
                                                             )
                                                         }}：
                                                     </span>
@@ -503,7 +516,7 @@
                                                         <!-- 外设名称 -->
                                                         {{
                                                             $t(
-                                                                "common.peripheralName"
+                                                                "common.peripheralName",
                                                             )
                                                         }}：
                                                     </span>
@@ -521,7 +534,7 @@
                                                         <!-- 外设版本 -->
                                                         {{
                                                             $t(
-                                                                "common.peripheralVersion"
+                                                                "common.peripheralVersion",
                                                             )
                                                         }}：
                                                     </span>
@@ -538,10 +551,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <i
-                                            class="el-icon-set-up out-dev-info-icon"
-                                            slot="reference"
-                                        ></i>
+                                        <template #reference>
+                                            <i
+                                                class="el-icon-set-up out-dev-info-icon"
+                                            ></i>
+                                        </template>
                                     </el-popover>
                                 </template>
                             </el-table-column>
@@ -579,7 +593,7 @@
                                 :label="$t('common.deviceSerialNum')"
                                 min-width="125px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         {{ scope.row.deviceSerialNum }}
                                         <el-popover
@@ -598,14 +612,14 @@
                                             <p class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.deviceSerialNumAbnormal"
+                                                        "carManage.deviceSerialNumAbnormal",
                                                     )
                                                 }}
                                             </p>
                                             <div class="marginBottom">
                                                 {{
                                                     $t(
-                                                        "carManage.platformDeviceSerialNum"
+                                                        "carManage.platformDeviceSerialNum",
                                                     )
                                                 }}：{{
                                                     scope.row.deviceSerialNum
@@ -614,7 +628,7 @@
                                             <div>
                                                 {{
                                                     $t(
-                                                        "carManage.deviceDeviceSerialNum"
+                                                        "carManage.deviceDeviceSerialNum",
                                                     )
                                                 }}：{{ item.deviceValue }}
                                             </div>
@@ -623,7 +637,7 @@
                                                     toChange(
                                                         2,
                                                         scope.row
-                                                            .deviceSerialNum
+                                                            .deviceSerialNum,
                                                     )
                                                 "
                                                 class="m-r-sm"
@@ -631,10 +645,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference>
+                                                <i
+                                                    class="text-error el-icon-warning"
+                                                ></i>
+                                            </template>
                                         </el-popover>
                                     </div>
                                 </template>
@@ -652,7 +667,7 @@
                                 fixed="right"
                                 min-width="160px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <upgradeProgress :upgradeData="scope.row">
                                         <el-button
                                             type="text"
@@ -676,7 +691,7 @@
                                             <!-- 终止升级 -->
                                             {{
                                                 $t(
-                                                    "deviceUpgrade.terminateUpgrade"
+                                                    "deviceUpgrade.terminateUpgrade",
                                                 )
                                             }}
                                         </el-button>
@@ -701,7 +716,7 @@
                                 min-width="120px"
                                 :render-header="renderHeader"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <G-DeviceStatus :deviceInfo="scope.row">
                                     </G-DeviceStatus>
                                 </template>
@@ -712,13 +727,13 @@
                                 :label="$t('common.operate')"
                                 width="120px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <a
                                         class="m-r-sm"
                                         @click="
                                             goSingleUpgrade(
                                                 scope.row.deviceModelCode,
-                                                scope.row
+                                                scope.row,
                                             )
                                         "
                                         v-btn="'deviceUpgradeUpgrade'"
@@ -742,7 +757,7 @@
                                                 scope.row
                                                     .manufacturerNameString,
                                                 scope.row.installerString,
-                                                scope.row.accessProtocol
+                                                scope.row.accessProtocol,
                                             )
                                         "
                                         v-btn="'deviceUpgradeHistory'"
@@ -771,7 +786,7 @@
         </el-row>
         <el-dialog
             :title="`${$t('devLog.selectTableMsg3')}(${selection.length})`"
-            :visible.sync="selectionVisible"
+            v-model="selectionVisible"
             :width="'1200px'"
         >
             <div v-if="selectionVisible" class="wrap selection-box">
@@ -860,7 +875,7 @@
                                 (selectionParams.currentPage - 1) *
                                     selectionParams.pageSize,
                                 selectionParams.currentPage *
-                                    selectionParams.pageSize
+                                    selectionParams.pageSize,
                             )
                         "
                         style="width: 100%"
@@ -914,7 +929,7 @@
                             :label="$t('common.operate')"
                             width="100"
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <a @click="deleteSelection(scope.row)">
                                     <!-- 移除 -->
                                     {{ $t("devLog.remove") }}
@@ -940,7 +955,7 @@
         <!-- 批量导入升级 -->
         <el-dialog
             :title="$t('deviceUpgrade.batchImportUpgrade')"
-            :visible.sync="bulkImportVisible"
+            v-model="bulkImportVisible"
             :width="'900px'"
             @close="closeBulkImport"
         >
@@ -976,9 +991,9 @@
                         <el-select
                             v-model="bulkImportForm.plateNum"
                             :placeholder="`${typeListSelected}${$t(
-                                'common.search'
+                                'common.search',
                             )}，${$t(
-                                'parameterQuery.enterLeastThree'
+                                'parameterQuery.enterLeastThree',
                             )}${typeListSelected}`"
                             remote
                             :remote-method="remoteMethod2"
@@ -988,7 +1003,7 @@
                             @visible-change="visibleHandler"
                             @change="selectCar"
                         >
-                            <template slot="prefix"
+                            <template #prefix
                                 ><span
                                     ><i class="iconfont icon-chaxun"></i></span
                             ></template>
@@ -1006,9 +1021,9 @@
                         :rows="10"
                         :spellcheck="false"
                         :placeholder="`${$t(
-                            'common.input'
+                            'common.input',
                         )}${typeListSelected}，${$t(
-                            'parameterQuery.pleaseSeparate'
+                            'parameterQuery.pleaseSeparate',
                         )}`"
                         v-model="bulkImportForm.textarea"
                         @blur="plateNumBlur"
@@ -1016,25 +1031,27 @@
                     </el-input>
                 </div>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="bulkImportVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    @click="doBulkImport(true)"
-                    :loading="importLoading"
-                >
-                    <!-- 下一步 -->
-                    {{ $t("common.nextStep") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="bulkImportVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        @click="doBulkImport(true)"
+                        :loading="importLoading"
+                    >
+                        <!-- 下一步 -->
+                        {{ $t("common.nextStep") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <!-- 批量导入 -->
         <el-dialog
             :title="`${$t('ttsConfiguration.batchImport')}${typeListSelected}`"
-            :visible.sync="deviceListVisible"
+            v-model="deviceListVisible"
             :width="'500px'"
         >
             <div class="device-list">
@@ -1070,16 +1087,18 @@
                     </el-radio>
                 </el-radio-group>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="deviceListVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button type="primary" @click="doDeviceList">
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="deviceListVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button type="primary" @click="doDeviceList">
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -1096,7 +1115,7 @@ Vue.directive("selectLoadMore", {
     bind(el, binding) {
         // 获取element-ui定义好的scroll盒子
         const SELECTWRAP_DOM = el.querySelector(
-            ".el-select-dropdown .el-select-dropdown__wrap"
+            ".el-select-dropdown .el-select-dropdown__wrap",
         );
         SELECTWRAP_DOM.addEventListener("scroll", function () {
             if (this.scrollHeight - this.scrollTop < this.clientHeight + 1) {
@@ -1331,7 +1350,7 @@ export default {
             oInput.remove();
             // 复制成功
             this.$message.success(
-                this.$t("conditionMonitoring.replicatingSuccess")
+                this.$t("conditionMonitoring.replicatingSuccess"),
             );
         },
         cellMouseEnter(row, col) {
@@ -1418,10 +1437,10 @@ export default {
                         h(
                             "span",
                             { slot: "content" },
-                            this.$t("common.deviceStatusDesc")
+                            this.$t("common.deviceStatusDesc"),
                             // "绿色为在线，深黄色是深休眠，浅黄色是浅休眠，灰色为离线"
                         ),
-                    ]
+                    ],
                 ),
             ]);
         },
@@ -1460,13 +1479,13 @@ export default {
                     this.$message({
                         showClose: true,
                         message: this.$t(
-                            "deviceUpgrade.deviceUpgradeListDataIsBeingPrepared"
+                            "deviceUpgrade.deviceUpgradeListDataIsBeingPrepared",
                         ), //"设备升级列表数据正在准备中，该过程可能持续几分钟，请耐心等待….",
                     });
                 }
                 let params = Object.assign(
                     { organizeId: this.params.organizeId },
-                    this.searchForm
+                    this.searchForm,
                 );
                 params["containChildOrg"] = this.params.checked ? 1 : 0;
                 delete params.selectObj;
@@ -1487,7 +1506,7 @@ export default {
                                             ) {
                                                 var iframe =
                                                     document.createElement(
-                                                        "iframe"
+                                                        "iframe",
                                                     );
                                                 iframe.src =
                                                     (process.env.BASE_API == "/"
@@ -1498,10 +1517,10 @@ export default {
                                                     fileName;
                                                 iframe.style.display = "none";
                                                 document.body.appendChild(
-                                                    iframe
+                                                    iframe,
                                                 );
                                                 window.clearInterval(
-                                                    _this.getExportResultInterval
+                                                    _this.getExportResultInterval,
                                                 );
                                                 _this.getExportResultInterval =
                                                     "";
@@ -1515,11 +1534,11 @@ export default {
                                             }
                                         });
                                 },
-                                2000
+                                2000,
                             );
                         } else {
                             this.$message.error(
-                                this.$t("common.exportFailed") + ":" + res.msg
+                                this.$t("common.exportFailed") + ":" + res.msg,
                             );
                             this.loadingAll = false;
                         }
@@ -1709,7 +1728,7 @@ export default {
                             this.params.organizeId =
                                 this.$store.state.tree.defaultOrganizeId;
                             this.TreeExpanded.push(
-                                this.$store.state.tree.defaultOrganizeId
+                                this.$store.state.tree.defaultOrganizeId,
                             );
                         }
                         this.currentNode = res.data[0];
@@ -1718,12 +1737,12 @@ export default {
                                 this.TreeExpanded.push(m.id);
                             });
                             this.$refs["tree"].setCurrentKey(
-                                this.params.organizeId
+                                this.params.organizeId,
                             );
                         });
                         if (this.$store.state.tree.deviceUpgradeId) {
                             this.TreeExpanded.push(
-                                this.$store.state.tree.deviceUpgradeId
+                                this.$store.state.tree.deviceUpgradeId,
                             );
                         }
 
@@ -1825,15 +1844,15 @@ export default {
                                 this.$refs.table &&
                                     this.$refs.table.toggleRowSelection(
                                         item,
-                                        false
+                                        false,
                                     );
                             });
                         });
                         // 批量升级操作只能选择一种设备型号
                         this.$message.warning(
                             this.$t(
-                                "deviceUpgrade.batchUpgradeSelectOneDeviceModel"
-                            )
+                                "deviceUpgrade.batchUpgradeSelectOneDeviceModel",
+                            ),
                         );
                     } else {
                         this.plSelection = this.tableData.filter((i) => {
@@ -1905,8 +1924,8 @@ export default {
                     // 批量升级操作只能选择一种设备型号
                     this.$message.warning(
                         this.$t(
-                            "deviceUpgrade.batchUpgradeSelectOneDeviceModel"
-                        )
+                            "deviceUpgrade.batchUpgradeSelectOneDeviceModel",
+                        ),
                     );
                     return;
                 }
@@ -1914,7 +1933,7 @@ export default {
             if (ids && ids.length <= 0) {
                 // 请选择升级的设备
                 this.$message.warning(
-                    this.$t("deviceUpgrade.selectUpgradedDevice")
+                    this.$t("deviceUpgrade.selectUpgradedDevice"),
                 );
                 return;
             }
@@ -1954,7 +1973,7 @@ export default {
                 if (!(this.tableData && this.tableData.length)) {
                     // 无设备可以升级！
                     this.$message.warning(
-                        this.$t("deviceUpgrade.noDevicesCanBeUpgraded")
+                        this.$t("deviceUpgrade.noDevicesCanBeUpgraded"),
                     );
                     return;
                 }
@@ -1999,7 +2018,7 @@ export default {
             protocolName,
             manufacturerNameString,
             installerString,
-            accessProtocol
+            accessProtocol,
         ) {
             this.$router.push({
                 path: "/maintenanceCenter/deviceUpgrade/history",
@@ -2115,7 +2134,7 @@ export default {
                         this.selectionForm["deviceStatus"] === 2)
                 ) {
                     this.selectionData = this.selectionData.filter(
-                        (item) => item[key] === this.selectionForm[key]
+                        (item) => item[key] === this.selectionForm[key],
                     );
                 } else if (this.selectionForm[key]) {
                     this.selectionData = this.selectionData.filter((item) => {
@@ -2133,9 +2152,9 @@ export default {
         deleteSelection(row) {
             this.$refs.table.toggleRowSelection(
                 this.$refs.table.selection.find(
-                    (item) => item.deviceId === row.deviceId
+                    (item) => item.deviceId === row.deviceId,
                 ),
-                false
+                false,
             );
             this.selectionData.map((item, index) => {
                 if (item.deviceId === row.deviceId) {
@@ -2162,7 +2181,7 @@ export default {
                 this.$message.warning(
                     `${this.$t("deviceUpgrade.pleaseEnterToUpgrade")}${
                         this.typeListSelected
-                    }`
+                    }`,
                 );
                 return;
             }
@@ -2181,8 +2200,8 @@ export default {
                             let newPlateNumArr = plateNumArr.filter(
                                 (x) =>
                                     !res.data.nonexistentList.some(
-                                        (y) => y === x
-                                    )
+                                        (y) => y === x,
+                                    ),
                             );
                             this.bulkImportForm.textarea = [
                                 ...new Set(newPlateNumArr),
@@ -2211,10 +2230,10 @@ export default {
                                             this.deviceInfoList[0].checkDeviceInfos.reduce(
                                                 (prev, cur) => {
                                                     return prev.concat(
-                                                        cur["deviceId"]
+                                                        cur["deviceId"],
                                                     );
                                                 },
-                                                []
+                                                [],
                                             ),
                                         business: "DEVICE_UPGRADE_BATCH_IMPORT",
                                     },
@@ -2267,17 +2286,17 @@ export default {
                               this.$t("deviceLoadTaskManage.individual") +
                               this.typeListSelected
                             : ""
-                    }${this.$t("deviceManage.deviceSettingTest14")}`
+                    }${this.$t("deviceManage.deviceSettingTest14")}`,
                 );
             }
         },
         doDeviceList() {
             let deviceArr = this.deviceInfoList.find(
-                (item) => item.deviceModelCode === this.deviceModelCode
+                (item) => item.deviceModelCode === this.deviceModelCode,
             );
             sessionStorage.setItem(
                 "deviceInfoList",
-                JSON.stringify(this.deviceInfoList)
+                JSON.stringify(this.deviceInfoList),
             );
             this.$router.push({
                 path: "/maintenanceCenter/deviceUpgrade/upgrade",
@@ -2289,7 +2308,7 @@ export default {
                         (prev, cur) => {
                             return prev.concat(cur["deviceId"]);
                         },
-                        []
+                        [],
                     ),
                     business: "DEVICE_UPGRADE_BATCH_IMPORT",
                 },
@@ -2305,7 +2324,7 @@ export default {
         },
         getLabelSelf(val) {
             let attribute = this.deviceDicList.find(
-                (e) => Number(e.sysDictCode) === Number(val)
+                (e) => Number(e.sysDictCode) === Number(val),
             );
             if (attribute) {
                 return attribute.sysDictName;
@@ -2347,7 +2366,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     this.$api
@@ -2360,8 +2379,8 @@ export default {
                                 // 已发送重新升级命令
                                 this.$message.success(
                                     this.$t(
-                                        "deviceUpgrade.sentReupgradeCommand"
-                                    )
+                                        "deviceUpgrade.sentReupgradeCommand",
+                                    ),
                                 );
                             } else {
                                 this.$message.error(res.msg);
@@ -2388,7 +2407,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     this.$api
@@ -2401,8 +2420,8 @@ export default {
                                 // 终止成功
                                 this.$message.success(
                                     this.$t(
-                                        "deviceUpgrade.terminationSuccessful"
-                                    )
+                                        "deviceUpgrade.terminationSuccessful",
+                                    ),
                                 );
                             } else {
                                 this.$message.error(res.msg);
@@ -2413,7 +2432,7 @@ export default {
         },
         setDeault() {
             let deviceUpgradeItem = JSON.parse(
-                sessionStorage.getItem("deviceUpgradeItem")
+                sessionStorage.getItem("deviceUpgradeItem"),
             );
             if (deviceUpgradeItem) {
                 this.searchForm.deviceId = deviceUpgradeItem.id;
@@ -2554,7 +2573,7 @@ export default {
     color: #000000 !important;
     padding: 6px 10px;
 }
-/deep/.el-alert {
+:deep(.el-alert){
     .el-alert__content,
     .el-alert__title {
         width: 100%;
@@ -2574,7 +2593,7 @@ export default {
         height: 18px;
     }
 }
-/deep/.bulk-import {
+:deep(.bulk-import){
     font-size: 14px;
     p {
         font-size: 14px;
@@ -2610,7 +2629,7 @@ export default {
         align-items: center;
     }
 }
-/deep/.selection-box {
+:deep(.selection-box){
     .el-form-item {
         margin-bottom: 1rem !important;
     }
@@ -2639,7 +2658,7 @@ export default {
         display: flex;
         flex-direction: column;
     }
-    /deep/.el-radio {
+    :deep(.el-radio){
         margin-left: 0px !important;
         margin-bottom: 12px;
         max-width: 400px !important;

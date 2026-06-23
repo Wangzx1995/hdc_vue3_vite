@@ -208,7 +208,7 @@
                     min-width="120px"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div>
                             <span
                                 :class="
@@ -239,7 +239,7 @@
                     width="180px"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div class="text-nowrap">
                             <el-button
                                 type="text"
@@ -655,13 +655,13 @@ export default {
         overflow: hidden;
     }
 }
-div /deep/ .el-card__body {
+div :deep(.el-card__body){
     padding: 0 !important;
 }
 .save-info-dialog {
     width: 1100px;
     margin: 0 auto;
-    /deep/ .el-dialog__body {
+    :deep(.el-dialog__body){
         color: #4d4d4d;
         padding: 16px 24px;
         .info-content {

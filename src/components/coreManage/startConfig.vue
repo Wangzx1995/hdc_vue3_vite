@@ -1,7 +1,7 @@
 <template>
     <div class="start-config" @touchmove.prevent>
         <el-dialog
-            :visible="firmwareVisible"
+            v-model="firmwareVisible"
             :show-close="false"
             @close="close"
             append-to-body
@@ -19,24 +19,26 @@
                     {{ $t("ttsConfiguration.configurationCommandText2") }}
                 </span>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="goTask">
-                    <!-- 查看任务 -->
-                    {{ $t("ttsConfiguration.configurationCommandText3") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    v-if="showNext"
-                    @click="continueConfig"
-                >
-                    <!-- 继续配置 -->
-                    {{ $t("deviceConfiguration.continueConfiguring") }}
-                </el-button>
-                <el-button type="primary" v-else @click="close">
-                    <!-- 知道了 -->
-                    {{ $t("common.gotIt") }}
-                </el-button>
-            </span>
+            <template #footer
+                ><span class="dialog-footer">
+                    <el-button @click="goTask">
+                        <!-- 查看任务 -->
+                        {{ $t("ttsConfiguration.configurationCommandText3") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        v-if="showNext"
+                        @click="continueConfig"
+                    >
+                        <!-- 继续配置 -->
+                        {{ $t("deviceConfiguration.continueConfiguring") }}
+                    </el-button>
+                    <el-button type="primary" v-else @click="close">
+                        <!-- 知道了 -->
+                        {{ $t("common.gotIt") }}
+                    </el-button>
+                </span></template
+            >
         </el-dialog>
     </div>
 </template>

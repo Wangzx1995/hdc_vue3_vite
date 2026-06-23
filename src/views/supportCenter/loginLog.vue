@@ -112,7 +112,7 @@
                         prop="result"
                         :label="$t('loginLog.loginResults')"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span
                                 v-if="scope.row.result == 0"
                                 class="text-error"
@@ -201,10 +201,10 @@ export default {
                     this.searchForm.operateTimeArr.length >= 2
                 ) {
                     this.searchForm.startTime = TimeUtil.getDateTime(
-                        this.searchForm.operateTimeArr[0]
+                        this.searchForm.operateTimeArr[0],
                     );
                     this.searchForm.endTime = TimeUtil.getDateTime(
-                        this.searchForm.operateTimeArr[1]
+                        this.searchForm.operateTimeArr[1],
                     );
                 } else {
                     this.searchForm.startTime = "";
@@ -273,10 +273,10 @@ export default {
                         this.searchForm.operateTimeArr.length >= 2
                     ) {
                         this.searchForm.startTime = TimeUtil.getDateTime(
-                            this.searchForm.operateTimeArr[0]
+                            this.searchForm.operateTimeArr[0],
                         );
                         this.searchForm.endTime = TimeUtil.getDateTime(
-                            this.searchForm.operateTimeArr[1]
+                            this.searchForm.operateTimeArr[1],
                         );
                     } else {
                         this.searchForm.startTime = "";
@@ -285,7 +285,7 @@ export default {
                     if (this.params.currentPage == 1) {
                         let params = Object.assign(
                             this.params,
-                            this.searchForm
+                            this.searchForm,
                         );
                         this.getData(params);
                     } else {
@@ -372,7 +372,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-div /deep/ .el-card__body {
+div :deep(.el-card__body){
     padding: 0 !important;
 }
 .el-form-item {

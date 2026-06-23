@@ -182,7 +182,7 @@
                             :holidayList.sync="currentHolidayList"
                             readonly
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <div class="date-info mydate">
                                     <!-- 日期信息 -->
                                     <h2>

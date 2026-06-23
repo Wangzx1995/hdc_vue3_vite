@@ -68,7 +68,7 @@
                     prop="isFreezed"
                     :label="$t('wifiManage.nameOfAccount')"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div class="tag-box">
                             <el-tag
                                 v-for="item in scope.row.wifiUsers"
@@ -83,7 +83,7 @@
                     width="120px"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div
                             v-show="scope.row.isSysMust != 1"
                             class="text-nowrap"
@@ -121,8 +121,8 @@
         </div>
         <!-- 编辑 -->
         <el-dialog
-            :visible="editModal"
-            :title="
+            v-model="editModal"
+            :title=""
                 (modalType == -1 ? $t('common.add') : $t('common.edit')) +
                 $t('wifiManage.wifiPrefixName')
             "
@@ -171,14 +171,11 @@
                                     }}-XXXX
                                 </span>
                             </div>
-                            <el-button
-                                class="wifi-btn"
-                                type="text"
-                                slot="reference"
-                                >{{
+                            <template #reference>
+                                <el-button class="wifi-btn" type="text">{{
                                     $t("wifiManage.viewStyleExamples")
-                                }}</el-button
-                            >
+                                }}</el-button>
+                            </template>
                         </el-popover>
                     </el-form-item>
                     <!-- 分配用户 -->
@@ -205,17 +202,19 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <div slot="footer">
-                <el-button type="default" @click="doCancel">{{
-                    $t("common.cancel")
-                }}</el-button>
-                <el-button
-                    type="primary"
-                    :loading="loading"
-                    @click="doSave()"
-                    >{{ $t("common.ok") }}</el-button
-                >
-            </div>
+            <template #footer>
+                <div>
+                    <el-button type="default" @click="doCancel">{{
+                        $t("common.cancel")
+                    }}</el-button>
+                    <el-button
+                        type="primary"
+                        :loading="loading"
+                        @click="doSave()"
+                        >{{ $t("common.ok") }}</el-button
+                    >
+                </div>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -233,7 +232,7 @@ export default {
                     callback();
                 } else {
                     callback(
-                        new Error(this.$t("wifiManage.wifiName_message_3"))
+                        new Error(this.$t("wifiManage.wifiName_message_3")),
                     );
                 }
             }
@@ -307,7 +306,7 @@ export default {
                     if (this.params.currentPage == 1) {
                         let params = Object.assign(
                             this.params,
-                            this.searchForm
+                            this.searchForm,
                         );
                         this.getData(params);
                     } else {
@@ -382,7 +381,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     // 删除用户
@@ -390,7 +389,7 @@ export default {
                         if (res.success == true) {
                             this.loading = false;
                             this.$message.success(
-                                this.$t("common.deleteSuccess")
+                                this.$t("common.deleteSuccess"),
                             );
                             this.search();
                         } else {
@@ -412,7 +411,7 @@ export default {
                                 this.loading = false;
                                 this.closeEditModal();
                                 this.$message.success(
-                                    this.$t("common.addSuccess")
+                                    this.$t("common.addSuccess"),
                                 );
                                 this.search();
                             } else {
@@ -429,7 +428,7 @@ export default {
                                     this.loading = false;
                                     this.closeEditModal();
                                     this.$message.success(
-                                        this.$t("common.editSuccess")
+                                        this.$t("common.editSuccess"),
                                     );
                                     this.search();
                                 } else {
@@ -495,7 +494,7 @@ export default {
         border-top: 1px solid #e4e4e4;
     }
 }
-div /deep/ .el-card__body {
+div :deep(.el-card__body){
     padding: 0 !important;
 }
 .wifi {
@@ -524,7 +523,7 @@ div /deep/ .el-card__body {
         margin: 0 8px 0px 0;
     }
 }
-/deep/.el-transfer {
+:deep(.el-transfer){
     .el-transfer-panel {
         height: 100%;
         width: 300px;

@@ -97,8 +97,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -110,7 +109,7 @@
                                                 ][0]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                             </el-col>
                             <el-col :span="5"> </el-col>
@@ -143,8 +142,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -156,7 +154,7 @@
                                                 ][0]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                             </el-col>
                             <el-col :span="11">
@@ -180,8 +178,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -193,7 +190,7 @@
                                                 ][1]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                             </el-col>
                         </el-row>
@@ -225,8 +222,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -238,7 +234,7 @@
                                                 ][0]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                                 <el-popover
                                     placement="top"
@@ -260,8 +256,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -273,7 +268,7 @@
                                                 ][2]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                             </el-col>
                             <el-col :span="11">
@@ -297,8 +292,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -310,7 +304,7 @@
                                                 ][1]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                                 <el-popover
                                     placement="top"
@@ -332,8 +326,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -345,7 +338,7 @@
                                                 ][3]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                             </el-col>
                         </el-row>
@@ -377,8 +370,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -390,7 +382,7 @@
                                                 ][0]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                                 <div
                                     class="contentBottom"
@@ -419,8 +411,7 @@
                                             >
                                             </el-option>
                                         </el-select>
-                                        <el-form-item
-                                            slot="reference"
+                                        <template #reference><el-form-item
                                             class="textCenter"
                                             style="width: 48%; float: left"
                                             label=""
@@ -435,7 +426,7 @@
                                                     ]
                                                 }}
                                             </div>
-                                        </el-form-item>
+                                        </el-form-item></template>
                                     </el-popover>
                                     <el-popover
                                         placement="top"
@@ -459,8 +450,7 @@
                                             >
                                             </el-option>
                                         </el-select>
-                                        <el-form-item
-                                            slot="reference"
+                                        <template #reference><el-form-item
                                             class="textCenter"
                                             style="width: 48%; float: right"
                                             label=""
@@ -475,7 +465,7 @@
                                                     ]
                                                 }}
                                             </div>
-                                        </el-form-item>
+                                        </el-form-item></template>
                                     </el-popover>
                                 </div>
                             </el-col>
@@ -500,8 +490,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -513,7 +502,7 @@
                                                 ][1]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                                 <el-popover
                                     placement="top"
@@ -535,8 +524,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -548,7 +536,7 @@
                                                 ][2]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                                 <el-popover
                                     placement="top"
@@ -570,8 +558,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -583,7 +570,7 @@
                                                 ][3]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                             </el-col>
                         </el-row>
@@ -615,8 +602,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -628,7 +614,7 @@
                                                 ][0]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                                 <el-popover
                                     placement="top"
@@ -650,8 +636,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -663,7 +648,7 @@
                                                 ][3]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                                 <el-popover
                                     placement="top"
@@ -685,8 +670,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -698,7 +682,7 @@
                                                 ][6]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                             </el-col>
                             <el-col :span="7">
@@ -722,8 +706,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -735,7 +718,7 @@
                                                 ][1]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                                 <el-popover
                                     placement="top"
@@ -757,8 +740,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -770,7 +752,7 @@
                                                 ][4]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                                 <el-popover
                                     placement="top"
@@ -792,8 +774,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -805,7 +786,7 @@
                                                 ][7]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                             </el-col>
                             <el-col :span="7">
@@ -829,8 +810,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -842,7 +822,7 @@
                                                 ][2]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                                 <el-popover
                                     placement="top"
@@ -864,8 +844,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -877,7 +856,7 @@
                                                 ][5]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                                 <el-popover
                                     placement="top"
@@ -899,8 +878,7 @@
                                         >
                                         </el-option>
                                     </el-select>
-                                    <el-form-item
-                                        slot="reference"
+                                    <template #reference><el-form-item
                                         class="textCenter"
                                         label=""
                                     >
@@ -912,7 +890,7 @@
                                                 ][8]["chanNo"]
                                             }}
                                         </div>
-                                    </el-form-item>
+                                    </el-form-item></template>
                                 </el-popover>
                             </el-col>
                         </el-row>

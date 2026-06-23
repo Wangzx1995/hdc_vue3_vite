@@ -9,7 +9,7 @@
         >
             <el-dialog
                 title="DBA全局音量调整"
-                :visible.sync="dialogVisible"
+                v-model="dialogVisible"
                 top="35%"
             >
                 <div class="p-a-md">
@@ -30,7 +30,7 @@
                         show-input
                     ></el-slider>
                 </div>
-                <span slot="footer" class="dialog-footer">
+                <template #footer><span class="dialog-footer">
                     <el-button
                         type="primary"
                         :loading="sendEveryVolume"
@@ -39,7 +39,7 @@
                         >{{ sendEveryVolume ? "设置中" : "确 定" }}</el-button
                     >
                     <el-button @click="dialogVisible = false">取 消</el-button>
-                </span>
+                </span></template>
             </el-dialog>
             <div id="title" class="channels">
                 <el-button
@@ -206,9 +206,9 @@
                                                 'info'
                                             ][0]['speed']
                                         "
-                                        ><span slot="suffix"
+                                        ><template #suffix><span
                                             >km/h</span
-                                        ></el-input
+                                        ></template></el-input
                                     >
                                 </el-form-item>
                             </div>
@@ -249,7 +249,7 @@
                                                 'info'
                                             ][0]['confidence']
                                         "
-                                        ><span slot="suffix">%</span></el-input
+                                        ><template #suffix><span>%</span></template></el-input
                                     >
                                 </el-form-item> -->
                                 <el-form-item label="算法置信度">

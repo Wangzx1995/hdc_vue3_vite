@@ -29,7 +29,6 @@
                     class="picker year-picker important"
                     align="center"
                     type="year"
-    
                     @change="yearDateChangeHandler('year', $event)"
                 />
                 <!-- 年 -->
@@ -48,7 +47,6 @@
                     class="picker month-picker important"
                     align="center"
                     type="month"
-    
                     @change="yearDateChangeHandler('month', $event)"
                 />
                 <!-- 月 -->
@@ -211,7 +209,7 @@ export default {
             if (this.currentMonth <= 0) {
                 const trueYM = this.getTureYearMonth(
                     this.currentYear,
-                    this.currentMonth - 1
+                    this.currentMonth - 1,
                 );
                 this.$emit("update:currentYear", trueYM.y);
                 this.$emit("update:currentMonth", trueYM.m);
@@ -230,7 +228,7 @@ export default {
             if (this.currentMonth >= 11) {
                 const trueYM = this.getTureYearMonth(
                     this.currentYear,
-                    this.currentMonth + 1
+                    this.currentMonth + 1,
                 );
                 this.$emit("update:currentYear", trueYM.y);
                 this.$emit("update:currentMonth", trueYM.m);
@@ -246,7 +244,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-/deep/.h-year-month-selector {
+:deep(.h-year-month-selector) {
     .el-icon-d-arrow-left,
     .el-icon-d-arrow-right {
         transform: rotate(0deg) !important;

@@ -311,7 +311,7 @@
                     "
                     width="160px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             keepTwoZero(scope.row.missMileage) == "0.00"
                                 ? "0"
@@ -329,7 +329,7 @@
                     "
                     width="160px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             keepTwoZero(
                                 scope.row.totalMileage - scope.row.missMileage
@@ -352,7 +352,7 @@
                     "
                     min-width="160px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             keepTwoZero(scope.row.totalMileage) == "0.00"
                                 ? "0"
@@ -371,7 +371,7 @@
                     "
                     min-width="160px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             keepTwoZero(scope.row.trackCompletenessRate) ==
                             "0.00"
@@ -387,7 +387,7 @@
                     width="100px"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a
                             @click="
                                 goDetail(scope.row.orgId, scope.row.orgName)
@@ -433,7 +433,7 @@
                     :label="$t('vehicleTrackIntegrityRate.trackMissSegment')"
                     width="160px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a
                             v-if="scope.row.trackMissSegment"
                             @click="goTrackIncomplete(scope.row)"
@@ -462,7 +462,7 @@
                     "
                     width="160px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             scope.row.missMileage.toFixed(2) == "0.00"
                                 ? "0"
@@ -481,7 +481,7 @@
                     "
                     width="160px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             (
                                 scope.row.totalMileage - scope.row.missMileage
@@ -504,7 +504,7 @@
                     "
                     width="160px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             scope.row.totalMileage.toFixed(2) == "0.00"
                                 ? "0"
@@ -523,7 +523,7 @@
                     "
                     min-width="160px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             scope.row.trackCompletenessRate.toFixed(2) == "0.00"
                                 ? "0"
@@ -538,7 +538,7 @@
                     width="120px"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a
                             @click="goCarDetail(scope.row)"
                             v-btn="'vehicleTrackIntegrityRateTrackReplay'"
@@ -578,7 +578,7 @@
         <el-dialog
             :title="$t('vehicleTrackIntegrityRate.incompleteTrajectoryDetails')"
             top="2%"
-            :visible.sync="dialogTableVisible"
+            v-model="dialogTableVisible"
             :width="dialogWidth + 'px'"
         >
             <div v-if="dialogTableVisible">
@@ -587,9 +587,9 @@
                     :dialogTime="dialogTime"
                 ></TrackIncompleteDetails>
             </div>
-            <!-- <span slot="footer" class="dialog-footer">
+            <!-- <template #footer><span class="dialog-footer">
             <el-button @click="noVisible">关 闭</el-button>
-        </span> -->
+        </span></template> -->
         </el-dialog>
     </div>
 </template>
@@ -1332,7 +1332,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/deep/.el-tabs {
+:deep(.el-tabs){
     .el-tabs__header {
         margin: 0 0 12px !important;
     }
@@ -1368,7 +1368,7 @@ export default {
 .wrap-bottom {
     border-top: 1px solid #e4e4e4;
 }
-/deep/.el-select {
+:deep(.el-select){
     .el-input__inner {
         height: 32px !important;
     }

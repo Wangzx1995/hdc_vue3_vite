@@ -22,7 +22,7 @@
                         <el-switch
                             @change="getScreenData"
                             v-model="screenTerm"
-                            size="mini"
+                            size="small"
                             disabled
                         ></el-switch>
                     </el-tooltip>
@@ -30,7 +30,7 @@
                         v-show="okTree"
                         @change="getScreenData"
                         v-model="screenTerm"
-                        size="mini"
+                        size="small"
                         :disabled="!params.organizeId"
                     ></el-switch>
                 </div>
@@ -41,11 +41,12 @@
                         :placeholder="$t('common.inputOrganizationName')"
                         clearable
                     >
-                        <i
-                            slot="suffix"
-                            @click="filterTree"
-                            class="el-input__icon el-icon-search"
-                        ></i>
+                        <template #suffix>
+                            <i
+                                @click="filterTree"
+                                class="el-input__icon el-icon-search"
+                            ></i>
+                        </template>
                     </el-input>
                     <div :class="{ loading_: searchLoading }">
                         <el-tree
@@ -72,11 +73,12 @@
                         :placeholder="$t('common.inputOrganizationName')"
                         clearable
                     >
-                        <i
-                            slot="suffix"
-                            @click="filterTree1"
-                            class="el-input__icon el-icon-search"
-                        ></i>
+                        <template #suffix>
+                            <i
+                                @click="filterTree1"
+                                class="el-input__icon el-icon-search"
+                            ></i>
+                        </template>
                     </el-input>
                     <div :class="{ loading_: searchLoading }">
                         <el-tree
@@ -93,12 +95,13 @@
                             :current-node-key="params.organizeId"
                             :style="{ height: treeHeight + 'px' }"
                         >
-                            <span slot-scope="{ node, data }">
+                            <template #default="{ node, data }"><span>
                                 <i class="el-icon-s-flag"></i>
                                 <span class="tree-node-span">{{
                                     node.label
                                 }}</span>
                             </span>
+                            </template>
                         </el-tree>
                     </div>
                 </div>
@@ -352,7 +355,7 @@
                                 min-width="200px"
                                 fixed="right"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         <span
                                             :class="

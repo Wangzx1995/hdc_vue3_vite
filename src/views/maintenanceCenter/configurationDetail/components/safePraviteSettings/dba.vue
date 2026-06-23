@@ -54,19 +54,19 @@
                     </el-col>
                     <el-col :span="7" >
                         <el-form-item label="报警判断速度阈值" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="'IsApiDbaInfoList.' + iIndex + '.' + item.obj +'.speedLimit'">
-                            <el-input v-model="i[item.obj].speedLimit"><span slot="suffix">km/h</span></el-input>
+                            <el-input v-model="i[item.obj].speedLimit"><template #suffix><span>km/h</span></template></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="7" >
                         <el-form-item label="报警抑制时间 (100-600)" :rules="{ validator: checkNumber.bind({type:'int',min:100,max:600}), trigger: 'blur' }" :prop="'IsApiDbaInfoList.' + iIndex + '.' + item.obj +'.interval'">
-                            <el-input v-model="i[item.obj].interval"><span slot="suffix">ms</span></el-input>
+                            <el-input v-model="i[item.obj].interval"><template #suffix><span>ms</span></template></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row type="flex" justify="space-between">
                     <el-col :span="7" >
                         <el-form-item label="时间阈值" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="'IsApiDbaInfoList.' + iIndex + '.' + item.obj +'.timeToCollision'">
-                            <el-input v-model="i[item.obj].timeToCollision"><span slot="suffix">s</span></el-input>
+                            <el-input v-model="i[item.obj].timeToCollision"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="7" >
@@ -99,7 +99,7 @@
                     </el-col>
                     <el-col :span="7" >
                         <el-form-item label="抓图间隔" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="'IsApiDbaInfoList.' + iIndex + '.' + item.obj +'.snapShotTime'">
-                              <el-input v-model="i[item.obj].snapShotTime"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="i[item.obj].snapShotTime"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -114,12 +114,12 @@
                     </el-col>
                     <el-col :span="7" >
                         <el-form-item label="短视频前半部分时长" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="'IsApiDbaInfoList.' + iIndex + '.' + item.obj +'.clipPreDuration'">
-                              <el-input v-model="i[item.obj].clipPreDuration"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="i[item.obj].clipPreDuration"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="7" >
                         <el-form-item label="短视频后半部分时长" :rules="{ validator: checkNumber.bind({type:'int'}), trigger: 'blur' }" :prop="'IsApiDbaInfoList.' + iIndex + '.' + item.obj +'.clipPostDuration'">
-                              <el-input v-model="i[item.obj].clipPostDuration"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="i[item.obj].clipPostDuration"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>

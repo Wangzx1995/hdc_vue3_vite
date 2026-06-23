@@ -25,7 +25,7 @@
                     label="轨迹漂移率"
                 ></el-table-column>
                 <el-table-column prop="orgId" label="操作" width="100px">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a @click="searchGps(scope.row.date)">轨迹回放</a>
                     </template>
                 </el-table-column>
@@ -103,7 +103,7 @@
                                 label="上报类型"
                                 width="120px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span>{{
                                         scope.row.supplementSign
                                             ? "补报"
@@ -112,12 +112,12 @@
                                 </template>
                             </el-table-column>
                             <!-- <el-table-column prop="gpsValid" label="是否合格" width="100px">
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span>{{scope.row.gpsValid ? "合格" : "不合格" }}</span>
                                 </template>
                             </el-table-column>
                             <el-table-column  prop="upgradeStatus" label="不合格原因"  width="160px">
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         {{ upgradeStatusList[scope.row.upgradeStatus ] && upgradeStatusList[scope.row.upgradeStatus].name}}
                                     </div>
@@ -129,7 +129,7 @@
                                 width="100px"
                                 show-overflow-tooltip
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span>{{
                                         !scope.row.gpsStatus
                                             ? "ACCOFF & 定位无效"
@@ -162,7 +162,7 @@
                                 width="100px"
                                 show-overflow-tooltip
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span
                                         >{{ scope.row.longitude }}，{{
                                             scope.row.latitude
@@ -201,7 +201,7 @@
                                 label="网络信号强度"
                                 width="150px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div
                                         class="position-signal"
                                         v-if="

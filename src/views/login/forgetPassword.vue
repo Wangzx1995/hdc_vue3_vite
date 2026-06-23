@@ -51,7 +51,7 @@
                                 :placeholder="$t('login.cellPhoneNumber')"
                                 @change="resetVery"
                             >
-                                <template slot="prepend">+86</template>
+                                <template #prepend>+86</template>
                             </el-input>
                         </el-form-item>
                         <el-form-item
@@ -189,7 +189,7 @@
         <!-- 多项目选择 -->
         <el-dialog
             :title="$t('login.selectItem')"
-            :visible.sync="eventSelectVisible"
+            v-model="eventSelectVisible"
             @close="closeSelect"
             :width="'600px'"
         >
@@ -714,14 +714,14 @@ export default {
             }
         }
         .forget-password-form {
-            /deep/.el-form-item {
+            :deep(.el-form-item){
                 position: relative;
                 line-height: 40px;
                 font-size: 12px;
                 vertical-align: top;
                 zoom: 1;
             }
-            /deep/.el-form-item__content {
+            :deep(.el-form-item__content){
                 display: inline-block;
                 width: 100%;
                 position: relative;

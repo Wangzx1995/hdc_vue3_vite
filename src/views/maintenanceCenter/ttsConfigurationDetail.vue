@@ -94,22 +94,25 @@
                         introduction-placement="top"
                         introduction="设备离线或休眠时，等待设备下一次上线时自动下发TTS文本"
                     >
-                        <span slot="label" class="label-slot">
-                            <!-- 是否离线托管 -->
-                            {{ $t("ttsConfiguration.whetherToHostOffline") }}
-                            <!-- 设备离线或休眠时，等待设备下一次上线时自动下发TTS文本 -->
-                            <el-tooltip
-                                placement="top"
-                                :content="
-                                    $t(
-                                        'ttsConfiguration.whetherToHostOfflineText'
-                                    )
-                                "
-                            >
-                                <i
-                                    class="el-icon-warning-outline"
-                                ></i> </el-tooltip
-                        ></span>
+                        <template #label
+                            ><span class="label-slot">
+                                <!-- 是否离线托管 -->
+                                {{
+                                    $t("ttsConfiguration.whetherToHostOffline")
+                                }}
+                                <!-- 设备离线或休眠时，等待设备下一次上线时自动下发TTS文本 -->
+                                <el-tooltip
+                                    placement="top"
+                                    :content="
+                                        $t(
+                                            'ttsConfiguration.whetherToHostOfflineText',
+                                        )
+                                    "
+                                >
+                                    <i
+                                        class="el-icon-warning-outline"
+                                    ></i> </el-tooltip></span
+                        ></template>
                         <el-radio-group v-model="form.offlineManager">
                             <el-radio :label="true">
                                 <!-- 是 -->
@@ -223,7 +226,7 @@
         <!-- 新增 -->
         <el-dialog
             :title="$t('common.add')"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             @close="cancel"
         >
             <el-form
@@ -259,19 +262,21 @@
                     </el-input>
                 </el-form-item>
             </el-form>
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="saveConfig">
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-                <el-button @click="cancel">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="saveConfig">
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                    <el-button @click="cancel">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <el-dialog
-            :visible="firmwareVisible"
+            v-model="firmwareVisible"
             :show-close="false"
             @close="close"
             :width="'600px'"
@@ -288,16 +293,18 @@
                     {{ $t("ttsConfiguration.configurationCommandText2") }}
                 </span>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="goTask">
-                    <!-- 查看任务 -->
-                    {{ $t("ttsConfiguration.configurationCommandText3") }}
-                </el-button>
-                <el-button type="primary" @click="close">
-                    <!-- 知道了 -->
-                    {{ $t("common.gotIt") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="goTask">
+                        <!-- 查看任务 -->
+                        {{ $t("ttsConfiguration.configurationCommandText3") }}
+                    </el-button>
+                    <el-button type="primary" @click="close">
+                        <!-- 知道了 -->
+                        {{ $t("common.gotIt") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -311,7 +318,9 @@ export default {
             if (!k.trim()) {
                 // 配置内容不能为空
                 callback(
-                    new Error(that.$t("ttsConfiguration.ttsFormValidatorText1"))
+                    new Error(
+                        that.$t("ttsConfiguration.ttsFormValidatorText1"),
+                    ),
                 );
             }
             if (value !== " " && value !== null && value !== undefined) {
@@ -319,8 +328,8 @@ export default {
                     // 配置内容不得超过500个字符
                     callback(
                         new Error(
-                            that.$t("ttsConfiguration.ttsFormValidatorText2")
-                        )
+                            that.$t("ttsConfiguration.ttsFormValidatorText2"),
+                        ),
                     );
                 } else {
                     callback();
@@ -328,7 +337,9 @@ export default {
             } else {
                 // 配置内容不能为空
                 callback(
-                    new Error(that.$t("ttsConfiguration.ttsFormValidatorText1"))
+                    new Error(
+                        that.$t("ttsConfiguration.ttsFormValidatorText1"),
+                    ),
                 );
             }
         };
@@ -338,7 +349,9 @@ export default {
             if (!k.trim()) {
                 // 标题不能为空
                 callback(
-                    new Error(that.$t("ttsConfiguration.ttsFormValidatorText4"))
+                    new Error(
+                        that.$t("ttsConfiguration.ttsFormValidatorText4"),
+                    ),
                 );
             }
             if (value !== "" && value !== null && value !== undefined) {
@@ -346,8 +359,8 @@ export default {
                     // 标题不得超过20个字符
                     callback(
                         new Error(
-                            that.$t("ttsConfiguration.ttsFormValidatorText3")
-                        )
+                            that.$t("ttsConfiguration.ttsFormValidatorText3"),
+                        ),
                     );
                 } else {
                     callback();
@@ -355,7 +368,9 @@ export default {
             } else {
                 // 标题不能为空
                 callback(
-                    new Error(that.$t("ttsConfiguration.ttsFormValidatorText4"))
+                    new Error(
+                        that.$t("ttsConfiguration.ttsFormValidatorText4"),
+                    ),
                 );
             }
         };
@@ -371,7 +386,7 @@ export default {
                         required: false,
                         max: 20,
                         message: this.$t(
-                            "ttsConfiguration.ttsFormValidatorText3"
+                            "ttsConfiguration.ttsFormValidatorText3",
                         ), //"不能超过20个字符",
                         trigger: "blur",
                     },
@@ -465,8 +480,8 @@ export default {
                                 // TTS下发成功
                                 this.$message.success(
                                     this.$t(
-                                        "ttsConfiguration.ttsSuccessfullyIssued"
-                                    )
+                                        "ttsConfiguration.ttsSuccessfullyIssued",
+                                    ),
                                 );
                                 this.loadSubmit = false;
                                 this.batchCode = res.data;
@@ -494,8 +509,8 @@ export default {
                                     // TTS整组下发成功
                                     this.$message.success(
                                         this.$t(
-                                            "ttsConfiguration.ttsGroupSuccessfullyIssued"
-                                        )
+                                            "ttsConfiguration.ttsGroupSuccessfullyIssued",
+                                        ),
                                     );
                                     this.loadSubmit = false;
                                     this.batchCode = res.data;
@@ -566,8 +581,8 @@ export default {
                             // 添加TTS常用指令成功！
                             this.$message.success(
                                 this.$t(
-                                    "ttsConfiguration.addedCommonTTSCommands"
-                                )
+                                    "ttsConfiguration.addedCommonTTSCommands",
+                                ),
                             );
                             this.dialogVisible = false;
                             this.getTTSCmdList();
@@ -590,7 +605,7 @@ export default {
             if (ids.length == 0) {
                 // 未勾选指令！
                 this.$message.warning(
-                    this.$t("ttsConfiguration.instructionNotSelected")
+                    this.$t("ttsConfiguration.instructionNotSelected"),
                 );
                 return;
             }
@@ -599,7 +614,7 @@ export default {
                 if (res.success == true) {
                     // 删除TTS常用指令成功！
                     this.$message.success(
-                        this.$t("ttsConfiguration.deletedCommonTTSCommands")
+                        this.$t("ttsConfiguration.deletedCommonTTSCommands"),
                     );
                     this.getTTSCmdList();
                     this.changeEdit(false);

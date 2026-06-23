@@ -41,7 +41,7 @@
                                 tips-placement="top-end"
                                 :tips="`键入值范围为${deviceCapability['intelliDrive_warn']['overSpeed']['duration']['min']}~${deviceCapability['intelliDrive_warn']['overSpeed']['duration']['max']}`"
                                 v-model.number="form['param957']['duration']"
-                                ><span slot="suffix">S</span></el-input
+                                ><template #suffix><span>S</span></template></el-input
                             >
                         </el-form-item>
                     </div>
@@ -78,7 +78,7 @@
                                 v-model.number="
                                     form['param957']['speedDifference']
                                 "
-                                ><span slot="suffix">Km/h</span></el-input
+                                ><template #suffix><span>Km/h</span></template></el-input
                             >
                         </el-form-item>
                     </div>
@@ -115,7 +115,7 @@
                                 v-model.number="
                                     form['param957']['speedThreshold']
                                 "
-                                ><span slot="suffix">Km/h</span></el-input
+                                ><template #suffix><span>Km/h</span></template></el-input
                             >
                         </el-form-item>
                     </div>

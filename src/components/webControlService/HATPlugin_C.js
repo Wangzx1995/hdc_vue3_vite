@@ -1,6 +1,6 @@
 /* eslint-disable */
 import api from "@/api/api";
-import { HATMediaJsPlugin } from "../../../static/jsplugin/HATMediaJsPlugin-1.0.0.js";
+const HATMediaJsPlugin = window.HATMediaJsPlugin;
 
 const ERROR_STREAM_TRANS = 1001; // 码流传输过程异常
 const ERROR_STREAM_PLAYBACK_END = 1002; // 回放结束

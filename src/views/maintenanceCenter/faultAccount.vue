@@ -149,7 +149,7 @@
                     fixed
                     min-width="80px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div v-if="scope.row.status == 0">
                             <span class="noDo">●</span>&nbsp;
                             <!-- 待维护 -->
@@ -260,7 +260,7 @@
                     width="240px"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <el-button
                             type="text"
                             @click="goVideoPlayback(scope.row)"

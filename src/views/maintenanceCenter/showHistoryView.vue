@@ -52,7 +52,7 @@
                             ><!-- 安装服务商 -->
                             {{
                                 $t(
-                                    "conditionMonitoring.installationServiceProvider"
+                                    "conditionMonitoring.installationServiceProvider",
                                 )
                             }}：{{
                                 $route.query.installServiceProvider || "--"
@@ -72,7 +72,7 @@
                                         prop="operationTime"
                                         :label="
                                             $t(
-                                                'ttsConfiguration.createTimePeriod'
+                                                'ttsConfiguration.createTimePeriod',
                                             )
                                         "
                                     >
@@ -100,7 +100,7 @@
                                         prop="schedule"
                                         :label="
                                             $t(
-                                                'ttsConfiguration.configurationResult'
+                                                'ttsConfiguration.configurationResult',
                                             )
                                         "
                                     >
@@ -173,7 +173,7 @@
                                     $t('deviceConfiguration.configurationType')
                                 "
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     {{
                                         scope.row.cmd
                                             ? cmdList[scope.row.cmd]
@@ -204,7 +204,7 @@
                                     $t('ttsConfiguration.configurationResult')
                                 "
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         <span
                                             :class="
@@ -248,7 +248,7 @@
                                 fixed="right"
                                 width="120px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <a
                                         v-if="scope.row.paramsBefore"
                                         @click="taskDetail(scope.row)"
@@ -256,7 +256,7 @@
                                         <!-- 配置详情 -->
                                         {{
                                             $t(
-                                                "deviceConfiguration.configurationDetails"
+                                                "deviceConfiguration.configurationDetails",
                                             )
                                         }}
                                     </a>
@@ -270,14 +270,14 @@
                                             taskTemplateDetail(
                                                 scope.row.templateType,
                                                 scope.row.templateId,
-                                                scope.row.cmd
+                                                scope.row.cmd,
                                             )
                                         "
                                     >
                                         <!-- 配置详情 -->
                                         {{
                                             $t(
-                                                "deviceConfiguration.configurationDetails"
+                                                "deviceConfiguration.configurationDetails",
                                             )
                                         }}
                                     </a>
@@ -286,7 +286,7 @@
                                         v-else
                                         :content="
                                             $t(
-                                                'deviceConfiguration.noConfigurationDetails'
+                                                'deviceConfiguration.noConfigurationDetails',
                                             )
                                         "
                                         placement="top"
@@ -296,7 +296,7 @@
                                                 <!-- 配置详情 -->
                                                 {{
                                                     $t(
-                                                        "deviceConfiguration.configurationDetails"
+                                                        "deviceConfiguration.configurationDetails",
                                                     )
                                                 }}
                                             </a>
@@ -324,7 +324,7 @@
         <!-- 配置详情 -->
         <el-dialog
             :title="$t('deviceConfiguration.configurationDetails')"
-            :visible.sync="dialogTableVisible"
+            v-model="dialogTableVisible"
             :width="'1300px'"
         >
             <div v-if="dialogTableVisible">
@@ -342,17 +342,19 @@
                     :historyType="historyType"
                 ></EditTemplate>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="noVisible">
-                    <!-- 关 闭 -->
-                    {{ $t("common.close") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="noVisible">
+                        <!-- 关 闭 -->
+                        {{ $t("common.close") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <!-- 配置详情 -->
         <el-dialog
             :title="$t('deviceConfiguration.configurationDetails')"
-            :visible.sync="dialogTableVisible1"
+            v-model="dialogTableVisible1"
             :width="'1300px'"
         >
             <div>
@@ -381,12 +383,14 @@
                     ></el-table-column>
                 </el-table>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="dialogTableVisible1 = false">
-                    <!-- 关 闭 -->
-                    {{ $t("common.close") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="dialogTableVisible1 = false">
+                        <!-- 关 闭 -->
+                        {{ $t("common.close") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -498,10 +502,10 @@ export default {
                 7: this.$t("deviceConfiguration.protocolConfigurationIssuance"), //"协议配置下发",
                 8: this.$t("deviceConfiguration.protocolConfigurationIssuance"), //"协议配置下发",
                 9: this.$t(
-                    "deviceConfiguration.distributionOfFileTemplateConfiguration"
+                    "deviceConfiguration.distributionOfFileTemplateConfiguration",
                 ), //"文件模板配置下发"
                 10: this.$t(
-                    "deviceConfiguration.protocolTemplateConfigurationDistribution"
+                    "deviceConfiguration.protocolTemplateConfigurationDistribution",
                 ), //"协议模板配置下发"
             },
             loadingAll: false,
@@ -529,8 +533,8 @@ export default {
             this.params.orderDir = !column.order
                 ? ""
                 : column.order == "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.params.orderColumn = !column.prop ? "" : column.prop;
             this.getTableData();
         },
@@ -548,26 +552,26 @@ export default {
                         ) {
                             for (let key of Object.keys(secondTitle.children)) {
                                 let objData = JSON.parse(
-                                    secondTitle.children[key].split("&")[2]
+                                    secondTitle.children[key].split("&")[2],
                                 );
                                 let valArr = objData.splitChanBinds.reduce(
                                     (prev, cur) => {
                                         if (cur.chanNo) {
                                             return prev.concat(
-                                                `通道${cur.chanNo}`
+                                                `通道${cur.chanNo}`,
                                             );
                                         } else {
                                             return prev;
                                         }
                                     },
-                                    []
+                                    [],
                                 );
                                 let val = {
                                     name: `${firstTitle.title}>${
                                         secondTitle.title
                                     }>${
                                         this.eventDisplayList.find(
-                                            (e) => e.value === Number(key)
+                                            (e) => e.value === Number(key),
                                         ).label
                                     }`,
                                     content: `使能:${
@@ -610,7 +614,7 @@ export default {
                             };
                             if (
                                 obj.name.indexOf(
-                                    "中心/定位上传设置/拐点补传角度"
+                                    "中心/定位上传设置/拐点补传角度",
                                 ) > -1
                             ) {
                                 obj.name += "<=180度）";
@@ -667,7 +671,7 @@ export default {
                 {},
                 paramList,
                 this.params,
-                this.searchForm
+                this.searchForm,
             );
             if (
                 this.searchForm.operationTime &&

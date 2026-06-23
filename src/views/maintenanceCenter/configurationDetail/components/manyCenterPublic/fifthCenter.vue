@@ -104,7 +104,7 @@
                       </el-row>
                         <!-- <el-col :span="7" >
                             <el-form-item label="紧急报警汇报时间间隔" v-if="form['IsApiPlatform'].platformInfoList[0]['IsApiPlatformOthers0']" :rules="{ validator: checkNumber.bind({type:'int',min:1,max:50000}), trigger: 'blur' }" prop="IsApiPlatform.platformInfoList[0].IsApiPlatformOthers0.reportTimeIntervalDuringAlarm">
-                                <el-input v-model="form['IsApiPlatform'].platformInfoList[0]['IsApiPlatformOthers0'].reportTimeIntervalDuringAlarm"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="form['IsApiPlatform'].platformInfoList[0]['IsApiPlatformOthers0'].reportTimeIntervalDuringAlarm"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col> -->
                         <!-- <el-col :span="7" >
@@ -119,14 +119,14 @@
                         </el-col> -->
                         <!-- <el-col :span="7" >
                             <el-form-item label="缺省时间汇报时间间隔" v-if="form['IsApiPlatform'].platformInfoList[0]['IsApiPlatformOthers0']" :rules="{ validator: checkNumber.bind({type:'int',min:1,max:50000}), trigger: 'blur' }" prop="IsApiPlatform.platformInfoList[0].IsApiPlatformOthers0.reportTimeIntervalDuringDefault">
-                                <el-input v-model="form['IsApiPlatform'].platformInfoList[0]['IsApiPlatformOthers0'].reportTimeIntervalDuringDefault"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="form['IsApiPlatform'].platformInfoList[0]['IsApiPlatformOthers0'].reportTimeIntervalDuringDefault"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                       <el-row type="flex" justify="space-between" >
                          <el-col :span="7" >
                             <el-form-item label="休眠汇报时间间隔" v-if="form['IsApiPlatform'].platformInfoList[0]['IsApiPlatformOthers0']" :rules="{ validator: checkNumber.bind({type:'int',min:1,max:50000}), trigger: 'blur' }" prop="IsApiPlatform.platformInfoList[0].IsApiPlatformOthers0.reportTimeIntervalDuringSleep">
-                                <el-input v-model="form['IsApiPlatform'].platformInfoList[0]['IsApiPlatformOthers0'].reportTimeIntervalDuringSleep"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="form['IsApiPlatform'].platformInfoList[0]['IsApiPlatformOthers0'].reportTimeIntervalDuringSleep"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col> -->
                           <!--<el-col :span="7" >
@@ -187,7 +187,7 @@
                     <el-row type="flex" justify="space-between">
                         <el-col :span="7" >
                             <el-form-item label="拐点补传角度（<=180度）" :rules="{ validator: checkNumber.bind({type:'int',min:0,max:180}), trigger: 'blur' }" prop="IsApiPlatform.platformInfoList[4].IsApiLocationReportOthers4.replenishGpsAngle">
-                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~180`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].replenishGpsAngle"><span slot="suffix">度</span></el-input>
+                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~180`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].replenishGpsAngle"><template #suffix><span>度</span></template></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -195,24 +195,24 @@
                     <el-row type="flex" justify="space-between">
                         <el-col :span="7" >
                             <el-form-item label="休眠汇报时间间隔" :rules="{ validator: checkNumber.bind({type:'int',min:0,max:172800}), trigger: 'blur' }" prop="IsApiPlatform.platformInfoList[4].IsApiLocationReportOthers4.reportTimeIntervalDuringSleep">
-                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~172800`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].reportTimeIntervalDuringSleep"><span slot="suffix">s</span></el-input>
+                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~172800`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].reportTimeIntervalDuringSleep"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="紧急报警汇报时间间隔" :rules="{ validator: checkNumber.bind({type:'int',min:0,max:50000}), trigger: 'blur' }" prop="IsApiPlatform.platformInfoList[4].IsApiLocationReportOthers4.reportTimeIntervalDuringAlarm">
-                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].reportTimeIntervalDuringAlarm"><span slot="suffix">s</span></el-input>
+                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].reportTimeIntervalDuringAlarm"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="缺省时间汇报时间间隔" :rules="{ validator: checkNumber.bind({type:'int',min:0,max:50000}), trigger: 'blur' }" prop="IsApiPlatform.platformInfoList[4].IsApiLocationReportOthers4.reportTimeIntervalDuringDefault">
-                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].reportTimeIntervalDuringDefault"><span slot="suffix">s</span></el-input>
+                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].reportTimeIntervalDuringDefault"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row type="flex" justify="space-between">
                         <el-col :span="7" >
                           <el-form-item label="驾驶员未登录汇报时间间隔" :rules="{ validator: checkNumber.bind({type:'int',min:0,max:50000}), trigger: 'blur' }" prop="IsApiPlatform.platformInfoList[4].IsApiLocationReportOthers4.driverUnloginUploadTimeInterval">
-                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].driverUnloginUploadTimeInterval"><span slot="suffix">s</span></el-input>
+                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].driverUnloginUploadTimeInterval"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -220,24 +220,24 @@
                     <el-row type="flex" justify="space-between">
                         <el-col :span="7" >
                             <el-form-item label="缺省距离汇报间隔" :rules="{ validator: checkNumber.bind({type:'int',min:0,max:50000}), trigger: 'blur' }" prop="IsApiPlatform.platformInfoList[4].IsApiLocationReportOthers4.defaultDistanceReportingInterval">
-                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].defaultDistanceReportingInterval"><span slot="suffix">m</span></el-input>
+                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].defaultDistanceReportingInterval"><template #suffix><span>m</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="驾驶员未登录汇报距离间隔" :rules="{ validator: checkNumber.bind({type:'int',min:0,max:50000}), trigger: 'blur' }" prop="IsApiPlatform.platformInfoList[4].IsApiLocationReportOthers4.driverNotLoggedInReportingInterval">
-                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].driverNotLoggedInReportingInterval"><span slot="suffix">m</span></el-input>
+                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].driverNotLoggedInReportingInterval"><template #suffix><span>m</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="休眠时汇报距离间隔" :rules="{ validator: checkNumber.bind({type:'int',min:0,max:50000}), trigger: 'blur' }" prop="IsApiPlatform.platformInfoList[4].IsApiLocationReportOthers4.sleepDistanceReportingInterval">
-                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].sleepDistanceReportingInterval"><span slot="suffix">m</span></el-input>
+                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].sleepDistanceReportingInterval"><template #suffix><span>m</span></template></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row type="flex" justify="space-between">
                         <el-col :span="7" >
                             <el-form-item label="紧急报警时汇报距离间隔" :rules="{ validator: checkNumber.bind({type:'int',min:0,max:50000}), trigger: 'blur' }" prop="IsApiPlatform.platformInfoList[4].IsApiLocationReportOthers4.alarmDistanceReportingInterval">
-                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].alarmDistanceReportingInterval"><span slot="suffix">m</span></el-input>
+                                <el-input tips-placement="top-end" :tips="`键入数值范围为0~50000`" v-model.number="form['IsApiPlatform']['platformInfoList'][4]['IsApiLocationReportOthers4'].alarmDistanceReportingInterval"><template #suffix><span>m</span></template></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -247,7 +247,7 @@
         </template>
 
         <!-- <EmptyBox v-else style="height:100%">
-          <p slot="description" class="text-md">暂无数据～</p>
+          <template #description><p class="text-md">暂无数据～</p></template>
         </EmptyBox> -->
       </el-form>
     </div>

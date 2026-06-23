@@ -12,17 +12,17 @@
           <div class="configurations">
             <div v-if="form['005D']" class="configuration-item">
               <el-form-item label="碰撞时间" prop="005D.collisionTime">
-                  <el-input v-model="form['005D'].collisionTime"><span slot="suffix">ms</span></el-input>
+                  <el-input v-model="form['005D'].collisionTime"><template #suffix><span>ms</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if="form['005D']" class="configuration-item">
               <el-form-item label="碰撞加速度" prop="005D.collisionAcceleration">
-                  <el-input v-model="form['005D'].collisionAcceleration"><span slot="suffix">g</span></el-input>
+                  <el-input v-model="form['005D'].collisionAcceleration"><template #suffix><span>g</span></template></el-input>
               </el-form-item>
             </div>
             <div v-if=" form['005E']" class="configuration-item">
               <el-form-item label="侧翻角度" prop="005E.rolloverParam">
-                  <el-input v-model="form['005E'].rolloverParam"><span slot="suffix">度</span></el-input>
+                  <el-input v-model="form['005E'].rolloverParam"><template #suffix><span>度</span></template></el-input>
               </el-form-item>
             </div>
           </div>

@@ -86,7 +86,7 @@
                     :label="$t('intelligentParameterConfig.facialPhoto')"
                     width="82"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <el-image
                             style="width: 60px; height: 60px"
                             :src="scope.row.photoUrl"
@@ -108,7 +108,7 @@
                         $t('intelligentParameterConfig.labelPhysiologyHabit')
                     "
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div
                             v-if="
                                 scope.row.labelPhysiologyHabit &&
@@ -120,7 +120,7 @@
                                     allLabelList,
                                     scope.row.labelPhysiologyHabit.split(","),
                                     "labelId",
-                                    "labelName"
+                                    "labelName",
                                 )
                             }}
                         </div>
@@ -131,7 +131,7 @@
                     prop="labelNegative"
                     :label="$t('intelligentParameterConfig.labelNegative')"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div
                             v-if="
                                 scope.row.labelNegative &&
@@ -143,7 +143,7 @@
                                     allLabelList,
                                     scope.row.labelNegative.split(","),
                                     "labelId",
-                                    "labelName"
+                                    "labelName",
                                 )
                             }}
                         </div>
@@ -154,7 +154,7 @@
                     prop="labelPositive"
                     :label="$t('intelligentParameterConfig.labelPositive')"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div
                             v-if="
                                 scope.row.labelPositive &&
@@ -166,7 +166,7 @@
                                     allLabelList,
                                     scope.row.labelPositive.split(","),
                                     "labelId",
-                                    "labelName"
+                                    "labelName",
                                 )
                             }}
                         </div>
@@ -180,7 +180,7 @@
                     "
                     width="150"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div>
                             <el-switch
                                 v-model="scope.row.enable"
@@ -198,7 +198,7 @@
                             >
                                 {{
                                     $t(
-                                        "intelligentParameterConfig.parameterDetails"
+                                        "intelligentParameterConfig.parameterDetails",
                                     )
                                 }}
                             </el-button>
@@ -210,7 +210,7 @@
                     width="100"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <el-button
                             type="text"
                             class="text-info"
@@ -235,7 +235,7 @@
             </el-pagination>
         </div>
         <el-dialog
-            :visible="editModal"
+            v-model="editModal"
             :title="$t('intelligentParameterConfig.editLabel')"
             @close="closeEditModal"
             class="no-padding tree_style"
@@ -258,7 +258,7 @@
                     <el-form-item
                         :label="
                             $t(
-                                'intelligentParameterConfig.labelPhysiologyHabit'
+                                'intelligentParameterConfig.labelPhysiologyHabit',
                             )
                         "
                         prop="labelPhysiologyHabit"
@@ -277,19 +277,25 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <div slot="footer">
-                <el-button type="default" @click="doCancel">
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button type="primary" :loading="loading" @click="doSave()">
-                    {{ $t("common.ok") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button type="default" @click="doCancel">
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        :loading="loading"
+                        @click="doSave()"
+                    >
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
         <el-dialog
             :title="$t('intelligentParameterConfig.parameterDetails')"
             :append-to-body="true"
-            :visible.sync="detailVisible"
+            v-model="detailVisible"
             width="1200px"
         >
             <intelligent-parameter-config-dialog
@@ -299,11 +305,13 @@
                 @closeDialog="detailVisible = false"
             >
             </intelligent-parameter-config-dialog>
-            <div slot="footer">
-                <el-button type="default" @click="detailVisible = false">
-                    {{ $t("common.cancel") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button type="default" @click="detailVisible = false">
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -408,7 +416,7 @@ export default {
                     confirmButtonText: this.$t("common.ok"),
                     cancelButtonText: this.$t("common.cancel"),
                     type: "warning",
-                }
+                },
             )
                 .then(() => {
                     this.enableChange(enable, this.selection, true);
@@ -427,12 +435,12 @@ export default {
                             `${
                                 enable === 1
                                     ? this.$t(
-                                          "intelligentParameterConfig.enable"
+                                          "intelligentParameterConfig.enable",
                                       )
                                     : this.$t(
-                                          "intelligentParameterConfig.deactivate"
+                                          "intelligentParameterConfig.deactivate",
                                       )
-                            }${this.$t("common.success")}`
+                            }${this.$t("common.success")}`,
                         );
                         this.search();
                         if (bol) {
@@ -459,7 +467,7 @@ export default {
                                 this.closeEditModal();
                                 this.$message.success(
                                     this.$t("common.edit") +
-                                        this.$t("common.success")
+                                        this.$t("common.success"),
                                 );
                                 this.search();
                             } else {

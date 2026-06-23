@@ -55,7 +55,10 @@
                                 v-model.number="
                                     form['param979']['speedCalibration']
                                 "
-                            ><span slot="suffix">r/min</span></el-input>
+                                ><template #suffix
+                                    ><span>r/min</span></template
+                                ></el-input
+                            >
                         </el-form-item>
                     </el-col>
                     <el-col :span="7">
@@ -85,7 +88,10 @@
                                 v-model.number="
                                     form['param979']['stopCalibration']
                                 "
-                            ><span slot="suffix">s/r</span></el-input>
+                                ><template #suffix
+                                    ><span>s/r</span></template
+                                ></el-input
+                            >
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -206,7 +212,7 @@ export default {
                         val.type !== this.copyForm.param979.type
                             ? `param979.type&传感器设置/正反转传感器/传感器&${
                                   this.dictionaryData["turnSensorList"].find(
-                                      (e) => e.id === val.type
+                                      (e) => e.id === val.type,
                                   ).label
                               }&${this.copyForm.param979.type}`
                             : "";
@@ -287,7 +293,7 @@ export default {
                         this.$set(
                             this.copyForm,
                             "param979",
-                            JSON.parse(JSON.stringify(formData))
+                            JSON.parse(JSON.stringify(formData)),
                         );
                         this.childConfigParams = false;
                     } else {

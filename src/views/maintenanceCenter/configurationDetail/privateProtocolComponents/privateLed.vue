@@ -139,7 +139,9 @@
                                 tips-placement="top-end"
                                 :tips="`键入值范围为${deviceCapability['zhatu']['externalInfo']['checkTime']['min']}~${deviceCapability['zhatu']['externalInfo']['checkTime']['max']}`"
                                 v-model.number="form['param1307']['checkTime']"
-                                ><span slot="suffix">s</span></el-input
+                                ><template #suffix
+                                    ><span>s</span></template
+                                ></el-input
                             >
                         </el-form-item>
                     </div>
@@ -261,7 +263,7 @@ export default {
                         val.acquireType !== this.copyForm.param1307.acquireType
                             ? `param1307.acquireType&渣土车配置/外屏参数/采集类型&${
                                   this.dictionaryData["acquireTypeList"].find(
-                                      (e) => e.id === val.acquireType
+                                      (e) => e.id === val.acquireType,
                                   ).label
                               }&${this.copyForm.param1307.acquireType}`
                             : "";
@@ -269,23 +271,24 @@ export default {
                         val.lightAdjust !== this.copyForm.param1307.lightAdjust
                             ? `param1307.lightAdjust&渣土车配置/外屏参数/外屏亮度调节&${
                                   this.dictionaryData["lightAdjustList"].find(
-                                      (e) => e.id === val.lightAdjust
+                                      (e) => e.id === val.lightAdjust,
                                   ).label
                               }&${this.copyForm.param1307.lightAdjust}`
                             : "";
                     this.formData["param1307.showMask"] =
                         val.showMask.join(",") !==
                         this.copyForm.param1307.showMask.join(",")
-                            ? `param1307.showMask&渣土车配置/外屏参数/显示类型&${val.showMask.reduce(
-                                  (prev, cur) => {
+                            ? `param1307.showMask&渣土车配置/外屏参数/显示类型&${val.showMask
+                                  .reduce((prev, cur) => {
                                       return prev.concat(
                                           this.dictionaryData[
                                               "showMaskList"
-                                          ].find((e) => e.id === cur).label
+                                          ].find((e) => e.id === cur).label,
                                       );
-                                  },
-                                  []
-                              ).join(",")}&${this.copyForm.param1307.showMask}`
+                                  }, [])
+                                  .join(
+                                      ",",
+                                  )}&${this.copyForm.param1307.showMask}`
                             : "";
                     this.formData["param1307.advertShowCtrl"] =
                         val.advertShowCtrl !==
@@ -387,7 +390,7 @@ export default {
                         this.$set(
                             this.copyForm,
                             "param1307",
-                            JSON.parse(JSON.stringify(formData))
+                            JSON.parse(JSON.stringify(formData)),
                         );
                         this.childConfigParams = false;
                     } else {

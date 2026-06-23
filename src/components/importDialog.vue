@@ -2,7 +2,7 @@
     <div>
         <!-- 导入 -->
         <el-dialog
-            :visible="thisModal"
+            v-model="thisModal"
             :title="title"
             :width="'500px'"
             class="modal-nopadding"
@@ -71,26 +71,28 @@
                     {{ $t("deviceManage.importDialog4") }}
                 </p>
             </div>
-            <div slot="footer">
-                <el-button @click="doCancel">
-                    {{ $t("common.cancel") }}</el-button
-                >
-                <el-button
-                    :loading="loadingStatus"
-                    type="primary"
-                    @click="doOk"
-                    >{{
-                        loadingStatus
-                            ? $t("common.uploading")
-                            : $t("common.upload")
-                    }}</el-button
-                >
-            </div>
+            <template #footer
+                ><div>
+                    <el-button @click="doCancel">
+                        {{ $t("common.cancel") }}</el-button
+                    >
+                    <el-button
+                        :loading="loadingStatus"
+                        type="primary"
+                        @click="doOk"
+                        >{{
+                            loadingStatus
+                                ? $t("common.uploading")
+                                : $t("common.upload")
+                        }}</el-button
+                    >
+                </div></template
+            >
         </el-dialog>
         <!-- 导入/ -->
         <!-- 正在导入 -->
         <el-dialog
-            :visible="processModal"
+            v-model="processModal"
             :close-on-press-escape="false"
             @close="processModal = false"
             :width="'240px'"
@@ -105,24 +107,26 @@
                 ></el-progress>
                 <p v-html="processText"></p>
             </div>
-            <div slot="footer">
-                <el-button
-                    size="small"
-                    style="width: 100%"
-                    :type="importResult"
-                    :disabled="importing"
-                    @click="doFinish"
-                    :max-width="500"
-                    >{{ importText }}</el-button
-                >
-            </div>
+            <template #footer
+                ><div>
+                    <el-button
+                        size="small"
+                        style="width: 100%"
+                        :type="importResult"
+                        :disabled="importing"
+                        @click="doFinish"
+                        :max-width="500"
+                        >{{ importText }}</el-button
+                    >
+                </div></template
+            >
         </el-dialog>
         <!-- 正在导入/ -->
         <!-- <div id="divWin" v-if="divWin"> -->
         <div id="divWin" v-if="true">
             <!--导出错误结果-->
             <el-dialog
-                :visible="resultModal"
+                v-model="resultModal"
                 :title="importResultTitle"
                 top="50px"
                 @close="resultModal = false"
@@ -145,7 +149,7 @@
                     ></el-table-column>
                     <!-- 导入结果 -->
                     <el-table-column :label="$t('carManage.importResults')">
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span
                                 class="params.row.msg=='成功'?'text-success':'text-error'"
                                 >{{ scope.row.msg }}</span
@@ -163,26 +167,28 @@
                     @size-change="PageSizeChange"
                 >
                 </el-pagination>
-                <div slot="footer">
-                    <div class="pull-left" style="line-height: 35px">
-                        {{ $t("common.success")
-                        }}<span class="text-success m-x-sm">{{
-                            successSum
-                        }}</span
-                        >{{ $t("common.individual") }}，
-                        {{ $t("common.failed") }}
-                        <span class="text-error m-x-sm">{{
-                            total - successSum
-                        }}</span
-                        >{{ $t("common.individual") }}
-                    </div>
-                    <el-button type="text" @click="resultModalCancel">
-                        {{ $t("common.cancel") }}</el-button
-                    >
-                    <el-button type="primary" @click="resultModalCancel()">
-                        {{ $t("common.ok") }}</el-button
-                    >
-                </div>
+                <template #footer
+                    ><div>
+                        <div class="pull-left" style="line-height: 35px">
+                            {{ $t("common.success")
+                            }}<span class="text-success m-x-sm">{{
+                                successSum
+                            }}</span
+                            >{{ $t("common.individual") }}，
+                            {{ $t("common.failed") }}
+                            <span class="text-error m-x-sm">{{
+                                total - successSum
+                            }}</span
+                            >{{ $t("common.individual") }}
+                        </div>
+                        <el-button type="text" @click="resultModalCancel">
+                            {{ $t("common.cancel") }}</el-button
+                        >
+                        <el-button type="primary" @click="resultModalCancel()">
+                            {{ $t("common.ok") }}</el-button
+                        >
+                    </div></template
+                >
             </el-dialog>
         </div>
     </div>
@@ -190,6 +196,7 @@
 <script>
 import Auth from "@/utils/auth";
 import i18n from "@/i18n/i18n.js";
+const t = i18n.global.t;
 export default {
     name: "VmDialog",
     components: {},
@@ -215,11 +222,11 @@ export default {
         // 标题
         title: {
             type: String,
-            default: i18n.t("common.import"), //导入
+            default: t("common.import"), //导入
         },
         importResultTitle: {
             type: String,
-            default: i18n.t("carManage.importResults"), //导入结果
+            default: t("carManage.importResults"), //导入结果
         },
         moduleCode: {
             type: String,
@@ -367,7 +374,7 @@ export default {
                     .getImportResult(
                         _this.batchCode,
                         _this.impResultParams.currentPage,
-                        _this.impResultParams.pageSize
+                        _this.impResultParams.pageSize,
                     )
                     .then((res) => {
                         let data = res.data;
@@ -383,7 +390,7 @@ export default {
                             _this.importResult = "success";
                             _this.processText =
                                 `${_this.$t(
-                                    "carManage.successfullyImported"
+                                    "carManage.successfullyImported",
                                 )}<span class="text-success m-x-sm">` +
                                 data.successSum +
                                 `</span>${_this.$t("carManage.articleData")}`;
@@ -399,23 +406,23 @@ export default {
                             _this.importing = false;
                             _this.importResult = "error";
                             _this.processText = `<span class="text-error">${_this.$t(
-                                "carManage.partialDataImportFailed"
+                                "carManage.partialDataImportFailed",
                             )}</span>`;
                             _this.importText = _this.$t(
-                                "carManage.viewImportResults"
+                                "carManage.viewImportResults",
                             );
                             _this.successSum = data.successSum;
                             _this.total = data.total;
                             _this.importFinish(
                                 i,
                                 data.resultList.results,
-                                data.errorList
+                                data.errorList,
                             ); //后台没有errorList
                             _this.importTotal = data.total;
                         } else {
                             _this.percent =
                                 ((data.nowIndex / data.total) * 100).toFixed(
-                                    2
+                                    2,
                                 ) * 1;
                         }
                     });
@@ -487,7 +494,7 @@ export default {
             } else {
                 // 获取文件后缀
                 let filesuffix = file.name.substring(
-                    file.name.lastIndexOf(".") + 1
+                    file.name.lastIndexOf(".") + 1,
                 );
                 // 是不是excel文件
                 const fileFormat1 = filesuffix === "xls";
@@ -544,7 +551,7 @@ export default {
                     .getImportResult(
                         this.batchCode,
                         this.impResultParams.currentPage,
-                        this.impResultParams.pageSize
+                        this.impResultParams.pageSize,
                     )
                     .then((res) => {
                         this.importListData = [];
@@ -570,7 +577,7 @@ export default {
                                     }
                                     rowData.msg = tempMsg.substr(
                                         0,
-                                        tempMsg.length - 1
+                                        tempMsg.length - 1,
                                     );
                                     this.importListData.push(rowData);
                                 }

@@ -8,7 +8,7 @@
                         <!-- 仅看有配置任务组织 -->
                         {{
                             $t(
-                                "ttsConfiguration.onlySeeConfiguredTaskOrganization"
+                                "ttsConfiguration.onlySeeConfiguredTaskOrganization",
                             )
                         }}
                     </span>
@@ -22,7 +22,7 @@
                         <el-switch
                             @change="getScreenData"
                             v-model="screenTerm"
-                            size="mini"
+                            size="small"
                             disabled
                         ></el-switch>
                     </el-tooltip>
@@ -30,7 +30,7 @@
                         v-show="okTree"
                         @change="getScreenData"
                         v-model="screenTerm"
-                        size="mini"
+                        size="small"
                         :disabled="!params.organizeId"
                     ></el-switch>
                 </div>
@@ -41,29 +41,30 @@
                         :placeholder="$t('common.inputOrganizationName')"
                         clearable
                     >
-                        <i
-                            slot="suffix"
-                            @click="filterTree"
-                            class="el-input__icon el-icon-search"
-                        ></i>
+                        <template #suffix>
+                            <i
+                                @click="filterTree"
+                                class="el-input__icon el-icon-search"
+                            ></i>
+                        </template>
                     </el-input>
                     <div :class="{ loading_: searchLoading }">
-                        <el-tree
-                            class="m-t"
-                            ref="tree"
-                            :data="treeData"
-                            :default-expanded-keys="expandedList"
-                            @node-click="handleNodeClick"
-                            default-icon="el-icon-folder"
-                            highlight-current
-                            node-key="id"
-                            :filter-node-method="filterNode"
-                            :props="defaultProps"
-                            :current-node-key="params.organizeId"
-                            :style="{ height: treeHeight + 'px' }"
-                            slot="reference"
-                            :expand-on-click-node="false"
-                        ></el-tree>
+                        
+                            <el-tree
+                                class="m-t"
+                                ref="tree"
+                                :data="treeData"
+                                :default-expanded-keys="expandedList"
+                                @node-click="handleNodeClick"
+                                default-icon="el-icon-folder"
+                                highlight-current
+                                node-key="id"
+                                :filter-node-method="filterNode"
+                                :props="defaultProps"
+                                :current-node-key="params.organizeId"
+                                :style="{ height: treeHeight + 'px' }"
+                                :expand-on-click-node="false"
+                            ></el-tree>
                     </div>
                 </div>
                 <div class="two" v-show="screenTerm && okTree">
@@ -73,35 +74,38 @@
                         :placeholder="$t('common.inputOrganizationName')"
                         clearable
                     >
-                        <i
-                            slot="suffix"
-                            @click="filterTree1"
-                            class="el-input__icon el-icon-search"
-                        ></i>
+                        <template #suffix>
+                            <i
+                                @click="filterTree1"
+                                class="el-input__icon el-icon-search"
+                            ></i>
+                        </template>
                     </el-input>
                     <div :class="{ loading_: searchLoading }">
-                        <el-tree
-                            class="m-t"
-                            ref="tree1"
-                            :data="treeData1"
-                            :default-expanded-keys="expandedList1"
-                            @node-click="handleNodeClick"
-                            default-icon="el-icon-folder"
-                            highlight-current
-                            node-key="id"
-                            :filter-node-method="filterNode1"
-                            :props="defaultProps"
-                            :current-node-key="params.organizeId"
-                            :style="{ height: treeHeight + 'px' }"
-                            slot="reference"
-                        >
-                            <span slot-scope="{ node, data }">
-                                <i class="el-icon-s-flag"></i>
-                                <span class="tree-node-span">{{
-                                    node.label
-                                }}</span>
-                            </span>
-                        </el-tree>
+                        
+                            <el-tree
+                                class="m-t"
+                                ref="tree1"
+                                :data="treeData1"
+                                :default-expanded-keys="expandedList1"
+                                @node-click="handleNodeClick"
+                                default-icon="el-icon-folder"
+                                highlight-current
+                                node-key="id"
+                                :filter-node-method="filterNode1"
+                                :props="defaultProps"
+                                :current-node-key="params.organizeId"
+                                :style="{ height: treeHeight + 'px' }"
+                            >
+                                <template #default="{ node, data }">
+                                    <span>
+                                        <i class="el-icon-s-flag"></i>
+                                        <span class="tree-node-span">{{
+                                            node.label
+                                        }}</span>
+                                    </span>
+                                </template>
+                            </el-tree>
                     </div>
                 </div>
             </el-col>
@@ -116,7 +120,7 @@
                                 <!-- 未完成配置 -->
                                 {{
                                     $t(
-                                        "ttsConfiguration.batchImportIncompleteConfiguration"
+                                        "ttsConfiguration.batchImportIncompleteConfiguration",
                                     )
                                 }}
                             </span>
@@ -132,7 +136,7 @@
                                 <!-- 展示设备最后一次配置未成功结果 -->
                                 {{
                                     $t(
-                                        "ttsConfiguration.lastUnsuccessfulConfiguration"
+                                        "ttsConfiguration.lastUnsuccessfulConfiguration",
                                     )
                                 }}
                             </span>
@@ -185,7 +189,7 @@
                                     prop="status"
                                     :label="
                                         $t(
-                                            'ttsConfiguration.configurationResult'
+                                            'ttsConfiguration.configurationResult',
                                         )
                                     "
                                 >
@@ -211,7 +215,7 @@
                                             :key="3"
                                             :label="
                                                 $t(
-                                                    'deviceHealthCondition.other'
+                                                    'deviceHealthCondition.other',
                                                 )
                                             "
                                         ></el-option>
@@ -339,7 +343,7 @@
                                 "
                                 min-width="240px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     {{
                                         scope.row.cmd
                                             ? cmdList[scope.row.cmd]
@@ -365,7 +369,7 @@
                                 min-width="160px"
                                 fixed="right"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div>
                                         <span
                                             :class="
@@ -507,10 +511,10 @@ export default {
                 7: this.$t("deviceConfiguration.protocolConfigurationIssuance"), //"协议配置下发",
                 8: this.$t("deviceConfiguration.protocolConfigurationIssuance"), //"协议配置下发",
                 9: this.$t(
-                    "deviceConfiguration.distributionOfFileTemplateConfiguration"
+                    "deviceConfiguration.distributionOfFileTemplateConfiguration",
                 ), //"文件模板配置下发"
                 10: this.$t(
-                    "deviceConfiguration.protocolTemplateConfigurationDistribution"
+                    "deviceConfiguration.protocolTemplateConfigurationDistribution",
                 ), //"协议模板配置下发"
             },
             loadingAll: false,
@@ -579,8 +583,8 @@ export default {
             this.params.orderDir = !column.order
                 ? ""
                 : column.order == "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.params.orderColumn = !column.prop ? "" : column.prop;
             this.getTableData();
         },
@@ -771,12 +775,12 @@ export default {
                             this.filterTree(
                                 this.treeData,
                                 this.organizationName,
-                                0
+                                0,
                             );
                             this.$nextTick(() => {
                                 this.$refs.tree.filter(
                                     "show",
-                                    !this.organizationName
+                                    !this.organizationName,
                                 );
                             });
                         }

@@ -2,7 +2,7 @@
     <div>
         <el-dialog
             :title="title"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             :width="'960px'"
             @close="handleExit"
         >
@@ -148,7 +148,7 @@
                         min-width="140px"
                         align="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <a
                                 v-if="scope.row.accessNum"
                                 @click="
@@ -172,7 +172,7 @@
                         min-width="140px"
                         align="right"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <a
                                 v-if="scope.row.accessNotNum"
                                 @click="

@@ -32,9 +32,11 @@
                         placeholder="请输入"
                         type="text"
                         :maxlength="100"
-                        ><span slot="suffix">{{
-                            100 - templateForm.templateRemark.length
-                        }}</span></el-input
+                        ><template #suffix
+                            ><span>{{
+                                100 - templateForm.templateRemark.length
+                            }}</span></template
+                        ></el-input
                     >
                 </el-form-item>
                 <el-form-item
@@ -101,8 +103,8 @@ export default {
                 } else if (!validateTempSpecial(value)) {
                     callback(
                         new Error(
-                            "模板名称只能包含中文、字母、数字、字符（“_”、“-”和“.”）"
-                        )
+                            "模板名称只能包含中文、字母、数字、字符（“_”、“-”和“.”）",
+                        ),
                     );
                 }
             } else {
@@ -255,7 +257,7 @@ export default {
                     label: "全部模块",
                     value: "all",
                     children: this.menuList.filter(
-                        (item) => item.children.length
+                        (item) => item.children.length,
                     ),
                 },
             ];
@@ -358,59 +360,63 @@ export default {
                 if (key.indexOf("param2222") > -1) {
                     if (newFormData[key].hasOwnProperty("mileageRadio")) {
                         newFormData[key].mileageRadio = Math.floor(
-                            Number(newFormData[key].mileageRadio * 100)
+                            Number(newFormData[key].mileageRadio * 100),
                         );
                     }
                 }
                 if (key.indexOf("param924") > -1) {
                     if (newFormData[key].hasOwnProperty("daylightStartTime")) {
                         newFormData[key].daylightStartTime = this.minTime(
-                            newFormData[key].daylightStartTime
+                            newFormData[key].daylightStartTime,
                         );
                     }
                     if (newFormData[key].hasOwnProperty("daylightEndTime")) {
                         newFormData[key].daylightEndTime = this.minTime(
-                            newFormData[key].daylightEndTime
+                            newFormData[key].daylightEndTime,
                         );
                     }
                     if (
                         newFormData[key].hasOwnProperty("allDayDrivingTimeMax")
                     ) {
                         newFormData[key].allDayDrivingTimeMax = Math.floor(
-                            Number(newFormData[key].allDayDrivingTimeMax * 3600)
+                            Number(
+                                newFormData[key].allDayDrivingTimeMax * 3600,
+                            ),
                         );
                     }
                     if (newFormData[key].hasOwnProperty("deltaWarnTime")) {
                         newFormData[key].deltaWarnTime = Math.floor(
-                            Number(newFormData[key].deltaWarnTime * 60)
+                            Number(newFormData[key].deltaWarnTime * 60),
                         );
                     }
                     if (
                         newFormData[key].hasOwnProperty(
-                            "daylightDrivingTimeMax"
+                            "daylightDrivingTimeMax",
                         )
                     ) {
                         newFormData[key].daylightDrivingTimeMax = Math.floor(
-                            Number(newFormData[key].daylightDrivingTimeMax * 60)
+                            Number(
+                                newFormData[key].daylightDrivingTimeMax * 60,
+                            ),
                         );
                     }
                     if (newFormData[key].hasOwnProperty("restTimeMin")) {
                         newFormData[key].restTimeMin = Math.floor(
-                            Number(newFormData[key].restTimeMin * 60)
+                            Number(newFormData[key].restTimeMin * 60),
                         );
                     }
                     if (
                         newFormData[key].hasOwnProperty("nightDrivingTimeMax")
                     ) {
                         newFormData[key].nightDrivingTimeMax = Math.floor(
-                            Number(newFormData[key].nightDrivingTimeMax * 60)
+                            Number(newFormData[key].nightDrivingTimeMax * 60),
                         );
                     }
                     if (
                         newFormData[key].hasOwnProperty("nightDrivingRestTime")
                     ) {
                         newFormData[key].nightDrivingRestTime = Math.floor(
-                            Number(newFormData[key].nightDrivingRestTime * 60)
+                            Number(newFormData[key].nightDrivingRestTime * 60),
                         );
                     }
                 }
@@ -433,7 +439,7 @@ export default {
                 if (key.indexOf("param901") > -1) {
                     if (
                         newFormData[key].info[0].hasOwnProperty(
-                            "distanceBeyongLane"
+                            "distanceBeyongLane",
                         )
                     ) {
                         newFormData[key].info[0].distanceBeyongLane =
@@ -441,7 +447,7 @@ export default {
                     }
                     if (
                         newFormData[key].info[0].hasOwnProperty(
-                            "nearCarDistance"
+                            "nearCarDistance",
                         )
                     ) {
                         newFormData[key].info[0].nearCarDistance =
@@ -449,7 +455,7 @@ export default {
                     }
                     if (
                         newFormData[key].info[0].hasOwnProperty(
-                            "collisionDistance"
+                            "collisionDistance",
                         )
                     ) {
                         newFormData[key].info[0].collisionDistance =
@@ -466,7 +472,7 @@ export default {
                     let menuArr = this.templateForm.templateList.filter(
                         (item) => {
                             return item.indexOf("param") > -1;
-                        }
+                        },
                     );
                     let selectMenuList = this.getSelectMenuList();
                     let formatFormData = this.formatParams();
@@ -526,7 +532,7 @@ export default {
                                         algorithmType: 0,
                                         sentivityType: Number(item.value),
                                     };
-                                }
+                                },
                             );
                         } else {
                             formatParamsObj[item] = formatFormData[item];
@@ -535,7 +541,7 @@ export default {
                     let ehomeParams = [];
                     for (let key of Object.keys(formatParamsObj)) {
                         let msgId = utils.getMsgId(
-                            Number(key.split("_")[0].split("param")[1])
+                            Number(key.split("_")[0].split("param")[1]),
                         );
                         ehomeParams.push({
                             msgId: msgId,
@@ -581,27 +587,27 @@ export default {
                                             ehomeParams: ehomeParams,
                                             capability: this.capability,
                                         },
-                                    }
+                                    },
                                 );
                                 this.$api
                                     .hikDevParamTempAdd(params)
                                     .then((res) => {
                                         if (res.success == true) {
                                             this.$message.success(
-                                                "模板保存成功"
+                                                "模板保存成功",
                                             );
                                             this.close();
                                             this.saveLoading = false;
                                         } else {
                                             this.$message.error(
-                                                "模板保存失败:" + res.msg
+                                                "模板保存失败:" + res.msg,
                                             );
                                             this.saveLoading = false;
                                         }
                                     });
                             } else {
                                 this.$message.error(
-                                    "获取设备信息失败:" + res.msg
+                                    "获取设备信息失败:" + res.msg,
                                 );
                                 this.saveLoading = false;
                             }

@@ -7,7 +7,7 @@
                     ? $t('roleManage.addRole')
                     : $t('roleManage.editRole')
             "
-            :visible.sync="roleDialogVisible"
+            v-model="roleDialogVisible"
             class="role-dialog"
             @close="close"
             :append-to-body="appendToBody"
@@ -48,11 +48,12 @@
                             :placeholder="$t('common.input')"
                             clearable
                         >
-                            <i
-                                slot="suffix"
-                                @click="filterTree"
-                                class="el-input__icon el-icon-search"
-                            ></i>
+                            <template #suffix>
+                                <i
+                                    @click="filterTree"
+                                    class="el-input__icon el-icon-search"
+                                ></i>
+                            </template>
                         </el-input>
                         <div style="height: 468px; overflow-y: auto">
                             <el-tree
@@ -85,11 +86,12 @@
                             :placeholder="$t('common.input')"
                             clearable
                         >
-                            <i
-                                slot="suffix"
-                                @click="filterTree"
-                                class="el-input__icon el-icon-search"
-                            ></i>
+                            <template #suffix>
+                                <i
+                                    @click="filterTree"
+                                    class="el-input__icon el-icon-search"
+                                ></i>
+                            </template>
                         </el-input>
                         <div style="height: 468px; overflow-y: auto">
                             <el-tree
@@ -112,16 +114,22 @@
                 </el-tabs>
             </div>
 
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="close">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button type="primary" @click="doSave()" :loading="loading">
-                     <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="close">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        @click="doSave()"
+                        :loading="loading"
+                    >
+                         <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -192,7 +200,7 @@ export default {
                     this.$nextTick(() => {
                         if (this.roleInfo.modelIds) {
                             this.editArr = JSON.parse(
-                                JSON.stringify(this.roleInfo.modelIds)
+                                JSON.stringify(this.roleInfo.modelIds),
                             );
                         }
                     });
@@ -213,8 +221,8 @@ export default {
                     callback(
                         new Error(
                             this.$t("userManage.checkSpeccial") +
-                                "：\\/:*?\"<|'&%>"
-                        )
+                                "：\\/:*?\"<|'&%>",
+                        ),
                     );
                 } else {
                     callback();
@@ -230,7 +238,7 @@ export default {
                 } else {
                     // 角色名称只允许输入中文,英文和数字
                     callback(
-                        new Error(this.$t("roleManage.checkRoleNameMsg1"))
+                        new Error(this.$t("roleManage.checkRoleNameMsg1")),
                     );
                 }
             } else {
@@ -412,7 +420,7 @@ export default {
                                 this.loading = false;
                                 // 添加角色成功
                                 this.$message.success(
-                                    this.$t("roleManage.addRoleSuccess")
+                                    this.$t("roleManage.addRoleSuccess"),
                                 );
                                 this.$emit("close", true);
                                 this.$emit("getRoleList");
@@ -427,7 +435,7 @@ export default {
                                 this.loading = false;
                                 // 编辑角色成功
                                 this.$message.success(
-                                    this.$t("roleManage.editRoleSuccess")
+                                    this.$t("roleManage.editRoleSuccess"),
                                 );
                                 this.$emit("close", true);
                             } else {
@@ -532,7 +540,7 @@ export default {
     }
 }
 
-/deep/.select-all {
+:deep(.select-all){
     height: 32px;
     line-height: 32px;
     display: flex;

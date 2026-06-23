@@ -16,7 +16,7 @@
                 <div class="flex-layout flex-middle">
                     <span>速度阈值：</span
                     ><el-input
-                        size="mini"
+                        size="small"
                         v-model="limitSpeed"
                         style="width: 70px"
                         @blur="setLimitSpeed"
@@ -523,7 +523,7 @@ export default {
 
 <style lang="less" scoped>
 .el-radio-group
-    /deep/.el-radio-button__orig-radio:checked
+    :deep(.el-radio-button__orig-radio:checked)
     + .el-radio-button__inner {
     color: #409eff;
     border-color: #409eff;
@@ -532,7 +532,7 @@ export default {
     background-color: #fff;
 }
 
-.g-table /deep/ .pagination {
+.g-table :deep(.pagination){
     padding: 0.5rem !important;
 }
 

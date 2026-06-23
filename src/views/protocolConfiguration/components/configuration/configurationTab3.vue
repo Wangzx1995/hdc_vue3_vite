@@ -18,7 +18,7 @@
         </G-SearchTableList>
         <el-dialog
             title="查看"
-            :visible.sync="visible"
+            v-model="visible"
             :close-on-click-modal="false"
             :width="'1500px'"
             :custom-class="'protocol-template-dialog'"

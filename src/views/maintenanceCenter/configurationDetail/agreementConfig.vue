@@ -2,7 +2,7 @@
     <div class="agreement-config p-a-md">
         <el-dialog
             title="输入密码解锁"
-            :visible.sync="unlockBol"
+            v-model="unlockBol"
             :width="'600px'"
             @close="unlockClose"
         >
@@ -14,24 +14,23 @@
                     placeholder="请输入密码解锁"
                     autoComplete="on"
                 >
-                    <i
-                        slot="suffix"
+                    <template #suffix><i
                         class="el-input__icon"
                         style="margin-top: 2px"
                         :class="passwordIcon"
                         @mousedown="onMousedownClick"
                         @mouseup="onMouseupClick"
-                    ></i>
+                    ></i></template>
                 </el-input>
             </div>
-            <span slot="footer">
+            <template #footer><span>
                 <el-button type="default" @click="unlockClose">取消</el-button>
                 <el-button type="primary" @click="unlockSure">确定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
         <el-dialog
             title="下发至终端"
-            :visible.sync="updateBol"
+            v-model="updateBol"
             :width="'600px'"
             @close="close"
         >
@@ -59,7 +58,7 @@
                     </el-row>
                 </li>
             </ul>
-            <span slot="footer">
+            <template #footer><span>
                 <el-button type="default" @click="close">取消</el-button>
                 <el-button
                     :disabled="!dataList.length"
@@ -67,12 +66,12 @@
                     @click="updateSure"
                     >确定</el-button
                 >
-            </span>
+            </span></template>
         </el-dialog>
         <el-dialog
             title="选择存为模板的模块"
             :top="5 + '%'"
-            :visible.sync="moubleBol"
+            v-model="moubleBol"
             :width="'1200px'"
             @close="closeMouble"
         >
@@ -684,7 +683,7 @@
                     </el-col>
                 </el-row>
             </div>
-            <span slot="footer">
+            <template #footer><span>
                 <el-button type="default" @click="closeMouble">取消</el-button>
                 <el-button
                     type="primary"
@@ -700,14 +699,14 @@
                     "
                     >选好了</el-button
                 >
-            </span>
+            </span></template>
         </el-dialog>
         <h2>版本信息</h2>
         <el-form label-position="top" label-width="120px">
             <el-row>
                 <el-col :span="4">
                     <el-form-item label="更新时间">
-                        <template slot="label">
+                        <template #label>
                             更新时间
                             <el-tooltip
                                 content="设备最后一次进行协议配置的时间"
@@ -800,7 +799,7 @@
         <h2>设备配置详情</h2>
         <!-- <template v-if="JSON.stringify(initData) == '{}'">
         <EmptyBox>
-          <p slot="description" class="text-md">获取失败，请在设备在线时点击“刷新最新配置”按键获取设备配置详情～</p>
+          <template #description><p class="text-md">获取失败，请在设备在线时点击“刷新最新配置”按键获取设备配置详情～</p></template>
         </EmptyBox>
       </template>
       <template v-else> -->
@@ -825,7 +824,7 @@
                         v-bind:key="item.index"
                         :index="item.index"
                     >
-                        <span slot="title">{{ item.title }}</span>
+                        <template #title><span>{{ item.title }}</span></template>
                         <el-menu-item
                             :index="i.value"
                             v-for="i in item.children"
@@ -972,7 +971,7 @@
         <!-- </template> -->
 
         <SaveTemplate
-            :visible.sync="templateVisible"
+            v-model="templateVisible"
             @submit="submitTemp"
             @showMouble="showMoubleContent"
         ></SaveTemplate>
@@ -6032,7 +6031,7 @@ export default {
 //     }
 //   }
 // .el-scrollbar_wrap{overflow-x: hidden;}
-div /deep/ .el-input {
+div :deep(.el-input){
     // width: 100%!important;
     // .el-input__inner {
     //   padding-right:8px!important;

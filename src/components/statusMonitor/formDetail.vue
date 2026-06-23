@@ -189,7 +189,7 @@
                                 label="视频信号状态"
                                 min-width="150px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span
                                         v-if="
                                             scope.row.enable != 0 &&
@@ -217,7 +217,7 @@
                                 label="视频遮挡状态"
                                 min-width="240px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <span
                                         v-if="scope.row.installationStatus == 0"
                                         >●&nbsp;--</span
@@ -293,7 +293,7 @@
               <el-table-column prop="channelNum" label="通道号" min-width="100px"></el-table-column>
               <el-table-column prop="lostCount" label="丢失片段数" min-width="100px"></el-table-column>
               <el-table-column prop="recordTime" label="录像时长" min-width="150px">
-                <template slot-scope="scope">
+                <template #default="scope">
                   <span>{{scope.row.recordTime ? scope.row.recordTime+'分钟' : '●&nbsp;--'}}</span>
                 </template>  
               </el-table-column>
@@ -327,7 +327,7 @@
                         label="存储介质"
                         min-width="100px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <!-- <span v-if="isApi" class="content">{{
                                 scope.row.hddType + " : " + scope.row.hddName
                             }}</span>
@@ -342,7 +342,7 @@
                         label="状态"
                         min-width="100px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <div v-if="isApi">
                                 <span
                                     v-if="scope.row.hddStatus == 0"
@@ -540,7 +540,7 @@
                             }
                         "
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <span>{{
                                 scope.row.capacity == 0 || scope.row.capacity
                                     ? scope.row.capacity + "GB"
@@ -549,12 +549,12 @@
                         </template>
                     </el-table-column>
                     <!-- <el-table-column label="剩余容量" min-width="100px">
-            <template slot-scope="scope">
+            <template #default="scope">
               <span>{{scope.row.freeSpace>=1024 ? Math.ceil(scope.row.freeSpace/1024)+'GB' : scope.row.freeSpace+'MB' || '--'}}</span>
             </template>  
           </el-table-column> -->
                     <el-table-column :label="$t('common.operate')" min-width="100px">
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             <div v-if="isApi">
                                 <a
                                     v-if="!scope.row.hddType.includes('BACKUP')"
@@ -630,12 +630,12 @@
                 border
             >
                 <el-table-column label="中心名称" width="160px">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>第{{ scope.row.platformOrder + 1 }}中心</span>
                     </template>
                 </el-table-column>
                 <el-table-column label="使能" width="160px">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <el-switch
                             disabled
                             :active-value="Number(1)"
@@ -650,19 +650,19 @@
                 <el-table-column prop="port" label="连接端口" width="160px">
                 </el-table-column>
                 <el-table-column label="连接状态" width="160px">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             scope.row.status === 1 ? "未连接" : "已连接"
                         }}</span>
                     </template>
                 </el-table-column>
                 <el-table-column label="离线原因" show-overflow-tooltip>
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{ scope.row.offlineReason }}</span>
                     </template>
                 </el-table-column>
                 <el-table-column :label="$t('common.operate')">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <el-button
                             type="text"
                             v-if="carDetails.deviceStatus == 1"
@@ -925,7 +925,7 @@
             v-if="i.showPopover"
           >
             <p>更新时间：{{updateTime}}</p>
-            <i class="el-icon-warning m-x-sm" slot="reference"></i>
+            <template #reference><i class="el-icon-warning m-x-sm"></i></template>
           </el-popover>
           <el-popover
             :ref="'popover'+i.index"
@@ -936,7 +936,7 @@
             <p>更新时间：{{locationUpdateTime}}</p>
             <p>经纬度：{{location}}</p>
             <p>方向角：{{directionAngle}}</p>
-            <i class="el-icon-warning m-x-sm" slot="reference"></i>
+            <template #reference><i class="el-icon-warning m-x-sm"></i></template>
           </el-popover>
 
           <el-popover
@@ -947,7 +947,7 @@
           >
            <p> 视频信号丢失通道状态：<span v-for="(item , i) in lostVideoChannelValueList " v-bind:style="item!=0?errorStatus:normalStatus">{{i + 1 }} </span> </p>
             <p>更新时间：{{lostVideoChannelStatusTime}}</p>
-            <i class="el-icon-warning m-x-sm" slot="reference"></i>
+            <template #reference><i class="el-icon-warning m-x-sm"></i></template>
           </el-popover>
 
           <el-popover
@@ -958,7 +958,7 @@
           >
             <p> 视频遮挡通道状态：<span v-for="(item , i) in occlusionChannelValueList " v-bind:style="item!=0?errorStatus:normalStatus">{{i + 1 }} </span> </p>
             <p>更新时间：{{occlusionChannelStatusTime}}</p>
-            <i class="el-icon-warning m-x-sm" slot="reference"></i>
+            <template #reference><i class="el-icon-warning m-x-sm"></i></template>
           </el-popover>
 
           <el-popover
@@ -972,7 +972,7 @@
             <p>最大容量: {{i.capacity}}M</p>
             <p>剩余容量: {{i.freeSpace}}M</p>
             <p>更新时间: {{i.hddUpdateTime}}</p>
-            <i class="el-icon-warning m-x-sm" slot="reference"></i>
+            <template #reference><i class="el-icon-warning m-x-sm"></i></template>
           </el-popover>
           <a @click="formatting(i.hddId,i.name)" v-if="i.formatting">格式化</a>
           </p>
@@ -992,7 +992,7 @@
     </div> -->
         <el-dialog
             title="格式化记录"
-            :visible.sync="formatRecordVisible"
+            v-model="formatRecordVisible"
             append-to-body
             :width="'960px'"
         >
@@ -1009,7 +1009,7 @@
                     label="存储介质"
                 ></el-table-column>
                 <el-table-column prop="createTime" label="操作时间">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             TimeUtil.getDateTime(scope.row.createTime)
                         }}</span>
@@ -1024,8 +1024,7 @@
                     label="操作人IP"
                 ></el-table-column>
                 <el-table-column prop="result" label="操作结果">
-                    <template slot-scope="scope"
-                        ><div class="status-box">
+                    <template #default="scope"><div class="status-box">
                             <span v-if="scope.row.result === 1"
                                 ><i class="status-1"></i>成功</span
                             >

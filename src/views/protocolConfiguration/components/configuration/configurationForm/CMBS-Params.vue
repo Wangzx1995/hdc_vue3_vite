@@ -150,7 +150,7 @@
                                 :class="{
                                     'template-hide': setTemplateHide(
                                         chanNoItem,
-                                        infoItem
+                                        infoItem,
                                     ),
                                 }"
                             >
@@ -170,8 +170,8 @@
                                                 index2 === 0
                                                     ? "一级报警"
                                                     : index2 === 1
-                                                    ? "二级报警"
-                                                    : "三级报警"
+                                                      ? "二级报警"
+                                                      : "三级报警"
                                             }}
                                             <template
                                                 v-if="
@@ -217,7 +217,7 @@
                                                     (e) =>
                                                         speedBlur(
                                                             chanNoItem,
-                                                            key
+                                                            key,
                                                         )
                                                 "
                                                 data-unit="km/h"
@@ -232,7 +232,7 @@
                                                             ].info[0].speed =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -244,17 +244,16 @@
                                             introduction="灵敏度越高越容易触发报警"
                                             v-if="levelItem.newSensitivity"
                                         >
-                                            <span
-                                                slot="label"
-                                                class="label-slot"
-                                                >算法灵敏度
-                                                <el-tooltip
-                                                    content="灵敏度越高越容易触发报警"
-                                                >
-                                                    <i
-                                                        class="el-icon-question"
-                                                    ></i> </el-tooltip
-                                            ></span>
+                                            <template #label
+                                                ><span class="label-slot"
+                                                    >算法灵敏度
+                                                    <el-tooltip
+                                                        content="灵敏度越高越容易触发报警"
+                                                    >
+                                                        <i
+                                                            class="el-icon-question"
+                                                        ></i> </el-tooltip></span
+                                            ></template>
                                             <el-select
                                                 v-if="
                                                     levelItem.newSensitivity &&
@@ -317,7 +316,7 @@
                                                             ].info[0].volume =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -359,7 +358,7 @@
                                                             ].info[0].snapshot.number =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -422,7 +421,7 @@
                                                             ].info[0].clip.perRecord =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -464,7 +463,7 @@
                                                             ].info[0].clip.afterRecord =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -492,7 +491,7 @@
                                                             val,
                                                             'snapshot',
                                                             chanNoItem.chanNo,
-                                                            levelItem.type
+                                                            levelItem.type,
                                                         )
                                                 "
                                             ></el-switch>
@@ -518,7 +517,7 @@
                                                             val,
                                                             'clip',
                                                             chanNoItem.chanNo,
-                                                            levelItem.type
+                                                            levelItem.type,
                                                         )
                                                 "
                                             ></el-switch>
@@ -555,7 +554,7 @@
                                                             ].info[0].inhibitionTime =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -594,7 +593,7 @@
                                                             ].info[0].startSpeed =
                                                                 Number(
                                                                     e.target
-                                                                        .ariaValueMin
+                                                                        .ariaValueMin,
                                                                 );
                                                         }
                                                     }
@@ -658,7 +657,7 @@
         </el-form>
         <el-dialog
             title="CMBS全局音量调整"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             @close="close"
             :append-to-body="true"
         >
@@ -674,10 +673,12 @@
                     show-input
                 ></el-slider>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="send">确 定</el-button>
-                <el-button @click="close">取 消</el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="send">确 定</el-button>
+                    <el-button @click="close">取 消</el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -735,7 +736,7 @@ export default {
         chanNoActive(val) {
             this.activeCollapse = [];
             let obj = this.CMBSList.find(
-                (item) => item.chanNo == Number(val.split("通道")[1])
+                (item) => item.chanNo == Number(val.split("通道")[1]),
             );
             for (let key of Object.keys(obj.info)) {
                 if (!this.activeCollapse.length) {
@@ -748,12 +749,12 @@ export default {
                 if (val) {
                     this.CMBSList.forEach((chanNoItem) => {
                         let _type = Object.entries(chanNoItem.info)[0][0].split(
-                            "-"
+                            "-",
                         )[0];
                         if (val[`param6016_${chanNoItem.chanNo}_${_type}`]) {
                             if (
                                 !this.setForm.hasOwnProperty(
-                                    `通道${chanNoItem.chanNo}>CMBS全局参数&param6016_${chanNoItem.chanNo}_${_type}`
+                                    `通道${chanNoItem.chanNo}>CMBS全局参数&param6016_${chanNoItem.chanNo}_${_type}`,
                                 )
                             ) {
                                 this.setForm[
@@ -783,7 +784,7 @@ export default {
                                     .linkChannel,
                                 this.oldForm[
                                     `param6016_${chanNoItem.chanNo}_${_type}`
-                                ].linkChannel
+                                ].linkChannel,
                             )
                                 ? `param6016_${
                                       chanNoItem.chanNo
@@ -791,7 +792,7 @@ export default {
                                   &${this.getLinkChannel(
                                       val[
                                           `param6016_${chanNoItem.chanNo}_${_type}`
-                                      ].linkChannel
+                                      ].linkChannel,
                                   )}&${
                                       val[
                                           `param6016_${chanNoItem.chanNo}_${_type}`
@@ -842,7 +843,7 @@ export default {
                                     let objName = `通道${
                                         chanNoItem.chanNo
                                     }>${this.getLabelByType(
-                                        typeItem.type
+                                        typeItem.type,
                                     )}&${paramStr}`;
                                     if (!this.setForm.hasOwnProperty(objName)) {
                                         this.setForm[objName] = {
@@ -887,12 +888,12 @@ export default {
                                                 val[
                                                     paramStr
                                                 ].info[0].hasOwnProperty(
-                                                    "newSensitivity"
+                                                    "newSensitivity",
                                                 ))
                                                 ? `${paramStr}.info.0.newSensitivity&算法灵敏度number&${this.getLabelSelf(
                                                       typeItem.sensitivityList,
                                                       val[paramStr].info[0]
-                                                          .newSensitivity
+                                                          .newSensitivity,
                                                   )}&${
                                                       val[paramStr].info[0]
                                                           .newSensitivity
@@ -912,12 +913,12 @@ export default {
                                                 val[
                                                     paramStr
                                                 ].info[0].hasOwnProperty(
-                                                    "sensitivity"
+                                                    "sensitivity",
                                                 ))
                                                 ? `${paramStr}.info.0.sensitivity&算法灵敏度number&${this.getLabelSelf(
                                                       typeItem.sensitivityList,
                                                       val[paramStr].info[0]
-                                                          .sensitivity
+                                                          .sensitivity,
                                                   )}&${
                                                       val[paramStr].info[0]
                                                           .sensitivity
@@ -934,7 +935,7 @@ export default {
                                                 val[
                                                     paramStr
                                                 ].info[0].hasOwnProperty(
-                                                    "sensitivity"
+                                                    "sensitivity",
                                                 ))
                                                 ? `${paramStr}.info.0.sensitivity&算法灵敏度number&${val[paramStr].info[0].sensitivity}`
                                                 : null;
@@ -950,7 +951,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "staticWarnEnable"
+                                                "staticWarnEnable",
                                             ))
                                             ? `${paramStr}.info.0.staticWarnEnable&静止报警使能switch&${val[paramStr].info[0].staticWarnEnable}`
                                             : null;
@@ -962,7 +963,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "volumeEnable"
+                                                "volumeEnable",
                                             ))
                                             ? `${paramStr}.info.0.volumeEnable&音量使能switch&${val[paramStr].info[0].volumeEnable}`
                                             : null;
@@ -986,7 +987,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].snapshot.hasOwnProperty(
-                                                "upload"
+                                                "upload",
                                             ))
                                             ? `${paramStr}.info.0.snapshot.upload&报警图片上传使能switch&${val[paramStr].info[0].snapshot.upload}`
                                             : null;
@@ -998,7 +999,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].clip.hasOwnProperty(
-                                                "upload"
+                                                "upload",
                                             ))
                                             ? `${paramStr}.info.0.clip.upload&报警视频上传使能switch&${val[paramStr].info[0].clip.upload}`
                                             : null;
@@ -1012,7 +1013,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].snapshot.hasOwnProperty(
-                                                "number"
+                                                "number",
                                             ))
                                             ? `${paramStr}.info.0.snapshot.number&抓图张数number&${val[paramStr].info[0].snapshot.number}`
                                             : null;
@@ -1027,12 +1028,12 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].snapshot.hasOwnProperty(
-                                                "interval"
+                                                "interval",
                                             ))
                                             ? `${paramStr}.info.0.snapshot.interval&抓图间隔number&${
                                                   Number(
                                                       val[paramStr].info[0]
-                                                          .snapshot.interval
+                                                          .snapshot.interval,
                                                   ) * 100
                                               }毫秒&${
                                                   val[paramStr].info[0].snapshot
@@ -1049,7 +1050,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].clip.hasOwnProperty(
-                                                "perRecord"
+                                                "perRecord",
                                             ))
                                             ? `${paramStr}.info.0.clip.perRecord&报警短视频前半部分时长number&${val[paramStr].info[0].clip.perRecord}`
                                             : null;
@@ -1064,7 +1065,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].clip.hasOwnProperty(
-                                                "afterRecord"
+                                                "afterRecord",
                                             ))
                                             ? `${paramStr}.info.0.clip.afterRecord&报警短视频后半部分时长number&${val[paramStr].info[0].clip.afterRecord}`
                                             : null;
@@ -1078,7 +1079,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "inhibitionTime"
+                                                "inhibitionTime",
                                             ))
                                             ? `${paramStr}.info.0.inhibitionTime&报警抑制时间number&${val[paramStr].info[0].inhibitionTime}`
                                             : null;
@@ -1090,7 +1091,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "startSpeed"
+                                                "startSpeed",
                                             ))
                                             ? `${paramStr}.info.0.startSpeed&启动速度number&${val[paramStr].info[0].startSpeed}`
                                             : null;
@@ -1102,7 +1103,7 @@ export default {
                                             val[
                                                 paramStr
                                             ].info[0].hasOwnProperty(
-                                                "uploadEvent"
+                                                "uploadEvent",
                                             ))
                                             ? `${paramStr}.info.0.uploadEvent&事件上传switch&${val[paramStr].info[0].uploadEvent}`
                                             : null;
@@ -1113,17 +1114,17 @@ export default {
                                             val[paramStr].info[0].snapshot
                                                 .linkChannel,
                                             this.oldForm[paramStr].info[0]
-                                                .snapshot.linkChannel
+                                                .snapshot.linkChannel,
                                         ) ||
                                         (this.isTemplate &&
                                             val[
                                                 paramStr
                                             ].info[0].snapshot.hasOwnProperty(
-                                                "linkChannel"
+                                                "linkChannel",
                                             ))
                                             ? `${paramStr}.info.0.snapshot.linkChannel&联动抓拍的通道array&${this.getLinkChannel(
                                                   val[paramStr].info[0].snapshot
-                                                      .linkChannel
+                                                      .linkChannel,
                                               )}&${
                                                   val[paramStr].info[0].snapshot
                                                       .linkChannel
@@ -1161,8 +1162,8 @@ export default {
                             type: "",
                             chanNo: chanNoItem.chanNo,
                         },
-                        "CMBS"
-                    )
+                        "CMBS",
+                    ),
                 );
                 let obj = {
                     ...chanNoItem,
@@ -1174,12 +1175,12 @@ export default {
                         infoItem.sensitivityList = [];
                         infoItem.sensitivityList = this.getEnumerationValue(
                             infoItem.newSensitivity,
-                            "intelliDrive_CMBS_newSensitivity"
+                            "intelliDrive_CMBS_newSensitivity",
                         );
                         /* --------------------算法灵敏度 end-------------------------*/
                     }
                     for (let key of Object.keys(
-                        this.enumerationJSON["intelliDrive_CMBS_type"]
+                        this.enumerationJSON["intelliDrive_CMBS_type"],
                     )) {
                         if (
                             this.enumerationJSON["intelliDrive_CMBS_type"][
@@ -1202,8 +1203,8 @@ export default {
                                 type: infoItem.type,
                                 chanNo: chanNoItem.chanNo,
                             },
-                            "CMBS"
-                        )
+                            "CMBS",
+                        ),
                     );
                 });
                 this.CMBSList.push(obj);
@@ -1214,7 +1215,7 @@ export default {
                 this.typeObj = {};
                 this.CMBSList.forEach((item) => {
                     this.typeObj[item.chanNo] = Object.entries(
-                        item.info
+                        item.info,
                     ).reduce((prev, cur) => {
                         let arr = [];
                         cur[1].forEach((k) => {
@@ -1229,10 +1230,10 @@ export default {
                         if (this.newForm[`param6016_${chanNo}_${type}`]) {
                             return type + "";
                         }
-                    })
+                    }),
                 );
                 for (let key of Object.keys(
-                    this.enumerationJSON["intelliDrive_CMBS_type"]
+                    this.enumerationJSON["intelliDrive_CMBS_type"],
                 )) {
                     if (
                         this.enumerationJSON["intelliDrive_CMBS_type"][
@@ -1248,11 +1249,11 @@ export default {
         getLabelByType(type) {
             let label = "";
             for (let key of Object.keys(
-                this.enumerationJSON["intelliDrive_CMBS_type"]
+                this.enumerationJSON["intelliDrive_CMBS_type"],
             )) {
                 let index =
                     this.enumerationJSON["intelliDrive_CMBS_type"][key].indexOf(
-                        type
+                        type,
                     );
                 if (index === 0) {
                     label = key + ">一级报警";
@@ -1271,14 +1272,14 @@ export default {
                         confirmButtonText: this.$t("common.ok"),
                         cancelButtonText: this.$t("common.cancel"),
                         type: "warning",
-                    }
+                    },
                 )
                     .then(() => {
                         let chanNo = this.chanNoActive.split("通道")[1];
                         this.CMBSList.forEach((chanNoItem) => {
                             if (Number(chanNoItem.chanNo) === Number(chanNo)) {
                                 for (let typeName of Object.keys(
-                                    chanNoItem.info
+                                    chanNoItem.info,
                                 )) {
                                     chanNoItem.info[typeName].forEach(
                                         (typeItem) => {
@@ -1296,11 +1297,11 @@ export default {
                                                     JSON.stringify(
                                                         this.oldForm[
                                                             `param6016_${chanNo}_${typeItem.type}`
-                                                        ]
-                                                    )
+                                                        ],
+                                                    ),
                                                 );
                                             }
-                                        }
+                                        },
                                     );
                                 }
                             }
@@ -1361,7 +1362,7 @@ export default {
                     this.$message.error(
                         `${
                             key.split("-")[1]
-                        }一级报警与二级报警报警判断速度阈值小于20！`
+                        }一级报警与二级报警报警判断速度阈值小于20！`,
                     );
                 }
             }
@@ -1384,7 +1385,7 @@ export default {
                                 ...this.newForm[
                                     `param6016_${chanNoItem.chanNo}_${levelItem.type}`
                                 ],
-                            }
+                            },
                         );
                     }
                 });

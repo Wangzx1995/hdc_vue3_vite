@@ -13,17 +13,17 @@
             <el-row type="flex" justify="space-between">
                 <el-col :span="7" >
                     <el-form-item label="超速持续时间" prop='IsApiSpeedingOthers.overSpeedDurationTime'>
-                        <el-input tips-placement="top-end" tips="键入值范围为0~50000" v-model="form['IsApiSpeedingOthers'].overSpeedDurationTime"><span slot="suffix">s</span></el-input>
+                        <el-input tips-placement="top-end" tips="键入值范围为0~50000" v-model="form['IsApiSpeedingOthers'].overSpeedDurationTime"><template #suffix><span>s</span></template></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="7" >
                     <el-form-item label="超速预警差值" prop='IsApiSpeedingOthers.overSpeedAlarmWarningValue'>
-                        <el-input tips-placement="top-end" tips="键入值范围为0~32767" v-model="form['IsApiSpeedingOthers'].overSpeedAlarmWarningValue"><span slot="suffix">0.1 km/h</span></el-input>
+                        <el-input tips-placement="top-end" tips="键入值范围为0~32767" v-model="form['IsApiSpeedingOthers'].overSpeedAlarmWarningValue"><template #suffix><span>0.1 km/h</span></template></el-input>
                     </el-form-item>
                 </el-col>
                <el-col :span="7" >
                     <el-form-item label="超速阈值" prop='IsApiSpeedingOthers.maxSpeed'>
-                        <el-input tips-placement="top-end" tips="键入值范围为0~50000" v-model="form['IsApiSpeedingOthers'].maxSpeed"><span slot="suffix">km/h</span></el-input>
+                        <el-input tips-placement="top-end" tips="键入值范围为0~50000" v-model="form['IsApiSpeedingOthers'].maxSpeed"><template #suffix><span>km/h</span></template></el-input>
                     </el-form-item>
                 </el-col>
                 <!-- <el-col :span="7" ></el-col> -->

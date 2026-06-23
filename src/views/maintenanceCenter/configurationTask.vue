@@ -157,7 +157,7 @@
                         :label="$t('deviceConfiguration.configurationType')"
                         min-width="120px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{ scope.row.cmd ? cmdList[scope.row.cmd] : "--" }}
                         </template>
                     </el-table-column>
@@ -167,7 +167,7 @@
                         :label="$t('deviceConfiguration.schedule')"
                         min-width="120px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{ resultList[scope.row.result] }}
                         </template>
                     </el-table-column>
@@ -188,7 +188,7 @@
                         "
                         min-width="220px"
                     >
-                        <template slot-scope="scope">
+                        <template #default="scope">
                             {{
                                 `${scope.row.successNum}/${scope.row.ingNum}/${scope.row.failNum}`
                             }}
@@ -200,7 +200,7 @@
                         fixed="right"
                         min-width="80px"
                     >
-                        <template slot-scope="scope" width="100px">
+                        <template #default="scope" width="100px">
                             <a
                                 v-if="scope.row.paramsBefore"
                                 @click="

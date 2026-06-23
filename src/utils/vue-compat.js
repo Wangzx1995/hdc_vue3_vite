@@ -8,6 +8,14 @@ let _app = null;
 
 export function setCompatApp(app) {
     _app = app;
+    // 为 Vue 2 遗留代码提供 $set / $delete 兼容（Vue 3 中 proxy 已无需它们）
+    app.config.globalProperties.$set = function (target, key, value) {
+        target[key] = value;
+        return value;
+    };
+    app.config.globalProperties.$delete = function (target, key) {
+        delete target[key];
+    };
 }
 
 const VueCompat = {

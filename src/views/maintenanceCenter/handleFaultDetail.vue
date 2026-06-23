@@ -88,7 +88,7 @@
                             :label="$t('anomalyDetails.processingStatus')"
                             min-width="60px"
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <span
                                     :class="
                                         scope.row.status == 0 ? 'red' : 'green'

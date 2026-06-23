@@ -107,7 +107,7 @@ export default {
     & > div:nth-child(3) {
         margin-top: 14px;
     }
-    /deep/.close-btn {
+    :deep(.close-btn){
         display: flex;
         justify-content: center;
         align-items: center;

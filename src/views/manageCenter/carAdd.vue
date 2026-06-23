@@ -4,7 +4,7 @@
         <!-- 选择已有设备 -->
         <el-dialog
             :title="$t('carManage.selectExistingDevice')"
-            :visible="processModal"
+            v-model="processModal"
             append-to-body
             @close="closeDio"
             :custom-class="'no-padding-dialog'"
@@ -134,7 +134,7 @@
                             :label="$t('carManage.simType')"
                             min-width="100px"
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <div>
                                     {{
                                         scope.row.normalCard == 0
@@ -150,7 +150,7 @@
                             :label="$t('carManage.firmwareLanguage')"
                             min-width="80px"
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <div>
                                     {{
                                         scope.row.language == "CN"
@@ -165,7 +165,7 @@
                             :label="$t('common.operate')"
                             width="120px"
                         >
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <el-button
                                     type="text"
                                     class="text-info"
@@ -374,12 +374,12 @@
                                 <el-table-column
                                     :label="$t('common.deviceModelCode')"
                                 >
-                                    <template slot="header">
+                                    <template #header>
                                         <span>{{
                                             $t("common.deviceModelCode")
                                         }}</span>
                                     </template>
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <el-form-item
                                             :prop="
                                                 'deviceList.' +
@@ -403,7 +403,7 @@
                                                     changedeviceModelCode(
                                                         scope.row
                                                             .deviceModelCode,
-                                                        scope.$index
+                                                        scope.$index,
                                                     )
                                                 "
                                                 :placeholder="
@@ -428,13 +428,13 @@
                                 <el-table-column
                                     :label="$t('common.deviceSerialNum')"
                                 >
-                                    <template slot="header">
+                                    <template #header>
                                         <span class="star">*</span>
                                         <span>{{
                                             $t("common.deviceSerialNum")
                                         }}</span>
                                     </template>
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <el-form-item
                                             :prop="
                                                 'deviceList.' +
@@ -457,7 +457,13 @@
                                                 "
                                                 @blur="deviceSerialNumBlur"
                                                 :clearable="type !== 'edit'"
-                                                oninput="if(value.length>9)value=value.slice(0,9)"
+                                                oninput="
+                                                    if (value.length > 9)
+                                                        value = value.slice(
+                                                            0,
+                                                            9,
+                                                        );
+                                                "
                                             ></el-input>
                                         </el-form-item>
                                     </template>
@@ -466,13 +472,13 @@
                                 <el-table-column
                                     :label="$t('common.deviceCode')"
                                 >
-                                    <template slot="header">
+                                    <template #header>
                                         <span class="star">*</span>
                                         <span>{{
                                             $t("common.deviceCode")
                                         }}</span>
                                     </template>
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <el-form-item
                                             :prop="
                                                 'deviceList.' +
@@ -482,7 +488,7 @@
                                             :rules="{
                                                 required: true,
                                                 message: $t(
-                                                    'carManage.deviceCode_message'
+                                                    'carManage.deviceCode_message',
                                                 ),
                                                 trigger: 'blur',
                                             }"
@@ -502,13 +508,13 @@
                                 <el-table-column
                                     :label="$t('carManage.simType')"
                                 >
-                                    <template slot="header">
+                                    <template #header>
                                         <span class="star">*</span>
                                         <span>{{
                                             $t("carManage.simType")
                                         }}</span>
                                     </template>
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <el-form-item
                                             :prop="
                                                 'deviceList.' +
@@ -533,7 +539,7 @@
                                                     :value="0"
                                                     :label="
                                                         $t(
-                                                            'carManage.directionalCard'
+                                                            'carManage.directionalCard',
                                                         )
                                                     "
                                                 ></el-option>
@@ -541,7 +547,7 @@
                                                     :value="1"
                                                     :label="
                                                         $t(
-                                                            'carManage.normalCard'
+                                                            'carManage.normalCard',
                                                         )
                                                     "
                                                 ></el-option>
@@ -553,13 +559,13 @@
                                 <el-table-column
                                     :label="$t('carManage.channelNumber')"
                                 >
-                                    <template slot="header">
+                                    <template #header>
                                         <span class="star">*</span>
                                         <span>{{
                                             $t("carManage.channelNumber")
                                         }}</span>
                                     </template>
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <el-form-item
                                             :prop="
                                                 'deviceList.' +
@@ -573,7 +579,7 @@
                                             }"
                                         >
                                             <el-input-number
-                                                size="mini"
+                                                size="small"
                                                 style="width: 90%"
                                                 :max="24"
                                                 :min="0"
@@ -589,13 +595,13 @@
                                 <el-table-column
                                     :label="$t('carManage.firmwareLanguage')"
                                 >
-                                    <template slot="header">
+                                    <template #header>
                                         <span class="star">*</span>
                                         <span>{{
                                             $t("carManage.firmwareLanguage")
                                         }}</span>
                                     </template>
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <el-form-item
                                             :prop="
                                                 'deviceList.' +
@@ -630,7 +636,7 @@
                                     :label="$t('common.operate')"
                                     width="120px"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <el-button
                                             v-if="
                                                 scope.row.isAdd && !scope.row.id
@@ -640,7 +646,7 @@
                                             @click="
                                                 isAddClick(
                                                     scope.$index,
-                                                    scope.row
+                                                    scope.row,
                                                 )
                                             "
                                         >
@@ -657,7 +663,7 @@
                                             @click="
                                                 editDevice(
                                                     scope.$index,
-                                                    scope.row
+                                                    scope.row,
                                                 )
                                             "
                                         >
@@ -729,15 +735,17 @@
         <!-- 设备序列号 -->
         <el-dialog
             :title="$t('common.deviceSerialNum')"
-            :visible="exampleVisible"
+            v-model="exampleVisible"
             @close="exampleVisible = false"
         >
             <img :src="device_code" alt="" style="width: 100%" />
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="exampleVisible = false">{{
-                    $t("common.gotIt")
-                }}</el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="exampleVisible = false">{{
+                        $t("common.gotIt")
+                    }}</el-button>
+                </span>
+            </template>
         </el-dialog>
         <div class="footer">
             <div class="footer-btn">
@@ -755,25 +763,27 @@
         <!-- 提示 -->
         <el-dialog
             :title="$t('common.prompt')"
-            :visible.sync="showIfReAdd"
+            v-model="showIfReAdd"
             :width="'800px'"
         >
             {{ $t("common.plateNum") }}:{{ addTerminalForm.plateNum
             }}{{ $t("carManage.alreadyExists") }}
-            <div slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="submit">{{
-                    $t("common.ok")
-                }}</el-button>
-                <el-button @click="doTipCancel">{{
-                    $t("common.cancel")
-                }}</el-button>
-            </div>
+            <template #footer>
+                <div class="dialog-footer">
+                    <el-button type="primary" @click="submit">{{
+                        $t("common.ok")
+                    }}</el-button>
+                    <el-button @click="doTipCancel">{{
+                        $t("common.cancel")
+                    }}</el-button>
+                </div>
+            </template>
         </el-dialog>
         <!-- 查看资料 -->
         <el-dialog
             :title="$t('carManage.viewProfile')"
             append-to-body
-            :visible.sync="msgDialogVisible"
+            v-model="msgDialogVisible"
             width="800px"
         >
             <div style="padding: 1rem 0; font-size: 1rem; color: #000">
@@ -806,12 +816,14 @@
                 >
                 </el-table-column>
             </el-table>
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="copyText">
-                    <!-- 复制域名/IP -->
-                    {{ $t("carManage.viewProfileColumn4") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button type="primary" @click="copyText">
+                        <!-- 复制域名/IP -->
+                        {{ $t("carManage.viewProfileColumn4") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -838,10 +850,12 @@ export default {
                 if (value != undefined && value.length > 0) {
                     if (value.length > 30) {
                         that.$message.error(
-                            that.$t("carManage.checkDeviceModelCode")
+                            that.$t("carManage.checkDeviceModelCode"),
                         );
                         callback(
-                            new Error(that.$t("carManage.checkDeviceModelCode"))
+                            new Error(
+                                that.$t("carManage.checkDeviceModelCode"),
+                            ),
                         );
                     } else {
                         callback();
@@ -854,7 +868,7 @@ export default {
             checkDeviceSerialNum: function (rule, value, callback) {
                 if (value.length < 9) {
                     callback(
-                        new Error(that.$t("carManage.checkDeviceSerialNum"))
+                        new Error(that.$t("carManage.checkDeviceSerialNum")),
                     );
                 } else {
                     callback();
@@ -868,7 +882,7 @@ export default {
                     // const vinRegex = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领]{1}/;
                     if (!vinRegex.test(value)) {
                         callback(
-                            new Error(that.$t("carManage.checkPlateNum1"))
+                            new Error(that.$t("carManage.checkPlateNum1")),
                         );
                     } else {
                         callback();
@@ -924,7 +938,7 @@ export default {
                             callback();
                         } else {
                             callback(
-                                new Error(that.$t("carManage.checkNumber2"))
+                                new Error(that.$t("carManage.checkNumber2")),
                             );
                         }
                     }
@@ -946,7 +960,7 @@ export default {
                             callback();
                         } else {
                             callback(
-                                new Error(that.$t("carManage.checkChannel2"))
+                                new Error(that.$t("carManage.checkChannel2")),
                             );
                         }
                     }
@@ -1182,7 +1196,7 @@ export default {
         editDevice(index, item) {
             this.numIndex = index;
             const currIndex = this.addTerminalForm.deviceList.findIndex(
-                (item) => item.isAdd
+                (item) => item.isAdd,
             );
             // 保证只有一个在编辑状态
             if (currIndex !== -1) {
@@ -1359,14 +1373,14 @@ export default {
                 if (valid) {
                     if (this.addTerminalForm.deviceList.length > 1) {
                         this.$message.info(
-                            this.$t("carManage.carAddSubmitMsg1")
+                            this.$t("carManage.carAddSubmitMsg1"),
                         );
                         this.loadSubmit = false;
                         return;
                     }
                     if (
                         this.addTerminalForm.deviceList.some(
-                            (item) => item.isAdd
+                            (item) => item.isAdd,
                         )
                     ) {
                         this.$message({
@@ -1388,7 +1402,7 @@ export default {
                                 this.loadSubmit = false;
                                 if (res.success == true) {
                                     this.$message.success(
-                                        this.$t("carManage.carAddSubmitMsg3")
+                                        this.$t("carManage.carAddSubmitMsg3"),
                                     );
                                     this.cancelDialog();
                                     this.$emit("handleSuccess");
@@ -1413,7 +1427,7 @@ export default {
                                 this.loadSubmit = false;
                                 if (res.success == true) {
                                     this.$message.success(
-                                        this.$t("carManage.carAddSubmitMsg4")
+                                        this.$t("carManage.carAddSubmitMsg4"),
                                     );
                                     this.cancelDialog();
                                     this.$emit("handleSuccess");
@@ -1524,7 +1538,7 @@ export default {
                 },
                 () => {
                     this.$message.error(this.$t("carManage.copyError"));
-                }
+                },
             );
         },
         getSimCardPdfUrl() {
@@ -1567,7 +1581,7 @@ export default {
     .add-device-tab {
         height: 904px;
     }
-    // /deep/ .el-input,.el-select {
+    // :deep(.el-input),.el-select {
     //     width: 500px;
     // }
     .container {
@@ -1640,7 +1654,7 @@ export default {
     }
     .channel-edit {
         width: 1080px;
-        /deep/ .el-input,
+        :deep(.el-input),
         .el-select {
             width: 100%;
         }
@@ -1684,7 +1698,7 @@ export default {
         line-height: 24px;
     }
 }
-/deep/.el-table {
+:deep(.el-table){
     .el-form-item {
         margin-bottom: 0px;
         .el-form-item__error {

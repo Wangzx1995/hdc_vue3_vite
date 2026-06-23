@@ -28,8 +28,8 @@
     </div>
     <!-- 时间轴面板 -->
     <timebar v-model="value" @timeerror="timeerror" @setCol="setCol">
-      <template v-if="$slots.popover" slot="popover">
-        <slot name="popover" />
+      <template v-if="$slots.popover" #popover>
+          <slot name="popover" />
       </template>
     </timebar>
   </div>

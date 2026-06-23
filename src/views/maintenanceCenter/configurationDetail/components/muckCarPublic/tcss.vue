@@ -61,13 +61,13 @@
         </el-col>
         <el-col :span="7">
           <el-form-item label="静态手动速度" class="m-r-md p-r" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtTcssCapability'].staticSpeedMin,max:form['IsApiZtTcssCapability'].staticSpeedMax}), trigger: 'blur'}" prop="IsApiZtTcss.vehicleStatic.staticSpeed">
-            <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtTcssCapability'].staticSpeedMin}~${form['IsApiZtTcssCapability'].staticSpeedMax}`" v-model.number="form['IsApiZtTcss'].vehicleStatic.staticSpeed"><span slot="suffix">km/h</span></el-input>
+            <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtTcssCapability'].staticSpeedMin}~${form['IsApiZtTcssCapability'].staticSpeedMax}`" v-model.number="form['IsApiZtTcss'].vehicleStatic.staticSpeed"><template #suffix><span>km/h</span></template></el-input>
             <span class="prompt">0-20表示静止, 20以上表示运动</span>
           </el-form-item>
         </el-col>
         <el-col :span="7">
           <el-form-item label="持续时间" class="m-r-md p-r" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtTcssCapability'].staticContinueMin,max:form['IsApiZtTcssCapability'].staticContinueMax}), trigger: 'blur'}" prop="IsApiZtTcss.vehicleStatic.staticContinue">
-            <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtTcssCapability'].staticContinueMin}~${form['IsApiZtTcssCapability'].staticContinueMax}`" v-model.number="form['IsApiZtTcss'].vehicleStatic.staticContinue"><span slot="suffix">s</span></el-input>
+            <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtTcssCapability'].staticContinueMin}~${form['IsApiZtTcssCapability'].staticContinueMax}`" v-model.number="form['IsApiZtTcss'].vehicleStatic.staticContinue"><template #suffix><span>s</span></template></el-input>
           </el-form-item>
         </el-col>
       </el-row>

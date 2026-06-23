@@ -12,7 +12,7 @@
             <el-row type="flex" justify="space-between">
                 <el-col :span="7" >
                     <el-form-item label="电子围栏半径" class="m-r-md" prop="0031.radiusOfElectronicFence">
-                        <el-input v-model="form['0031'].radiusOfElectronicFence"><span slot="suffix">m</span></el-input>
+                        <el-input v-model="form['0031'].radiusOfElectronicFence"><template #suffix><span>m</span></template></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="7" ></el-col>

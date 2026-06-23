@@ -34,7 +34,7 @@
             <el-row type="flex" justify="space-between">
                 <el-col :span="7" >
                     <el-form-item label="拐点补传角度（<=180度）" prop="0030.replenishGpsAngle">
-                        <el-input v-model="form['0030'].replenishGpsAngle"><span slot="suffix">度</span></el-input>
+                        <el-input v-model="form['0030'].replenishGpsAngle"><template #suffix><span>度</span></template></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>

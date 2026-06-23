@@ -41,26 +41,31 @@
                             label-width="104px"
                             class="sTime-form"
                         >
-                            <span slot="label">
-                                <span>
-                                    <!-- 开始时间 -->
-                                    {{ $t("common.startTime") }}
-                                </span>
-                                <span
-                                    style="display: inline-block; width: 2rem"
-                                    >{{
-                                        selectDate
-                                            ? selectDate
-                                                  .substring(5)
-                                                  .replace("-", ".")
-                                            : ""
-                                    }}</span
-                                >
-                            </span>
+                            <template #label
+                                ><span>
+                                    <span>
+                                        <!-- 开始时间 -->
+                                        {{ $t("common.startTime") }}
+                                    </span>
+                                    <span
+                                        style="
+                                            display: inline-block;
+                                            width: 2rem;
+                                        "
+                                        >{{
+                                            selectDate
+                                                ? selectDate
+                                                      .substring(5)
+                                                      .replace("-", ".")
+                                                : ""
+                                        }}</span
+                                    >
+                                </span></template
+                            >
                             <el-time-picker
                                 popper-class="el-time-picker-search"
                                 v-model="searchVideoForm.sTime"
-                                default-value="00:00:00"
+                                :default-value="new Date(2020, 0, 1, 0, 0, 0)"
                                 :clearable="false"
                                 class="video-time-picker"
                             >
@@ -71,25 +76,32 @@
                             label-width="104px"
                             class="sTime-form"
                         >
-                            <span slot="label">
-                                <!-- 结束时间 -->
-                                {{ $t("common.endTime") }}
-                                <span
-                                    style="display: inline-block; width: 2rem"
-                                >
-                                    {{
-                                        selectDate
-                                            ? selectDate
-                                                  .substring(5)
-                                                  .replace("-", ".")
-                                            : ""
-                                    }}
-                                </span>
-                            </span>
+                            <template #label
+                                ><span>
+                                    <!-- 结束时间 -->
+                                    {{ $t("common.endTime") }}
+                                    <span
+                                        style="
+                                            display: inline-block;
+                                            width: 2rem;
+                                        "
+                                    >
+                                        {{
+                                            selectDate
+                                                ? selectDate
+                                                      .substring(5)
+                                                      .replace("-", ".")
+                                                : ""
+                                        }}
+                                    </span>
+                                </span></template
+                            >
                             <el-time-picker
                                 popper-class="el-time-picker-search"
                                 v-model="searchVideoForm.eTime"
-                                default-value="23:59:59"
+                                :default-value="
+                                    new Date(2020, 0, 1, 23, 59, 59)
+                                "
                                 :clearable="false"
                                 class="video-time-picker"
                             >
@@ -115,7 +127,7 @@
                                         <!-- 框选下载 -->
                                         {{
                                             $t(
-                                                "videoPlayback.boxSelectionDownload"
+                                                "videoPlayback.boxSelectionDownload",
                                             )
                                         }}
                                     </el-button>
@@ -138,7 +150,7 @@
                                                 <!-- 自定义时间/通道下载（最多10分钟） -->
                                                 {{
                                                     $t(
-                                                        "videoPlayback.customizeDownload"
+                                                        "videoPlayback.customizeDownload",
                                                     )
                                                 }}
                                             </div>
@@ -161,14 +173,14 @@
                                                 <!-- 当前选中日期 -->
                                                 {{
                                                     $t(
-                                                        "videoPlayback.currentSelectedDate"
+                                                        "videoPlayback.currentSelectedDate",
                                                     )
                                                 }}
                                                 ：{{
                                                     searchVideoForm.startTime
                                                         ? searchVideoForm.startTime.substring(
                                                               0,
-                                                              10
+                                                              10,
                                                           )
                                                         : ""
                                                 }}
@@ -177,14 +189,14 @@
                                             <el-form-item
                                                 :label="
                                                     $t(
-                                                        'videoPlayback.selectTime'
+                                                        'videoPlayback.selectTime',
                                                     )
                                                 "
                                                 prop="downloadTime"
                                                 class="item-style"
                                             >
                                                 <el-time-picker
-                                                    size="mini"
+                                                    size="small"
                                                     is-range
                                                     v-model="
                                                         downLoadForm.downloadTime
@@ -211,7 +223,7 @@
                                             <el-form-item
                                                 :label="
                                                     $t(
-                                                        'videoPlayback.selectChannel'
+                                                        'videoPlayback.selectChannel',
                                                     )
                                                 "
                                                 prop="channelList"
@@ -262,14 +274,19 @@
                                             </el-button>
                                         </div>
                                     </div>
-                                    <el-button
-                                        slot="reference"
-                                        @click="openDownloadVideo"
-                                        v-show="videoBackList.length > 0"
-                                    >
-                                        <!-- 录像下载 -->
-                                        {{ $t("videoPlayback.videoDownload") }}
-                                    </el-button>
+                                    <template #reference>
+                                        <el-button
+                                            @click="openDownloadVideo"
+                                            v-show="videoBackList.length > 0"
+                                        >
+                                            <!-- 录像下载 -->
+                                            {{
+                                                $t(
+                                                    "videoPlayback.videoDownload",
+                                                )
+                                            }}
+                                        </el-button>
+                                    </template>
                                 </el-popover>
                             </div>
                             <el-button
@@ -326,7 +343,7 @@
                                 <!-- 同步显示轨迹 -->
                                 {{
                                     $t(
-                                        "videoPlayback.synchronizeDisplayTrajectory"
+                                        "videoPlayback.synchronizeDisplayTrajectory",
                                     )
                                 }}
                             </el-checkbox>
@@ -612,7 +629,7 @@
                                             <!-- 参数配置 -->
                                             {{
                                                 $t(
-                                                    "videoPlayback.parameterConfiguration"
+                                                    "videoPlayback.parameterConfiguration",
                                                 )
                                             }}
                                         </div>
@@ -622,7 +639,7 @@
                                                 <el-form-item
                                                     :label="
                                                         $t(
-                                                            'videoPlayback.defaultSubtitlePosition'
+                                                            'videoPlayback.defaultSubtitlePosition',
                                                         ) + '：'
                                                     "
                                                 >
@@ -637,7 +654,7 @@
                                                             :value="0"
                                                             :label="
                                                                 $t(
-                                                                    'videoPlayback.rightUp'
+                                                                    'videoPlayback.rightUp',
                                                                 )
                                                             "
                                                         ></el-option>
@@ -646,7 +663,7 @@
                                                             :value="1"
                                                             :label="
                                                                 $t(
-                                                                    'videoPlayback.rightMid'
+                                                                    'videoPlayback.rightMid',
                                                                 )
                                                             "
                                                         ></el-option>
@@ -655,7 +672,7 @@
                                                             :value="2"
                                                             :label="
                                                                 $t(
-                                                                    'videoPlayback.rightLow'
+                                                                    'videoPlayback.rightLow',
                                                                 )
                                                             "
                                                         ></el-option>
@@ -665,7 +682,7 @@
                                         </div>
                                         <div class="text-right m-t-md">
                                             <el-button
-                                                size="mini"
+                                                size="small"
                                                 @click="closeSetting"
                                             >
                                                 <!-- 取消 -->
@@ -673,7 +690,7 @@
                                             </el-button>
                                             <el-button
                                                 type="primary"
-                                                size="mini"
+                                                size="small"
                                                 @click="saveSetting"
                                             >
                                                 <!-- 保存 -->
@@ -692,7 +709,7 @@
                                         <el-slider
                                             v-model="settingForm.voice"
                                             vertical
-                                            size="mini"
+                                            size="small"
                                             height="80px"
                                             v-if="showVoice"
                                             @change="changeVoice"
@@ -743,7 +760,7 @@
                             class="channel-item"
                             :class="{ active: nowChannelName == channelName }"
                             v-for="channelName in Object.keys(
-                                videoBackListFormat
+                                videoBackListFormat,
                             )"
                             v-bind:key="channelName"
                             @click="nowChannelName = channelName"
@@ -770,7 +787,7 @@
                                     :width="marginLeft"
                                     :min-width="1"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <div>&nbsp;</div>
                                     </template>
                                 </el-table-column>
@@ -793,11 +810,11 @@
                                     :label="$t('videoPlayback.duration')"
                                     min-width="100"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         {{
                                             scope.row.startTime
                                                 | intervalTime(
-                                                    scope.row.endTime
+                                                    scope.row.endTime,
                                                 )
                                         }}
                                     </template>
@@ -815,7 +832,7 @@
                                     :label="$t('videoPlayback.channelNumber')"
                                     min-width="80"
                                 >
-                                    <template slot-scope="">
+                                    <template #default>
                                         {{ nowChannelName }}
                                     </template>
                                 </el-table-column>
@@ -824,7 +841,7 @@
                                     :label="$t('videoPlayback.fileSize')"
                                     min-width="80"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         {{ scope.row.fileSize | fileSize }}
                                     </template>
                                 </el-table-column>
@@ -834,7 +851,7 @@
                                     :label="$t('videoPlayback.mediaType')"
                                     min-width="80"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         {{ mediaTypeMap[scope.row.mediaType] }}
                                     </template>
                                 </el-table-column>
@@ -844,7 +861,7 @@
                                     :label="$t('videoPlayback.storeType')"
                                     min-width="80"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         {{ storeTypeMap[scope.row.storeType] }}
                                     </template>
                                 </el-table-column>
@@ -853,7 +870,7 @@
                                     :label="$t('common.operate')"
                                     min-width="100"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <span
                                             class="pointer m-r-sm text-info"
                                             @click="getReplayUrl(scope.row)"
@@ -886,7 +903,7 @@
                                                     <el-form-item
                                                         :label="
                                                             $t(
-                                                                'qualifiedProbability.timeFrame'
+                                                                'qualifiedProbability.timeFrame',
                                                             ) + '：'
                                                         "
                                                         v-if="
@@ -913,13 +930,13 @@
                                                                 }"
                                                                 :placeholder="
                                                                     $t(
-                                                                        'common.startTime'
+                                                                        'common.startTime',
                                                                     )
                                                                 "
                                                                 style="
                                                                     width: 120px;
                                                                 "
-                                                                size="mini"
+                                                                size="small"
                                                                 :clearable="
                                                                     false
                                                                 "
@@ -942,13 +959,13 @@
                                                                 }"
                                                                 :placeholder="
                                                                     $t(
-                                                                        'common.endTime'
+                                                                        'common.endTime',
                                                                     )
                                                                 "
                                                                 style="
                                                                     width: 120px;
                                                                 "
-                                                                size="mini"
+                                                                size="small"
                                                                 :clearable="
                                                                     false
                                                                 "
@@ -973,11 +990,11 @@
                                                     <i
                                                         class="el-icon-question"
                                                     ></i>
-                                                    <div slot="content">
+                                                    <template #content><div>
                                                         <div>
                                                             若转换失败，文件将以原格式下载
                                                         </div>
-                                                    </div>
+                                                    </div></template>
                                                 </el-tooltip>
                                             </el-checkbox>
                                         </el-form-item> -->
@@ -1001,7 +1018,7 @@
                                                         @click="
                                                             downLoadSingle(
                                                                 scope,
-                                                                $event
+                                                                $event,
                                                             )
                                                         "
                                                     >
@@ -1009,20 +1026,27 @@
                                                         {{ $t("common.ok") }}
                                                     </span>
                                                 </div>
-                                                <span
-                                                    slot="reference"
-                                                    class="pointer text-info"
-                                                    v-show="
-                                                        !scope.row.downType &&
-                                                        scope.row.endTimeStamp -
+                                                <template #reference>
+                                                    <span
+                                                        class="pointer text-info"
+                                                        v-show="
+                                                            !scope.row
+                                                                .downType &&
                                                             scope.row
-                                                                .startTimeStamp >
-                                                            10 * 60 * 1000
-                                                    "
-                                                >
-                                                    <!-- 下载 -->
-                                                    {{ $t("common.download") }}
-                                                </span>
+                                                                .endTimeStamp -
+                                                                scope.row
+                                                                    .startTimeStamp >
+                                                                10 * 60 * 1000
+                                                        "
+                                                    >
+                                                        <!-- 下载 -->
+                                                        {{
+                                                            $t(
+                                                                "common.download",
+                                                            )
+                                                        }}
+                                                    </span>
+                                                </template>
                                             </el-popover>
                                             <span
                                                 class="pointer text-info"
@@ -1037,7 +1061,7 @@
                                                     singPopoverShow(
                                                         scope,
                                                         true,
-                                                        $event
+                                                        $event,
                                                     )
                                                 "
                                             >
@@ -1067,7 +1091,7 @@
                                     :width="marginLeft"
                                     :min-width="1"
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <div>&nbsp;</div>
                                     </template>
                                 </el-table-column>
@@ -1085,11 +1109,11 @@
                                     min-width="110"
                                     :label="
                                         $t(
-                                            'qualifiedProbability.supplementSign'
+                                            'qualifiedProbability.supplementSign',
                                         )
                                     "
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <!-- {{
                                             { 0: "正常上报", 1: "补传" }[
                                                 scope.row.supplementSign
@@ -1098,10 +1122,10 @@
                                         {{
                                             {
                                                 0: $t(
-                                                    "qualifiedProbability.supplementSignText2"
+                                                    "qualifiedProbability.supplementSignText2",
                                                 ),
                                                 1: $t(
-                                                    "qualifiedProbability.supplementSignText1"
+                                                    "qualifiedProbability.supplementSignText1",
                                                 ),
                                             }[scope.row.supplementSign]
                                         }}
@@ -1114,12 +1138,12 @@
                                         $t('qualifiedProbability.gpsStatus')
                                     "
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <span v-show="scope.row.gpsStatus == 0">
                                             <!-- ACC关&无定位 -->
                                             {{
                                                 $t(
-                                                    "qualifiedProbability.gpsStatusText1"
+                                                    "qualifiedProbability.gpsStatusText1",
                                                 )
                                             }}
                                         </span>
@@ -1127,7 +1151,7 @@
                                             <!-- ACC关&有定位 -->
                                             {{
                                                 $t(
-                                                    "qualifiedProbability.gpsStatusText2"
+                                                    "qualifiedProbability.gpsStatusText2",
                                                 )
                                             }}
                                         </span>
@@ -1135,7 +1159,7 @@
                                             <!-- ACC开&无定位 -->
                                             {{
                                                 $t(
-                                                    "qualifiedProbability.gpsStatusText3"
+                                                    "qualifiedProbability.gpsStatusText3",
                                                 )
                                             }}
                                         </span>
@@ -1143,7 +1167,7 @@
                                             <!-- ACC开&有定位 -->
                                             {{
                                                 $t(
-                                                    "qualifiedProbability.gpsStatusText4"
+                                                    "qualifiedProbability.gpsStatusText4",
                                                 )
                                             }}
                                         </span>
@@ -1174,7 +1198,7 @@
                                     min-width="150"
                                     :label="
                                         $t(
-                                            'qualifiedProbability.recorderSpeed'
+                                            'qualifiedProbability.recorderSpeed',
                                         ) + '（km/h）'
                                     "
                                 >
@@ -1186,7 +1210,7 @@
                                         $t('qualifiedProbability.longitude')
                                     "
                                 >
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <span
                                             >{{
                                                 scope.row.longitude
@@ -1221,7 +1245,7 @@
                                     prop="locationSignal"
                                     :label="
                                         $t(
-                                            'qualifiedProbability.locationSignal'
+                                            'qualifiedProbability.locationSignal',
                                         )
                                     "
                                     min-width="100"
@@ -1232,17 +1256,17 @@
                                     prop="positionSignalStrength"
                                     :label="
                                         $t(
-                                            'qualifiedProbability.positionSignalStrength'
+                                            'qualifiedProbability.positionSignalStrength',
                                         )
                                     "
                                     min-width="160"
                                 >
-                                    <template slot="header" slot-scope="scope">
+                                    <template #header>
                                         <span class="positionSignalStrength">
                                             <!-- 网络信号强度 -->
                                             {{
                                                 $t(
-                                                    "qualifiedProbability.positionSignalStrength"
+                                                    "qualifiedProbability.positionSignalStrength",
                                                 )
                                             }}
                                             (dBm)</span
@@ -1253,65 +1277,64 @@
                                             placement="top"
                                             :popper-class="'signal-popper'"
                                         >
-                                            <div
-                                                slot="content"
-                                                class="signal-description"
-                                            >
-                                                <div>
-                                                    <!-- 通讯信号强度说明 -->
-                                                    {{
-                                                        $t(
-                                                            "videoPlayback.explanationOfCommunication"
-                                                        )
-                                                    }}
+                                            <template #content>
+                                                <div class="signal-description">
+                                                    <div>
+                                                        <!-- 通讯信号强度说明 -->
+                                                        {{
+                                                            $t(
+                                                                "videoPlayback.explanationOfCommunication",
+                                                            )
+                                                        }}
+                                                    </div>
+                                                    <p>
+                                                        <signal
+                                                            :strength="5"
+                                                        ></signal>
+                                                        <span>[-69, +∞)</span>
+                                                    </p>
+                                                    <p>
+                                                        <signal
+                                                            :strength="4"
+                                                        ></signal>
+                                                        <span>[-77, -69)</span>
+                                                    </p>
+                                                    <p>
+                                                        <signal
+                                                            :strength="3"
+                                                        ></signal>
+                                                        <span>[-87, -77)</span>
+                                                    </p>
+                                                    <p>
+                                                        <signal
+                                                            :strength="2"
+                                                        ></signal>
+                                                        <span>[-93, -87)</span>
+                                                    </p>
+                                                    <p>
+                                                        <signal
+                                                            :strength="1"
+                                                        ></signal>
+                                                        <span>[-103, -93)</span>
+                                                    </p>
+                                                    <p>
+                                                        <signal
+                                                            :strength="0"
+                                                        ></signal>
+                                                        <span>(-∞, -103)</span>
+                                                    </p>
                                                 </div>
-                                                <p>
-                                                    <signal
-                                                        :strength="5"
-                                                    ></signal>
-                                                    <span>[-69, +∞)</span>
-                                                </p>
-                                                <p>
-                                                    <signal
-                                                        :strength="4"
-                                                    ></signal>
-                                                    <span>[-77, -69)</span>
-                                                </p>
-                                                <p>
-                                                    <signal
-                                                        :strength="3"
-                                                    ></signal>
-                                                    <span>[-87, -77)</span>
-                                                </p>
-                                                <p>
-                                                    <signal
-                                                        :strength="2"
-                                                    ></signal>
-                                                    <span>[-93, -87)</span>
-                                                </p>
-                                                <p>
-                                                    <signal
-                                                        :strength="1"
-                                                    ></signal>
-                                                    <span>[-103, -93)</span>
-                                                </p>
-                                                <p>
-                                                    <signal
-                                                        :strength="0"
-                                                    ></signal>
-                                                    <span>(-∞, -103)</span>
-                                                </p>
-                                            </div>
+                                            </template>
                                             <i
                                                 class="el-icon-warning-outline"
                                             ></i>
                                         </el-tooltip>
                                     </template>
-                                    <template slot-scope="scope">
+                                    <template #default="scope">
                                         <div
                                             v-if="
                                                 scope.row.hasOwnProperty(
-                                                    'positionSignalStrength'
+                                                    'positionSignalStrength',
                                                 )
                                             "
                                             class="signal"
@@ -1320,7 +1343,7 @@
                                                 :strength="
                                                     calcDBM(
                                                         scope.row
-                                                            .positionSignalStrength
+                                                            .positionSignalStrength,
                                                     )
                                                 "
                                             ></signal>
@@ -1372,7 +1395,7 @@
             append-to-body
             width="400px"
             :title="$t('common.download')"
-            :visible.sync="downLoadFormEl.visible"
+            v-model="downLoadFormEl.visible"
         >
             <el-form>
                 <!-- 时间范围 -->
@@ -1397,23 +1420,25 @@
                             placement="right"
                         >
                             <i class="el-icon-question"></i>
-                            <div slot="content">
+                            <template #content><div>
                                 <div>若转换失败，文件将以原格式下载</div>
-                            </div>
+                            </div></template>
                         </el-tooltip>
                     </el-checkbox>
                 </el-form-item> -->
             </el-form>
-            <div slot="footer">
-                <el-button @click="downLoadFormEl.visible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button @click="downloadByOwner($event)" type="primary">
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button @click="downLoadFormEl.visible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button @click="downloadByOwner($event)" type="primary">
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
         <el-dialog
             :show-close="false"
@@ -1422,7 +1447,7 @@
             append-to-body
             width="450px"
             title=""
-            :visible.sync="awakenVisible"
+            v-model="awakenVisible"
             :custom-class="'awaken-dialog'"
         >
             <div class="awaken-dialog">
@@ -1458,20 +1483,22 @@
                     </el-form>
                 </div>
             </div>
-            <div slot="footer">
-                <el-button @click="awakenVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    @click="awakenDevice"
-                    :loading="loading"
-                    type="primary"
-                >
-                    <!-- 唤醒 -->
-                    {{ $t("videoPlayback.awaken") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button @click="awakenVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        @click="awakenDevice"
+                        :loading="loading"
+                        type="primary"
+                    >
+                        <!-- 唤醒 -->
+                        {{ $t("videoPlayback.awaken") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -1608,9 +1635,9 @@ export default {
                         callback(
                             new Error(
                                 this.$t(
-                                    "videoPlayback.timeIntervalExceeding10Minutes"
-                                )
-                            )
+                                    "videoPlayback.timeIntervalExceeding10Minutes",
+                                ),
+                            ),
                         );
                     } else {
                         callback();
@@ -1666,9 +1693,9 @@ export default {
                                 callback(
                                     new Error(
                                         this.$t(
-                                            "videoPlayback.downloadTimeValidate"
-                                        )
-                                    )
+                                            "videoPlayback.downloadTimeValidate",
+                                        ),
+                                    ),
                                 );
                             } else {
                                 if (
@@ -1680,9 +1707,9 @@ export default {
                                     callback(
                                         new Error(
                                             this.$t(
-                                                "videoPlayback.timeIntervalExceeding10Minutes"
-                                            )
-                                        )
+                                                "videoPlayback.timeIntervalExceeding10Minutes",
+                                            ),
+                                        ),
                                     );
                                 } else {
                                     callback();
@@ -1785,7 +1812,7 @@ export default {
                     };
                     this.$store.dispatch(
                         "SetDefaultMaintenanceCar",
-                        this.currentWachCar
+                        this.currentWachCar,
                     );
                     this.$set(this.searchForm, "channelNo", "");
                     //选择日期默认为当天
@@ -1817,7 +1844,7 @@ export default {
                     this.searchForm.plateJson[this.searchForm.carId] || "";
                 if (val) {
                     let carObj = this.searchForm.plateArr.find(
-                        (item) => item.id === val
+                        (item) => item.id === val,
                     );
                     this.currentWachCar = {
                         ...carObj,
@@ -1847,7 +1874,7 @@ export default {
                 this.$nextTick(() => {
                     this.marginLeft =
                         document.getElementsByClassName(
-                            "channel-item"
+                            "channel-item",
                         )[0].clientWidth;
                 });
             }
@@ -1991,14 +2018,14 @@ export default {
                         offsetWidth - 300,
                         0,
                         300,
-                        8888
+                        8888,
                     );
                 } else {
                     this.playControl_ocx.repairPartWindow(
                         offsetWidth - 300,
                         0,
                         300,
-                        8888
+                        8888,
                     );
                 }
             },
@@ -2025,14 +2052,14 @@ export default {
                         offsetWidth - 800,
                         0,
                         800,
-                        10000 - 30
+                        10000 - 30,
                     );
                 } else {
                     this.playControl_ocx.repairPartWindow(
                         offsetWidth - 800,
                         0,
                         800,
-                        1000 - 30
+                        1000 - 30,
                     );
                 }
             },
@@ -2052,14 +2079,14 @@ export default {
                         offsetWidth - 305,
                         0,
                         130,
-                        70
+                        70,
                     );
                 } else {
                     this.playControl_ocx.repairPartWindow(
                         offsetWidth - 305,
                         0,
                         130,
-                        70
+                        70,
                     );
                 }
             },
@@ -2185,7 +2212,7 @@ export default {
                     type: "error",
                     // message: "开始时间不得小于结束时间",
                     message: this.$t(
-                        "videoPlayback.startTimeNotLessThanEndTime"
+                        "videoPlayback.startTimeNotLessThanEndTime",
                     ),
                 });
                 return;
@@ -2271,7 +2298,7 @@ export default {
             if (control) {
                 this.playControl_js.setVolume(
                     control.iWndNum,
-                    this.settingForm.voice
+                    this.settingForm.voice,
                 );
             }
         },
@@ -2317,7 +2344,7 @@ export default {
                         return;
                     }
                     this.playControl_ocx.startPlaybackDllAtTime(
-                        this.currentPlayTime
+                        this.currentPlayTime,
                     );
                 } else {
                     if (checkKeys(this.playControl_ocx)) {
@@ -2346,7 +2373,7 @@ export default {
         togglePause() {
             if (!this.playState) {
                 let currentFileInfo = this.timeBar.findFile(
-                    this.currentPlayTime
+                    this.currentPlayTime,
                 );
                 currentFileInfo.forEach((item) => {
                     if (item) {
@@ -2409,7 +2436,7 @@ export default {
                 if (endTimeStamp - startTimeStamp > 10 * 60 * 1000) {
                     this.singFileDownForm.startTimeH = startTime.substring(11);
                     this.singFileDownForm.endTimeH = this.$moment(
-                        startTimeStamp + 10 * 60 * 1000
+                        startTimeStamp + 10 * 60 * 1000,
                     ).format("HH:mm:ss");
                     this.singFileDownForm.minTime = startTime.substring(11);
                     this.singFileDownForm.maxTime = endTime.substring(11);
@@ -2465,7 +2492,7 @@ export default {
         saveSetting() {
             let { keyList } = compareChange(
                 this.settingForm_O,
-                this.settingForm
+                this.settingForm,
             );
             if (keyList.includes("textPosition")) {
                 this.playControl_js.toggleTextPosition();
@@ -2565,7 +2592,7 @@ export default {
         },
         setDeault() {
             let videoPlaybackCar = JSON.parse(
-                sessionStorage.getItem("videoItem")
+                sessionStorage.getItem("videoItem"),
             );
             if (videoPlaybackCar) {
                 setTimeout(() => {
@@ -2595,27 +2622,27 @@ export default {
                     setTimeout(() => {
                         if (videoPlaybackCar.collectTime) {
                             this.selectDate = this.$moment(
-                                videoPlaybackCar.collectTime
+                                videoPlaybackCar.collectTime,
                             ).format("YYYY-M-D");
                             this.searchVideoForm.sTime = new Date(
-                                videoPlaybackCar.collectTime
+                                videoPlaybackCar.collectTime,
                             );
                         }
                         if (
                             videoPlaybackCar.endTime &&
                             this.$moment(videoPlaybackCar.collectTime).format(
-                                "YYYY-M-D"
+                                "YYYY-M-D",
                             ) ===
                                 this.$moment(videoPlaybackCar.endTime).format(
-                                    "YYYY-M-D"
+                                    "YYYY-M-D",
                                 )
                         ) {
                             this.searchVideoForm.eTime = new Date(
-                                videoPlaybackCar.endTime
+                                videoPlaybackCar.endTime,
                             );
                         }
                         let month = this.$moment(
-                            videoPlaybackCar.collectTime
+                            videoPlaybackCar.collectTime,
                         ).format("M");
                         while (month < new Date().getMonth() + 1) {
                             this.$refs["date-pannel"].changeMonth(-1);
@@ -2629,7 +2656,7 @@ export default {
                 }, 500);
             } else if (this.$store.state.tree.defaultMaintenanceCar) {
                 let defaultMaintenanceCar = JSON.parse(
-                    this.$store.state.tree.defaultMaintenanceCar
+                    this.$store.state.tree.defaultMaintenanceCar,
                 );
                 this.searchForm.deviceCode = defaultMaintenanceCar.deviceCode;
                 this.currentWachCar = defaultMaintenanceCar;
@@ -2666,14 +2693,14 @@ export default {
                                     // "已向设备下发唤醒指令，静待1分钟左右设备将重新上线！"
                                     this.$message.success(
                                         this.$t(
-                                            "videoPlayback.issueWakeupCommand"
-                                        )
+                                            "videoPlayback.issueWakeupCommand",
+                                        ),
                                     );
                                     this.sendAccMsgShow = false;
                                 } else {
                                     // 下发唤醒失败！
                                     this.$message.error(
-                                        this.$t("videoPlayback.wakeupFailed")
+                                        this.$t("videoPlayback.wakeupFailed"),
                                     );
                                 }
                             });
@@ -2742,7 +2769,7 @@ export default {
                             ]);
                         }
                         let videoPlaybackCar = JSON.parse(
-                            sessionStorage.getItem("videoItem")
+                            sessionStorage.getItem("videoItem"),
                         );
                         if (
                             videoPlaybackCar &&
@@ -2767,7 +2794,7 @@ export default {
                     type: "error",
                     // message: "车牌号不能为空",
                     message: this.$t(
-                        "videoPlayback.licensePlateNumberCannotBeEmpty"
+                        "videoPlayback.licensePlateNumberCannotBeEmpty",
                     ),
                 });
                 return;
@@ -2809,7 +2836,7 @@ export default {
                     type: "error",
                     // message: "车牌号不能为空",
                     message: this.$t(
-                        "videoPlayback.licensePlateNumberCannotBeEmpty"
+                        "videoPlayback.licensePlateNumberCannotBeEmpty",
                     ),
                 });
                 return;
@@ -2845,7 +2872,7 @@ export default {
                             type: "error",
                             // message: "开始时间不得小于结束时间",
                             message: this.$t(
-                                "videoPlayback.startTimeNotLessThanEndTime"
+                                "videoPlayback.startTimeNotLessThanEndTime",
                             ),
                         });
                         return;
@@ -2874,13 +2901,13 @@ export default {
                                 this.playControl_js.stopRealPlayAll();
                                 this.setPlayControl_JsFile(this.videoBackList);
                                 this.playControl_js_play(
-                                    this.playInfo_js.firstPlayTime
+                                    this.playInfo_js.firstPlayTime,
                                 );
                             } else {
                                 this.playControl_ocx.stopPlayback();
                                 this.setPlayControl_oxcFile(this.videoBackList);
                                 this.playControl_ocx.startPlaybackDllAtTime(
-                                    this.playInfo_ocx.firstPlayTime
+                                    this.playInfo_ocx.firstPlayTime,
                                 );
                             }
                             if (this.videoBackList.length === 0) {
@@ -2888,8 +2915,8 @@ export default {
                                 // this.$message.info("当前录像为空");
                                 this.$message.info(
                                     this.$t(
-                                        "videoPlayback.currentRecordingIsEmpty"
-                                    )
+                                        "videoPlayback.currentRecordingIsEmpty",
+                                    ),
                                 );
                             }
                             if (this.isShowPath) {
@@ -2907,10 +2934,10 @@ export default {
                 if (infos && infos.length > 0) {
                     let info = infos[0];
                     let s_startTimeStamp = this.$moment(
-                        this.searchVideoForm.startTime
+                        this.searchVideoForm.startTime,
                     ).valueOf();
                     let e_endTimeStamp = this.$moment(
-                        this.searchVideoForm.endTime
+                        this.searchVideoForm.endTime,
                     ).valueOf();
                     if (info.startTimeStamp < s_startTimeStamp) {
                         info.startTimeStamp = s_startTimeStamp;
@@ -2969,11 +2996,11 @@ export default {
                                     timeVideo.forEach((item, index) => {
                                         videoList[key][index].startTimeStamp =
                                             this.$moment(
-                                                item.startTime
+                                                item.startTime,
                                             ).valueOf();
                                         videoList[key][index].endTimeStamp =
                                             this.$moment(
-                                                item.endTime
+                                                item.endTime,
                                             ).valueOf();
                                         videoList[key][index].id = id;
                                         videoList[key][index].downType = null;
@@ -2987,7 +3014,7 @@ export default {
                                         fileList[0].channelNo,
                                         this.channelList,
                                         "channelNum",
-                                        "channelName"
+                                        "channelName",
                                     ),
                                     files: [],
                                 });
@@ -3055,7 +3082,7 @@ export default {
                 this.playControl_js_play(this.currentPlayTime);
             } else {
                 this.playControl_ocx.startPlaybackDllAtTime(
-                    this.currentPlayTime
+                    this.currentPlayTime,
                 );
             }
             if (this.isShowPath) {
@@ -3082,9 +3109,9 @@ export default {
                                     fileSize,
                                     avEncoding,
                                 };
-                            }
+                            },
                         );
-                    }
+                    },
                 );
                 if (fileList[1].length === 0) {
                     this.changeTimebarHeight("one");
@@ -3099,7 +3126,7 @@ export default {
                 let channelNamelist = this.channelList.map(
                     ({ channelNum, channelName }) => {
                         return { channelNum, channelName };
-                    }
+                    },
                 );
                 let deviceChannelList = {
                     deviceCode: this.deviceInfo.deviceCode,
@@ -3116,7 +3143,7 @@ export default {
                 this.playControl_js.timeBarFileInfo = fileList;
                 this.playInfo_js.firstPlayTime = currentPlayTime;
                 await this.playControl_js.setDeviceChannelList(
-                    this.playInfo_js.deviceChannelList
+                    this.playInfo_js.deviceChannelList,
                 );
                 return Promise.resolve();
             } else {
@@ -3135,7 +3162,7 @@ export default {
                 this.playInfo_js.firstPlayTime = null;
                 this.playInfo_js.timeBarFileInfo = null;
                 await this.playControl_js.setDeviceChannelList(
-                    this.playInfo_js.deviceChannelList
+                    this.playInfo_js.deviceChannelList,
                 );
                 return Promise.resolve();
             }
@@ -3193,7 +3220,7 @@ export default {
                         this.historyTrajectoryTempData.forEach((item) => {
                             let { lng, lat } = GpsConverter.gps_gaode(
                                 item.longitude,
-                                item.latitude
+                                item.latitude,
                             );
                             item.lng = lng;
                             item.lat = lat;
@@ -3243,7 +3270,7 @@ export default {
                     (this.GpsParams.currentPage - 1) * this.GpsParams.pageSize;
                 let end = this.GpsParams.currentPage * this.GpsParams.pageSize;
                 let a = JSON.parse(
-                    JSON.stringify(this.historyTrajectoryTempData)
+                    JSON.stringify(this.historyTrajectoryTempData),
                 );
                 let data = a.slice(start, end);
                 // data.forEach((item) => {
@@ -3282,7 +3309,7 @@ export default {
                     ? this.timeToSec(
                           historyTrajectoryTempData[
                               historyTrajectoryTempData.length - 1
-                          ].collectTime
+                          ].collectTime,
                       )
                     : 0;
             if (
@@ -3310,10 +3337,10 @@ export default {
             if (historyTrajectoryTempData.length > 2) {
                 for (let i = 0; i < historyTrajectoryTempData.length - 1; i++) {
                     let historyTrajectorySec = this.timeToSec(
-                        this.historyTrajectoryTempData[i].collectTime
+                        this.historyTrajectoryTempData[i].collectTime,
                     );
                     let historyTrajectorySecNext = this.timeToSec(
-                        this.historyTrajectoryTempData[i + 1].collectTime
+                        this.historyTrajectoryTempData[i + 1].collectTime,
                     );
                     if (
                         historyTrajectorySec <= startTimeS &&
@@ -3337,7 +3364,7 @@ export default {
             if (startIndex != undefined && endIndex != undefined) {
                 this.traceSlice = historyTrajectoryTempData.slice(
                     startIndex,
-                    endIndex + 1
+                    endIndex + 1,
                 );
             }
         },
@@ -3354,7 +3381,7 @@ export default {
             for (let i = 0; i < traceSlice.length - 1; i++) {
                 let traceSliceSec = this.timeToSec(traceSlice[i].collectTime);
                 let traceSliceSecNext = this.timeToSec(
-                    traceSlice[i + 1].collectTime
+                    traceSlice[i + 1].collectTime,
                 );
                 if (
                     traceSliceSec <= currentTimeSec &&
@@ -3367,7 +3394,7 @@ export default {
                 this.runTrace = traceSlice.slice(0, index + 1);
                 let point = new AMap.LngLat(
                     traceSlice[index].lng,
-                    traceSlice[index].lat
+                    traceSlice[index].lat,
                 );
                 point.direction = traceSlice[index].direction;
                 this.carPointTrajectory = point;
@@ -3413,7 +3440,7 @@ export default {
                             this.currentWachCar.carNumber,
                     };
                     pArr.push(
-                        this.urlgetMultiFileVideoDownloadUrl(params, $event)
+                        this.urlgetMultiFileVideoDownloadUrl(params, $event),
                     );
                 });
             });
@@ -3478,7 +3505,7 @@ export default {
                                         id: res.data.id,
                                         params: fileInfo,
                                     });
-                                }
+                                },
                             );
                             break;
                         case 1:
@@ -3486,7 +3513,7 @@ export default {
                             if (
                                 Object.keys(
                                     this.$store.state.downloadManage
-                                        .downLoadingStatusMap
+                                        .downLoadingStatusMap,
                                 ).includes(data.id + "")
                             ) {
                                 return;
@@ -3502,30 +3529,30 @@ export default {
                                                     downLoadingStatusMap[
                                                         data.id
                                                     ].progress = msg;
-                                                }
+                                                },
                                             );
                                         } else if (status === "success") {
                                             transFormAndDownLoad(
                                                 msg,
                                                 formatDownLoadName(
                                                     `${fileInfo.plateNum}_通道${fileInfo.channelNo}_${fileInfo.startTime}`,
-                                                    data.urlList[i]
+                                                    data.urlList[i],
                                                 ),
                                                 fileInfo.fileDownLoadType ===
                                                     1 ||
                                                     fileInfo.fileDownLoadType ===
                                                         undefined
                                                     ? "5"
-                                                    : "2"
+                                                    : "2",
                                             );
                                             this.$store.commit(
                                                 "setDownLoadingStatusMap",
                                                 (downLoadingStatusMap) => {
                                                     this.$delete(
                                                         downLoadingStatusMap,
-                                                        data.id
+                                                        data.id,
                                                     );
-                                                }
+                                                },
                                             );
                                         } else if (status === "begin") {
                                             this.$store.commit(
@@ -3537,42 +3564,42 @@ export default {
                                                         {
                                                             progress: 0,
                                                             xhr: msg,
-                                                        }
+                                                        },
                                                     );
-                                                }
+                                                },
                                             );
                                         } else if (status === "error") {
                                             // this.$message.error("录像下载失败");
                                             this.$message.error(
                                                 this.$t(
-                                                    "videoPlayback.videoDownloadFailed"
-                                                )
+                                                    "videoPlayback.videoDownloadFailed",
+                                                ),
                                             );
                                             this.$store.commit(
                                                 "setDownLoadingStatusMap",
                                                 (downLoadingStatusMap) => {
                                                     this.$delete(
                                                         downLoadingStatusMap,
-                                                        data.id
+                                                        data.id,
                                                     );
-                                                }
+                                                },
                                             );
                                         }
-                                    }
+                                    },
                                 );
                             }
                             break;
                         case 2:
                             // this.$message.error("文件上传失败");
                             this.$message.error(
-                                this.$t("videoPlayback.fileUploadFailed")
+                                this.$t("videoPlayback.fileUploadFailed"),
                             );
                             break;
                     }
                 } else {
                     // this.$message.error("文件上传失败");
                     this.$message.error(
-                        this.$t("videoPlayback.fileUploadFailed")
+                        this.$t("videoPlayback.fileUploadFailed"),
                     );
                 }
             });
@@ -3601,7 +3628,7 @@ export default {
                             this.$message.success(
                                 // "已向设备下发下载指令，请到下载中心查看任务！",
                                 this.$t("videoPlayback.issueDownloadCommand"),
-                                2000
+                                2000,
                             );
                             // _this.downloadInterval = window.setInterval(
                             //     function () {
@@ -3652,11 +3679,11 @@ export default {
                             // );
                         } else if (res.code == "videos is empty") {
                             this.$message.warning(
-                                `通道${params.channelNo} 当前时间段没有录像，请重新选择！`
+                                `通道${params.channelNo} 当前时间段没有录像，请重新选择！`,
                             );
                         } else {
                             this.$message.error(
-                                `通道${params.channelNo}` + res.msg
+                                `通道${params.channelNo}` + res.msg,
                             );
                         }
                     })
@@ -3671,7 +3698,7 @@ export default {
                 () => {
                     this.pageHeight = getTableHeight.call(this);
                 },
-                true
+                true,
             );
             this.dom = this.$refs.transcriptTable.bodyWrapper;
             this.dom.addEventListener("scroll", () => {
@@ -3694,7 +3721,7 @@ export default {
                 this.playControl_js = new JSPlugin_B(
                     "videoPlayTimeLineBack_Js",
                     {},
-                    this.settingForm
+                    this.settingForm,
                 );
                 this.timeBar = new TimeBar_C("js_canvas", fn);
                 let fn1 = (currentPlayTime) => {
@@ -3739,7 +3766,7 @@ export default {
                             this.playControl_ocx.hideWebOcx();
                             this.openDownLoadFormEl("ocx", info);
                         },
-                    }
+                    },
                 );
             });
         },
@@ -3769,13 +3796,13 @@ export default {
                         //     "已向设备下发唤醒指令，静待1分钟左右设备将重新上线"
                         // );
                         this.$message.success(
-                            this.$t("videoPlayback.issueWakeupCommand")
+                            this.$t("videoPlayback.issueWakeupCommand"),
                         );
                     } else {
                         this.loading = false;
                         // 下发唤醒失败！
                         this.$message.error(
-                            this.$t("videoPlayback.wakeupFailed")
+                            this.$t("videoPlayback.wakeupFailed"),
                         );
                     }
                 })
@@ -3850,7 +3877,7 @@ export default {
                 setTimeout(() => {
                     this.$refs["date-pannel"].markRange(
                         deviceBack.taskStartTime,
-                        null
+                        null,
                     );
                 }, 2000);
                 this.$set(this.searchVideoForm, "channelNoList", [1]);
@@ -3893,16 +3920,16 @@ export default {
         bottom: 25px;
         left: 12px;
 
-        /deep/ .el-slider__runway {
+        :deep(.el-slider__runway) {
             margin: 0 !important;
             background: #777;
         }
 
-        /deep/ .el-slider__button {
+        :deep(.el-slider__button) {
             border: rgba(0, 0, 0, 0.3);
         }
 
-        /deep/.el-slider__bar {
+        :deep(.el-slider__bar) {
             background: #fff;
         }
     }
@@ -4012,7 +4039,7 @@ export default {
     background-image: url("/static/images/video_none.png");
 }
 
-/deep/.tree-content {
+:deep(.tree-content) {
     display: flex;
     align-items: center;
     width: 100%;
@@ -4154,21 +4181,22 @@ export default {
                 height: 300px;
                 overflow: hidden;
                 position: relative;
-                /deep/.el-tabs__header {
+                :deep(.el-tabs__header) {
                     margin: 0 !important;
                 }
-                /deep/.el-tabs__content {
+                :deep(.el-tabs__content) {
                     height: calc(~"100% - 45px");
                 }
-                /deep/ .el-table .selected-row {
+                :deep(.el-table .selected-row) {
                     background: oldlace !important;
                 }
 
-                /deep/
+                :deep(
                     .el-table--enable-row-hover
-                    .el-table__body
-                    .selected-row:hover
-                    > td {
+                        .el-table__body
+                        .selected-row:hover
+                        > td
+                ) {
                     background-color: oldlace !important;
                 }
 
@@ -4231,12 +4259,12 @@ export default {
             }
         }
         .video-time-picker {
-            /deep/.el-input__inner {
+            :deep(.el-input__inner) {
                 width: 100%;
                 height: 2rem;
             }
 
-            /deep/.el-input__icon {
+            :deep(.el-input__icon) {
                 line-height: 2rem;
             }
         }
@@ -4254,7 +4282,7 @@ export default {
             .el-checkbox {
                 margin-right: 30px !important;
             }
-            /deep/.video-radio-group {
+            :deep(.video-radio-group) {
                 margin: 1rem 0;
 
                 .el-radio {
@@ -4320,7 +4348,7 @@ export default {
 .flex-layout {
     display: flex;
 }
-/deep/.awaken-dialog {
+:deep(.awaken-dialog) {
     display: flex;
     padding-right: 12px;
     .el-icon-warning {

@@ -10,12 +10,12 @@
                     prefix-icon="el-icon-lock"
                     placeholder="请输入密码解锁"
                     autoComplete="on">
-            <i slot="suffix"
+            <template #suffix><i
                class="el-input__icon"
                style="margin-top:2px"
                :class="passwordIcon"
                @mousedown="onMousedownClick"
-               @mouseup="onMouseupClick"></i>
+               @mouseup="onMouseupClick"></i></template>
           </el-input>
         </div>
         <div class="passwordBox">
@@ -75,7 +75,7 @@
                             :prop="'IsApiZtVehctrl.vehCtrl['+1+'].ctrlStatus'">
                 <el-input tips-placement="top-end"
                           :tips="`键入值范围为${form['IsApiZtVehctrlCapability']['vehCtrlList'][1]['ctrlStatusMin']}~${form['IsApiZtVehctrlCapability']['vehCtrlList'][1]['ctrlStatusMax']}`"
-                          v-model.number="form['IsApiZtVehctrl']['vehCtrl'][index]['ctrlStatus']"><span slot="suffix">km/h</span></el-input>
+                          v-model.number="form['IsApiZtVehctrl']['vehCtrl'][index]['ctrlStatus']"><template #suffix><span>km/h</span></template></el-input>
                 <span v-if="item.id == 2"
                       class="prompt">0-不限速 {{form['IsApiZtVehctrlCapability']['vehCtrlList'][1]['ctrlStatusMin'] !==0 ? form['IsApiZtVehctrlCapability']['vehCtrlList'][1]['ctrlStatusMin'] : 1}}-{{form['IsApiZtVehctrlCapability']['vehCtrlList'][1]['ctrlStatusMax']}}-具体限速值，单位km/h</span>
 

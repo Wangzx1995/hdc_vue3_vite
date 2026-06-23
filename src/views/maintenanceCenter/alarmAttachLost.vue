@@ -154,7 +154,7 @@
                 width="150px"
                 fixed="left"
             >
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span> {{ scope.row.attachLostRate }}% </span>
                 </template>
             </el-table-column>
@@ -177,11 +177,11 @@
                 label="SIM卡类型"
                 min-width="120px"
             >
-                <template slot="header" slot-scope="scope">
+                <template #header>
                     <div>
                         <span> SIM卡类型 </span>
                         <el-tooltip effect="light">
-                            <div slot="content">
+                            <template #content>
                                 <div
                                     style="
                                         display: flex;
@@ -227,12 +227,12 @@
                                         >复制域名/IP</el-button
                                     >
                                 </div>
-                            </div>
+                            </template>
                             <i class="el-icon-question"> </i>
                         </el-tooltip>
                     </div>
                 </template>
-                <template slot-scope="scope">
+                <template #default="scope">
                     <span v-if="scope.row.normalCard === 0"> 定向卡 </span>
                     <span v-else-if="scope.row.normalCard === 1"> 正常卡 </span>
                     <span v-else> -- </span>
@@ -260,7 +260,7 @@
             <el-table-column prop="deviceCode" label="终端手机号" width="120px">
             </el-table-column>
             <el-table-column fixed="right" label="操作" width="100px">
-                <template slot-scope="scope">
+                <template #default="scope">
                     <a
                         @click="goTrend(scope.row.deviceCode)"
                         v-btn="'alarmAttachLostAttachmentLossRate'"
@@ -283,7 +283,7 @@
         </div>
         <el-dialog
             title="附件丢失率趋势"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             :width="'1200px'"
         >
             <div>
@@ -413,8 +413,8 @@ export default {
             this.searchForm.orderDir = !column.order
                 ? ""
                 : column.order === "ascending"
-                ? "asc"
-                : "desc";
+                  ? "asc"
+                  : "desc";
             this.searchForm.orderColumn = !column.prop ? "" : column.prop;
             this.getData();
         },
@@ -462,7 +462,7 @@ export default {
                 carParam.statisticDay = this.$moment(carParam.statisticDay)
                     .subtract(
                         this.$moment(carParam.statisticDay).format("E") - 1,
-                        "days"
+                        "days",
                     )
                     .format("YYYY-MM-DD");
             }
@@ -523,7 +523,7 @@ export default {
                 let carParam = Object.assign(
                     params,
                     this.searchForm,
-                    this.params
+                    this.params,
                 );
                 delete carParam.carId;
                 delete carParam.plateArr;
@@ -533,7 +533,7 @@ export default {
                     carParam.statisticDay = this.$moment(carParam.statisticDay)
                         .subtract(
                             this.$moment(carParam.statisticDay).format("E") - 1,
-                            "days"
+                            "days",
                         )
                         .format("YYYY-MM-DD");
                 }
@@ -554,7 +554,7 @@ export default {
                                             ) {
                                                 var iframe =
                                                     document.createElement(
-                                                        "iframe"
+                                                        "iframe",
                                                     );
                                                 iframe.src =
                                                     (process.env.BASE_API == "/"
@@ -565,10 +565,10 @@ export default {
                                                     fileName;
                                                 iframe.style.display = "none";
                                                 document.body.appendChild(
-                                                    iframe
+                                                    iframe,
                                                 );
                                                 window.clearInterval(
-                                                    _this.getExportResultInterval
+                                                    _this.getExportResultInterval,
                                                 );
                                                 _this.getExportResultInterval =
                                                     "";
@@ -576,11 +576,11 @@ export default {
                                             }
                                         });
                                 },
-                                2000
+                                2000,
                             );
                         } else {
                             this.$message.error(
-                                this.$t("common.exportFailed") + ":" + res.msg
+                                this.$t("common.exportFailed") + ":" + res.msg,
                             );
                             this.loadingAll = false;
                         }
@@ -595,7 +595,7 @@ export default {
         },
         initEcharts(deviceCode) {
             this.chart = this.$echarts.init(
-                document.getElementById("echarts-box")
+                document.getElementById("echarts-box"),
             ); //初始加载动节点
             this.chart.clear();
             this.chart.resize();
@@ -664,9 +664,9 @@ export default {
                                 that.trendData[data.dataIndex].normalCard === 0
                                     ? "定向卡"
                                     : that.trendData[data.dataIndex]
-                                          .normalCard === 1
-                                    ? "正常卡"
-                                    : "--"
+                                            .normalCard === 1
+                                      ? "正常卡"
+                                      : "--"
                             }<br/>`
                         );
                     },
@@ -681,17 +681,17 @@ export default {
                         this.trendData = res.data.reverse();
                         this.trendData.forEach((item) => {
                             item.xData = `${this.$moment(
-                                item.statisticTime.substring(0, 10)
+                                item.statisticTime.substring(0, 10),
                             )
                                 .subtract(7, "days")
                                 .format("YYYY.MM.DD")}-${this.$moment(
-                                item.statisticTime.substring(0, 10)
+                                item.statisticTime.substring(0, 10),
                             )
                                 .subtract(1, "days")
                                 .format("YYYY.MM.DD")}`;
                             option.xAxis.data.push(item.xData);
                             option.series[0].data.push(
-                                item.attachLostRate || 0
+                                item.attachLostRate || 0,
                             );
                         });
                         this.chart.setOption(option);
@@ -732,7 +732,7 @@ export default {
                 },
                 () => {
                     this.$message.error("复制失败，请重试");
-                }
+                },
             );
         },
     },

@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => {
         plugins: [vue()],
         publicDir: "static",
         resolve: {
+            extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"],
             alias: [
                 { find: "@", replacement: resolve(__dirname, "src") },
                 {

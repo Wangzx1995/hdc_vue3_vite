@@ -42,7 +42,7 @@
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="报警提示内容长度" prop="F368.alarmRemindContentLength">
-                                <el-input v-model="form['F368'].alarmRemindContentLength"><span slot="suffix">n</span></el-input>
+                                <el-input v-model="form['F368'].alarmRemindContentLength"><template #suffix><span>n</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
@@ -54,7 +54,7 @@
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="车辆正前方向对应的Gsensor轴方向长度" prop="F368.sensorDirectionLength">
-                                <el-input v-model="form['F368'].sensorDirectionLength"><span slot="suffix">m</span></el-input>
+                                <el-input v-model="form['F368'].sensorDirectionLength"><template #suffix><span>m</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
@@ -64,19 +64,19 @@
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="角速度报警阈值" prop="F368.angularVelocityAlarmThreshold">
-                                <el-input v-model="form['F368'].angularVelocityAlarmThreshold"><span slot="suffix">dm/s^2</span></el-input>
+                                <el-input v-model="form['F368'].angularVelocityAlarmThreshold"><template #suffix><span>dm/s^2</span></template></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="加速度报警阈值" prop="F368.acceleratedVelocityAlarmThreshold">
-                                <el-input v-model="form['F368'].acceleratedVelocityAlarmThreshold"><span slot="suffix">10*rad/s</span></el-input>
+                                <el-input v-model="form['F368'].acceleratedVelocityAlarmThreshold"><template #suffix><span>10*rad/s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="报警触发持续时间阈值" prop="F368.alarmTriggerDurationTimeThreshold">
-                                <el-input v-model="form['F368'].alarmTriggerDurationTimeThreshold"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="form['F368'].alarmTriggerDurationTimeThreshold"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7"></el-col>
@@ -110,7 +110,7 @@
                     <el-row type="flex" justify="space-between" style="margin-top: 10px">
                         <el-col :span="7" >
                             <el-form-item label="报警拍照间隔" prop="F368.alarmPhotoInterval">
-                                <el-input v-model="form['F368'].alarmPhotoInterval"><span slot="suffix">100ms</span></el-input>
+                                <el-input v-model="form['F368'].alarmPhotoInterval"><template #suffix><span>100ms</span></template></el-input>
                             </el-form-item>
                         </el-col>
                         <el-col :span="7" >
@@ -150,7 +150,7 @@
                         </el-col>
                         <el-col :span="7" >
                             <el-form-item label="报警前后视频录制时间" prop="F368.alarmVideoRecordTime">
-                                <el-input v-model="form['F368'].alarmVideoRecordTime"><span slot="suffix">s</span></el-input>
+                                <el-input v-model="form['F368'].alarmVideoRecordTime"><template #suffix><span>s</span></template></el-input>
                             </el-form-item>
                         </el-col>
                     </el-row>

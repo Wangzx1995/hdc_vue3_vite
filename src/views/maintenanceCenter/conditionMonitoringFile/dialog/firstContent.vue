@@ -130,7 +130,7 @@
                         <el-table-column prop="hddName" label="存储介质">
                         </el-table-column>
                         <el-table-column prop="hddStatusString" label="状态">
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <div class="status-enumeration">
                                     <i
                                         :class="
@@ -146,7 +146,7 @@
                             </template>
                         </el-table-column>
                         <el-table-column prop="capacity" label="容量">
-                            <template slot="header">
+                            <template #header>
                                 <span>容量</span>
                                 <el-tooltip
                                     placement="top"
@@ -155,7 +155,7 @@
                                     <i class="el-icon-warning"></i>
                                 </el-tooltip>
                             </template>
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <span>{{
                                     scope.row.capacity == 0 ||
                                     scope.row.capacity
@@ -165,7 +165,7 @@
                             </template>
                         </el-table-column>
                         <el-table-column label="操作">
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <div v-if="!scope.row.hddName.includes('BACK')">
                                     <el-button
                                         v-if="
@@ -218,7 +218,7 @@
                         <el-table-column prop="type" label="类型">
                         </el-table-column>
                         <el-table-column prop="status" label="视频信号状态">
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <div
                                     class="status-enumeration"
                                     v-if="
@@ -243,7 +243,7 @@
                             </template>
                         </el-table-column>
                         <el-table-column prop="shelter" label="视频遮挡状态">
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <div v-if="scope.row.installationStatus == 0">
                                     --
                                 </div>
@@ -466,7 +466,7 @@
                         :height="215"
                     >
                         <el-table-column label="中心名称">
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <span
                                     >第{{
                                         scope.row.platformOrder + 1
@@ -475,7 +475,7 @@
                             </template>
                         </el-table-column>
                         <el-table-column label="使能">
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <el-switch
                                     disabled
                                     :active-value="Number(1)"
@@ -490,14 +490,14 @@
                         <el-table-column prop="port" label="连接端口">
                         </el-table-column>
                         <el-table-column label="连接状态">
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <span>{{
                                     scope.row.status === 1 ? "未连接" : "已连接"
                                 }}</span>
                             </template>
                         </el-table-column>
                         <el-table-column label="离线原因" show-overflow-tooltip>
-                            <template slot-scope="scope">
+                            <template #default="scope">
                                 <span>{{ scope.row.offlineReason }}</span>
                             </template>
                         </el-table-column>
@@ -655,7 +655,7 @@
         </div>
         <el-dialog
             title="格式化记录"
-            :visible.sync="formatRecordVisible"
+            v-model="formatRecordVisible"
             append-to-body
             :width="'960px'"
         >
@@ -672,7 +672,7 @@
                     label="存储介质"
                 ></el-table-column>
                 <el-table-column prop="createTime" label="操作时间">
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span>{{
                             $moment(scope.row.createTime).format(
                                 "YYYY-MM-DD HH:mm:ss",
@@ -689,8 +689,7 @@
                     label="操作人IP"
                 ></el-table-column>
                 <el-table-column prop="result" label="操作结果">
-                    <template slot-scope="scope"
-                        ><div class="status-box">
+                    <template #default="scope"><div class="status-box">
                             <span v-if="scope.row.result === 1"
                                 ><i class="status-1"></i>成功</span
                             >

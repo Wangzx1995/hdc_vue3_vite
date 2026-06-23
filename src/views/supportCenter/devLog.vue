@@ -41,7 +41,7 @@ export default {
 .bg {
     padding: 12px;
     background: #f5f5f5;
-    /deep/.el-tabs {
+    :deep(.el-tabs){
         height: 100%;
         background: #ffffff;
         .el-tabs__content {

@@ -31,19 +31,19 @@
               </el-col>
               <el-col :span="7">
                 <el-form-item label="限制速度" class="m-r-md p-r" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtInvalidAlarmCapability'].limitSpeedMin,max:form['IsApiZtInvalidAlarmCapability'].limitSpeedMax}), trigger: 'blur'}" :prop="'IsApiZtInvalidAlarm.modelList['+index+'].limitSpeed'">
-                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtInvalidAlarmCapability'].limitSpeedMin}~${form['IsApiZtInvalidAlarmCapability'].limitSpeedMax}`" v-model.number="item.limitSpeed"><span slot="suffix">km/h</span></el-input>
+                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtInvalidAlarmCapability'].limitSpeedMin}~${form['IsApiZtInvalidAlarmCapability'].limitSpeedMax}`" v-model.number="item.limitSpeed"><template #suffix><span>km/h</span></template></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row type="flex" justify="space-between">
               <el-col :span="7">
                 <el-form-item label="触发速度" class="m-r-md p-r" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtInvalidAlarmCapability'].triggerSpeedMin,max:form['IsApiZtInvalidAlarmCapability'].triggerSpeedMax}), trigger: 'blur'}" :prop="'IsApiZtInvalidAlarm.modelList['+index+'].triggerSpeed'">
-                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtInvalidAlarmCapability'].triggerSpeedMin}~${form['IsApiZtInvalidAlarmCapability'].triggerSpeedMax}`" v-model.number="item.triggerSpeed"><span slot="suffix">km/h</span></el-input>
+                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtInvalidAlarmCapability'].triggerSpeedMin}~${form['IsApiZtInvalidAlarmCapability'].triggerSpeedMax}`" v-model.number="item.triggerSpeed"><template #suffix><span>km/h</span></template></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="7">
                 <el-form-item label="持续时间" class="m-r-md p-r" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtInvalidAlarmCapability'].continueTimeMin,max:form['IsApiZtInvalidAlarmCapability'].continueTimeMax}), trigger: 'blur'}" :prop="'IsApiZtInvalidAlarm.modelList['+index+'].continueTime'">
-                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtInvalidAlarmCapability'].continueTimeMin}~${form['IsApiZtInvalidAlarmCapability'].continueTimeMax}`" v-model.number="item.continueTime"><span slot="suffix">s</span></el-input>
+                  <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtInvalidAlarmCapability'].continueTimeMin}~${form['IsApiZtInvalidAlarmCapability'].continueTimeMax}`" v-model.number="item.continueTime"><template #suffix><span>s</span></template></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="7">

@@ -3,7 +3,7 @@
         <div id="id" style="width: 0; height: 0"></div>
         <el-dialog
             title="标定检测区域"
-            :visible.sync="openSurveyBol"
+            v-model="openSurveyBol"
         >
             <div class="divHeight">
                 <!-- <div class="h-full inline" style="height:100%;width:100%;" id="videoPlay"></div> -->
@@ -49,10 +49,10 @@
                     </div>
                 </div>
             </div>
-            <!-- <span slot="footer" class="dialog-footer">
+            <!-- <template #footer><span class="dialog-footer">
         <el-button type="primary" @click="openSurveyBol=false">确 定</el-button>
         <el-button @click="openSurveyBol = false">取 消</el-button> -->
-            <!-- </span> -->
+            <!-- </span></template> -->
         </el-dialog>
         <el-form
             ref="PrivateBsdForm"
@@ -171,9 +171,9 @@
                                                 'info'
                                             ][0]['speed']
                                         "
-                                        ><span slot="suffix"
+                                        ><template #suffix><span
                                             >km/h</span
-                                        ></el-input
+                                        ></template></el-input
                                     >
                                 </el-form-item>
                             </div>
@@ -305,7 +305,7 @@
                                                 'info'
                                             ][0]['installHeight']
                                         "
-                                        ><span slot="suffix">米</span></el-input
+                                        ><template #suffix><span>米</span></template></el-input
                                     >
                                 </el-form-item>
                             </div>
@@ -346,7 +346,7 @@
                                                 'info'
                                             ][0]['confidence']
                                         "
-                                        ><span slot="suffix">%</span></el-input
+                                        ><template #suffix><span>%</span></template></el-input
                                     >
                                 </el-form-item>
                             </div> -->
@@ -443,7 +443,7 @@
                                                 'info'
                                             ][0]['angle']
                                         "
-                                        ><span slot="suffix">°</span></el-input
+                                        ><template #suffix><span>°</span></template></el-input
                                     >
                                 </el-form-item>
                             </div>

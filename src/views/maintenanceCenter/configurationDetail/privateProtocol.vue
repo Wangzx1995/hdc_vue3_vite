@@ -3,7 +3,7 @@
         <!-- 修改的配置项弹窗 -->
         <el-dialog
             title="下发至终端"
-            :visible.sync="updateBol"
+            v-model="updateBol"
             :width="'600px'"
             @close="close"
         >
@@ -31,7 +31,7 @@
                     </el-row>
                 </li>
             </ul>
-            <span slot="footer">
+            <template #footer><span>
                 <el-button type="default" @click="close">取消</el-button>
                 <el-button
                     :disabled="!dataList.length"
@@ -39,12 +39,12 @@
                     @click="updateSure"
                     >确定</el-button
                 >
-            </span>
+            </span></template>
         </el-dialog>
         <el-dialog
             title="选择存为模板的模块"
             :top="5 + '%'"
-            :visible.sync="moubleBol"
+            v-model="moubleBol"
             :width="'1200px'"
             @close="closeMouble"
         >
@@ -2653,7 +2653,7 @@
                     <el-col :span="6"></el-col>
                 </el-row>
             </div>
-            <span slot="footer">
+            <template #footer><span>
                 <el-button type="default" @click="closeMouble">取消</el-button>
                 <el-button
                     type="primary"
@@ -2676,14 +2676,14 @@
                     "
                     >选好了</el-button
                 >
-            </span>
+            </span></template>
         </el-dialog>
         <h2>版本信息</h2>
         <el-form label-position="top" label-width="120px">
             <el-row>
                 <el-col :span="4">
                     <el-form-item label="更新时间">
-                        <template slot="label">
+                        <template #label>
                             更新时间
                             <el-tooltip
                                 content="设备最后一次进行协议配置的时间"
@@ -2848,8 +2848,7 @@
                             </ul>
                         </el-scrollbar>
                     </div>
-                    <p
-                        slot="reference"
+                    <template #reference><p
                         style="
                             display: inline-block;
                             margin-right: 10px;
@@ -2864,7 +2863,7 @@
                             "
                             >{{ dataList.length }}</span
                         >&nbsp;项配置<i class="el-icon-arrow-down"></i>
-                    </p>
+                    </p></template>
                 </el-popover>
                 <p style="display: inline-block">
                     <el-button type="default" @click="goBack">返回</el-button>
@@ -2881,14 +2880,14 @@
             </div>
         </div>
         <StartConfig
-            :visible.sync="startConfigVisible"
+            v-model="startConfigVisible"
             :organizeId="organizeId"
             :batchCode="batchCode"
             :configType="configType"
             :top="configType == 'file' ? '200px' : 'middle'"
         ></StartConfig>
         <SaveTemplate
-            :visible.sync="templateVisible"
+            v-model="templateVisible"
             @submit="submitTemp"
         ></SaveTemplate>
     </div>

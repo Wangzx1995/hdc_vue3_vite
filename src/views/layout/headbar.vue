@@ -7,16 +7,19 @@
                     <el-menu
                         :popper-class="'headbar-submenu'"
                         class="headbar-menu"
-                        menu-trigger="click"
                         ref="elmenu"
                         :default-active="'1'"
                         mode="horizontal"
+                        :ellipsis="false"
                         :unique-opened="true"
                         @open="subMenuOpen"
                         @close="subMenuClose"
                         v-click-outside="clickOutsides"
                     >
-                        <template v-for="(firstMenu, index) in menuList">
+                        <template
+                            v-for="(firstMenu, index) in menuList"
+                            :key="firstMenu.id"
+                        >
                             <el-menu-item
                                 class="homne-router"
                                 :class="{
@@ -26,7 +29,6 @@
                                         $route.path === '/dashboard',
                                 }"
                                 :index="index + ''"
-                                :key="firstMenu.id"
                                 v-if="
                                     getMenuTitle(firstMenu) &&
                                     getMenuTitle(firstMenu) ==
@@ -66,51 +68,47 @@
                                             :key="secondMenu.id"
                                             class="second-name"
                                         >
-                                            <template>
-                                                <p>
-                                                    {{
-                                                        getMenuTitle(secondMenu)
-                                                    }}
-                                                </p>
-                                                <div
-                                                    v-for="thirdMenu in secondMenu.children"
-                                                    :key="thirdMenu.id"
+                                            <p>
+                                                {{ getMenuTitle(secondMenu) }}
+                                            </p>
+                                            <div
+                                                v-for="thirdMenu in secondMenu.children"
+                                                :key="thirdMenu.id"
+                                            >
+                                                <span
+                                                    v-if="!thirdMenu.hidden"
+                                                    @click="
+                                                        goRouter(index + '')
+                                                    "
                                                 >
-                                                    <span
-                                                        v-if="!thirdMenu.hidden"
-                                                        @click="
-                                                            goRouter(index + '')
+                                                    <p
+                                                        v-if="
+                                                            thirdMenu.menuType ==
+                                                            1
                                                         "
                                                     >
-                                                        <p
-                                                            v-if="
-                                                                thirdMenu.menuType ==
-                                                                1
-                                                            "
-                                                        >
-                                                            {{
-                                                                getMenuTitle(
-                                                                    thirdMenu,
-                                                                )
-                                                            }}
-                                                        </p>
-                                                        <router-link
-                                                            v-else
-                                                            :class="{
-                                                                avtive:
-                                                                    $route.path ===
-                                                                    thirdMenu.path,
-                                                            }"
-                                                            :to="thirdMenu.path"
-                                                            >{{
-                                                                getMenuTitle(
-                                                                    thirdMenu,
-                                                                )
-                                                            }}
-                                                        </router-link>
-                                                    </span>
-                                                </div>
-                                            </template>
+                                                        {{
+                                                            getMenuTitle(
+                                                                thirdMenu,
+                                                            )
+                                                        }}
+                                                    </p>
+                                                    <router-link
+                                                        v-else
+                                                        :class="{
+                                                            avtive:
+                                                                $route.path ===
+                                                                thirdMenu.path,
+                                                        }"
+                                                        :to="thirdMenu.path"
+                                                        >{{
+                                                            getMenuTitle(
+                                                                thirdMenu,
+                                                            )
+                                                        }}
+                                                    </router-link>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                     <i
@@ -283,20 +281,22 @@
                             </div>
                         </div>
                     </div>
-                    <el-button type="text" class="text-white" slot="reference">
-                        <span>
-                            <i
-                                class="el-icon-user-solid"
-                                style="font-size: 16px"
-                            ></i>
-                            <span class="m-r-xs" style="font-size: 12px">{{
-                                userInfo.nickName != null
-                                    ? userInfo.nickName
-                                    : userInfo.name
-                            }}</span>
-                            <span class="el-icon-arrow-down"></span>
-                        </span>
-                    </el-button>
+                    <template #reference>
+                        <el-button type="text" class="text-white">
+                            <span>
+                                <i
+                                    class="el-icon-user-solid"
+                                    style="font-size: 16px"
+                                ></i>
+                                <span class="m-r-xs" style="font-size: 12px">{{
+                                    userInfo.nickName != null
+                                        ? userInfo.nickName
+                                        : userInfo.name
+                                }}</span>
+                                <span class="el-icon-arrow-down"></span>
+                            </span>
+                        </el-button>
+                    </template>
                 </el-popover>
             </div>
         </div>
@@ -304,7 +304,7 @@
         <!-- 设备运维APP -->
         <el-dialog
             :title="$t('headbar.appQRCode')"
-            :visible.sync="twoDimensionalCodeModal"
+            v-model="twoDimensionalCodeModal"
             :width="'400px'"
         >
             <div style="height: 400px">
@@ -317,14 +317,14 @@
                     </div>
                 </div>
             </div>
-            <div slot="footer"></div>
+            <template #footer><div></div></template>
         </el-dialog>
         <!-- 设备运维APP/ -->
 
         <!-- 重置密码 -->
         <el-dialog
             :title="$t('headbar.changePassword')"
-            :visible.sync="resetPasswordModal"
+            v-model="resetPasswordModal"
             :width="'340px'"
             custom-class="edit-user"
         >
@@ -377,26 +377,28 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <div slot="footer">
-                <el-button type="text" @click="resetCancel">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    :loading="loading"
-                    @click="doSavePassWord()"
-                >
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </div>
+            <template #footer
+                ><div>
+                    <el-button type="text" @click="resetCancel">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        :loading="loading"
+                        @click="doSavePassWord()"
+                    >
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </div></template
+            >
         </el-dialog>
         <!-- 重置密码/ -->
         <!-- 设置密码/ -->
         <el-dialog
             title="设置密码"
-            :visible.sync="editModal"
+            v-model="editModal"
             @close="doCancel"
             :width="'520px'"
         >
@@ -469,18 +471,23 @@
             <div class="login-footer text-left m-t">
                 <el-checkbox v-model="remember">不再提示</el-checkbox>
             </div>
-            <div slot="footer">
-                <el-button type="text" @click="doCancel">取消</el-button>
-                <el-button type="primary" :loading="loading" @click="doSave()"
-                    >确定</el-button
-                >
-            </div>
+            <template #footer
+                ><div>
+                    <el-button type="text" @click="doCancel">取消</el-button>
+                    <el-button
+                        type="primary"
+                        :loading="loading"
+                        @click="doSave()"
+                        >确定</el-button
+                    >
+                </div></template
+            >
         </el-dialog>
         <!-- 设置密码/ -->
         <!-- 更新公告 -->
         <el-dialog
             title="平台升级维护通知"
-            :visible.sync="sampleCollection"
+            v-model="sampleCollection"
             @close="doCancel"
             :width="'520px'"
         >
@@ -514,9 +521,13 @@
                     >{{ item }}</span
                 >
             </div>
-            <div slot="footer">
-                <el-button @click="sampleCollection = false">知道了</el-button>
-            </div>
+            <template #footer
+                ><div>
+                    <el-button @click="sampleCollection = false"
+                        >知道了</el-button
+                    >
+                </div></template
+            >
         </el-dialog>
         <el-dialog :show-close="false" v-model="jknBoolean" :title="jknTitle">
             <div>
@@ -535,28 +546,30 @@
                     <span class="contentJkn">详情可咨询本地分公司销售。</span>
                 </div>
             </div>
-            <div slot="footer">
-                <el-button v-if="!jknDue" @click="jknBoolean = false"
-                    >知道了</el-button
-                >
-                <el-button
-                    v-if="!jknDue"
-                    type="primary"
-                    @click="showJknDetail(true)"
-                    >详情</el-button
-                >
-                <el-button
-                    v-if="jknDue"
-                    type="primary"
-                    @click="showJknDetail(false)"
-                    >去处理</el-button
-                >
-            </div>
+            <template #footer
+                ><div>
+                    <el-button v-if="!jknDue" @click="jknBoolean = false"
+                        >知道了</el-button
+                    >
+                    <el-button
+                        v-if="!jknDue"
+                        type="primary"
+                        @click="showJknDetail(true)"
+                        >详情</el-button
+                    >
+                    <el-button
+                        v-if="jknDue"
+                        type="primary"
+                        @click="showJknDetail(false)"
+                        >去处理</el-button
+                    >
+                </div></template
+            >
         </el-dialog>
         <!-- 修改账户名 -->
         <el-dialog
             title="修改账户名"
-            :visible.sync="resetUsernameModal"
+            v-model="resetUsernameModal"
             :width="'520px'"
         >
             <div>
@@ -600,17 +613,21 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <div slot="footer">
-                <el-button type="default" @click="resetUsernameModal = false"
-                    >取消</el-button
-                >
-                <el-button type="primary" @click="ok()">确定</el-button>
-            </div>
+            <template #footer
+                ><div>
+                    <el-button
+                        type="default"
+                        @click="resetUsernameModal = false"
+                        >取消</el-button
+                    >
+                    <el-button type="primary" @click="ok()">确定</el-button>
+                </div></template
+            >
         </el-dialog>
         <!-- 修改手机号码 -->
         <el-dialog
             title="修改手机号码"
-            :visible.sync="resetPhoneModal"
+            v-model="resetPhoneModal"
             :width="'420px'"
             :close-on-click-modal="false"
         >
@@ -627,7 +644,7 @@
                             placeholder="新手机号码"
                             clearable
                         >
-                            <span slot="prepend">+86</span>
+                            <template #prepend><span>+86</span></template>
                         </el-input>
                     </el-form-item>
                     <el-form-item prop="password">
@@ -661,19 +678,21 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <div slot="footer">
-                <el-button type="default" @click="resetPhoneModal = false"
-                    >取消</el-button
-                >
-                <el-button type="primary" @click="modifyPhone()"
-                    >确定</el-button
-                >
-            </div>
+            <template #footer
+                ><div>
+                    <el-button type="default" @click="resetPhoneModal = false"
+                        >取消</el-button
+                    >
+                    <el-button type="primary" @click="modifyPhone()"
+                        >确定</el-button
+                    >
+                </div></template
+            >
         </el-dialog>
         <!-- 编辑用户 -->
         <el-dialog
             title="编辑用户"
-            :visible.sync="editUserModal"
+            v-model="editUserModal"
             :width="'600px'"
             :close-on-click-modal="false"
         >
@@ -721,21 +740,23 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <div slot="footer">
-                <el-button type="text" @click="editUserModal = false"
-                    >取消</el-button
-                >
-                <el-button
-                    type="primary"
-                    :loading="loading"
-                    @click="doSaveEditUserForm()"
-                    >确定</el-button
-                >
-            </div>
+            <template #footer
+                ><div>
+                    <el-button type="text" @click="editUserModal = false"
+                        >取消</el-button
+                    >
+                    <el-button
+                        type="primary"
+                        :loading="loading"
+                        @click="doSaveEditUserForm()"
+                        >确定</el-button
+                    >
+                </div></template
+            >
         </el-dialog>
         <el-dialog
             title=" "
-            :visible.sync="logoutVisible"
+            v-model="logoutVisible"
             width="400px"
             @close="getUserInfo"
         >
@@ -743,16 +764,18 @@
                 ><i class="el-icon-success" style="color: #67c23a"></i
                 >用户信息修改成功，请重新登录！</span
             >
-            <span slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="logoutVisible = false"
-                    >确 定</el-button
-                >
-            </span>
+            <template #footer
+                ><span class="dialog-footer">
+                    <el-button type="primary" @click="logoutVisible = false"
+                        >确 定</el-button
+                    >
+                </span></template
+            >
         </el-dialog>
         <!-- 常见问题 -->
         <el-dialog
             :title="$t('headbar.frequentlyQuestions')"
-            :visible.sync="faqVisible"
+            v-model="faqVisible"
             :fullscreen="true"
             :custom-class="'faq-file'"
         >
@@ -760,7 +783,7 @@
         </el-dialog>
         <!-- 关于 -->
         <el-dialog
-            :visible.sync="aboutVisible"
+            v-model="aboutVisible"
             :title="$t('headbar.about')"
             width="640px"
             :close-on-click-modal="false"
@@ -797,24 +820,26 @@
         <!-- 下载中心 -->
         <el-dialog
             :title="$t('headbar.downloadCenter')"
-            :visible.sync="downloadVisible"
+            v-model="downloadVisible"
             :fullscreen="true"
             custom-class="download-task-dialog"
         >
-            <div slot="title" class="download-task-title">
-                <h2>
-                    <!-- 下载中心 -->
-                    {{ $t("headbar.downloadCenter") }}
-                </h2>
-                <el-button
-                    icon="el-icon-close"
-                    type="text"
-                    @click="downloadVisible = false"
-                >
-                    <!-- 关闭 -->
-                    {{ $t("common.close") }}
-                </el-button>
-            </div>
+            <template #title
+                ><div class="download-task-title">
+                    <h2>
+                        <!-- 下载中心 -->
+                        {{ $t("headbar.downloadCenter") }}
+                    </h2>
+                    <el-button
+                        icon="el-icon-close"
+                        type="text"
+                        @click="downloadVisible = false"
+                    >
+                        <!-- 关闭 -->
+                        {{ $t("common.close") }}
+                    </el-button>
+                </div></template
+            >
             <download-task v-if="downloadVisible"></download-task>
         </el-dialog>
         <deepseek @close="showDeepSeek" v-show="isShowDeepseek"></deepseek>
@@ -2128,6 +2153,7 @@ export default {
         padding: 0px !important;
         margin-top: 0px !important;
         width: 100%;
+        background-color: #fff !important;
     }
     .avtive {
         color: #2e87ff;
@@ -2210,6 +2236,11 @@ export default {
             }
         }
     }
+}
+.headbar-submenu .el-menu--popup {
+    background-color: #fff !important;
+    padding: 0px !important;
+    box-shadow: none !important;
 }
 .el-menu--horizontal {
     .menu-box {

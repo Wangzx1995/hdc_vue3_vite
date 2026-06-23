@@ -85,10 +85,10 @@
                     :label="$t('devLog.uploaded')"
                     min-width="165px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         {{
                             $moment(scope.row.createTime).format(
-                                "YYYY-MM-DD HH:mm:ss"
+                                "YYYY-MM-DD HH:mm:ss",
                             )
                         }}
                     </template>
@@ -143,11 +143,11 @@
                     min-width="100px"
                     align="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div v-if="scope.row.fileSize">
                             {{
                                 Math.ceil(
-                                    (scope.row.fileSize / 1024 / 1024) * 100
+                                    (scope.row.fileSize / 1024 / 1024) * 100,
                                 ) / 100
                             }}
                         </div>
@@ -175,7 +175,7 @@
                     :label="$t('common.operate')"
                     width="100px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <el-button type="text">
                             <!-- 选择 -->
                             {{ $t("login.select") }}
@@ -211,7 +211,7 @@
             </el-button>
         </div>
         <StartUpgrade
-            :visible.sync="startUpgradeVisible"
+            v-model="startUpgradeVisible"
             :organizeId="organizeId"
             :taskId="taskId"
             :deviceInfoList="deviceInfoList"
@@ -226,7 +226,7 @@
             ></FirmwareUpload>
         </div>
         <el-dialog
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             :width="'495px'"
             :custom-class="'confirm-dialog'"
         >
@@ -246,21 +246,23 @@
                     {{ $t("deviceUpgrade.sameVersionUpgradeText2") }}
                 </p>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="noEqualUpgrade">
-                    <!-- 仅升级不同版本号设备 -->
-                    {{ $t("deviceUpgrade.sameVersionUpgradeText3") }}
-                </el-button>
-                <el-button type="primary" @click="equalUpgrade">
-                    <!-- 全部升级 -->
-                    {{ $t("deviceUpgrade.sameVersionUpgradeText4") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="noEqualUpgrade">
+                        <!-- 仅升级不同版本号设备 -->
+                        {{ $t("deviceUpgrade.sameVersionUpgradeText3") }}
+                    </el-button>
+                    <el-button type="primary" @click="equalUpgrade">
+                        <!-- 全部升级 -->
+                        {{ $t("deviceUpgrade.sameVersionUpgradeText4") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <!-- 确定要将该固件下发至设备吗？ -->
         <el-dialog
             :close-on-click-modal="false"
-            :visible.sync="confirmVisible"
+            v-model="confirmVisible"
             :width="'600px'"
             :custom-class="'new-dialog'"
             :title="$t('deviceUpgrade.firmwareDistributionToDevice')"
@@ -316,7 +318,7 @@
                                 <!-- 仅升级不同版本号设备 -->
                                 {{
                                     this.$t(
-                                        "deviceUpgrade.sameVersionUpgradeText3"
+                                        "deviceUpgrade.sameVersionUpgradeText3",
                                     )
                                 }}
                             </el-radio>
@@ -324,7 +326,7 @@
                                 <!-- 全部升级 -->
                                 {{
                                     this.$t(
-                                        "deviceUpgrade.sameVersionUpgradeText4"
+                                        "deviceUpgrade.sameVersionUpgradeText4",
                                     )
                                 }}
                             </el-radio>
@@ -343,7 +345,7 @@
                             <el-checkbox
                                 :label="
                                     $t(
-                                        'deviceUpgrade.newRequirementToUpgradeFirmware'
+                                        'deviceUpgrade.newRequirementToUpgradeFirmware',
                                     )
                                 "
                             ></el-checkbox>
@@ -351,7 +353,7 @@
                             <el-checkbox
                                 :label="
                                     $t(
-                                        'deviceUpgrade.upgradeFirmwareForDeviceIssues'
+                                        'deviceUpgrade.upgradeFirmwareForDeviceIssues',
                                     )
                                 "
                             ></el-checkbox>
@@ -360,7 +362,7 @@
                                 v-btn="'deviceUpgradeDowngradeUpgrade'"
                                 :label="
                                     $t(
-                                        'deviceUpgrade.abnormalUpgradeMaintenance'
+                                        'deviceUpgrade.abnormalUpgradeMaintenance',
                                     )
                                 "
                                 v-show="activeName == 'main'"
@@ -368,14 +370,14 @@
                                 <!-- 异常升级维护 -->
                                 {{
                                     $t(
-                                        "deviceUpgrade.abnormalUpgradeMaintenance"
+                                        "deviceUpgrade.abnormalUpgradeMaintenance",
                                     )
                                 }}
                                 <!-- 需要降版本升级，请勾选异常升级维护，并输入验证码后执行 -->
                                 <el-tooltip
                                     :content="
                                         $t(
-                                            'deviceUpgrade.abnormalUpgradeMaintenanceText'
+                                            'deviceUpgrade.abnormalUpgradeMaintenanceText',
                                         )
                                     "
                                 >
@@ -393,7 +395,7 @@
                                 confirmForm.checkList.find(
                                     (item) =>
                                         item ===
-                                        $t('deviceHealthCondition.other')
+                                        $t('deviceHealthCondition.other'),
                                 )
                             "
                             type="textarea"
@@ -411,8 +413,8 @@
                                 (item) =>
                                     item ===
                                     $t(
-                                        'deviceUpgrade.abnormalUpgradeMaintenance'
-                                    )
+                                        'deviceUpgrade.abnormalUpgradeMaintenance',
+                                    ),
                             ) && whetherCheckLowVersionUpgrade
                         "
                         :label="$t('login.verificationCode')"
@@ -449,27 +451,29 @@
                             <!-- 请联系海康技术支持获取验证码 -->
                             {{
                                 $t(
-                                    "deviceUpgrade.contactHikvisionTechnicalSupport"
+                                    "deviceUpgrade.contactHikvisionTechnicalSupport",
                                 )
                             }}
                         </span>
                     </el-form-item>
                 </el-form>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="confirmVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button type="primary" @click="doUpgradeReason">
-                    <!-- 下发 -->
-                    {{ $t("common.issued") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="confirmVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button type="primary" @click="doUpgradeReason">
+                        <!-- 下发 -->
+                        {{ $t("common.issued") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <el-dialog
             :title="`批量导入${typeListSelected}`"
-            :visible.sync="deviceListVisible"
+            v-model="deviceListVisible"
             :width="'500px'"
         >
             <div class="device-list">
@@ -506,16 +510,18 @@
                     >
                 </el-radio-group>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="deviceListVisible = false">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button type="primary" @click="doDeviceList">
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="deviceListVisible = false">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button type="primary" @click="doDeviceList">
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
     </div>
 </template>
@@ -655,28 +661,28 @@ export default {
                         downgrading: 0,
                     };
                     let checkList = JSON.parse(
-                        JSON.stringify(this.confirmForm.checkList)
+                        JSON.stringify(this.confirmForm.checkList),
                     );
                     // 其他
                     if (
                         checkList.find(
                             (item) =>
-                                item === this.$t("deviceHealthCondition.other")
+                                item === this.$t("deviceHealthCondition.other"),
                         )
                     ) {
                         checkList.splice(
                             checkList.findIndex(
                                 (item) =>
                                     item ===
-                                    this.$t("deviceHealthCondition.other")
+                                    this.$t("deviceHealthCondition.other"),
                             ),
-                            1
+                            1,
                         );
                         checkList.push(
                             this.$t("deviceHealthCondition.other") +
                                 (this.confirmForm.textarea
                                     ? "：" + this.confirmForm.textarea
-                                    : this.confirmForm.textarea)
+                                    : this.confirmForm.textarea),
                         );
                     }
                     // 异常升级维护
@@ -685,8 +691,8 @@ export default {
                             (item) =>
                                 item ===
                                 this.$t(
-                                    "deviceUpgrade.abnormalUpgradeMaintenance"
-                                )
+                                    "deviceUpgrade.abnormalUpgradeMaintenance",
+                                ),
                         )
                     ) {
                         params.downgrading = 1;
@@ -707,7 +713,7 @@ export default {
                                     });
                                     sessionStorage.setItem(
                                         "deviceInfoList",
-                                        JSON.stringify(this.deviceInfoList)
+                                        JSON.stringify(this.deviceInfoList),
                                     );
                                 }
 
@@ -790,7 +796,7 @@ export default {
         },
         doDeviceList() {
             let deviceArr = this.deviceInfoList.find(
-                (item) => item.deviceModelCode === this.deviceModelCode
+                (item) => item.deviceModelCode === this.deviceModelCode,
             );
             this.$router.replace({
                 query: {
@@ -801,7 +807,7 @@ export default {
                         (prev, cur) => {
                             return prev.concat(cur["deviceId"]);
                         },
-                        []
+                        [],
                     ),
                 },
             });
@@ -851,7 +857,7 @@ export default {
                 val.find(
                     (item) =>
                         item ===
-                        this.$t("deviceUpgrade.abnormalUpgradeMaintenance")
+                        this.$t("deviceUpgrade.abnormalUpgradeMaintenance"),
                 )
             ) {
                 this.$api.whetherCheckLowVersionUpgrade().then((res) => {
@@ -875,21 +881,21 @@ export default {
     },
     created() {
         window.addEventListener("beforeunload", (e) =>
-            this.beforeunloadHandler(e)
+            this.beforeunloadHandler(e),
         );
         this.setTableHeight();
         this.search();
     },
     unmounted() {
         window.removeEventListener("beforeunload", (e) =>
-            this.beforeunloadHandler(e)
+            this.beforeunloadHandler(e),
         );
     },
 };
 </script>
 
 <style scoped lang="less">
-/deep/.firmware-box {
+:deep(.firmware-box){
     height: 100%;
     position: relative;
     // padding: 0 12px;
@@ -953,7 +959,7 @@ export default {
         display: flex;
         flex-direction: column;
     }
-    /deep/.el-radio {
+    :deep(.el-radio){
         margin-left: 0px !important;
         margin-bottom: 12px;
         max-width: 400px !important;

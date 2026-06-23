@@ -55,7 +55,7 @@
                                 v-model.number="
                                     form['param981']['fuelTankDepth']
                                 "
-                            ><span slot="suffix">mm</span></el-input>
+                            ><template #suffix><span>mm</span></template></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="7">
@@ -85,7 +85,7 @@
                                 v-model.number="
                                     form['param981']['fuelTankVolume']
                                 "
-                            ><span slot="suffix">L</span></el-input>
+                            ><template #suffix><span>L</span></template></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>

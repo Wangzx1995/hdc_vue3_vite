@@ -21,7 +21,7 @@
       <h2>设备参数</h2>
       <template v-if="JSON.stringify(httpDeviceConfigParams) == '{}'">
         <EmptyBox>
-          <p slot="description" class="text-md">获取失败，请点击“查询最新参数”按键获取设备参数详情～</p>
+          <template #description><p class="text-md">获取失败，请点击“查询最新参数”按键获取设备参数详情～</p></template>
         </EmptyBox>
       </template>
       <template v-else>

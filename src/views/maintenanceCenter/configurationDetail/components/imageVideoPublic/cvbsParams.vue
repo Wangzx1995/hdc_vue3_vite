@@ -21,7 +21,7 @@
                 </el-col>
                 <el-col :span="6" >
                     <el-form-item label="通道切换周期" class="m-r-md">
-                        <el-input v-model="form.period"><span slot="suffix">s</span></el-input>
+                        <el-input v-model="form.period"><template #suffix><span>s</span></template></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>

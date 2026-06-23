@@ -2,7 +2,7 @@
     <div>
         <!-- 导入 -->
         <el-dialog
-            :visible.sync="thisModal"
+            v-model="thisModal"
             :title="title"
             append-to-body
             :close-on-click-modal="false"
@@ -131,29 +131,31 @@
                     </el-form-item>
                 </el-form>
             </div>
-            <div slot="footer">
-                <el-button type="text" @click="doCancel">{{
-                    $t("common.cancel")
-                }}</el-button>
-                <el-button
-                    :loading="loadingStatus"
-                    type="primary"
-                    @click="doOk"
-                >
-                    {{
-                        isCarManage
-                            ? $t("common.ok")
-                            : loadingStatus
-                            ? $t("common.uploading")
-                            : $t("common.upload")
-                    }}
-                </el-button>
-            </div>
+            <template #footer
+                ><div>
+                    <el-button type="text" @click="doCancel">{{
+                        $t("common.cancel")
+                    }}</el-button>
+                    <el-button
+                        :loading="loadingStatus"
+                        type="primary"
+                        @click="doOk"
+                    >
+                        {{
+                            isCarManage
+                                ? $t("common.ok")
+                                : loadingStatus
+                                  ? $t("common.uploading")
+                                  : $t("common.upload")
+                        }}
+                    </el-button>
+                </div></template
+            >
         </el-dialog>
         <!-- 导入/ -->
         <!-- 正在导入 -->
         <el-dialog
-            :visible.sync="processModal"
+            v-model="processModal"
             :close-on-click-modal="false"
             :close-on-press-escape="false"
             width="350px"
@@ -180,21 +182,23 @@
                 ></el-progress>
                 <p v-html="processText"></p>
             </div>
-            <div slot="footer">
-                <el-button
-                    :type="importResult"
-                    :disabled="importing"
-                    @click="doFinish"
-                    long
-                    >{{ importText }}</el-button
-                >
-            </div>
+            <template #footer
+                ><div>
+                    <el-button
+                        :type="importResult"
+                        :disabled="importing"
+                        @click="doFinish"
+                        long
+                        >{{ importText }}</el-button
+                    >
+                </div></template
+            >
         </el-dialog>
         <!-- 正在导入/ -->
 
         <!--导出错误结果-->
         <el-dialog
-            :visible.sync="resultModal"
+            v-model="resultModal"
             :title="importResultTitle"
             width="800"
             @on-cancel="resultModalCancel"
@@ -217,7 +221,7 @@
             <el-table
                 :data="importListData"
                 border
-                size="medium"
+                size="small"
                 tooltip-effect="dark"
                 align="center"
                 :columns="importColumns"
@@ -243,23 +247,28 @@
                 :total="total || 0"
             >
             </el-pagination>
-            <div slot="footer">
-                <div class="pull-left" style="line-height: 35px">
-                    {{ $t("common.success")
-                    }}<span class="text-success m-x-sm">{{ successSum }}</span
-                    >{{ $t("common.individual") }}， {{ $t("common.failed") }}
-                    <span class="text-error m-x-sm">{{
-                        total - successSum
-                    }}</span
-                    >{{ $t("common.individual") }}
-                </div>
-                <el-button type="text" @click="resultModalCancel">
-                    {{ $t("common.cancel") }}</el-button
-                >
-                <el-button type="primary" @click="resultModalCancel()">
-                    {{ $t("common.ok") }}</el-button
-                >
-            </div>
+            <template #footer
+                ><div>
+                    <div class="pull-left" style="line-height: 35px">
+                        {{ $t("common.success")
+                        }}<span class="text-success m-x-sm">{{
+                            successSum
+                        }}</span
+                        >{{ $t("common.individual") }}，
+                        {{ $t("common.failed") }}
+                        <span class="text-error m-x-sm">{{
+                            total - successSum
+                        }}</span
+                        >{{ $t("common.individual") }}
+                    </div>
+                    <el-button type="text" @click="resultModalCancel">
+                        {{ $t("common.cancel") }}</el-button
+                    >
+                    <el-button type="primary" @click="resultModalCancel()">
+                        {{ $t("common.ok") }}</el-button
+                    >
+                </div></template
+            >
         </el-dialog>
     </div>
 </template>
@@ -443,14 +452,14 @@ export default {
                                         iframe.style.display = "none";
                                         document.body.appendChild(iframe);
                                         window.clearInterval(
-                                            _this.getExportResultInterval
+                                            _this.getExportResultInterval,
                                         );
                                         _this.getExportResultInterval = "";
                                         _this.exportLoading = false;
                                     }
                                 });
                         },
-                        2000
+                        2000,
                     );
                 } else {
                     notifyMy.close();
@@ -542,7 +551,7 @@ export default {
                         .getImportResult(
                             _this.batchCode,
                             _this.impResultParams.currentPage,
-                            _this.impResultParams.pageSize
+                            _this.impResultParams.pageSize,
                         )
                         .then((res) => {
                             let data = res.data;
@@ -558,11 +567,11 @@ export default {
                                 _this.importResult = "success";
                                 _this.processText =
                                     `${_this.$t(
-                                        "carManage.successfullyImported"
+                                        "carManage.successfullyImported",
                                     )}<span class="text-success m-x-sm">` +
                                     data.successSum +
                                     `</span>${_this.$t(
-                                        "carManage.articleData"
+                                        "carManage.articleData",
                                     )}`;
                                 _this.successSum = data.successSum;
                                 _this.total = data.total;
@@ -577,17 +586,17 @@ export default {
                                 _this.importing = false;
                                 _this.importResult = "error";
                                 _this.processText = `<span class="text-error">${_this.$t(
-                                    "carManage.partialDataImportFailed"
+                                    "carManage.partialDataImportFailed",
                                 )}</span>`;
                                 _this.importText = _this.$t(
-                                    "carManage.viewImportResults"
+                                    "carManage.viewImportResults",
                                 );
                                 _this.successSum = data.successSum;
                                 _this.total = data.total;
                                 _this.importFinish(
                                     i,
                                     data.resultList.results,
-                                    data.errorList
+                                    data.errorList,
                                 ); //后台没有errorList
                                 _this.importTotal = data.total;
                             } else {
@@ -752,7 +761,7 @@ export default {
                     .getImportResult(
                         this.batchCode,
                         this.impResultParams.currentPage,
-                        this.impResultParams.pageSize
+                        this.impResultParams.pageSize,
                     )
                     .then((res) => {
                         this.importListData = [];
@@ -778,7 +787,7 @@ export default {
                                     }
                                     rowData.msg = tempMsg.substr(
                                         0,
-                                        tempMsg.length - 1
+                                        tempMsg.length - 1,
                                     );
                                     this.importListData.push(rowData);
                                 }
@@ -829,23 +838,23 @@ export default {
 }
 .paramsItem {
     margin-bottom: 12px;
-    /deep/ .el-radio__label {
+    :deep(.el-radio__label) {
         font-size: 14px !important;
     }
 }
 .import-dialog {
-    /deep/ .el-dialog__header {
+    :deep(.el-dialog__header) {
         border: 1px solid rgba(0, 0, 0, 0.06);
     }
-    /deep/ .el-dialog__body {
+    :deep(.el-dialog__body) {
         padding: 0px;
     }
-    /deep/ .el-dialog__footer {
+    :deep(.el-dialog__footer) {
         border: 1px solid rgba(0, 0, 0, 0.06);
     }
 }
 .export {
-    /deep/ .el-dialog__body {
+    :deep(.el-dialog__body) {
         padding-top: 0px;
     }
 }

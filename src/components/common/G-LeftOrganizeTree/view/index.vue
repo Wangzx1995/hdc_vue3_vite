@@ -7,7 +7,7 @@
                 :placeholder="$t('common.inputOrganizationName')"
                 clearable
             >
-                <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                <template #suffix><i class="el-input__icon el-icon-search"></i></template>
             </el-input>
             <div class="tree-box m-t" :class="{ loading_: searchLoading }">
                 <div ref="editTreeBtn" v-if="showEditTreeBtn">
@@ -30,20 +30,19 @@
                         </el-form>
                         <div style="text-align: right; margin: 0">
                             <el-button
-                                type="link"
-                                size="mini"
+                                type="text"
+                                size="small"
                                 @click="addOrganize"
                                 >确定</el-button
                             >
                         </div>
-                        <el-button
-                            size="mini"
-                            slot="reference"
+                        <template #reference><el-button
+                            size="small"
                             icon="el-icon-plus"
                             :disabled="
                                 !params.organizeId || currentNode.source != 1
                             "
-                        />
+                        /></template>
                     </el-popover>
                     <el-popover
                         placement="bottom"
@@ -78,21 +77,20 @@
                         </el-form>
                         <div style="text-align: right; margin: 0">
                             <el-button
-                                type="link"
-                                size="mini"
+                                type="text"
+                                size="small"
                                 @click="editOrganize"
                                 >确定</el-button
                             >
                             <el-button
-                                type="link"
-                                size="mini"
+                                type="text"
+                                size="small"
                                 @click="cancelEdit"
                                 >取消</el-button
                             >
                         </div>
-                        <el-button
-                            size="mini"
-                            slot="reference"
+                        <template #reference><el-button
+                            size="small"
                             icon="el-icon-edit"
                             :disabled="
                                 !params.organizeId ||
@@ -100,7 +98,7 @@
                                 currentNode.source != 1
                             "
                             @click="editVisibleClick()"
-                        />
+                        /></template>
                     </el-popover>
 
                     <el-popover
@@ -115,21 +113,20 @@
                         <div style="text-align: right; margin: 0">
                             <el-button
                                 type="primary"
-                                size="mini"
+                                size="small"
                                 @click="deleteVisible = false"
                                 >知道了</el-button
                             >
                         </div>
-                        <el-button
-                            size="mini"
-                            slot="reference"
+                        <template #reference><el-button
+                            size="small"
                             icon="el-icon-delete"
                             :disabled="
                                 !params.organizeId ||
                                 currentNode.source != 1 ||
                                 currentNode.defaultNode == 0
                             "
-                        />
+                        /></template>
                     </el-popover>
                     <el-popover
                         @show="showPopover"
@@ -142,27 +139,26 @@
                         <div style="text-align: right; margin: 0">
                             <el-button
                                 type="default"
-                                size="mini"
+                                size="small"
                                 @click="deleteVisible = false"
                                 >取消</el-button
                             >
                             <el-button
                                 type="primary"
-                                size="mini"
+                                size="small"
                                 @click="deleteOrganize"
                                 >删除</el-button
                             >
                         </div>
-                        <el-button
-                            size="mini"
-                            slot="reference"
+                        <template #reference><el-button
+                            size="small"
                             icon="el-icon-delete"
                             :disabled="
                                 !params.organizeId ||
                                 currentNode.source != 1 ||
                                 currentNode.defaultNode == 0
                             "
-                        />
+                        /></template>
                     </el-popover>
                 </div>
                 <div :style="editVisible ? 'pointer-events: none;' : ''">

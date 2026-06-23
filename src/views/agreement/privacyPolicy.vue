@@ -736,14 +736,14 @@ export default {
     .no-a {
         color: rgba(0, 0, 0, 0.85);
     }
-    /deep/.my-table {
+    :deep(.my-table){
         td,
         th {
             font-size: 16px;
             background-color: rgba(0, 0, 0, 0.02);
         }
     }
-    /deep/.el-table--striped .el-table__body tr.el-table__row--striped td {
+    :deep(.el-table--striped .el-table__body tr.el-table__row--striped td){
         background: rgba(0, 0, 0, 0.02);
     }
 }

@@ -4,16 +4,16 @@
             <el-tab-pane label="已添加设备" name="first">
                 <el-collapse v-model="activeNames">
                     <el-collapse-item name="1">
-                        <template slot="title">
+                        <template #title>
                             已添加设备01
                             <el-dropdown style="float: right" @command="handleCommand1">
                                 <div>
                                     <i class="el-icon-setting" style="float: right;font-size: xx-large"></i>
                                 </div>
-                                <el-dropdown-menu slot="dropdown">
+                                <template #dropdown><el-dropdown-menu>
                                     <el-dropdown-item command="a">IPC设置</el-dropdown-item>
                                     <el-dropdown-item command="b">删除</el-dropdown-item>
-                                </el-dropdown-menu>
+                                </el-dropdown-menu></template>
                             </el-dropdown>
                         </template>
                         <el-row style="color: #90a4ae;">
@@ -96,16 +96,16 @@
                         </el-row>
                     </el-collapse-item>
                     <el-collapse-item name="2">
-                        <template slot="title">
+                        <template #title>
                             已添加设备02
                             <el-dropdown style="float: right" @command="handleCommand2">
                                 <div>
                                     <i class="el-icon-setting" style="float: right;font-size: xx-large"></i>
                                 </div>
-                                <el-dropdown-menu slot="dropdown">
+                                <template #dropdown><el-dropdown-menu>
                                     <el-dropdown-item command="a">IPC设置</el-dropdown-item>
                                     <el-dropdown-item command="b">删除</el-dropdown-item>
-                                </el-dropdown-menu>
+                                </el-dropdown-menu></template>
                             </el-dropdown>
                         </template>
                         <el-row style="color: #90a4ae;">
@@ -188,16 +188,16 @@
                         </el-row>
                     </el-collapse-item>
                     <el-collapse-item name="3">
-                        <template slot="title">
+                        <template #title>
                             已添加设备03
                             <el-dropdown style="float: right" @command="handleCommand3">
                                 <div>
                                     <i class="el-icon-setting" style="float: right;font-size: xx-large"></i>
                                 </div>
-                                <el-dropdown-menu slot="dropdown">
+                                <template #dropdown><el-dropdown-menu>
                                     <el-dropdown-item command="a">IPC设置</el-dropdown-item>
                                     <el-dropdown-item command="b">删除</el-dropdown-item>
-                                </el-dropdown-menu>
+                                </el-dropdown-menu></template>
                             </el-dropdown>
                         </template>
                         <el-row style="color: #90a4ae;">
@@ -280,16 +280,16 @@
                         </el-row>
                     </el-collapse-item>
                     <el-collapse-item title="已添加设备04" name="4">
-                        <template slot="title">
+                        <template #title>
                             已添加设备04
                             <el-dropdown style="float: right" @command="handleCommand4">
                                 <div>
                                     <i class="el-icon-setting" style="float: right;font-size: xx-large"></i>
                                 </div>
-                                <el-dropdown-menu slot="dropdown">
+                                <template #dropdown><el-dropdown-menu>
                                     <el-dropdown-item command="a">IPC设置</el-dropdown-item>
                                     <el-dropdown-item command="b">删除</el-dropdown-item>
-                                </el-dropdown-menu>
+                                </el-dropdown-menu></template>
                             </el-dropdown>
                         </template>
                         <el-row style="color: #90a4ae;">
@@ -372,16 +372,16 @@
                         </el-row>
                     </el-collapse-item>
                     <el-collapse-item title="已添加设备05" name="5">
-                        <template slot="title">
+                        <template #title>
                             已添加设备05
                             <el-dropdown style="float: right" @command="handleCommand5">
                                 <div>
                                     <i class="el-icon-setting" style="float: right;font-size: xx-large"></i>
                                 </div>
-                                <el-dropdown-menu slot="dropdown">
+                                <template #dropdown><el-dropdown-menu>
                                     <el-dropdown-item command="a">IPC设置</el-dropdown-item>
                                     <el-dropdown-item command="b">删除</el-dropdown-item>
-                                </el-dropdown-menu>
+                                </el-dropdown-menu></template>
                             </el-dropdown>
                         </template>
                         <el-row style="color: #90a4ae;">
@@ -464,16 +464,16 @@
                         </el-row>
                     </el-collapse-item>
                     <el-collapse-item title="已添加设备06" name="6">
-                        <template slot="title">
+                        <template #title>
                             已添加设备06
                             <el-dropdown style="float: right" @command="handleCommand6">
                                 <div>
                                     <i class="el-icon-setting" style="float: right;font-size: xx-large"></i>
                                 </div>
-                                <el-dropdown-menu slot="dropdown">
+                                <template #dropdown><el-dropdown-menu>
                                     <el-dropdown-item command="a">IPC设置</el-dropdown-item>
                                     <el-dropdown-item command="b">删除</el-dropdown-item>
-                                </el-dropdown-menu>
+                                </el-dropdown-menu></template>
                             </el-dropdown>
                         </template>
                         <el-row style="color: #90a4ae;">
@@ -560,16 +560,16 @@
             <el-tab-pane label="可添加设备" name="second">
                 <el-collapse v-model="activeNames">
                     <el-collapse-item name="1">
-                        <template slot="title">
+                        <template #title>
                             可添加设备01
                             <el-dropdown style="float: right" @command="handleCommand01">
                                 <div>
                                     <i class="el-icon-setting" style="float: right;font-size: xx-large"></i>
                                 </div>
-                                <el-dropdown-menu slot="dropdown">
+                                <template #dropdown><el-dropdown-menu>
                                     <el-dropdown-item command="a">快速添加</el-dropdown-item>
                                     <el-dropdown-item command="b">自定义添加</el-dropdown-item>
-                                </el-dropdown-menu>
+                                </el-dropdown-menu></template>
                             </el-dropdown>
                         </template>
                         <el-row style="color: #90a4ae;">
@@ -640,16 +640,16 @@
                         </el-row>
                     </el-collapse-item>
                     <el-collapse-item name="2">
-                        <template slot="title">
+                        <template #title>
                             可添加设备02
                             <el-dropdown style="float: right" @command="handleCommand02">
                                 <div>
                                     <i class="el-icon-setting" style="float: right;font-size: xx-large"></i>
                                 </div>
-                                <el-dropdown-menu slot="dropdown">
+                                <template #dropdown><el-dropdown-menu>
                                     <el-dropdown-item command="a">快速添加</el-dropdown-item>
                                     <el-dropdown-item command="b">自定义添加</el-dropdown-item>
-                                </el-dropdown-menu>
+                                </el-dropdown-menu></template>
                             </el-dropdown>
                         </template>
                         <el-row style="color: #90a4ae;">
@@ -720,16 +720,16 @@
                         </el-row>
                     </el-collapse-item>
                     <el-collapse-item name="3">
-                        <template slot="title">
+                        <template #title>
                             可添加设备03
                             <el-dropdown style="float: right" @command="handleCommand03">
                                 <div>
                                     <i class="el-icon-setting" style="float: right;font-size: xx-large"></i>
                                 </div>
-                                <el-dropdown-menu slot="dropdown">
+                                <template #dropdown><el-dropdown-menu>
                                     <el-dropdown-item command="a">快速添加</el-dropdown-item>
                                     <el-dropdown-item command="b">自定义添加</el-dropdown-item>
-                                </el-dropdown-menu>
+                                </el-dropdown-menu></template>
                             </el-dropdown>
                         </template>
                         <el-row style="color: #90a4ae;">
@@ -800,16 +800,16 @@
                         </el-row>
                     </el-collapse-item>
                     <el-collapse-item name="4">
-                        <template slot="title">
+                        <template #title>
                             可添加设备04
                             <el-dropdown style="float: right" @command="handleCommand04">
                                 <div>
                                     <i class="el-icon-setting" style="float: right;font-size: xx-large"></i>
                                 </div>
-                                <el-dropdown-menu slot="dropdown">
+                                <template #dropdown><el-dropdown-menu>
                                     <el-dropdown-item command="a">快速添加</el-dropdown-item>
                                     <el-dropdown-item command="b">自定义添加</el-dropdown-item>
-                                </el-dropdown-menu>
+                                </el-dropdown-menu></template>
                             </el-dropdown>
                         </template>
                         <el-row style="color: #90a4ae;">
@@ -880,16 +880,16 @@
                         </el-row>
                     </el-collapse-item>
                     <el-collapse-item name="5">
-                        <template slot="title">
+                        <template #title>
                             可添加设备05
                             <el-dropdown style="float: right" @command="handleCommand05">
                                 <div>
                                     <i class="el-icon-setting" style="float: right;font-size: xx-large"></i>
                                 </div>
-                                <el-dropdown-menu slot="dropdown">
+                                <template #dropdown><el-dropdown-menu>
                                     <el-dropdown-item command="a">快速添加</el-dropdown-item>
                                     <el-dropdown-item command="b">自定义添加</el-dropdown-item>
-                                </el-dropdown-menu>
+                                </el-dropdown-menu></template>
                             </el-dropdown>
                         </template>
                         <el-row style="color: #90a4ae;">
@@ -960,16 +960,16 @@
                         </el-row>
                     </el-collapse-item>
                     <el-collapse-item name="6">
-                        <template slot="title">
+                        <template #title>
                             可添加设备06
                             <el-dropdown style="float: right" @command="handleCommand06">
                                 <div>
                                     <i class="el-icon-setting" style="float: right;font-size: xx-large"></i>
                                 </div>
-                                <el-dropdown-menu slot="dropdown">
+                                <template #dropdown><el-dropdown-menu>
                                     <el-dropdown-item command="a">快速添加</el-dropdown-item>
                                     <el-dropdown-item command="b">自定义添加</el-dropdown-item>
-                                </el-dropdown-menu>
+                                </el-dropdown-menu></template>
                             </el-dropdown>
                         </template>
                         <el-row style="color: #90a4ae;">
@@ -1043,50 +1043,50 @@
             </el-tab-pane>
         </el-tabs>
 
-        <el-dialog  :visible.sync="dialogVisible1" >
+        <el-dialog  v-model="dialogVisible1" >
             此操作将会删除“已添加设备01”，是否确认删除？
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible1 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible1 = false" style="background-color: grey">删 除</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog  :visible.sync="dialogVisible2" >
+        <el-dialog  v-model="dialogVisible2" >
             此操作将会删除“已添加设备02”，是否确认删除？
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible2 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible2 = false" style="background-color: grey">删 除</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog  :visible.sync="dialogVisible3" >
+        <el-dialog  v-model="dialogVisible3" >
             此操作将会删除“已添加设备03”，是否确认删除？
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible3 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible3 = false" style="background-color: grey">删 除</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog  :visible.sync="dialogVisible4" >
+        <el-dialog  v-model="dialogVisible4" >
             此操作将会删除“已添加设备04”，是否确认删除？
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible4 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible4 = false" style="background-color: grey">删 除</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog  :visible.sync="dialogVisible5" >
+        <el-dialog  v-model="dialogVisible5" >
             此操作将会删除“已添加设备05”，是否确认删除？
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible5 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible5 = false" style="background-color: grey">删 除</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog  :visible.sync="dialogVisible6" >
+        <el-dialog  v-model="dialogVisible6" >
             此操作将会删除“已添加设备06”，是否确认删除？
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible6 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible6 = false" style="background-color: grey">删 除</el-button>
-            </span>
+            </span></template>
         </el-dialog>
 
-        <el-dialog title="快速添加" :visible.sync="dialogVisible01" >
+        <el-dialog title="快速添加" v-model="dialogVisible01" >
             <el-row><el-col>序列号</el-col></el-row>
             <el-row style="color: #1a1a1a"><el-col>字段内容xxxx</el-col></el-row>
             <el-row style="margin-top: 10px"><el-col>型号</el-col></el-row>
@@ -1097,12 +1097,12 @@
             <el-row style="color: #1a1a1a"><el-col>Admin</el-col></el-row>
             <el-row style="color: #1a1a1a;margin-top: 10px"><el-col>密码</el-col></el-row>
             <el-input></el-input>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible01 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible01 = false">确 定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog title="快速添加" :visible.sync="dialogVisible02" >
+        <el-dialog title="快速添加" v-model="dialogVisible02" >
             <el-row><el-col>序列号</el-col></el-row>
             <el-row style="color: #1a1a1a"><el-col>字段内容xxxx</el-col></el-row>
             <el-row style="margin-top: 10px"><el-col>型号</el-col></el-row>
@@ -1113,12 +1113,12 @@
             <el-row style="color: #1a1a1a"><el-col>Admin</el-col></el-row>
             <el-row style="color: #1a1a1a;margin-top: 10px"><el-col>密码</el-col></el-row>
             <el-input></el-input>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible02 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible02 = false">确 定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog title="快速添加" :visible.sync="dialogVisible03" >
+        <el-dialog title="快速添加" v-model="dialogVisible03" >
             <el-row><el-col>序列号</el-col></el-row>
             <el-row style="color: #1a1a1a"><el-col>字段内容xxxx</el-col></el-row>
             <el-row style="margin-top: 10px"><el-col>型号</el-col></el-row>
@@ -1129,12 +1129,12 @@
             <el-row style="color: #1a1a1a"><el-col>Admin</el-col></el-row>
             <el-row style="color: #1a1a1a;margin-top: 10px"><el-col>密码</el-col></el-row>
             <el-input></el-input>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible03 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible03 = false">确 定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog title="快速添加" :visible.sync="dialogVisible04" >
+        <el-dialog title="快速添加" v-model="dialogVisible04" >
             <el-row><el-col>序列号</el-col></el-row>
             <el-row style="color: #1a1a1a"><el-col>字段内容xxxx</el-col></el-row>
             <el-row style="margin-top: 10px"><el-col>型号</el-col></el-row>
@@ -1145,12 +1145,12 @@
             <el-row style="color: #1a1a1a"><el-col>Admin</el-col></el-row>
             <el-row style="color: #1a1a1a;margin-top: 10px"><el-col>密码</el-col></el-row>
             <el-input></el-input>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible04 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible04 = false">确 定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog title="快速添加" :visible.sync="dialogVisible05" >
+        <el-dialog title="快速添加" v-model="dialogVisible05" >
             <el-row><el-col>序列号</el-col></el-row>
             <el-row style="color: #1a1a1a"><el-col>字段内容xxxx</el-col></el-row>
             <el-row style="margin-top: 10px"><el-col>型号</el-col></el-row>
@@ -1161,12 +1161,12 @@
             <el-row style="color: #1a1a1a"><el-col>Admin</el-col></el-row>
             <el-row style="color: #1a1a1a;margin-top: 10px"><el-col>密码</el-col></el-row>
             <el-input></el-input>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible05 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible05 = false">确 定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog title="快速添加" :visible.sync="dialogVisible06" >
+        <el-dialog title="快速添加" v-model="dialogVisible06" >
             <el-row><el-col>序列号</el-col></el-row>
             <el-row style="color: #1a1a1a"><el-col>字段内容xxxx</el-col></el-row>
             <el-row style="margin-top: 10px"><el-col>型号</el-col></el-row>
@@ -1177,13 +1177,13 @@
             <el-row style="color: #1a1a1a"><el-col>Admin</el-col></el-row>
             <el-row style="color: #1a1a1a;margin-top: 10px"><el-col>密码</el-col></el-row>
             <el-input></el-input>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible06 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible06 = false">确 定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
 
-        <el-dialog title="自定义添加" :visible.sync="dialogVisible001" >
+        <el-dialog title="自定义添加" v-model="dialogVisible001" >
             <el-row><el-col>序列号</el-col></el-row>
             <el-row style="color: #1a1a1a"><el-col>字段内容xxxx</el-col></el-row>
             <el-row style="margin-top: 10px"><el-col>型号</el-col></el-row>
@@ -1202,12 +1202,12 @@
             <el-select></el-select>
             <el-row style="margin-top: 10px"><el-col>端口</el-col></el-row>
             <el-select></el-select>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible001 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible001 = false">确 定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog title="自定义添加" :visible.sync="dialogVisible002" >
+        <el-dialog title="自定义添加" v-model="dialogVisible002" >
             <el-row><el-col>序列号</el-col></el-row>
             <el-row style="color: #1a1a1a"><el-col>字段内容xxxx</el-col></el-row>
             <el-row style="margin-top: 10px"><el-col>型号</el-col></el-row>
@@ -1226,12 +1226,12 @@
             <el-select></el-select>
             <el-row style="margin-top: 10px"><el-col>端口</el-col></el-row>
             <el-select></el-select>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible002 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible002 = false">确 定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog title="自定义添加" :visible.sync="dialogVisible003" >
+        <el-dialog title="自定义添加" v-model="dialogVisible003" >
             <el-row><el-col>序列号</el-col></el-row>
             <el-row style="color: #1a1a1a"><el-col>字段内容xxxx</el-col></el-row>
             <el-row style="margin-top: 10px"><el-col>型号</el-col></el-row>
@@ -1250,12 +1250,12 @@
             <el-select></el-select>
             <el-row style="margin-top: 10px"><el-col>端口</el-col></el-row>
             <el-select></el-select>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible003 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible003 = false">确 定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog title="自定义添加" :visible.sync="dialogVisible004" >
+        <el-dialog title="自定义添加" v-model="dialogVisible004" >
             <el-row><el-col>序列号</el-col></el-row>
             <el-row style="color: #1a1a1a"><el-col>字段内容xxxx</el-col></el-row>
             <el-row style="margin-top: 10px"><el-col>型号</el-col></el-row>
@@ -1274,12 +1274,12 @@
             <el-select></el-select>
             <el-row style="margin-top: 10px"><el-col>端口</el-col></el-row>
             <el-select></el-select>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible004 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible004 = false">确 定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog title="自定义添加" :visible.sync="dialogVisible005" >
+        <el-dialog title="自定义添加" v-model="dialogVisible005" >
             <el-row><el-col>序列号</el-col></el-row>
             <el-row style="color: #1a1a1a"><el-col>字段内容xxxx</el-col></el-row>
             <el-row style="margin-top: 10px"><el-col>型号</el-col></el-row>
@@ -1298,12 +1298,12 @@
             <el-select></el-select>
             <el-row style="margin-top: 10px"><el-col>端口</el-col></el-row>
             <el-select></el-select>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible005 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible005 = false">确 定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
-        <el-dialog title="自定义添加" :visible.sync="dialogVisible006" >
+        <el-dialog title="自定义添加" v-model="dialogVisible006" >
             <el-row><el-col>序列号</el-col></el-row>
             <el-row style="color: #1a1a1a"><el-col>字段内容xxxx</el-col></el-row>
             <el-row style="margin-top: 10px"><el-col>型号</el-col></el-row>
@@ -1322,10 +1322,10 @@
             <el-select></el-select>
             <el-row style="margin-top: 10px"><el-col>端口</el-col></el-row>
             <el-select></el-select>
-            <span slot="footer" class="dialog-footer">
+            <template #footer><span class="dialog-footer">
                 <el-button @click="dialogVisible006 = false">取 消</el-button>
                 <el-button type="primary" @click="dialogVisible006 = false">确 定</el-button>
-            </span>
+            </span></template>
         </el-dialog>
 
     </div>

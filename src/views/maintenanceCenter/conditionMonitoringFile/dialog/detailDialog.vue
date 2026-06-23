@@ -287,7 +287,7 @@ export default {
 .main-content {
     height: 100%;
     position: relative;
-    /deep/.el-tabs {
+    :deep(.el-tabs){
         height: calc(~"100% - 68px");
         .el-tabs__nav-wrap {
             padding-left: 24px;

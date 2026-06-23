@@ -86,7 +86,7 @@
                     :label="$t('ttsConfiguration.configurationContent')"
                     min-width="240px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <el-popover
                             placement="top"
                             :popper-class="'table-popover'"
@@ -94,7 +94,9 @@
                             trigger="hover"
                         >
                             <span>{{ scope.row.params }}</span>
-                            <span slot="reference">{{ scope.row.params }}</span>
+                            <template #reference>
+                                <span>{{ scope.row.params }}</span>
+                            </template>
                         </el-popover>
                     </template>
                 </el-table-column>
@@ -104,7 +106,7 @@
                     :label="$t('ttsConfiguration.publishAttributes')"
                     min-width="200px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         {{ scope.row.configPropertyString }}
                     </template>
                 </el-table-column>
@@ -125,7 +127,7 @@
                         $t('common.failed')
                     "
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         {{
                             `${scope.row.successNum}/${scope.row.ingNum}/${scope.row.failNum}`
                         }}
@@ -136,7 +138,7 @@
                     fixed="right"
                     width="80px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <a @click="taskDetail(scope.row.batchCode)">
                             <!-- 详情 -->
                             {{ $t("common.detail") }}
@@ -232,7 +234,7 @@ export default {
                                         ) {
                                             const iframe =
                                                 document.createElement(
-                                                    "iframe"
+                                                    "iframe",
                                                 );
                                             iframe.src =
                                                 (process.env.BASE_API == "/"
@@ -243,18 +245,18 @@ export default {
                                             iframe.style.display = "none";
                                             document.body.appendChild(iframe);
                                             window.clearInterval(
-                                                _this.getExportResultInterval_
+                                                _this.getExportResultInterval_,
                                             );
                                             _this.getExportResultInterval_ = "";
                                             _this.loadingAll2 = false;
                                         }
                                     });
                             },
-                            2000
+                            2000,
                         );
                     } else {
                         this.$message.error(
-                            this.$t("common.exportFailed") + ":" + res.msg
+                            this.$t("common.exportFailed") + ":" + res.msg,
                         );
                         this.loadingAll2 = false;
                     }

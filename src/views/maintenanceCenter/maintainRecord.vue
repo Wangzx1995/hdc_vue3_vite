@@ -222,7 +222,7 @@
                 :label="$t('maintainRecord.maintenanceStatus')"
                 width="100px"
             >
-                <template slot-scope="scope">
+                <template #default="scope">
                     <div>
                         {{
                             // scope.row.maintenanceStatus == 1
@@ -245,7 +245,7 @@
                 :label="$t('common.operate')"
                 width="180px"
             >
-                <template slot-scope="scope">
+                <template #default="scope">
                     <a
                         class="m-r-sm colorBlue"
                         v-if="scope.row.maintenanceStatus === 0"

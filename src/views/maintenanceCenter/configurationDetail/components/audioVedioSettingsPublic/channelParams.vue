@@ -44,12 +44,12 @@
                           <el-row type="flex" justify="space-between">
                               <el-col :span="7" >
                                   <el-form-item label="实时流目标帧率（1-120）" :rules="{ validator: checkNumber.bind({type:'byte',min:1,max:120}), trigger: 'blur' }" :prop="'0077.mediaChannelParams.' + index + '.realtimeFrameSecond'">
-                                      <el-input v-model="item.realtimeFrameSecond"><span slot="suffix">帧/s</span></el-input>
+                                      <el-input v-model="item.realtimeFrameSecond"><template #suffix><span>帧/s</span></template></el-input>
                                   </el-form-item>
                               </el-col>
                               <el-col :span="7" >
                                   <el-form-item label="实时流目标码率" :rules="{ validator: checkNumber.bind({type:'int',min:0,max:1000000}), trigger: 'blur' }" :prop="'0077.mediaChannelParams.' + index + '.realtimeCodeRate'">
-                                      <el-input v-model="item.realtimeCodeRate"><span slot="suffix">kbps</span></el-input>
+                                      <el-input v-model="item.realtimeCodeRate"><template #suffix><span>kbps</span></template></el-input>
                                   </el-form-item>
                               </el-col>
                               <el-col :span="7"></el-col>
@@ -87,12 +87,12 @@
                           <el-row type="flex" justify="space-between">
                               <el-col :span="7" >
                                   <el-form-item label="存储流目标帧率" :rules="{ validator: checkNumber.bind({type:'byte',min:1,max:120}), trigger: 'blur' }" :prop="'0077.mediaChannelParams.' + index + '.storeFramePerSecond'">
-                                      <el-input v-model="item.storeFramePerSecond"><span slot="suffix">帧/s</span></el-input>
+                                      <el-input v-model="item.storeFramePerSecond"><template #suffix><span>帧/s</span></template></el-input>
                                   </el-form-item>
                               </el-col>
                               <el-col :span="7" >
                                   <el-form-item label="存储流目标码率" :rules="{ validator: checkNumber.bind({type:'int',min:0,max:1000000}), trigger: 'blur' }" :prop="'0077.mediaChannelParams.' + index + '.storeCodeRate'">
-                                      <el-input v-model="item.storeCodeRate"><span slot="suffix">kbps</span></el-input>
+                                      <el-input v-model="item.storeCodeRate"><template #suffix><span>kbps</span></template></el-input>
                                   </el-form-item>
                               </el-col>
                               <el-col :span="7"></el-col>
@@ -117,7 +117,7 @@
               </el-tabs>
       </template>
             <EmptyBox v-else style="height:100%">
-        <p slot="description" class="text-md">暂无数据～</p>
+        <template #description><p class="text-md">暂无数据～</p></template>
       </EmptyBox>
         </el-form>
 

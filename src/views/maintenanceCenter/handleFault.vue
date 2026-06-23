@@ -10,10 +10,9 @@
                         :placeholder="$t('common.inputOrganizationName')"
                         clearable
                     >
-                        <i
-                            slot="suffix"
-                            class="el-input__icon el-icon-search"
-                        ></i>
+                        <template #suffix>
+                            <i class="el-input__icon el-icon-search"></i>
+                        </template>
                     </el-input>
                     <el-tree
                         ref="tree"
@@ -211,7 +210,7 @@
                                 :label="$t('common.plateNum')"
                                 width="150px"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <div style="display: inline-block">
                                         {{ scope.row.plateNum }}
                                         <span
@@ -266,10 +265,11 @@
                                                     $t("carManage.goModify")
                                                 }}</a
                                             >
-                                            <i
-                                                class="text-error el-icon-warning"
-                                                slot="reference"
-                                            ></i>
+                                            <template #reference>
+                                                <i
+                                                    class="text-error el-icon-warning"
+                                                ></i>
+                                            </template>
                                         </el-popover>
                                         <img
                                             v-if="
@@ -311,7 +311,7 @@
                                 width="240"
                                 fixed="right"
                             >
-                                <template slot-scope="scope">
+                                <template #default="scope">
                                     <a
                                         style="margin-right: 20px"
                                         v-if="scope.row.maintenanceStatus == 0"
@@ -359,7 +359,7 @@
         </el-row>
         <el-dialog
             :title="title"
-            :visible.sync="dialogVisible"
+            v-model="dialogVisible"
             :width="'576px'"
             @close="handleExit"
         >
@@ -406,25 +406,27 @@
                     </el-form-item>
                 </div>
             </el-form>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="handleExit">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    @click="handleSure"
-                    :disabled="loadingBtu"
-                >
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="handleExit">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        @click="handleSure"
+                        :disabled="loadingBtu"
+                    >
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <!-- 详情 -->
         <el-dialog
             :title="$t('common.detail')"
-            :visible.sync="dialogTableVisible"
+            v-model="dialogTableVisible"
             :width="'850px'"
         >
             <el-table
@@ -439,7 +441,7 @@
                     :label="$t('anomalyDetails.processingStatus')"
                     min-width="100px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <span :class="scope.row.status == 0 ? 'red' : 'green'"
                             >●</span
                         >
@@ -458,10 +460,10 @@
                     :label="$t('common.deviceSerialNum')"
                     min-width="140px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <el-button
                             @click="showDetails(scope.row.id)"
-                            type="link"
+                            type="text"
                         >
                             {{ scope.row.deviceSerialNum }}
                         </el-button>
@@ -495,10 +497,9 @@
                                 class="m-r-sm"
                                 >{{ $t("carManage.goModify") }}</a
                             >
-                            <i
-                                class="text-error el-icon-warning"
-                                slot="reference"
-                            ></i>
+                            <template #reference>
+                                <i class="text-error el-icon-warning"></i>
+                            </template>
                         </el-popover>
                     </template>
                 </el-table-column>
@@ -527,7 +528,7 @@
         <!--位置-->
         <el-dialog
             :title="$t('handleFault.position')"
-            :visible.sync="singlePositionVisible"
+            v-model="singlePositionVisible"
             :width="'850px'"
             @close="closeSinglePosition"
         >

@@ -17,7 +17,7 @@
                 </div> -->
                 <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="ADAS报警判断速度阈值（0-60）" prop="F364.speedThreshold">
-                        <el-input v-model="form['F364'].speedThreshold"><span slot="suffix">km/h</span></el-input>
+                        <el-input v-model="form['F364'].speedThreshold"><template #suffix><span>km/h</span></template></el-input>
                     </el-form-item>
                 </div>
                 <div v-if="form['F364']" class="configuration-item">
@@ -43,7 +43,7 @@
             <div class="configurations">
                 <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="主动拍照策略">
-                        <el-select v-model="form['F364'].activePhotoStrategy"><span slot="suffix">s</span>
+                        <el-select v-model="form['F364'].activePhotoStrategy"><template #suffix><span>s</span></template>
                             <el-option label="不开启" :value="0"></el-option>
                             <el-option label="定时拍照" :value="1"></el-option>
                             <el-option label="定距拍照" :value="2"></el-option>
@@ -53,12 +53,12 @@
                 </div>
                 <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="主动定时拍照时间间隔" prop="F364.timeIntervalOfActiveTimingPhotography">
-                        <el-input v-model="form['F364'].timeIntervalOfActiveTimingPhotography"><span slot="suffix">s</span></el-input>
+                        <el-input v-model="form['F364'].timeIntervalOfActiveTimingPhotography"><template #suffix><span>s</span></template></el-input>
                     </el-form-item>
                 </div>
                 <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="主动定距拍照距离间隔" prop="F364.distanceIntervalOfActiveDistancePhotographing">
-                        <el-input v-model="form['F364'].distanceIntervalOfActiveDistancePhotographing"><span slot="suffix">m</span></el-input>
+                        <el-input v-model="form['F364'].distanceIntervalOfActiveDistancePhotographing"><template #suffix><span>m</span></template></el-input>
                     </el-form-item>
                 </div>
                 <div v-if="form['F364']" class="configuration-item">
@@ -68,7 +68,7 @@
                 </div>
                 <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="单次主动拍照时间间隔" prop="F364.timeIntervalOfSingleActivePhotographing">
-                        <el-input v-model="form['F364'].timeIntervalOfSingleActivePhotographing"><span slot="suffix">ms</span></el-input>
+                        <el-input v-model="form['F364'].timeIntervalOfSingleActivePhotographing"><template #suffix><span>ms</span></template></el-input>
                     </el-form-item>
                 </div>
                 <div v-if="form['F364']" class="configuration-item">
@@ -145,7 +145,7 @@
                 <div class="configurations">
                   <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="障碍检测一级报警" >
-                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><span slot="suffix">ms</span></el-input> -->
+                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><template #suffix><span>ms</span></template></el-input> -->
                         <el-switch v-model="alarmArr[0]"></el-switch>
                     </el-form-item>
                   </div>
@@ -156,17 +156,17 @@
                   </div>
                   <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="障碍物报警距离阈值" prop="F364.obstacleWarningDistanceThreshold">
-                        <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><span slot="suffix">ms</span></el-input>
+                        <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><template #suffix><span>ms</span></template></el-input>
                     </el-form-item>
                   </div>
                   <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="障碍物报警分级速度阈值" prop="F364.classificationSpeedThresholdOfObstacleAlarm">
-                        <el-input v-model="form['F364'].classificationSpeedThresholdOfObstacleAlarm"><span slot="suffix">km/h</span></el-input>
+                        <el-input v-model="form['F364'].classificationSpeedThresholdOfObstacleAlarm"><template #suffix><span>km/h</span></template></el-input>
                     </el-form-item>
                   </div>
                   <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="障碍物报警前后视频录制时间" prop="F364.videoRecordingTimeBeforeAndAfterObstacleAlarm">
-                        <el-input v-model="form['F364'].videoRecordingTimeBeforeAndAfterObstacleAlarm"><span slot="suffix">s</span></el-input>
+                        <el-input v-model="form['F364'].videoRecordingTimeBeforeAndAfterObstacleAlarm"><template #suffix><span>s</span></template></el-input>
                     </el-form-item>
                   </div>
                   <div v-if="form['F364']" class="configuration-item">
@@ -176,7 +176,7 @@
                   </div>
                   <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="障碍物报警拍照间隔" prop="F364.photoIntervalOfObstacleAlarm">
-                        <el-input v-model="form['F364'].photoIntervalOfObstacleAlarm"><span slot="suffix">100ms</span></el-input>
+                        <el-input v-model="form['F364'].photoIntervalOfObstacleAlarm"><template #suffix><span>100ms</span></template></el-input>
                     </el-form-item>
                   </div>
                 </div>
@@ -205,7 +205,7 @@
                 <div class="configurations">
                   <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="频繁变道一级报警" >
-                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><span slot="suffix">ms</span></el-input> -->
+                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><template #suffix><span>ms</span></template></el-input> -->
                         <el-switch v-model="alarmArr[2]"></el-switch>
                     </el-form-item>
                   </div>
@@ -216,7 +216,7 @@
                   </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="频繁变道报警判断时间段" prop="F364.judgmentTimePeriodOfFrequentLaneChangeAlarm">
-                            <el-input v-model="form['F364'].judgmentTimePeriodOfFrequentLaneChangeAlarm"><span slot="suffix">s</span></el-input>
+                            <el-input v-model="form['F364'].judgmentTimePeriodOfFrequentLaneChangeAlarm"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
@@ -231,7 +231,7 @@
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="频繁变道报警前后视频录制时间" prop="F364.videoRecordingTimeBeforeAndAfterFrequentLaneChangeAlarm">
-                            <el-input v-model="form['F364'].videoRecordingTimeBeforeAndAfterFrequentLaneChangeAlarm"><span slot="suffix">s</span></el-input>
+                            <el-input v-model="form['F364'].videoRecordingTimeBeforeAndAfterFrequentLaneChangeAlarm"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
@@ -241,7 +241,7 @@
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="频繁变道报警拍照间隔" prop="F364.frequentLaneChangeAlarmInterval">
-                            <el-input v-model="form['F364'].frequentLaneChangeAlarmInterval"><span slot="suffix">100ms</span></el-input>
+                            <el-input v-model="form['F364'].frequentLaneChangeAlarmInterval"><template #suffix><span>100ms</span></template></el-input>
                         </el-form-item>
                     </div>
                 </div>
@@ -272,7 +272,7 @@
                 <div class="configurations">
                   <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="车道偏离一级报警" >
-                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><span slot="suffix">ms</span></el-input> -->
+                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><template #suffix><span>ms</span></template></el-input> -->
                         <el-switch v-model="alarmArr[4]"></el-switch>
                     </el-form-item>
                   </div>
@@ -283,12 +283,12 @@
                   </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="车道偏离报警分级速度阈值" prop="F364.laneDepartureWarningClassificationSpeedThreshold">
-                            <el-input v-model="form['F364'].laneDepartureWarningClassificationSpeedThreshold"><span slot="suffix">km/h</span></el-input>
+                            <el-input v-model="form['F364'].laneDepartureWarningClassificationSpeedThreshold"><template #suffix><span>km/h</span></template></el-input>
                         </el-form-item>
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="车道偏离报警前后视频录制时间" prop="F364.videoRecordingTimeBeforeAndAfterLaneDepartureAlarm">
-                            <el-input v-model="form['F364'].videoRecordingTimeBeforeAndAfterLaneDepartureAlarm"><span slot="suffix">s</span></el-input>
+                            <el-input v-model="form['F364'].videoRecordingTimeBeforeAndAfterLaneDepartureAlarm"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
@@ -298,7 +298,7 @@
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="车道偏离报警拍照间隔" prop="F364.laneDepartureWarningCameraInterval">
-                            <el-input v-model="form['F364'].laneDepartureWarningCameraInterval"><span slot="suffix">100ms</span></el-input>
+                            <el-input v-model="form['F364'].laneDepartureWarningCameraInterval"><template #suffix><span>100ms</span></template></el-input>
                         </el-form-item>
                     </div>
                 </div>
@@ -325,7 +325,7 @@
                 <div class="configurations">
                   <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="前向碰撞一级报警" >
-                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><span slot="suffix">ms</span></el-input> -->
+                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><template #suffix><span>ms</span></template></el-input> -->
                         <el-switch v-model="alarmArr[6]"></el-switch>
                     </el-form-item>
                   </div>
@@ -336,17 +336,17 @@
                   </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="前向碰撞报警时间阈值" prop="F364.forwardCollisionAlarmTimeThreshold">
-                            <el-input v-model="form['F364'].forwardCollisionAlarmTimeThreshold"><span slot="suffix">100ms</span></el-input>
+                            <el-input v-model="form['F364'].forwardCollisionAlarmTimeThreshold"><template #suffix><span>100ms</span></template></el-input>
                         </el-form-item>
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="前向碰撞报警分级速度阈值" prop="F364.forwardCollisionWarningClassificationSpeedThreshold">
-                            <el-input v-model="form['F364'].forwardCollisionWarningClassificationSpeedThreshold"><span slot="suffix">km/h</span></el-input>
+                            <el-input v-model="form['F364'].forwardCollisionWarningClassificationSpeedThreshold"><template #suffix><span>km/h</span></template></el-input>
                         </el-form-item>
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="前向碰撞报警前后视频录制时间" prop="F364.videoRecordingTimeBeforeAndAfterForwardCollisionAlarm">
-                            <el-input v-model="form['F364'].videoRecordingTimeBeforeAndAfterForwardCollisionAlarm"><span slot="suffix">s</span></el-input>
+                            <el-input v-model="form['F364'].videoRecordingTimeBeforeAndAfterForwardCollisionAlarm"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
@@ -356,7 +356,7 @@
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="前向碰撞报警拍照间隔" prop="F364.forwardCollisionAlarmPhotographingInterval">
-                            <el-input v-model="form['F364'].forwardCollisionAlarmPhotographingInterval"><span slot="suffix">100ms</span></el-input>
+                            <el-input v-model="form['F364'].forwardCollisionAlarmPhotographingInterval"><template #suffix><span>100ms</span></template></el-input>
                         </el-form-item>
                     </div>
                 </div>
@@ -385,7 +385,7 @@
                 <div class="configurations">
                   <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="行人碰撞一级报警" >
-                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><span slot="suffix">ms</span></el-input> -->
+                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><template #suffix><span>ms</span></template></el-input> -->
                         <el-switch v-model="alarmArr[8]"></el-switch>
                     </el-form-item>
                   </div>
@@ -396,17 +396,17 @@
                   </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="行人碰撞报警时间阈值" prop="F364.pedestrianCollisionWarningTimeThreshold">
-                            <el-input v-model="form['F364'].pedestrianCollisionWarningTimeThreshold"><span slot="suffix">100ms</span></el-input>
+                            <el-input v-model="form['F364'].pedestrianCollisionWarningTimeThreshold"><template #suffix><span>100ms</span></template></el-input>
                         </el-form-item>
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="行人碰撞报警使能速度阈值" prop="F364.pedestrianCollisionAlarmEnableSpeedThreshold">
-                            <el-input v-model="form['F364'].pedestrianCollisionAlarmEnableSpeedThreshold"><span slot="suffix">km/h</span></el-input>
+                            <el-input v-model="form['F364'].pedestrianCollisionAlarmEnableSpeedThreshold"><template #suffix><span>km/h</span></template></el-input>
                         </el-form-item>
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="行人碰撞报警前后视频录制时间" prop="F364.videoRecordingTimeBeforeAndAfterPedestrianCollisionAlarm">
-                            <el-input v-model="form['F364'].videoRecordingTimeBeforeAndAfterPedestrianCollisionAlarm"><span slot="suffix">s</span></el-input>
+                            <el-input v-model="form['F364'].videoRecordingTimeBeforeAndAfterPedestrianCollisionAlarm"><template #suffix><span>s</span></template></el-input>
                         </el-form-item>
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
@@ -416,7 +416,7 @@
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="行人碰撞报警拍照间隔" prop="F364.pedestrianCollisionAlarmPhotoInterval">
-                            <el-input v-model="form['F364'].pedestrianCollisionAlarmPhotoInterval"><span slot="suffix">100ms</span></el-input>
+                            <el-input v-model="form['F364'].pedestrianCollisionAlarmPhotoInterval"><template #suffix><span>100ms</span></template></el-input>
                         </el-form-item>
                     </div>
                 </div>
@@ -445,7 +445,7 @@
                 <div class="configurations">
                   <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="车距监控一级报警" >
-                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><span slot="suffix">ms</span></el-input> -->
+                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><template #suffix><span>ms</span></template></el-input> -->
                         <el-switch v-model="alarmArr[10]"></el-switch>
                     </el-form-item>
                   </div>
@@ -456,17 +456,17 @@
                   </div>
                         <div v-if="form['F364']" class="configuration-item">
                             <el-form-item label="车距监控报警距离阈值" prop="F364.distanceThresholdOfVehicleDistanceMonitoringAlarm">
-                              <el-input v-model="form['F364'].distanceThresholdOfVehicleDistanceMonitoringAlarm"><span slot="suffix">100ms</span></el-input>
+                              <el-input v-model="form['F364'].distanceThresholdOfVehicleDistanceMonitoringAlarm"><template #suffix><span>100ms</span></template></el-input>
                           </el-form-item>
                         </div>
                         <div v-if="form['F364']" class="configuration-item">
                             <el-form-item label="车距监控报警分级速度阈值" prop="F364.classificationSpeedThresholdOfDistanceMonitoringAlarm">
-                              <el-input v-model="form['F364'].classificationSpeedThresholdOfDistanceMonitoringAlarm"><span slot="suffix">km/h</span></el-input>
+                              <el-input v-model="form['F364'].classificationSpeedThresholdOfDistanceMonitoringAlarm"><template #suffix><span>km/h</span></template></el-input>
                           </el-form-item>
                         </div>
                         <div v-if="form['F364']" class="configuration-item">
                             <el-form-item label="车距过近报警前后视频录制时间" prop="F364.videoRecordingTimeBeforeAndAfterTheAlarmWhenTheDistanceBetweenVehiclesIsTooClose">
-                              <el-input v-model="form['F364'].videoRecordingTimeBeforeAndAfterTheAlarmWhenTheDistanceBetweenVehiclesIsTooClose"><span slot="suffix">s</span></el-input>
+                              <el-input v-model="form['F364'].videoRecordingTimeBeforeAndAfterTheAlarmWhenTheDistanceBetweenVehiclesIsTooClose"><template #suffix><span>s</span></template></el-input>
                           </el-form-item>
                         </div>
                         <div v-if="form['F364']" class="configuration-item">
@@ -476,7 +476,7 @@
                         </div>
                         <div v-if="form['F364']" class="configuration-item">
                             <el-form-item label="车距过近报警拍照间隔" prop="F364.theDistanceBetweenTheCarAndTheCameraIsTooClose">
-                                <el-input v-model="form['F364'].theDistanceBetweenTheCarAndTheCameraIsTooClose"><span slot="suffix">100ms</span></el-input>
+                                <el-input v-model="form['F364'].theDistanceBetweenTheCarAndTheCameraIsTooClose"><template #suffix><span>100ms</span></template></el-input>
                             </el-form-item>
                         </div>
                     </div>
@@ -505,7 +505,7 @@
               <div class="configurations">
                 <div v-if="form['F364']" class="configuration-item">
                     <el-form-item label="道路标识超限报警" >
-                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><span slot="suffix">ms</span></el-input> -->
+                        <!-- <el-input v-model="form['F364'].obstacleWarningDistanceThreshold"><template #suffix><span>ms</span></template></el-input> -->
                         <el-switch v-model="alarmArr[16]"></el-switch>
                     </el-form-item>
                   </div>
@@ -516,7 +516,7 @@
                     </div>
                     <div v-if="form['F364']" class="configuration-item">
                         <el-form-item label="道路标志识别拍照间隔" prop="F364.photoIntervalOfRoadSignRecognition">
-                            <el-input v-model="form['F364'].photoIntervalOfRoadSignRecognition"><span slot="suffix">100ms</span></el-input>
+                            <el-input v-model="form['F364'].photoIntervalOfRoadSignRecognition"><template #suffix><span>100ms</span></template></el-input>
                         </el-form-item>
                     </div>
                 </div>

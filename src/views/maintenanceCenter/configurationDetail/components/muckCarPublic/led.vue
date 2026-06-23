@@ -54,7 +54,7 @@
         </el-col>
         <el-col :span="7">
           <el-form-item label="稽查时间" class="m-r-md p-r" :rules="{validator: checkNumber.bind({type:'int',min:form['IsApiZtLedCapability'].checkTimeMin,max:form['IsApiZtLedCapability'].checkTimeMax}), trigger: 'blur'}" prop="IsApiZtLed.checkTime">
-              <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtLedCapability'].checkTimeMin}~${form['IsApiZtLedCapability'].checkTimeMax}`" v-model.number="form['IsApiZtLed'].checkTime"><span slot="suffix">s</span></el-input>
+              <el-input tips-placement="top-end" :tips="`键入值范围为${form['IsApiZtLedCapability'].checkTimeMin}~${form['IsApiZtLedCapability'].checkTimeMax}`" v-model.number="form['IsApiZtLed'].checkTime"><template #suffix><span>s</span></template></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="7">

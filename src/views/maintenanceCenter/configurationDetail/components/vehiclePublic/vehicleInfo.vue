@@ -232,7 +232,7 @@
                             :tips="`键入数值范围为${form['IsApiVehicleRecordCapability'].mileageInitMin}~${form['IsApiVehicleRecordCapability'].mileageInitMax}`"
                             v-model="form['IsApiVehicleRecord'].mileageInit"
                         >
-                            <span slot="suffix">km</span>
+                            <template #suffix><span>km</span></template>
                         </el-input>
                     </el-form-item>
                 </el-col>
@@ -258,7 +258,7 @@
                             :tips="`键入数值范围为${form['IsApiVehicleRecordCapability'].mileageTotalMin}~${form['IsApiVehicleRecordCapability'].mileageTotalMax}`"
                             v-model="form['IsApiVehicleRecord'].mileageTotal"
                         >
-                            <span slot="suffix">km</span>
+                            <template #suffix><span>km</span></template>
                         </el-input>
                     </el-form-item>
                 </el-col>
@@ -581,7 +581,7 @@
               <el-col :span="7">
                 <el-form-item label="车辆初始里程" class="m-r-md p-r">
                     <el-input v-model="form.vehicleVINNumber">
-                        <span slot="suffix">km</span>
+                        <template #suffix><span>km</span></template>
                     </el-input>
                 </el-form-item>
               </el-col>
@@ -591,7 +591,7 @@
               <el-col :span="7">
                  <el-form-item label="车辆累计里程" class="m-r-md p-r">
                     <el-input v-model="form.engineNumber">
-                        <span slot="suffix">km</span>
+                        <template #suffix><span>km</span></template>
                     </el-input>
                 </el-form-item>
               </el-col>
@@ -614,7 +614,7 @@
               <el-col :span="7">
                 <el-form-item label="MCU的脉冲占空比" class="m-r-md p-r">
                     <el-input v-model="form.engineNumber">
-                        <span slot="suffix">%</span>
+                        <template #suffix><span>%</span></template>
                     </el-input>
                 </el-form-item>
               </el-col>

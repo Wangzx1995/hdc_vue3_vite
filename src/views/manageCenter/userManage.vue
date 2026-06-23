@@ -139,7 +139,7 @@
                     :label="$t('userManage.roleNameList')"
                     min-width="500px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         {{ scope.row.roleNameList }}
                     </template>
                 </el-table-column>
@@ -155,7 +155,7 @@
                     :label="$t('userManage.isFreezed')"
                     width="100px"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <el-tag
                             type="success"
                             v-if="scope.row.isFreezed == 0"
@@ -182,7 +182,7 @@
                     width="180px"
                     fixed="right"
                 >
-                    <template slot-scope="scope">
+                    <template #default="scope">
                         <div
                             v-show="scope.row.isSysMust != 1"
                             class="text-nowrap"
@@ -236,7 +236,7 @@
         <el-dialog
             :append-to-body="true"
             :close-on-click-modal="false"
-            :visible="resetModel"
+            v-model="resetModel"
             :title="$t('userManage.resetPassword')"
             @close="resetModelClose"
             :width="'340px'"
@@ -340,24 +340,26 @@
                     ></el-input>
                 </el-form-item>
             </el-form>
-            <div slot="footer">
-                <el-button type="default" @click="resetCancel">
-                    <!-- 取消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    :loading="loading"
-                    @click="resetSave()"
-                >
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button type="default" @click="resetCancel">
+                        <!-- 取消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        :loading="loading"
+                        @click="resetSave()"
+                    >
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
         <!-- 验证用户权限 -->
         <el-dialog
-            :visible="saveInfoModal"
+            v-model="saveInfoModal"
             class="save-info-dialog"
             :title="$t('common.addSuccess')"
             :show-close="false"
@@ -422,16 +424,18 @@
                     {{ $t("userManage.cutPic") }}
                 </a>
             </div>
-            <div slot="footer">
-                <el-button
-                    type="primary"
-                    :loading="loading"
-                    @click="closeSaveInfoModal()"
-                >
-                    <!-- 确定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </div>
+            <template #footer>
+                <div>
+                    <el-button
+                        type="primary"
+                        :loading="loading"
+                        @click="closeSaveInfoModal()"
+                    >
+                        <!-- 确定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </div>
+            </template>
         </el-dialog>
         <!-- 删除用户 -->
         <el-dialog
@@ -440,7 +444,7 @@
             class="el-no-padding-y"
             :close-on-click-modal="false"
             :close-on-press-escape="false"
-            :visible.sync="deleteVisible"
+            v-model="deleteVisible"
             :title="$t('userManage.deleteUser')"
         >
             <div class="el-dialog-user-delete">
@@ -479,20 +483,22 @@
                     />
                 </div>
             </div>
-            <span slot="footer" class="dialog-footer">
-                <el-button @click="deleteVisible = false">
-                    <!-- 取 消 -->
-                    {{ $t("common.cancel") }}
-                </el-button>
-                <el-button
-                    type="primary"
-                    :loading="loading"
-                    @click="deleteUsers()"
-                >
-                    <!-- 确 定 -->
-                    {{ $t("common.ok") }}
-                </el-button>
-            </span>
+            <template #footer>
+                <span class="dialog-footer">
+                    <el-button @click="deleteVisible = false">
+                        <!-- 取 消 -->
+                        {{ $t("common.cancel") }}
+                    </el-button>
+                    <el-button
+                        type="primary"
+                        :loading="loading"
+                        @click="deleteUsers()"
+                    >
+                        <!-- 确 定 -->
+                        {{ $t("common.ok") }}
+                    </el-button>
+                </span>
+            </template>
         </el-dialog>
         <userManageDialog
             ref="userManageDialog"
@@ -1233,13 +1239,13 @@ export default {
         border-top: 1px solid #e4e4e4;
     }
 }
-div /deep/ .el-card__body {
+div :deep(.el-card__body){
     padding: 0 !important;
 }
 .save-info-dialog {
     width: 1100px;
     margin: 0 auto;
-    /deep/ .el-dialog__body {
+    :deep(.el-dialog__body){
         color: #4d4d4d;
         padding: 16px 24px;
         .info-bar {

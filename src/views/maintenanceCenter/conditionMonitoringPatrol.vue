@@ -200,7 +200,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[0].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -208,9 +208,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -231,7 +230,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[1].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -239,9 +238,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -262,7 +260,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[2].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -270,9 +268,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -293,7 +290,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[3].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -301,9 +298,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -325,7 +321,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[4].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -333,9 +329,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -356,7 +351,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[5].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -364,9 +359,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -387,7 +381,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[6].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -395,9 +389,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line lineBlue"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -418,7 +411,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[7].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -426,9 +419,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line lineBlue"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -449,7 +441,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[8].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -457,9 +449,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line lineBlue"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -480,7 +471,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[9].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -488,9 +479,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -511,7 +501,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[10].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -519,9 +509,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -542,7 +531,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[14].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -550,9 +539,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -573,7 +561,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[15].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -581,9 +569,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -604,7 +591,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[16].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -612,9 +599,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd">
@@ -635,7 +621,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[11].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -643,9 +629,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                         <el-popover
                             v-if="item.showInspectionRecords[17].length"
@@ -664,7 +649,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[17].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -672,9 +657,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                     <li class="contentTd noBorder">
@@ -695,7 +679,7 @@
                             </p>
                             <p>异常原因:{{ item_.reason }}</p>
                             <p>解决建议:{{ item_.advice }}</p>
-                            <div
+                            <template #reference><div
                                 v-if="item.showInspectionRecords[12].length"
                                 :style="`height:${getFragmentHeight(
                                     item_,
@@ -703,9 +687,8 @@
                                     item_.showStartTime,
                                     item.date,
                                 )}px`"
-                                slot="reference"
                                 class="line"
-                            ></div>
+                            ></div></template>
                         </el-popover>
                     </li>
                 </ul>

@@ -194,7 +194,7 @@ export default {
             display: flex;
             justify-content: center;
             align-items: center;
-            /deep/ .el-select {
+            :deep(.el-select){
                 width: 90px;
                 input {
                     border: none;
@@ -290,7 +290,7 @@ export default {
             margin: 20px 0 0 0;
         }
     }
-    /deep/.content-16 {
+    :deep(.content-16){
         display: flex;
         flex-wrap: wrap;
         .el-select {

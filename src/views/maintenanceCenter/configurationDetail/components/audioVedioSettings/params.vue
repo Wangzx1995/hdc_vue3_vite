@@ -38,12 +38,12 @@
               </div>
               <div v-if="form['0075'] && form['0075'].realtimeFramePerSecond !==''" class="configuration-item">
                 <el-form-item label="实时流目标帧率（1-120）" prop="0075.realtimeFramePerSecond">
-                    <el-input v-model="form['0075'].realtimeFramePerSecond"><span slot="suffix">帧/s</span></el-input>
+                    <el-input v-model="form['0075'].realtimeFramePerSecond"><template #suffix><span>帧/s</span></template></el-input>
                 </el-form-item>
               </div>
               <div v-if="form['0075'] && form['0075'].realtimeCodeRate !==''" class="configuration-item">
                 <el-form-item label="实时流目标码率" prop="0075.realtimeCodeRate">
-                    <el-input v-model="form['0075'].realtimeCodeRate"><span slot="suffix">kbps</span></el-input>
+                    <el-input v-model="form['0075'].realtimeCodeRate"><template #suffix><span>kbps</span></template></el-input>
                 </el-form-item>
               </div>
             </div>
@@ -98,12 +98,12 @@
               </div>
               <div v-if="form['0075'] && form['0075'].storeFramePerSecond !==''" class="configuration-item">
                 <el-form-item label="存储流目标帧率"  prop="0075.storeFramePerSecond">
-                    <el-input v-model="form['0075'].storeFramePerSecond"><span slot="suffix">帧/s</span></el-input>
+                    <el-input v-model="form['0075'].storeFramePerSecond"><template #suffix><span>帧/s</span></template></el-input>
                 </el-form-item>
               </div>
               <div v-if="form['0075'] && form['0075'].storeCodeRate !==''" class="configuration-item">
                 <el-form-item label="存储流目标码率" prop="0075.storeCodeRate">
-                    <el-input v-model="form['0075'].storeCodeRate"><span slot="suffix">kbps</span></el-input>
+                    <el-input v-model="form['0075'].storeCodeRate"><template #suffix><span>kbps</span></template></el-input>
                 </el-form-item>
               </div>
             </div>
