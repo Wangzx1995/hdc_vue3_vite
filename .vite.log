@@ -1805,3 +1805,119 @@ Files in the public directory are served at the root path.
 Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
 Files in the public directory are served at the root path.
 Instead of /static/images/instructions.png, use /images/instructions.png.
+9:54:42 PM [vite] page reload index.html
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+9:54:53 PM [vite] page reload omsJump.html
+9:54:53 PM [vite] page reload src/theme/iconfont/demo_index.html
+9:54:59 PM [vite] page reload index.html
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/deepseek/ai_btn.svg instead of /static/images/deepseek/ai_btn.svg.
+If you intend to use the URL of that asset, use /images/deepseek/ai_btn.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/carCenter.png instead of /static/images/carCenter.png.
+If you intend to use the URL of that asset, use /images/carCenter.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/full-screen.svg instead of /static/images/headbar/full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/headbar/cancel-full-screen.svg instead of /static/images/headbar/cancel-full-screen.svg.
+If you intend to use the URL of that asset, use /images/headbar/cancel-full-screen.svg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/images/word_icon.png instead of /static/images/word_icon.png.
+If you intend to use the URL of that asset, use /images/word_icon.png?url.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/deepseek/ai_btn.svg, use /images/deepseek/ai_btn.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/carCenter.png, use /images/carCenter.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/full-screen.svg, use /images/headbar/full-screen.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/qr_code.svg, use /images/headbar/qr_code.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/queInvestigation.svg, use /images/headbar/queInvestigation.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/changePass.svg, use /images/headbar/changePass.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/about.svg, use /images/headbar/about.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/headbar/login_out.svg, use /images/headbar/login_out.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/instructions.png, use /images/instructions.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+11:33:41 PM [vite] page reload index.html
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+9:15:49 AM [vite] page reload index.html
+Files in the public directory are served at the root path.
+Instead of /static/js/WasmTest.wasm, use /js/WasmTest.wasm.
+Files in the public directory are served at the root path.
+Instead of /static/images/logo.svg, use /images/logo.svg.
+Files in the public directory are served at the root path.
+Instead of /static/images/qr_in_logo.png, use /images/qr_in_logo.png.
